@@ -1,0 +1,122 @@
+.w {
+    margin-bottom: 30px;
+}
+.margin-left100 {
+    margin-left: 100px;
+}
+.margin-left10 {
+    margin-left: 10px;
+}
+.line-height2em{
+    line-height: 2.2em;
+}
+.nowrap{
+    white-space:nowrap;
+}
+.obdEquipment-content > .obdEquipment-top {
+    margin-top: 15px;
+}
+.clw-button {
+    padding: 5px 10px;
+    border: 0;
+    background: #f7f7f7;
+    color: #000;
+    margin: 5px 0
+}
+.padding-top20{
+    margin: 0;
+    padding-top: 20px;
+}
+.margin-top30 {
+    margin-top: 30px;
+}
+.line-title {
+    width: 100%;
+    height: 1px;
+    background: #e6e6e6;
+    position: relative;
+    margin-bottom: 30px;
+}
+.line-title > span {
+    padding: 5px 20px;
+    position: absolute;
+    left: 41%;
+    bottom: -14px;
+    background: #fff;
+    color: #999
+}
+
+.fixed-table-container tbody td .th-inner, .fixed-table-container thead th .th-inner {
+    height: 45px;
+}
+
+.bootstrap-table .table, .bootstrap-table .table > tbody > tr > td, .bootstrap-table .table > tbody > tr > th, .bootstrap-table .table > tfoot > tr > td, .bootstrap-table .table > tfoot > tr > th, .bootstrap-table .table > thead > tr > td {
+    height: 50px;
+}
+
+/*车辆管理*/
+.car_query-content > .car_query-top, .car_illegal_query-content > .car_illegal_query-top, .car_score_query-content > .car_score_query-top, .driving_score_query-content > .driving_score_query-top {
+    margin-top: 15px;
+}
+
+/*日志管理*/
+.gps_log-content > .gps_log-top, .car_condition-content > .car_condition-top, .news_log-content > .news_log-top, .collision_log-content > .collision_log-top {
+    margin-top: 15px;
+}
+
+.reviseCarPage-content, .equipmentImportPage-content, .userEquipmentDetailsPage-content, .addCarPage-content,
+.equipmentRevisePage-content,.equipmentReplacementPage-content {
+    position: relative;
+}
+
+.reviseCarPage-save, .equipmentImportPage-save {
+    width: 294px;
+    margin: 50px auto;
+}
+.reviseCarPage-start, .equipmentImportPage-start, .addCarSave,.reviseCarSave,.reviseSave,.setCarSage,.equipmentReplacementSave,.userEquipmentDetailsPage-ending {
+    border: solid 1px #e6e6e6;
+}
+.userEquipmentDetailsPage-save, .addCarPage-save {
+    width: 294px;
+    margin: 50px auto;
+}
+.userEquipmentDetailsSave {
+    border: solid 1px #e6e6e6;
+    border-top: 0;
+}
+
+.equipmentImportPage-content > .equipmentImportPage-start > .save {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    padding-left: 20px;
+}
+.equipmentImportPage-content > .equipmentImportPage-start > .save > button {
+    padding: 2px 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+.equipmentImportPage-content > .equipmentImportPage-start > .save > input {
+    border: 0;
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 34px;
+    opacity: 0;
+}
+
+.equipmentRevisePage-start {
+    border: solid 1px #e6e6e6;
+    padding-bottom: 15px
+}
+.equipmentRevisePage-save,.equipmentReplacementPage-save ,.setCarPage-save{
+    width: 294px;
+    margin: 30px auto;
+}
+
+.equipmentReplacementPage-middle{height: 112px;background-color: #fafafa;border: solid 1px #e6e6e6;}
+.equipmentReplacementPage-ending{height: 150px;border: solid 1px #e6e6e6;}
+

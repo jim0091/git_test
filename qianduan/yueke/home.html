@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/obdAndCar.css">
+
+    <!-- 全局js -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+    <!--下拉菜单-->
+    <link href="css/select2.min.css" rel="stylesheet"/>
+
+    <!--时间插件引入  注：一定要放到app.css的上面-->
+    <script src="js/plugins/layer/laydate/laydate.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <!-- layer javascript -->
+    <script src="js/plugins/layer/layer.min.js"></script>
+</head>
+<body class="yklBody">
+    <div class="yklContent display-flex">
+        <!--left-->
+        <div class="content-left flex-8">
+            <div class="yklBlock">
+                <div class="yklBlock-top">
+                    <div class="yklBlock-top-content">
+                        <p class="left">2 张订单未处理</p>
+                    </div>
+                </div>
+                <div class="yklBlock-content">
+                    <ul class="waitOrders-list">
+                        <li class="waitOrders-item">
+                            <div class="item-top">
+                                <span class="left">租凭日期：2018.2.28-次日16:00（共计：60分钟）</span>
+                                <span class="right">到店时间：15:00</span>
+                            </div>
+                            <div class="item-data">
+                                <div class="left">
+                                    <p class="name">林帅帅</p>
+                                    <p class="price">预付价格：RMB 90</p>
+                                </div>
+                                <div class="right">
+                                    <p class="type">房间类型：双人大床房</p>
+                                    <p class="detail">拒绝订单 <a href="#" class="jump">查看详情 >></a></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="waitOrders-item">
+                            <div class="item-top">
+                                <span class="left">租凭日期：2018.2.28-次日16:00（共计：60分钟）</span>
+                                <span class="right">到店时间：15:00</span>
+                            </div>
+                            <div class="item-data">
+                                <div class="left">
+                                    <p class="name">林帅帅</p>
+                                    <p class="price">预付价格：RMB 90</p>
+                                </div>
+                                <div class="right">
+                                    <p class="type">房间类型：双人大床房</p>
+                                    <p class="detail">拒绝订单 <a href="#" class="jump">查看详情 >></a></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="yklBlock">
+                <i class="yklBlock-top-color" style="background-color: #4a90e2"></i>
+                <div class="yklBlock-top">
+                    <div class="yklBlock-top-content">
+                        <p class="left">住客看版</p>
+                        <div class="right">
+                            <img src="image/arrow_left.png" class="date-arrow" alt="">
+                            <p class="date">2018.2.28</p>
+                            <img src="image/arrow_right.png" class="date-arrow" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="yklBlock-content">
+                    <div class="forecast reach">
+                        <p class="title">预计抵达</p>
+                        <ul class="forecast-list">
+                            <li class="forecast-item display-flex-space">
+                                <span class="name flex-1">龙先生</span>
+                                <span class="type flex-1">双人床</span>
+                                <span class="date flex-2">时间：13:30-19:00</span>
+                                <span class="status flex-1">延时</span>
+                                <button class="check ykl-button" type="button">审核</button>
+                            </li>
+                            <li class="forecast-item display-flex-space">
+                                <span class="name flex-1">市先生</span>
+                                <span class="type flex-1">双人床</span>
+                                <span class="date flex-2">时间：13:30-19:00</span>
+                                <span class="status flex-1">延时</span>
+                                <button class="check ykl-button" type="button">审核</button>
+                            </li>
+                            <li class="forecast-item display-flex-space">
+                                <span class="name flex-1">先生</span>
+                                <span class="type flex-1">双人床</span>
+                                <span class="date flex-2">时间：13:30- 次日 19:00</span>
+                                <span class="status flex-1">待入住</span>
+                                <button class="check ykl-button" type="button">审核</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="forecast leave">
+                        <p class="title">预计离店</p>
+                        <ul class="forecast-list">
+                            <li class="forecast-item display-flex-space">
+                                <span class="name flex-1">龙先生</span>
+                                <span class="type flex-1">双人床</span>
+                                <span class="date flex-2">时间：13:30-19:00</span>
+                                <span class="status flex-1">延时</span>
+                                <button class="check ykl-button" type="button">审核</button>
+                            </li>
+                            <li class="forecast-item display-flex-space">
+                                <span class="name flex-1">市先生</span>
+                                <span class="type flex-1">双人床</span>
+                                <span class="date flex-2">时间：13:30-19:00</span>
+                                <span class="status flex-1">延时</span>
+                                <button class="check ykl-button" type="button">审核</button>
+                            </li>
+                            <li class="forecast-item display-flex-space">
+                                <span class="name flex-1">先生</span>
+                                <span class="type flex-1">双人床</span>
+                                <span class="date flex-2">时间：13:30- 次日 19:00</span>
+                                <span class="status flex-1">待入住</span>
+                                <button class="check ykl-button" type="button">审核</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--right-->
+        <div class="content-left flex-2" style="margin-left: 30px">
+            <!--今日汇总-->
+            <div class="yklBlock">
+                <i class="yklBlock-top-color" style="background-color: #ff4800"></i>
+                <div class="yklBlock-top">
+                    <div class="yklBlock-top-content">
+                        <p class="left">今日汇总</p>
+                    </div>
+                </div>
+                <div class="yklBlock-content">
+                    <div class="collect-left">
+                        <a href="#" class="collect-item">
+                            <span class="value">1</span>
+                            <span class="title">未处理</span>
+                        </a>
+                        <a href="#" class="collect-item">
+                            <span class="value">3</span>
+                            <span class="title">待审核</span>
+                        </a>
+                        <a href="#" class="collect-item">
+                            <span class="value">19</span>
+                            <span class="title">今日预定</span>
+                        </a>
+                        <a href="#" class="collect-item">
+                            <span class="value">0</span>
+                            <span class="title">今日入住</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--点评问答-->
+            <div class="yklBlock">
+                <i class="yklBlock-top-color" style="background-color: #ffcf10"></i>
+                <div class="yklBlock-top">
+                    <div class="yklBlock-top-content">
+                        <p class="left">点评问答</p>
+                    </div>
+                </div>
+                <div class="yklBlock-content">
+                    <div class="answer-content">
+                        <div class="addAnswer">
+                            <div class="addAnswer-top display-flex-space">
+                                <p class="title">今日新增评论</p>
+                                <img src="image/arrow_right.png" class="right" alt="">
+                            </div>
+                            <p class="data display-flex-center"><span class="value">1</span>条</p>
+                        </div>
+                        <div class="newAnswer">
+                            <p class="title">最新点评</p>
+                            <div class="newAnswer-content">
+                                <p class="text">酒店很好，就是房间有些小.</p>
+                            </div>
+                            <button class="reply ykl-button margin-auto" onclick="demo()">回复</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="prompt" class="ykl-promptBox">
+        <div class="ykl-promptBox-content">
+            <p class="title">关于新增酒店设施的功能通知</p>
+            <p class="name">亲爱的商户：</p>
+            <p class="text">自2018.3.12日起,系统新增酒店设施的功能通知.您可在”酒店信息”   “酒店设施”中选择，此功能可以提高酒店评分和入住率哦~</p>
+        </div>
+        <div class="close">关闭</div>
+    </div>
+    <style>
+
+    </style>
+<script>
+    //自定页
+function demo() {
+    //页面层
+    layer.open({
+        type: 1,
+        title: false,
+        closeBtn: 1,
+        skin: 'layui-layer-rim', //加上边框
+        area: ['797px', 'auto'], //宽高
+        content: $('#prompt'),
+    });
+}
+demo()
+</script>
+</body>
+</html>

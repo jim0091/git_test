@@ -1,0 +1,39 @@
+/*韦德海*/
+/*后台用户管理css*/
+.background-userManagement>.top{margin-top: 27px}
+.background-userManagement>.mtop30>.pdleftright21{padding: 0px 21px}
+.bootstrap-table .table, .bootstrap-table .table>tbody>tr>td,
+.bootstrap-table .table>tbody>tr>th, .bootstrap-table .table>tfoot>tr>td,
+.bootstrap-table .table>tfoot>tr>th, .bootstrap-table .table>thead>tr>td{
+    height: 50px;
+}
+
+/*用户反馈css*/
+.userFeedback-ending{border: solid 1px #e6e6e6;padding-bottom: 15px}
+.margin-top30{margin-top: 30px}
+.padding-top30{padding-top: 30px}
+
+.line-title {
+    width: 100%;
+    height: 1px;
+    background: #e6e6e6;
+    position: relative;
+    margin-bottom: 20px;
+}
+.line-title > span {
+    padding: 5px 20px;
+    position: absolute;
+    left: 41%;
+    bottom: -14px;
+    background: #fff;
+    color: #999
+}
+/*用户管理*/
+.userLySubmit{
+    text-align: center;
+    width: 294px;
+    margin: 50px auto;
+}
+.userEquipmentDetailsSave {
+    border-top: solid 1px #e6e6e6;
+}

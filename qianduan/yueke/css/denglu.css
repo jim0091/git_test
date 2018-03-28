@@ -1,0 +1,145 @@
+
+.login-start {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    position: absolute;
+    top: 10%;
+    color: #fff;
+    text-align: center;
+}
+p{
+    margin: 0;
+    padding:0;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+}
+.login-start>img.bg{
+    min-height: 100%;
+    display: block;
+    width: 100%;
+}
+.login-content{
+    position: absolute;
+    top: 25%;
+    width: 480px;
+    height: 410px;
+    background: #fff;
+}
+
+.margin-top40{
+    margin-top: 40px;
+}
+.margin-top20{
+    margin-top: 20px!important;
+}
+.top{
+    width: 368px;
+    margin: 40px auto;
+    margin-bottom: 20px;
+}
+.code{
+    display: flex;
+    width: 368px;
+    height: 60px;
+    margin: 0 auto;
+}
+.code>img{
+    width: 161px;
+    height: 60px;
+    margin-left: 9px;
+}
+.code-input{
+    width: 196px;
+    height: 58px;
+}
+.login-btn{
+    width: 193px;
+    height: 58px;
+    background: #ff4a00;
+    color: #fff;
+    border: 1px solid #ff4a00;
+    margin-left: 91px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.login-input{
+    border-radius: 8px;
+    display: block;
+    width: 368px;
+    height: 58px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    font-size: 14px;
+    color: #333;
+    padding: 0 5px;
+
+}
+.login-input:focus {
+    border-color: #ffd7c7!important;
+    outline: none;
+    box-shadow: 0 0 10px #ffd7c7;
+}
+.login-bottom{
+    width: 368px;
+    margin: 50px auto;
+    margin-bottom: 0px;
+}
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 9px;
+    }
+    .login-content{
+        width: 90%;
+        margin: 0 auto;
+        height: 310px;
+        background: #fff;
+    }
+    .top {
+        width: 90%;
+        margin: 20px auto;
+        margin-bottom: 10px;
+    }
+    .login-input {
+        width: 90%;
+        height: 38px;
+        font-size: 12px;
+    }
+    .code-input {
+        width: 60%;
+        margin: 0;
+    }
+    .code {
+        width: 85%;
+    }
+    .code>img {
+        width: 33%;
+        height: 40px;
+    }
+    .login-bottom {
+        width: 90%;
+        margin: 20px auto;
+        margin-bottom: 0px;
+    }
+    .login-btn {
+        width: 50%;
+        height: 40px;
+        margin-left: 24%;
+    }
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>悦客分时租赁系统 - 酒店端</title>
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="css/app.css?v=4.1.0" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div class="clw-top">
+    <a href="index.html" class="top-left">
+        <img src="image/logo.png" alt="" class="clw-logo">
+        <p class="title">悦客分时租赁系统 - 酒店端</p>
+    </a>
+    <ul class="nav navbar-top-links navbar-right top-right">
+        <li class="dropdown hidden-xs">
+            <a class="right-sidebar-toggle" aria-expanded="false">
+                <img src="image/zhuti@2x.png" alt="" style="width: 32px;margin-right: -3px"> 主题
+            </a>
+        </li>
+        <li class="dropdown hidden-xs">
+            <a class="right-sidebar-toggle" aria-expanded="false">
+                <img src="image/zhuxiao@2x.png" alt="" style="width: 32px;margin-right: -3px"> 注销
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="wrapper" style="padding-top: 0">
+
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation" style="background-color: white">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="navbar-item">
+                    <a class="J_menuItem" href="home.html">
+                        <img src="image/navigate_01_01.png" alt="" class="ionc">
+                        <span class="nav-label">首页</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a herf="javascript:;">
+                        <img src="image/navigate_01_02.png" alt="" class="ionc">
+                        <span class="nav-label">订单处理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="obdEquipment.html" data-index="0"><i class="ionc"></i>未处理订单</a>
+                        </li>
+                        <li><a class="J_menuItem" href="obd-salesagain.html" data-index="0"><i class="ionc"></i>订单查询</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a herf="javascript:;">
+                        <img src="image/navigate_01_03.png" alt="" class="ionc">
+                        <span class="nav-label">房态维护</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="home.html" data-index="0"><i class="ionc"></i>房态维护</a></li>
+                        <li><a class="J_menuItem" href="home.html" data-index="0"><i class="ionc"></i>操作查询</a></li>
+                    </ul>
+                </li>
+                <!--<li class="navbar-item">-->
+                <!--<a class="J_menuItem" href="demo.html"><img src="image/navbar_ionc_005.png" alt="" class="ionc"> <span class="nav-label">OBD设备管理</span></a>-->
+                <!--</li>-->
+                <li class="navbar-item">
+                    <a class="J_menuItem" href="home.html">
+                        <img src="image/navigate_01_04.png" alt="" class="ionc">
+                        <span class="nav-label">房价维护</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a herf="javascript:;">
+                        <img src="image/navigate_01_05.png" alt="" class="ionc">
+                        <span class="nav-label">住店审核</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="user-Feedback.html" data-index="0"><i class="ionc"></i>待审</a>
+                        </li>
+                        <li><a class="J_menuItem" href="user-Management.html" data-index="0"><i class="ionc"></i>已审</a>
+                        </li>
+                        <!--<li><a class="J_menuItem" href="demo.html" data-index="0"><i class="ionc"></i>收益管理</a></li>-->
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a class="J_menuItem" href="home.html">
+                        <img src="image/navigate_01_06.png" alt="" class="ionc">
+                        <span class="nav-label">财务结算</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a class="J_menuItem" href="home.html">
+                        <img src="image/navigate_01_07.png" alt="" class="ionc">
+                        <span class="nav-label">点评回复</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a herf="javascript:;">
+                        <img src="image/navigate_01_08.png" alt="" class="ionc">
+                        <span class="nav-label">酒店信息</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="journalMonitor.html" data-index="0"><i class="ionc"></i>基本信息</a>
+                        </li>
+                        <li><a class="J_menuItem" href="system-setup.html" data-index="0"><i class="ionc"></i>酒店政策</a>
+                        </li>
+                        <li><a class="J_menuItem" href="system-setup.html" data-index="0"><i class="ionc"></i>联系方式</a>
+                        </li>
+                        <li><a class="J_menuItem" href="system-setup.html" data-index="0"><i class="ionc"></i>酒店设施</a>
+                        </li>
+                        <li><a class="J_menuItem" href="system-setup.html" data-index="0"><i class="ionc"></i>酒店图片</a>
+                        </li>
+                        <li><a class="J_menuItem" href="system-setup.html" data-index="0"><i class="ionc"></i>房型设置</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navbar-item">
+                    <a herf="javascript:;">
+                        <img src="image/navigate_01_09.png" alt="" class="ionc">
+                        <span class="nav-label">其他</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="journalMonitor.html" data-index="0"><i class="ionc"></i>员工权限</a>
+                        </li>
+                        <li><a class="J_menuItem" href="system-setup.html" data-index="0"><i class="ionc"></i>商家二维码</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row J_mainContent" id="content-main">
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="home.html" frameborder="0"
+                    seamless data-id="home.html"></iframe>
+        </div>
+    </div>
+</div>
+<!--右侧边栏结束-->
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/plugins/layer/layer.min.js"></script>
+<!-- 自定义js -->
+<script src="js/bd.js?v=4.1.0"></script>
+<script type="text/javascript" src="js/contabs.js"></script>
+
+<!-- 第三方插件 -->
+<script src="js/plugins/pace/pace.min.js"></script>
+
+
+<script>
+    //    parent.layer.alert('内容')
+    $('.nav > li>ul>li>a.J_menuItem').click(function () {
+        $('.nav > li>ul>li>a.J_menuItem').removeClass('active')
+        $(this).addClass('active')
+    })
+
+    //    导航栏的控制显示
+    $('.nav li.navbar-item > a').eq(0).css('background-color', '#fff')
+    $('.nav li.navbar-item > a').eq(0).css('border-right', '1px solid #eee')
+    $('.nav li.navbar-item > a').focus(function () {
+        $('.nav li.navbar-item > a').css('background-color', '#eee')
+        $('.nav > li.active>ul>li>a.J_menuItem').removeClass('active')
+        $(this).css('background-color', '#fff')
+    })
+    $('.nav-second-level li a').focus(function () {
+        $('.nav li.navbar-item > a').css('background-color', '#eee')
+    })
+</script>
+</body>
+
+</html>
