@@ -1,0 +1,8 @@
+2017-06-05 17:04:24 Workerman[server/start.php] start in DAEMON mode
+2017-06-05 17:04:24 Workerman[server/start.php] is running
+2017-06-05 17:05:03 Workerman[server/start.php] stop 
+2017-06-05 17:05:03 Workerman[server/start.php] is stoping ...
+2017-06-05 17:05:03 Workerman[start.php] Stopping ...
+2017-06-05 17:05:03 Workerman[start.php] has been stopped
+2017-06-05 17:05:03 Workerman[server/start.php] stop success
+2017-06-05 17:05:06 Workerman[server/start.php] start in DAEMON mode
