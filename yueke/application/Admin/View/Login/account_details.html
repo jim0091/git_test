@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+
+</head>
+<body>
+<br>
+<div>
+<div>
+<div>ID:{$data['admin_id']}</div></a>
+<div>用户名:{$data['user_name']}</div></a>
+<div>状态:{$data['state']}</div>
+<div>权限:
+<?php if($data['role']==1){
+		   echo "管理员";
+		}else{
+		echo "超级管理员";
+		}
+?>
+</div>
+<div>手机号:{$data['phone']}</div>
+<div>创建时间:{$data['create_time']}</div>
+<div>头像:{$data['avatar']}</div>
+
+<?php if($data['state']=="正常"){
+		   echo "<a href=/admin/manage/stop?id=$data[admin_id]><div>禁用</div></a>";
+		}else{
+		echo "<a href=/admin/manage/start?id=$data[admin_id]><div>开启</div></a>";
+		}
+?>
+<a href="/admin/manage/delete?id={$data['admin_id']}"><div>删除</div></a>
+<a href="/admin/manage/edit?id={$data['admin_id']}"><div>修改</div></a>
+
+
+
+<br>
+
+</div>
+
+
+
+</div>
+<div>
+<ul>
+</ul>
+</div>
+<div>
+</div>
+</body>
+
+</html>

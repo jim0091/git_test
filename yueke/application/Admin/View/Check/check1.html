@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+
+</head>
+<body>
+<div><?php if($_GET['state']==1){
+	echo "未审核";
+}
+	elseif($_GET['state']==2){
+	echo "已审核";
+	}
+	elseif($_GET['state']==3){
+	echo "已拒绝";
+	}
+?>
+</div>
+
+<?php foreach($data as $key) { ?>
+<div>ID:{$key['user_id']}</div>
+<div>申请人账户:<a href="/admin/check/operate?id={$key['user_id']}">{$key['user_name']}</a></div>
+<div>酒店名称:{$key['cn_name']}</div>
+<div>审核状态：{$key['state']}
+</div>
+<div>申请时间：{$key['create_time']}</div>
+<?php if($_GET['state']==3){
+			echo "<div>拒绝理由：$key[reason]</div>";
+		}?>
+<a href="/admin/check/operate?id={$key['user_id']}"><div>操作</div></a>
+<?php } ?>
+</body>
+</html>

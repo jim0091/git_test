@@ -1,0 +1,130 @@
+.superAdmin{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.superAdmin>.superAdmin_bg{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    margin: auto;
+    /*top: 50%;*/
+    /*transform: translateY(-50%);*/
+    -moz-transform:scaleX(-1);
+    -webkit-transform:scaleX(-1);
+    -o-transform:scaleX(-1);
+    transform:scaleX(-1);
+}
+.superAdmin>.superAdmin-content{
+    position: absolute;
+    z-index: 2;
+    top: 120px;
+    left: 0;
+    right: 0;
+}
+.superAdmin>.superAdmin-content>.logo-title{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.8);
+}
+.superAdmin>.superAdmin-content>.logo-title>.title{
+    color: white;
+    font-size: 18px;
+    padding-left: 10px;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content{
+    width: 300px;
+    position: absolute;
+    z-index: 3;
+    top: 150px;
+    right: 0;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.title{
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.8);
+ }
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border{
+    border: 1px solid white;
+    padding: 10px;
+    margin-top: 15px;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content{
+    background-color: rgba(255,255,255,0.5);
+    padding: 30px 10px;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.logo-data{
+    width: 80%;
+    height: 30px;
+    background: none;
+    margin: auto;
+    margin-bottom: 15px;
+    display: block;
+    color: white;
+    padding-left: 10px;
+    border: 1px solid white;
+    cursor:text;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.logo-data::-webkit-input-placeholder{
+    color:white;}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.logo-data::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:white;}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.logo-data:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:white;}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.logo-data:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+    color:white;}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.register{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.register>a{
+    color: white;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.code{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 30px;
+    margin: 5px auto 5px 10%;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.code>input{
+    width: 50%;
+    padding-left: 10px;
+    color: white;
+    background: none;
+    padding-left: 10px;
+    border: 1px solid white;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.code>input::-webkit-input-placeholder{
+    color:white;}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.code>img{
+    width: 40%;
+    cursor:pointer;
+}
+.superAdmin>.superAdmin-content>.superAdmin-logo-content>.logo-border>.form-content>.submit{
+    width: 80%;
+    margin: auto;
+    display: block;
+    margin-top: 25px;
+    height: 35px;
+    background-color: rgba(0,0,0,0.8);
+    border: none;
+    color: white;
+}

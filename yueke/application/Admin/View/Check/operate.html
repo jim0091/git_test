@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+
+</head>
+<body>
+<div>审核操作页
+</div>
+
+<br/>
+<div>申请人账户:{$data['user_name']}</div>
+<div>手机：{$data['phone']}</div>
+<div>邮箱:{$data['email']}</div>
+<div>酒店名称:{$data['cn_name']}</div>
+<div>酒店简介:{$data['blurb']}</div>
+<div>酒店客服电话:{$data['phone']}</div>
+<div>酒店营业执照号:{$data['license']}</div>
+<div>酒店地址:{$data['address']}</div>	
+<div>审核状态：{$data['state']}
+</div>
+<div>申请时间：{$data['create_time']}</div>
+<?php if($data['state']=="待审核"){?>
+<button type="button" name="adopt"><a href="/admin/check/adopt?id={$data['user_id']}">同意</a></button>
+  <input   type=button   name=btn   onclick=hidslt()   value=拒绝   ID=Button1>
+<form action="/admin/check/lost?id={$data['user_id']}" method="post">
+
+  <textarea rows="3" cols="20" type=text   name=slt   ID=Text1 style="display:none" placeholder="请输入拒绝理由">
+</textarea>
+<input   type="submit"  name=btns     value=确定   ID=Button2  style="display:none">
+</form>
+<?php }else{?>
+<a href = "/admin/check/"><button type="button" name="already">已审核</button></a>
+<?php }?>
+
+  <script>   
+    function   hidslt()   {   
+      if   (   document.all.slt.style.display!="none")   
+      {   
+      document.all.slt.style.display="none";   
+      document.all.btn.value="显示";   
+      }   
+      else   
+      {   
+      document.all.slt.style.display="";   
+	  document.all.btns.style.display=""; 
+      }   
+    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Data Tables</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!--自定义-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap table -->
+    <link rel="stylesheet" href="/static/css/bootstrap-table.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/static/bower_components/Ionicons/css/ionicons.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/static/dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini"><section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">酒店管理</h3>
+                </div>
+                <form class="row form-horizontal">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="hotelName" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">酒店名称</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control" id="hotelName" placeholder="请输入酒店名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="name" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">联系人</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control" id="name" placeholder="请输入联系人" maxlength="6">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="tel" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">联系方式</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="number" class="form-control" id="tel" placeholder="请输入联系方式" maxlength="11">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="email" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">邮箱</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="email" class="form-control" id="email" placeholder="请输入邮箱" maxlength="11">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6 col-md-4 col-lg-3 item">
+                        <div class="col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8 col-lg-offset-3 col-lg-9">
+                            <button type="submit" class="btn btn-info">搜索</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.box-header -->
+                <!--<div class="box-body">-->
+                    <!--<table id="example1" class="table table-bordered table-striped">-->
+                        <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th>酒店名称</th>-->
+                                <!--<th>联系人</th>-->
+                                <!--<th>联系方式</th>-->
+                                <!--<th>邮箱</th>-->
+                                <!--<th>交易金额</th>-->
+                                <!--<th data-align="rigth">用户量</th>-->
+                            <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td>维也纳酒店</td>-->
+                                <!--<td>秦始皇</td>-->
+                                <!--<td>18311111111</td>-->
+                                <!--<td>123465@163.com</td>-->
+                                <!--<td>1567468.85</td>-->
+                                <!--<td>2531</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>维也纳酒店</td>-->
+                                <!--<td>秦始皇</td>-->
+                                <!--<td>18311111111</td>-->
+                                <!--<td>123465@163.com</td>-->
+                                <!--<td>1567468.85</td>-->
+                                <!--<td>2531</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>维也纳酒店</td>-->
+                                <!--<td>秦始皇</td>-->
+                                <!--<td>18311111111</td>-->
+                                <!--<td>123465@163.com</td>-->
+                                <!--<td>1567468.85</td>-->
+                                <!--<td>2531</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>维也纳酒店</td>-->
+                                <!--<td>秦始皇</td>-->
+                                <!--<td>18311111111</td>-->
+                                <!--<td>123465@163.com</td>-->
+                                <!--<td>1567468.85</td>-->
+                                <!--<td>2531</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>维也纳酒店</td>-->
+                                <!--<td>秦始皇</td>-->
+                                <!--<td>18311111111</td>-->
+                                <!--<td>123465@163.com</td>-->
+                                <!--<td>1567468.85</td>-->
+                                <!--<td>2531</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>维也纳酒店</td>-->
+                                <!--<td>秦始皇</td>-->
+                                <!--<td>18311111111</td>-->
+                                <!--<td>123465@163.com</td>-->
+                                <!--<td>1567468.85</td>-->
+                                <!--<td>2531</td>-->
+                            <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+
+                    </table>
+                </div>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<!-- jQuery 3 -->
+<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--bootstrap-table-->
+<script src="/static/js/bootstrap-table.js "></script>
+<script src="/static/js/bootstrap-table-zh-CN.min.js"></script>
+
+
+<!-- SlimScroll -->
+<script src="/static/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/static/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $('#example1').bootstrapTable({
+            pagination: true,
+            paginationLoop: false,
+            pageSize: 10,
+            pageList: [10,15,25,50,'All'],
+//            search: true, //  启动自带搜索功能
+
+            columns: [{
+                field: 'id',
+                title: '序号',
+                align: 'center',
+            }, {
+                field: 'hotelName',
+                title: '酒店名称',
+                align: 'center',
+            }, {
+                field: 'name',
+                title: '联系人',
+                align: 'center',
+            }, {
+                field: 'phone',
+                title: '联系方式',
+                align: 'center',
+            }, {
+                field: 'email',
+                title: '邮箱',
+                align: 'center',
+            }, {
+                field: 'address',
+                title: '地址',
+                align: 'center',
+            }, {
+                field: 'sum',
+                title: '交易金额',
+                align: 'center',
+                sortable: true,
+            }, {
+                field: 'subscribers',
+                title: '用户量',
+                align: 'center',
+                sortable: true,
+            }
+            ],
+            data: [{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '54245.35',
+                    subscribers: '124'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '8788786.35',
+                    subscribers: '225544'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '666666.35',
+                    subscribers: '5324'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '54245.35',
+                    subscribers: '5324'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '54245.35',
+                    subscribers: '2542434'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '54245.35',
+                    subscribers: '5324'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '786786.35',
+                    subscribers: '5324'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '555.35',
+                    subscribers: '454'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '54245.35',
+                    subscribers: '5324'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '44444.35',
+                    subscribers: '882575'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '54245.35',
+                    subscribers: '5324'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '5786786.35',
+                    subscribers: '85858'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '75742.35',
+                    subscribers: '5'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '45454.35',
+                    subscribers: '5575'
+                },{
+                    id: 1,
+                    hotelName: '维也纳酒店',
+                    name: '秦始皇',
+                    phone: '18311111111',
+                    email: '123456@163.com',
+                    address: '广东省深圳市南山区科技南十二路12号',
+                    sum: '345343.35',
+                    subscribers: '5324'
+                },
+            ]
+        });
+    })
+</script>
+</body>
+</html>

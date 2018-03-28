@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/superAdmin_login.css" />
+</head>
+<body>
+    <div class="superAdmin">
+        <img src="/static/images/superAdmin_bg.jpg" class="superAdmin_bg" alt="">
+        <div class="superAdmin-content ebooking-width">
+            <div class="logo-title">
+                <img src="/static/images/logo.png" class="logo" alt="">
+                <div class="title">云股利超级管理员</div>
+            </div>
+            <form action="/admin/login/index" class="superAdmin-logo-content" method="post">
+                <p class="title">超级管理员登录入口</p>
+                <div class="logo-border">
+                    <div class="form-content">
+                        <input type="text" name="user" class="logo-data" placeholder="用户名" maxlength="20">
+                        <input type="password" name="password" class="logo-data" placeholder="密码" maxlength="20">
+                        <div class="code">
+                            <input type="text" name="verify" class="logo-data" placeholder="验证码" maxlength="6">
+                            <img src="{:captcha_src()}" id="verify_img" alt="" onclick="refreshVerify()">
+                        </div>
+                        <p class="register"></p>
+                        <input type="submit" value="登录" class="submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+	
+	<script>
+    function refreshVerify() {
+        var ts = Date.parse(new Date())/1000;
+        var img = document.getElementById('verify_img');
+        img.src = "/captcha?id="+ts;
+    }
+</script>
+</body>
+</html>

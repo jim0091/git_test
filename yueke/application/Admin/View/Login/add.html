@@ -1,0 +1,22 @@
+<form action="/admin/manage/add" method="post">
+  <p>用户名: <input type="text" name="user"  required lay-verify="required"  autocomplete="off" value=""/></p>
+  <p>手机号: <input type="text" name="phone" required lay-verify="required"  autocomplete="off" value=""/></p>
+  <p>密码: <input type="password" name="password" required lay-verify="required"  autocomplete="off" value=""/></p>
+   <p>确认密码: <input type="password" name="repassword" required lay-verify="required"  autocomplete="off" value=""/></p>
+ 
+  <div class="code">
+      <img src="{:captcha_src()}" id="verify_img" alt="" onclick="refreshVerify()">
+    <input type="text" name="verify" class="logo-data" placeholder="验证码" maxlength="6">
+   </div>
+    <input type="radio" name="role" value="1"  checked="checked">普通管理员<br>  	
+   	<input type="radio" name="role" value="2" >超级管理员<br> 
+  <input type="submit" value="确定" />
+</form>
+
+	<script>
+    function refreshVerify() {
+        var ts = Date.parse(new Date())/1000;
+        var img = document.getElementById('verify_img');
+        img.src = "/captcha?id="+ts;
+    }
+</script>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/superAdmin_login.css" />
+</head>
+<body>
+<div>全部酒店</div>
+<?php foreach($data as $key){?>
+<div>酒店名称：<a href="/admin/hotel/details?id={$key['user_id']}">{$key['cn_name']}</a></div>
+<div>拥有者：<a href="/admin/user/details?id={$key['user_id']}">{$key['name']}</a></div>
+<?php } ?>
+</body>
+</html>

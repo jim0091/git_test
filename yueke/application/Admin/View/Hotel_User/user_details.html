@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/superAdmin_login.css" />
+</head>
+<body>
+<div>酒店用户详情</div>
+<div>用户名：{$data['user_name']}</div>
+<div>手机号：{$data['phone']}</div>
+<div>邮箱：{$data['email']}</div>
+<div>头像：{$data['avatar']}</div>
+<?php if($data['state']==2){
+		   echo "<a href=/admin/user/stop?id=$data[user_id]><div>禁用</div></a>";
+		}elseif($data['state']==4){
+		echo "<a href=/admin/user/start?id=$data[user_id]><div>开启</div></a>";
+		}
+?>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+
+</head>
+<body>
+<div>全部申请</div>
+<a href="/admin/check/check?state=1"><div>未审核</div></a>
+<a href="/admin/check/check?state=2"><div>已通过</div></a>
+<a href="/admin/check/check?state=3"><div>已拒绝</div></a>
+<br/>
+
+<?php foreach($data as $key) { ?>
+<div>申请人账户:<a href="/admin/check/operate?id={$key['user_id']}">{$key['user_name']}</a></div>
+<div>酒店名称:{$key['cn_name']}</div>
+
+<div>审核状态：{$key['state']}
+</div>
+<div>申请时间：{$key['create_time']}</div>
+<a href="/admin/check/operate?id={$key['user_id']}"><div>操作</div></a>
+<?php } ?>
+</body>
+</html>

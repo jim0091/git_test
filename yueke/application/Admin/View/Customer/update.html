@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/admin/manage/edit?id={$data['admin_id']}" method="post">
+  <p>用户: <input type="text" name="user"  required lay-verify="required"  autocomplete="off" value="{$data['user_name']}"/></p>
+  <p>手机: <input type="text" name="phone"  required lay-verify="required"  autocomplete="off" value="{$data['phone']}"/></p>
+
+  <p>密码: <input type="password" name="password"   value="" placeholder="修改密码,不输入则密码不变"/></p>
+  <p>确认密码: <input type="password" name="repassword" value=""/></p>
+ 
+  <input type="submit" value="确定" />
+   <input type="reset" value="取消" />
+</form>
+</body>
+</html>

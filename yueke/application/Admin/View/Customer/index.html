@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+
+</head>
+<body>
+<form action="/admin/guest"  method="post">
+<div>搜索：
+<select name="type">
+  <option value ="1">客户ID</option>
+  <option value ="2">姓名</option>
+  <option value ="3">用户名</option>
+  <option value ="4">身份证号码</option>
+  <option value ="5">手机号码</option>
+  <option value ="6">地址</option>
+
+</select>
+<input type="text" name="search" class="logo-data" placeholder="输入您的搜索关键字"></div>
+  <input type="submit" value="确定" />
+
+</form>
+<?php foreach($data as $key) { ?>
+<div>
+<div>客人ID:{$key['guest_id']}</div>
+<div>姓名:{$key['user_name']}</div>
+<div>用户名:{$key['nick_name']}</div>
+<div>身份证号码:{$key['card']}</div>
+<div>手机号码:{$key['phone']}</div>
+<div>性别:{$key['sex']}</div>
+<div>年龄:{$key['age']}</div>
+<div>地址:{$key['address']}</div>
+<div>邮箱:{$key['email']}</div>
+<div>创建时间:{$key['create_time']}</div></a>
+<a href="/admin/guest/delete?id={$key['guest_id']}"><div>删除</div></a>
+<br>
+</div>
+<?php
+}
+?>
+
+</div>
+<div>
+<ul>
+</ul>
+</div>
+<div>
+</div>
+</body>
+
+</html>

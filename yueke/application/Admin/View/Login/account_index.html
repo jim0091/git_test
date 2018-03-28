@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+
+</head>
+<body>
+<div><a href="/admin/manage/add">新增管理账号</a></div>
+<br>
+<div>
+<?php foreach($data as $key) { ?>
+
+<div>
+<a href="/admin/manage/details?id={$key['admin_id']}">
+<div>ID:{$key['admin_id']}</div></a>
+<div>用户名:{$key['user_name']}</div></a>
+<div>状态:
+<?php if($key['state']==1){
+		   echo "正常";
+		}else{
+		echo "已禁用";
+		}
+?>
+</div>
+<div>权限:
+<?php if($key['role']==1){
+		   echo "管理员";
+		}else{
+		echo "超级管理员";
+		}
+?>
+</div>
+<?php if($key['state']==1){
+		   echo "<a href=/admin/manage/stop?id=$key[admin_id]><div>禁用</div></a>";
+		}else{
+		echo "<a href=/admin/manage/start?id=$key[admin_id]><div>开启</div></a>";
+		}
+?>
+<a href="/admin/manage/delete?id={$key['admin_id']}"><div>删除</div></a>
+<a href="/admin/manage/edit?id={$key['admin_id']}"><div>修改</div></a>
+
+
+
+<br>
+
+</div>
+
+<?php
+}
+?>
+
+</div>
+<div>
+<ul>
+</ul>
+</div>
+<div>
+</div>
+</body>
+
+</html>

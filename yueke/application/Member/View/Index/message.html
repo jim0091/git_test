@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/register.css" />
+</head>
+<body>
+<div class="register">
+    <div class="register-bg">
+        <img src="__STATIC__/images/register_bg.jpg" alt="">
+    </div>
+    <div class="register-form">
+        <div class="register-name">
+            <p class="title">注册</p>
+            <a href="{:url('Index/login')}" class="login">已有账号，返回登录</a>
+        </div>
+        <form class="register-form-content" method="post" action="{:url('index/registerAction')}">
+            <div class="form-item">
+                <p class="title">用户名：</p>
+                <input type="text" placeholder="请输入用户名" maxlength="16" name="user_name">
+                <p class="prompt">4-12个字母、数字、下划线</p>
+            </div>
+            <div class="form-item">
+                <p class="title">密码：</p>
+                <input type="password" placeholder="请输入密码" maxlength="16" name="password">
+                <p class="prompt">6-16个字母、数字、下划线</p>
+            </div>
+            <div class="form-item">
+                <p class="title">确认密码：</p>
+                <input type="password" placeholder="请输入密码" maxlength="16" name="rpassword">
+                <p class="prompt">请再次输入您的密码</p>
+            </div>
+            <div class="form-item">
+                <p class="title">手机号码：</p>
+                <input type="number" placeholder="请输入手机号码" maxlength="16" name="phone">
+                <p class="prompt">输入正确的手机号码</p>
+            </div>
+            <div class="form-item">
+                <p class="title">邮箱地址：</p>
+                <input type="email" placeholder="请输入邮箱地址" maxlength="16" name="email">
+                <p class="prompt">输入真实的电子邮件</p>
+            </div>
+            <div class="form-item">
+                <button type="submit" class="submit theme-color">申请注册</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

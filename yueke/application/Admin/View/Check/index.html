@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!--自定义-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Bootstrap table -->
+    <link rel="stylesheet" href="/static/css/bootstrap-table.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/static/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/static/dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini"><section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">审核管理</h3>
+                </div>
+                <form class="row form-horizontal">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="hotelName" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">酒店名称</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control" id="hotelName" placeholder="请输入酒店名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="name" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">联系人</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="text" class="form-control" id="name" placeholder="请输入联系人" maxlength="6">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="tel" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">联系方式</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="number" class="form-control" id="tel" placeholder="请输入联系方式" maxlength="11">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="email" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">邮箱</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <input type="email" class="form-control" id="email" placeholder="请输入邮箱" maxlength="11">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+                        <label for="status" class=" col-xs-12 col-sm-4 col-md-4 col-lg-3 control-label">状态</label>
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                            <select id="status" class="form-control">
+                                <option value="0">全部</option>
+                                <option value="1">已通过</option>
+                                <option value="2">未通过</option>
+                                <option value="3">待审核</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6 col-md-4 col-lg-3 item">
+                        <div class="col-sm-offset-4 col-sm-8 col-md-offset-4 col-md-8 col-lg-offset-3 col-lg-9">
+                            <button type="submit" class="btn btn-info">搜索</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="reset" class="btn btn-default">重置</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped" onClickRow="">
+                        <!--表格-->
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<!-- jQuery 3 -->
+<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--bootstrap-table-->
+<script src="/static/js/bootstrap-table.js "></script>
+<script src="/static/js/bootstrap-table-zh-CN.min.js"></script>
+<!-- SlimScroll -->
+<script src="/static/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/static/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        var dataList= [];
+        var len = 1000
+        for (var i=0;i<len;i++){
+            dataList.push({checkbox: false,id: i,hotelName:'维也纳酒店',name:'李怕毛',phone:'18311111111',pay:1800,date:'2018/1/15 10:00',status:status(),run:'<a href="#">点击获取id</a>'})
+        }
+        $('#example1').bootstrapTable({
+            pagination: true,//分页
+            paginationLoop: false,//循环分页
+            checkbox: true,
+            pageSize: 10,
+            pageList: [10,15,25,50,'All'],
+//            search: true, //  启动自带搜索功能
+
+            columns: [
+                {field:'checkbox',checkbox: true,title:'全选',align:'center'},
+                {field:'id',title:'id',align:'center'},
+                {field:'hotelName',title:'酒店名称',align:'center'},
+                {field:'name',title:'申请人',align:'center'},
+                {field:'phone',title:'联系方式',align:'center'},
+                {field:'pay',title:'押金',align:'center'},
+                {field:'date',title:'申请日期',align:'center'},
+                {field:'status',title:'状态',align:'center'},
+                {field:'run',title:'操作',align:'center',},
+            ],
+            data: dataList,
+            onClickCell: function (field, value, row) {
+                if (field=='run'){
+                    alert(row.id)
+                    this.getSelections()
+                }
+            },
+        });
+        function status() {
+            var data=parseInt(Math.random()*3);
+            switch (data)
+            {
+                case 0:
+                    return "<span style='color: red'>未通过</span>";
+                    break;
+                case 1:
+                    return "<span style='color: green'>已通过</span>";
+                    break;
+                case 2:
+                    return "<span style='color: #4246ff'>待处理</span>";
+                    break;
+            }
+        }
+    })
+</script>
+</body>
+</html>

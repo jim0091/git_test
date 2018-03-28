@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+</head>
+<body>
+<div class="ebooking">
+    <div class="ebooking-top theme-color">
+        <div class="ebooking-width">
+            <div class="ebooking-top-left fl">
+                <img src="__STATIC__/images/logo.png" class="logo" alt="">
+                <p class="title">悦客来酒店管理系统</p>
+            </div>
+            <div class="ebooking-top-right fr">
+                <a href="#" class="list-item">业务登录</a>
+                <a href="#" class="list-item">业务登录</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="logo_content">
+        <img src="__STATIC__/images/logo_bg.jpg" class="bg" alt="">
+        <div class="ebooking-width logo-content">
+            <form action="{:url('index/loginAction')}" class="logo-form" method="post">
+                <p class="title theme-color">用户登录</p>
+                <div class="form-content">
+                    <input type="text" name="phone" class="logo-data" placeholder="手机号">
+                    <input type="password" name="password" class="logo-data" placeholder="密码">
+                    <div class="code">
+                        <input type="text" name="code" class="logo-data" placeholder="验证码" maxlength="6" >
+                        <!--<img src="__STATIC__/images/timg%20(1).jpg" alt="">-->
+                        <img src="{:captcha_src()}" alt="" onclick="this.src=this.src+'?'">
+                    </div>
+                    <p class="register"><a href="{:url('Index/register')}">注册账号</a><a href="{:url('Index/findPassword')}">忘记密码</a></p>
+                    <input type="submit" value="登录" class="submit theme-color">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="ebooking-bottom">
+        <div class="ebooking-bottom-cotnent ebooking-width">
+            云股利 版权所有 2002-2018 保留所有权利<br/>
+            Copyright 2002-2018 Ctrip.com All rights reserved
+        </div>
+    </div>
+</div>
+</body>
+</html>

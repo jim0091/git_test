@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/superAdmin_login.css" />
+</head>
+<body>
+<div>酒店详情</div>
+<div>酒店名称：{$data['cn_name']}</div>
+<div>酒店英文名称：{$data['en_name']}</div>
+<div>酒店简称：{$data['sh_name']}</div>
+<div>酒店简介：{$data['blurb']}</div>
+<div>酒店地址：{$data['address']}</div>
+<div>拥有者：<a href="/admin/user/details?id=<?php echo $_GET['id']?>">{$data['name']}</a></div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" />
+    <link rel="stylesheet" type="text/css" href="__CSS__/register.css" />
+    <script src="__JS__/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="register">
+    <div class="register-bg">
+        <img src="__STATIC__/images/register_bg.jpg" alt="">
+    </div>
+    <div class="register-form">
+        <div class="register-name">
+            <p class="title">注册</p>
+            <a href="{:url('Index/login')}" class="login">已有账号，返回登录</a>
+        </div>
+        <form class="register-form-content" method="post" action="{:url('index/phoneRegister')}">
+            <div class="form-item">
+                <p class="title">手机号：</p>
+                <input type="number" placeholder="请输入手机号码" maxlength="16" name="phone">
+                <p class="prompt">输入正确的手机号码</p>
+            </div>
+            <div class="form-item">
+                <p class="title">验证码：</p>
+                <input type="number" placeholder="请输入验证码" maxlength="16" name="code">
+                <p class="prompt"><button type="button" id="code">点击获取验证码</button></p>
+
+            </div>
+            <div class="form-item">
+                <button type="submit" class="submit theme-color">申请注册</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+
+    $('#code').click(function () {
+        var phone = $(" input[ name='phone' ] ").val();
+        $.ajax({
+            url: "{:url('Member/Index/getCode')}",
+            type: "POST",
+            data: {phone:phone},
+            success: function (res) {
+                if(res.code==1){
+                    console(1);
+                }else{
+                    console(2)
+                    // alert(res.info);
+                }
+            }
+        });
+    })
+
+
+
+</script>
