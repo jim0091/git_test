@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>充值</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/recharge.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>	
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 中间左侧导航 -->
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="myAssets">
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">账户充值</p>
+					</div>
+					<form>
+						<table class="Urecharge">
+								<tr>
+									<td>充值方式：</td>
+									<td class="rechargemethod">
+										<span class="alipay selected"><input type="button" value="支付宝支付"></span><!-- 
+										<span class="wechat"><input type="button" value="微信支付"></span>
+										<span class="unionpay"><input type="button" value="网银在线支付"></span> -->
+									</td>
+								</tr>
+								<tr class="rechargemoney">
+									<td class="vat">充值金额：</td>
+									<td class="pricelevel">
+                  						<volist name="rules" id="vo">
+										<span class="jf" data-money="{$vo['rechargeAmount']}">
+											充{$vo['rechargeAmount']}元
+											<br>
+											<i>送{$vo['presentIntegral']}积分</i>
+										</span>
+										</volist>										
+					                    <input type="hidden" name="amount" value="500">
+					                    <input type="hidden" name="paymentType" value="alipay">
+										<input type="text" value="" onkeyup='this.value=this.value.replace(/\D/gi,"")' maxlength="8" placeholder="输入充值金额" class="inputjf">
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>
+										<div class="rechargebtn rechargeGo">充值</div>
+									</td>
+								</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+	<script>
+		$(".pricelevel").find("span:eq(0)").addClass('selected');
+		var rechargemoney = $(".rechargemoney span");
+		var rechargeInput = $(".rechargemoney input");
+		rechargemoney.click(function(){
+			rechargemoney.removeClass('selected');
+			rechargeInput.removeClass('selected');
+			$(this).addClass('selected');
+		});
+		rechargeInput.click(function(){
+			rechargemoney.removeClass('selected');
+			$(this).addClass('selected');
+		});
+
+
+    //改变积分
+    $("span.jf").click(function(){
+        $(".inputjf").attr("value","");
+        var athis = $(this);
+        var integral = athis.attr('data-money');
+        $("input[name='amount']").val(integral);
+    });
+    //积分输入框改变事件
+    $(".inputjf").keyup(function(){
+        var athis = $(this);
+        var integral = athis.val();
+        $("input[name='amount']").val(integral);
+    });
+	//去充值
+    $(".rechargeGo").bind('click',function(){
+        var amount = $("input[name='amount']").val();
+        var paymentType = $("input[name='paymentType']").val();
+        if (amount == '') {
+            divPrompt("请填写充值金额！");
+            return;
+        };
+        if (paymentType == '') {
+            divPrompt("请选择充值方式！");
+            return;
+        };
+        $.ajax({
+            type:"POST",
+            url:"/shop.php/Pay/inteRechDo",
+            data:{money:amount},
+            dataType:'text',
+            success:function(result){
+                var data=eval(result);
+                if (data[0] == 1) {
+                    window.open("/shop.php/Recharge/"+paymentType+"/paymentId/"+data[1]);
+                };
+                if (data[0] == 0) {
+                    divPrompt(data[1]);
+                    return; 
+                };
+            }
+        });
+
+
+    });
+	</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+      <div class="categories2">
+        <input type="hidden" id='cfgId' value="{$cfgId}">
+        <input type="hidden" id='catId' value="{$catId}">
+        <input type="hidden" id='ajaxpost' value="1">
+        <input type="hidden" id="findPrice" value="">
+        <input type="hidden" id="sortPrice" value="">
+        <input type="hidden" id="sortProfit" value="">
+         <ul class="price typeFree">
+            <li>价格：</li>
+            <li class="findPrice"><input type="hidden" value="0">不限</li>
+            <li class="findPrice"><input type="hidden" value="1-99">￥1-99</li>
+            <li class="findPrice"><input type="hidden" value="100-199">￥100-199</li>
+            <li class="findPrice"><input type="hidden" value="200-299">￥200-399</li>
+            <li class="findPrice"><input type="hidden" value="300-399">￥300-399</li>
+            <li class="findPrice"><input type="hidden" value="400-499">￥400-499</li>
+            <li class="findPrice"><input type="hidden" value="500-599">￥500-599</li>
+            <li class="findPrice"><input type="hidden" value="600-699">￥600-699</li>
+            <li class="findPrice"><input type="hidden" value="700-0">￥700以上</li>
+            
+         </ul>
+         <ul class="ranking">
+            <li>综合排名：</li>
+            <li class="sortProfit"><input type="hidden" value="desc">默认</li>
+            <li class="sortPrice">
+                <input type="hidden" value="asc">                 
+                <span class="price-asc">价格&darr;</span>             
+                <span class="price-desc" style="display:none;">价格&uarr;</span>
+            </li>
+            <li class="pricput" style="padding-left:35px;">
+                <input type="text" class="findPriceLeft findPriceInp" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="7">
+                -
+                <input type="text" class="findPriceRight findPriceInp" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="7">
+            </li>
+            <li class="userput" style="padding-left:10px;">
+                <input type="text" class="itemName" placeholder="请输入商品名称">
+                <a href="javascript:void(0)" onclick="itemFind()">搜索</a>
+            </li>
+         </ul>
+      <div style="clear:both;"></div>
+      </div>
+
+<script type="text/javascript">
+
+        $('.typeFree li').click(function(){
+            if(!$(this).hasClass('active')){
+                $(this).addClass('active').siblings().removeClass('active');
+            }
+        })
+    $(".findPrice").click(function(){
+        if(!$(this).hasClass('active')){
+            $(this).addClass('active').siblings().removeClass('active');
+        }
+        var price = $(this).children("input").val();
+        $("#findPrice").val(price);
+        $(".findPriceInp").val('');
+        itemFind();
+    });
+
+
+    $(".findPriceInp").focus(function(){
+        $(".findPrice").removeClass('active');
+    });
+
+    $('.findPriceInp').bind('input propertychange', function() {
+        var priceLeft = $(".findPriceLeft").val()
+        if (priceLeft == '') {
+            priceLeft = 0;
+        };
+        var priceRight = $(".findPriceRight").val()
+        if (priceRight == '') {
+            priceRight = 0;
+        };
+        var price = priceLeft+'-'+priceRight;
+        $("#findPrice").val(price);
+    });
+
+    $(".sortPrice").click(function(){
+        var sortPrice = $(this).children("input").val();
+        $(this).children('span').css('color','red');
+        if (sortPrice == 'desc') {
+            $(this).children("input").val("asc");
+            $(this).children(".price-desc").hide();
+            $(this).children(".price-asc").show();
+        }
+        if(sortPrice == 'asc'){
+            $(this).children("input").val("desc");
+            $(this).children(".price-desc").show();
+            $(this).children(".price-asc").hide();
+        }
+        $("#sortProfit").val('');
+        $(".sortProfit").css('color','#333');
+        $("#sortPrice").val(sortPrice);
+        itemFind();
+    });
+
+    $(".sortProfit").click(function(){
+        var sortProfit = $(this).children("input").val();
+        $(this).css('color','red');
+        $("#sortPrice").val('');
+        $(".price-asc").show();
+        $(".price-asc").css('color','#333');
+        $(".price-desc").hide();
+        $("#sortProfit").val(sortProfit);
+        itemFind();
+    });
+</script>

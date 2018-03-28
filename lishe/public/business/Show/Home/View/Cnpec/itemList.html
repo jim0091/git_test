@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__PUBLIC__/cnpec/css/CnpecHht.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<title>{$comCategory.cat_name}-中广核工程有限公司</title>
+</head>
+<style>   
+    .pager { text-align:center; margin-top:0px; margin-bottom:0px; padding:10px; clear:both; padding-bottom:20px;}
+    .pager ul{margin:0; width:auto; height:20px;display:inline-block; }
+    .pager ul li{list-style:none;border:#999999 1px solid;text-align:center; margin:3px; background:#999999;float:left;}
+
+    .pager ul li a{display:block;background:#FFF;color:#000000;text-align: center;}
+
+    .pager ul li a:hover{text-decoration:none;  background:#FF0033;}
+    .bg-light-blue{background-color: #3c8dbc !important;}
+    .bg-light-blue:hover{background-color: #dd4b39 !important;}
+    .bg-red{background-color: #dd4b39 !important;}
+    .badge{
+        border-radius: 15px;
+        padding:3px 13px 3px 10px;
+        color: white;
+        margin-right:8px;
+        text-align: center;
+}
+.subFind:hover{
+	background-color:#c7241d;
+	color: white;
+}
+</style>
+<body>
+<!--头部-->
+	<include file="Cnpec/header"/>
+	
+	
+	
+   <!--banner-->  
+    <div class="banner"></div>
+    <!--目录-->
+    <div class="directories">
+      <ul>
+       <volist  name="menus" id="item">         
+		<li>
+	        <empty name="item['id']">
+	           		 <a href="__APP__/Cnpec/itemList/cfgId/{$item['cfid']}/catId/{$item['id']}">{$item['name']}</a>
+	       <else /> 
+	           		 <a href="__APP__/Cnpec/category/cfgId/{$item['cfid']}/catId/{$item['id']}">{$item['name']}</a>
+	        </empty>
+		</li>
+      </volist>  
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+    
+    <!--二级类目-搜索-->
+      <div class="categories2">
+	         <input type="hidden" id='cfgId' value="{$cfgId}">
+	        <input type="hidden" id='catId' value="{$catId}">
+	        <input type="hidden" id='ajaxpost' value="1">
+	        <input type="hidden" id="findPrice" value="">
+	        <input type="hidden" id="sortPrice" value=""> 
+       		 <input type="hidden" id="sortProfit" value="">
+       		 <input type="hidden" id="newpage" value="">
+       		 
+	        
+         <ul class="price typeFree">
+            <li>价格：</li>
+            <li class="active findPrice"><input type="hidden" value="0">不限</li>
+            <li class="findPrice"><input type="hidden" value="1-99">￥1-99</li>
+            <li class="findPrice"><input type="hidden" value="100-199">￥100-199</li>
+            <li class="findPrice"><input type="hidden" value="200-299">￥200-299</li>
+            <li class="findPrice"><input type="hidden" value="300-399">￥300-399</li>
+            <li class="findPrice"><input type="hidden" value="400-499">￥400-499</li>
+            <li class="findPrice"><input type="hidden" value="500-599">￥500-599</li>
+            <li class="findPrice"><input type="hidden" value="600-699">￥600-699</li>
+            <li class="findPrice"><input type="hidden" value="700-0">￥700以上</li>
+            
+         </ul>
+         <ul class="ranking">
+            <li>综合排名：</li>
+            <li><a href="javascript:void(0)" class="rk sortProfit" style="border: 0px none;color: #c7241d;"><input type="hidden" value="desc">默认</a></li>
+            <li ><a href="javascript:void(0)" class="rk sortPrice"  style="border: 0px none;"><input type="hidden" value="asc">
+        		  <span id="pricedesc"> 价格&darr;</span> 
+        		  <span  id="priceasc" style="display: none;"> 价格&uarr;</span> 
+        		  
+            </a></li>
+            <li class="pricput" style="padding-left:35px;">
+            	￥<input type="text"  class="findPriceLeft findPriceInp" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="7" value="">
+            	-
+            	￥<input type="text" class="findPriceRight findPriceInp"  onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="7" value="">
+            </li>
+            <li class="userput" style="padding-left:10px;">
+            	<input type="text" placeholder="请输入商品名称" class="itemName">
+            <a href="javascript:void(0)" class="subFind" onclick="itemFind(1)">搜索</a>
+            </li>
+         </ul>
+      <div style="clear:both;"></div>
+      </div>
+    
+    <!--主内容-->
+ <div id="itemList">
+    <div class="satnav2">
+       <p class="stp2">{$comCategory.cat_name}</p>
+
+       <div class="eat-ul">
+	        <volist name="list" id="vo">
+	            <ul>
+	              <li class="pt-mid"><a href="/item.html?item_id={$vo.item_id}" target="_blank">
+	              	<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a></li>
+	              <li class="eat-li" style="width:155px;height:42px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;">
+	              	<a href="/item.html?item_id={$vo.item_id}" target="_blank">{$vo.title}
+	              	</a>
+	              </li>
+	              <li><a href="/item.html?item_id={$vo.item_id}" target="_blank" class="eat-sp">￥<span>{:round($vo['price'],2)}</span>
+	              	
+	              </a><span class="eat-sp2"><a href="/item.html?item_id={$vo.item_id}" target="_blank">兑换</a></span></li>
+       		        <if condition="$vo.flag eq 1">
+			     		<li style="background-color:rgba(231,100,64,0.6);min-height:20px;color: white;text-align: center;position:relative;top: -50px;">
+			     			<small>广东无货</small>
+			     		</li>
+			  		</if>         
+	            </ul>
+			</volist>
+         </div>
+       <div style="clear:both;"></div>
+        <div class="pager">{$pagestr}</div>
+    </div>
+     <!--分页-->
+     
+</div>
+     
+ 
+    <!--返回-->
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/cnpec/images/cnncTop.png"></a></div>
+    </div>
+    <script type="text/javascript"> 
+		$('.satnavUl li').click(function(){
+			if(!$(this).hasClass('cnactive')){
+				$(this).addClass('cnactive').siblings().removeClass('cnactive');
+			}
+		})
+		
+
+		$('.price li').click(function(){
+			if(!$(this).hasClass('active')){
+				$(this).addClass('active').siblings().removeClass('active');
+			}
+		})
+     $(".findPrice").click(function(){
+        var price = $(this).children("input").val();
+        $("#findPrice").val(price);
+        $(".findPriceInp").val('');
+      	$("#newpage").val(1);
+        itemFind();
+    });   
+    $('.findPriceInp').bind('input propertychange', function() {
+        var priceLeft = $(".findPriceLeft").val()
+        if (priceLeft == '') {
+            priceLeft = 0;
+        };
+        var priceRight = $(".findPriceRight").val()
+        if (priceRight == '') {
+            priceRight = 0;
+        };
+        var price = priceLeft+'-'+priceRight;
+        $("#findPrice").val(price);
+    });    
+    $(".sortPrice").click(function(){
+        var sortPrice = $(this).children("input").val();
+        $(this).css('color','#c7241d');
+        $(".sortProfit").css('color','#333333');
+        
+        
+        if (sortPrice == 'desc') {
+            $(this).children("input").val("asc");
+            $("#pricedesc").show();
+            $("#priceasc").hide();
+        }
+        if(sortPrice == 'asc'){
+            $(this).children("input").val("desc");
+            $("#priceasc").show();
+            $("#pricedesc").hide();
+        }
+        $("#sortProfit").val('');
+        $("#sortPrice").val(sortPrice);
+      	$("#newpage").val(1);
+        itemFind();
+    });
+
+    $(".sortProfit").click(function(){
+      	$("#newpage").val(1);
+        $(this).css('color','#c7241d');
+        $(".sortPrice").css('color','#333333');
+        $("#sortPrice").val('');
+        $("#pricedesc").show();
+        $("#priceasc").hide();
+        $("#sortProfit").val(sortProfit);
+        itemFind();
+    });
+     $(function(){
+      $(".pager a").removeAttr('href');
+      $(".pager a").css('cursor','pointer');
+    });
+    $("#itemList").delegate('a.num span.badge','click',function(){ 
+      //当前页
+      var nowpage = $(this).text();      
+        $("#newpage").val(nowpage);    
+        itemFind();
+    });
+    //下一页
+    $("#itemList").delegate('a.next span.badge','click',function(){
+      var nowpage = $("#newpage").val();
+      
+      $("#newpage").val(nowpage*1+1);
+      itemFind();
+    });
+    //上一页
+    $("#itemList").delegate('.prev span.badge','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1-1);
+      itemFind();
+    });   
+    function itemFind(search){
+    	if(search){
+      		$("#newpage").val(1);
+    	}
+        var itemName = $(".itemName").val();
+        var cfgId = $("#cfgId").val();
+        var catId = $("#catId").val();
+        var ajaxpost = $("#ajaxpost").val();
+        var findPrice = $("#findPrice").val();
+
+        var sortPrice = $("#sortPrice").val();
+        var newPage = $("#newpage").val();
+        
+        $.ajax({ 
+            type:"get",
+            url:"{:U('Cnpec/itemList')}",
+            data: {itemName:itemName,cfgId:cfgId,catId:catId,ajaxpost:ajaxpost,findPrice:findPrice,sortPrice:sortPrice,p:newPage},
+            success: function(data){
+                $("#itemList div").remove();
+                $("#itemList").html(data);
+                $(".pager a").attr('href','javascript:;');
+            }
+        }); 
+    }  
+    </script>  
+</body>
+</html>

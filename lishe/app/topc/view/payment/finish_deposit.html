@@ -1,0 +1,31 @@
+<div class="payment mod-bottom"    style="    border: none;    height: 350px;">
+  <!-- <div class="payment-info">
+    <div class="offset-7 success-info">
+      <div class="success-info-l1" style="color: #C7241D"><i class="icon icon-checkmark-c"></i>您有<{$payment.num}>笔订单已完成付款</div>
+      <div class="success-info-l2">由<span class="price"><{$payment.pay_name}></span>发生支付，付款金额为<span class="price"><{$payment.money_deposit}>&nbsp;积分（<{$payment.money|cur}>）</span></div>
+    </div>
+  </div>
+  <div class="payment-line">
+    您可以：<a href="<{url action=topc_ctl_member_trade@tradeList}>">查看订单</a>或<a href="<{url action='topc_ctl_default@index'}>">回首页</a>
+  </div> -->
+  <div style="width: 610px;margin: 0 auto;height: 200px;margin-top: 90px;">
+      <img src="images/housekeeper_icon.png" style="float: left;">
+      <div style="width: 400px;float: right;    margin-top: 74px;">
+          <div style="width: 400px;height: 50px;">
+            <p style="float: left;font-size: 23px;  font-family: '微软雅黑';">您的订单已经成功支付！</p><p style="float: left;margin-top: 7px;  font-size: 16px;"><a style="    color: red;" href="<{url action=topc_ctl_member_trade@tradeList}>">订单详情</a></p>
+          </div>
+          <div style="width: 400px;">
+            <p style="font-size: 16px;  font-family: '微软雅黑';">去<a style="    color: red;" href="<{url action='topc_ctl_default@index'}>">商城首页</a>看看</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div style="width: 1190px;margin: 0 auto;">
+  <img src="images/shopping_img.png" style="width: 100%;">
+</div>
+
+<script type="text/javascript">
+$('#header').hide();
+$('#nav').hide();
+</script>

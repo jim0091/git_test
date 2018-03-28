@@ -1,0 +1,183 @@
+  <link rel="stylesheet" href="__PUBLIC__/companyShow/css/newsCt.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+  <!--新闻中心设置-->
+  <style>
+  </style>
+  
+  		<form action="{:U('Home/Show/editNews')}" id="newsform" method="post">
+          <div class="main-news">
+            <p class="mp">新闻中心设置</p>
+             <ul class="hed-ul">
+                   <li class="cs-des"><span style="color:#F00;">&nbsp;&nbsp;*</span>
+                   	标&nbsp;&nbsp;&nbsp;&nbsp;题：<input type="text" id="title" class="text" name="data[title]" value="{$newsInfo.title}"/>
+                   	<span style="padding-left:5px;font-size:14px;color:#808080">不超过20个字</span></li>
+                   <li class="cs-des"><span style="color:#F00;">&nbsp;&nbsp;*</span>
+                   	副标题：<input type="text" id="vice_title" class="text" name="data[vice_title]" value="{$newsInfo.vice_title}"/>
+                   	<span style="padding-left:5px;font-size:14px;color:#808080">不超过50个字</span></li>
+             		<li class="cs-des"><span style="color:#F00">&nbsp;&nbsp;*</span>
+                   	作&nbsp;&nbsp;&nbsp;&nbsp;者：<input type="text" id="author" class="text" name="data[author]" value="{$newsInfo.author}"/></li>
+                   <li class="cs-des"><span style="color:#F00">&nbsp;&nbsp;*</span>
+                   	分&nbsp;&nbsp;&nbsp;&nbsp;类：<select class="text2" name="data[category]">
+		                       <option value="1"
+		                       		<if condition="$newsInfo.category eq 1">
+		                       				selected="selected"
+		                       		</if>		                       	
+		                       	>行业聚焦</option>
+		                       <option value="2"
+		                       		<if condition="$newsInfo.category eq 2">
+		                       				selected="selected"
+		                       		</if>
+		                       	
+		                       	>媒体报道</option>
+		                       <option value="3"
+		                       	
+		                       		<if condition="$newsInfo.category eq 3">
+		                       				selected="selected"
+		                       		</if>	
+		                       		
+		                       	>企业公告</option>
+                       </select></li>
+                <li class="cs-des" style="margin-top:20px;">
+					<div style=" float:left;"><span style="color:#F00;">&nbsp;&nbsp;*</span>摘&nbsp;&nbsp;&nbsp;&nbsp;要：</div>
+					<div><textarea id="abstract" name="data[abstract]" maxlength="80" placeholder="不超过100个字" style="min-width:355px; min-height:90px;font-size: 12px;">{$newsInfo.abstract}</textarea></div>
+				</li>
+             </ul>
+              <!-- 加载编辑器的容器 -->
+              <div class="edito" style="max-width: 500px;">
+                <script id="container" name="data[content]" type="text/plain">
+                    
+                </script>
+                <!-- 配置文件 -->
+                <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3_3-utf8-php/utf8-php/ueditor.config.js"></script>
+                <!-- 编辑器源码文件 -->
+                <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3_3-utf8-php/utf8-php/ueditor.all.js"></script>
+                <!--<script type="text/javascript" src="__PUBLIC__/ueditor1_4_3_3-utf8-php/utf8-php/ueditor.all.min.js"></script>-->
+           				<!-- 实例化编辑器 -->
+                <script type="text/javascript" >
+//                  var ue = UE.getEditor('container');
+				        var ue = UE.getEditor('container',{
+//				        	精简的:
+			                toolbars:[[
+			                    'undo', 'redo', '|',
+			                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+			                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+			                    'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+			                    'directionalityltr', 'directionalityrtl', 'indent', '|',
+			                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+			                    'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+			                    'simpleupload', 'insertimage', 'emotion', 'attachment', 'map','pagebreak', '|',
+			                    'horizontal', 'date', 'time', 'spechars', '|',
+			                    'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', '|',
+			                    'print', 'searchreplace', 'drafts'
+			                ]],
+			                initialFrameWidth : 798, 
+       							 initialFrameHeight: 380,
+        						autoHeightEnabled:false
+				        });
+					        ue.ready(function() {
+					            ue.setContent('{$newsInfo.content}');
+					        });  
+                </script>
+                
+               </div>   
+                <!---END-->
+                <div class="CP-one">
+                 <ul class="cpo-left">
+                 <li class="cpo-btn" ><a href="javascript:void(0);" onclick="newsFile.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>大小不超570X400像素</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt"><img id="lookPic"
+                    	
+                    	<notempty name="newsInfo.pic">
+                    		src="{$newsInfo.pic}"
+                    	</notempty>  
+                    	width="300px" style="max-height:230px;"
+                    	
+></li>
+                    <li class="cpo-pt">570PX*400PX</li>
+                 </ul>
+		        			<input type="file" id="newsFile" style="display: none;" name="newsFile" onchange="uploadPic('news');"/>
+									<input type="hidden" name="data[pic]" id="news" value="{$newsInfo.pic}">      
+									<input type="hidden" name="data[newsId]" value="{$newsInfo.news_id}">                    
+                 <p class="cpo-btn2"><a href="javascript:void(0);" onclick="sure('news')" class="sure">确   定</a><a href="javascript:void(0);" class="preview">预   览</a></p>
+              </div>
+          </div>
+      </form>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+ <script>
+ 		function uploadPic(types){
+				var inputName = types+'File';
+				var img=$('#'+types).val();
+				var delurl="__APP__/CompanyShow/delImg/channel/brand/file/"+img;
+				if(img!=''){
+					$.get(delurl, function(result){
+					});
+				}
+				urls="__APP__/CompanyShow/uploadImg/channel/brand/inputName/"+inputName+"/types/"+types;
+				$.ajaxFileUpload ({
+					url :urls,
+					secureuri :false,
+					fileElementId :inputName,
+					dataType : 'text',
+					success : function (data,status){
+						if(data!='undefined'){
+							var dataArr=eval("("+data+")");
+							if(dataArr[0]<=0){
+								if(dataArr[0]==-4){
+									alert(dataArr[1]);
+								}else{
+									alert('Error：'+dataArr[1]);
+								}
+							}else{
+								$("#lookPic").attr("src","/business/"+dataArr[1]);
+								$('#'+types).val(dataArr[1]);
+							} 
+						} 
+					}, 
+					error: function (data, status, e){
+						alert('Faild！');
+					}
+				});
+	}
+	function sure(types){
+		var fileload=$("#"+types).val();
+		var title=$("#title").val().trim();
+		var vice_title=$("#vice_title").val().trim();
+		var abstract=$("#abstract").val().trim()
+		var author=$("#author").val().trim();
+		if(title.length>20){
+			alert("标题不能超过20字!");
+			return false;			
+		}else if(title==""){
+			alert("标题不能为空!");
+			return false;			
+		}
+		if(title.length>50){
+			alert("副标题不能超过20字!");
+			return false;			
+		}else if(title==""){
+			alert("副标题不能为空!");
+			return false;			
+		}
+		if(abstract.length>100){
+			alert("摘要不能超过20字!");
+			return false;			
+		}else if(abstract==""){
+			alert("摘要不能为空!");
+			return false;			
+		}		
+		if(author==""){
+			alert("请填写作者!");
+			return false;			
+		}		
+		if(!fileload){
+			alert("还未上传海报图片!");
+			return false;
+		}else{
+			$("#newsform").submit();
+		}
+	}
+ 	
+ </script>        

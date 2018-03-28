@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/ptDynamics.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+ <style>
+	.local{
+	  position:absolute;
+	  bottom:20px;
+	  left: 380px;
+	}
+	.pagesty{
+	    font-size:14px;
+	    color: #666666;
+	    border: #CCC solid 1px;
+	    padding: 3px 8px;
+	    margin: 0 5px;
+	}
+	.pagesty:hover{
+	    border: #CCC solid 1px;
+		background-color: #C7241D;
+		color: white;
+	    padding: 3px 8px;		
+	}
+	.thispage{
+	    border: #CCC solid 1px;
+		background-color: #C7241D;
+		color: white;
+	    padding: 3px 8px;
+	}
+</style>      
+       
+       
+       
+       <div class="rather">
+              <p class="sr">月度寿星管理</p>
+              <a href="{:U('Home/Show/lastTwo',array('type' => 2))}" target="showls">
+             	 <div class="div-btn" style="border:0px"><p><img src="__PUBLIC__/companyShow/images/logoAdd.png"><span style="padding-left:8px;">月度寿星管理</span></p></div>
+        	  </a>
+
+ 		<div class="gl-ul" style="border: 0px;" id="ajax_lists">
+
+        </div>
+
+
+
+       </div>
+<script>
+	window.nowPage=1;
+	 $(function() {
+	   	 var url_ajax = "{:U('Home/Show/lastTwoList')}";
+		    $("#ajax_lists").delegate(".pager a", "click", function() {
+		        var page = $(this).attr("data-page");
+		        	nowPage=page;
+		      	  getPage(page);
+		        
+		    });
+	        getPage(1);
+	
+	    })	
+	    function getPage(page) {
+	   	var url_ajax ="{:U('Home/Show/lastTwoList')}";
+			 $.ajax({
+				type:"post",
+				url:url_ajax,
+				data:"p="+page+"&type=2",
+				success:function(data){
+			            $('#ajax_lists').html(data);
+					
+				},
+				error:function(e){
+					
+				}
+			});       
+	        
+	    }	
+		function del(mbId){
+			if(window.confirm('你确定此月度寿星么吗？')){
+			   	var delUrl ="{:U('Home/Show/delActivityPerson')}";
+					 $.ajax({
+						type:"post",
+						url:delUrl,
+						data:"aPId="+mbId,
+						success:function(data){
+					         if(data){
+					         	alert(data);
+					         	getPage(nowPage);
+					         }
+						},
+						error:function(e){
+							
+						}
+					});  			
+		      }else{
+		      	
+		     }		
+		}
+    </script>

@@ -1,0 +1,110 @@
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+            
+<style>
+.category .category-sub{
+  width: 966px !important;
+}
+</style>
+<div id="category_handle">
+  <div class="big-cate">
+    <a href="#">全部商品分类</a>
+  </div>
+  <div class="category" id="category_box">
+    <ul class="category-primary">
+      <{foreach from=$data.data item=item key=key}>
+      <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            <{if $item.cat_logo}><i><img src="<{$item.cat_logo}>" width="30" height="30" /></i><{/if}>
+            <{$item.cat_name}>
+            -->
+            <{$item.cat_name}>
+            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+          <{foreach from=$item.lv2 item=lv2item key=lv2key}>
+          <div class="category-sub-item">
+            <div class="category-sub-title"><{$lv2item.cat_name}>&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                <{foreach from=$lv2item.lv3 item=lv3item key=lv3key}>
+                <li><a href="/list.html?cat_id=<{$lv3item.cat_id}>"><{$lv3item.cat_name}></a></li>
+                <{/foreach}>
+              </ul>
+            </div>
+          </div>
+          <{/foreach}>
+        </div>
+      </li>
+      <{/foreach}>
+    </ul>
+  </div>
+</div>
+<script>
+/*
+<{if !$data.isindex}>  
+  var category = $('#category_box');
+  $('#category_handle').on('mouseover', function(e){
+      // category.css('visibility','visible');
+      category.fadeIn();
+  }).on('mouseout', function(e){
+      // category.css('visibility','hidden');
+      category.fadeOut();
+  });
+<{/if}>
+$('#category_handle').on('mouseover', 'li', function(){
+  $(this).find('.category-primary-item').addClass('on');
+}).on('mouseout', 'li', function(){
+  $(this).find('.category-primary-item').removeClass('on');
+})
+*/
+// <style>
+// .category .category-sub{
+//     width: <{$setting.sub_category_width}>px;
+// }
+// </style>
+//全部商品分类hover时sub category的定位
+// $('.category-primary li').hover(
+//   function(){
+//     var subCate = $(this).find('.category-sub');
+//     var primCate = $(this).parent('.category-primary');
+
+//     var subCateHeight = $(subCate).height();
+//     var primCateHeight = $(primCate).height();
+
+//     var subCateTop = $(subCate).offset().top;
+//     var primCateTop = $(primCate).offset().top;
+
+//     var subCateY = subCateTop+subCateHeight;
+//     var primCateY = primCateTop+primCateHeight;
+
+//     if(subCateY>primCateY){
+//       $(this).css('position','static');
+//       subCate.css({'bottom':'0','top':'initial'});        
+//     }
+//   }
+// );
+
+
+var category = $('#category_box');
+
+if ($('body').hasClass('is-index')) {
+
+  category.addClass('is-display');
+}
+else {
+
+  var category_handle = $('#category_handle');
+
+  category_handle.hover(function() {
+      category.fadeIn();
+  },
+  function() {
+      category.fadeOut();
+  });
+}
+</script>

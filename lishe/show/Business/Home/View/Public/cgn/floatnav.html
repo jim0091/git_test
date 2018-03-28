@@ -1,0 +1,79 @@
+
+<style type="text/css">
+img{border:none;}
+
+.floatnav{position:fixed; z-index:1000; top:30%; left:30px;}
+.floatnav img{
+   display: block;
+   width: 100%;
+   height: 100%;
+  
+}
+.mall,.answer,.suggest{
+   position: relative;
+   margin-top:10px;
+}
+
+
+.mall1,.answer1,.suggest1{
+   display: block;
+   position:relative;
+   z-index: 10;
+   width: 70px;
+   height: 70px;
+}
+
+.mall2,.answer2,.suggest2{
+   display: block;
+   position:absolute; top:0; left:0;
+   z-index: 1;
+   
+}
+.mall2{
+   width: 0;
+   margin-left:30px;
+   height:70px;
+   transition:width .5s linear;
+   -webkit-transition:width .5s linear;
+   -moz-transition:width .5s linear;
+}
+.mall:hover .mall2,.answer:hover .answer2{
+   width:196px;
+}
+
+.answer2{
+   width: 0;
+   margin-left:30px;
+   height:70px;
+   transition:width .5s linear;
+   -webkit-transition:width .5s linear;
+   -moz-transition:width .5s linear;
+}
+
+.suggest:hover .suggest2{width:231px;}
+
+.suggest2
+{
+  width: 0;
+  height:241px;
+  transition:width .5s linear;
+    -webkit-transition:width .5s linear;
+    -moz-transition:width .5s linear;
+}
+</style>
+
+
+   <div class="floatnav">
+      <div class="mall">
+      <a href="__ITEM_URL__/shop.php" target="_black" class="mall1"><img src="__PUBLIC__/cnpec/images/mall.png"></a>
+      <a href="__ITEM_URL__/shop.php" target="_black" class="mall2"><img src="__PUBLIC__/cnpec/images/mallhover.png"></a>
+      </div>
+     <div class="answer">
+     <a href="__ITEM_URL__/site/quiz.html" target="_black" class="answer1"><img src="__PUBLIC__/cnpec/images/answer.png"></a>
+     <a href="__ITEM_URL__/site/quiz.html" target="_black" class="answer2"><img src="__PUBLIC__/cnpec/images/answerhover.png"></a>
+     </div>
+     <div class="suggest">
+     <a href="#" class="suggest1"><img src="__PUBLIC__/cnpec/images/suggest.png"></a>
+     <a href="#" class="suggest2"><img src="__PUBLIC__/cnpec/images/suggesthover.png"></a>
+     </div>
+   </div>

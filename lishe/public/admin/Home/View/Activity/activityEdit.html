@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>新增图片</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb"><a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+	<form action="{:U('Home/Activity/acticitySave')}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-article-add">
+		<input type="hidden" value="{$info.activity_config_id}" name="activityConfigId" />
+		<present name="aId">
+			<input type="hidden" value="{$aId}" name="data[aid]" />
+		</present>
+		<input type="hidden" name="data[type]" value="{$type}" />
+		<div class="row cl">
+			<label class="form-label col-2">banner图：</label>
+			<div class="formControls col-10" style="max-height: 350px;overflow: hidden;">
+				<notempty name="info.cat_banner">
+					<img src="{$info.cat_banner}" width="300px"/>  
+				</notempty>
+				<input type="file" name="img"/>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2">banner图(mobile)：</label>
+			<div class="formControls col-10" style="max-height: 350px;overflow: hidden;">
+				<notempty name="info.cat_banner_mobile">
+					<img src="{$info.cat_banner_mobile}" width="300px"/>  
+				</notempty>
+				<input type="file" name="imgMin"/>
+			</div>
+		</div>		
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>名称：</label>
+			<div class="formControls col-10">
+				<input type="text" class="input-text" value="{$info.cat_name}" placeholder="专区名称/分类名称" name="data[cat_name]">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>描述：</label>
+			<div class="formControls col-10">
+				<input type="text" class="input-text" value="{$info.cat_content}" placeholder="专区介绍/描述" name="data[cat_content]">
+			</div>
+		</div>
+		<neq name="type" value="2">
+			<div class="row cl">
+				<label class="form-label col-2">活动周期：</label>
+				<div class="formControls col-10">
+				<label>
+					<input type="text" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" value="{$info.start_time}" name="data[startTime]" id="datemin" class="input-text Wdate" style="width:180px;">
+					-
+					<input type="text" onfocus="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' })" value="{$info.end_time}" name="data[endTime]" id="datemax" class="input-text Wdate" style="width:180px;">				
+				</label>
+				</div>
+			</div>		
+		</neq>
+	    <eq name="type" value="2">
+			<div class="row cl">
+				<label class="form-label col-2">首页推荐：</label>
+				<div class="formControls col-10">
+					<input type="text" class="input-text" value="{$info.recommend}" placeholder="多个商品Id以,隔开" name="data[recommend]">
+				</div>
+			</div>	
+			<div class="row cl">
+				<label class="form-label col-2">更多商品的链接：</label>
+				<div class="formControls col-10">
+					<input type="text" class="input-text" value="{$info.more_link}" placeholder="需要更多商品链接时填" name="data[more_link]">
+				</div>
+				<div class="formControls col-offset-2 col-10">
+					<small style="color: #666;">链接嵌套专题时示例：***.lishe.cn/wshop.php/Itemlist/project/projectId/16(专题ID)</small>
+				</div>			
+			</div>	
+			<div class="row cl">
+				<label class="form-label col-2">所有商品：</label>
+				<div class="formControls col-10">
+					<textarea name="data[item_ids]" cols="" rows="" class="textarea"  placeholder="多个商品Id以,隔开" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！">{$info.item_ids}</textarea>
+					<p class="textarea-numberbar"></p>
+				</div>
+			</div>
+	    </eq>
+
+		<in name="type" value="$allowType">
+		    <div class="row cl">
+		      <label class="form-label col-2"><span class="c-red">*</span>规则：</label>
+		      <div class="formControls col-10" style="border: 1px solid #e5e5e5;border-radius: 5px;font-size:12px ;">
+		    		<eq name="type" value="4">
+			    		<div class="row cl">
+					      <label class="form-label col-3"><span class="c-red">*</span>团购成功标准：</label>
+					      <div class="formControls col-9">
+					      		<div class="col-12" style="font-size: 12px;">
+					      			<div class="col-5">
+							      		<div class="col-12">
+							      			<label>
+							      				<input type="radio" name="data[group_buy_rule]" value="1"  <eq name="info.group_buy_rule" value="1">checked="checked"</eq> />
+							      				参团人数达到(人)
+							      			</label>
+							      		</div>
+							      		<div class="col-12">
+							      			<label>
+							      				<input type="radio" name="data[group_buy_rule]" value="2" <eq name="info.group_buy_rule" value="2">checked="checked"</eq> />
+							      				购买商品数量达到(个)
+							      			</label>							      			
+							      		</div>
+					      			</div>
+					      			<div class="col-1">
+					      				<input type="text" name="data[achieve_num]" value="{$info.achieve_num}"  class="input-text" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" />
+					      			</div>
+					      			&nbsp;&nbsp;<span class="c-red">*</span>(数量)
+					      		</div>
+					      </div>
+				      	</div>
+		    		</eq>
+		    		<div class="row cl">
+				      <label class="form-label col-3">用户限制：</label>
+				      <div class="formControls col-9">
+				      		<div class="col-12">
+			      			<div class="col-4">
+			      				用户最大参与次数
+			      			</div>
+			      			<div class="col-1">
+				      			<input type="text"  name="data[max_join_num]" value="{$info.max_join_num}" class="input-text" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" />
+			      			</div>				      			
+			      			&nbsp;&nbsp;(次)
+			      			<small style="color: #666;">提示:不填和0都表示不限制用户参与次数</small>
+				      		</div>
+				      </div>				      
+			      	</div>
+		      </div>
+		    </div>			
+		</in>
+
+
+	    <div class="row cl">
+	      <label class="form-label col-2">排序：</label>
+	      <div class="formControls col-1">
+	        <input type="text" class="input-text" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" value="{$info.order_sort}" placeholder="请输入数字(至多三位)"  name="data[order_sort]">
+	      </div>
+	      <div class="col-7"><span style="color: #5a98de;">提示：按倒序，数字越大越排的前（至多三位）</span> </div>
+	    </div> 	
+		<!--<div class="row cl">
+			<label class="form-label col-2">邮费：</label>
+			<div class="formControls col-10">
+				<input type="text" class="input-text" value="{$info.post_fee}" placeholder="需要时填写" name="data[post_fee]">
+			</div>
+		</div>			-->
+		<div class="row cl">
+			<div class="col-8 col-offset-4">
+				<button type="submit" class="btn btn-success radius" type="button">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+
+$(function(){
+	var ue = UE.getEditor('editor');
+});
+//function changeImg(){
+//	var img=$("#img").val();
+//	alert(img);
+//}
+</script>
+</body>
+</html>

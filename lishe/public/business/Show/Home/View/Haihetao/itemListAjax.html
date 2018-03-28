@@ -1,0 +1,37 @@
+	       <div class="loorList2">
+		        <volist name="list" id="vo"> 
+		           <ul>
+		              <li class="lorpt"><a href="/item.html?item_id={$vo.item_id}" target="_blank">
+		              	<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}">
+		              	</a></li>
+		              <li class="lorUser liheight">
+		              	<a href="/item.html?item_id={$vo.item_id}" title="{$vo.title}" target="_blank">
+	              		<span class="shopIcon">
+		              		<if condition="$vo.shop_id eq 10">
+		              			旗舰
+		              			<else/>
+		              			自营
+		              		</if>
+	              		</span>		              		
+		              		{$vo.title}
+		              	</a></li>
+		              <li class="lorpic">￥{:round($vo['price'],2)}
+		              	<a href="/item.html?item_id={$vo.item_id}" target="_blank">兑换</a>
+		              </li>
+			        <if condition="$vo.flag eq 1">
+			     		<li style="padding-top: 10px;background-color:rgba(51,172,251,0.6);min-height:40px;color: white;text-align: center;position:relative;top: -80px;">
+			     			<small style="color: white; font-size: larger;font-weight: bold;">广东无货</small>
+			     		</li>
+			  		</if> 		              
+		           </ul>
+				</volist>
+	           <div style="clear:both;"></div>
+	       </div>
+	       <!--分页-->
+	       <div class="lorfy">
+	           <ul>
+	           	<li>
+		        		<div class="pager">{$pagestr}</div>
+	           	</li>
+	           </ul>
+	       </div>

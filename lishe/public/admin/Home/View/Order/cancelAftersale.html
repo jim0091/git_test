@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>退款</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb">
+	<strong style="color: #5a98de;">订单状态：{$orderInfo.orderStatus}</strong>
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+  <div class="form form-horizontal">
+	  <div class="row cl">
+	      <label class="form-label col-2">售后单号：</label>
+	      <div class="formControls col-5">
+			<!--订单详情-->
+			<a onclick="member_edit('{$orderInfo.tid}订单详情','{:U('Home/Order/detail',array('tid'=>$orderInfo['tid']))}','4','','350')">
+		        <strong style="color: #5a98de;">{$orderInfo.tid}</strong>
+			</a>
+			<!--订单详情-->	        
+	      </div>
+	      <div class="col-5"></div>
+	    </div>
+    <div class="row cl">
+      <label class="form-label col-2">售后类型：</label>
+      <div class="formControls col-5">
+       {$orderInfo.serviceStatus}
+      </div>
+      <div class="col-5"></div>
+    </div>  
+<form action="__URL__/cancelAftersaleDeal" method="post">
+    <input type="hidden" value="{$orderInfo.order_status}" name="serviceType">
+    <div class="row cl">
+      <label class="form-label col-2">申请售后商品：</label>
+      <div class="formControls col-10">
+    	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;"  class="itemList">
+    		<label>
+        		<input name="allOid" value="1" type="checkbox" id="allOid" onclick="noSelectAll();"> 
+        		<strong style="color: #5a98de;" title="整单取消订单售后申请">全单取消</strong>
+    		</label>
+    	</p> 
+    	<div id="oids">
+      	<volist name="items" id="item">
+	        	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;"  class="itemList">
+	        		<label>
+		        		<input name="oids[]" value="{$item['oid']}" class="oids" type="checkbox" onclick="allOids();"> 
+		        		<span title="{$item['title']}">{$item['title']}</span>
+	        		</label>
+	        	</p>        	
+        </volist>
+       </div>
+      </div>
+    </div>   
+    <input type="hidden" value="{$orderInfo.tid}" name="tid">
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>取消原因：</label>
+      <div class="formControls col-5">
+        <textarea id="mark" class="textarea" name="content"  placeholder="备注作记录用" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-9 col-offset-2" style="margin-bottom: 20px;">
+        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="saveRefund">
+      </div>
+
+</form>   
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+</body>
+<script>
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}
+	var a=0;
+	function noSelectAll(){
+		$('.oids').prop('checked', false);
+		if(a==0){
+			a=1;
+			$("#oids").hide();
+		}else if(a==1){
+			a=0;
+			$("#oids").show();
+		}
+	}
+	function allOids(){
+		$('#allOid').prop('checked', false);
+	}
+</script>
+</html>

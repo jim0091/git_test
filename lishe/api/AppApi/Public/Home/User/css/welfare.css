@@ -1,0 +1,25 @@
+body, p, div, span, a, ul, li, b, em, h1, h2, h3, h4, section, footer, header, img, dt, dl, dd {margin: 0; padding: 0; font-family: Arial, "Microsoft Yahei","微软雅黑"; }
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+a {text-decoration: none; }
+ul li {list-style: none; }
+img{vertical-align: top;}
+em{font-style: normal;}
+.clear:after {content: ""; display: block; clear: both; }
+.fr{float: right;}
+.fl{float: left;}
+#w_Head img{height: 1.2rem;}
+#w_main{width: 100%;padding-top: 0.8571428571428571rem;}
+.content li{width: 100%;height: 1.666666666666667rem;box-sizing: border-box;padding-right: 0.4rem;margin-bottom: 1.066666666666667rem;}
+.content li .blue_w{float: left;text-align: center; width: 1.333333333333333rem;height: 1.653333333333333rem;}
+.content li .blue_w .mark{display: inline-block; width: 0.2666666666666667rem;height: 0.2666666666666667rem;background-color: #38c0ff;border-radius: 50%;margin-top: 0.64rem;}
+.content li .blue_w .mark img{height: 2.733333333333333rem;width: 2px;}
+.content li .status{position: relative; float: left; height: 1.666666666666667rem;}
+.content li .status .time{vertical-align: top; font-family: "黑体";font-size: 0.2133333333333333rem;height: 0.2133333333333333rem;line-height: 0.2133333333333333rem; color: #999999;}
+.content li .status .company{vertical-align: top;margin-top: 0.28rem; display: inline-block;text-align: center;padding: 0 0.2933333333333333rem; height: 0.5333333333333333rem;line-height: 0.5333333333333333rem; border-radius: 0.2666666666666667rem;background-color: #ff4138; font-size: 0.2533333333333333rem;color: #fff;}
+.content li .status .con_text{width: 210%; position: absolute;bottom: 0rem;height: 0.3466666666666667rem;line-height: 0.3466666666666667rem; font-size: 0.3466666666666667rem;color: #333333;white-space: normal;}
+.content li .integral{height: 1.666666666666667rem;;line-height: 1.55555555rem;; font-size: 0.2933333333333333rem;color: #999999;}
+.content li .integral em{font-family: "黑体";font-size: 0.8rem;color: #ff4138;vertical-align: top;margin-right: 0.1333333333333333rem;}
+.content li:last-child .blue_w .mark img{display: none;}
+.content li:first-child .blue_w .mark{box-shadow: 0px 0px 0 0.1333333333333333rem #cdefff;}
+.welfare_bg{position: fixed;background:url(../images/lishe-.png) right center no-repeat; red;z-index: -1;top: 0; width: 100%; height: 100%;}
+

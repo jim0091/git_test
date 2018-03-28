@@ -1,0 +1,44 @@
+<div>
+    <ul class="js-goods-list sc-goods-list pic clearfix size-2" data-size="2" data-showtype="card" style="visibility: visible;" >
+        <volist name="list" id="vo">
+	    <li class="js-goods-card goods-card small-pic card ">
+            <a href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}" class="js-goods link clearfix"   data-goods-id="{$vo.item_id}" title="{$vo.title}">
+            <div class="photo-block" data-width="750" data-height="750" style="background-color: rgb(255, 255, 255);">
+                <img class="goods-photo js-goods-lazy"  src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" style="display: block;">
+            </div>
+            <div class="info clearfix info-no-title info-price btn1">
+                <p class="" style="height:27px;overflow:hidden;color:#000">{$vo.title}</p>
+                <p class="goods-sub-title c-black hide"></p>
+                <p class="goods-price">
+                    <em>￥<?php echo round($vo['price'],1); ?></em>
+                </p>
+            </div>
+            <div class="goods-buy btn1 info-no-title"></div>
+            </a>
+            <!--<div class="js-goods-buy buy-response" data-alias="36dx8vhw8kysq" data-postage="0" data-buyway="1" data-id="{$vo.item_id}" data-title="{$vo.title}" data-price="{$vo.price}" data-isvirtual="0"></div>-->
+        </li>
+        </volist>    
+    </ul>
+  
+
+ <style>
+    .custom-paginations-prev{
+        padding: 60px;
+        color: #09F;
+    }
+    .wborder{
+        border:1px solid #DDD;
+        padding: 5px;
+    }
+ </style> 
+  <div class="custom-paginations-container" style="margin-top: 10px;">  
+   <div class="wborder" style="text-align: center;"> 
+    {$pagestr}
+   </div> 
+  </div>  
+</div>  
+
+<include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>
+
+  

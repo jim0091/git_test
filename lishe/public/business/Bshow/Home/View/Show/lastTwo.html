@@ -1,0 +1,191 @@
+ <link rel="stylesheet" href="__PUBLIC__/companyShow/css/ptDynamics.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/companyShow/js/birthday.js"></script>
+           <div class="rather">
+              <p class="sr">
+              <if condition="$type eq 1">
+              	超级新人王管理
+              <else/>
+              	月度寿星管理
+              
+              </if>
+              </p>
+    <form action="{:U('Home/Show/lastTwo')}" method="post" id="activityform"> 
+        <ul class="cp-ul">
+    			<input type="hidden" class="text" value="{$type}" name="data[category]"/>
+               <li class="cp-des"><span style="color:#F00;">&nbsp;&nbsp;*</span>
+               	姓名：<input type="text" class="text" name="data[name]" id="name" value="{$info.name}"/></li>
+               <li class="cp-des"><span style="color:#F00">&nbsp;&nbsp;*</span>
+               	部门：<input type="text" name="data[department_name]" value="{$info.department_name}" class="text" id="bname" />
+               	<!--<select class="text3">
+                  <option value="选择部门名称">选择部门名称</option>
+                  <option value="市场部">市场部</option>
+                  <option value="人事部">人事部</option>
+                  <option value="财务部">财务部</option>
+                  </select>-->
+               </li>
+               <li class="cp-des"><span style="color:#F00">&nbsp;&nbsp;*</span>
+           		职称：<input type="text" name="data[position]" value="{$info.position}"  id="zname" class="text"/>
+           	<!--<select class="text3">
+                      <option value="选择职称">选择职称</option>
+                      <option value="saab">Saab</option>
+                      <option value="opel">Opel</option>
+                      <option value="audi">Audi</option>
+                      </select>-->
+               </li>  
+              <if condition="$type eq 2">
+				 <li class="cs-des" style="margin-top:20px;">
+					<span style="color:#F00">&nbsp;&nbsp;*</span>
+			               	生日：
+				        <select id="sel_year" name="data[year]"  rel="{$info.year}"></select>年
+				        <select id="sel_month" name="data[month]" rel="{$info.month}"></select>月
+				        <select id="sel_day" name="data[day]" rel="{$info.day}"></select>日
+			       </li>
+               <li class="cp-des"><span style="color:#F00">&nbsp;&nbsp;*</span>
+           		愿望：<input type="text" name="data[birthday_wish]" value="{$info.birthday_wish}"  id="wish" class="text"/>
+               </li>  
+			       
+              </if> 
+				 <li class="cs-des" style="margin-top:20px;">
+				        <div style=" float:left;"><span style="color:#F00;">&nbsp;&nbsp;*</span>正文：</div>
+              <if condition="$type eq 2">
+			        <div><textarea id="content" name="data[content]"   maxlength="80" placeholder="不超过100个字" style="min-width:355px; min-height:90px;">{$info.content}</textarea></div>
+              	<elseif condition="$type eq 1"/>
+			        <div><textarea id="content" name="data[content]"   maxlength="80" placeholder="不超过30个字" style="min-width:355px; min-height:90px;font-size:12px">{$info.content}</textarea></div>
+			  </if>	        
+				  
+				 </li>   
+			 <script>  
+			$(function () {
+				$.ms_DatePicker({
+			            YearSelector: ".sel_year",
+			            MonthSelector: ".sel_month",
+			            DaySelector: ".sel_day"
+			    });
+				$.ms_DatePicker();
+			}); 
+			</script>             
+              </ul>
+                <div class="CP-one">
+                 <ul class="cpo-left">
+                 <li class="cpo-btn" ><a href="javascript:void(0);" onclick="activityFile.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>大小不超1000X750像素</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt"><img width="200px" id="lookPic" 
+                     	<notempty name="info.pic">
+                    		src="{$info.pic}"
+                    	</notempty>
+                    	
+                    	></li>
+                    <li class="cpo-pt">500PX*500PX</li>
+                 </ul>
+		        			<input type="file" id="activityFile" style="display: none;" name="activityFile" onchange="uploadPic('activity');"/>
+				<input type="hidden" name="data[pic]" id="activity" value="{$info.pic}"> 
+    			<input type="hidden" class="text" value="{$info.id}" name="data[apid]"/>
+                 <p class="cpo-btn2"><a href="javascript:void(0)" class="sure" onclick="sure('activity')">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></p> 
+				</div>
+			</form>
+           </div>
+
+ <script>
+ 		function uploadPic(types){
+				var inputName = types+'File';
+				var img=$('#'+types).val();
+				var delurl="__APP__/CompanyShow/delImg/channel/brand/file/"+img;
+				if(img!=''){
+					$.get(delurl, function(result){
+					});
+				}
+				urls="__APP__/CompanyShow/uploadImg/channel/brand/inputName/"+inputName+"/types/"+types;
+				$.ajaxFileUpload ({
+					url :urls,
+					secureuri :false,
+					fileElementId :inputName,
+					dataType : 'text',
+					success : function (data,status){
+						if(data!='undefined'){
+							var dataArr=eval("("+data+")");
+							if(dataArr[0]<=0){
+								if(dataArr[0]==-4){
+									alert(dataArr[1]);
+								}else{
+									alert('Error：'+dataArr[1]);
+								}
+							}else{
+								$("#lookPic").attr("src","/business/"+dataArr[1]);
+								$('#'+types).val(dataArr[1]);
+							} 
+						} 
+					}, 
+					error: function (data, status, e){
+						alert('Faild！');
+					}
+				});
+	}
+	function sure(types){
+		var fileload=$("#"+types).val();
+		var name=$("#name").val().trim();
+		var bname=$("#bname").val().trim()
+		var zname=$("#zname").val().trim();
+		var year=$("#sel_year").val();
+		var month=$("#sel_month").val();
+		var day=$("#sel_day").val();
+		if(name==""){
+			alert("请填写姓名!");
+			return false;			
+		}	
+		if(bname==""){
+			alert("请填写部门名称!");
+			return false;			
+		}	
+		if(zname==""){
+			alert("请填写职称!");
+			return false;			
+		}	
+		var type ="{$type}";
+		var content=$("#content").val().trim();
+		if(type==2){
+			var wish=$("#wish").val().trim();
+			if(wish ==""){
+				alert("填写生日愿望!");
+				return false;			
+			}else if(wish.length>30){
+				alert("正文不能超过30字!");
+				return false;			
+			}	
+			if(content.length>100){
+				alert("正文不能超过100字!");
+				return false;			
+			}			
+		}else if(type == 1){
+
+			if(content.length>30){
+				alert("正文不能超过30字!");
+				return false;			
+			}
+			
+		}
+		if(content==""){
+			alert("正文不能为空!");
+			return false;			
+		}
+		if(year=="" || month=="" || day==""){
+			alert("请设置生日!");
+			return false;			
+			
+		}
+		
+
+		
+		if(!fileload){
+			alert("还未上传海报图片!");
+			return false;
+		}else{
+			$("#activityform").submit();
+		}
+	}
+ 	
+ </script>   

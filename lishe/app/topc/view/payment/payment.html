@@ -1,0 +1,269 @@
+<div id="dialog" style="display:none;">
+  <div class="payment-pop">
+    <div class="payment-pop-bd">
+      <div>请您在新打开的支付平台页面进行支付，支付完成前请不要关闭该窗口</div>
+      <div><a href="<{url action=topc_ctl_member_trade@tradeList}>" class="btn btn-simple"><span><span>已完成支付</span></span></a></div>
+    </div>
+    <!--
+    <div><a href="">选择其他支付方式</a></div>
+    -->
+  </div>
+</div>
+<div class="payment mod-bottom" style="border-top: 2px solid #C7241D;">
+  <{if $payment_type}>
+  <div class="payment-info">
+    <div class="col-lg-6 success-info">
+      <div class="success-info-l1"><i class="icon icon-checkmark-c" style="color: #C7241D"></i>下单成功，我们会尽快为您发货！</div>
+      <div class="payment-line">付款金额：<span class="price"><{$trades.cur_money_deposit}>&nbsp;积分（<{$trades.cur_money|cur}>）</span></div>
+      <div class="payment-line">您可以：<a href="<{url action=topc_ctl_member_trade@tradeList}>">查看我的订单</a></div>
+    </div>
+  </div>
+  <{else}>
+  <div class="payment-info">
+    <div class="col-lg-6 success-info">
+      <div class="success-info-l1" style="color: #C7241D"><i class="icon icon-checkmark-c"></i>订单提交成功，请您尽快付款！</div>
+      <div class="success-info-l2"></div>
+      <div class="payment-line">应付金额：<span class="price"><{$trades.cur_money_deposit}>&nbsp;积分（<{$trades.cur_money|cur}>）</span></div>
+    </div>
+  </div>
+  <div class="payment-choose">
+    <form id="dopay_form" target="_blank" action="<{url action=topc_ctl_paycenter@dopayment}>" method="post" data-async="false">
+      <input type="hidden" name="payment[payment_id]" value="<{$trades.payment_id}>">
+      <input type="hidden" name="payment[money]" value="<{$trades.cur_money}>">
+      <input type="hidden" name="payment[tids]" value="<{$tids}>">
+      <div class="payment-choose-tab">支付平台</div>
+      <div class="payment-choose-bd">
+        <div style="margin-left: 22px;">选择支付方式</div>
+        <{if $payments}>
+        <div class="payment-choose-list form-row">
+          <{foreach from=$payments item=item}>
+          <div class="payment-choose-item">
+            <input type="radio" name="payment[pay_app_id]" value="<{$item.app_id}>" data-validate="onerequired" autocomplete="off"><img src="<{$item.img}>" alt="<{$item.app_name}>" >
+          </div>
+          <{/foreach}>
+          <!--东莞移动E卡通支付-->
+			<div class="payment-choose-item" <{if $ecardPay!=1}>style="display:none"<{/if}>>
+				<input type="radio" autocomplete="off" data-validate="onerequired" value="e-card" name="payment[pay_app_id]">
+				<img alt="移动E卡通支付" src="/app/ectools/statics/images/e-card.png">
+			</div>
+        </div>
+        <div class="payment-choose-list form-row" id="deposit-password-input" style="display: none">
+          <span style="margin-left: 22px;font-size: 14px;">支付密码：</span>
+          <span><input type='password' name='deposit_password' autocomplete="off"></span>
+          <span><a href="<{url action='topc_ctl_member_deposit@forgetPassword'}>" target="_blank">忘记密码?</a></span>
+        </div>
+         
+         <!-- 20160623 新增 start -->
+         <div class="chongMoneyDiv" style="margin-bottom:20px;margin-left:22px;border:0px solid red;height:130px;width:800px;display:none;">
+           <div style="border:0px solid red;">
+             <span style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;您的当前积分:<span class="curr_balance" style="font-size:16px;"></span>,可用积分不足,<strong>快速充值</strong></span>
+           </div>
+           <div style="border:1px solid red;height:90%;">
+              <div style="border:0px solid red;width:16%;float:left;margin-left:30px;">
+                <div style="margin-top:20px;"><img src="/app/ectools/statics/images/alipay.png" alt="" style="border:0px solid red;margin-left:14px;"></div>
+                <div><span><center>支付宝付款</center></span></div>
+              </div>
+
+               <div style="border:0px solid red;width:35%;float:left;">
+                <div style="text-align:center;border:0px solid red;padding-top:10px;">
+                  <span><center>请选择充值积分</center></span>
+                </div>
+                <div style="margin-top:20px;"> 
+                     <input type="radio" class="selectMoney" name="selectMoney" value="30.00" autocomplete="off" checked>3010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="radio" class="selectMoney" name="selectMoney" value="50.00" autocomplete="off">5,050 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="radio" class="selectMoney" name="selectMoney" value="100.00" autocomplete="off">10,150
+                </div>
+
+                <div style="margin-top:24px;"> 
+                    <input type="radio" class="selectMoney" name="selectMoney" value="200.00" autocomplete="off">20,350 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="radio" class="selectMoney" name="selectMoney" value="300.00" autocomplete="off">30,500 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <input type="radio" class="selectMoney" name="selectMoney" value="500.00" autocomplete="off">51,000
+                </div>
+              </div>
+
+               <div style="border:0px solid red;width:30%;float:left;margin-left:30px;margin-top:20px;">
+                <div style="margin-top:18px;">
+                   <span style="color:red;"> 
+                   &nbsp;&nbsp;&nbsp;&nbsp; 需支付￥<span class="chongMoneyFinish">30.00</span>
+                  </span>
+                </div>
+                <div style="margin-top:20px;">
+                   <span id="saveCharge"  style="padding:8px 32px;border:0px solid red;background:#cc3535;color:white;cursor:pointer;">去充值</span>
+                 </div>
+              </div>
+
+           </div>
+         </div>
+         <!-- 20160623 新增 end  -->
+
+        <div style="margin-bottom: 15px;" class="nextAcation">
+        <a href="javascript:;" class="btn-a act-next" style="float: left">下一步</a><a style=" display:block;width:500px;margin-left: 10px;float:left;font-size: 14px; color: #b70000;margin-top: 10px">(注：请核对订单信息，售后问题请联系客服：电话400-883-9916，QQ 2851363760！)</a>
+        </div>
+        <{else}>
+        <div class="payment-choose-list">
+          <div class="payment-choose-item">
+            没有可用的支付方式，请联系商家协调
+          </div>
+        </div>
+        <{/if}>
+        <div style="width: 100%; clear:both"></div>
+      </div>
+    </form>
+  </div>
+  <{/if}>
+</div>
+
+<!-- 支付弹窗 -->
+<div id="pay-dialog" style="display:none">
+  <div class="payment-pop">
+    <div class="payment-pop-bd success-info">
+      <div>请您在新打开的支付平台页面进行支付，支付完成前请不要关闭该窗口</div>
+      <div class="pull-left "><a href="<{url action=topc_ctl_paycenter@errorPay payment_id=$trades.payment_id}>" class="btn btn-simple btn-lg"><span><span>付款遇到问题</span></span></a></div>
+      <div class="pull-right"><a target="_blank" href="<{url action=topc_ctl_paycenter@finish payment_id=$trades.payment_id}>" class="btn btn-lg btn-import"><span><span>&nbsp;&nbsp;付款完成&nbsp;&nbsp;</span></span></a></div>
+    </div>
+  </div>
+</div>
+
+<!-- 支付密码弹框 -->
+<div id="password_dialog" style="display:none">
+  <div class="password-dialog">
+    <p><i class="icon icon-tip"></i><span>您还未设置支付密码！</span></p>
+    <a type="button" class="btn btn-simple" href='/member-deposit-modifyPasswordCheckLoginPassword.html?go=<{$go}>'><span><span>去设置</span></span></a>
+    <div class="pay-type"><a href=""><i class="icon icon-arrow-left"></i>选择其他支付方式</a></div>
+  </div>
+</div>
+<div id="userAccount" style="display:none;"><{$user_account.account}></div>
+<div id="userId" style="display:none;"><{$user_id.userId}></div>
+<div id="lisheId" style="display:none;"><{$payment_id_rel.payment_id}></div>
+<div id="payLiShe" style="display:none;"></div>
+
+<script>
+$('#header').hide();
+$('#nav').hide();
+//注册键盘事件
+document.onkeydown = function(e){
+  //捕捉回车事件
+  var ev = (typeof event!= 'undefined') ? window.event : e;
+  if(ev.keyCode == 13){
+    return false;//禁用回车事件
+  }
+}
+
+$('.act-next').click(function(){
+  var input = $('input[type="radio"]:checked');
+  if(input.length <= 0){
+    Message.error('请选择支付方式');
+    return;
+  }
+  var depositPasswordInput = $('input[name="deposit_password"]').val();
+  if((input.val() == 'deposit' || input.val() == 'e-card') && depositPasswordInput.length<=0){
+    Message.error('请输入支付密码');
+    $('input[name="deposit_password"]').focus();
+    return false;
+  }
+
+  if(input.val() == 'wxqrpay'){
+    $.dialog($('#dopay_form').attr('action'), {
+          modal: true,
+          async: 'ajax',
+          type: 'nohead',
+          asyncOptions:{
+              data: $('#dopay_form').serialize(),
+              method: 'post',
+          }
+    });
+  }else{
+    if(input.val() == 'deposit' || input.val() == 'e-card'){
+      $('#dopay_form').attr('target', '_self');
+      // 设置cookie
+      if(depositPasswordInput.length > 0){
+          $.cookie('UPINTEGRAL', '1');
+      }      
+    }else{
+		$('#pay-dialog').dialog({
+			width:480,
+			height:240,
+			title:'支付状态',
+			modal:true
+		})
+    }
+    $('#dopay_form').submit();
+  }
+});
+
+	$('.btn_dialog').click(function (e){
+	  $('#dialog').dialog({
+	    width: 480,
+	    title:'登录平台支付'
+	  });
+	});
+
+	$('.payment-choose-item').click(function(){
+		var paymentChecked=$('input:radio[name="payment[pay_app_id]"]:checked').val();
+		<{if !$hasDepositPassword.result}>
+		if(paymentChecked=='deposit' || paymentChecked=='e-card'){
+			$("#password_dialog").dialog({
+				width: 440,
+				height: 260,
+				title: '提示',
+				modal: true
+			});
+			return;
+		}
+		return;
+		<{/if}>
+		if(paymentChecked=='deposit' || paymentChecked=='e-card'){
+			$('#deposit-password-input').show();
+		}else{
+			$('#deposit-password-input').hide();
+			$(".chongMoneyDiv").hide();
+		}
+	});
+	
+	$('.payment-choose-item').on('click',function(){
+		if($('input:radio[name="payment[pay_app_id]"]:checked').val() == "deposit"){
+			$.ajax({
+				'type':'post',
+				'url':'/business/index.php/Money/chongMoney',
+				'data':'cur_money_deposit='+<{$trades.cur_money_deposit}>+'&user_id='+<{$trades.user_id}>,
+				success:function(msg){
+          			var data=eval(msg);
+				    if(data[0]==1){
+						$(".chongMoneyDiv").show();
+						$(".curr_balance").text(data[1]);
+						$(".nextAcation").hide();
+				   }
+				}
+			});
+
+		}else{
+			$(".nextAcation").show();
+		}
+	});
+	
+	$('.selectMoney').click(function(){
+		$(".chongMoneyFinish").text($(this).val());
+	});
+				       
+	$('#saveCharge').on("click",function(){
+		var lisheMoney = $(".chongMoneyFinish").text();
+		lisheMoney = $.trim(lisheMoney);
+		var paymentId = $("#lisheId").text();
+		paymentId = $.trim(paymentId);
+		var lisheUserId = $("#userId").text();
+		lisheUserId = $.trim(lisheUserId);
+		var userAccount = $("#userAccount").text();
+		userAccount = $.trim(userAccount);
+
+		$.ajax({
+			'type':'post',
+			'url':'/pay/alipayapi.php',
+			'data':'fee='+lisheMoney+'&paymentId='+paymentId+'&userId='+lisheUserId+'&userAccount='+userAccount,
+			success:function(msg){
+			    $('#payLiShe').append(msg);
+			}
+		});                  
+	});
+
+
+</script>

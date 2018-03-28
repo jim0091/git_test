@@ -1,0 +1,78 @@
+<!-- 无语存款时添加样式“no-deposit”，否则不添加 -->
+<div>
+  <div class="col-lg-7 txt-list assets">
+    <div>我的资产</div>
+    <ul class="inlist">
+      <style type="text/css">
+      .txt-list li {width: 32%;}
+      </style>
+      <li class="integral">
+        <a href="<{url action=topc_ctl_member_point@point}>" class="yellow">
+        <img src="/themes/luckymall1/images/member/icon1.png">
+        <br />
+        <p style="  font-size: 17px;"><span style="  color: gray;  font-family: '微软雅黑';">礼舍币</span></p>
+        <span style="  color: #C81623;  margin-left: 7px;" ><{$userInfo.point|default:0}></span>
+        <!-- <span style="text-align:center;display:block"><{$userInfo.point|default:0}></span> -->
+        </a>
+      </li>
+      <li class="coupons">
+        <a href="<{url action=topc_ctl_member_coupon@couponList}>" class="yellow">
+        <img src="/themes/luckymall1/images/member/icon2.png">
+        <br/> 
+        <p style="  font-size: 17px;"><span style="  color: gray;  font-family: '微软雅黑';">优惠券</span></p>
+        <span style="  color: #C81623;  margin-left: 7px;" ><{$coupon.count|default:0}></span>
+        <!-- <span class="deposit">优惠券</span>
+        <span style="text-align:center;display:block"><{$coupon.count|default:0}></span> -->
+        </a>
+      </li>
+      <li class="deposit">
+        <a href="<{url action=topc_ctl_member_deposit@view}>" class="yellow">
+        <img src="/themes/luckymall1/images/member/icon3.png">
+        <br/> 
+         <p style="  font-size: 17px;"><span style="  color: gray;  font-family: '微软雅黑';">福利积分</span><!-- <span style="  color: #C81623;  margin-left: 7px;" ><{$deposit.deposit|cur}></span>--></p> 
+         <span class="deposit-value" style="text-align:center;display:block;color: #C81623;font-size: 14px;"><tt class="price-deposit"></tt>&nbsp;积分&nbsp;(<tt class="real-price"><{($deposit.deposit*100)}></tt>)</span>
+        <!-- <span class="deposit">企业币</span>
+        <span class="deposit-value" style="text-align:center;display:block"><tt class="price-deposit"></tt>&nbsp;积分&nbsp;(<tt class="real-price"><{$deposit.deposit|cur}></tt>)</span> -->
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-5 txt-list safe-center">
+    <div class="inlist">
+      <div class="con-title" style="color: #82bf21">安全中心</div>
+      <div class="set-item">
+        <{if $userInfo.mobile}>
+        <span class="title">手机</span>
+        <span>
+          <{$userInfo.mobile}><a href="<{url action=topc_ctl_member@verify verifyType=mobile type=update}>">修改</a><span class="status" style="color: #e03a1a">(已绑定)</span>
+        </span>
+        <{else}>
+        <span class="title">手机</span>
+        <span>
+          <a href="<{url action=topc_ctl_member@verify verifyType=mobile}>">验证</a><span class="status" style="color: #e03a1a">(未绑定)</span>
+        </span>
+        <{/if}>
+      </div>
+      <div class="set-item">
+        <{if $userInfo.email && $userInfo.email_verify}>
+        <span class="title">邮箱</span>
+        <span>
+          <{$userInfo.email}><a href="<{url action=topc_ctl_member@verify verifyType=email type=update}>">修改</a>
+          <span class="status" style="color: #e03a1a">(已绑定)</span>
+        </span>
+        <{else}>
+        <span class="title">邮箱</span>
+        <span>
+          <{$userInfo.email}>
+          <a href="<{url action=topc_ctl_member@verify verifyType=email}>">验证</a>
+          <{if $userInfo.email}>
+          | <a href="<{url action=topc_ctl_member@verify verifyType=email type=update}>">修改</a>
+          <{/if}>
+          <span class="status" style="color: #e03a1a">(未绑定)</span>
+        </span>
+        <{/if}>
+      </div>
+    </div>
+    <div class="set"><a href="<{url action=topc_ctl_member@security}>" style="color: #4c78d8">安全设置</a></div>
+  </div>
+</div>

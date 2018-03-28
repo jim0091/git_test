@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>基本设置</title>
+</head>
+<body>
+<style>
+	.tabBar span.current{
+		background-color: #5EB95E;	
+	}
+	.tabBar {
+    	border-bottom: 2px solid #5EB95E;
+	}
+	.table-bg thead th {
+		background-color: #5EB95E;	
+		color: white;
+	}
+</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 订单管理 <span class="c-gray en">&gt;</span> 订单详情  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+	<form action="" method="post" class="form form-horizontal" id="form-article-add">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl"><span>基本信息</span><span>商品</span><span>会员</span><span>商家</span><span>其他信息</span></div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单基本信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">虚拟订单号</td>
+			        <td><span class="label label-success radius">{$info.vtid}</span></td>
+			      </tr>			    	
+			      <tr>
+			        <td width="200">订单号</td>
+			        <td><span class="label label-success radius">{$info.tid}</span></td>
+			      </tr>
+			      <if condition="$info.shop_id eq 10">
+				      <tr>
+				        <td>京东订单号</td>
+				        <td>
+							<notempty name="info.JdOrderNumber">
+								<span class="label label-success radius">{$info.JdOrderNumber}</span>
+								<else/>
+							</notempty>				        	
+				        </td>
+				      </tr>	
+				      <tr>
+				        <td>第三方订单同步状态</td>
+				        <td>{$info.sync_trade_status}</td>
+				      </tr>	
+				      <tr>
+				        <td>第三方订单支付状态</td>
+				        <td>{$info.sync_pay_status}</td>
+				      </tr>				      	
+			      </if>
+			      
+			      <tr>
+			        <td>订单总额</td>
+			        <td>￥{$info.payment}</td>
+			      </tr>
+			      <tr>
+			        <td>积分抵扣金额</td>
+			        <td>￥{$info.points_fee}</td>
+			      </tr>			      
+			      <tr>
+			        <td>配送费用</td>
+			        <td>￥{$info.post_fee}</td>
+			      </tr>			     
+			      <tr>
+			        <td>实付金额</td>
+			        <td>￥{$info.payed_fee}</td>
+			      </tr>			     
+			      <tr>
+			        <td>订单状态</td>
+			        <td>{$info.orderStatus}</td>
+			      </tr>	
+			      <tr>
+			        <td>订单备注</td>
+			        <td>{$info.trade_memo}</td>
+			      </tr>
+			      <tr>			      
+			      <tr>
+			        <td>下单时间</td>
+			        <td>{$info.created_time}</td>
+			      </tr>			
+			    </tbody>
+		      </table>
+		      
+		      
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单支付信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">应支付金额</td>
+			        <td><span>￥{$info.payment}</span></td>
+			      </tr>
+			      <tr>
+			        <td>支付方式</td>
+			        <td>{$info.pay_type}</td>
+			      </tr>
+			      <tr>
+			        <td>付款交易流水</td>
+			        <td>{$info.transno}</td>
+			      </tr>			      
+			      <tr>
+			        <td>已支付金额</td>
+			        <td>￥{$info.payed_fee}</td>
+			      </tr>	
+			      <tr>
+			      	<td>买家实付积分</td>
+			      	<td>{$info.real_point_fee}</td>
+			      </tr>
+			      <tr>
+			        <td>付款时间</td>
+			        <td>{$info.pay_time}</td>
+			      </tr>			     		
+			    </tbody>
+		    </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">售后信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">售后</td>
+			        <td>
+						<in name="info.order_status" value="REFUND,RETURN,EXCHANGE,REPAIR">
+								<span class="label label-danger radius">
+						<else/>
+							<in name="info.order_status" value="CANCEL_REFUND,CANCEL_RETURN,CANCEL_EXCHANGE,CANCEL_REPAIR">
+								<span class="label radius">
+								<else/>
+								<span>
+							</in>							
+						</in>
+						{$info.serviceStatus}
+						</span>			        	
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td>退款金额：</td>
+			      	<td>￥{$info.refund_fee}</td>
+			      </tr>
+			      <tr>
+			      	<td>操作退款备注：</td>
+			      	<td>{$info.refund_mark}</td>
+			      </tr>		
+			      <tr>
+			      	<td>退款时间：</td>
+			      	<td>
+			      		<notempty name="info.refund_time">
+				      		{$info['refund_time']|date="Y-m-d H:i:s",###}
+			      		</notempty>
+			      	</td>
+			      </tr>				      
+			    </tbody>
+		    </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">收货人信息</th>
+			      </tr>
+			    </thead>			    
+			    <tbody>
+			      <tr>
+			        <td width="200">收货人</td>
+			        <td><span>{$info.receiver_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td>收货人手机号</td>
+			        <td><span>{$info.receiver_mobile}</span></td>
+			      </tr>			      
+			      <tr>
+			        <td>收货地区</td>
+			        <td><span>{$info.receiver_state}{$info.receiver_city}{$info.receiver_district}</span></td>
+			      </tr>				      
+			      <tr>
+			        <td>收货地址</td>
+			        <td><span>{$info.receiver_address}</span></td>
+			      </tr>		
+			      <tr>
+			      	<td>自提备注</td>
+			      	<td><span>{$info.ziti_memo}</span></td>
+			      </tr>
+			    </tbody>				    
+			  </table>
+			  
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="5" scope="col">物流</th>
+			      </tr>
+			    </thead>			    
+			    <tbody>
+			      <tr>
+			        <th>发货单号</th>
+			        <th align="center">物流单号</th>
+			        <th>配送方式</th>
+			        <th>建立日期</th>
+			        <th>状态</th>
+			      </tr>
+			      <tr>
+			        <td>{$info.express.delivery_id}</td>
+			        <td>
+			        	<notempty name="info.express.logi_no">
+				        	<volist name="info.express.logi_no" id="express">
+				        		<a href="javascript:void(0)" onclick="member_edit('物流进度信息','{:U('Home/Order/expressProgress',array('logiNo'=>$express,'shop_id'=>$info['shop_id']))}','4','500','400')">
+									<span class="label label-success radius" style="margin-top: 10px;">{$express}</span>
+								</a>
+								<br />
+				        	</volist>
+			        	</notempty>
+			        </td>
+			        <td>{$info.express.logi_name}</td>
+			        <td>{$info.express.t_begin}</td>
+			        <td>{$info.express.status}</td>
+			      </tr>			      
+			    </tbody>
+			  </table>  			  
+			  
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单发票信息</th>
+			      </tr>
+			    </thead>			    
+			    <tbody>
+			      <tr>
+			        <td width="200">是否需要发票</td>
+			        <td><span>{$info.need_invoice}</span></td>
+			      </tr>
+			      <tr>
+			        <td width="200">发票抬头</td>
+			        <td><span>{$info.invoice_name}</span></td>
+			      </tr>		
+			      <tr>
+			        <td width="200">发票类型</td>
+			        <td><span>{$info.invoice_type}</span></td>
+			      </tr>	
+			      <tr>
+			        <td width="200">发票内容</td>
+			        <td><span>{$info.invoice_main}</span></td>
+			      </tr>				      
+			    </tbody>
+			  </table>  
+			   			  
+			  
+			</div>
+			
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="7" scope="col">订单商品信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			      	<th>商品ID</th>
+			      	<th>商品名称</th>
+			      	<th>商品属性</th>
+			      	<th>单价</th>
+			      	<th>购买数量</th>
+			      	<th>已发货量</th>
+			      	<th>商品总额</th>
+			      </tr>
+			      <volist name="info.more" id="vo">
+				      <tr>
+				        <td>
+				        	{$vo.item_id}
+				        	<br />
+				        	<span style="color:#5a98de;font-weight: bold;">{$vo.jd_sku}</span>
+				        
+				        </td>
+				        <td>
+							<if condition="$vo.disabled eq 1">
+								<span class="label radius"  title="同步京东订单时将不会同步该商品">已取消</span>	
+							</if>
+				        	{$vo.title}
+				        
+				        </td>
+				        <td>{$vo.spec_nature_info}</td>
+				        <td>{$vo.price}</td>
+				        <td>{$vo.num}</td>
+				        <td>{$vo.sendnum}</td>
+				        <if condition="$i eq 1">
+					        <td rowspan="0">￥{$info.total_fee}</td>
+				        </if>
+				      </tr>
+				      <if condition="$info.order_status neq 'NO_APPLY'">
+				      	<notempty name="vo.aftersales_status">
+					      <tr>
+					      	<td>{$vo.item_id}</td>
+					      	<td colspan="5">
+					      		售后信息：{$info.serviceStatus}<br />
+					      		售后状态：{$vo.serviceLastStatus}<br />
+					      		申请售后成功商品的数量：{$vo.aftersales_num}<br />
+					      		已退金额：￥{$vo['price']*$vo['aftersales_num']}<br />
+					      	</td>
+					      </tr>				      	
+				      	</notempty>
+				      </if>
+
+				      
+	      			</volist>
+			    </tbody>
+			  </table>				
+			</div>				
+			
+			
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">会员信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>用户ID</td>
+			        <td>{$info.user_id}</td>
+			      </tr>			    	
+			      <tr>
+			        <td>用户姓名</td>
+			        <td>{$info.userInfo.name}</td>
+			      </tr>
+			      <tr>
+			        <td>企业名称/ID</td>
+			        <td>{$info.companyName}/{$info.com_id}</td>
+			      </tr>			     
+			      <tr>
+			        <td>出生日期</td>
+			        <td>{$info.userInfo.birthday}</td>
+			      </tr>			     
+			      <tr>
+			        <td>手机</td>
+			        <td>{$info.userInfo.mobile}</td>
+			      </tr>			     
+			      <tr>
+			        <td>性别</td>
+			        <td>{$info.userInfo.sex}</td>
+			      </tr>		
+			      <tr>
+			        <td>注册日期</td>
+			        <td>{$info.userInfo.regtime}</td>
+			      </tr>	
+			      <tr>
+			        <td>注册IP</td>
+			        <td>{$info.userInfo.reg_ip}</td>
+			      </tr>				      
+			    </tbody>
+		      </table>
+			</div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">{$info.shopinfo.shop_name}</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">店铺名称</td>
+			        <td><span >{$info.shopinfo.shop_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td>店铺描述</td>
+			        <td>{$info.shopinfo.shop_descript}</td>
+			      </tr>
+			      <tr>
+			        <td>店铺类型</td>
+			        <td>{$info.shopinfo.shop_type}</td>
+			      </tr>
+			      <tr>
+			        <td>店主姓名</td>
+			        <td>{$info.shopinfo.shopuser_name}</td>
+			      </tr>				      
+			      <tr>
+			        <td>开店时间</td>
+			        <td>{$info.shopinfo.open_time}</td>
+			      </tr>			      
+			      <tr>
+			        <td>店铺所在地区</td>
+			        <td>{$info.shopinfo.shop_area}{$info.shopinfo.shop_addr}</td>
+			      </tr>				      
+			    </tbody>
+			  </table>
+			</div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">其他信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			        <td  width="200">商品重量</td>
+			        <td>{$info.total_weight}</td>
+			      </tr>			      
+			      <tr>
+			        <td>买家返点积分</td>
+			        <td>{$info.obtain_point_fee}</td>
+			      </tr>	
+			      <tr>
+			        <td>卖家手工调整金额</td>
+			        <td>￥{$info.adjust_fee}</td>
+			      </tr>				      
+			      <tr>
+			        <td>来源平台</td>
+			        <td>{$info.trade_from}</td>
+			      </tr>	
+			      <tr>
+			        <td>ip地址</td>
+			        <td>{$info.ip}</td>
+			      </tr>	
+			      <tr>
+			        <td>最后更新时间</td>
+			        <td>{$info.modified_time}</td>
+			      </tr>				      
+			    </tbody>
+			  </table>				
+			</div>
+		</div>
+		<!--<div class="row cl">
+			<div class="col-10 col-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>-->
+	</form>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}	
+</script>
+</body>
+</html>

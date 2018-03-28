@@ -1,0 +1,109 @@
+
+    <!--/sidebar-->
+<style>
+	.zihui{
+		color:#666;
+		font-size: 14px;
+	}
+	body{
+		font-size: 14px;
+	}
+	.radius{
+		border-radius: 5px;
+		padding: 5px 10px;
+	}	
+</style>    
+<div class="main-wrap" style="padding: 20px 100px;">
+	<span class="zihui"><small>订单号：</small>{$info.tid}</span><br />
+	<span class="zihui"><small>订单支付时间：</small>{$info['pay_time']|date="Y-m-d H:i:s",###}</span>
+	<div style="border-bottom: 1px #ea8010 solid;">&nbsp;</div>
+	收货信息：<br />
+	<div>
+		<span class="zihui"><small>收货人姓名：</small>{$info.receiver_name}</span><br />
+		<span class="zihui"><small>收货人手机号：</small>{$info.receiver_mobile}</span><br />
+		<span class="zihui"><small>收货地址：</small>{$info.receiver_state} {$info.receiver_city} {$info.receiver_district} {$info.receiver_address}</span><br />
+		<span class="zihui"><small>买家留言：</small>{$info.buyer_message}</span>
+	</div>
+	<div style="border-bottom: 1px #ea8010 solid;">&nbsp;</div>
+	  <div id="sendGoods"> 
+	    <form action="__URL__/sendGoodsDeal" method="post">
+		  <div style="padding-top: 10px;margin-left: 2%;">
+		  	发货商品：
+			  <volist name="item" id="vo">
+			      <label class="form-label col-12" style="margin-bottom: 10px;display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;">
+			      	<input type="checkbox" 	name="oid[]" value="{$vo.oid}"
+						<notin name="vo.status" value="IN_STOCK,WAIT_SELLER_SEND_GOODS">
+				      		disabled="disabled"
+				      	<else/>
+	        				<notin name="vo.aftersales_status" value="NO_APPLY,CANCEL_APPLY">
+	        						disabled="disabled"
+	        				</notin>
+					      	<notempty name="vo.sendnum">
+					      		disabled="disabled"
+					      	</notempty>
+			      		</notin>
+			      	 /> 
+					<if condition="$vo.send_type eq 2">
+						<img src="__PUBLIC__/images/daifa.png"  width="20px" title="该商品为代发商品"/>
+					<elseif condition="$vo.send_type eq 1"/>
+						<img src="__PUBLIC__/images/zifa.png"  width="20px" title="该商品为自发商品"/>
+					</if>	
+    				<if condition="$vo.aftersales_status neq 'NO_APPLY'">
+						<img src="__PUBLIC__/images/shouhou.png"  width="20px" title="有售后"/>
+    				</if>					
+		      		<if condition="$vo.disabled eq 1">
+			      		<span class="label radius">已取消</span>
+			      	<else/>
+				      	<notempty name="vo.sendnum">
+				      		<span class="label label-primary radius">已发货</span>
+				      	</notempty>
+		      		</if>	
+			      	{$vo.title}
+			      </label>
+					<p class="zihui"><saml>数量：</saml><strong style="color: #5a98de;">{$vo.num}件</strong></p>
+				      <notempty name="vo.spec_nature_info">
+							<p class="zihui"><small>规格：</small><strong style="color: #5a98de;">{$vo.spec_nature_info}</strong></p>
+				      </notempty>
+		        	<p>
+		        		<notempty name="vo.to_stork_mark">
+			        		<small style="color:#666;">备货时备注：{$vo.to_stork_mark}</small>
+		        		</notempty>
+		        	</p>	
+        		<div style="border-bottom: 1px #ea8010 solid;">&nbsp;</div>
+			  </volist>
+		  </div>
+		  <div style="padding: 10px 100px;">
+		    <div class="row cl">
+		      <label class="form-label col-2">配送模板：</label>
+				<select class="select-box" style="width:250px;" disabled="disabled">
+	          	  	<option value="0">快递</option>' ;
+				</select>	      	
+		    </div>	 
+			<input type="hidden" value="{$info.tid}" name="tid"/>
+		    <div class="row cl" style="padding-top: 10px;">
+		      <label class="form-label col-2">物流公司：</label>
+				<select id="catone" name="logId" class="select-box" style="width:250px;">
+					<volist name="express" id="express">
+	          	  		<option value="{$express.corp_id}">{$express.corp_name}</option>
+					</volist>
+				</select>	      	
+		    </div>	
+		    <div class="row cl" style="padding-top: 10px;">
+		      <label class="form-label col-2">配送单号：</label>
+		      	<input  name="logiNo" class="common-text required" id="title" placeholder="请输入配送运单号" style="width:250px;"  value="" type="text">	
+		    </div>	
+		    <div class="row cl" style="padding: 20px 28%;">
+		      <div class="col-9 col-offset-2">
+		        <input class="btn btn-primary radius" value="&nbsp;&nbsp;确认发货&nbsp;&nbsp;" type="submit">
+		      </div>
+		    </div>
+		</form>   
+		</div>	
+	 </div>	
+	
+
+</div>
+<!--/main-->
+</div>
+</body>
+</html>

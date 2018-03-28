@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>管理员列表</title>
+</head>
+<body>
+<form action="{:U('Gift/addCard')}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="addCardForm">
+    <div class="row cl">
+      <label class="form-label col-4"><span class="c-red">*</span>主题名称：</label>
+      <div class="formControls col-5">
+        <input type="text" class="input-text" value="" placeholder="请输入祝福主题"  name="blessTitle" datatype="*1-8" nullmsg='必填' errormsg="1~8个字符">
+      </div>
+      <div class="col-3"> </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-4"><span class="c-red">*</span>祝福语：</label>
+      <div class="formControls col-5">
+        <textarea class="textarea" placeholder="说点什么..." datatype="*" nullmsg='必填' name="blessWord"></textarea>
+      </div>
+      <div class="col-3"> </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-4"><span class="c-red">*</span>贺卡图片：</label>
+      <div class="formControls col-5"> 
+      	<span class="btn-upload form-group">
+		  <input class="input-text upload-url radius" type="text" name="uploadfile-1" id="uploadfile-1" readonly style="width:215px">
+		  <a href="javascript:void();" class="btn btn-primary radius"><i class="iconfont">&#xe642;</i> 浏览文件</a>
+		  <input type="file" multiple name="cardfile" class="input-file" datatype="*" nullmsg='必须选择'>
+		</span>
+       </div>
+       <div class="col-3"> </div>
+    </div>
+    <!-- 
+    <div class="row cl">
+      <label class="form-label col-4">排序：</label>
+      <div class="formControls col-1">
+        <input type="text" class="input-text" value="5" id="catSort" name="catSort" style="width: 35px;" datatype=" /^([1-9]{1,2}|100)$/" ignore="ignore" errormsg="请输入1~100数字">
+      </div>
+      <div class="col-7"> </div>
+    </div>
+     -->
+    <div class="row cl">
+      <div class="col-5 col-offset-5">
+        <input class="btn btn-primary radius" id="submitForm" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" onclick="return false;">
+      </div>
+    </div>
+  </form>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/Validform/5.3.2/Validform.min.js"></script>
+  <!-- 
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+ -->
+ <script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+ <script type="text/javascript">
+//提交添加表单
+$("#addCardForm").Validform({
+	btnSubmit:"#submitForm",
+	tiptype:2
+});
+ </script>
+ </body>
+ </html>

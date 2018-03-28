@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>新人礼遇</title>
+    <link rel="stylesheet" href="/shop/Home/View/Activity/BenefitLife/home.css"/>
+</head>
+<body>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>	
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<img class="modal-section" src="/shop/Home/View/Activity/BenefitLife/img/beijing_02_01.png" alt=""/>
+    <div class="Dragon-parent">
+        <img class="children-img" src="/shop/Home/View/Activity/BenefitLife/img/01.png" alt=""/>
+    </div>
+<foreach name="itemArr" item="item">
+	<div class="commodity-content">
+		<foreach name="item" item="vo" key="i">
+		    <div class="commodity-content-a <eq name='i' value='0'>a-first</eq>">
+		        <div class="commodity-content-body">
+	   			 	<a href="http://www.lishe.cn/shop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" target="_blank" class="minHeight" style="display: block;">
+		           		 <img src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.',$itemInfo[$vo]['image_default_id']))}" alt=""/>
+			        </a>
+		            <p title="{$itemInfo[$vo]['title']}">{$itemInfo[$vo]['title']}</p>
+		            <p><span class="fl p-children-first">￥{:sprintf("%1.2f", $itemInfo[$vo]['price'])}</span><span class="fr p-children-last">{$itemInfo[$vo]['price']*100}积分</span></p>
+		            <p class="children-btn">
+	   			 		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" target="_blank">
+		               	 	<span class="children-btn-first">立即抢</span>
+		               </a>
+		               <a href="javascript:void(0)" class="add_to_cart"  data-itemId="{$itemInfo[$vo]['item_id']}" data-shopId="{$itemInfo[$vo]['shop_id']}" >
+			               <span class="children-btn-last">加入购物车</span>
+		               </a>
+		            </p>
+	            </div>
+		    </div>
+		</foreach>
+	</div>
+</foreach>
+
+<div class="comm-btn">
+    <a class="comm-btn-top" href="javascript:scroll(0,0)"><img src="/shop/Home/View/Activity/BenefitLife/img/BACK@2x.png" alt=""/></a>
+	<a class="comm-btn-top" href="http://www.lishe.cn/shop.php" target="_blank" style="margin-left: 35px;"><img src="/shop/Home/View/Activity/BenefitLife/img/GO@2x.png" alt=""/></a>
+</div>
+<div class="xinyi-shopping">
+	<a href="http://www.lishe.cn/shop.php" target="_blank">
+		<p class="xinyi-shopping-mall">心意商城</p>
+	</a>
+	<a href="http://www.lishe.cn/shop.php/Order/Cart" target="_blank">
+	    <p class="xinyi-shopping-position">
+	        <img class="xinyi-shopping-nthF" src="/shop/Home/View/Activity/BenefitLife/img/Shopping-Cart-icon@2x.png" alt=""/>
+	        <img class="xinyi-shopping-nthL" src="/shop/Home/View/Activity/BenefitLife/img/Number-red@2x.png" alt=""/>
+	        <span class="xinyi-shopping-sort" id="cart_number">0</span>
+	    </p>
+	</a>
+</div>
+</body>
+<script>
+	$(function(){
+		updateCartNum();
+	});
+	//加入购物车
+    $(".add_to_cart").click(function(){
+        //商品id
+        var itemId = $(this).attr('data-itemId');//商品id
+        //购买数量
+        var shopId = $(this).attr('data-shopId');//商品id
+        //库存id
+        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+			if(data['code'] == 0){
+				window.open('http://www.lishe.cn/shop.php/Info/index/itemId/'+itemId);
+				return false;
+			}else if(data['code'] == 1){
+				addCart(itemId,data['skuId'],shopId);
+			}
+        	
+        });
+
+    });	
+    function addCart(itemId,skuId,shopId){
+    	var quantity = 1;
+    	var jd_ids = '19_1607_3155_0';
+         $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+                if (res[0] == 1) {
+                    updateCartNum();               
+                }else{
+                	alert(res[1]);
+                }
+            }
+        });   	
+    }
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Info/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $("#cart_number").text(data);
+            }
+        });
+	}    
+</script>
+</html>

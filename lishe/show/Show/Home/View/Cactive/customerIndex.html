@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/card.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<title>礼品卡激活</title>
+</head>
+
+<body>
+<if condition="$templete.templete_header eq 'commonHeader'">
+	<include file="Public/commonHeader"/>
+<elseif condition="$templete.templete_header eq 'header'"/>
+	<include file="Public/header"/>
+</if>
+
+	
+<div class="Ctitle">积分卡兑换</div>
+<!--tab切换-->
+ 
+ <div id="outer">
+    <ul id="tab" style="display:block;">
+  	
+    </ul>
+    <div id="content">
+        <ul style="display: block;">
+            <div id="dh1">
+            	<div class="ctFrom">
+	                <div class="ctUser">手机号：</div> 
+	               <div class="ctput"><input type="text" id="khphone"></div>
+	               <div class="ctErro" id="msgkhphone"></div> 
+	            </div>
+	            <div class="ctFrom">
+	               <div class="ctUser">积分卡卡号：</div> 
+	               <div class="ctput"><input type="text" id="khcart"></div>
+	               <div class="ctErro" id="msgkhcart"></div> 
+	            </div>  
+	            <div class="ctFrom">
+	               <div class="ctUser">卡密：</div> 
+	               <div class="ctput"><input type="password" id="khcartpass"></div>
+	               <div class="ctErro" id="msgkhpass"></div> 
+	            </div> 
+	            <div style="clear:both;"></div>
+	            <p class="ctBtn"><a href="javascript:void(0);" onclick="kuexchange()"><img src="__PUBLIC__/companyShow/images/ctBtn.png"></a></p>           	
+            </div>
+
+            <div class="ctLayou" style="display: none;" id="reg1">
+               <p class="ctp">注册该账户</p>
+                 <div class="ctFrom">
+                   <div class="ctUser">登录密码：</div> 
+                   <div class="ctput"><input type="password" id="khpass"></div>
+                   <div class="ctErro" id="msgkhre"></div> 
+                </div>  
+                <div class="ctFrom">
+                   <div class="ctUser">重复登录密码：</div> 
+                   <div class="ctput"><input type="password" id="khpassword"></div>
+                   <div class="ctErro"  id="msgkhres"></div> 
+                </div> 
+	           <div style="clear:both;"></div>
+	            <p class="ctBtn"><a href="javascript:void(0);" onclick="khsetpass()"><img src="__PUBLIC__/companyShow/images/finished.png"></a></p>
+           </div>  
+        </ul>
+        <!--tab2-->
+<script>
+  window.cardnumber="";
+  window.cardpwd="";
+  window.phonenumber="";
+	$(function(){
+		$(".close").on('click',function(){
+			layer.closeAll();
+		});
+	});
+	//客户单击兑换
+	function kuexchange(){
+		var phone=$("#khphone").val().trim();
+		var cart=$("#khcart").val().trim();
+		var pass=$("#khcartpass").val().trim();
+		var p = /^1[3-8]\d{9}$/gi ;
+		if(phone ==""){
+			$("#msgkhphone").text("＊请输入手机号!");
+			return false;
+		}else if(!p.test(phone)){
+			$("#msgkhphone").text("＊请输入正确的手机号!");
+			return false;
+		}else if(cart ==""){
+			$("#msgkhcart").text("＊请输入礼品卡号!");
+			return false;
+		}else if(pass ==""){
+			$("#msgkhpass").text("＊请输入礼品卡密!");
+			return false;
+		}else{
+			$(".ctErro").text("");
+			var urls="{:U('Home/Cactive/customerCheckActivate')}";
+			$.ajax({
+				type:"post",
+				url:urls,
+				data:'cobj=1&mobile='+phone+'&card='+cart+'&cpwd='+pass,
+				success:function(data){
+					if(data){
+						var datas=eval(data);
+						if(datas[0]==100){
+							$("#congzhires").text(datas[1]);
+							$('#tourl').attr('href',datas[2]);
+						}else if(datas[0]==1){
+							//注册用户设置密码
+							$("#congzhires").text(datas[1]);
+							$("#dh1").hide();
+							$("#reg1").show();
+							cardnumber=cart;
+							cardpwd=pass;
+							phonenumber=phone;							
+						}else{
+							$("#congzhires").text(datas[1]);
+						}
+						var showThis="tankCard";
+						if(datas[0]!=100 || datas[0]!=1){
+							 showThis="tankCard2";
+							 $("#failres").text(datas[1]);
+						}
+                        layer.open({
+            				type: 1,
+                            title:false,
+                            area: ['auto', 'auto'],
+                            closeBtn: 0,
+                            shadeClose: true, 
+                            skin: 'layui-layer-nobg',
+                            content: $("#"+showThis)
+                        });	
+                        
+					}
+				}
+				
+			});
+		}
+		
+	}
+	//客户注册设置登录密码
+	function khsetpass(){
+		var pass=$("#khpass").val().trim();
+		var passw=$("#khpassword").val().trim();		
+		if(pass ==""){
+			$("#msgkhre").text("＊请输入设置的密码!");
+			return false;
+		}else if(passw ==""){
+			$("#msgkhres").text("＊请输入设置的密码!");
+			return false;
+		}else if(pass !=passw){
+			$("#msgkhre").text("＊两次输入的密码不一致!");
+			$("#msgkhres").text("＊两次输入的密码不一致!");
+			$("#khpass").val('');
+			$("#khpassword").val('');
+			return false;
+		}else if(pass.length <6 ){
+			$("#msgkhre").text("＊密码的长度至少六位!");
+			$("#khpass").val('');
+			$("#khpassword").val('');			
+			return false;
+		}else{
+			//注册
+			$(".ctErro").text("");
+			var urls="{:U('Home/Cactive/customerDoSetPwd')}";
+			$.ajax({
+				type:"post",
+				url:urls,
+				data:'cobj=1&pwd='+pass+'&mobile='+phonenumber+'&cpwd='+cardpwd+'&card='+cardnumber,
+				success:function(data){
+					if(data){
+						var datas=eval(data);
+						var showThis="tankCard";
+						if(datas[0]==1){
+							//注册用户设置密码
+							$("#congzhires").text(datas[1]);
+							$('#tourl').attr('href',datas[2]);
+						}else if(datas[0]==0){
+							 $("#failres").text(datas[1]);
+							 showThis="tankCard2";
+							$('#tourl').attr('href',"{:U(Home/Cactive/index)}");
+						}else{
+							 $("#failres").text(datas[1]);
+							 showThis="tankCard2";
+						}
+                        layer.open({
+            				type: 1,
+                            title:false,
+                            area: ['auto', 'auto'],
+                            closeBtn: 0,
+                            shadeClose: true, 
+                            skin: 'layui-layer-nobg',
+                            content: $("#"+showThis)
+                        });	
+                        
+					}
+				}
+				
+			});
+			
+		}
+
+	}
+</script>        
+       
+    </div>
+    
+</div> 
+  	
+
+  
+  
+  
+  
+  <style type="text/css">
+    .layui-layer{box-shadow:none;}
+  </style>
+  <!--弹出层--> 
+  
+     <div id="tankCard" style="display:none;">
+         <p class="points" id="congzhires">恭喜您，充值成功！</p>
+         <p class="ctBtn2"><a href="javascript:void(0)" id="tourl" class="close"><img src="__PUBLIC__/companyShow/images/crsure.png"></a></p>
+     </div>
+     
+     
+     <!--弹出层2--> 
+     <div id="tankCard2" style="display:none;">
+         <p class="points" id="failres">恭喜您，充值成功！</p>
+         <p class="ctBtn2"><a href="javascript:void(0)" class="close"><img src="__PUBLIC__/companyShow/images/crsure.png"></a></p>
+     </div>
+  <!--tab切换-->
+  <!--tab切换-->
+<script>
+	$(function(){
+		window.onload = function()
+		{
+			var $li = $('#tab li');
+			var $ul = $('#content ul');
+						
+		    $('#tab li').eq(1).find('.img-hove').show().siblings('.img-old').hide();				
+			$li.click(function(){
+				$('.img-hove').hide();
+		        $('.img-old').show();
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+				$(this).find('.img-hove').show();
+			    $(this).find('.img-old').hide();
+			})
+		}
+	});
+</script>    
+
+<if condition="$templete.templete_footer eq 'commonFooter'">
+	<include file="Public/commonFooter"/>
+<elseif condition="$templete.templete_footer eq 'footer'"/>
+	<include file="Public/footer"/>
+</if>
+
+
+</body>
+</html>

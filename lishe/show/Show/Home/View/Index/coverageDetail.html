@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/mediaDes.css">
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<title>媒体报道-{$cname}</title>
+</head>
+<body>
+<!--头部-->
+<include file="Public/header"/>
+ <div style="clear:both;"></div>
+ <div class="medDes">
+     <div class="sumLeft">
+        <div class="left-top">
+        	
+        <if condition="$type gt 0">
+           <p class="let-p">新闻中心</p>
+           <ul>
+              <li class="
+               	<if condition="$type eq 1">
+              			slect
+              		<else/>
+              			left-li
+              	</if>             	
+              	"><a href="{:U('Home/Index/industry')}">行业聚焦</a></li>
+              <li  class="
+              	<if condition="$type eq 2">
+              			slect
+              		<else/>
+              			left-li
+              	</if>
+              	
+              	"><a href="{:U('Home/Index/coverage')}">媒体报道</a></li>
+              <li class="
+               	<if condition="$type eq 3">
+              			slect
+              		<else/>
+              			left-li
+              	</if>             	
+              	
+              	"><a href="{:U('Home/Index/notice')}">企业公告</a></li>
+           </ul>
+           
+           
+         <else/>  
+          <p class="let-p">伙伴动态</p>
+           <ul>
+               <li  class="
+              	<if condition="$type eq -1">
+              			slect
+              		<else/>
+              			left-li
+              	</if>              	
+               	
+               	"><a href="{:U('Home/Index/activity')}">活动回顾</a></li>
+              <li class="
+              	<if condition="$type eq -2">
+              			slect
+              		<else/>
+              			left-li
+              	</if>              	
+              	
+              	"><a href="{:U('Home/Index/important')}">头号人物</a></li>
+              <li  class="left-li"><a href="{:U('Home/Index/super')}">超级新人王</a></li>
+              <li class="left-li" ><a href="{:U('Home/Index/birthday')}">月度寿星</a></li>    
+           </ul>
+         </if>  
+           
+        </div>
+        <div class="left-bom">
+			<!--推荐阅读-->
+			<include file="Index/rememberRead"/>
+			<!--推荐阅读-->
+        </div>
+     </div>
+   <!--右边-->
+    <div class="medRight">
+        <p class="desR-p">{$newsInfo.title}</p>
+        <p class="desR-time">
+        	<notempty name="newsInfo.author">
+        		{$newsInfo.author}
+        		<else/>
+        		{$cname}
+        	</notempty>
+        	
+        	   {$newsInfo.creat_time}</p>
+         	<notempty name="newsInfo.review_category">
+	           <p class="desR-time">
+	        		{$newsInfo.review_category}
+	        	</p>
+        	</notempty>        
+     
+         	<notempty name="newsInfo.vice_title">
+	           <p class="desR-time">
+        			{$newsInfo.vice_title}
+    			</p>
+        	</notempty>       	   
+        <p class="desR-des">{$newsInfo.abstract} </p>
+      	<empty name="newsInfo.vice_title">
+      	  <p class="desR-pt"><img src="{$img}{$newsInfo.pic}"></p>
+    	</empty>            
+        
+        <div class="desR-dl" style="width:90%; margin: 20px auto;display: block;font-size:12px;line-height: 22px">{$newsInfo.content}
+        <div style="width: 100%; clear: both;"></div>
+        </div>
+ </div>
+ </div>
+ 
+ 
+ <div style="clear: both;"></div>   
+ <include  file="Public/footer"/>
+</body>
+</html>

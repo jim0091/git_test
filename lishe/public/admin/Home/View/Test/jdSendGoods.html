@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script type="text/javascript" src="/shop/Home/View/Public/js/jquery.js"></script>
+<title>同步京东发货状态</title>
+<if condition="$tid neq '' && $jdtid neq ''">
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.get("/admin.php/Order/sendGoodsByJd/orderId/{$jdtid}/tid/{$tid}", function(result){
+				$('#msg').html(result);
+				setTimeout("window.location.reload();",3000);
+	    	}); 
+		});
+	</script>
+</if>
+</head>
+<body>
+<div style="width:60%; margin:50px auto;line-height: 30px;">
+	正在执行：{$tid}<br />
+	<div id="msg"></div>
+</div>
+</body>
+</html>

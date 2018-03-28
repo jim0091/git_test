@@ -1,0 +1,192 @@
+
+<include file="head" />
+    <!--/sidebar-->
+<script type="text/javascript" src="__PUBLIC__/js/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js"></script>
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">代发订单</span></div>
+    </div>
+    <div class="search-wrap">
+        <div class="search-content" style="padding: 0px 30px;">
+		<form action="{:U('ActivityOrder/index')}" method="get" id="serach">
+			<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+			<div class="product-tools">
+				<div class="search">
+					<label>支付时间：</label>
+					<label>
+				<input type="text" onfocus="WdatePicker()" value="{$searchData.startTime}" name="startTime" id="datemin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onfocus="WdatePicker()" value="{$searchData.endTime}" name="endTime" id="datemax" class="input-text Wdate" style="width:120px;">
+					<label>订单号：</label>
+					<label>
+					<input type="text" name="tid"  placeholder="订单号" style="width:150px" class="input-text" value="{$searchData.tid}" >
+					</label>							
+					<label>商品：</label>
+					<label>
+					<input type="text" name="goods"  placeholder="商品名称" style="width:150px" class="input-text" value="{$searchData.goods}" >
+					<button onclick="serach()" class="btn btn-success radius" ><i  class="Hui-iconfont"></i> 搜索</button>						
+					</label>
+				</div>
+			</div>
+			</form>	            
+        </div>
+    </div>
+    <div class="result-wrap">
+            <div class="result-title">
+                <div class="result-list">
+                	<strong style="float: left;color: #5a98de;">共{$number}条</strong>
+					<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px;float: right;" onclick="exportExcel()" class="Hui-iconfont">
+						订单导出到Excel
+					</a>
+                </div>
+            </div>
+            <div class="result-content">
+                <table class="result-tab" min-width="100%">
+                    <tr>
+						<td align="center" width="10%">订单号</td>
+						<td align="center">商品名称/规格/价格/数量</td>
+						<td align="center" width="26%">收货信息</td>
+						<td align="center" width="12%">下单/支付时间</td>
+						<td align="center" width="8%">售后类型</td>
+						<td align="center" width="6%">操作</td>
+                    </tr>
+					<volist name="list" id="order">
+					<tr style="line-height: 25px;">
+						<td class="checkboxs">
+							<span style="cursor:pointer;">{$order.atid}</span>	
+						</td>
+						<td align="left">
+							<volist name="order.items" id="item">
+								<if condition="$i neq 1">
+									<div style="border-bottom: 1px #ddd solid;">&nbsp;</div>
+								</if>
+								<div class="col-12" style="padding-top: 5px;">
+								<div class="col-2" style="float: left;padding-right: 10px;">
+									<img src="{$item.item_img}_t.{:end(explode('.',$item['item_img']))}" width="60px" style="max-height: 60px;overflow: hidden;"  />
+								</div>
+								<div class="col-10">
+									<gt name="item.sendnum" value="0">
+										<img src="__PUBLIC__/images/fahuo.png"  width="20px" title="该商品已发货"/>
+									</gt>									
+									<if condition="$item.aftersales_status neq 'NO_APPLY'">
+										<img src="__PUBLIC__/images/shouhou.png"  width="20px" title="{$order.serviceStatus}"/>
+									</if>
+										{$item.item_name}
+									<br />
+								      <notempty name="item.spec_nature_info">
+										规格：<strong style="color: #5a98de;">{$item.spec_nature_info}</strong><br />
+							     	 </notempty>
+									价格：<strong style="color: #5a98de;">￥{$item.cost_price}</strong>
+									数量：<strong style="color: #5a98de;">{$item.num}件</strong>
+								</div>
+								</div>
+							</volist>
+						</td>
+						<td align="left">
+							{$order.receiver_name}<br/>
+							{$order.receiver_mobile}<br />
+							{$order['receiver_state']}{$order['receiver_city']}{$order['receiver_district']}{$order['receiver_address']}
+						</td>
+						<td align="center">
+							<notempty name="order.creat_time">
+								{$order['creat_time']|date="Y-m-d H:i:s",###}
+							</notempty>
+							<br />
+							<notempty name="order.pay_time">
+								{$order['pay_time']|date="Y-m-d H:i:s",###}
+							<else/>
+								无
+							</notempty>
+							
+						</td>
+
+						<td>
+							{$order.serviceStatus}
+						</td>						
+						<td align="center">
+							<!--详情-->
+							<a href="javascript::" onclick="layer_show('订单:{$order.tid}订单详情','{:U('ActivityOrder/detail/',array('tid'=>$order['atid']))}','1','800','500')">						 	
+								<span class="label label-success radius overbtn">详情</span>
+							</a>							
+							<!--详情-->
+							
+
+							<!--发货-->
+							<?php 
+					 			foreach($order['items'] as $key=>$value){
+					 				if($value['sendnum'] == 0 && $value['disabled']==0){
+					 					if(in_array($value['aftersales_status'],array('NO_APPLY','CANCEL_APPLY','SELLER_REFUSE'))){
+					 				?>
+						 		<br />		
+									<in name="order.status" value="IN_STOCK,WAIT_BUYER_CONFIRM_GOODS,WAIT_SELLER_SEND_GOODS">
+										<a href="javascript::" onclick="layer_show('订单:{$order.tid}发货','{:U('ActivityOrder/sendGoods/',array('tid'=>$order['atid']))}','1','800','500')">						 	
+											<span class="label label-success radius overbtn" style="margin-top: 10px;">发货</span>
+										</a>
+									</in>	
+							<?php 
+								break;
+								}
+							}
+							} ?>
+							<!--发货-->	
+						</td>
+					</tr>
+					</volist>					
+
+                </table>
+                <div class="list-page">
+                    {$page}
+                </div>
+            </div>
+    </div>
+</div>
+<!--/main-->
+</div>
+</body>
+<script>
+    layui.use('layer', function(){
+    });
+    function layer_show(title,url,w,h){
+        if (title == null || title == '') {
+            title=false;
+        };
+        if (url == null || url == '') {
+            url="404.html";
+        };
+        if (w == null || w == '') {
+            w=800;
+        };
+        if (h == null || h == '') {
+            h=($(window).height() - 50);
+        };
+        layer.open({
+            type: 2,
+            area: ['800px', '500px'],
+            fix: false, //不固定
+            maxmin: true,
+            shade:0.4,
+            title: title,
+            content: url
+        });
+    }
+    function goodsDetail(goodsId){
+        layer.open({
+            title: "aaa", content: "bbb"
+        });
+    }
+	//搜索
+	function serach(){
+		$("#execlType").val("");
+		$("#serach").submit();
+		
+	}	
+	//导出execl
+	function exportExcel(){
+		$("#execlType").val("exportExcel");
+		$("#serach").submit();
+		
+	}
+</script>
+</html>

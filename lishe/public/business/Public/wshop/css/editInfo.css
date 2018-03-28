@@ -1,0 +1,11 @@
+.content { margin-bottom:40px; margin-top:40px;width:100%; background:#eaeaea; padding:10px 0px;}
+.contentTitle{ width:90%; margin:0px auto;font:normal 14px/40px Tahoma,Verdana, Geneva, "宋体";}
+
+.editInfoBox{ display:block; width:90%; margin:0px auto;}
+.editInfoBox ul{ display:block; background-color:#FFF; border:1px #999 solid;}
+.editInfoBox li { clear:both; padding:5px 0px;}
+.editInfoBox li label{ display:block; float:left; width:25%; font:normal 14px/40px  Tahoma,Verdana, Geneva, "宋体"; text-align:right;}
+.editInfoBox li input{ height:40px; line-height:40px; font:normal 14px  Tahoma,Verdana, Geneva, "宋体"; width:67%; margin-left:2%; color:#111; border:none; outline:none; float:left;}
+.editInfoBox a.button { width:100%; margin:10px auto; display:block; border:1px #900 solid; background-color:#C00; color:#FFF;font:normal bold 14px/30px Tahoma,Verdana, Geneva, "宋体";height:45px; line-height:45px; text-align:center;}
+.editInfoBox a.button:hover{ text-decoration:none;}
+.userName{width:85%; margin:0px auto; font:normal bold 14px/40px  Tahoma,Verdana, Geneva, "宋体";}

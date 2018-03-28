@@ -1,0 +1,52 @@
+<style>
+	ul li a:hover{
+		color:white;
+	}
+</style>
+	
+<!--头部-->
+  <div class="headerlayout">
+	 <div class="header">
+		   <div class="heapt"><img src="__PUBLIC__/companyShow/images/Indexlogo.png"></div>
+		   <div class="heaLeft">
+			 <ul>
+			   <li><a href="/" target="_blank">礼舍首页</a></li>
+			   <li><a href="{$img}/shop.php" target="_blank">心意商城</a></li>
+			   <li><a href="{$img}/site/help.html" target="_blank">礼舍帮帮</a></li>
+
+			 </ul>
+		   </div>
+		   <div class="heaRight">
+			 <ul>
+			 <if condition="empty($userName)">
+			   <li><a href="{$img}/shop.php/Sign">会员登录</a></li>
+			<else/>
+				<li><a href="/member-index.html">{$userName}</a></li>
+			</if>
+			
+			   <li> <a href="{$img}/shop/" target="_blank">商家中心</a></li>
+			   <li> <a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a></li>
+			 </ul>
+		  </div>
+		  <div style="clear:both;"></div>
+	 </div>
+</div>	 
+ <div class="headerbottom">
+      <div class="headerbottomCt">
+          <div class="headerbottomLeft">
+             <ul>
+               <li class="hederbom"><img src="__PUBLIC__/companyShow/images/hdlogo.png"></li>
+               <li class="hederbom2">企业专属福利专家<br/><span>已认证</span></li>
+             </ul>
+          </div>
+          <div class="headerbottomRight">
+             <ul>
+                <li class="hederbomRt">一企一舍咨询热线</li>
+                <li class="hederbomRt2"><img src="__PUBLIC__/companyShow/images/hephone.png">400-883-9916</li>
+             </ul>
+          </div>
+      </div>
+      <div style="clear:both;"></div>
+ </div>
+
+<!--头部完-->

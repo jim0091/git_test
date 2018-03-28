@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼舍帮帮-礼舍,情感的交流</title>
+	<meta name="keywords" content="礼舍,礼舍网,福利,企业福利,礼品">
+	<meta name="description" content="礼舍网，一站式高端礼品采购、定制电子商务平台，致力于为客户提供创新的顾问式、定制化融合礼品解决方案的服务。">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="./css/reset_css.css">
+	<link rel="stylesheet" href="./css/head_bottom.css">
+	<link rel="stylesheet" href="./css/help.css">
+	<script src="./js/jQuery.v1.8.3.min.js"></script>
+	<script src="./js/jquery.cookie.js"></script>
+	<script src="./js/help.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){	
+		$.get("/api.php/Api/getLoginInfo", function(result){
+			var account=eval(result);
+			if(account[0]>0){
+				$('#loginBox').hide();
+				$('#memberBox').show();
+				$('#userName').text(account[3]);
+			}
+		});
+		var cartNum=$.cookie('CARTNUMBER');
+		if(cartNum==undefined){
+			cartNum=0;
+		}
+		$('#cart_number').text(cartNum);
+	}); 
+	</script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="/" class="logo1"></a>
+			<ul>
+				<li class="nav_link"><a href="/">礼舍首页</a></li>
+				<li class="nav_link"><a href="/shop.html" target="_blank">心意商城</a></li>
+				<li class="nav_link current"><a href="/site/help.html">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<li id="loginBox"><a href="/shop.php/Sign">会员登录</a></li>
+           		<li id="memberBox" style="display: none"><a href="/member-index.html" id="userName"></a></li>
+				<li><a href="http://zs.lishe.cn" target="_blank">商家中心</a></li>
+				<li><a href="http://v.lishe.cn/company/login.html"  target="_blank">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 头部搜索 -->
+	<div class="head">
+		<div class="wrap">
+			<a href="/" class="logo2"></a>
+			<div class="search_bar">
+				<form action="/shop.php/Items/itemList" method="get" id="goods_search">
+					<input type="text" name="keyword" class="search_text" placeholder="综合搜索" onfocus="this.placeholder=''" onblur="this.placeholder='综合搜索'">
+					<a class="search_button" href="javascript:void(0);"></a>
+				</form>
+				<ul class="search_commend">
+					<li><a href="/activity/appliances/?ssgzj0411" target="_blank">家电特惠活动</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/662" target="_blank">坚果炒货</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=饼干" target="_blank">办公室下午茶</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/650" target="_blank">天长地酒</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/100" target="_blank">智能厨电</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=锅" target="_blank">厨房锅具</a></li>
+				</ul>
+			</div>
+			<div class="my_cart">
+				<a class="cart" href="/cart.html">我的购物车</a>
+				<div class="right_arrow"></div>
+				<div id="cart_number"></div>
+			</div>	
+		</div>
+	</div>
+
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 左侧导航条 -->
+			<div class="help_center">
+				<div class="help_center_head">帮助中心</div>
+				<div class="left_nav">
+					<ul>
+						<li><a href="javascript:;">服务条款</a></li>
+						<li><a href="javascript:;">操作指南</a></li>
+						<li><a href="javascript:;">礼舍简介</a></li>
+						<li><a href="javascript:;">常见问题</a></li>
+						<li><a href="javascript:;">人员招聘</a></li>
+						<li><a href="javascript:;">合作伙伴</a></li>
+						<li><a href="javascript:;">联系我们</a></li>
+						<li><a href="javascript:;">正章干洗</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content">
+				<div class="content_inner">
+					<!-- 服务条款 -->
+					<div class="pages" id="0">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">礼舍科技服务条款</p>
+						</div>
+						<div class="help_details">
+							<p>本协议是您与礼舍科技网站（简称"本站"，网址：www.lishe.cn）所有者（以下简称为"礼舍科技"）之间就礼舍科技网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击"同意并继续"按钮后，本协议即构成对双方有约束力的法律文件。</p>
+							<p class="second_title">第一条 本站服务条款的确认和接纳</p>
+							<p>
+								1.1&nbsp;&nbsp;本站的各项电子服务的所有权和运作权归礼舍科技所有。用户同意所有注册协议条款并完成注册程序，才能成为本站的正式用户。用户确认：本<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;协议条款是处理双方权利义务的契约，始终有效，法律另有强制性规定或双方另有特别约定的，依其规定。<br>
+								1.2&nbsp;&nbsp;用户点击同意本协议的，即视为用户确认自己具有享受本站服务、下单购物等相应的权利能力和行为能力，能够独立承担法律责任。<br>
+								1.3&nbsp;&nbsp;如果您在18周岁以下，您只能在父母或监护人的监护参与下才能使用本站。<br>
+								1.4&nbsp;&nbsp;礼舍科技保留在中华人民共和国大陆地区法施行之法律允许的范围内独自决定拒绝服务、关闭用户账户、清除或编辑内容或取消订单的权利。
+							</p>
+							<p class="second_title">第二条 本站服务</p>
+							<p>
+								2.1&nbsp;&nbsp;礼舍科技通过互联网依法为用户提供互联网信息等服务，用户在完全同意本协议及本站规定的情况下，方有权使用本站的相关服务。<br>
+								2.2&nbsp;&nbsp;用户必须自行准备如下设备和承担如下开支：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）上网设备，包括并不限于电脑或者其他上网终端、调制解调器及其他必备的上网装置；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）上网开支，包括并不限于网络接入费、上网设备租用费、手机流量费等。
+							</p>
+							<p class="second_title">第三条 用户信息</p>
+							<p>
+								3.1&nbsp;&nbsp;用户应自行诚信向本站提供注册资料，用户同意其提供的注册资料真实、准确、完整、合法有效，用户注册资料如有变动的，应及时更新其注册<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资料。如果用户提供的注册资料不合法、不真实、不准确、不详尽的，用户需承担因此引起的相应责任及后果，并且礼舍科技保留终止用户使用<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;礼舍科技各项服务的权利。<br>
+								3.2&nbsp;&nbsp;用户在本站进行浏览、下单购物等活动时，涉及用户真实姓名/名称、通信地址、联系电话、电子邮箱等隐私信息的，本站将予以严格保密，除非<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;得到用户的授权或法律另有规定，本站不会向外界披露用户隐私信息。<br>
+								3.3&nbsp;&nbsp;用户注册成功后，将产生用户名和密码等账户信息，您可以根据本站规定改变您的密码。用户应谨慎合理的保存、使用其用户名和密码。用户若<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发现任何非法使用用户账号或存在安全漏洞的情况，请立即通知本站并向公安机关报案。<br>
+								3.4&nbsp;&nbsp;用户同意，礼舍科技拥有通过邮件、短信电话等形式，向在本站注册、购物用户、收货人发送订单信息、促销活动等告知信息的权利。<br>
+								3.5&nbsp;&nbsp;用户不得将在本站注册获得的账户借给他人使用，否则用户应承担由此产生的全部责任，并与实际使用人承担连带责任。<br>
+								3.6&nbsp;&nbsp;用户同意，礼舍科技有权使用用户的注册信息、用户名、密码等信息，登录进入用户的注册账户，进行证据保全，包括但不限于公证、见证等。
+							</p>
+							<p class="second_title">第四条 用户依法言行义务</p>
+							<p>
+								本协议依据国家相关法律法规规章制定，用户同意严格遵守以下义务：<br>
+								（1）不得传输或发表：煽动抗拒、破坏宪法和法律、行政法规实施的言论，煽动颠覆国家政权，推翻社会主义制度的言论，煽动分裂国家、破坏国家<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;统一的的言论，煽动民族仇恨、民族歧视、破坏民族团结的言论；<br>
+								（2）从中国大陆向境外传输资料信息时必须符合中国有关法规；<br>
+								（3）不得利用本站从事洗钱、窃取商业秘密、窃取个人信息等违法犯罪活动；<br>
+								（4）不得干扰本站的正常运转，不得侵入本站及国家计算机信息系统；<br>
+								（5）不得传输或发表任何违法犯罪的、骚扰性的、中伤他人的、辱骂性的、恐吓性的、伤害性的、庸俗的，淫秽的、不文明的等信息资料；<br>
+								（6）不得传输或发表损害国家社会公共利益和涉及国家安全的信息资料或言论；<br>
+								（7）不得教唆他人从事本条所禁止的行为；<br>
+								（8）不得利用在本站注册的账户进行牟利性经营活动；<br>
+								（9）不得发布任何侵犯他人著作权、商标权等知识产权或合法权利的内容；<br>
+								用户应不时关注并遵守本站不时公布或修改的各类合法规则规定。<br>本站保有删除站内各类不符合法律政策或不真实的信息内容而无须通知用户的权利。<br>
+								若用户未遵守以上规定的，本站有权作出独立判断并采取暂停或关闭用户帐号等措施。用户须对自己在网上的言论和行为承担法律责任。
+							</p>
+							<p class="second_title">第五条 商品信息</p>
+							<p>
+								本站上的商品价格、数量、是否有货等商品信息随时都有可能发生变动，本站不作特别通知。由于网站上商品信息的数量极其庞大，虽然本站会尽最大努力保证您所浏览商品信息的准确性，但由于众所周知的互联网技术因素等客观原因存在，本站网页显示的信息可能会有一定的滞后性或差错，对此情形您知悉并理解；礼舍科技欢迎纠错，并会视情况给予纠错者一定的奖励。为表述便利，商品和服务简称为"商品"或"货物"。
+							</p>
+							<p class="second_title">第六条 订单</p>
+							<p>
+								6.1&nbsp;&nbsp;在您下订单时，请您仔细确认所购商品的名称、价格、数量、型号、规格、尺寸、联系地址、电话、收货人等信息。收货人与用户本人不一致<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;的，收货人的行为和意思表示视为用户的行为和意思表示，用户应对收货人的行为及意思表示的法律后果承担连带责任。<br>
+								6.2&nbsp;&nbsp;除法律另有强制性规定外，双方约定如下：<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）本站上销售方展示的商品和价格等信息仅仅是交易信息的发布，您下单时须填写您希望购买的商品数量、价款及支付方式、收货人、联系方<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;式、收货地址等内容；<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）系统生成的订单信息是计算机信息系统根据您填写的内容自动生成的数据，仅是您向销售方发出的交易诉求；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）销售方收到您的订单信息后，只有在销售方将您在订单中订购的商品从仓库实际直接向您发出时（ 以商品出库为标志），方视为您与销售方<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之间就实际直接向您发出的商品建立了交易关系；<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）如果您在一份订单里订购了多种商品并且销售方只给您发出了部分商品时，您与销售方之间仅就实际直接向您发出的商品建立了交易关系；<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）只有在销售方实际直接向您发出了订单中订购的其他商品时，您和销售方之间就订单中该其他已实际直接向您发出的商品才成立交易关系。<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您可以随时登录您在本站注册的账户，查询您的订单状态。<br>
+								6.3&nbsp;&nbsp;由于市场变化及各种以合理商业努力难以控制的因素的影响，本站无法保证您提交的订单信息中希望购买的商品都会有货；如您拟购买的商品，<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发生缺货，您有权取消订单。
+							</p>
+							<p class="second_title">第七条 配送</p>
+							<p>
+								7.1&nbsp;&nbsp;销售方将会把商品（货物）送到您所指定的收货地址，所有在本站上列出的送货时间为参考时间，参考时间的计算是根据库存状况、正常的处理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;过程和送货时间、送货地点的基础上估计得出的。<br>
+								7.2&nbsp;&nbsp;因如下情况造成订单延迟或无法配送等，销售方不承担延迟配送的责任：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）用户提供的信息错误、地址不详细等原因导致的；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）货物送达后无人签收，导致无法配送或延迟配送的；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）情势变更因素导致的；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）不可抗力因素导致的，例如：自然灾害、交通戒严、突发战争等。
+							</p>
+							<p class="second_title">第八条 所有权及知识产权条款</p>
+							<p>
+								8.1&nbsp;&nbsp;用户一旦接受本协议，即表明该用户主动将其在任何时间段在本站发表的任何形式的信息内容（包括但不限于客户评价、客户咨询、各类话题文<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;章等信息内容）的财产性权利等任何可转让的权利，如著作权财产权（包括并不限于：复制权、发行权、出租权、展览权、表演权、放映权、广<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;播权、信息网络传播权、摄制权、改编权、翻译权、汇编权以及应当由著作权人享有的其他可转让权利），全部独家且不可撤销地转让给礼舍科<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;技所有，用户同意礼舍科技有权就任何主体侵权而单独提起诉讼。<br>
+								8.2&nbsp;&nbsp;本协议已经构成《中华人民共和国著作权法》第二十五条（条文序号依照2011年版著作权法确定）及相关法律规定的著作财产权等权利转让书面<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;协议，其效力及于用户在礼舍科技网站上发布的任何受著作权法保护的作品内容，无论该等内容形成于本协议订立前还是本协议订立后。<br>
+								8.3&nbsp;&nbsp;用户同意并已充分了解本协议的条款，承诺不将已发表于本站的信息，以任何形式发布或授权其它主体以任何方式使用（包括但不限于在各类网<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;站、媒体上使用）。<br>
+								8.4&nbsp;&nbsp;礼舍科技是本站的制作者,拥有此网站内容及资源的著作权等合法权利,受国家法律保护,有权不时地对本协议及本站的内容进行修改，并在本站张<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;贴，无须另行通知用户。在法律允许的最大限度范围内，礼舍科技对本协议及本站内容拥有解释权。<br>
+								8.5&nbsp;&nbsp;除法律另有强制性规定外，未经礼舍科技明确的特别书面许可,任何单位或个人不得以任何方式非法地全部或部分复制、转载、引用、链接、抓取<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;或以其他方式使用本站的信息内容，否则，礼舍科技有权追究其法律责任。<br>
+								8.6&nbsp;&nbsp;本站所刊登的资料信息（诸如文字、图表、标识、按钮图标、图像、声音文件片段、数字下载、数据编辑和软件），均是礼舍科技或其内容提供<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者的财产，受中国和国际版权法的保护。本站上所有内容的汇编是礼舍科技的排他财产，受中国和国际版权法的保护。本站上所有软件都是礼舍<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科技或其关联公司或其软件供应商的财产，受中国和国际版权法的保护。
+							</p>
+							<p class="second_title">第九条 责任限制及不承诺担保</p>
+							<p>
+								9.1&nbsp;&nbsp;除非另有明确的书面说明,本站及其所包含的或以其它方式通过本站提供给您的全部信息、内容、材料、产品（包括软件）和服务，均是在"按现状 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"和"按现有"的基础上提供的。<br>
+								9.2&nbsp;&nbsp;除非另有明确的书面说明,礼舍科技不对本站的运营及其包含在本网站上的信息、内容、材料、产品（包括软件）或服务作任何形式的、明示或默<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示的声明或担保（根据中华人民共和国法律另有规定的以外）。<br>
+								9.3&nbsp;&nbsp;礼舍科技不担保本站所包含的或以其它方式通过本站提供给您的全部信息、内容、材料、产品（包括软件）和服务、其服务器或从本站发出的电<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子信件、信息没有病毒或其他有害成分。<br>
+								9.4&nbsp;&nbsp;如因不可抗力或其它本站无法控制的原因使本站销售系统崩溃或无法正常使用导致网上交易无法完成或丢失有关的信息、记录等，礼舍科技会合<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;理地尽力协助处理善后事宜。
+							</p>
+							<p class="second_title">第十条 协议更新及用户关注义务</p>
+							<p>
+								根据国家法律法规变化及网站运营需要，礼舍科技有权对本协议条款不时地进行修改，修改后的协议一旦被张贴在本站上即生效，并代替原来的协议。用户可随时登录查阅最新协议；用户有义务不时关注并阅读最新版的协议及网站公告。如用户不同意更新后的协议，可以且应立即停止接受礼舍科技网站依据本协议提供的服务；如用户继续使用本网站提供的服务的，即视为同意更新后的协议。礼舍科技建议您在使用本站之前阅读本协议及本站的公告。 如果本协议中任何一条被视为废止、无效或因任何理由不可执行，该条应视为可分的且并不影响任何其余条款的有效性和可执行性。<br>
+							</p>
+							<p class="second_title">第十一条 法律管辖和适用</p>
+							<p>
+								本协议的订立、执行和解释及争议的解决均应适用在中华人民共和国大陆地区适用之有效法律（但不包括其冲突法规则）。 如发生本协议与适用之法律相抵触时，则这些条款将完全按法律规定重新解释，而其它有效条款继续有效。 如缔约方就本协议内容或其执行发生任何争议，双方应尽力友好协商解决；协商不成时，任何一方均可向有管辖权的中华人民共和国大陆地区法院提起诉讼。
+							</p>
+							<p class="second_title">第十二条 其他</p>
+							<p>
+								12.1&nbsp;&nbsp;礼舍科技网站所有者是指在政府部门依法许可或备案的礼舍科技网站经营主体。<br>
+								12.2&nbsp;&nbsp;礼舍科技尊重用户和消费者的合法权利，本协议及本网站上发布的各类规则、声明等其他内容，均是为了更好的、更加便利的为用户和消费者提<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;供服务。本站欢迎用户和社会各界提出意见和建议，礼舍科技将虚心接受并适时修改本协议及本站上的各类规则。<br>
+								12.3&nbsp;&nbsp;本协议内容中以黑体、加粗、下划线、斜体等方式显著标识的条款，请用户着重阅读。<br>
+								12.4&nbsp;&nbsp;您点击本协议下方的"同意并继续"按钮即视为您完全接受本协议，在点击之前请您再次确认已知悉并完全理解本协议的全部内容。
+							</p>
+						</div>
+					</div>
+
+					<!-- 操作指南 -->
+					<div class="pages" id="1">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">礼舍教学操作指南</p>
+						</div>
+						<div class="guide">
+							<p>STEP 1 : 如果您是企业用户，首次登录请激活</p>
+							<img src="images/guide1.jpg" style="width:801px;">
+							<img src="images/guide2.jpg" style="width:801px;">
+							<p>STEP 2 : 输入企业为您注册的手机号，设置您所需的密码</p>
+							<img src="images/guide4.jpg" style="width:801px;">
+						</div>
+						<div class="guide">
+							<p>STEP 1 : 如果您是非企业用户，首次注册登录</p>
+							<img src="images/guide5.jpg" style="width:801px;">
+							<img src="images/guide6.jpg" style="width:801px;">
+							<p>STEP 2 : 输入有效手机号以及设置密码以及正确验证码</p>
+							<img src="images/guide7.jpg" style="width:801px;">
+							<!-- <p>STEP 5 : 看看我们的倾情推荐，发现最好的</p>
+							<img src="images/guide8.jpg">
+							<p class="last_step">STEP 6 : 参与我们的精品活动，享受更多优惠</p>
+							<img src="images/guide9.jpg">
+							<p class="last_step">STEP 7 : 买买买，选购心仪商品</p>
+							<img src="images/guide10.jpg">
+							<p class="last_step">STEP 8 : 勾选结算商品，一键去结算</p>
+							<img src="images/guide11.jpg">
+							<p class="last_step">STEP 9 : 提交订单，如果您需要新增收货地址可在此添加</p>
+							<img src="images/guide12.jpg">
+							<p class="last_step">STEP 10 : 选择账户余额积分支付或者支付宝充值积分支付，安心坐等心仪商品</p>
+							<img src="images/guide13.jpg"> -->
+						</div>
+						<br/><br/>
+						<div class="help_details">
+							<p style="margin-left:60px; font-weight:bold;color:black;">看看我们的倾情推荐，发现最好的</p>
+							<img src="images/guide8.jpg" style="width:801px; margin-left:50px; margin-top:10px;">
+							<br/><br/>
+							<p style="margin-left:60px; font-weight:bold;color:black;">参与我们的精品活动，享受更多优惠</p>
+							<img src="images/guide9.jpg" style="width:801px; margin-left:50px; margin-top:10px;">
+							<br/><br/>
+							<p style="margin-left:60px; font-weight:bold;color:black;">买买买，选购心仪商品</p>
+							<img src="images/guide10.jpg" style="width:801px; margin-left:50px; margin-top:10px;">
+							<br/><br/>
+							<p style="margin-left:60px; font-weight:bold;color:black;">勾选结算商品，一键去结算</p>
+							<img src="images/guide11.jpg" style="width:801px; margin-left:50px; margin-top:10px;">
+							<br/><br/>
+							<p style="margin-left:60px; font-weight:bold;color:black;">提交订单，如果您需要新增收货地址可在此添加</p>
+							<img src="images/guide12.jpg" style="width:801px; margin-left:50px; margin-top:10px;">
+							<br/><br/>
+							<p style="margin-left:60px; font-weight:bold;color:black;">选择账户余额积分支付或者支付宝充值积分支付，安心坐等心仪商品</p>
+							<img src="images/guide13.jpg" style="width:801px; margin-left:50px; margin-top:10px;">
+						</div>
+					</div>
+
+					<!-- 礼舍简介 -->
+					<div class="pages" id="2">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">礼舍简介</p>
+						</div>
+						<div class="intro">
+							<p style="font-weight:bold; color:black; font-size:16px;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【礼舍简介】
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;礼舍通过强大的自建系统及供应链，为每个企业提供全面而人性化的福利关怀解决方案，协助升级企业与员工关系，充分推动企业发展，同时令员工在职场关爱上得到满足，提高稳定性。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;公司全称：深圳礼舍科技有限公司<br>
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;礼舍网，一个致力于协助升级企业与员工关系的情商管理平台，为企业提供全面而人性化的福利关怀解决方案，打造互联网时代企业与员工的情感交流枢纽，提升员工幸福指数，巩固企业与员工之间的良好关系，促进企业长足发展。礼舍首次提出落实员工关系管理（Employee Relations Management,ERM）概念，并将其整合为完整的体系。礼舍由毕业于清华大学MBA、曾就职IBM的黄欣担任CEO，CTO李连钢拥有14年的技术研发及团队管理经验和6年上市公司的CIO经历，HRD彭皖寅拥有近10年HR从业经验。自上线以来，礼舍已整合顺丰、京东、滴滴、格瓦拉等行业优质资源，成功为大族激光、正章干洗、招商局等超过500家企业提供福利关怀解决方案。越来越多企业主动加入礼舍，将其作为自身的福利管理与员工关系管理参谋平台。<br>
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2013年06月14日，深圳礼舍科技有限公司在深圳市市场监督管理局南山局登记成立。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016年5月，礼舍网获得滴滴投资人王刚先生千万级天使轮融资。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017年2月，礼舍网获得滴滴投资人王刚先生4000+万级A轮融资。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017年，礼舍网长沙分公司成立杭州子公司
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017年，礼舍网长沙分公司成立杭州子公司
+							</p>
+							<p style="font-size:16px;font-weight:bold;color:black;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【礼舍文化】
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								礼舍使命：为更多企业与职场人士打造专属弹性福利关怀。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								礼舍愿景：成为互联网时代最受企业与员工欢迎的情商管理平台。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								礼舍价值观：诚信为本，用心服务，用户至上，敢于创新。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								经营理念：洞悉、专业、创新。
+							</p>
+							
+							<p style="font-weight:bold; color:black; font-size:16px;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【发展理念】
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								礼舍坚持遵从价值观，同时专注升级企业与员工的关系，为大、中、小企业打造专属交流平台。
+							</p>
+							
+							<p style="font-weight:bold; color:black; font-size:16px;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【服务原则】
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								礼舍坚守“人”、“情”、“味”服务原则，有效帮助拉近企业与员工之间的距离，为企业留住精英，为员工带来更多优质福利自主权。
+							</p>
+							
+							<p style="font-weight:bold; color:black; font-size:16px;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【礼舍优势】
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								礼舍凭借强而有力的自建后台系统与众多大牌供应商，充分满足用户多方面的商品及其他服务需求，同时保证用户安全、高效地享受礼舍带来的乐趣。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								▪ 自建庞大系统，无缝连接生活
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								▪ 强大供应链，海量优质商品随心选
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								▪ 全面的后台数据运营及统计，一目了然
+							</p>
+							
+							<p style="font-weight:bold; color:black; font-size:16px;">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【礼舍特色服务】
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								针对企业在发放员工福利问题上的困扰，礼舍通过独有的“一企一舍”ERM平台有效解决——定制场景祝福，为员工送上专属个人关怀，提供专业课程培训等服务，令企业更高效管理员工；礼舍心意商城更拥有海量优质大牌商品及虚拟服务，让员工在个人福利上拥有更多合理选择，生活更充实。
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 升华感情
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 定制祝福
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 专属关怀
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 专业培训
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ HR工具
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 海量商品
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 价格实惠
+							</p>
+							<p>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▪ 充实生活
+							</p>
+						</div>
+					</div>
+
+					<!-- 常见问题 -->
+					<div class="pages" id="3">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">常见问题</p>
+						</div>
+						<div class="Q_A">
+							<p class="second_title">账户类常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;订单提交成功后还可以修改收货信息吗？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：可以，联系客服进行修改。<br>
+								2.&nbsp;&nbsp;如何找回密码？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：当前支持通过用户名加注册邮箱的方式找回密码，如果都忘记可以联系客服找回密码。
+							</p>
+							<p class="second_title">购物类常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;商品的规格是什么？性能怎样？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：在网页内容面里都有详细的解说，如果还不清楚可以咨询客服。<br>
+								2.&nbsp;&nbsp;可以拨打客服热线订购商品吗？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：可以的。请拨打客服热线400-1188-234。<br>
+								3.&nbsp;&nbsp;如何取消订单？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：在24小时之内未付款的，我们会为您自动取消订单。<br>
+								4.&nbsp;&nbsp;如何查找商品编码？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：每个商品下都有商品编号，比如编 号：LISHE000097 你可以通过站内搜索该编号快速找到对应的礼物。<br>
+								5.&nbsp;&nbsp;为什么客服电话总是打不通？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：很抱歉，随着礼舍网的发展，客户办理的业务增多，有时候导致座席电话繁忙，我们会尽快解决这一问题，同时建议您可以避开高峰期拨打客<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服电话，或者直接进行QQ咨询。<br>
+								6.&nbsp;&nbsp;为何有时在收到商品时未同时收到发票？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：因为发票由总部统一提供，需要你在网站上自行索取，在您索取后会为您寄出，给您带来的不便还请谅解。<br>
+								7.&nbsp;&nbsp;商品包装是否有保证？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：我们所发送商品均由专人在原产品外包装上用我们专属定制的礼舍网外箱进行打包，根据您的地址，选择快递方式，将您的礼物完美送达<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对方。<br>
+								8.&nbsp;&nbsp;为什么我的订单总是无法提交成功？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：可能存在以下几种情况：<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）订单信息填写不完整<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）订单商品不能配送到您所填写的收货地址<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）网络延时以上各种情况都会在页面中弹出提示信息，可以通过修改订单信息（提示信息）或者稍后再试，即可成功提交订单<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果以上情况均没有，还是无法提交订单，请联系我们的客服人员，谢谢。<br>
+								9.&nbsp;&nbsp;在加入购物车后，是不是该商品已经被我预定了？ <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：是的。在24小时之内如果没有付款，那么这个物品将自动取消。
+							</p>
+							<p class="second_title">支付类常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;订单已提交成功，如何付款？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：您好，礼舍网支持的支付方式有以下几种，<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）在线支付（支付宝、网银在线）：请您进入“我的订单”，点击“付款”，按流程提示操作。<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）邮局汇款：订单提交成功后，请您按提示到邮局操作汇款，然后进入“我的订单”填写付款确认。<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）信用卡付款：在线分期可直接提交信用卡信息并认证。<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）银行转账<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为保证及时发货，请您在订单提交成功后24小时之内付款。<br>
+								2.&nbsp;&nbsp;在线支付支持哪些银行卡？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：中国工商银行、中国建设银行、中国农业银行、交通银行、招商银行、中国银行、中信银行、中国民生银行、兴业银行、中国光大银行、华夏<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;银行、广东发展银行、深圳发展银行等。<br>
+								3.&nbsp;&nbsp;在线支付时提示有“超过限额”，该怎么办？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：您所使用的支付卡单笔交易金额超出所在银行规定的单笔交易金额上限。 解决方法：<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）拨打相关支付卡银行电话，提高支付限额；<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）使用网站提供的支付平台（支付宝）进行支付，将钱分批存入支付平台。<br>
+								4.&nbsp;&nbsp;我登录支付宝，无法输入验证码是怎么回事？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：这种问题一般情况下是因为您没有下载并安装支持该支付方式的插件，以支付宝为例： 当您进入支付页面的时候，在浏览器的顶端会弹出：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								 “此站点可能需要下列ActiveX 控件：来自‘Alipay.com Co.,Ltd’的‘aliedit.cab’。单击此处安装”，您只需要点击该窗口，根据提示一步<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一步进行安装即可。安装完毕之后，请点按键盘上的功能键F5刷新网页。<br>
+								 5.&nbsp;&nbsp;忘记了支付宝登录密码/支付密码，怎么办？<br>
+								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：如果忘记了支付宝登录密码，请根据www.alipay.com，点击登录框旁边的“忘了密码”，按提示正确填写支付宝邮箱地址，根据系统提<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示输入密码保护问题答案，确认正确后系统会把密码信发到您的邮箱，打开密码邮件按照里面的提示再次确认您的密码保护问题的答案或<br>
+								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;证件号码，
+								 重置您的密码。如果忘记了支付宝的支付密码，可以登录您的“我的支付宝>修改e-mail地址”，点击“忘记支付密码”的按钮，<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确认支付宝邮箱，根据系统提示输入密码保护问题答案，确认正确后系统会把密码信发到您的邮箱，打开密码邮件按照里面的提示再次确认您<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;的密码保护问题的答案或证件号码，重置您的密码。注意：点击忘记登陆密码或者支付密码，密码保护问题请仔细输入,最多只能输入5次。
+							</p>
+							<p class="second_title">配送类常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;订单状态显示商品已经交给快递公司，什么时候可以给客户送达？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：在商品现货的情况下，下单后下午5点之前的订单全部当天发货，超过的第二天发货。我们承诺全场中通包邮（除了中通不到的地方或者不收<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;的物品，会选用EMS航空，顺丰）。<br>
+								2.&nbsp;&nbsp;签收时发现商品包装破损，该如何处理？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：您好，商品签收时如包装有破损，请您直接拒收；商品签收后如商品本身有问题请您及时联系我们的客服，并且拍照上传给客服，我们会尽快<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为您解决。（如果包装只是小小的毛边，并不太大的影响礼品的美观~还请手下留情~~） <br>
+								3.&nbsp;&nbsp;可以指定送货时间吗？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：目前礼舍网暂不提供指定时间段的配送服务，但是快递人员在配送前电话联系您的时候，您可以与快递人员协商您的需求。
+							</p>
+							<p class="second_title">退换货常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;如何退换货？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：客户在收到礼品时(尤其是玻璃摆件、茶具、琉璃等网站易碎品请一定要当面检查)请尽量当着快递的面检查产品有无货损，发现产品因为快递<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;问题损坏，请在签收24小时内检查并拍照，提供照片给客服，未提供相关证明我们不予退换，请谅解。由于订单量大，非质量原因产生的退<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;货费用，由客户承担，请谅解。
+							</p>
+							<p class="second_title">退款货常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;订单取消成功后多久可以收到退款？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：您好，各类型订单退款周期如下，请您参阅: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）银行卡退款：7个工作日<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）现金退款：7个工作日<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）分期订单退款：15-18个工作日<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）第三方支付：7个工作日<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）邮局汇款：7个工作日
+							</p>
+							<p class="second_title">发票类常见问题&gt;&gt;</p>
+							<p>
+								1.&nbsp;&nbsp;如何获得发票？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：一个包裹对应一张发票，发票会在您索取后为您寄出，发票金额含配送费金额，即购买时所花的金额。<br>
+								2.&nbsp;&nbsp;如何设置发票信息？ <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：发票类型（普通发票、增值税发票）、发票抬头（个人、公司），发票内容（明细、办公用品、礼品），发票抬头内容不能为空，您可选择个<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;人或公司名称。具体问题请您联系客服。客服会为您做好一系列的服务，谢谢。<br>
+								3.&nbsp;&nbsp;开发票的注意事项？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								答：（1）发票金额不能高于订单金额。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）使用积分支付的金额不开具发票；订单中使用50元（含50元）以下的余额，不开具发票，积分商品不提供发票。<br>
+								4.&nbsp;&nbsp;怎么换发票？<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：您在收到发票后如果发现因礼舍网原因，票据抬头、内容或金额错误，请您致电客服热线400-883-9916，由客服人员为您办理换发票事宜，<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;往返快递费用由礼舍网承担。
+							</p>
+						</div>
+					</div>
+
+					<!-- 人员招聘 -->
+					<div class="pages" id="4">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">人员招聘</p>
+						</div>
+						<div class="hire">
+							<p class="second_title">我们的员工福利</p>
+							<p>
+								五天工作制、购房补贴、甲级写字楼办公、带薪年假，全薪病假、婚假、产假、陪产假等；<br>传统节假日福利，恋爱基金、结婚礼金、五险一金、公司旅游、年度体检、各种俱乐部活动、生日会、员工股权激励等。
+							</p>
+							<p class="second_title">测试工程师</p>
+							<p>
+								岗位职责：<br>
+								1.理解需求，参与需求确认；<br>
+								2.编写相应模块的测试方案、测试用例和测试数据；<br>
+								3.执行功能测试, 及回归测试, 并提交测试结果；<br>
+								4.对测试实施过程中发现的软件问题进行跟踪分析、报告并协助研发定位问题，推动测试中发现问题及时合理的解决。<br>
+								岗位要求：<br>
+								1.熟悉电子商务流程，对电商平台的功能比较熟悉，有电商测试经验的优先。<br>
+								2.熟悉数据库（mysql等)，熟练使用常用sql语句；<br>
+								3.熟练使用Linux操作系统；<br>
+								4.熟悉测试过程体系，掌握各种各样的测试方法或测试策略、能独立完成测试脚本编写；<br>
+								5.性格开朗乐观，责任心强，积极主动，工作耐心，善于沟通，具有团队精神。
+							</p>
+							<p class="second_title">Java开发高级工程师</p>
+							<p>
+								岗位职责：<br>
+								1.负责/参与技术架构设计、开发、重构、优化；<br>
+								2.持续提升后台服务在高并发、海量请求数下的高处理性能；<br>
+								3.配合完成一些运营支持系统的设计和开发工作。<br>
+								任职要求：<br>
+								1.计算机相关专业，三年以上Java开发经验；<br>
+								2.熟悉数据结构和算法、常用网络协议、常用框架，如Spring/iBatis等；<br>
+								3.熟悉Linux+shell+MySQL/Oracle+Redis/Memcached；<br>
+								4.具备良好的需求分析能力、业务和技术方案策划和设计能力。
+							</p>
+							<p class="second_title">商城运营经理</p>
+							<p>
+								岗位职责：<br>
+								1.负责礼舍平台运营管理工作，根据推广策略，不断提升网站的品牌与关键运营数据；<br>
+								2.负责电商平台的市场推广合作、类目管理，活动策划；<br>
+								3.分析用户需求，提升运营内容丰富度；<br>
+								4.负责产品供应、销售、物流等环节的衔接、整合和管理。<br>
+								任职要求：<br>
+								1.具备电商平台的整体运营、维护、优化、推广、团队管理成功经验；<br>
+								2.熟悉各种互联网推广策略与形式，了解整合和互动营销的内容，具备优秀的电商及品牌推广与运营能力；<br>
+								3.对互联网行业有深刻的理解和敏感度，拥有良好的市场策划管理能力和团队协调工作能力，有组织实施的执行能力，有整合资源、创新经营的思<br>&nbsp;&nbsp;&nbsp;想。
+							</p>
+							<p class="second_title">采购主管</p>
+							<p>
+								岗位职责：<br>
+								1.负责主管品类采购工作，包括供应商开发、维护、跟踪、评估及反馈汇总工作；<br>
+								2.对商务谈判、采购进度、质量检验等全过程负责，按时完成采购任务，保证平台销售的正常进行；<br>
+								3.负责维护、协调主管品类供应商关系；<br>
+								岗位需求：<br>
+								1.2年以上销售或招商经验；<br>
+								2.对电商行业有一定了解，熟知网络运营。
+							</p>
+							<p class="second_title">大客户销售经理</p>
+							<p>
+								职位描述：<br>
+								1.负责公司大客户的开发与关系维护工作，与目标大客户建立良好的业务关系，挖掘大客户的需求，高效灵活的完成销售任务；<br>
+								2.收集整理客户需求以及竞品的动态信息。<br>
+								任职要求：<br>
+								1.有大客户销售经验或商超企业大客户关系维护和开发经验；<br>
+								2.有大型企业、机关、商会、行业协会、团购、礼品市场、渠道销售等相关资源；<br>
+								3.有较强的客户沟通能力、语言表达能力及客户服务意识；<br>
+								4.具备大型企业或互联网行业优先。
+							</p>
+							<p class="second_title">联系方式</p>
+							<p>
+								HRD微信号：aoyouing<br>
+								工作地点：深圳南山科技园比克科技大厦20楼2001B<br>	
+								简历发送至 peng@lishe.cn
+							</p>
+						</div>
+					</div>
+
+					<!-- 合作伙伴 -->
+					<div class="pages" id="5">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">合作伙伴</p>
+						</div>
+						<div class="partner">
+							<p>迄今，礼舍已经为众多公司提供了福利解决方案，同时建立了战略合作关系</p>
+							<div></div>
+						</div>
+					</div>
+
+					<!-- 联系我们 -->
+					<div class="pages" id="6">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">联系我们</p>
+						</div>
+						<div class="contact">
+							<div class="map"></div>
+							<div class="contact_details">
+								<div class="QR_code"></div>
+								<div class="card">
+									<p>深圳礼舍科技有限公司</p>
+									公司地址：深圳市南山区高新中路科研九号<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比克科技大厦2001B<br>
+									服务热线：400-1188-234<br>
+									工作时间：周一至周五 9:00－18:00<br>
+									客服邮箱：severs@lishe.cn<br>
+									公司网址：http://www.lishe.cn
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 操作指南 -->
+					<div class="pages" id="7">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">正章干洗券充值使用流程</p>
+						</div>
+						<div class="dryhelpwrap">
+							<p>
+								为使正章用户更加高效的使用正章干洗券，提升用户使用体验，深圳正章干洗有限公司与深圳礼舍科技有限公司携手打造正章干洗福利商城；正章用户可以在商城将持有的正章干洗券/卡兑换为礼舍福利积分，兑换完成之后，用户可以在商城购买商品进行消费。
+							</p>
+							<p class="helptitile">一、兑换规则</p>
+							<p class="helprule">
+								<!-- 1、用户持有的正章干洗券/卡的面值兑换比率为0.5，即用户持有面值100元的正章干洗券，兑换5000的礼舍福利积分。<br> -->
+								1、用户持有的正章干洗券/卡可根据正章干洗的动态结算比率兑换成礼舍福利积分。<br>
+								2、用户在使用正章干洗券兑换福利积分时，首先需要注册为礼舍用户。注册完成后用户才可以进行干洗券兑换。<br>
+								3、用户兑换正章干洗券的入口在正章福利商城登陆页面，用户在兑换干洗券时需要输入持有的不同种类的干洗券的数量与面值，务必确保券的数量与面值准确无误。<br>
+								4、正章干洗券线下邮寄。用户需要将干洗券通过快递的方式将干洗券邮寄至深圳礼舍科技有限公司。<br/>
+									<div style="font-weight: bold;margin: 10px 28px;">邮寄地址：广东省深圳市南山区高新中路科研九号比克科技大厦2001B <br/>收件人：礼舍科技有限公司<br/>电话：0755-66632321<br/>请务必在快递单号上注明充值的手机号！</div>礼舍审核券的有效信息是否与充值信息中券的信息一致，核实无误后，进行充值；如果收到券的信息与充值信息不一致，礼舍会与用户沟通之后决定是否进行充值。<br>
+								5、用户线下邮寄的正章干洗券以礼舍实际收到的干洗券为准，如果用户有异议，可以选择不进行充值，此时用户需要自己承担干洗券的快递费用。<br/>
+								6、线下邮费。当用户充值干洗券总面值不小于150元时，礼舍承担邮费；当用户充值干洗券总面值小于150元时，用户需要自行承担邮费。对于外省用户使用干洗券充值，邮费由用户自行承担。<br>
+								7、消费、充值完成后，用户可以登录商城进行购物消费，http://zzgx.lishe.cn。
+							</p>
+							<p class="helptitile">二、兑换流程</p>
+							<div class="guide">
+								<p>STEP 1 : 登录商城</p>
+								<img src="images/step1.jpg">
+								<p>STEP 2 : 注册礼舍会员</p>
+								<img src="images/step2.jpg">
+								<img src="images/step3.jpg">
+								<p>STEP 3 : 干洗券充值</p>
+								<img src="images/step4.jpg">
+								<p>STEP 4 : 填写干洗券信息</p>
+								<img src="images/step5.jpg">
+								<p>STEP 5 : 线下邮寄干洗券</p>
+								<img src="images/step6.jpg">
+								<p>STEP 6 : 礼舍审核券信息</p>
+								<img src="images/step7.jpg">
+								<p>STEP 7 : 充值完成</p>
+								<img src="images/step8.jpg">
+								<p>STEP 8 : 商城购物</p>
+								<img src="images/step9.jpg">
+								<p class="last_step">&nbsp;</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--底部-->
+	<div id="footer">
+	   <div class="footerdimension">
+	       <div class="footertop">
+	           <div class="footertopLeft">
+	               <ul>
+	                  <li class="footerUser">导航</li>
+	                  <li class="footerMenu"><a href="help.html#2" target="_blank">礼舍简介</a></li>
+	                  <li class="footerMenu"><a href="companysingle.html" target="_blank">礼舍做什么</a></li>
+	                  <li class="footerMenu"><a href="http://www.lishe.cn/theme/evaluate/index.html" target="_blank">伙伴说什么</a></li>
+	                  <li class="footerMenu"><a href="/" target="_blank">心意商城</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">咨询</li>
+	                  <li class="footerMenu"><a href="help.html#0" target="_blank">服务条款</a></li>
+	                  <li class="footerMenu"><a href="http://vip.lishe.cn" target="_blank">礼舍动态</a></li>
+	                  <li class="footerMenu"><a href="help.html#4" target="_blank">人员招聘</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">礼舍帮帮</li>
+	                  <li class="footerMenu"><a href="help.html#1" target="_blank">礼舍教学操作指南</a></li>
+	                  <li class="footerMenu"><a href="help.html" target="_blank">礼舍使用全攻略</a></li>
+	                  <li class="footerMenu"><a href="help.html#3" target="_blank">常见问题</a></li>
+	                  <li class="footerMenu"><a href="help.html#6" target="_blank">联系我们</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">加入我们</li>
+	                  <li class="footerMenu"><a href="http://zs.lishe.cn/" target="_blank">供应商入驻</a></li>
+	                  <li class="footerMenu"><a href="http://v.lishe.cn/company/login.html" target="_blank">企业入驻</a></li>
+	                  <li class="footerMenu"><a href="help.html#5" target="_blank">合作伙伴</a></li>
+	               </ul>
+	           </div>
+	           <div class="footertopRight">
+	               <ul>
+	                 <li class="footerPhone"><img src="images/indexPhone.png">400-1188-234</li>
+	                 <li class="footerConnection">联系我们</li>
+	               </ul>
+	               <ul>
+	                 <li><img src="images/IndexWx.png"></li>
+	               </ul> 
+	           </div>   
+	       </div>
+	       <div style="clear:both;"></div>
+	       <div class="footerbottom">
+	          <ul class="footerbottomLeft">
+	            <li>© 2005-2016 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1</li>
+	            <li>All rights Reserved.</li>
+	          </ul>
+	          <ul class="footerbottomRight">
+	            <li class="footerbottomRightPhone">全国客服热线：400-1188-234 </li>
+	            <li class="footerbottomRightTime">周一至周五 9:00-18:00</li>
+	          </ul>
+	       </div>
+	       <div style="clear:both;"></div>
+	   </div>    
+	</div>
+</body>
+</html>

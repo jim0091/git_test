@@ -1,0 +1,53 @@
+.redstar{color: #FF4138; vertical-align: -2px;}
+.c333{color: #333;}
+.c999{color: #999;}
+.f14{font-size: 14px;}
+input[type="radio"]{vertical-align: -2px; margin-right: 3px;}
+.refundtype{padding: 20px 0; border-bottom: 1px dashed #DADADA;}
+.refundtype label{margin-left: 20px;}
+.Rorder_details{padding: 20px 0; border-bottom: 1px dashed #DADADA;}
+.Rtitle{font-weight: bold; color: #333; margin-bottom: 10px;}
+.Rorder_details td{padding: 5px 10px; font-size: 12px;}
+.return_refund .box_details{margin: 20px 0 0; padding-bottom: 20px; border-bottom: 1px dashed #DADADA;}
+.Rreason{margin-top: 10px; padding-bottom: 20px; border-bottom: 1px dashed #DADADA; overflow: hidden;}
+.Rreason table{float: left; width: 485px;}
+.Rreason td{padding: 10px 15px;}
+.Rreason td:first-child{text-align: right; color: #333;}
+.Rreason select{height: 30px; width: 130px;}
+.Rreason textarea{resize:none; width: 300px; height: 100px; padding: 5px; font-size: 12px;}
+.upload_wrap{display: inline-block; width: 80px; height: 80px; background-color: #F0F0F0; border: 1px solid #DADADA; position: relative; overflow: hidden; cursor: pointer;}
+.line_v{display: block; position: absolute; width: 40px; height: 5px; background-color: #CCC; top: 38px; left: 20px; z-index: 0;}
+.line_h{display: block; position: absolute; width: 5px; height: 40px; background-color: #CCC; top: 20px; left: 38px; z-index: 0;}
+.Rsave{display: block; width: 80px; height: 30px; line-height: 30px; background-color: #FF4138; color: #FFF; margin: 20px 0 20px 113px; text-align: center; border-radius: 5px;}
+#upPreUl{float: left;}
+.upPreLi{float: left; width: 82px; height: 82px; margin-right: 10px;}
+.upPreImg{width: 100%; height: 100%;}
+
+.seller_add{margin-top: 10px; padding: 10px; border-bottom: 1px dashed #DADADA;}
+.ft14{font-size: 14px;}
+.ftb{font-weight: bold;}
+.seller_add .ft14.ftb{margin-bottom: 10px;}
+.choose_exp{margin-top: 10px; padding: 10px;}
+.upload{margin-bottom: 5px;}
+.choose_exp td{padding: 10px;}
+.choose_exp select{height: 20px; }
+.order_number{height: 20px; line-height: 20px; width: 170px;}
+.choose_exp td:first-child{text-align: right; color: #333;}
+.submit_change{padding: 6px 17px; text-align: center; color: #FFF; background-color: #FF4138; border-radius: 2px; display: inline-block; margin-top: 5px;}
+#preview{display: block; width: 310px; min-height: 175px; height: auto; margin-bottom: 5px;}
+
+ul.form li div.item .addPic {
+    background: rgba(0, 0, 0, 0) url("../images/upload_bg.png") repeat scroll 0 0;
+    display: table-cell;
+    float: left;
+    height: 80px;
+    margin: 0 5px 0 0;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 80px;
+}
+
+.explain{width: 400px; float: left; margin-left: 25px; margin-top: 60px; line-height: 22px;}
+.explain div{display: none;}

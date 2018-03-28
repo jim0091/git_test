@@ -1,0 +1,741 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+
+<!--时间轴-->
+<link rel="stylesheet" type="text/css" href="__ADMIN__css/default.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__css/component.css" />
+<script src="__ADMIN__js/modernizr.custom.js"></script>
+<!--时间轴-->
+
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>基本设置</title>
+</head>
+<body>
+<style>
+	.tabBar span.current{
+		background-color: #5EB95E;	
+	}
+	.tabBar {
+    	border-bottom: 2px solid #5EB95E;
+	}
+	.table-bg thead th {
+		background-color: #5EB95E;	
+		color: white;
+	}
+</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 订单管理 <span class="c-gray en">&gt;</span> 订单详情  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl"><span>基本信息</span><span>商品</span><span>会员</span><span>商家</span><span>其他信息</span><span>备注(商家)信息</span><span>处理进度</span></div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单基本信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">订单号</td>
+			        <td><span class="label label-success radius">{$info.tid}</span></td>
+			      </tr>
+			      <if condition="$info.shop_id eq 10">
+				      <tr>
+				        <td>京东订单号</td>
+				        <td>
+							<notempty name="info.JdOrderNumber">
+								<span class="label label-success radius">{$info.JdOrderNumber}</span>
+								<else/>
+							<in name="info.status" value="WAIT_SELLER_SEND_GOODS,IN_STOCK">
+								<span class="label label-danger radius" id="syncOrder">!警告,无京东订单号</span>	
+								<!--重新同步京东订单-->
+								<?php 	
+									 	$applFundId=array_search('syncorder', $nodeAction);
+										 if($applFundId){
+									 ?>									
+								<a href="javascript:void(0)" class="getSyncOrder" data="{$info.tid}">
+									<span class="label label-success radius" style="float: right;">重新同步</span>
+								</a>	
+								<?php 
+										  } ?>									
+								<!--重新同步京东订单-->
+							</in>
+							</notempty>				        	
+				        </td>
+				      </tr>	
+				      <tr>
+				        <td>第三方订单同步状态</td>
+				        <td>{$info.sync_trade_status}</td>
+				      </tr>	
+				      <tr>
+				        <td>第三方订单支付状态</td>
+				        <td>{$info.sync_pay_status}</td>
+				      </tr>				      	
+			      </if>
+			      
+			      <tr>
+			        <td>订单总额</td>
+			        <td>￥{$info.payment}</td>
+			      </tr>
+			      <tr>
+			        <td>订单总额(混合支付)</td>
+			        <td>
+						(
+							<gt name="info.cash_fee" value="0">
+								￥{$info.cash_fee}
+							</gt>
+							<gt name="info.point_fee" value="0">
+								<gt name="info.cash_fee" value="0">
+									+
+								</gt>
+								{$info.point_fee}积分
+							</gt>
+						)				        	
+			        </td>
+			      </tr>	
+			      <tr>
+			        <td>实付金额(混合支付)</td>
+			        <td>
+			        	(
+						<if condition="($info.payed_cash eq 0) and ($info.payed_point eq 0)">
+							未支付
+						</if>
+						<gt name="info.payed_cash" value="0">
+							<span title="支付金额：{$info.payed_cash}">￥{$info.payed_cash}</span>
+						</gt>
+						<gt name="info.payed_point" value="0">
+							<gt name="info.payed_cash" value="0">
+								+
+							</gt>
+							<span title="支付积分：{$info.payed_point}">{$info.payed_point}积分</span>
+						</gt>
+						)
+			        </td>
+			      </tr>				      
+			      <tr>
+			        <td>积分抵扣金额</td>
+			        <td>￥{$info.points_fee}</td>
+			      </tr>			      
+			      <tr>
+			        <td>配送费用</td>
+			        <td>￥{$info.post_fee}</td>
+			      </tr>			     
+			      <tr>
+			        <td>实付金额</td>
+			        <td>￥{$info.payed_fee}</td>
+			      </tr>	
+			      <tr>
+			        <td>订单状态</td>
+			        <td>{$info.OrderStatus}</td>
+			      </tr>	
+			      <tr>
+			        <td>买家备注</td>
+			        <td>{$info.buyer_message}</td>
+			      </tr>
+			      <tr>			      
+			      <tr>
+			        <td>下单时间</td>
+			        <td>{$info['created_time']|date="Y-m-d H:i:s",###}</td>
+			      </tr>			
+			    </tbody>
+		      </table>
+		      
+		      
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单支付信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">应支付金额</td>
+			        <td><span>￥{$info.payment}</span></td>
+			      </tr>
+			      <tr>
+			        <td>支付方式</td>
+			        <td>{$info.pay_type}</td>
+			      </tr>
+			      <tr>
+			        <td>付款交易流水</td>
+			        <td>{$info.transno}</td>
+			      </tr>			      
+			      <tr>
+			        <td>已支付金额</td>
+			        <td>￥{$info.payed_fee}</td>
+			      </tr>	
+			      <tr>
+			      	<td>买家实付积分</td>
+			      	<td>{$info.real_point_fee}</td>
+			      </tr>
+			      <tr>
+			        <td>付款时间</td>
+			        <td>{$info.pay_time}</td>
+			      </tr>			     		
+			    </tbody>
+		    </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">售后信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">售后</td>
+			        <td>
+						<in name="info.order_status" value="REFUND,RETURN,EXCHANGE,REPAIR">
+								<span class="label label-danger radius">
+						<else/>
+							<in name="info.order_status" value="CANCEL_REFUND,CANCEL_RETURN,CANCEL_EXCHANGE,CANCEL_REPAIR">
+								<span class="label radius">
+								<else/>
+								<span>
+							</in>							
+						</in>
+						{$info.serviceStatus}
+						</span>			        	
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td>已退款金额：</td>
+			      	<td>
+						<notempty name="refundPoint[$info['tid']]">
+							<strong class="c-red">(积分)：￥{$refundPoint[$info['tid']]}</strong>
+						</notempty>	
+						<notempty name="refundCash[$info['tid']]">
+							<strong class="c-red">&nbsp;&nbsp;(现金)：￥{$refundCash[$info['tid']]}</strong>
+						</notempty>				      	
+			      	</td>
+			      </tr>
+			      <tr>
+			      	<td>操作退款备注：</td>
+			      	<td>{$info.refund_mark}</td>
+			      </tr>		
+			      <tr>
+			      	<td>退款时间：</td>
+			      	<td>
+			      		<notempty name="info.refund_time">
+				      		{$info['refund_time']|date="Y-m-d H:i:s",###}
+			      		</notempty>
+			      	</td>
+			      </tr>				      
+			    </tbody>
+		    </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">收货人信息
+			        	 <eq name="info.status" value="WAIT_SELLER_SEND_GOODS">
+							<?php 	
+								 	$applFundId=array_search('modifyaddr', $nodeAction);
+									 if($applFundId){
+								 ?>				        	 	
+				        	<a onclick="member_edit('订单:{$info.tid}修改地址','{:U('Home/Orderhandle/modifyAddr',array('tid'=>$info['tid']))}','4','550','360')">
+				        		<span class="label label-primary radius" style="padding: 5px 5px;float: right;">
+				        			修改收货信息
+				        		</span>
+				        	</a>
+								<?php 
+										  } ?>					        	
+			        	 </eq>
+			        </th>
+			      </tr>
+			    </thead>			    
+			    <tbody>
+			      <tr>
+			        <td width="200">收货人</td>
+			        <td><span>{$info.receiver_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td>收货人手机号</td>
+			        <td><span>{$info.receiver_mobile}</span></td>
+			      </tr>			      
+			      <tr>
+			        <td>收货地区</td>
+			        <td><span>{$info.receiver_state}{$info.receiver_city}{$info.receiver_district}</span></td>
+			      </tr>				      
+			      <tr>
+			        <td>收货地址</td>
+			        <td><span>{$info.receiver_address}</span></td>
+			      </tr>		
+			      <tr>
+			      	<td>自提备注</td>
+			      	<td><span>{$info.ziti_memo}</span></td>
+			      </tr>
+			    </tbody>				    
+			  </table>
+			  
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="5" scope="col">物流</th>
+			      </tr>
+			    </thead>			    
+			    <tbody>
+			      <tr>
+			        <th>发货单号</th>
+			        <th align="center">物流单号</th>
+			        <th>配送方式</th>
+			        <th>建立日期</th>
+			      </tr>
+			      <notempty name="info.express">
+				      <volist name="info.express" id="express">
+					      <tr>
+					        <td>
+					        	<notempty name="express.supplier_id">
+									<img src="__ADMIN__images/img/gongyinshang.png"  width="20px" title="供应商发货，供应商ID{$express.supplier_id}"/>
+					        	</notempty>
+					        	{$express.delivery_id}
+					        </td>
+					        <td>
+					        	<notempty name="express.logi_no">
+					        		<?php 
+					        			$logNOs=explode(',',$express['logi_no']);
+					        			 ?>
+						        	<volist name="logNOs" id="no">
+						        		<a href="javascript:void(0)" onclick="member_edit('物流进度信息','{:U('Home/Order/expressProgress',array('logiNo'=>$no,'shop_id'=>$info['shop_id'],'corpId'=>$express['logi_id'],'tid'=>$info['tid']))}','4','500','400')">
+											<span class="label label-success radius" style="margin-top: 10px;">{$no}</span>
+										</a>
+										<br />
+						        	</volist>
+					        	</notempty>
+					        </td>
+					        <td>{$express.logi_name}</td>
+					        <td>
+					        	<notempty name="express.t_begin">
+					        		{$express['t_begin']|date="Y-m-d H:i:s",###}
+					        	</notempty>
+					        </td>
+					      </tr>			      
+				      </volist>
+			      	<else/>
+			      	<tr>
+			      		<td colspan="5">暂无</td>
+			      	</tr>
+			      </notempty>
+			    </tbody>
+			  </table>  			  
+			  
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单发票信息</th>
+			      </tr>
+			    </thead>			    
+			    <tbody>
+			      <tr>
+			        <td width="200">是否需要发票</td>
+			        <td><span>{$info.need_invoice}</span></td>
+			      </tr>
+			      <tr>
+			        <td width="200">发票抬头</td>
+			        <td><span>{$info.invoice_name}</span></td>
+			      </tr>		
+			      <tr>
+			        <td width="200">发票类型</td>
+			        <td><span>{$info.invoice_type}</span></td>
+			      </tr>	
+			      <tr>
+			        <td width="200">发票内容</td>
+			        <td><span>{$info.invoice_main}</span></td>
+			      </tr>				      
+			    </tbody>
+			  </table>  
+			   			  
+			  
+			</div>
+			
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="8" scope="col">订单商品信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			      	<th width="8%">商品ID</th>
+			      	<th width="8%">商品图片</th>
+			      	<th>商品名称</th>
+			      	<th width="15%">商品属性</th>
+			      	<th width="7%">单价</th>
+			      	<th width="5%">购买量</th>
+			      	<th width="5%">已发量</th>
+			      	<th width="10%">商品总额</th>
+			      </tr>
+			      <volist name="info.more" id="vo">
+				      <tr>
+				        <td>
+				        	{$vo.item_id}
+				        	<br />
+				        	<span style="color:#5a98de;font-weight: bold;">{$vo.jd_sku}</span>
+				        
+				        </td>
+				        <td>
+							<a href="__LISHE__/shop.php/Info/index/itemId/{$vo.item_id}" target="_blank" title="{$vo.title}">
+								<img src="{$vo.pic_path}_t.{:end(explode('.',$vo['pic_path']))}" width="60px" style="max-height: 60px;overflow: hidden;"  />
+							</a>				        	
+				        </td>
+				        <td>
+				        	
+				        	<!--取消商品-->
+							<!--<in name="info.status" value="WAIT_SELLER_SEND_GOODS,IN_STOCK">
+								<if condition="$vo.disabled eq 0">
+									<a href="javascript:void(0)">
+										<span class="label label-success radius cancel" data="{$vo.oid}" title="取消该商品同步京东订单">取消</span>	
+									</a>
+								</if>
+							</in>-->
+				        	<!--取消商品-->
+							
+							
+							<if condition="$vo.disabled eq 1">
+								<span class="label radius"  title="同步京东订单时将不会同步该商品">已取消</span>	
+							</if>
+							<a href="__LISHE__/shop.php/Info/index/itemId/{$vo.item_id}" target="_blank" title="{$vo.title}">
+				        		<span style="color: #333;">{$vo.title}</span>
+							</a>	
+							<if condition="($vo.cash gt 0) or ($vo.point gt 0)">
+								<br />
+								<span class="label label-success radius" title="混合支付金额+积分">
+									<gt name="vo.cash" value="0">
+										<span title="商品金额：{$vo.cash}">￥{$vo.cash}</span>
+									</gt>
+									<gt name="vo.point" value="0">
+										<gt name="vo.cash" value="0">
+											+
+										</gt>
+										<span title="商品积分：{$vo.point}">{$vo.point}积分</span>
+									</gt>	
+								</span>	
+							</if>							
+						      <if condition="$info.order_status neq 'NO_APPLY'">
+						      	<if condition="$vo.aftersales_status neq 'NO_APPLY'">
+								<div style="border-bottom: 1px #C6C6C6 solid;">&nbsp;</div>
+						      		售后信息：{$info.serviceStatus}<br />
+						      		售后状态：{$vo.serviceLastStatus}<br />
+						      		申请售后成功商品的数量：{$vo.aftersales_num}<br />
+						      	</if>
+						      </if>							
+				        </td>
+				        <td>{$vo.spec_nature_info}</td>
+				        <td>{$vo.price}</td>
+				        <td>{$vo.num}</td>
+				        <td>{$vo.sendnum}</td>
+				        <if condition="$i eq 1">
+					        <td rowspan="0">￥{$info.total_fee}</td>
+				        </if>
+				      </tr>
+						<notempty name="vo.buyer_message">
+					      <tr>
+					      	<td colspan="8">
+					      		买家留言:{$vo.buyer_message}
+					      	</td>
+					      </tr>
+						</notempty>					      
+	      			</volist>
+			    </tbody>
+			  </table>				
+			</div>				
+			
+			
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">会员信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>用户ID</td>
+			        <td>{$info.user_id}</td>
+			      </tr>			    	
+			      <tr>
+			        <td>用户姓名</td>
+			        <td>{$info.userInfo.name}</td>
+			      </tr>
+			      <tr>
+			        <td>企业名称/ID</td>
+			        <td>{$info.companyName}/{$info.com_id}</td>
+			      </tr>			     
+			      <tr>
+			        <td>出生日期</td>
+			        <td>{$info.userInfo.birthday}</td>
+			      </tr>			     
+			      <tr>
+			        <td>手机</td>
+			        <td>{$info.userInfo.mobile}</td>
+			      </tr>			     
+			      <tr>
+			        <td>性别</td>
+			        <td>{$info.userInfo.sex}</td>
+			      </tr>		
+			      <tr>
+			        <td>注册日期</td>
+			        <td>{$info.userInfo.regtime}</td>
+			      </tr>	
+			      <tr>
+			        <td>注册IP</td>
+			        <td>{$info.userInfo.reg_ip}</td>
+			      </tr>				      
+			    </tbody>
+		      </table>
+			</div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">{$info.shopinfo.shop_name}</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">店铺名称</td>
+			        <td><span >{$info.shopinfo.shop_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td>店铺描述</td>
+			        <td>{$info.shopinfo.shop_descript}</td>
+			      </tr>
+			      <tr>
+			        <td>店铺类型</td>
+			        <td>{$info.shopinfo.shop_type}</td>
+			      </tr>
+			      <tr>
+			        <td>店主姓名</td>
+			        <td>{$info.shopinfo.shopuser_name}</td>
+			      </tr>				      
+			      <tr>
+			        <td>开店时间</td>
+			        <td>{$info.shopinfo.open_time}</td>
+			      </tr>			      
+			      <tr>
+			        <td>店铺所在地区</td>
+			        <td>{$info.shopinfo.shop_area}{$info.shopinfo.shop_addr}</td>
+			      </tr>				      
+			    </tbody>
+			  </table>
+			</div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">其他信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			        <td  width="200">商品重量</td>
+			        <td>{$info.total_weight}</td>
+			      </tr>			      
+			      <tr>
+			        <td>买家返点积分</td>
+			        <td>{$info.obtain_point_fee}</td>
+			      </tr>	
+			      <tr>
+			        <td>卖家手工调整金额</td>
+			        <td>￥{$info.adjust_fee}</td>
+			      </tr>				      
+			      <tr>
+			        <td>来源平台</td>
+			        <td>{$info.trade_from}</td>
+			      </tr>	
+			      <tr>
+			        <td>ip地址</td>
+			        <td>{$info.ip}</td>
+			      </tr>	
+			      <tr>
+			        <td>最后更新时间</td>
+			        <td>{$info.modified_time}</td>
+			      </tr>				      
+			    </tbody>
+			  </table>				
+			</div>
+			<div class="tabCon">
+				<form action="{:U('Home/Order/addMemo')}" method="post" >
+				<div style="background-color: #5EB95E;color: white;margin-top: 20px;padding: 8px;margin-bottom: 30px;">
+					备注信息
+				</div>
+				    <div class="row cl" style="padding-bottom: 10px;">
+				      <label class="form-label col-2">备注记录：</label>
+				      <div class="formControls col-8">
+				    	<small>{$info.shop_memo}</small>
+				    	</div>
+				    </div>				
+					<input type="hidden" value="{$info.tid}" name="tid"/>
+				    <div class="row cl">
+				      <label class="form-label col-2">备注：</label>
+				      <div class="formControls col-8">
+				        <textarea name="shopMemo" cols="" rows="" class="textarea" placeholder="添加备注" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"></textarea>
+				      </div>
+				    </div>
+					<?php 	
+						 	$applFundId=array_search('addmemo', $nodeAction);
+							 if($applFundId){
+							 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+						 ?>						    
+				    <div class="row cl" style="margin-top: 10px;">
+				      <div class="col-9 col-offset-2">
+				        <input class="btn btn-primary radius" value="&nbsp;&nbsp;保存&nbsp;&nbsp;" type="submit">
+				      </div>
+				    </div>
+					<?php }
+							  } ?>					    
+				    
+				  </form>
+			</div>	
+			
+			<!--进度-->
+			<div class="tabCon">
+				<div style="background-color: #5EB95E;color: white;margin-top: 20px;padding: 8px;margin-bottom: 30px;">
+					订单处理详情
+				</div>	
+				<div class="container">
+					<div class="main">
+						<ul class="cbp_tmtimeline">
+							<li>
+								<time class="cbp_tmtime" datetime="2013-04-10 18:30"><span>
+								{$info['created_time']|date="Y-m-d",###}</span> <span>{$info['created_time']|date="H:i:s",###}</span></time>
+								<div class="cbp_tmicon cbp_tmicon-screen"></div>
+								<div class="cbp_tmlabel">
+									<h2>订单号：{$info.tid}</h2>
+									<p>订单状态：{$info.OrderStatus}</p>
+								</div>
+							</li>
+							<volist name="orderDealProcess" id="process">
+								<li>
+									<time class="cbp_tmtime" ><span style="color: #3594CB;">
+									{$process['created_time']|date='Y-m-d',###}</span> <span>{$process['created_time']|date='H:i:s',###}</span></time>
+									<div class="cbp_tmicon cbp_tmicon-screen"></div>
+									<div class="cbp_tmlabel">
+										<h4>{$process.deal_type}</h4>
+										<p style="font-size: 14px;">
+											{$process.memo}<br />
+											操作商品名称范围：
+											<empty name="process.oids">
+												整单(全部商品)
+											<else/>
+											<?php 
+												$process['Oids']=explode(',',$process['oids']);
+												foreach($process['Oids'] as $key => $value){
+													foreach($info['more'] as $keys=>$values){
+														if($value==$values['oid']){
+															$process['title'][]=$values['title'];
+														}
+													}
+												}
+												?>
+												<br />
+												<volist name="process.title" id="orderTitle">
+													{$orderTitle}<br />
+												</volist>
+											</empty>
+										</p>
+										<p style="float: right;font-size: 14px;">---{$process.admin_username}</p>
+									</div>
+								</li>
+							</volist>
+		
+						</ul>
+					</div>
+				</div>				    
+				    
+			</div>				
+		</div>
+		<!--<div class="row cl">
+			<div class="col-10 col-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>-->
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}	
+//同步京东订单前取消同步指定商品
+$(".cancel").on('click',function(){
+	var oid=$(this).attr('data');
+	var tid="{$info.tid}";
+	$(this).before("<span class='label radius'  title='同步京东订单时将不会同步该商品'>已取消</span>");
+	$(this).hide();
+	$.ajax({
+		type:"get",
+		url:"{:U('Home/Order/cancelSyncGoods')}",
+		data:'oid='+oid+'&tid='+tid,
+		success:function(data){
+			if(data){
+			//取消成功
+				alert("取消成功,该商品将会进行申请退款！");
+			}else{
+			//取消失败
+				alert("取消该条商品不用于同步失败!");
+			}
+		}
+		
+	});	
+});
+//重新同步订单到京东
+$(".getSyncOrder").click(function(){
+	var tid=$(this).attr("data");
+	$.get("/api.php/Api/syncOrder/tid/"+tid,function(data){     
+		var msg=eval("("+data+")");
+		if(parseInt(msg['code']) > 0){
+			$('#syncOrder').text(msg['code']);
+			$(".getSyncOrder").remove();
+		}else{
+			alert(msg['msg']);
+		}
+	});
+});
+//新版
+//$(".getSyncOrder").click(function(){
+//	var tid=$(this).attr("data");
+//	$.get("__APP__/Order/syncJdOrder/tid/"+tid,function(data){     
+//		msg=eval(data);
+//		if(msg[0]==1){
+//			alert('同步成功：'+msg[2]);
+//		}else{
+//			alert('同步失败：'+msg[1]);
+//		}
+//	});
+//});
+</script>
+</body>
+</html>

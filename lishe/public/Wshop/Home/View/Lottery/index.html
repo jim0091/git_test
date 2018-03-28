@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<title>惊喜狂欢惠</title>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Public/lottery/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Public/lottery/css/wluck_draw.css"/>
+</head>
+<body>
+	<section><img src="__VIEW__Public/lottery/images/banner1.png" /></section>
+	<section class="main">
+		<div class="title"><img src="__VIEW__Public/lottery/images/wluck01.png" /></div>
+		<div class="draw_bg2">
+			<img src="__VIEW__Public/lottery/images/draw_bg2.png" id="yellow_bg" />
+			<img src="__VIEW__Public/lottery/images/jp1.png" id="jp_bg" />
+			<img src="__VIEW__Public/lottery/images/start.png" id="start" />
+			<!--奖品弹窗-->
+			<div class="prize_popup result">
+				<img src="__VIEW__Public/lottery/images/prize1.png" id="resultImg" />
+				<span id="close"></span>
+			</div>
+		</div>
+		<!--中奖名单-->
+		<div class="luck_list">
+			<div class="list_text fl">
+				<p class="list_text_tit"><span class="sp1">获奖者名单</span><span class="sp2">奖品信息</span></p>
+				<div class="name_wrap">
+					<ul>
+						<volist name="userList" id="val" offset="0" length='6'>
+						<php>$username = str_replace(mb_substr($val['username'],1,1,'utf-8'), '*', $val['username']);</php>
+						<li><span class="sp3">{$username}</span><span class="sp4">{$val['prize_name']|mb_substr=###,0,6,'utf-8'}</span></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+			<div class="list_text fr">
+				<p class="list_text_tit"><span class="sp1">获奖者名单</span><span class="sp2">奖品信息</span></p>
+				<div class="name_wrap">
+					<ul>
+						<volist name="userList" id="val" offset="6" length='6'>
+						<php>$username = str_replace(mb_substr($val['username'],1,1,'utf-8'), '*', $val['username']);</php>
+						<li><span class="sp3">{$username}</span><span class="sp4">{$val['prize_name']|mb_substr=###,0,6,'utf-8'}</span></li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="clickshow"><a href="{:U('lottery/rule')}"><img src="__VIEW__Public/lottery/images/itemimg.png" /></a></div>
+		<!--品质与实惠-->
+		<div class="title"><img src="__VIEW__Public/lottery/images/wluck02.png" /></div>
+		<div class="small_ba"><a href="http://www.lishe.cn/wshop.php/Info/index/itemId/35822"><img src="__VIEW__Public/lottery/images/small_b1.png" /></a></div>
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct1.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/45351"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/54974"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct2.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/30092"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/11477"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct3.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/60597"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/51028"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct4.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/8078"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/60775"></a></div>
+		<!--颜值与品质兼备-->
+		<div class="title"><img src="__VIEW__Public/lottery/images/wluck03.png" /></div>
+		<div class="small_ba"><a href="http://www.lishe.cn/wshop.php/Info/index/itemId/35792"><img src="__VIEW__Public/lottery/images/small_b2.png" /></a></div>
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct5.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/54164"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/53902"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct6.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/39162"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/60598"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct7.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/60650"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/13194"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct8.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/34577"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/60269"></a></div>
+		<!--人气见证品质-->
+		<div class="title"><img src="__VIEW__Public/lottery/images/wluck04.png" /></div>
+		<div class="small_ba"><a href="http://www.lishe.cn/wshop.php/Info/index/itemId/53818"><img src="__VIEW__Public/lottery/images/small_b3.png" /></a></div>
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct9.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/53441"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/53958"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct10.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/45352"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/41837"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct11.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/35757"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/32959"></a></div>
+
+		<div class="product"><img src="__VIEW__Public/lottery/images/wproduct12.png" /><a class="link1" href="http://www.lishe.cn/wshop.php/Info/index/itemId/8427"></a><a class="link2" href="http://www.lishe.cn/wshop.php/Info/index/itemId/39092"></a></div>
+		<!--更多选择-->
+		<div class="showmany"><a href="http://www.lishe.cn/wshop.php"><img src="__VIEW__Public/lottery/images/showmany.png" /></a></div>
+		<div class="gotop"><img src="__VIEW__Public/lottery/images/top.png" /></div>
+
+	</section>
+	<div class="footer"><img src="__VIEW__Public/lottery/images/footer_bg.png" /></div>
+</body>
+<script type="text/javascript" src="__VIEW__Public/lottery/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+var isLogin = {$isLogin};
+var isAccess = {$isAccess};
+(function(){
+	var html = document.documentElement;
+	var whtml = html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /10 + "px";
+})()
+
+	$(function(){
+
+		$.extend(jQuery.easing , {
+			easeOutStrong: function(x,t, b, c, d){ 
+				return -c * ((t=t/d-1)*t*t*t - 1) + b;
+			}
+		});
+		var Draw = new draw('#start');
+		Draw.init();
+
+	});
+
+	function draw(id){
+		this.start = $(id);
+		this.off = true;
+		this.result = $('.result');//弹窗
+		this.resultImg = $('#resultImg');//弹窗图片
+		//奖品弹窗
+		this.prizeArr = ['__VIEW__Public/lottery/images/draw_text1.png','__VIEW__Public/lottery/images/prize1.png','__VIEW__Public/lottery/images/prize2.png','__VIEW__Public/lottery/images/prize3.png','__VIEW__Public/lottery/images/prize4.png','__VIEW__Public/lottery/images/prize5.png','__VIEW__Public/lottery/images/prize6.png','__VIEW__Public/lottery/images/prize7.png','__VIEW__Public/lottery/images/prize8.png'];
+		this.close = $('#close');
+		this.prizeBg = $('#jp_bg');
+		this.side = $('.side');
+	}
+	draw.prototype.init = function(){
+		this.letGo();
+	};
+	//点击开始
+	draw.prototype.letGo = function(){
+		var This = this;
+		this.start.click(function(){
+			
+			if(This.off == true){
+				var requestVlue = This.request();
+				This.off = false;
+
+				if(requestVlue == 0){
+					//弹窗
+					This.result.fadeIn(200);
+					This.resultImg.attr('src',This.prizeArr[0]);
+					This.side.fadeIn(200);
+					//关闭弹窗
+					This.closePopup();
+				}else if(requestVlue == -1){
+					alert('服务器繁忙，请稍后重试');
+				}else if(requestVlue == -2){
+					if(confirm("你还未登陆，请登录后再抽奖！")){
+						window.location.href="http://www.lishe.cn/wshop.php/Login/login/index";
+					}
+				}else if(requestVlue == -3){
+					alert("尊敬的用户，您好，购买自营商品才可参与抽奖喔。赶紧去下单吧！");
+					window.location.reload();
+				}else{
+					This.rotate(requestVlue);
+				}
+			}
+		});
+	};
+	//请求后台
+	draw.prototype.request = function(){
+		if(isLogin != 1)
+			return -2;
+		if(isAccess != 1){
+			return -3;
+		}
+		var prize = -1;
+		$.ajax({
+			url:"{:U('lottery/start')}",
+			async:false,
+			success:function(result){
+				if(result.code == 1){
+					prize = result.data.prizeNo;
+				}else{
+					prize = -1;
+				}
+			}
+		});
+		return prize;
+	};
+	//转盘旋转
+	draw.prototype.rotate = function(prizeNumber){
+		var This = this;
+		var prize = 0;
+	
+		switch(prizeNumber){
+			case 1:
+				prize = 3600;
+				break;
+			case 2:
+				prize = 3916;
+				break;
+			case 3:
+				prize = 3870;
+				break;
+			case 4:
+				prize = 3825;
+				break;
+			case 5:
+				prize = 3779;
+				break;
+			case 6:
+				prize = 3733;
+				break;
+			case 7:
+				prize = 3689;
+				break;
+			case 8:
+				prize = 3646;
+				break;
+		}
+		$('#yellow_bg').attr('src','__VIEW__Public/lottery/images/draw_bg2-1.gif');
+		this.prizeBg.animate({
+				roNmber:prize
+			},{
+				step:function(now,fx){
+					This.prizeBg.css({"transform":"rotate("+now+"deg)"});
+					This.prizeBg.css({"WebKitTransform":"rotate("+now+"deg)"});
+					This.prizeBg.css({"MsTransform":"rotate("+now+"deg)"});
+					//转盘停止
+					
+					if(now == prize){
+						$('#yellow_bg').attr('src','__VIEW__Public/lottery/images/draw_bg2.png');
+						//弹窗
+						This.side.fadeIn(200);
+						This.result.fadeIn(200);
+						This.resultImg.attr('src',This.prizeArr[prizeNumber]);
+
+						//关闭弹窗
+						This.closePopup();
+						This.off = true;
+					}
+					
+				},
+				duration:8000,
+				easing:'easeOutStrong'
+		});
+
+	};
+	//弹窗关闭、转盘初始
+	draw.prototype.closePopup = function(){
+		var This = this;
+		This.close.click(function(){
+			This.result.fadeOut();
+			This.side.fadeOut();
+			This.prizeBg.css({"transform":"rotate(0deg)"});
+			window.location.reload(); 
+		});
+	};
+
+	//获奖名单
+	autoTop();
+	function autoTop(){
+		var Leg = $('.list_text .name_wrap ul li').length / 2;
+		var tNmber = 0;
+		
+		if(Leg > 4){
+			setInterval(function(){
+				tNmber++;
+				if(tNmber > Leg-4){
+					 $('.list_text .name_wrap ul').css('margin-top',0);
+					 tNmber = 0;
+				}else{
+					 $('.list_text .name_wrap ul').animate({
+			    		'marginTop' : -tNmber * 20 + 'px'
+			   		 });
+				}
+			  
+			},3000);
+		}
+	}
+
+</script>
+</html>

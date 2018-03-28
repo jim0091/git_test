@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/securitycenter.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 中间左侧导航 -->
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="safeCoreSet">
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">修改密码</p>
+					</div>
+					<form class="changeP">
+						<table>
+							<tr>
+								<td class="txar">旧密码</td>
+								<td><input type="password" name='oldPwd'></td>
+							</tr>
+							<tr>
+								<td class="txar">新密码</td>
+								<td><input type="password" name='payPwd'></td>
+							</tr>
+							<tr>
+								<td class="txar">确认新密码</td>
+								<td><input type="password" name='payRePwd'></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="confirmbtn"><a href="javascript:void(0);" class="confirmbtnA">确认</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+	//修改支付密码
+	$(".confirmbtnA").click(function(){		
+		$(".topLoading").show();	 
+		var oldpwd = $("input[name='oldPwd']").val();
+		var pwd = $("input[name='payPwd']").val();
+		var rpwd = $("input[name='payRePwd']").val();
+		if (oldpwd == '') {
+			$(".topLoading").hide();
+			divPrompt("请填写旧密码！");
+	        return;		
+		};
+		if (pwd == '') {
+			$(".topLoading").hide();
+			divPrompt("请输入支付密码！");
+            return;				
+		};
+		if (pwd != rpwd) {
+			$(".topLoading").hide();
+			divPrompt("支付密码和确认支付密码必须相同！");
+            return;
+        }
+		$.ajax({
+	        type:"POST",
+	        url:"__APP__/Info/changePayPwd",
+	        data:{oldpwd:oldpwd,pwd:pwd,rpwd:rpwd},
+	        dataType:'text',
+	        success:function(data){
+	        	var res = eval(data);
+            	if (res[0] == 1 ) {
+					$(".topLoading").hide(); 
+					$("input[name='oldPwd']").val('');
+		 			$("input[name='payPwd']").val('');
+					$("input[name='payRePwd']").val('');
+					divPrompt(res[1]);
+            	}else{
+					$(".topLoading").hide();
+					divPrompt(res[1]);
+            	}
+	       	},
+	       	error:function(){
+				$(".topLoading").hide();
+				divPrompt("系统繁忙，请重试！");
+	            return;
+		    }
+    	});
+	});
+</script>
+</body>
+</html>

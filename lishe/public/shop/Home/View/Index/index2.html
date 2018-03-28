@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>心意商城</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" href="__VIEW__Public/css/index.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<!-- 头部搜索 -->
+	<include file="Public/headerFind"/>
+	<!--bannar-->
+	<div class="banner_wrap">
+	<ul class="side_ul">
+           
+            <li>
+                <a href="http://www.lishe.cn/activity/valentine/index.html" target="_blank">
+                    <img src="/shop/Home/View/Public/images/index/images/banner/banner_valentine.png"/>
+                </a>    
+            </li>
+           
+			<li>
+				<a href="http://www.lishe.cn/activity/foodstuff/" target="_blank">
+				<img src="/shop/Home/View/Public/images/index/images/banner/banner_new2.png"/>
+				</a>
+
+			</li>
+			<li>
+				<a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%9D%9A%E6%9E%9C" target="_blank">
+				<img src="/shop/Home/View/Public/images/index/images/banner/banner1.jpg"/>
+				</a>
+			</li>
+            <!--
+			<li>
+				<a href="http://www.lishe.cn/activity/dyh_activity/index.html" target="_blank">
+					<img src="/shop/Home/View/Public/images/index/images/banner/banner3.png"/>
+				</a>
+			</li>
+            -->
+			<li>
+				<a href="http://www.lishe.cn/shop.php/promotion/joyoung.html" target="_blank">
+					<img src="/shop/Home/View/Public/images/index/images/banner/banner4.png"/>
+				</a>
+			</li>
+            <!--
+			<li>
+				<a href="http://www.lishe.cn/activity/beautiful/index.html" target="_blank">
+					<img src="/shop/Home/View/Public/images/index/images/banner/banner5.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="http://www.lishe.cn/shop.php/Info/index/itemId/11602" target="_blank">
+					<img src="/shop/Home/View/Public/images/index/images/banner/banner6.png"/>
+				</a>
+			</li>
+            -->
+		</ul>
+		<div class="banner_btn_wrap mauto">
+			<!--轮播图按钮-->
+			<div class="banner_btn mauto">
+				<a class="active" target="_blank"></a>
+	            <a target="_blank"></a>			
+                <a target="_blank"></a>
+				<!-- <a target="_blank"></a> -->
+				<a target="_blank"></a>
+				<!-- 
+                <a target="_blank"></a>
+				<a target="_blank"></a>
+                -->
+			</div>
+		</div>
+	</div>
+	<!--banner侧边栏-->
+	<div class="article_wrap mauto">
+		<div class="banner_article">
+			<div class="article_user">
+				<div class="user_head">
+					<img src="__VIEW__Public/images/index/images/icon/user_head.png" class="head_img"/>
+				</div>
+				<if condition="empty($uid)">
+					<span class="a_sp">亲爱的</span>
+					<a href="__APP__/Sign/index"><span class="a_sp name_color plogin" >请登录</span></a>
+					<a href="__APP__/Sign/index" class="a_sp">&nbsp;免费注册></a>
+				<else />
+					<span class="a_sp">Hi,你好~</span>
+					<span class="a_sp name_color">{$userName}</span>
+					<span class="a_sp">&nbsp;&nbsp;欢迎回来！</span>
+				</if>
+			</div>
+			<div class="welfare mauto">
+				<p><img src="__VIEW__Public/images/index/images/icon/welfare1.png"/>福利积分</p>
+					<if condition="empty($uid)">
+						<p class="wel_num mb17">0</p>
+					<else/>
+						<p class="wel_num mb17">{$userDeposit['balance']}</p>
+					</if>
+				<p><img src="__VIEW__Public/images/index/images/icon/warfare2.png"/>我的卡卷</p>
+					<if condition="empty($uid)">
+						<p class="wel_num">0</p>
+					<else />
+						<p class="wel_num">0</p>
+					</if>
+			</div>
+			<div class="article_link">
+				<a href="__USER__/Order/orderList" target="_blank">我的订单</a>
+				<a href="__USER__/Info/assetCenter" target="_blank">福利积分</a>
+				<a href="__USER__/Info/index" target="_blank">个人中心</a>
+			</div>
+		</div>
+	</div>
+	<!--公告-->
+	<div class="announ_wrap mauto">
+		<ul class="ann_ul">
+			<li>心意商城新版上线，给您全新的体验！</li>
+			<li><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%AF%8C%E5%AE%89%E5%A8%9C">富安娜家纺</a>现已入驻礼舍心意商城</li>
+			<li>春节不打烊，精彩活动享不停，春节期间发货安排与售后服务须知请关注轮播图通知</li>
+		</ul>
+		<em class="em1">商城公告:</em>
+		<div class="ann_btn">
+			<a href="javascript:void(0);" id="ann_gotop"><img src="__VIEW__Public/images/index/images/icon/top_arrow.png" alt="" /></a>
+			<a href="javascript:void(0);" id="ann_gobottom"><img src="__VIEW__Public/images/index/images/icon/bottom_arrow.png" alt="" /></a>
+		</div>
+	</div>
+	<!--商品栏1-->
+	<div class="commodity1 mauto">
+		<ul class="comm1_ul">
+			<li>
+				<a href="http://www.lishe.cn/shop.php/Items/itemList/catId/661" target="_blank" class="comm1_a1">
+					<div class="comm1_text">
+						<b class="sptext1">零食宴会</b>
+						<span class="sptext2">精选年会</span>
+						<span class="sptext3">GO</span>
+					</div>
+					<div class="comm_img">
+						<img src="__VIEW__Public/images/index/images/lingshi.png"/>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E9%94%85" target="_blank" class="comm1_a2">
+					<div class="comm1_text">
+						<b class="sptext1">锅具专场</b>
+						<span class="sptext2">烹饪达人</span>
+						<span class="sptext3">GO</span>
+					</div>
+					<div class="comm_img">
+						<img src="__VIEW__Public/images/index/images/guoju.png"/>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a target="_blank" href="http://www.lishe.cn/shop.php/Items/itemList/catId/1010" class="comm1_a3">
+					<div class="comm1_text">
+						<b class="sptext1">温馨家纺</b>
+						<span class="sptext2">有被而来</span>
+						<span class="sptext3">GO</span>
+					</div>
+					<div class="comm_img">
+						<img src="__VIEW__Public/images/index/images/jiafang.png"/>
+					</div>
+				</a>
+			</li>
+			<li class="margin0">
+				<a href="http://www.lishe.cn/shop.php/Items/itemList/catId/1120" target="_blank" class="comm1_a4">
+					<div class="comm1_text">
+						<b class="sptext1">差旅必备</b>
+						<span class="sptext2">人气拉杆箱</span>
+						<span class="sptext3">GO</span>
+					</div>
+					<div class="comm_img">
+						<img src="__VIEW__Public/images/index/images/chailv.png"/>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!--品牌-->
+	<div class="brand mauto">
+		<div class="left_item"><a target="_blank"><img src="__VIEW__Public/images/index/images/pingpai.png" alt="" /></a></div>
+		<div class="right_item">
+			<ul class="brand_ul">
+				<li class="brand1"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E4%B9%9D%E9%98%B3" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E4%B9%9D%E9%98%B3" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand2"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%88%B1%E5%8D%8E%E4%BB%95" target="_blank" class="side_a"></a><a target="_blank" href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%88%B1%E5%8D%8E%E4%BB%95" class="side_a2">点击进入</a></li>
+				<li class="brand3"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%AF%8C%E5%AE%89%E5%A8%9C" target="_blank" class="side_a"></a><a target="_blank" href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%AF%8C%E5%AE%89%E5%A8%9C" class="side_a2">点击进入</a></li>
+				<li class="brand4"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%BD%97%E8%8E%B1" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%BD%97%E8%8E%B1" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand5"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%BE%8E%E7%9A%84" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%BE%8E%E7%9A%84" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand6"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E9%A3%9E%E5%88%A9%E6%B5%A6" target="_blank" class="side_a"></a><a target="_blank" href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E9%A3%9E%E5%88%A9%E6%B5%A6" class="side_a2">点击进入</a></li>
+				<li class="brand7"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E4%B8%AD%E7%B2%AE" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E4%B8%AD%E7%B2%AE" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand8"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E9%A3%9E%E7%A7%91" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E9%A3%9E%E7%A7%91" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand9"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E8%BD%BB%E7%94%9F%E6%B4%BB" target="_blank" class="side_a"></a><a target="_blank" href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E8%BD%BB%E7%94%9F%E6%B4%BB" class="side_a2">点击进入</a></li>
+				<li class="brand10"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand11"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%BA%B7%E4%BD%B3" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%BA%B7%E4%BD%B3" target="_blank" class="side_a2">点击进入</a></li>
+				<li class="brand12"><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC" target="_blank" class="side_a"></a><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E8%BF%AA%E5%A3%AB%E5%B0%BC" target="_blank" class="side_a2">点击进入</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--限时秒杀-->
+	<div class="seckill mauto">
+		<div class="seckill_tit">
+			<div class="seckill_left_text">礼舍推荐</div>
+			<!--<div class="seckill_date mauto">
+				<em>06</em>
+				<em class="em">36</em>
+				<em>56</em>
+			</div>-->
+			<a class="seckill_right_text">总有你想不到的低价</a>
+		</div>
+		<ul class="seckill_con">
+			<li>
+				<div class="seckill_img">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/46420.html" target="_blank">
+						<img src="__VIEW__Public/images/index/images/seck1.png" alt="" />
+					</a>
+				</div>
+				<div class="seckill_text">
+					<p class="seckill_text_name">[蔡府]</p>
+					<h2>胶原蛋白燕窝礼盒</h2>
+					<p class="seckill_text_con">馨香美味 双重滋补</p>
+					<p class="sec_price"><em>19200</em>积分</p>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/46420.html" class="buy" target="_blank">立即抢购</a>
+				</div>
+			</li>
+			<li class="leav">
+				<div class="seckill_img">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/35744.html" target="_blank">
+						<img src="__VIEW__Public/images/index/images/seck2.png" alt="" />
+					</a>
+				</div>
+				<div class="seckill_text">
+					<p class="seckill_text_name">[LAVANDA]</p>
+					<h2>牛皮链条淑女单肩包</h2>
+					<p class="seckill_text_con">优雅品味 名媛风范</p>
+					<p class="sec_price"><em>53600</em>积分</p>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/35744.html" class="buy" target="_blank">立即抢购</a>
+				</div>
+			</li>
+			<li>
+				<div class="seckill_img">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/48344.html" target="_blank">
+						<img src="__VIEW__Public/images/index/images/seck3.png" alt="" />
+					</a>
+				</div>
+				<div class="seckill_text">
+					<p class="seckill_text_name">[鄂尔多斯]</p>
+					<h2>秋冬纯羊绒圆领套衫</h2>
+					<p class="seckill_text_con">好羊绒 贴身穿</p>
+					<p class="sec_price"><em>341000</em>积分</p>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/48344.html" class="buy" target="_blank">立即抢购</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="three_wrap mauto">
+		<!--今日最优-->
+		<div class="best">
+			<h2 class="product_head">
+				<div class="h2_left">今日最优</div>
+				<div class="h2_right"><span>我的购物车 会发光</span><img src="__VIEW__Public/images/index/images/icon/sk_arror.png"></div>
+			</h2>
+			<ul class="find_con">
+				<li>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/917.html" target="_blank">
+						<div class="find_text">
+							<p class="find_p1">温暖不打折</p>
+							<p class="find_price">22800积分</p>
+						</div>
+						<div class="find_img">
+							<img src="__VIEW__Public/images/index/images/find1.png"/>
+						</div>
+					</a>
+				</li>
+				<li class="find_item1">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/8810.html" target="_blank">
+						<div class="find_text">
+							<p class="find_p1">常吃枣 不易老</p>
+							<p class="find_price">6800积分</p>
+						</div>
+						<div class="find_img">
+							<img src="__VIEW__Public/images/index/images/find1-2.png"/>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/48346.html" target="_blank">
+						<div class="find_text">
+							<p class="find_p1">绝对羊绒</p>
+							<p class="find_price">251000积分</p>
+						</div>
+						<div class="find_img">
+							<img src="__VIEW__Public/images/index/images/find2-11.png"/>
+						</div>
+					</a>
+				</li>
+				<li class="find_item1">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/29855.html" target="_blank">
+						<div class="find_text">
+							<p class="find_p1">新骨瓷茶具组合</p>
+							<p class="find_price">31200积分</p>
+						</div>
+						<div class="find_img">
+							<img src="__VIEW__Public/images/index/images/find2-2.png"/>
+						</div>
+					</a>
+				</li>
+				<li class="find_item2">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/29659.html" target="_blank">
+						<div class="find_text">
+							<p class="find_p1">型男公文包</p>
+							<p class="find_price">23800积分</p>
+						</div>
+						<div class="find_img">
+							<img src="__VIEW__Public/images/index/images/find3-1.png"/>
+						</div>
+					</a>
+				</li>
+				<li class="find_item1 find_item2">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/46375.html" target="_blank">
+						<div class="find_text">
+							<p class="find_p1">我是进口的</p>
+							<p class="find_price">38900积分</p>
+						</div>
+						<div class="find_img">
+							<img src="__VIEW__Public/images/index/images/find3-2.png"/>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--时日推荐-->
+		<div class="best best2">
+			<h2 class="product_head">
+				<div class="h2_left">时日推荐</div>
+				<div class="h2_right"><span>最强CP组合</span><img src="__VIEW__Public/images/index/images/icon/sk_arror.png"></div>
+			</h2>
+			<ul class="best_find2">
+				<li>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/18207.html" target="_blank">
+						<h2 class="find2_tit">烤肉绝配</h2>
+						<p>希腊原装进口</p>
+						<div class="find2_img">
+							<div class="solid"></div>
+							<img src="__VIEW__Public/images/index/images/find2.png" alt="" />
+						</div>
+					</a>
+				</li>
+				<li style="margin-left: 20px;">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/28523.html" target="_blank">
+						<h2 class="find2_tit">吃肉更尽兴</h2>
+						<p>小瓶共分享</p>
+						<div class="find2_img">
+							<div class="solid"></div>
+							<img src="__VIEW__Public/images/index/images/find2-1.png" alt="" />
+						</div>
+					</a>
+				</li>
+			</ul>
+			<a href="http://www.lishe.cn/shop.php/Info/index/itemId/860.html" target="_blank" class="barbecue mauto">
+				<h2>有烤肉的冬天更完美</h2>
+			</a>
+		</div>
+		<!--全网热销-->
+		<div class="best best3">
+			<h2 class="product_head">
+				<div class="h2_left">全网热销</div>
+				<div class="h2_right"><span>网红云集地 最骄傲</span><img src="__VIEW__Public/images/index/images/icon/sk_arror.png"></div>
+			</h2>
+			<ul class="best_find3">
+				<li>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/34601.html" target="_blank" class="find_a">
+						<div class="find3_img">
+							<div class="img1">1</div>
+							<img src="__VIEW__Public/images/index/images/dianfanguo.png"/>
+						</div>
+						<div class="find3_name">
+							九阳 家用触摸电磁炉火锅电磁炉灶
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/48521.html" target="_blank" class="find_a">
+						<div class="find3_img">
+							<div class="img1 tow">2</div>
+							<img src="__VIEW__Public/images/index/images/yujiao.png"/>
+						</div>
+						<div class="find3_name">
+							蔡府 小蜘蛛鱼胶<br />200g
+						</div>
+					</a>
+				</li>
+				<li class="br_no1">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/40829.html" target="_blank" class="find_a">
+						<div class="find3_img">
+							<div class="img1 three">3</div>
+							<img src="__VIEW__Public/images/index/images/dagongji.png"/>
+						</div>
+						<div class="find3_name">
+							意大利进口 大公鸡管家多能油污净
+						</div>
+					</a>
+				</li>
+				<li class="bb_no1">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/30507.html" target="_blank" class="find_a">
+						<div class="find3_img">
+							<div class="img1 four">4</div>
+							<img src="__VIEW__Public/images/index/images/xinglixiang.png"/>
+						</div>
+						<div class="find3_name">
+							爱华仕(OIWAS) PC拉杆箱时尚万向
+						</div>
+					</a>
+				</li>
+				<li class="bb_no1">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/50664.html" target="_blank" class="find_a">
+						<div class="find3_img">
+							<div class="img1 four">5</div>
+							<img src="__VIEW__Public/images/index/images/xinyi.png"/>
+						</div>
+						<div class="find3_name">
+							黑茶世家 心怡系列安化醉红一级芽
+						</div>
+					</a>
+				</li>
+				<li class="br_no1 bb_no1">
+					<a href="http://www.lishe.cn/shop.php/Info/index/itemId/35640.html" target="_blank" class="find_a">
+						<div class="find3_img">
+							<div class="img1 four">6</div>
+							<img src="__VIEW__Public/images/index/images/pibao.png"/>
+						</div>
+						<div class="find3_name">
+							LAVANDA 女包欧美时尚女士手提大包
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--电器banner-->
+	<div class="litter_banner mauto">
+		<a target="_blank" href="http://www.lishe.cn/shop.php/Items/itemList/catId/1349"><img src="__VIEW__Public/images/index/images/electric.png" alt="" /></a>
+	</div>
+	<div class="banner_item mauto">
+		<ul class="banner_ul">
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/880.html" target="_blank"><img src="__VIEW__Public/images/index/images/b_item1.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">康佳全能王破壁机 料理机PB-80...</p>
+					<p class="bp_2">99800积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/8478.html" target="_blank"><img src="__VIEW__Public/images/index/images/b_item2.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">edei宜阁全自动家用养生壶触屏</p>
+					<p class="bp_2">29200积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/8632.html" target="_blank"><img src="__VIEW__Public/images/index/images/b_item3.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">FLYCO/飞科FS352全身水洗电动</p>
+					<p class="bp_2">49900积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/35793.html" target="_blank"><img src="__VIEW__Public/images/index/images/35793.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">美的 电饭煲 SCF4002F</p>
+					<p class="bp_2">59900积分</p>
+				</div>
+			</li>
+			<li class="marginr0">
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/11486.html" target="_blank"><img src="__VIEW__Public/images/index/images/b_item5.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">美的 双层不锈钢真空电水壶 SC</p>
+					<p class="bp_2">58600积分</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--家具banner-->
+	<div class="litter_banner mauto">
+		<a href="http://www.lishe.cn/shop.php/Items/itemList/catId/697" target="_blank"><img src="__VIEW__Public/images/index/images/home.png" alt="" /></a>
+	</div>
+	<div class="banner_item mauto">
+		<ul class="banner_ul">
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/11650.html" target="_blank"><img src="__VIEW__Public/images/index/images/home1.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">罗莱 月下华尔兹莫代尔床上用品...</p>
+					<p class="bp_2">99000积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/29490.html" target="_blank"><img src="__VIEW__Public/images/index/images/home2.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">多样屋 花园玫瑰2条方巾2条面巾...</p>
+					<p class="bp_2">13600积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/32560.html" target="_blank"><img src="__VIEW__Public/images/index/images/32560.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">罗莱 舒眠羊毛被 被子冬被(1500...</p>
+					<p class="bp_2">43900积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/11631.html" target="_blank"><img src="__VIEW__Public/images/index/images/home4.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">罗莱 TG-决明子荞麦呵护枕枕芯...</p>
+					<p class="bp_2">16400积分</p>
+				</div>
+			</li>
+			<li class="marginr0">
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/32565.html" target="_blank"><img src="__VIEW__Public/images/index/images/home5.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">罗莱 素色法兰绒毯 毯子毛毯150...</p>
+					<p class="bp_2">14300积分</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--食品banner-->
+	<div class="litter_banner mauto">
+		<a href="http://www.lishe.cn/shop.php/Items/itemList/catId/662" target="_blank"><img src="__VIEW__Public/images/index/images/fool.png" alt="" /></a>
+	</div>
+	<div class="banner_item mauto">
+		<ul class="banner_ul">
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/6653.html" target="_blank"><img src="__VIEW__Public/images/index/images/fool1.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">蕙兰125g礼盒装 浙江雨前龙井...</p>
+					<p class="bp_2">25480积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/8492.html" target="_blank"><img src="__VIEW__Public/images/index/images/fool2.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">登龙总检查员干红750ml</p>
+					<p class="bp_2">41900积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/13190.html" target="_blank"><img src="__VIEW__Public/images/index/images/fool3.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">中粮五谷丰登杂粮礼盒198套装</p>
+					<p class="bp_2">19800积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/45022.html" target="_blank"><img src="__VIEW__Public/images/index/images/fool4.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">爱汇味【马来西亚进口】炭烧速...</p>
+					<p class="bp_2">5800积分</p>
+				</div>
+			</li>
+			<li class="marginr0">
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/8803.html" target="_blank"><img src="__VIEW__Public/images/index/images/fool5.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">青怡庄园-庆元牛肝菌80g</p>
+					<p class="bp_2">8000积分</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--化妆品banner-->
+	<div class="litter_banner mauto">
+		<a href="http://www.lishe.cn/shop.php/Items/itemList/catId/1173" target="_blank"><img src="__VIEW__Public/images/index/images/clear.png" alt="" /></a>
+	</div>
+	<div class="banner_item mauto">
+		<ul class="banner_ul">
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/12587.html" target="_blank"><img src="__VIEW__Public/images/index/images/clear1.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">多芬(DOVE)沐浴乳沐浴露 清透...</p>
+					<p class="bp_2">4750积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/48373.html" target="_blank"><img src="__VIEW__Public/images/index/images/48373.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">黛以海 最爱清洁三件套（清洁泥膜+洁面啫喱+手部滋养霜）</p>
+					<p class="bp_2">16800积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/18070.html" target="_blank"><img src="__VIEW__Public/images/index/images/clear3.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">潘婷洗发水乳液修护750ml</p>
+					<p class="bp_2">6590积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/18130.html" target="_blank"><img src="__VIEW__Public/images/index/images/clear4.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">沙宣洗发水垂坠质感750ml</p>
+					<p class="bp_2">9900积分</p>
+				</div>
+			</li>
+			<li class="marginr0">
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/48272.html" target="_blank"><img src="__VIEW__Public/images/index/images/clear5.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">轻生活 纯棉无荧光剂卫生巾7盒...</p>
+					<p class="bp_2">8800积分</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--箱子banner-->
+	<div class="litter_banner mauto">
+		<a href="http://www.lishe.cn/shop.php/Items/itemList/catId/1124" target="_blank"><img src="__VIEW__Public/images/index/images/bad.png" alt="" /></a>
+	</div>
+	<div class="banner_item mauto">
+		<ul class="banner_ul">
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/3484.html" target="_blank"><img src="__VIEW__Public/images/index/images/bad1.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">LEXON AIRLINE 背包14寸电脑...</p>
+					<p class="bp_2">45960积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/29659.html" target="_blank"><img src="__VIEW__Public/images/index/images/bad2.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">瑞士军刀swissgear 横款手提单...</p>
+					<p class="bp_2">23800积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/35619.html" target="_blank"><img src="__VIEW__Public/images/index/images/bad3.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">LAVANDA 牛皮铆钉双肩包女街...</p>
+					<p class="bp_2">93200积分</p>
+				</div>
+			</li>
+			<li>
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/19171.html" target="_blank"><img src="__VIEW__Public/images/index/images/bad4.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">瑞士军刀swissgear 洗漱包中性...</p>
+					<p class="bp_2">9000积分</p>
+				</div>
+			</li>
+			<li class="marginr0">
+				<div class="bann_img"><a href="http://www.lishe.cn/shop.php/Info/index/itemId/30509.html" target="_blank"><img src="__VIEW__Public/images/index/images/bad5.png" alt="" /></a></div>
+				<div class="bann_text">
+					<p class="bp_1">爱华仕（OIWAS）飞机轮拉杆箱...</p>
+					<p class="bp_2">33900积分</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div style="height: 30px;"></div>
+	<!--帮助中心-->
+	<!--<div class="help">
+		<div class="help_con mauto">
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+		</div>
+	</div>-->
+	<div style="clear: both;"></div>
+    <!--底部-->
+    <include file="Public/footer"/>
+
+	<!--侧边栏-->
+	
+
+	<script>
+		$(document).ready(function(){
+			/*菜单*/
+			$('#channels li').bind({
+				mouseover:function(){
+					$(this).children('.details').show();
+				},
+				mouseout:function(){
+					$(this).children('.details').hide();
+				}
+			});
+			
+			$(document).on("click", "#stock_area_item ul li a", function(){
+				alert("a");
+			});
+			
+			//限制字符个数
+			repleceText('.best_find3 li .find3_name',25);
+			repleceText('.bann_text .bp_1',16);
+			function repleceText(obj,max){
+				$(obj).each(function(){
+					if($(this).text().length>max){
+						$(this).text($(this).text().substring(0,max));
+						$(this).html($(this).html()+'...');
+					}
+				});
+			}
+			
+			
+			var banner_left =  $('.banner_wrap').width()-$('.side_ul li a img').width();
+			$('.side_ul li a img').css('margin-left',banner_left / 2);
+			
+			/***banner轮播图***/
+			var banner_left =  $(document).width()-1920;
+			$('.side_ul li a img').css('margin-left',banner_left / 2);
+			
+			var sideNum = 0;
+			var sideBtn = null;
+			$(".side_ul li").eq(0).show();
+			$('.banner_btn a').mouseover(function(){
+				var This = this;
+			
+				sideBtn = setInterval(function(){
+					$(This).addClass('active').siblings().removeClass('active');
+					var btnIndex = $(This).index();
+					siLi = btnIndex;
+		
+					$('.side_ul li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+				},100);
+			});
+			$('.banner_btn a').mouseout(function(){
+				clearInterval(sideBtn);
+			});
+
+			
+			var siLi = 0;
+			var timer = setInterval(play,3000);
+			
+			
+			//鼠标移入移出效果
+		    $(".banner_btn a").hover(function() {
+			  clearInterval(timer);
+			  }, function() {
+			  timer=setInterval(play,3000);
+	  	   });
+		    $(".side_ul li").hover(function() {
+			  clearInterval(timer);
+			  }, function() {
+			  timer=setInterval(play,3000);
+	  	   });
+
+			function play(){
+				siLi++;
+				siLi = siLi > $('.banner_btn a').length-1 ? 0 : siLi; 
+				
+				$('.banner_btn a').eq(siLi).addClass('active').siblings().removeClass('active');
+				
+				$('.side_ul li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+			}
+
+			
+			/*倒计时*/
+			var interval = 1000; 
+			function ShowCountDown(year,month,day,divname) 
+			{ 
+				var now = new Date(); 
+				var endDate = new Date(year, month-1, day); 
+				var leftTime=endDate.getTime()-now.getTime(); 
+				var leftsecond = parseInt(leftTime/1000); 
+				//var day1=parseInt(leftsecond/(24*60*60*6)); 
+				var day1=Math.floor(leftsecond/(60*60*24)); 
+				var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+				var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+				var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+				var cc = document.getElementById(divname); 
+				//cc.innerHTML = "提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒"; 
+				$('#hourE').text(hour);
+				$('#minute').text(minute);
+				$('#second').text(second);
+			}
+			window.setInterval(function(){ShowCountDown(2017,1,19,'divdown1');}, interval); 
+			
+			
+			/***/
+			
+			/*公告*/
+			var gnum = 0;
+			var annOff = true;
+			setInterval(function(){
+				gnum++;
+				if(gnum > $('.ann_ul li').length-1){
+						gnum = 0;
+				}
+				announ();
+			},3000);
+			
+			function announ(){
+				$('.ann_ul').animate({
+					marginTop:gnum * -50 + 'px'
+				},1000);
+				
+				annOff = true;
+			}
+			
+			$('#ann_gotop').click(function(){
+				if(annOff){
+					gnum++;
+					if(gnum > $('.ann_ul li').length-1){
+						gnum = 0;
+					}
+					announ();
+				}
+				
+				annOff = false;
+			});
+			$('#ann_gobottom').click(function(){
+				if(annOff){
+					gnum--;
+					if(gnum < 0){
+						gnum = 0;
+					}
+					announ();
+				}
+				
+				annOff = false;
+			});
+
+
+		});
+	</script>
+
+</body>
+</html>

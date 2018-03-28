@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>festival-单品凑单</title>
+	<link rel="shortcut icon" href="{$STATIC}/images/icon/bitbug_favicon.ico">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/OneCollectOne.css">
+</head>
+<body>
+<div class="header2_wrap">
+		<div class="header2 mauto">
+			<div class="header2_link1 fl">
+				<notempty name="comName">
+					<span class="lishe_sp fl">{$comName}</span>
+				</notempty>
+				<empty name="uid">
+					<span class="lishe_sp2 fl">未登录</span>
+				<else /> 
+					<span class="lishe_sp2 fl">{$userName}</span>
+				</empty> 
+				<a href="/" class="link_a fl">首页</a>
+				<a href="/shop.php" class="link_a fl">心意商城</a>
+			</div>
+			<div class="header2_link2 fr">
+				<empty name="uid">
+					<a href="__APP__/Sign/index" class="ls_sp quit">登录</a>
+				<else /> 
+					<span class="ls_sp account">账户余额<b class="clon">:</b><em>¥{$deposit|number_format=2}</em></span>
+				</empty> 
+				<a href="/shop.php/Order/Cart" class="ls_sp shopingCart">购物车(<em class="cartNumber">0</em>)</a>
+				<notempty name="uid">
+					<a href="{:U('Sign/logout')}" class="ls_sp quit">退出登录</a>
+				</notempty> 
+			</div>
+		</div>
+	</div>
+<div class="content mauto">
+	<div class="content-banner">
+		<div class="banner-top">
+		<eq name="acid" value="98">
+			<img class="banner" src="{$STATIC}/images/banner.jpg" alt=""/>
+		<else />
+			<img class="banner" src="{$STATIC}/images/banner.png" alt=""/>
+			<p class="banner-price"><span>￥</span>{$catContent}</p>
+		</eq>
+		</div>
+	</div>
+	<div class="screen">
+		<div class="screen-left fl" id="sortbox">
+			<p sortby="1" <eq name="sortby" value="1">class="screen-left-click"</eq>>综合排序</p>
+			<p sortby="2" <eq name="sortby" value="2">class="screen-left-click"</eq>>销量</p>
+			<if condition="$sortby eq 3">
+				<p sortby="3" class="screen-left-price screen-left-click">价格<img class="price-bottom" src="{$STATIC}/images/price-fff.png" alt=""/></p>	
+			<elseif condition="$sortby eq 4"/>
+				<p sortby="4" class="screen-left-price screen-left-click">价格<img class="price-bottom price-bottom-rotate" src="{$STATIC}/images/price-fff.png" alt=""/></p>
+			<else />
+				<p sortby="3" class="screen-left-price">价格<img class="price-bottom price-bottom-rotate" src="{$STATIC}/images/price-bottom.png" alt=""/></p>
+			</if>
+			<p sortby="5" <eq name="sortby" value="5">class="screen-left-click"</eq>>上架时间</p>
+		</div>
+		<div class="screen-center fl">
+			<input value="{$sp}" maxlength="5" size="14" id="sprice"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  class="screen-center-input" type="text" placeholder="￥"/>
+			-
+			<input value="{$ep}"  maxlength="5" size="14" id="eprice" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  class="screen-center-input" type="text" placeholder="￥"/>
+			<span class="screen-center-btn" onclick="rangeSearch()">确定</span>
+		</div>
+		<div class="screen-right fr">
+			<p class="screen-right-text fl">共 <span class="colorText">{$itemCount|default=0}</span> 件商品</p>
+			<p class="fl"><span class="colorText">{$page}</span>/<span>{$pageCount|default=0}</span></p>
+			<p class="screen-right-btn fl">
+				<span class="screen-btn-left" <gt name="page" value="1">onclick="pagePrev();"</gt>><</span>
+				<span class="screen-btn-right" <lt name="page" value="$pageCount">onclick="pageNext();"</lt>>></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="content-chilren">
+	<ul class="content-chilren-ul">
+		<volist name="itemList" id="item">
+		<li>
+			<div class="chilren-img-parent">
+				<div class="chilren-img">
+					<img src="{$item.image_default_id}_s.{:end(explode('.',$item['image_default_id']))}" alt="" style="width:160px;height:160px;"/>
+				</div>
+				<p class="chilren-text">{$item['title']}</p>
+			</div>
+			<div class="chilren-price">
+				<div class="chilren-price-text">
+                     <span class="price-text-one">￥</span><span class="price-text-two">{$item['price']|number_format=2}</span><span class="price-text-three">{$item['price']*100}积分</span>
+				</div>
+				<div class="chilren-price-btn">
+					<p class="shopping fl pro_btn1" data-itemId="{$item['item_id']}" data-shopId="{$item['shop_id']}">加入购物车</p>
+					<p class="immediately fl"><a href="{:U('Info/index',array('itemId'=>$item['item_id']))}">立即购买</a></p>
+				</div>
+			</div>
+		</li>
+		</volist>
+	</ul>
+</div>
+<div class="page mauto">
+	<div class=page1>
+	<div class="page-sort" style="margin:0 auto">
+		<gt name="page" value="1">
+			<span class="page-prev" onclick="pagePrev();">&lt;上一页</span>
+		</gt>
+		<for start="1" end="$pageCount" comparison="elt">
+			<eq name="i" value="$page">
+				<span class="page-num page-num-click" no="{$i}">{$i}</span>
+			<else/>
+				<span class="page-num" no="{$i}">{$i}</span>
+			</eq>
+		</for>
+		<!-- <p class="page-num-dot">...</p> -->
+		<lt name="page" value="$pageCount">
+			<span class="page-next" onclick="pageNext();">下一页&gt;</span>
+		</lt>
+	</div>
+	<neq name="pageCount" value="1">
+		<p class="page-count fl">共&nbsp;<em>{$pageCount}</em>&nbsp;页&nbsp;&nbsp;到第<input maxlength="5" size="14"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="page-select" type="text" value="1" id="goNum"/>页</p>
+		<p class="page-confirm fl" onclick="go();">确定</p>
+	</neq>
+	</div>
+</div>
+<ul class="fixd-cart">
+	<li><a href="/shop.php" target="_blank">心意商城</a></li>
+	<li class="cart-vt" id="end"><a href="/shop.php/Order/Cart">购物车</a><p class="cart-as cartNumber">0</p></li>
+	<li><a class="TOP" href="#">TOP</a></li>
+</ul>
+<input type="hidden" id="acid" value="{$acid}"/>
+<input type="hidden" id="sortby" value="{$sortby}"/>
+<input type="hidden" id="sp" value="{$sp}"/>
+<input type="hidden" id="ep" value="{$ep}"/>
+<input type="hidden" id="page" value="{$page}"/>
+<input type="hidden" id="pagecount" value="{$pageCount}"/>
+</body>
+<script src="{$STATIC}/js/jQuery.v1.8.3.min.js"></script>
+<script src="{$STATIC}/js/jquery.fly.min.js"></script>
+<!--[if lte IE 9]>
+<script src="js/requestAnimationFrame.js"></script>
+<![endif]-->
+<script>
+	/* $(function() {
+		var offset = $(".cart-vt").offset();
+		$(".shopping").click(function(event){
+			var addcar = $(this);
+			console.log(addcar.parent().parent().siblings('.chilren-img-parent').children().children());
+			var img =addcar.parent().parent().siblings('.chilren-img-parent').children('.chilren-img').find('img').attr('src');
+			var flyer = $('<img class="u-flyer" src="'+img+'">');
+			console.log(flyer);
+			flyer.fly({
+				start: {
+					left: event.pageX,
+					top: event.pageY-350
+				},
+				end: {
+					left: offset.left+50,
+					top: offset.top-30,
+					width: 0,
+					height: 0
+				},
+				onEnd: function(){
+				}
+			});
+		});
+
+	}); */
+	$('.TOP').click(function(e){
+		e.preventDefault();
+		$('body,html').animate({
+			scrollTop : 0 + 'px'
+		});
+	})
+	//分页点击
+	function pagination(){
+		var acid = $("#acid").val();
+		var sortby = $("#sortby").val();
+		var sp = $("#sp").val();
+		var ep = $("#ep").val();
+		var page = $("#page").val();
+		window.location.href = '/shop.php/Activity/singleArea?acid='+acid+'&sortby='+sortby+'&sp='+sp+'&ep='+ep+'&page='+page;
+	}
+	//点击分页
+	$('.page').on('click', '.page-num', function(){
+		var page = $(this).attr('no');
+		$("#page").val(page)
+		pagination();
+	})
+	//上一页
+	function pagePrev() {
+		var page = $("#page").val();
+		$("#page").val(--page);
+		pagination();
+	}
+	//下一页
+	function pageNext() {
+		var page = $("#page").val();
+		$("#page").val(++page);
+		pagination();
+	}
+	//跳转
+	function go() {
+		var goNum = $("#goNum").val();
+		var reg = /^[1-9]\d*$/;
+		var pageCount = $("#pagecount").val();
+		if (!reg.test(goNum) || goNum > pageCount) {
+			alert("跳转的页数范围在1~"+pageCount);
+			$("#goNum").val(1);
+			return false;
+		}
+		$("#page").val(goNum);
+		pagination();
+	}
+	//排序
+	$("#sortbox p").click(function(){
+		//跳转
+		var sortby = $(this).attr("sortby");
+		if ($(this).hasClass("screen-left-click") 
+				&& (sortby != 3 && sortby != 4)) { //排除价格排序，价格排序连续点击
+			return false;
+		}
+		//价格字段特殊处理
+		if (sortby == 3) {
+			sortby = 4; //之前是降序，改为升序
+		} else if(sortby == 4) {
+			sortby = 3; //之前是升序，改为降序
+		}
+		$("#sortby").val(sortby);
+		$("#page").val(1);
+		pagination();
+	});
+	//价格区间搜索
+	
+	function rangeSearch(){
+		var sprice = $.trim($("#sprice").val());
+		var eprice = $.trim($("#eprice").val());
+		var reg = /^\d+(\.\d+)?$/;
+		if(sprice != '' && !reg.test(sprice)){
+			alert('价格有误a');
+			return false;
+		}
+		if(eprice != '' && !reg.test(eprice)){
+			alert('价格有误v');
+			return false;
+		}
+		$("#sp").val(sprice);
+		$("#ep").val(eprice);
+		$("#page").val(1);
+		pagination();
+	}
+	
+
+	//加入购物车
+    $(".pro_btn1").click(function(){
+        //商品id
+        var itemId = $(this).attr('data-itemId');//商品id
+        //购买数量
+        var shopId = $(this).attr('data-shopId');//商品id
+        //库存id
+        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+			if(data['code'] == 0){
+				window.open('http://www.lishe.cn/shop.php/Info/index/itemId/'+itemId);
+				return false;
+			}else if(data['code'] == 1){
+				addCart(itemId,data['skuId'],shopId);
+			}
+        	
+        });
+
+    });	
+    function addCart(itemId,skuId,shopId){
+    	var quantity = 1;
+    	var jd_ids = '19_1607_3155_0';
+         $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+                if (res[0] == 1) {
+    				alert("成功加入购物车!");
+                    updateCartNum();               
+                }else{
+                	alert(res[1]);
+                	if(res[2]){
+    					window.location.href = '/shop.php/Sign/index';
+                	}
+                }
+            }
+        });   	
+    }
+	
+    function cartLight() {
+		var all=parseInt($('.cart-as').html());
+		if(all==0){
+			$('.cart-as').css({'display':'none'});
+		}else if(all!=0){
+			$('.cart-as').css({'display':'block'});
+		}
+		/* $('.content-chilren-ul').on('click','.shopping',function(e) {
+			var all = parseInt($('.cart-as').html());
+			$('.cart-as').html(all + 1);
+			if ($('.cart-as').html() == 0) {
+				$('.cart-as').css({'display': 'none'});
+			} else if ($('.cart-as').html() != 0) {
+				$('.cart-as').css({'display': 'block'});
+			}
+		}); */
+	}
+    
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Info/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $(".cartNumber").text(data);
+                cartLight();
+            }
+        });
+	}
+	
+	updateCartNum();
+	
+	cartLight();
+	
+</script>
+
+</html>

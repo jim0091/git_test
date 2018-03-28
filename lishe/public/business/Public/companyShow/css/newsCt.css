@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#FFF; font-family:"微软雅黑"; font-size:12px;}
+/*主内容*/
+.main-ct{width:1000px; margin:0 auto;}
+.manva-left{width:190px; float:left;}
+.mact-right{width:810px; float:right;padding-bottom:100px;}
+/*左侧导航*//
+.subNavBox{width:200px;border:solid 1px #ccc;}
+.subNav{border-bottom:solid 1px #ccc;cursor:pointer;font-size:14px;color:#666666;line-height:50px;padding-left:10px;background:url(../images/showjt.png) no-repeat;background-position:90% 50%;
+width:190px;}
+.navContent{border-bottom:solid 1px #ccc;}
+.navContent li a{display:block;width:200px;heighr:45px;font-size:14px;line-height:45px; color:#666666; padding-left:10px; margin:5px 0;}
+.navContent li a img{vertical-align:middle; padding-right:15px;}
+.navContent .active a{color:#FFF;}
+.currentDt{color:#c7241d;}
+.active{color:#FFF; background:#c7241d;}
+.img-hove{display:none;}
+
+/*新闻中心设置*/
+.main-news{width:800px; margin:0 auto; padding-bottom:30px; border:#CCC solid 1px; margin-left:30px;}
+.mp{font-size:14px; color:#FFF; padding-left:15px; height:40px; line-height:40px; background:#c7241d;} 
+.hed-ul{width:800px; margin:0 auto;margin-top:10px; clear:both;} 
+.cs-des{font-size:14px; color:#333333;text-align:left;}
+.text{width:350px;margin-top:30px;border:solid 1px #CCC;height:28px;}
+.text2{width:350px;margin-top:30px;border:solid 1px #CCC;height:33px;}
+.edito{height:470px;}
+#container{width:920px; margin:0 auto; margin-top:30px; height:320px;}
+.CP-one{padding-top:35px;}
+.cpo-left{float:left; background:#f2f2f2; width:360px; height:300px; margin:30px 0 0 30px;text-align:center;}
+.cpo-btn{padding-top:110px;}
+.cpo-btn a{color:#333232; font-size:20px; background:#FFF;display:block; width:160px; height:50px; line-height:50px; margin:0 auto;}
+.cpo-btn a img{vertical-align:middle; padding-right:10px;}
+.cpo-des{font-size:14px; color:#808080;}
+.cpo-right{float:left; background:#f2f2f2; width:350px; height:300px;margin:30px 0 0 30px;text-align:center;}
+.cpo-ti{font-size:20px; color:#333232;line-height:60px;}
+.cpo-pt2{width:200px; height:200px; background:#FFF; margin:0 auto;}
+.cpo-pt{font-size:14px; color:#808080; padding-top:10px;height: 200px;overflow: hidden;}
+.cpo-btn2{clear:both; text-align:center; padding-top:25px;}
+.cpo-btn2 a{margin:0 20px;}
+.sure{color:#FFF;font-size:14px;background:#c7241d; border-radius:5px; padding:5px 40px;}
+.preview{color:#808080;font-size:14px;border-radius:5px;border:#808080 solid 1px; padding:4px 40px;}
+/*选择新闻*/
+.chNews{width:800px; margin:0 auto; border:#CCC solid 1px; height:900px; margin-left:30px;}
+.tank-p{color:#FFF; font-size:14px; background:#c7241d; height:40px; padding-left:15px; line-height:40px; position:relative;}
+.tank-p a{position:absolute; right:20px; top:12px;}
+.tank-p a img{vertical-align:middle;}
+.tk-put{float:right; padding-right:15px; margin-top:7px;}
+.text3{width:200px;border:solid 1px #CCC;height:25px; vertical-align:middle;}
+/*tab*/
+.tab-box {width:1000px;margin:0px auto;}
+.tab-left {float:left;width:25%;height:780px; border-right:#CCC solid 1px; cursor:pointer;}
+.tab-left ul{padding-left:35px; padding-top:10px;}
+.tab-left ul li{font-size:14px; color:#333333; line-height:30px;}
+.select{background:#f2f2f2;}
+.tab-right>div{display:none;}
+.tab-right table{width:72%; margin:0 auto; text-align:center;}
+.tab-tit tr,td{font-size:14px; color:#333232; border-bottom:#CCC solid 1px; padding-top:10px; padding-bottom:8px;}
+.tab-right table tr td img{width:130px; height:90px;}
+.ch-p{font-size:14px; color:#333333;}
+.ch-p2{font-size:13px; color:#666666; padding-top:5px;}
+.ch-tr{font-size:13px; color:#333333;}
+.ch-tr a{font-size:13px; color:#c7241d; border:#c7241d solid 1px; border-radius:5px; padding:3px 10px; margin-top:10px;}
+.chbg{background:#f2f2f2;}
+.tab-fy{margin-top:30px; margin-left:465px;}
+.tab-fy li{float:left; margin:0 5px;}
+.tab-fy li a{font-size:14px; color:#666666; border:#CCC solid 1px; padding:3px 8px;}
+.tab-fy li a:hover{color:#FFF; background:#c7241d;}
+
+

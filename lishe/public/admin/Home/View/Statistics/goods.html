@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="http://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+table th,td
+{
+    text-align:center !important;
+}
+/*thinkphp åˆ†é¡µæ ·å¼*/
+div.page1 {
+    margin-top: 20px;
+    margin-right: 10px;
+    float: right;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+div.page1 span.current , div.page1 a{
+    border: 1px solid #dcdcdc;
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin-right: 5px;
+    padding: 3px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+div.page1 span.current{
+    background: #ff5c5c none repeat scroll 0 0 !important;
+    border-color: #ff5c5c;
+    color: #ffffff !important;
+    display: block;
+    float: left;
+    font-size: 12px;
+    cursor: pointer;
+}
+div.page1 a.prev,div.page1 a.next{
+    padding: 3px 4px;
+}
+.firstList{
+    padding-left: 17px !important;
+    text-align:left !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    height:auto;
+    line-height: auto;
+}
+
+</style>
+<title>统计</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统统计 <span class="c-gray en">&gt;</span> 商品销售统计 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div>
+<br>
+<table id="example" class="table table-border table-bordered table-bg table-hover table-sort">
+    <thead>
+    <tr class="text-c">
+        <th>商品id</th>
+        <th style="text-align:center !important;">商品名称</th>
+        <th>商品下单数量</th>
+        <th>商品购买数量</th>
+        <th>商品销售总额</th>
+        <th>商品支付总额</th>
+        <th>商品退款总额</th>
+        <th>商品总成本</th>
+        <th>商品总利润</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {   
+        var t = $('#example').dataTable({
+            aaSorting: [[8, "desc"]], //默认排序
+            bLengthChange : false, //改变每页显示数据数量
+            bProcessing: true,
+            serverSide:true,
+            sPaginationType : "full_numbers",
+            oLanguage : {
+                "sProcessing": "数据加载中....",
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "Loading...",
+                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sSearch": "搜索:",
+                "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
+                }
+            },
+            ajax: {
+            //指定数据源
+            url: "getGoods",
+            dataType: 'json',
+
+            },
+            pageLength: 30,
+            columns: [{
+                "data": "item_id" //此列不绑定数据源，用来显示序号
+            },{
+                "data": "title","sClass": "firstList"
+            },{
+                "data": "sold_quantity"
+            },{
+                "data": "buy_count"
+            },{
+                "data": "stat_total"
+            },{
+                "data": "stat_payed"
+            },{
+                "data": "stat_refund"
+            },{
+                "data": "stat_cost"
+            },{
+                "data": "stat_profit"
+            }]
+
+        });
+        
+    });
+</script>
+</body>
+</html>

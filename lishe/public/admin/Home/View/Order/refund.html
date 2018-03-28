@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>退款</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 订单管理 <span class="c-gray en">&gt;</span> 订单退款  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+  <div class="form form-horizontal">
+    <div class="row cl">
+      <label class="form-label col-2">售后类型：</label>
+      <div class="formControls col-5">
+       {$orderInfo.serviceStatus}
+      </div>
+      <div class="col-5"></div>
+    </div>  
+  <div class="row cl">
+      <label class="form-label col-2">退款单号：</label>
+      <div class="formControls col-5">
+        <input type="hidden" value="{$tid}" id="tid">
+        <input type="hidden" value="{$paymentId}" id="paymentId">
+		<!--订单详情-->
+		<a onclick="member_edit('{$tid}订单详情','{:U('Home/Order/detail',array('tid'=>$tid))}','4','','350')">
+	        <strong style="color: #5a98de;">{$tid}</strong>
+		</a>
+		<br />				  
+		<!--订单详情-->	        
+      </div>      
+      <div class="col-5"></div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-2">订单支付总额：</label>
+      <div class="formControls col-5">
+      	 ￥{$orderInfo.payed_fee}
+      </div>
+      <div class="col-5"></div>
+    </div> 	
+	<if condition="($orderInfo.payed_cash gt 0) or ($orderInfo.payed_point gt 0)">
+	    <div class="row cl">
+	      <label class="form-label col-2">订单混合支付：</label>
+	      <div class="formControls col-5">
+			<gt name="orderInfo.payed_cash" value="0">
+				￥{$orderInfo.payed_cash}
+			</gt>
+			<gt name="orderInfo.payed_point" value="0">
+				<gt name="orderInfo.payed_cash" value="0">
+					+
+				</gt>
+				{$orderInfo.payed_point}积分
+			</gt>
+	      </div>
+	      <div class="col-5"></div>
+	    </div> 		
+	</if>    
+    <div class="row cl">
+      <label class="form-label col-2">退款商品：</label>
+      <div class="formControls col-10">
+      	<volist name="items" id="item">
+
+	        	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;" data="{$item['oid']}" class="itemList">
+	        		<input type="hidden" class="input-text text-c" style="width:50px" name="num[]" readonly="readonly" value="{$item['aftersales_num']}">
+	        		&nbsp;
+	        		<span title="{规格：$item['spec_nature_info']}">{$item['title']}</span>
+        			<br />
+	        		<if condition="$item.aftersales_num gt 0">
+	        			<if condition="$item.aftersales_status eq 'SUCCESS'">
+		        			<span class="c-red">已退{$item['aftersales_num']}件</span>
+	        			<else/>
+		        			<small class="c-red">退{$item['aftersales_num']}件</small>
+	        			</if>
+	        		</if>
+			        <small style="color: #5a98de;">
+			        	总{$item['num']}件,单价：{$item['price']}
+							<if condition="($item.cash gt 0) or ($item.point gt 0)">
+								,混合单价:
+								(
+								<gt name="item.cash" value="0">
+									￥{$item.cash}
+								</gt>
+								<gt name="item.point" value="0">
+									<gt name="item.cash" value="0">
+										+
+									</gt>
+									{$item.point}积分
+								</gt>	
+								)
+							</if>	
+			        </small>	        		
+	        	</p>
+        		<p>
+        			<notempty name="item.reason">
+        				<small style="color:#666;">审核处理说明：{$item.reason}</small>
+        			</notempty>
+        		</p>
+        </volist>
+      </div>
+    </div>
+    <gt name="orderInfo.refund_cash" value="0">
+	    <div class="row cl">
+	      <label class="form-label col-2">第三方支付退款：</label>
+	      <div class="formControls col-7">
+	      	<label>
+		      	<input type="checkbox" id="refunded" /><span class="c-red">*</span>已将{$orderInfo.refund_cash}元退款项退回用户第三方支付平台
+	      	</label>
+	        <br />
+	                       需退款金额：
+	        <strong style="color: #5a98de;">{$orderInfo.refund_cash}</strong>&nbsp;&nbsp;元
+	      	<br/>
+	      	支付类型：{$payInfo['pay_app_id']}<br />
+	      	支付方式：{$payedType[$payInfo['pay_name']]}
+	      	<br />
+	      	交易流水号：
+	        <strong style="color: #5a98de;">{$payInfo.trade_no}</strong>
+	      </div>
+	      <div class="col-3">
+	        <span style="color: #5a98de;">第三方支付平台需要手动操作退款,确认已退还用户后后勾选前面的框</span>
+	      </div>	      
+	    </div>     	
+    </gt>
+    <div class="row cl">
+      <label class="form-label col-2">退回积分：</label>
+      <div class="formControls col-5">
+        <strong style="color: #5a98de;">{$orderInfo.refund_point}</strong>&nbsp;&nbsp;积分
+        <input type="hidden" class="input-text text-c" style="width:120px" value="{$orderInfo.refund_point}" readonly="readonly"  id="fee">
+      </div>
+      <div class="col-5"></div>
+    </div>    
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>退款途径：</label>
+      <div class="formControls col-5">
+			<select id="type"  class="select-box" style="width:180px;">
+				<option value="0">积分</option>
+				<if condition="$payType eq 'e-card'">
+					<option value="1">E卡通</option>
+				</if>
+			</select>			
+      </div>
+      <div class="col-5"></div>
+    </div>  
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>退款处理：</label>
+      <div class="formControls col-3"> 
+		<label class="">
+			<input value="1" name="dealRes" id="user-Character-0-0-0"  type="radio">确认退款
+		</label>
+		&nbsp;&nbsp;
+		<label class="">
+			<input value="2" name="dealRes" id="user-Character-0-0-0"  type="radio">拒绝退款
+		</label>      	
+	 </div>       
+      <div class="col-7"><small style="color: #5a98de;">*请谨慎选择</small> </div>
+    </div>    
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>退款备注：</label>
+      <div class="formControls col-5">
+        <textarea id="mark" class="textarea"  placeholder="请输入退款备注" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-9 col-offset-2">
+        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="saveRefund">
+      </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+	var saveRefund = function(){
+		var tid = $('#tid').val();
+		var paymentId = $('#paymentId').val();
+		var fee = $('#fee').val();
+		var type = $('#type').val();
+		var mark = $('#mark').val();
+		var dealRes=$("input[name='dealRes']:checked").val();//操作结果
+		if({$orderInfo.refund_cash}>0 && !$('#refunded').is(":checked")){
+			alert("确定已将{$orderInfo.refund_cash}元退款项退回用户第三方支付平台,请请勾选");
+			return false;				
+		}
+		if(type==0){
+			var refundLoad="积分";
+		}else if(type==1){
+			var refundLoad="E卡通";
+		}
+		if(dealRes == null){
+			alert("请选择退款处理结果！");
+			return false;			
+		}
+		if(tid=='' || paymentId==''){
+			alert("ID参数为空！");
+			return false;
+		}
+		
+		if(mark==''){
+			alert("请输入备注信息！");
+			$('#mark').focus();
+			return false;
+		}
+		var order = '';
+		$(".itemList").each(function(){
+			var num=$(this).find("input[name='num[]']").val();
+			if(num>0){
+				var oid=$(this).attr('data');
+				order += oid+"-"+num+"#";
+			}
+		})
+		if(order==''){
+			alert("请输入退款商品的数量！");
+			$(".itemList").find("input[name='num[]']").first().focus();
+			return false;
+		}
+		var userName="{$userName}";
+		if(dealRes == 1){
+			if (!confirm("退款账户："+userName+"          退款途径："+refundLoad+"           退款金额："+fee+"元")){ 
+				return false;
+			}		
+		}
+		urls="__APP__/Order/saveRefund";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				tid:tid,
+				paymentId:paymentId,
+				fee:fee,
+				type:type,
+				mark:mark,
+				order:order,
+				dealRes:dealRes,
+				userName:userName
+				
+			},
+			success: function(data){
+				msg=eval(data);
+				if(msg[0]==1){
+					alert('退款成功，退款编号：'+msg[2]);
+				}else if(msg[0]==2){
+					alert('拒绝退款成功!');
+				}else{
+					alert('退款失败：'+msg[1]);
+				}
+			},
+			error: function () {
+				alert('error：'+msg[1]);
+			}
+		});
+		
+	}
+	
+	$(function(){
+		$("#saveRefund").bind("click", saveRefund);
+	})
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}	
+	
+</script>
+</body>
+</html>

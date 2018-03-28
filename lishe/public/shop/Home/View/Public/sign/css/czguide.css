@@ -1,0 +1,23 @@
+.gshadow{width: 100%; min-width: 1600px; height: 100%; background-color: #000; opacity: .5; filter: alpha(opacity=50); position: absolute; z-index: 1000; top: 0; left: 0; display: none;}
+.guidehint{position: absolute; height: 200px; display: none; z-index: 1002; font-size: 24px;}
+.hintsteps{height: 100%; width: 250px; background: url("../images/guidehint1.png") no-repeat; float: left; font-family: "SimHei", Arial, sans-serif; line-height: 36px;}
+.hintsteps .doublerow{display: inline-block; margin: 40px 0 0 43px;}
+.hintsteps .singlerow{display: inline-block; margin: 63px 0 0 26px;}
+.hintpic{width: 168px; height: 157px; float: left; margin: 21px 0; background: url("../images/guidehint2.png") no-repeat;}
+.nextstep{color: #FF4138; width: 80px; height: 30px; line-height: 30px; text-align: center; font-size: 18px; margin-top: -5px; margin-left: 70px; text-decoration: underline; cursor: pointer;}
+.finishq{position: absolute; z-index: 1001; width: 520px; height: 630px; background: url("../images/finishq.png") no-repeat center center; top: 50%; margin-top: -400px; left: 50%; margin-left: -260px; overflow: hidden; color: #E7AC08; font-family: "Microsoft Yahei", Arial, sans-serif; font-weight: bold; display: none;}
+.finishq .closebtn{width: 50px; height: 50px; float: right; margin: 10px 25px 0 0; cursor: pointer;}
+.fqtext{width: 360px; margin: 270px auto 30px auto; font-size: 18px; line-height: 36px;}
+.finishq .previewlink{width: 360px; margin: 0 auto 45px;}
+.previewlink span{color: #00CBFF;}
+.gonextstep{display: block; width: 430px; height: 80px; margin: 0 auto; background: url("../images/finishbtn.png") no-repeat center center;}
+.gonextstep:hover{background-size: 100% 100%;}
+
+
+.gstep25 .singlerow{margin: 65px 0 0 18px;}
+.gstep26 .hintsteps{width: 300px; background-size: 100% 100%;}
+.gstep26 .singlerow{margin: 80px 0 0 26px;}
+.gstep27 .singlerow{margin: 63px 0 0 18px;}
+.gstep28 .hintsteps{width: 270px; background-size: 100% 100%;}
+.gstep28 .singlerow{margin: 80px 0 0 24px;}
+.gstep30 .doublerow{margin: 42px 0 0 38px;}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="http://www.lishe.cn/business/Public/gd10086/css/Mobilemalls.css">
+<script type="text/javascript" src="http://www.lishe.cn/business/Public/js/jquery.js"></script>
+<script src="http://www.lishe.cn/business/Public/js/jquery.jslides_sy.js"></script>
+<title>中国移动VIP积分商城</title>
+<style type="text/css">
+/*banner轮播图*/
+.tbox1mbox{width:100%; height:500px; position:relative; clear:both;}
+.tbox1mboxul {display:block; width:100%; height:500px; list-style:none; padding:0; margin:0; position:relative}
+.tbox1mboxul li {display:block; width:100%; height:500px; list-style:none; padding:0; margin:0; position:absolute}
+.tbox1mboxul li a {display:block; width:100%; height:500px; text-indent:-9999px}
+.tbox1mboxul li a img{width:100%; height:500px;}
+#pagination1 {position:absolute; left:43%; top:90%;  z-index:1000; width:320px; padding:5px 0;text-align:left;}
+#pagination1 li { display:inline-block;width:15px; height:15px;  text-align:center;  margin:0 10px;background:#fff; border-radius:50% }
+#pagination1 li a { display:block; width:100%;height:100%;text-align:center; color:#fff; font-size:0}
+#pagination1 li.current {background:#907178;}
+</style>
+</head>
+<body>
+<!--头部-->
+<include file="Public/gd10086/header" />
+<!--banner轮播-->
+   <div class="tbox1mbox">
+		<ul id="slides" class="tbox1mboxul">
+		<a href="__APP__/Gd10086">
+			<li style="background:url(http://www.lishe.cn/business/Public/gd10086/images/Mbanner4.png) no-repeat center center;"></li>
+	    </a>
+		<a href="http://www.lishe.cn/shop.php/Activity/fuanna" target="_blank">
+			<li style="display:none;background:url(http://www.lishe.cn/shop/Home/View/Activity/fuanna/images/fuanna_gd10086.jpg) no-repeat center center;"></li>
+	    </a>
+		<a href="http://www.lishe.cn/business/index.php/Activity/jdOilActivity/aid/8" target="_blank">
+			<li style="display:none;background:url(http://www.lishe.cn/shop/Home/View/Activity/gd10086/banner_gd10086_oil.png) no-repeat center center;"></li>
+		</a>
+		<!--a href="http://www.lishe.cn/shop.php/Activity/listDetailActivity/aid/15" target="_blank">
+			<li style="display:none;background:url(http://www.lishe.cn/shop/Home/View/Activity/nationalDay/kitchen/images/bannerGd.jpg) no-repeat center center;"></li>
+	    </a-->
+		</ul> 
+	</div>
+ <!--轮播end-->
+<div style="margin: 0 auto;width: 1200px; clear: both; padding: 40px 0 10px 0; line-height: 25px; font-size: 14px;color: #d20000;">●全国客服热线：400-118-8234 （周一至周五 上午9：00-12：00 下午14：00-18：00）<br />
+●意见反馈渠道：登陆E家园“共享服务平台-投诉与建议”或通过OA邮件至yanzhou@gd.chinamobile.com处反馈</div>
+ <volist name="menus" id="menu" key="z">   
+    <!--楼层-->
+    <div class="floorbg">
+       <div class="floor">{$z}F</div>
+       <div class="heading">{$menu.name}</div>
+       <div class="loornva">
+          	<notempty name="category[$menu['cfid']]">
+         	 	<ul>
+			          <volist name="category[$menu['cfid']]" id="class">
+
+			            <li><a target="_blank" href="__APP__/Gd10086/itemList/cfgId/{$class.item_config_id}/catId/{$class.cat_config_id}">{$class.cat_name}</a></li>
+
+					  </volist>            	
+         		 </ul>
+          	</notempty>
+          
+       </div>       
+       <div class="FMore" style="float:right;">
+             <empty name="menu['category']">
+			 	<if condition="$menu['cfid'] eq 31 ">
+				<else />
+                <a href="__APP__/Gd10086/itemList/cfgId/{$menu['cfid']}" target="_blank">查看更多>></a>
+				</if>
+            <else />                 
+                <a href="__APP__/Gd10086/category/cfgId/{$menu['cfid']}" target="_blank">查看更多>></a>
+            </empty>        
+       </div>
+       <div style="clear:both;"></div>
+    </div>
+    <!--楼层列表-->
+    <div class="loorList">
+        <div class="loorpt">
+           <empty name="menu['category']">
+                <a href="__APP__/Gd10086/itemList/cfgId/{$menu['cfid']}" target="_blank">
+            <else />                 
+                <a href="__APP__/Gd10086/category/cfgId/{$menu['cfid']}" target="_blank">
+            </empty>    		
+        	<img src="{$menu.cat_icon}">
+        </a></div>
+        <div class="lorlist">
+   			<volist name="list[$menu['cfid']]" id="vo" key="l">
+	           <ul>
+	              <li class="lorpt">
+	              	<a href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}" target="_blank">
+	              		<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a></li>
+	              <li class="lorUser liheight">
+	              	<a href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}" target="_blank">
+	              		<span class="shopIcon">
+		              		<if condition="$vo.shop_id eq 10">
+		              			旗舰
+		              			<else/>
+		              			自营
+		              		</if>
+	              		</span>
+	              		
+	              		
+	              		{$vo.title}
+	              	</a>
+	              </li>
+	              <li class="lorpic">￥{:round($vo['price'],2)}
+	              	<a href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}" target="_blank">兑换</a>
+	              </li>
+			        <if condition="$vo.flag eq 1">
+			     		<li style="padding-top: 10px;background-color:rgba(51,172,251,0.6);min-height:40px;color: white;text-align: center;position:relative;top: -80px;">
+			     			<small style="color: white; font-size: larger;font-weight: bold;">广东无货</small>
+			     		</li>
+			  		</if> 		              
+	           </ul>
+			</volist>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div style="clear:both;"></div>
+   </volist> 
+    
+
+
+    <div style="clear:both;"></div>
+    <!--底部-->
+    <!--返回-->
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/gd10086/images/Mtop.png"></a></div>
+    </div>
+</body>
+</html>

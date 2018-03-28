@@ -1,0 +1,92 @@
+<style>
+	.leftleave{
+		position :relative; right:26%;
+	}
+	.littleleft{
+		position :relative; right:4%;
+	}
+</style>
+
+<link rel="stylesheet" href="__PUBLIC__/wshop/css/shopnav_custom_0ff1f6a625.css">
+<link rel="stylesheet" href="__PUBLIC__/wshop/css/cat.css">  
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js"></script>
+  <div id="shop-nav" style="display: block;">
+   <div class="js-navmenu js-footer-auto-ele shop-nav nav-menu nav-menu-1 has-menu-3"> 
+    <div class="nav-special-item nav-item"> 
+     <a href="{:U('Home/Index/index')}" class="home">主页ҳ</a> 
+    </div> 
+    <div class="nav-item"> 
+     <a class="mainmenu js-mainmenu" href="{:U('Home/Itemlist/classifyList')}"> <span class="mainmenu-txt">商品类别</span> </a> 
+    </div> 
+    <div class="nav-item"> 
+     <a class="mainmenu js-mainmenu" href="javascript:void(0);" onclick="kainew()"> <i class="arrow-weixin"></i> <span class="mainmenu-txt">礼舍新品</span> </a> 
+	<div class="submenu  leftleave" id="new"> 
+      <span class="arrow before-arrow" style="left: 40px; right: auto;"></span> 
+      <span class="arrow after-arrow" style="left: 40px; right: auto;"></span> 
+      <ul> 
+       <li> <a href="{:U('Home/Itemlist/itemRecommend')}"> 礼舍推荐 </a> </li> 
+       <!--li> <a href="{:U('Home/Welfare/activity')}"> 国庆活动 </a> </li--> 
+       <!--<li class="line-divide"></li>        
+       <li class="line-divide"></li> 
+       <li> <a href="#"> 0626新品 </a> </li> 
+       <li class="line-divide"></li> 
+       <li> <a href="#"> 更多新品 </a> </li> -->
+      </ul> 
+     </div> 
+    </div> 
+    <div class="nav-item"> 
+     <a class="mainmenu js-mainmenu" href="javascript:void(0);" onclick="kaimy()"> <i class="arrow-weixin"></i> <span class="mainmenu-txt">个人中心</span> </a> 
+     <div class="submenu  littleleft" id="my"> 
+      <span class="arrow before-arrow" style="left: 40px; right: auto;"></span> 
+      <span class="arrow after-arrow" style="left: 40px; right: auto;"></span> 
+      <ul>
+       <li> <a href="{:U('Welfare/index')}">企业福利</a> </li> 
+        <li class="line-divide"></li>
+       <if condition="$uid eq 0">
+       <li> <a href="{:U('Home/Login/register')}"> 用户注册 </a> </li> 
+        <li class="line-divide"></li>       
+       <li> <a href="{:U('Home/Login/login')}"> 登录 </a> </li>
+       <else />
+       <li> <a href="{:U('User/userCenter')}"> 订单中心 </a> </li> 
+       <li class="line-divide"></li> 
+       <li> <a href="{:U('Login/logout')}"> 退出 </a> </li>
+       </if>
+      </ul> 
+     </div> 
+    </div> 
+   </div>
+  </div> 
+
+                           
+			
+<script>
+window.news=0;
+window.my=0;
+function kaimy(){
+  if(my==0){
+	$("#my").slideDown("fast");	
+	my=1;
+	news=0;
+	$("#new").slideUp("fast");
+   }else{
+	$("#my").slideUp("fast");
+		news=0;
+		my=0; 
+	$("#new").slideUp("fast");
+	}	
+   }
+
+function kainew(){
+	if(news==0){	
+		$("#new").slideDown("fast");
+		news=1;
+		my=0;	
+		$("#my").slideUp("fast");	
+	}else{
+		$("#new").slideUp("fast");
+		news=0; 
+		my=0;
+		$("#my").slideUp("fast");	
+	}	
+}
+</script>

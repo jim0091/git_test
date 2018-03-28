@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->
+			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="myAssets">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">福利积分</p>
+					</div>
+					<!-- 可用积分 -->
+					<div class="mycredits">
+						<div class="available-credits">
+							可用福利积分：
+							<span class="credits-ammount">{$userDeposit['balance']}</span>
+							<i>积分</i>
+						</div>
+						<a href="__APP__/Info/recharge" class="gorecharge myAssets">去充值</a>
+						<!-- <a href="" class="">去消费</a> -->
+					</div>
+					
+					<!-- 交易明细 -->
+					<div class="right-2nd-title">交易明细</div>
+					<table class="credits-details" style="width:100%">
+						<tr>
+							<th style="width:25%">时间</th>
+							<th style="width:25%">交易类型</th>
+							<th style="width:25%">账户变动</th>
+							<th style="width:25%">备注</th>
+						</tr>
+						<empty name="depositLogList">
+							<tr align="center"><td rowspan="4">未查询到交易记录</td></tr>
+						</empty>
+						<volist name="depositLogList" id="vo">
+						<tr>
+							<td style="width:25%">{$vo['tradeTime']}</td>
+							<td style="width:25%">{$pointType[$vo['type']]}</td>
+							<if condition="$vo['flag'] eq '1'">
+							<td class="credit-in" style="width:25%">-{:number_format($vo['amount'],2)}</td>
+							</if>							
+							<if condition="$vo['flag'] eq '0'">
+							<td class="credit-out" style="width:25%">+{:number_format($vo['amount'],2)}</td>
+							</if>
+							<td style="width:25%">{$vo['remark']}</td>
+						</tr>
+						</volist>
+					</table>
+
+					<div class="pages">
+						{$pagestr}
+					</div>
+					<style type="text/css">
+						.pages a.prev{width: 68px;}
+						.pages div a{margin-left: 5px;}
+						.pages a.next{width:68px;}
+						.pages .current {
+						    color: #FFF;
+						    background-color: #FF3737;
+						    display: inline-block;
+						    width: 38px;
+						    height: 38px;
+						    line-height: 38px;
+						    text-align: center;
+						    margin-left: 5px;
+						    cursor: default;
+						}
+					</style>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>	
+</body>
+</html>

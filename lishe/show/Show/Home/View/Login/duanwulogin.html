@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<link rel="shortcut icon" href="__PUBLIC__/duanwu/images/icon/bitbug_favicon.ico">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/duanwu/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/duanwu/css/login.css">
+	<title>用户登录-{$cname}</title>
+</head>
+<body>
+	<div class="main mauto">
+		<div class="fl banner"><img src="__PUBLIC__/duanwu/images/mainBg.png" /></div>
+		<div class="fr content">
+			<div class="logo" style="max-height: 200px;width: 100%;"><img src="<notempty name='logo'>{$logo}<else/>__PUBLIC__/duanwu/images/LOGO2x.png</notempty>" style="max-width:200px;max-height: 92px;vertical-align: middle;"/></div>
+			<div class="inp_con mauto inp_con1">
+				<input type="text" placeholder="请输入账号" maxlength="11" onKeyPress="if(event.keyCode==13) {return false;}" id="userName" >
+			</div>
+			<div class="inp_con mauto inp_con2">
+				<input type="password" placeholder="请输入密码" id="password" >
+			</div>
+			<div class="textCon1 mauto">
+				<span class="fl autoLogin"><input type="checkbox" id="lsCheck"><label for="lsCheck">自动登录</label></span>
+				<a href="{:C('LISHE')}/shop.php/sign/index/refer/findPasswd" target="_blank" class="fr passwCon">忘记密码?</a>
+			</div>
+			<p class="wraing mauto"><span class="wraingText"></span></p>
+            <input type="hidden" id="refer" value="{$refer}">
+			<div class="loginBtn mauto" id="loginBtn">登录</div>
+			<div class="link">
+				<a href="{:C('LISHE')}/shop.php/sign/index/refer/activation" target="_blank" class="link_a1" >快速激活</a>
+				<a href="{:U('Home/Cactive/index')}" target="_blank" class="link_a2" >礼品卡激活</a>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script src="__PUBLIC__/js/enter.js"></script>	
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#userName").focus();
+	$("#loginBtn").click(function(){
+		$(".error span").text('').hide();		
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	    if(userName==""){
+	      $(".wraingText").text('*请输入您的用户名！').show();
+		  $('.inp_con1').addClass('erroeColor');	      
+	      return false;
+	    }
+	    if(password==""){
+	      $(".wraingText").text('*请输入您的登录密码！').show();
+		  $('.inp_con2').addClass('erroeColor');		      
+	      return false;
+	    } 
+
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password,
+				mark:'{$control}'
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(msg[0]>0){
+//					var refer=msg[2];
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="__APP__/Index/index";	
+					}				
+				}else{
+				    $(".wraingText").text('*'+msg[1]).show();
+					$('.inp_con1').addClass('erroeColor');		     			
+				}
+			},
+			error: function () {
+			    $(".wraingText").text('*error：'+msg[1]).show();
+				$('.inp_con1').addClass('erroeColor');	     			
+			}
+		});
+	});
+});
+$('.inp_con input').bind({
+	focus:function(){
+		$('.wraingText').hide();
+		$(this).parent().removeClass('erroeColor');
+		$(this).parent().addClass('focusColor');
+	},
+	blur:function(){
+		$(this).parent().removeClass('focusColor');
+	}
+
+});
+
+$('.content a').click(function(){
+	$('.content a').css('color','#999999');
+	$(this).css('color','#67ae06');
+});
+</script>
+</html>

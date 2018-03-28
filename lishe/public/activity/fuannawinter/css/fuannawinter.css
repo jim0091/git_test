@@ -1,0 +1,83 @@
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{text-decoration:none;}
+img{border:0;}
+
+html, body{width: 100%;}
+.bg{width: 100%; position: relative;}
+.pic_banner{height: 689px; background: url("../images/pic_banner.jpg") no-repeat center center;}
+.pic1{height: 913px; background: url("../images/pic01.jpg") no-repeat center center;}
+.pic2{height: 949px; background: url("../images/pic02.jpg") no-repeat center center;}
+.pic3{height: 912px; background: url("../images/pic03.jpg") no-repeat center center;}
+.pic4{height: 951px; background: url("../images/pic04.jpg") no-repeat center center;}
+.pic5{height: 851px; background: url("../images/pic05.jpg") no-repeat center center;}
+.pic6{height: 938px; background: url("../images/pic06.jpg") no-repeat center center;}
+.pic7{height: 929px; background: url("../images/pic07.jpg") no-repeat center center;}
+.pic8{height: 915px; background: url("../images/pic08.jpg") no-repeat center center;}
+.pic9{height: 921px; background: url("../images/pic09.jpg") no-repeat center center;}
+.pic10{height: 499px; background: url("../images/pic10.jpg") no-repeat center center;}
+.pic11{height: 1431px; background: url("../images/pic11.jpg") no-repeat center center;}
+.pic12{height: 220px; background: url("../images/pic12.jpg") no-repeat center center;}
+.btn{display: block; position: absolute; width: 126px; height: 111px; left: 50%;}
+.btn2{display: block; position: absolute; width: 520px; height: 600px; left: 50%;}
+.link1{top: 609px; margin-left: 173px;}
+.link2{top: 195px; margin-left: -424px;}
+.link3{top: 637px; margin-left: 208px;}
+.link4{top: 580px; margin-left: -369px;}
+.link5{top: 167px; margin-left: 296px;}
+.link6{top: 609px; margin-left: -335px;}
+.link7{top: 538px; margin-left: 263px;}
+.link8{top: 186px; margin-left: -503px;}
+.link9{top: 628px; margin-left: 207px;}
+.link10{top: 595px; margin-left: -369px;}
+.link11{top: 165px; margin-left: 296px;}
+.link12{top: 607px; margin-left: -451px;}
+.link13{top: 599px; margin-left: -369px;}
+.link14{top: 177px; margin-left: 335px;}
+.link15{top: 77px; margin-left: -540px;}
+.link16{top: 77px; margin-left: 20px;}
+.link17{top: 717px; margin-left: -540px;}
+.link18{top: 717px; margin-left: 20px;}
+.link19{display: block; width: 640px; height: 220px; left: 0; right: 0; margin: auto;}

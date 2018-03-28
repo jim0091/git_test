@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/birthdayDes.css">
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<title>月度寿星-{$cname}</title>
+</head>
+
+<body>
+<!--头部-->
+<include file="Public/header"/>
+ 
+ <div style="clear:both;"></div>
+ <div class="btdesMain">
+     <div class="sumLeft">
+        <div class="left-top">
+           <p class="let-p">伙伴动态</p>
+           <ul>
+               <li  class="left-li"><a href="{:U('Home/Index/activity')}">活动回顾</a></li>
+              <li class="left-li"><a href="{:U('Home/Index/important')}">头号人物</a></li>
+              <li class="left-li"><a href="{:U('Home/Index/super')}">超级新人王</a></li>
+              <li class="slect"><a href="{:U('Home/Index/birthday')}">月度寿星</a></li>    
+           </ul>
+        </div>
+        <div class="left-bom">
+			<!--推荐阅读-->
+			<include file="Index/rememberRead"/>
+			<!--推荐阅读-->
+        </div>
+     </div>
+     <!--右边-->
+     <div class="desRight">
+        <p class="desR-p">{$personInfo.monthDay}生日员工<span>{$personInfo.name}</span></p>
+        <p class="desR-time">{$cname}  {$personInfo.creat_time}</p>
+        <p class="desR-des">***年{$personInfo.birthday}生日的{$personInfo.name}，生日愿望是{$personInfo.birthday_wish}</p>
+        <p class="desR-pt"><img src="{$img}{$personInfo.pic}"></p>
+        <div class="desR-dl">
+			{$personInfo.content}
+        </div>
+     </div>
+ </div>
+ 
+ 
+ 
+   <div style="clear: both;"></div>   
+  <include file="Public/footer"/>
+</body>
+</html>

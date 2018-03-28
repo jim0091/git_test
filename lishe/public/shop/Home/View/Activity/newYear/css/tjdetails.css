@@ -1,0 +1,74 @@
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{text-decoration:none;}
+img{border:0;}
+
+html{min-width: 1200px; font-size: 14px; font-family: "Microsoft Yahei", Arial, sans-serif;}
+body{width: 100%; height: 2735px;}
+.content{width: 100%; height: 2135px; background: url("../images/bg2.jpg") no-repeat center center;}
+.wrap{width: 1212px; height: 2135px; margin: 0 auto; overflow: hidden; position: relative;}
+.wrap ul{margin-top: 25px; overflow: hidden;}
+.wrap li{width: 230px; height: 318px; border: 1px solid #744A30; border-radius: 20px; overflow: hidden; background-color: #FFF; color: #744A30; float: left; margin: 5px;}
+.picpreview{width: 100%; height: 228px; border-bottom: 1px solid #744A30;}
+.picpreview img{width: 100%; height: 100%;}
+.goodsname{padding: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.fullprice{padding-left: 10px; padding-bottom: 10px; text-decoration: line-through;}
+.goodsbot{color: #FF4138;}
+.discount{padding-left: 10px; display: inline-block;}
+.discount span{font-size: 20px; margin-right: 5px;}
+.buybtn{display: block; float: right; padding: 8px 10px; color: #FFF; border-radius: 15px; background-color: #FF4138; margin-right: 10px; margin-top: -8px;}
+.backtop{display: block; width: 100px; height: 110px; position: absolute; top: 1930px; left: 50%; margin-left: -50px;}
+/* 翻页 */
+.pages{display: block; text-align: center; margin-top: 30px;}
+.pages a{display: inline-block; line-height: 36px; vertical-align: top; text-align: center; border: 1px solid #DADADA; color: #333; background-color: #FFF;}
+.pageos{padding: 0px 15px;}
+.pageon{padding: 8px 15px;line-height: 36px;}
+.pages a:first-child{margin-left: 0;}
+.pages a:hover{border-color: #C7241D;}
+.pages .change{width: 73px;}
+.pages .current{color: #FFF; background-color: #C7241D; border: none; width: 38px; height: 38px;}
+.font{background: url("../images/pages-icon.png") no-repeat; background-position: 10px 13px; padding-left: 10px; text-align: right;}
+.next{background: url("../images/pages-icon.png") no-repeat; background-position: 67px -49px; padding-right: 10px; text-align: left;}
+.dots{background: url("../images/pages-icon.png") no-repeat; background-position: 13px -18px; border-color: transparent;}

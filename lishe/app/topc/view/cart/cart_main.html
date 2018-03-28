@@ -1,0 +1,152 @@
+<{if $aCart}>
+<form action="<{url action=topc_ctl_cart@checkout}>" method="post" class="cart-submit-form">
+  <div class="cart" style="border-top: 2px solid #CCCCCC;">
+    <div class="cart-hd cart-table" style="background: #F6F4F4; margin-bottom:0px; border-bottom: 2px solid #CCCCCC;">
+      <div class="cart-row cart-table-th">
+        <div class="cart-col col-checkbox">
+          <input type="checkbox" class="check-all" name="cart_all" <{if $selectAll == true}>checked="true"<{/if}>> <{t}><{/t}>
+        </div>
+        <div style="
+            height: 18px;
+            float: left;
+            width: 50px;
+            text-align: center;
+        ">
+            商品图片
+        </div>
+        <div class="cart-col col-name" style="width: 432px;  text-align: center;"><{t}>商品<{/t}></div>
+        <div class="cart-col col-other"><{t}>单价<{/t}>（元）</div>
+        <div class="cart-col col-other"><{t}>数量<{/t}></div>
+        <div class="cart-col col-other"><{t}>金额<{/t}></div>
+        <div class="cart-col"><{t}>操作<{/t}></div>
+      </div>
+    </div>
+
+
+
+    <{foreach from=$aCart item=item name='name' key=shop_id}>
+    <div class="cart-table" data-shop-id="<{$shop_id}>">
+      <table class="item-table">
+        <colgroup>
+          <col class="table-col-1">
+          <col class="table-col-2">
+          <col class="table-col-3">
+          <col class="table-col-4">
+          <col class="table-col-5">
+          <col class="table-col-6">
+          <col class="table-col-7">
+        </colgroup>
+        <thead style="border: none;">
+          <tr style="    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;">
+            <td colspan="7">
+              <input type="checkbox" class="check-shop-all" name="cart_shop[<{$shop_id}>]" <{if $selectShop[$shop_id] == true}>checked="true"<{/if}> >
+              <label for=""><{t}><{/t}>&nbsp;&nbsp;</label>
+              <em><a href="<{url action=topc_ctl_shopcenter@index shop_id=$shop_id}>"><{$item.shop_name}><img src="/themes/luckymall1/images/index_collect_icon.png" style="margin-left:10px; height:20px;"></a></em>
+              &nbsp;&nbsp;<{im shop_id=$shop_id type=small}>
+              <!-- 领取店铺优惠券开始 -->
+              <{if $item.hasCoupon}>
+                <a href="<{url action=topc_ctl_shopcenter@shopCouponList shop_id=$shop_id}>"  class="btn btn-danger btn-sm get-coupon"><span><span>领券</span></span></a>
+              <{/if}>
+
+              <!-- 领取店铺优惠券结束 -->
+            </td>
+          </tr>
+        </thead>
+        <!-- 优惠活动列表开始 -->
+        <tbody style="border: 1px solid #ccc;
+    border-top: none;">
+          <{foreach from=$item.cartByPromotion item=itemPromotion key=key}>
+          <{if $key!='0'}>
+            <{if in_array($key, $item.usedCartPromotion)}>
+            <tr class="discount-area">
+              <td colspan="7">
+                <span class="label label-danger"><{$item.basicPromotionListInfo[$key].promotion_tag}></span> &nbsp;&nbsp;
+                <a href="<{url action=topc_ctl_promotion@getPromotionItem promotion_id=$item.basicPromotionListInfo[$key].promotion_id}>">
+                  <{$item.basicPromotionListInfo[$key].promotion_name}>
+                </a>
+                <{*if $item.basicPromotionListInfo[$key].promotion_type=='freepostage'*}>
+                  <!-- 免邮 -->
+                <{*/if*}>
+                <{if $item.basicPromotionListInfo[$key].promotion_type=='fullminus'
+                || $item.basicPromotionListInfo[$key].promotion_type=='fulldiscount'
+                || $item.basicPromotionListInfo[$key].promotion_type=='xydiscount'}>
+                  <span>已优惠:<{$itemPromotion.discount_price|cur}></span>
+                <{/if}>
+              </td>
+            </tr>
+            <{/if}>
+            <{foreach from=$item.object item=goods key=key}>
+              <{if in_array($goods.cart_id,$itemPromotion.cart_ids)}>
+              <tr style="background-color:rgb(245,245,245);" class="cart-row discount-area <{if !$goods.valid}>is-disabled<{/if}>" data-cart-id="<{$goods.cart_id}>">
+                <{include file="topc/cart/cart_item.html"}>
+              </tr>
+              <{/if}>
+            <{/foreach}>
+          <{else}>
+            <{foreach from=$item.object item=goods key=key}>
+            <{if in_array($goods.cart_id,$itemPromotion.cart_ids)}>
+            <tr class="cart-row <{if !$goods.valid}>is-disabled<{/if}>" data-cart-id="<{$goods.cart_id}>">
+              <{if $goods.obj_type=='item'}>
+              <{include file="topc/cart/cart_item.html"}>
+              <{/if}>
+              <{if $goods.obj_type=='package'}>
+              <{include file="topc/cart/cart_package_item.html"}>
+              <{/if}>
+            </tr>
+            <{/if}>
+            <{/foreach}>
+          <{/if}>
+          <{/foreach}>
+
+        </tbody>
+        <!-- 优惠活动列表结束 -->
+      </table>
+    </div>
+    <{/foreach}>
+
+    <div class="cart-table cart-table-ft" style="height: 51px;  background: white; margin-top: 20px; padding-top: 0px;font-size: 14px;  color: #666;">
+       <div style="float:left; width: 100%;">
+               <div class="cart-col col-checkbox">
+          <input style="margin: 18px 11px;" type="checkbox" class="check-all" name="cart_all" <{if $selectAll == true}>checked="true"<{/if}>> <{t}><{/t}>
+        </div>
+            <div style="float: left;width: 40px;height: 43px;margin-top: 16px;margin-left: -26px;">
+              全选
+            </div>
+       <a href="#" class="delete-all">
+       <div style="float: left;width: 149px;height: 42px;margin-top: 16px;margin-left: 39px;">删除选中的商品</div>
+</a>
+<button type="submit" class="btn btn-import btn-lg submit-cart" style="float:right;"><span><span>去结算</span></span></button>
+	<div style="float: right;height: 63px;margin-right:33px; padding-top: 4px;">
+		<input type="hidden" name="new-price" value="<{$totalCart.totalAfterDiscount}>" />
+		<p style="line-height:45px">总金额(不含运费)：<span style="color:#ff0000;font-weight:bold;font-size:16px;">			
+			<em class="price-deposit"></em>&nbsp;积分(<em class="new-price"><{if $totalCart.totalAfterDiscount}><{$totalCart.totalAfterDiscount|cur}><{else}>￥0.00<{/if}></em>)</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;优惠：<span style="color:#ff0000;font-weight:bold;font-size:16px;"><{if $totalCart.totalDiscount}>-<{$totalCart.totalDiscount|cur}><{else}>￥0.00<{/if}></span>
+			&nbsp;&nbsp;&nbsp;&nbsp;<a id="shopIndex" href="/shop.html">返回首页继续购物</a>
+		</p>
+	</div>
+           
+    </div>
+  </div>
+</form>
+<{else}>
+<div class="cart">
+  <div class="empty-cart">
+    <div class="row offset-lg-2">
+      <i class="col-lg-1 icon icon-cart-a"></i>
+      <p class="offset-lg-1 empty-cart-text">
+        购物车内暂时没有商品，<a href="<{url action=topc_ctl_default@index}>">去首页</a>挑选喜欢的商品
+      </p>
+    </div>
+  </div>
+</div>
+<{/if}>
+<script type="text/javascript">
+$(document).ready(function(){
+    var price=parseFloat($('input[name=\'new-price\']').val());
+    var _price_deposit=parseInt(price*100);
+    $('.price-deposit').text(_price_deposit);
+});
+</script>
+
+

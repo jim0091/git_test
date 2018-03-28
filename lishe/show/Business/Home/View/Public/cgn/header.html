@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<style>
+.selectStyle{
+	border: #e76440 solid 1px;
+	height:33px;
+	color: #666666;
+	font-size: 12px;
+	margin-top: 3px;
+}	
+.txt{
+	border: #e76440 solid 1px;
+	vertical-align: middle;
+	width: 260px;
+	height: 30px;
+	padding-left: 5px;	
+}	
+.txtbtn{
+	color: #FFF;
+	vertical-align: middle;
+	font-size: 16px;
+	width: 60px;
+	height: 32px;
+	background: #e76440;
+	border: #e76440 solid 1px;	
+}
+</style>	
+	</head>
+	<body>
+			 <!--搜索层-->
+	<div class="fLogo">
+	   <div class="findput" style="text-align: center;">
+	   	<form action="{:U('Home/Cgn/itemList')}">
+		   	<input type="text" class="txt" name="itemName"  placeholder="综合搜索">
+		   	<span>
+			<select id="cfgId" name="cfgId" class="selectStyle" onchange="javascript:getCategory(this.options[this.selectedIndex].value);">
+	      	  <volist name="menus" id="vo">
+					<option value="{$vo.cfid}">{$vo.name}</option>
+			  </volist>
+			</select>	
+			<select id="catId" name="catId" class="selectStyle"  style="display: none;">
+				
+			</select>			
+		   	<input type="Submit"  value="搜索"  class="txtbtn">
+		   	</span>
+		 </form>
+	   </div>
+	   <div style="clear:both;"></div>
+	</div> 
+	
+<!--左侧弹出链接-->
+<include file="Public/haihetao/floatnav" />  
+	<script>
+  	function getCategory(cfgId){
+			$("#catId").hide();
+            $( '#catId' ).empty() ;
+            var urls = "{:U('Home/Cgn/nextCategory')}" ;
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'cfgId='+cfgId,
+				dataType:'json',
+				success:function(data){
+					if(data){
+  						$("#catId").show();
+						$.each(data, function(k,v) {
+	                  	  	var options = '<option value="' +v.cat_config_id+ '">' +v.cat_name+ '</option>' ;
+	                   	 	$( '#catId' ).append(options);
+						});
+					}
+				},
+				error:function(data){
+					
+				}
+			});	
+  	}		
+	</script>
+	</body>
+</html>

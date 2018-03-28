@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+<link rel="stylesheet" href="__VIEW__Public/css/IndustryGather.css">
+<link rel="stylesheet" href="__VIEW__Public/css/orders.css">
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<title>提交订单-心意商城</title>
+</head>
+
+<body>
+  	<include file="Public/header"/>
+   	<div style="clear:both;"></div>
+   	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+
+   	<div class="layout" style="border:0px solid red;margin-top:50px;">
+		<form id="orderconfirm" method="post" action="__APP__/Pay/addUserOrder">
+	  		<!--收货信息-->
+	   		<div class="receiving">
+		  		<p class="rec">收货信息</p>
+		  		<ul id="typeFree-two">
+					<foreach name="addrList" item="getAddrInfo">
+				  	<li data="{$getAddrInfo['addr_id']}" class="<if condition='$getAddrInfo.def_addr eq 1'>active</if>">
+					  	<p class="user" style="line-height:20px;">{$getAddrInfo['area']}<span>{$getAddrInfo['name']}</span></p>
+					  	<p class="dres">{$getAddrInfo['addr']}</p>
+					  	<p class="phone">{$getAddrInfo['mobile']}</p>
+					  	<p class="alter" style="border:0px solid red;">
+							<a href="javascript:void(0);" style="border:0px solid red;" data-id="{$getAddrInfo['addr_id']}" class="chgAddrInfo">修改</a>
+					  	</p>
+			  		</li>
+					</foreach>
+		  		</ul>
+		  		<p style="clear:both;">
+		  			<span class="rec-l">
+		  				<a href="__LISHE_URL____USER__/Address/addAddress">添加新地址</a>
+		  			</span>
+		  			<!-- <span class="rec-r">
+		  				<a href="__LISHE_URL__/member-address.html">管理全部地址</a>
+		  			</span> -->
+		  		</p> 
+				<if condition="$comId eq '1467166836740'">
+					<div class="freePost">省内全场满99包邮</div>
+				<else/>
+					<div style="width:100%;height:20px;"></div>
+				</if>
+	   		</div>
+	   		<!--支付以配送方式-->
+	   		<!--<div class="pay">
+		  		<p class="rec">支付及配送方式</p>
+		  		<ul id="typeFree">
+			 		<li class="active">在线支付</li>
+			 		<li>货到付款</li>
+		  		</ul>
+	   		</div>-->
+	   		<!--确认商品清单-->
+	  		<!-- 遍历开始 -->
+	  		<foreach name="shopList" item="shopID">
+				<input type="hidden" name="tradeType[]" value="{$type[$shopID['shop_id']]}">
+				<input type="hidden" name="activityId[]" value="{$aitemId[$shopID['shop_id']]}">
+				<input type="hidden"  name="shopIds[]" value="{$shopID.shop_id}">
+			   	<div class="inventory" style="border:1px solid #DDDDDD;">
+				  	<p class="rec2">确认商品清单</p>
+				  	<div class="inv-left">
+					 	<p class="inv-p">配送类型： </p>
+					 	<!--tab切换-->
+						<ul class="inv-tab">
+							<li class="current">快递配送</li>
+							<!-- <li>上门自取</li> -->
+						</ul>
+						<div class="inv-cont">
+							<ul style="display:block;">
+							   	<li>
+							   		<span class="inv-pay">配送方式:</span>
+									<input type="hidden" name="dlyTmplIds[]" value="{$shopID.template_id}">
+									<input type="hidden" name="postFees[]" value="{$shopID.delivery}">
+								   	<select class="inv-sel">
+									  	<!-- <option value="volvo">--请选择配送方式--</option> -->
+									  	<option value="{$shopID.delivery}" selected>快递(￥{$shopID.delivery})</option>		 
+								   	</select>
+								</li>
+							</ul>						   
+						</div>					 
+					 	<!--切换END-->
+				  	</div>
+				  	<div class="inv-right" style="border:0px solid red;">
+					 	<p class="inv-sp">{$shopID.shop_name}
+					 	<lt name="cartTotalPrice" value="99">
+					 		<a href="{:U('Shop/showList',array('shopId'=>$shopID['shop_id']))}" style="float: right;margin-right: 15px;color: #c7241d;">凑单包邮</a>
+				 		</lt>
+					 	</p>
+						<foreach name="cartList" item="cart">
+					  	<if condition="$shopID['shop_id'] eq $cart['shop_id']">
+					  	<input type="hidden" name="itemIds[]" value="{$cart['item_id']}" >
+					  	<input type="hidden" name="skuIds[]" value="{$cart['sku_id']}" >
+					 	<table class="inv-tb" style="border:0px solid red;"> 
+							<tr>
+							  	<td class="inv-pt">
+							  		<a href="__LISHE_URL__/shop.php/Info/index/itemId/{$cart['item_id']}">
+							  			<if condition="$shopID['shop_id'] eq 10">
+							  				<img src="{$cart.image_default_id}_m.{:end(explode('.',$cart['image_default_id']))}" style="width:70px;height:70px;">
+							  			<else/>
+							  				<img src="{$cart.image_default_id}_s.{:end(explode('.',$cart['image_default_id']))}" style="width:70px;height:70px;">
+							  			</if>
+							  		</a>
+							  	</td>
+							  	<td class="inv-td2">
+							  		<a href="__LISHE_URL__/shop.php/Info/index/itemId/{$cart['item_id']}" style="color:#f6f4f4;">
+							  			<p>{$cart.title}</p>
+							  			<?php $itemSkuInfo = getItemSku($cart['sku_id']); ?>
+							  			<p>{$itemSkuInfo['spec_info']}</p>
+							  		</a>
+							  	</td>
+							  	<td class="inv-td3">
+							  		<if condition="($cart['cash'] eq '0.000') AND ($cart['point'] eq 0)">
+			                            <p class="skuCashPoint">￥{$cart.price}</p> 
+			                        <elseif condition="$cart['cash'] eq '0.000'" />
+			                            <p class="skuCashPoint">{$cart.point}积分</p> 
+			                        <elseif condition="$cart['point'] eq 0" />
+			                            <p class="skuCashPoint">￥{$cart.cash}</p> 
+			                        <else/>
+			                            <p class="skuCashPoint">￥{$cart.cash}+{$cart.point}积分</p> 
+			                        </if>
+							  	</td>
+							  	<td class="inv-td4">x{$cart.quantity}</td>
+							  	<td class="inv-td4">
+							  		<span class="currStoreStatus" data="{$cart.store}">
+							  			<if condition="$cart.store eq 33">							  				
+								  			<if condition="($cart['cash'] eq '0.000') AND ($cart['point'] eq 0)">
+								  				<span class="currStoreStatus" data="0" style="color:red;">无货</span>
+								  			<else/>
+							  					<span style="color:green;">有货</span>
+							  				</if>
+							  			<else/>
+							  				<span class="currStoreStatus" data="0" style="color:red;">无货</span>
+							  			</if>
+							  		</span>
+							  	</td>
+							</tr> 
+					 	</table>
+					 	<if condition="$shopID.shop_id neq '10'">
+						<P class="inv-note">
+							<span>商品备注</span><span> 选填：</span>
+							<input type="text" name="remark[][{$cart['sku_id']}]" maxlength="85" placeholder=" 本次交易的补充说明（所填内容建议已经和商家达成一致意见，85字以内）" class="txt">
+							<span>0/85</span>
+						</P>
+						</if>
+				  	 	</if>
+						</foreach>
+						<!-- <p class="inv-pt2"><a href="#"><img src="images/quan.png"></a></p> -->						
+					 	<P class="inv-note2">
+					 		总重量：<span>{$shopID.totalWeight}kg</span>;  
+					 		店铺总计：	<span>					 					
+									  		<if condition="($shopID['totalCash'] eq '0.00') AND ($shopID['totalEndPoint'] eq 0)">
+					                            ￥{$shopID.totalEndPrice}
+					                        <elseif condition="$shopID['totalCash'] eq '0.00'" />
+					                            {$shopID.totalEndPoint}积分
+					                        <elseif condition="$shopID['totalEndPoint'] eq 0" />
+					                           	￥{$shopID.totalCash}
+					                        <else/>
+					                            ￥{$shopID.totalCash}+{$shopID.totalEndPoint}积分
+					                        </if>
+					 					</span>
+					 		(含运费：￥<span>{$shopID['delivery']}</span>）
+					 	</P>
+				  	</div>
+			  	</div>
+	  		</foreach>
+	 
+	   		<!--商品信息-->
+	   		<div class="shop-list" style="border:0px solid red;">
+			  	<!--<p class="sp-ch"><input type="checkbox" checked style="vertical-align:middle;"><span>使用会员积分</span></p>-->
+			  	<div class="list-s">
+				 	<!-- <p>商品总件数：<span>{$totalCartQuantity}</span></p>
+				 	<p>总重量：<span>{$totalCartWeight}kg</span></p> -->
+				 	<!--<p>商品总金额：<span>￥{$cartTotalPrice}</span></p>-->
+				 	<p>总运费：<span>￥{$totalCartDelivery}</span></p>
+				 	<p>减免：<span>-￥0.00</span></p>
+				 	<p>
+				 		应付总额：
+				 		<span>				 							 					
+					  		<if condition="($shopTotalCash eq '0.00') AND ($shopTotalPoint eq 0)">
+	                            ￥{$shopTotalPrice}
+	                        <elseif condition="$shopTotalCash eq '0.00'" />
+	                            {$shopTotalPoint}积分
+	                        <elseif condition="$shopTotalPoint eq 0" />
+	                           	￥{$shopTotalCash}
+	                        <else/>
+	                            ￥{$shopTotalCash}+{$shopTotalPoint}积分
+	                        </if>
+				 		</span>
+				 	</p>
+				 	<p class="list-btn">
+				 		<a class="submit-a-click" style="cursor: pointer;" >提交订单</a>
+				 		<a class="submit-a" style="display:none">正在提交订单...</a>
+				 	</p>
+			  	</div>
+	   		</div>
+		</form>
+   	</div>
+   	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+</body>
+</html>
+<script>
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+	//提交订单
+	$(".submit-a-click").click(function(){
+		$(".topLoading").show();
+		$(this).hide();
+		$(".submit-a").show();
+		$("#orderconfirm").submit();
+	});
+	// 修改收货地址
+  	$(".chgAddrInfo").click(function(){
+	  	var addrId=$(this).attr("data-id");
+	  	window.location.href="__LISHE_URL____USER__/Address/chgAddressInfo/addrId/"+addrId;
+	  	return false;
+  	});
+   	<!--收货信息-->
+	$('#typeFree-two li').not(".chgAddrInfo").click(function(){
+		if(!$(this).hasClass('active')){
+			$(".topLoading").show();
+			$(this).addClass('active').siblings().removeClass('active');
+			var addrId=$(this).attr("data");
+			$.ajax({
+               	type: "POST",
+               	url: "__APP__/Order/modifyDefAddr",
+               	data:{addr_id:addrId},
+               	xhrFields: {
+                  withCredentials: true
+               	},
+		       	crossDomain: true,
+				dataType:"text",
+		       	success:function(msg){
+					$(".topLoading").hide();
+		    	   	if(msg=='defAddrSuccess'){
+						window.location.reload();
+					}
+					if(msg==''){
+						$(".topLoading").hide();
+						divPrompt('默认地址修改失败');
+						return false;
+					}
+		       	},
+		       	error:function(){
+					window.location.href="__LISHE_URL____USER__/Address/addressList";	       		
+		      	}
+			})
+		}
+	});
+
+  	// 判断是否有货，无货 
+  	$('.currStoreStatus').each(function(mm,nn){
+		var currStoreStatus=$(this).attr('data');
+		currStoreStatus=parseInt(currStoreStatus);
+		if(currStoreStatus==0){
+	  		$('.list-btn').empty();
+	  		$('.list-btn').html("<b style='font-size:14px;color:#ff0000'><a href='javascript:window.history.back();'>购物车中有缺货的产品，请返回购物车修改</a></b>");
+	  		return false;
+		}
+  	});
+	<!--支付配送-->
+	$('#typeFree li').click(function(){
+		if(!$(this).hasClass('active')){
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+	});
+	<!--清单-->
+	$(function(){
+		window.onload = function()
+		{
+			var $li = $('.inv-tab li');
+			var $ul = $('.inv-cont ul');						
+			$li.click(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			})
+		}
+	}); 
+	<!--单选控制DIV层-->
+	$(":radio[name='is-s']").click(function(){
+		var index = $(":radio[name='is-s']").index($(this));
+		if(index == 0) {
+			$("#ra-div").show();
+		}else{
+		 	$("#ra-div").hide();
+		}
+  	});
+</script>

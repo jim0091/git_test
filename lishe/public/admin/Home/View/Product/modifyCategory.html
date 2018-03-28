@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+</head>
+<body>
+<div class="pd-20" style="padding-left: 10%;">
+	<span style="color: #5a98de;">提示：修改产品分类时必须选择到三级分类</span> 
+	<hr style="color:  #5a98de;"/>
+	<form action="__URL__/modifyCategoryDeal" method="get" style="margin-top: 50px;">
+		<input type="hidden" value="{$itemId}" name="itemId" />
+		<label>分类：</label>
+		<label>
+		<select id="catone" name="catone" class="select-box" style="width:180px;" onchange="javascript:getCatone(this.options[this.selectedIndex].value);">
+		<notempty name="condition.catone">
+			<option value="{$condition.catone.cat_id}">{$condition.catone.cat_name}</option>
+		</notempty>		
+		</select>								
+		</label>
+		<label>
+		<select id="cattwo" name="cattwo" class="select-box" style="width:100px;" onchange="javascript:getCattwo(this.options[this.selectedIndex].value);">
+		<notempty name="condition.cattwo">
+			<option value="{$condition.cattwo.cat_id}">{$condition.cattwo.cat_name}</option>
+		</notempty>	
+		<option value="0"> 全部 </option>
+		</select>								
+		</label>
+		<label>
+		<select id="catthree" name="catthree" class="select-box" style="width:120px;" style="display: none;">
+		<notempty name="condition.catthree">
+			<option value="{$condition.catthree.cat_id}">{$condition.catthree.cat_name}</option>
+		</notempty>		
+		<option value="0"> 全部 </option>
+		</select>								
+		</label>	
+		
+		
+		<button type="submit" class="btn btn-success radius">保存</button>						
+		
+	</form>	
+	<form action="__URL__/modifyShopCate" method="get" style="margin-top: 20px;">
+		<input type="hidden" value="{$itemId}" name="itemId" />
+		<label>店铺分类：</label>
+		<label>
+			<select id="shopId" name="shop_id" class="select-box" style="width:180px;" >
+			<option value="0">--请选择--</option>
+	            <volist name="list" id="val">
+	                <option value="{$val['shop_id']}">{$val['shop_name']}</option>
+	            </volist>		
+			</select>								
+		</label>
+		<label id="divShopCat" style="display:none">
+			<select id="shopCat" name="shopCat" class="select-box" style="width:100px;" >
+	            <option value="">--请选择--</option>
+			</select>								
+		</label>
+		<label id="divRelatedCat" style="display:none">
+		<select name="shop_cat" id="relatedCat" class="select-box" style="width:120px;">
+            <option value="">--请选择--</option>
+        </select>
+		</select>								
+		</label>	
+		
+		
+		<button type="submit" class="btn btn-success radius">保存</button>						
+		
+	</form>	
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script>
+	function getCatone(code){
+			$("#catthree").hide();
+		   	$("#catthree").find('option[value="0"]').attr("selected","selected");
+            var url = "{:U('Home/Product/getCatTwo')}" ;
+            $( '#cattwo' ).empty() ;
+            $( '#cattwo' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=2',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#cattwo' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	function getCattwo(code){
+			$("#catthree").show();
+            var url = "{:U('Home/Product/getCatTwo')}" ;
+            $( '#catthree' ).empty() ;
+            $( '#catthree' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=3',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#catthree' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	//店铺分类
+    $("#shopId").bind('change','option',function(){
+        $("#divShopCat").show();
+        $("#shopCat").empty();
+        $("#relatedCat").empty();
+        var shopId = $(this).val();
+        $(this).attr("selected",true);
+        if(shopId > 0){
+            $.post("{:U('Supplier/getShopCatList')}",{shopId:shopId},function(msg){
+                if(msg != 0){
+                    $("#shopCat").append(msg);
+                }
+            });
+        }  
+    });
+    //相关分类
+    $("#shopCat").bind('change','option',function(){
+        $("#divRelatedCat").show();
+        $("#relatedCat").empty();
+        var shopCatId = $(this).val();
+        $(this).attr("selected",true);
+        if(shopCatId > 0){
+            $.post("{:U('Supplier/getShopCatList')}",{shopCatId:shopCatId},function(msg){
+                if(msg != 0){
+                    $("#relatedCat").append(msg);
+                }
+                if (msg == 2) {
+                    $("#divRelatedCat").hide();
+                };
+            });
+        }  
+    });	
+</script>
+<script>
+	$(function(){
+	    var url = "{:U('Home/Product/getCatOne')}" ;
+	    $( '#catone' ).append( '<option value="0"> 全部 </option>' ) ;
+		$.ajax({
+			type:"get",
+			url:url,
+			dataType:'json',
+			success:function(data){
+				$.each(data, function(k,v) {
+	          	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+	           	 	$( '#catone' ).append(options);
+				});
+			},
+			error:function(data){
+				
+			}
+		});	
+	});
+</script>
+</body>
+</html>

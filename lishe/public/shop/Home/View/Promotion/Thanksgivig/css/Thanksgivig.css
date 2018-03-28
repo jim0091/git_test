@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#ffffff; font-family:"微软雅黑"; font-size:12px;}
+
+/*头部*/
+.bannerHeader{background:url(../images/banner.png) center center; width:100%; height:800px;}
+.Tnkslayout{background:url(../images/Thksbg.png) center center; width:100%; height:6998px;}
+.qgrice{text-align:center;}
+.qgrice img{width:1040px; height:775px;}
+.hotCakes{text-align:center; margin-top:110px;}
+/*热销商品*/
+#outer{width:1020px;margin:0 auto;}
+#tab{width:800px; margin:0 auto; height:80px;}
+#tab li{float:left;cursor:pointer; background:url(../images/tstab2.png) no-repeat center center; width:180px; height:80px; text-align:center; line-height:70px; margin-right:1px;
+font-size:30px; color:#FFF; font-weight:600;}
+#tab li.current{color:#000;background:url(../images/tstab.png) no-repeat center center; width:180px; height:80px;}
+#content div{display:none;}
+.tsmore{width:1020px; text-align:right; height:50px; line-height:50px;}
+.tsmore a{font-size:24px; color:#fee646;}
+/*tba1*/
+.thksOnetba{width:1020px; margin:0 auto; height:780px; clear:both; background:#ffde13; padding:5px 0;}
+.thksOnetba ul{float:left; background:url(../images/Listbg.png) no-repeat center center; width:245px; height:382px; margin:5px 3px;padding-left:4px;}
+.thoneli{height:265px; text-align:center;}
+.thoneli img{width:185px; height:185px;padding-top:50px;}
+.thspic{width:85px;margin:0 auto;height:33px;text-align:center; line-height:33px;color:#FFF; font-size:12px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.thspic span{font-size:15px; font-weight:600;}
+.thksname{font-size:18px; color:#FFF; text-align:center;height:34px;line-height:32px;width:100%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.Tsbtn{text-align:center;}
+.Tsbtn img{width:150px; height:30px; padding-top:2px;}
+
+/*富安娜*/
+#outerout{width:1020px;margin:0 auto;}
+#outerouttab{width:800px; margin:0 auto; height:80px;}
+#outerouttab li{float:left;cursor:pointer; background:url(../images/tstab2.png) no-repeat center center; width:180px; height:80px; text-align:center; line-height:70px; margin-right:1px;
+font-size:30px; color:#FFF; font-weight:600;}
+#outerouttab li.currentout{color:#000;background:url(../images/tstab.png) no-repeat center center; width:180px; height:80px;}
+#contentout div{display:none;}
+/*感恩11月独家蛋糕福利*/
+.cakeout{width:1020px;margin:0 auto; height:382px;background:#ffde13; padding-top:5px; padding-bottom:50px;}
+.cakeout ul li{float:left;width:245px; height:382px;margin:5px 3px;padding-left:4px;}
+.cakeout ul li img{width:245px; height:382px;}
+/*厨房家电粮油区料理*/
+#outergrain{width:1020px;margin:0 auto;}
+#tabrgrain{width:800px; margin:0 auto; height:80px;}
+#tabrgrain li{float:left;cursor:pointer; background:url(../images/tstab2.png) no-repeat center center; width:180px; height:80px; text-align:center; line-height:70px; margin-right:1px;
+font-size:30px; color:#FFF; font-weight:600;}
+#tabrgrain li.currentgrain{color:#000;background:url(../images/tstab.png) no-repeat center center; width:180px; height:80px;}
+#contentgrain div{display:none;}
+/*年终高端礼品*/
+#outerupmarket{width:1020px;margin:0 auto;}
+#tabupmarket{width:400px; margin:0 auto; height:80px;}
+#tabupmarket li{float:left;cursor:pointer; background:url(../images/tstab2.png) no-repeat center center; width:180px; height:80px; text-align:center; line-height:70px; margin-right:1px;
+font-size:30px; color:#FFF; font-weight:600;}
+#tabupmarket li.currentupmarket{color:#000;background:url(../images/tstab.png) no-repeat center center; width:180px; height:80px;}
+#contentupmarket div{display:none;}
+
+.Actionrules{width:1020px;margin:0 auto; margin-top:100px;}
+.Actionrules img{width:912px; height:305px;} 
+/*悬浮导航*/
+.postnva{position:fixed; z-index:10; width:124px; height:380px;top:150px; left:6%; background:#ffb900;}
+.thksnvap{color:#FFF; font-size:21px; font-family:"黑体"; font-weight:600; text-align:center;}
+.thksct{width:110px; margin:0 auto; background:#fffeef; height:290px; padding-top:5px; margin-top:15px;}
+.thksctul{width:96px; margin:0 auto; text-align:center;}
+.thksctul li{font-size:17px; color:#ff2442;font-family:"黑体"; height:35px; line-height:35px; border-bottom:dashed 1px #ff2442;}
+.thksctul li a{color:#ff2442;}
+.thksctul li.activepos{background:url(../images/posnvabg.png) no-repeat center center;width:96px; height:35px; color:#FFF;border:none;}
+.thksctul li.activepos a{color:#FFF;}
+.postop{width:96px; margin:0 auto; text-align:center; margin-top:20px;}
+.postop img{width:96px; height:34px;}

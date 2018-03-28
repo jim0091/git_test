@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/securitycenter.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+		<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>	
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="safeCoreSet">
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">安全中心</p>
+					</div>
+					<p class="suggestion">建议您开启全部安全设置，以保障账户及资金安全</p>
+					<div class="security-wrap">
+						<div class="loginpassword">
+							<span class="scategory">登录密码</span>
+							<p class="sdescription">请经常更换您的登录密码，且不要和其他账号共用一个密码</p>
+							<a href="__APP__/Info/editLoginPwd" class="changepassword">修改密码&nbsp;&gt;</a>
+						</div>
+						<div class="paypassword">
+							<span class="scategory">支付密码</span>
+							<p class="sdescription">请经常更换您的支付密码，且不要和其他账号共用一个密码。重置支付密码请联系商城客服</p>
+							<a href="__APP__/Info/findPaypwd" class="findpassword">找回密码&nbsp;&gt;</a>
+							<a href="__APP__/Info/editPayPwd" class="changepassword">修改密码&nbsp;&gt;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+</body>
+</html>

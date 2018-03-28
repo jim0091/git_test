@@ -1,0 +1,89 @@
+<script type="text/javascript">
+$('#nav').hide();
+</script>
+<div class="recharge-container">
+  <div class="recharge-header clearfix">
+    <div class="recharge-title">
+      企业币充值
+    </div>
+    <div class="recharge-steps">
+      <span class="current">1.填写充值金额</span>
+      <span class="current">2.选择支付方式</span>
+      <span class="current">3.充值成功</span>
+    </div>
+  </div>
+  <div class="recharge-content">
+    <div class="recharge-result finished">
+    <i class="icon icon-checkmark-b"></i>
+    <span>恭喜您，充值成功<em><{$payment.cur_money_deposit}>&nbsp;积分（<{$payment.cur_money|cur}>）</em>！快去逛逛吧~</span>
+    <a href="<{url action=topc_ctl_default@index}>" class="btn-see"><i class="icon icon-arrow-left"></i>去逛逛</a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/app/topc/statics/js/ls.api.web.js"></script>
+<script type="text/javascript" src="/app/topc/statics/js/crypto.js"></script>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    // init_public_key();
+
+    Web.Method.ajax("getPublicKey", {
+        url:Web.Recource.serverSysURL,
+        success:function(data){
+
+            var user_id = $.cookie('LSUID');
+            console.log('cookie LSUID -- : ' + user_id);
+            console.log('payment cur_money_deposit -- : ' + <{$payment.cur_money_deposit}>);
+
+            if (null == user_id || user_id.trim().length <= 0) {
+                return;
+            }
+
+            Crypto.setRSAPublicKey(data.info.n);
+            Crypto.encryptFlag = data.info.id;
+
+            Web.Method.ajax("mall/updateIntegral",{
+              safe:true,
+              data:{
+                userType: 1,
+                userId: user_id,
+                type: 0,
+                flag: 0,
+                orderno: <{$payment.payment_id}>,
+                
+                amount: <{$payment.cur_money_deposit}>
+              },
+              success:function(data){
+                console.log(data);
+              },
+              fail:function(data){
+                console.log(data);
+                alert(data.msg);
+              }
+            });
+        },
+        fail:function(data){}
+    });
+
+    /*
+    Web.Method.ajax("mall/updateIntegral",{
+      safe:true,
+      data:{
+        userType: 1,
+        userId: 96,
+        type: 3,
+        flag: 1,
+        amount: <{$payment.cur_money_deposit}>
+      },
+      success:function(data){
+        console.log(data);
+      },
+      fail:function(data){
+        console.log(data);
+        alert(data.msg);
+      }
+    });
+    */
+});
+</script>

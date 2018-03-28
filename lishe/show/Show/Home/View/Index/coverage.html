@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/IndustryGather.css">
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<title>媒体报道-{$cname}</title>
+</head>
+
+<body>
+<!--头部-->
+<include file="Public/header"/>
+ <div style="clear:both;"></div>
+ 
+  <div class="Industry">
+      <div class="sumLeft">
+        <div class="left-top">
+           <p class="let-p">新闻中心</p>
+           <ul>
+              <li class="left-li"><a href="{:U('Home/Index/industry')}">行业聚焦</a></li>
+              <li  class="slect"><a href="{:U('Home/Index/coverage')}">媒体报道</a></li>
+              <li class="left-li"><a href="{:U('Home/Index/notice')}">企业公告</a></li>
+           </ul>
+        </div>
+        <div class="left-bom">
+			<!--推荐阅读-->
+			<include file="Index/rememberRead"/>
+			<!--推荐阅读-->
+        </div>
+     </div>
+     <!--右边-->
+     <div class="IndRight">
+         <div class="IRig-top" id="ajax_lists">
+
+     </div>
+  </div>
+  
+  
+  
+  
+  <div style="clear: both;"></div>   
+ <include  file="Public/footer"/>
+</body>
+<script>
+	 $(function() {
+	    $("#ajax_lists").delegate(".pager a", "click", function() {
+	        var page = $(this).attr("data-page");
+	      	  getPage(page);
+	        
+	    });
+        getPage(1);
+
+    })	
+    function getPage(page) {
+   	var url_ajax ="{:U('Home/Index/news')}";
+		 $.ajax({
+			type:"post",
+			url:url_ajax,
+			data:"p="+page+"&type=2",
+			success:function(data){
+		            $('#ajax_lists').html(data);
+				
+			},
+			error:function(e){
+				
+			}
+		});       
+        
+    }	
+	
+	
+</script>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>购物卡专场-深圳中集天达空港设备有限公司</title>
+	<style>
+	*{padding: 0;margin: 0;}
+	.card1{position: relative;}
+	.card1 img{width: 100%;height: auto;border: 0;vertical-align: top;min-width: 800px;}
+	.card1 a{position: absolute;display: block; background:#fff; opacity:0;filter:alpha(opacity=0);}
+	.card_link1,.card_link2,.card_link3{width: 19.3%;height: 65.28%;top: 25.58%;}
+	.card1 .card_link1{left: 20%;}
+	.card1 .card_link2{left: 40.52%;}
+	.card1 .card_link3{left: 60.93%;}
+	.card_link4,.card_link5,.card_link6,.card_link7{width: 14.89%;height: 58.61%;top: 29.62%;}
+	.card_link4{left: 18.85%;}
+	.card_link5{left: 34.73%;}
+	.card_link6{left: 50.67%;}
+	.card_link7{left: 66.25%;}
+	.gotop{width: 13.17%;height: 62.15%;left: 0;right: 0;top: 27.07%;left: 43.64%; }
+	</style>
+</head>
+<body>
+	<div class="card1"><img src="/shop/Home/View/Activity/cimcaf/images/card_01.png" alt="" /></div>
+	<div class="card1">
+		<img src="/shop/Home/View/Activity/cimcaf/images/card_02.png" alt="" />
+		<a href="/shop.php/Activity/order/itemId/144" target="_blank" class="card_link1"></a>
+		<a href="/shop.php/Activity/order/itemId/145" target="_blank" class="card_link2"></a>
+		<a href="/shop.php/Activity/order/itemId/146" target="_blank" class="card_link3"></a>
+	</div>
+	<div class="card1">
+		<img src="/shop/Home/View/Activity/cimcaf/images/card_03.png" alt="" />
+		<a href="/shop.php/Activity/order/itemId/138" target="_blank" class="card_link1"></a>
+		<a href="/shop.php/Activity/order/itemId/139" target="_blank" class="card_link2"></a>
+		<a href="/shop.php/Activity/order/itemId/140" target="_blank" class="card_link3"></a>
+	</div>
+	<div class="card1">
+		<img src="/shop/Home/View/Activity/cimcaf/images/card_04.png" alt="" />
+		<a href="/shop.php/Activity/order/itemId/141" target="_blank" class="card_link1"></a>
+		<a href="/shop.php/Activity/order/itemId/142" target="_blank" class="card_link2"></a>
+		<a href="/shop.php/Activity/order/itemId/143" target="_blank" class="card_link3"></a>
+	</div>
+	<div class="card1">
+		<img src="/shop/Home/View/Activity/cimcaf/images/card_05.png" alt="" />
+		<a href="/shop.php/Activity/order/itemId/134" target="_blank" class="card_link4"></a>
+		<a href="/shop.php/Activity/order/itemId/135" target="_blank" class="card_link5"></a>
+		<a href="/shop.php/Activity/order/itemId/136" target="_blank" class="card_link6"></a>
+		<a href="/shop.php/Activity/order/itemId/137" target="_blank" class="card_link7"></a>
+	</div>
+	<div class="card1">
+		<img src="/shop/Home/View/Activity/cimcaf/images/card_06.png" alt="" />
+		<a href="/shop.php/Activity/order/itemId/130" target="_blank" class="card_link4"></a>
+		<a href="/shop.php/Activity/order/itemId/131" target="_blank" class="card_link5"></a>
+		<a href="/shop.php/Activity/order/itemId/132" target="_blank" class="card_link6"></a>
+		<a href="/shop.php/Activity/order/itemId/133" target="_blank" class="card_link7"></a>
+	</div>
+	<div class="card1">
+		<img src="/shop/Home/View/Activity/cimcaf/images/card_07.png" alt="" />
+		<a href="javascript:void(0)" class="gotop" id="gotop"></a>
+	</div>
+</body>
+<script>
+	var timer = null;
+	var back = document.getElementById('gotop');
+	var scroll = null;
+	
+	back.onclick = function(){
+		timer = setInterval(function(){
+
+			scroll = document.body.scrollTop || document.documentElement.scrollTop;
+			document.body.scrollTop = document.documentElement.scrollTop -= Math.ceil(scroll * 0.1) + "px";
+			
+			if(scroll < 10){
+				clearInterval(timer);
+				scroll = 0;
+			}
+			
+			/*document.body.scrollTop = document.documentElement.scrollTop = scroll + "px";*/
+		},100);
+	}
+</script>
+</html>
+
+
+
+
+

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__PUBLIC__/cnpec/css/CnpecHht.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<title>中广核工程有限公司</title>
+</head>
+<style>
+	.satnavUls li:hover{
+	 	color: #FFF;
+		background: #e76440;
+		cursor: pointer;
+	 }
+</style>
+<body>
+<!--头部-->
+	<include file="Cnpec/header"/>
+	
+	
+   <!--banner-->  
+    <div class="banner"></div>
+    <!--目录-->
+    <div class="directories">
+      <ul>
+       <volist  name="menus" id="item">         
+		<li><a href="__APP__/Cnpec/category/cfgId/{$item['cfid']}" target="_blank">{$item['name']}</a></li>
+      </volist>           
+        
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+    <!--主内容-->
+    
+ <volist name="menus" id="menu">   
+    <div class="satnav">
+       <p class="stp"><span>{$menu.name}</span>
+            <a href="__APP__/Cnpec/category/cfgId/{$menu['cfid']}" target="_blank">查看更多>></a>      	
+       </p>
+       <p><img src="__PUBLIC__/cnpec/images/cnnctibg.png"></p>
+       <ul class="satnavUl">
+          <volist name="category[$menu['cfid']]" id="class">
+              <a style="color:red;" target="_blank" href="__APP__/Cnpec/itemList/catId/{$class.cat_config_id}">
+       			   <li>{$class.cat_name}</li> 
+              </a>
+          </volist>      
+          
+       </ul>
+       
+       <div class="eat-ul">
+        <volist name="list[$menu['cfid']]" id="vo" key="l">
+       	
+            <ul>
+              <li class="pt-mid"><a href="/item.html?item_id={$vo.item_id}" target="_blank">
+              	<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a></li>
+              <li class="eat-li" style="width:155px;height:42px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;">
+              	<a href="/item.html?item_id={$vo.item_id}" target="_blank" title="{$vo.title}">{$vo.title}</a>
+              </li>
+              <li><a href="/item.html?item_id={$vo.item_id}" target="_blank" class="eat-sp">￥<span>{:round($vo['price'],2)}</span></a><span class="eat-sp2">
+              	<a href="/item.html?item_id={$vo.item_id}" target="_blank">兑换</a></span></li>
+		        <if condition="$vo.flag eq 1">
+		     		<li style="background-color:rgba(231,100,64,0.6);min-height:20px;color: white;text-align: center;position:relative;top: -50px;">
+		     			<small>广东无货</small>
+		     		</li>
+		  		</if>        
+            </ul>
+ 		</volist>
+         </div>
+       <div style="clear:both;"></div>
+    </div>
+ </volist>
+    
+ 
+ 
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/cnpec/images/cnncTop.png"></a></div>
+    </div>
+    <script type="text/javascript"> 
+		$('.satnavUl li').click(function(){
+			if(!$(this).hasClass('cnactive')){
+				$(this).addClass('cnactive').siblings().removeClass('cnactive');
+			}
+		})
+    </script>  
+</body>
+</html>

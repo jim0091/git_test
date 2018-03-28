@@ -1,0 +1,55 @@
+平台首页：
+http://test.lishe.cn/  
+ 
+平台后台
+http://test.lishe.cn/shopadmin
+账户：admin     密码：lishe123456
+
+商家后台：
+http://test.lishe.cn/shop/passport/signin.html
+账户：lishe   密码：lishe0601
+
+运营：
+http://test.lishe.cn/shopadmin
+用户名：yunying    密码：yunying123
+
+
+招商：
+http://test.lishe.cn/shopadmin
+用户名：zhaoshang    密码：zhaoshang123
+
+客服：
+http://test.lishe.cn/shopadmin
+用户名:kefu     密码：kefu123
+
+物流：
+http://test.lishe.cn/shopadmin
+用户名：wuliu   密码：wuliu123
+
+
+一企一舍  测试
+http://192.168.1.10:8080/lshe.framework.web/company/login.html
+一企一舍后台：http://192.168.1.10:8080/lshe.framework.web/operator/login.html
+
+
+http://120.76.43.74/company
+
+
+
+http://120.76.43.74/operator/index.html
+
+
+微信公众号：
+服务号账号：admin1@lishe.cc
+     密码：lishe6688
+
+订阅号账号：zgm@lishe.cn
+      密码：lishe6688
+
+服务器IP: 120.76.102.64 正式
+密码：root:LiShe!@#admin<>123
+
+mysql
+root SqlLiShe!@#root<>123
+
+

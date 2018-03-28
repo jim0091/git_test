@@ -1,0 +1,177 @@
+  <link rel="stylesheet" href="__PUBLIC__/companyShow/css/newsCt.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+  <!--新闻中心设置-->
+  		<form action="{:U('Home/Show/editNews')}" id="activityform" method="post">
+          <div class="main-news">
+            <p class="mp">
+            	<if condition="$type eq 1">
+            			活动回顾管理
+            		 <elseif condition="$type eq 2"/>
+            			头号人物管理
+            	</if>
+            	
+            </p>
+             <ul class="hed-ul">
+                   <li class="cs-des"><span style="color:#F00;">*</span>
+                   	标题：<input type="text" id="title" class="text" name="data[title]" value="{$info.title}"/>
+                   	<span style="padding-left:5px;font-size:14px;color:#808080">不超过20个字</span></li>
+                   	
+            	<if condition="$type eq 1">
+	              			<li class="cs-des"><span style="color:#F00">*</span>
+	                   	类别：<input type="text" id="category" class="text" name="data[review_category]" value="{$info.review_category}"/>
+	             			</li>            		
+            	
+            		 <elseif condition="$type eq 2"/>
+		             		<li class="cs-des"><span style="color:#F00">*</span>
+		                   	作者：<input type="text" id="author" class="text" name="data[author]" value="{$info.author}"/>
+		             			</li>
+            	</if>                   	
+                   	
+	             		<li class="cs-des"><span style="color:#F00">*</span>
+	                   	摘要：<input type="text" id="abstract" class="text" placeholder="不超过30个字" name="data[abstract]" value="{$info.abstract}"/>
+	             			</li>
+                   	
+             		
+
+             </ul>
+              <!-- 加载编辑器的容器 -->
+              <div class="edito">
+                <script id="container" name="data[content]" type="text/plain">
+                    
+                </script>
+                <!-- 配置文件 -->
+                <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3_3-utf8-php/utf8-php/ueditor.config.js"></script>
+                <!-- 编辑器源码文件 -->
+                <script type="text/javascript" src="__PUBLIC__/ueditor1_4_3_3-utf8-php/utf8-php/ueditor.all.js"></script>
+                <!--<script type="text/javascript" src="__PUBLIC__/ueditor1_4_3_3-utf8-php/utf8-php/ueditor.all.min.js"></script>-->
+           				<!-- 实例化编辑器 -->
+                <script type="text/javascript">
+				        var ue = UE.getEditor('container',{
+//				        	精简的:
+			                toolbars:[[
+			                    'undo', 'redo', '|',
+			                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+			                    'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+			                    'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+			                    'directionalityltr', 'directionalityrtl', 'indent', '|',
+			                    'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+			                    'link', 'unlink', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+			                    'simpleupload', 'insertimage', 'emotion', 'attachment', 'map','pagebreak', '|',
+			                    'horizontal', 'date', 'time', 'spechars', '|',
+			                    'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', '|',
+			                    'print', 'searchreplace', 'drafts'
+			                ]],
+			                initialFrameWidth : 798, 
+       							 initialFrameHeight: 380,
+        						autoHeightEnabled:false
+				        });
+					        ue.ready(function() {
+					            ue.setContent('{$info.content}');
+					        });                    
+                </script>
+                
+               </div>   
+                <!---END-->
+                <div class="CP-one">
+                 <ul class="cpo-left">
+                 <li class="cpo-btn" ><a href="javascript:void(0);" onclick="activityFile.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>大小不超1000X750像素</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt"><img width="200px" id="lookPic" 
+                    	<notempty name="info.pic">
+                    		src="{$info.pic}"
+                    	</notempty>
+                    	
+                    	></li>
+                    <li class="cpo-pt">500PX*500PX</li>
+                 </ul>
+		        			<input type="file" id="activityFile" style="display: none;" name="activityFile" onchange="uploadPic('activity');"/>
+									<input type="hidden" name="data[pic]" id="activity" value="{$info.pic}">      
+									<input type="hidden" name="data[newsId]" value="{$info.news_id}">    
+									<input type="hidden" name="data[activity_type]" value="{$type}"> 
+                 <p class="cpo-btn2"><a href="javascript:void(0);" onclick="sure('activity')" class="sure">确   定</a><a href="javascript:void(0);" class="preview">预   览</a></p>
+              </div>
+          </div>
+      </form>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+ <script>
+ 		function uploadPic(types){
+				var inputName = types+'File';
+				var img=$('#'+types).val();
+				var delurl="__APP__/CompanyShow/delImg/channel/brand/file/"+img;
+				if(img!=''){
+					$.get(delurl, function(result){
+					});
+				}
+				urls="__APP__/CompanyShow/uploadImg/channel/brand/inputName/"+inputName+"/types/"+types;
+				$.ajaxFileUpload ({
+					url :urls,
+					secureuri :false,
+					fileElementId :inputName,
+					dataType : 'text',
+					success : function (data,status){
+						if(data!='undefined'){
+							var dataArr=eval("("+data+")");
+							if(dataArr[0]<=0){
+								if(dataArr[0]==-4){
+									alert(dataArr[1]);
+								}else{
+									alert('Error：'+dataArr[1]);
+								}
+							}else{
+								$("#lookPic").attr("src","/business/"+dataArr[1]);
+								$('#'+types).val(dataArr[1]);
+							} 
+						} 
+					}, 
+					error: function (data, status, e){
+						alert('Faild！');
+					}
+				});
+	}
+	function sure(types){
+		var fileload=$("#"+types).val();
+		var title=$("#title").val().trim();
+		if(title.length>20){
+			alert("标题不能超过20字!");
+			return false;			
+		}else if(title==""){
+			alert("标题不能为空!");
+			return false;			
+		}
+			var abstract=$("#abstract").val().trim();
+			if(abstract ==""){
+				alert("请填写摘要!");
+				return false;			
+			}else if(abstract.length>30){
+				alert("摘要不能超过30字!");
+				return false;			
+			}			
+		
+		var type="{$type}";
+		if(type==1){
+			var category=$("#category").val().trim();
+			if(category==""){
+				alert("请填写类别!");
+				return false;			
+			}				
+		}else if(type==2){
+			
+			var author=$("#author").val().trim();
+			if(author==""){
+				alert("请填写作者!");
+				return false;			
+			}		
+			
+		}
+		if(!fileload){
+			alert("还未上传海报图片!");
+			return false;
+		}else{
+			$("#activityform").submit();
+		}
+	}
+ 	
+ </script>        

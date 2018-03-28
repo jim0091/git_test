@@ -1,0 +1,53 @@
+body,
+p,
+div,
+span,
+a,
+ul,
+li,
+b,
+em,
+h1,
+h2,
+h3,
+h4,
+section,
+footer,
+header,
+img,
+dt,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.clearfix {
+  clear: both;
+}
+.margin0 {
+  margin: 0;
+}
+.mauto {
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  border: none;
+}
+.fr{
+	float: right;
+}
+.fl{float: left;}
+
+

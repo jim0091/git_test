@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:0;}
+input{
+    -webkit-appearance: none;
+}
+body{font-family:"微软雅黑"; overflow-x:hidden; background:#f9f5f4;}
+
+.historyTop{width:100%; height:3.5rem; line-height:3.5rem; background:#f32b5a; clear:both;}
+.historyTopct{width:90%; margin:0 auto;} 
+.historyTopct ul li{float:left; font-size:1rem; color:#ffffff;}
+.historyTopct ul li:nth-child(1){width:10%;}
+.historyTopct ul li:nth-child(1) img{width:75%; vertical-align:middle;}
+.historyTopct ul li:nth-child(2){width:78%; text-align:center;}
+.historyTopct ul li:nth-child(2) input{padding-left:1rem; height:2rem; line-height:2rem; background:#FFF; vertical-align:middle; 
+font-size:1rem;color:#393638; border-radius:50px; border:#FFF solid 1px;}
+
+/*热门搜索*/
+.hitsearch{width:100%;padding-bottom:2vh; background:#FFF; clear:both;}
+.hitsearchct{width:94%; margin:0 auto; padding-top:3%; clear:both;}
+.hitsearchct p{height:2rem; line-height:2rem; font-size:1rem; color:#9b9495;padding-bottom:0.6rem;}
+.hitsearchct p img{width:5%; vertical-align:middle; padding-right:0.5rem;}
+.hitsearchct ul li{float:left; height:2.5rem; line-height:2.5rem; background:#f9f5f4; text-align:center; padding:0 1.1rem; 
+margin-right:0.6rem; margin-bottom:0.6rem; font-size:0.9rem; color:#373735;}
+.hitsearchct ul li.hitli{background:#fbf0ee; color:#fb1029;}
+
+/*我搜过的*/
+.Mysearchct{width:100%; background:#FFF; padding-bottom:2vh; margin-top:3%;}
+.Mysearchct ul li{border-bottom:#ebebeb solid 1px; padding-left:3%; padding-right:3%; height:3rem; line-height:3rem;}
+.Mysearchct ul li span{display:block;}
+.Mysli span:nth-child(1){float:left; font-size:1rem; color:#cdcbca; width:70%;}
+.Mysli span:nth-child(1) img{width:6%; vertical-align:middle; padding-right:0.8rem;}
+.Mysli span:nth-child(2){float:right;}
+.Mysli span:nth-child(2) img{width:65%; vertical-align:middle;}
+
+.Mysli2 span:nth-child(1){float:left; font-size:0.8rem; color:#272321; width:85%;}
+.Mysli2 span:nth-child(1) img{width:5%; vertical-align:middle; padding-right:0.5rem;}
+.Mysli2 span:nth-child(2){float:right;}
+.Mysli2 span:nth-child(2) img{width:50%; vertical-align:middle;}

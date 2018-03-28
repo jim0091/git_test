@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>礼舍-用户激活</title>
+<meta name="keywords" content="礼舍，用户激活" />
+<meta name="description" content="礼舍，用户激活" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__CSS__/base.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+
+
+<div class="content c">
+  <div class="loginBox">
+    <ul class="borderRadius">
+
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>手机号码：</label>
+			<input type="text" placeholder="请输入手机号码" id="mobile" name="mobile" maxlength="11" autocomplete="off">
+			<span></span>
+			<div class="c"></div>
+		</li>
+
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>登录密码：</label>
+			<input type="password" placeholder="请输入登录密码" id="password" name="password" maxlength="18" autocomplete="off">
+			<div class="c"></div>
+		</li>
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>确认密码：</label>
+			<input type="password" placeholder="请输入确认密码" id="rePassword" name="rePassword" maxlength="18" autocomplete="off">
+			<div class="c"></div>
+		</li>
+
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>验&nbsp;&nbsp;证&nbsp;&nbsp;码：</label>
+			<input type="text"  class="input" placeholder="请输入验证码" id="checkCode" style="border:0px solid red;width:100px;" size="20" name="checkCode" autocomplete="off" maxlength="4">
+			<input type="button" size="20" style="border:0px solid red;width:120px;background:#cc3535;color:#ffffff;" data="" id="getCode" value="获取验证码" class="button">
+			<span></span>
+			<div class="c"></div>
+		</li>
+
+		
+	 
+	</ul>
+    <a href="javascript:;" class="button borderRadius" id="addActivate" style="border:0px solid red;background:#c7241d;">激活</a>
+  </div>
+   <div class="apiLogin">
+    <div class="apiLoginTitle"><a style="color:#cc0000;" href="{:U('Login/login')}">已激活？去登录 »</a></div>
+  </div>
+  <div class="c"></div>
+</div>
+ 
+<script>
+	$(function(){
+        //点击发送验证码
+        $('#getCode').click(function(){  
+        $(this).attr('data','code');    	        	
+			var mobile=$("#mobile").val();
+			var op = IsPC();
+			// alert(pc);
+			$.get("/gift.php/User/checkActivate/mobile/"+mobile+"/op/"+op, function(result){
+				var data=eval(result);
+				// alert(data);
+				if(data[0]<=0){
+					alert(data[1]);
+					return false;
+				}else{
+					var btn=$('#getCode');
+		            var count=60;
+		            var resend=setInterval(function(){
+		                count--;
+		                if (count>0){
+		                    btn.val(count+"秒后重新获取");
+		                }else{
+		                    clearInterval(resend);
+		                    btn.val("获取验证码");
+		                }
+		            },1000);
+		            btn.attr('disabled',false).css('cursor','not-allowed');
+				}
+		    });
+		    $('#getCode').focus();
+	    		    
+        });
+		$('#addActivate').click(function(){  //激活
+			var mobile=$("#mobile").val();
+			var reg=/^0?1[3|4|5|7|8][0-9]\d{8}$/;
+			if (!reg.test(mobile)) {
+				alert("手机号码格式不正确！");
+				$("#mobile").focus();
+				return false;
+			}
+			var password=$("#password").val();
+			var rePassword=$("#rePassword").val();
+			if(password.length<6){
+				alert("登录密码不能少于6个字符！");
+				$("#password").focus();
+				return false;
+			}
+			if(password!=rePassword){
+				alert("登录密码和确认密码不相符！");
+				$("#rePassword").focus();
+				return false;
+			}
+
+			var checkCode=$("#checkCode").val();
+			if(checkCode.length<4){
+				alert("验证码不能为空或不正确！");
+				$("#checkCode").focus();
+				return false;
+			}
+
+			//var op = IsPC();
+			var code = $('#getCode').attr('data');
+            if(code=='code'){
+	            	$.get("/gift.php/User/checkActivateCode/mobile/"+mobile+"/checkCode/"+checkCode, function(result){
+						if(result==100){
+								urls="/gift.php/User/activateMember";
+								$.ajax({
+									type: "POST",
+									url:urls,
+									dataType:"text",
+									cache:false,
+									data: {
+										mobile:mobile,
+										password:password
+									},
+									success : function (result,status){
+										var data=eval(result);
+										// alert(data);
+										if(data[0]==100){
+											alert('激活成功！');
+											window.location.href="{:U('Login/login')}";
+										}else{
+											alert(data[1]);
+											return false;
+										}
+									},
+									error: function () {
+										alert('error：'+result);
+										$("#password").focus();
+										$('#doneActivate').slideDown();
+										$('#msg').slideUp();
+									}
+								});
+						}else{
+							alert('验证码不正确！请重新获取');
+							$("#checkCode").focus();
+							return false;
+						}
+				   });
+				 
+		     }else{
+		     	alert("请点击获取验证码！");
+		     	$("#checkCode").focus();
+		     	return false;
+		     }
+
+		});	
+		
+		$('#doneActivate').click(function(){ 
+			var mobile=$("#mobile").val();
+			var password=$("#password").val();
+			var rePassword=$("#rePassword").val();
+			if(password.length<6){
+				alert("登录密码不能少于6个字符！");
+				$("#password").focus();
+				return false;
+			}
+			if(password!=rePassword){
+				alert("登录密码和确认密码不相符！");
+				$("#password").focus();
+				return false;
+			}
+			$('#doneActivate').slideUp();
+			$('#msg').slideDown();
+
+			urls="/gift.php/User/activateMember";
+			$.ajax({
+				type: "POST",
+				url:urls,
+				dataType:"text",
+				cache:false,
+				data: {
+					mobile:mobile,
+					password:password
+				},
+				success : function (result,status){
+					var data=eval(result);
+					if(data[0]==100){
+						window.location.href="/gift.php/Activate/done/mark/"+data[3];
+					}else{
+						alert(data[1]);
+						$('#doneActivate').slideDown();
+						$('#msg').slideUp();
+					}
+				},
+				error: function () {
+					alert('error：'+result);
+					$("#password").focus();
+					$('#doneActivate').slideDown();
+					$('#msg').slideUp();
+				}
+			});
+
+
+		});	
+    });
+	
+
+//判断是不是pc端
+function IsPC(){
+	var userAgentInfo = navigator.userAgent;
+	var Agents = new Array("Android", "iPhone", "Symbian", "Windows Phone", "iPad", "iPod", "BlackBerry");
+	var flag = 'pc'; //是
+	for (var v = 0; v < Agents.length; v++) {
+		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+			flag = 'mobile'; break;
+		}
+	}
+	return flag;
+}
+</script>
+</body>
+</html>

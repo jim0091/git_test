@@ -1,0 +1,5 @@
+﻿@charset "utf-8";
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+.butbuy{background: url(../images/20170504090751.png) no-repeat;float:right;width:76px;height:27px;}
+

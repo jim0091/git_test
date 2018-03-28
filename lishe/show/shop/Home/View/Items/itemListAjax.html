@@ -1,0 +1,67 @@
+<!-- 搜索商品列表 -->
+<ul class="goodslist">
+	<volist name="list" id='listvo'>
+		<li>
+			<div class="pics">
+				<a href="{:U('Home/Info/index',array('itemId'=>$listvo['item_id']))}" target="_blank">
+					<img src="{$listvo.image_default_id}_m.{:end(explode('.',$listvo['image_default_id']))}" >
+				</a>
+			</div>
+			<div class="price">
+				<div class="points">
+					{$listvo['price']*100|sprintf="%.0f",###} <span>积分</span>
+				</div>
+				<div class="cash">
+					￥{$listvo['price']|sprintf="%.2f",###}
+				</div>
+			</div>
+			<div class="name">
+				<a href="{:U('Home/Info/index',array('itemId'=>$listvo['item_id']))}" target="_blank">
+					<p>{$listvo['title']}</p>
+				</a>
+			</div>
+			<div class="sellers">
+				<div class="stores">
+					<a href="__LISHE_URL__/shopcenter.html?shop_id={$listvo['shop_id']}" target="_blank">{$listvo['shopName']}</a>
+				</div>
+				<div class="storeslogo">{$listvo['shopType']}</div>
+			</div>
+		</li>
+	</volist>
+	<empty name="list">
+		未找到对应商品，点<a href="/b.php/Haihetao/feedBackPage" target="_black">这里</a>反馈。
+	</empty>
+</ul>
+
+<!--分页-->
+<div class="pages">
+{$pagestr}
+<!-- <div class="totalpages">共<span>83</span>页</div>
+<div class="pagenumber">到第<input type="text" value="">页</div>
+<div class="gotopage"><a href="">确定</a></div> -->
+</div>
+
+
+<script>
+	$(function(){
+		$("#np").text({$pageInfo['nowPage']});
+		$("#itemNum").text({$pageInfo['num']});
+		$("#totalPage").text({$pageInfo['totalPage']});
+		if({$pageInfo['nowPage']} == 1){
+			$("#prev").addClass('disable');
+		}
+		if({$pageInfo['nowPage']} >= {$pageInfo['totalPage']}){
+			$("#next").addClass('disable');
+		}else{
+			$("#next").removeClass('disable');
+		}
+	});
+	//商品名字太长显示省略号
+	$(".name").each(function(i){
+		var divH = $(this).height();
+		var $p = $("p", $(this)).eq(0);
+		while ($p.outerHeight() > divH){
+			$p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+		}
+	});	
+</script>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Ordercenter.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>订单中心-心意商城</title>
+</head>
+
+<body>
+	<div class="Waddress">
+		<span>
+			<a href="{:U('User/userCenter')}" >
+				<img src="__VIEW__Public/images/Wmallsretrun.png">
+			</a>
+		</span>
+		<span>订单中心</span>
+	</div>
+	<!--tab切换-->
+	<div id="outer">
+		<ul id="tab">
+			<a href="{:U('User/orderList',array('status'=>''))}">
+				<li id="ALL_ORDER">全部订单</li>
+			</a>
+			<a href="{:U('User/orderList',array('status'=>'WAIT_SELLER_SEND_GOODS'))}">
+				<li id="WAIT_SELLER_SEND_GOODS">待发货</li>
+			</a>
+			<a href="{:U('User/orderList',array('status'=>'WAIT_BUYER_CONFIRM_GOODS'))}">
+				<li id="WAIT_BUYER_CONFIRM_GOODS">待收货</li>
+			</a>
+			<a href="{:U('User/orderList',array('status'=>'TRADE_FINISHED'))}">
+				<li id="TRADE_FINISHED">待评价</li>
+			</a>
+			<a href="{:U('User/orderList',array('status'=>'NO_APPLY'))}">
+				<li id="NO_APPLY">退款/货</li>
+			</a>
+		</ul>
+		<div id="content">
+			<!--tab1-->
+			<volist name="paymentTrade" id="ola">
+			<volist name="ola['tradeInfo']" id="vo">
+			<if condition="$vo['trade']['disabled'] eq 0 ">
+			<div class="tabOne" style="display:block;">
+				<p class="tOnep">
+					<img src="{$vo['trade']['shopInfo']['shop_logo']}">
+					{$vo['trade']['shopInfo']['shop_name']}
+				</p>
+				<volist name="vo['order']" id="item">
+				<div class="tabOnediv">
+					<div class="toneLeft">
+						<a href="__APP__/Info/index/itemId/{$item['item_id']}"><img src="{$item['pic_path']}_m.{:end(explode('.',$item['pic_path']))}"></a>
+					</div>
+					<div class="toneRight">
+						<p><a href="__APP__/Info/index/itemId/{$item['item_id']}">{$item['title']}</a></p>
+						<p>
+							<a href="__APP__/Info/index/itemId/{$item['item_id']}">{$item['spec_nature_info']}
+								<span>x{$item[num]}</span>
+							</a>
+						</p>
+						<p>
+							<a href="__APP__/Info/index/itemId/{$item['item_id']}">
+								<if condition="$item['cash'] gt 0 && $item['point'] gt 0">
+									¥{:round($item['cash'], 2)} + {$item['point']}积分
+									<elseif condition="$item['cash'] gt 0"/>
+									¥{:round($item['cash'], 2)}
+									<elseif condition="$item['point'] gt 0"/>
+									{$item['point']}积分
+									<else/>
+								</if>
+							</a>
+						</p>
+					</div>
+				</div>
+				</volist>				
+				</if>
+				</volist>					
+			</div> 
+			<div class="watPay" style="height:30px;width:100%;display:block;">
+				<p>
+					<if condition="($ola['payStatus'] eq 'ready') AND ($ola['ctime'] eq '1')">						
+						<a href="javascript:void(0);" class="paynow userOp userSubmit" data-type="pay" data-paymentId="{$ola['paymentId']}"  data-status ="PAY" style="color: #ff4138;margin-left: 3%;">立即付款</a>
+						<!-- <a href="javascript:void(0);" class="cancelOrd userOp userSubmit" data-type="cancel" data-paymentId="{$ola['paymentId']}" data-status ="CANCEL" style="color: #ff4138;">取消订单</a> -->
+					<elseif condition="$ola['payStatus'] eq 'cancel'"/>		
+						<a href="javascript:void(0);" class="awaybtn">取消成功</a>	
+					<elseif condition="$ola['payStatus'] eq 'succ'" />
+						<a href="javascript:void(0);" class="awaybtn grayColor">支付成功</a>	
+					<else/>
+						<a href="javascript:void(0);" class="awaybtn grayColor">取消成功</a>
+					</if>	
+				</p>
+			</div>
+			
+			</volist> 
+		</div>
+		
+	    <style>
+	        .custom-paginations-prev{
+	            padding: 5px;
+	            color: #09F;
+	        }
+	        .wborder{
+	            border:1px solid #DDD; 
+	            padding: 5px;
+	        }
+	        .grayColor{border:1px solid #c1bebe !important;color: #c1bebe !important;}
+	    </style> 
+  
+	    <div  style="display:block;margin-top: 30px; text-align: center;">
+	            {$pagestr}
+	    </div> 
+	</div> 
+	<include file="Public/popuLoading"/>
+    <include file="Public/popuLayer"/>   
+    <include file="Public/newCat"/> 
+	<!--END--> 
+<script>
+	$(function(){
+		var status = "{$status}";
+		if (status != "") {
+			$("#"+status).addClass("current");
+		}else{
+			$("#ALL_ORDER").addClass("current");
+		}	
+	});
+	$(".userOp").click(function(){		
+        $(".topLoading").show();    
+		var op = $(this).attr("data-type");
+		var paymentId = $.trim($(this).attr("data-paymentId"));
+		var status = $.trim($(this).attr("data-status"));
+		if (op == '' || paymentId == '' || status =='') {
+			$(".topLoading").hide();			
+            opLayer('open',"系统繁忙，请刷新重试！");
+            return;
+		};
+		if (op == "pay") {
+			if (paymentId != '') {				
+                $(".topLoading").hide();
+                window.location.href="__APP__/Pay/pay/paymentid/"+paymentId;
+                return;
+			};
+		}
+	});
+</script> 
+</body>
+</html>

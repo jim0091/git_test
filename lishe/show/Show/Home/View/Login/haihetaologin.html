@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录-核桃礼舍</title>
+<meta name="keywords" content="礼品,送礼,礼物,贺礼,礼品册,生日礼物,节日,庆典,福利">
+<meta name="description" content="礼舍网">
+<link rel="stylesheet" href="__PUBLIC__/haihetao/css/Mlogin.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/enter.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#userName").focus();
+	$("#loginBtn").click(function(){
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	    if(userName==""){
+	      alert('请输入您的手机号码！');
+	      $("#userName").focus();
+	      return false;
+	    }
+	    if(password==""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    } 
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password,
+				mark:'{$control}'
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(msg[0]>0){
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="/b.php/Haihetao";	
+					}				
+				}else{
+					alert(msg[1]);
+					$("#userName").focus();
+				}
+			},
+			error: function () {
+				alert('error：'+msg[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</head>
+<body style="margin: 0px; padding:0px">
+<div class="Mlogin">
+	<div style="position: absolute;top:100px;left: 250px;">
+		<img src="__PUBLIC__/haihetao/images/welfare.png" />
+	</div>
+    <div class="loginframe">
+       <div class="balloons"><image src="__PUBLIC__/haihetao/images/balloons.png"/></div>
+       <div class="loginf">
+          <ul>
+            <li class="Mtitle"><img src="__PUBLIC__/haihetao/images/haihetaologo.png" style="margin-top: 12px;"/></li>
+            <li><input type="text" id="userName" maxlength="11" placeholder="手机号码"  onKeyPress="if(event.keyCode==13) {return false;}" class="txt user"></li>
+            <li><input type="password" id="password" autocomplete="off" placeholder="输入密码" class="txt pwd"></li>
+            <li class="afind"><a href="{:C('IMGSRC')}/business/index.php/Activate" target="_blank" class="aLeft">企业员工激活</a>
+            	<a href="{:C('IMGSRC')}/passport-findpwd.html" target="_blank" class="aRight">忘记密码？</a></li>
+			<input type="hidden" id="refer" value="{$refer}">
+            	
+            <li class="Mbtn">
+            	<a href="javascript:void(0)" id='loginBtn' >确定登录</a>
+            </li>
+          </ul>
+       </div>
+    </div>
+</div>	
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__css/SimpleTree.css"/>
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>产品分类</title>
+</head>
+<style>
+	.lan{
+		color: #5eb95e;
+	}
+	.deal{
+		color: #5a98de;
+		float: right;
+	}
+</style>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 产品分类 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<?php 	
+	 	$applFundId=array_search('dealcategory', $nodeAction);
+		 if($applFundId){
+	 ?>		
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+		<div class="col-2"> 
+			<a class="btn btn-primary radius" href="javascript:;" onclick="syncMallCat()">
+				商城同步分类
+			</a>	
+		</div>
+		<div class="col-2"> 
+			<a class="btn btn-primary radius" href="javascript:;" onclick="syncMallIndexCat()">
+				同步商城首页分类
+			</a>	
+		</div>		
+	</div>
+	<?php 
+	  } ?>	
+<table class="table">
+	<tr>
+		<td width="200" class="va-t">
+			<div class="st_tree" style="width:400px;margin:0 auto;">
+				<volist name="list" id="first">
+					<ul>
+						<li>
+							<if condition="$first.disabled eq 0">
+								<i class="Hui-iconfont lan" title="正常"></i>
+							<elseif condition="$first.disabled eq 1" />
+								<i class="Hui-iconfont lan" title="禁用中"></i>
+							</if>
+							
+							
+							<a href="javascript:void(0)" onclick="editCategory({$first.cat_id})">{$first.cat_name}</a>
+							<span style="color: #5eb95e;">({$first.cat_id})</span>
+						
+						</li>
+						<ul>
+							<volist name="first.NextCat" id="second">
+								<li>
+									<if condition="$second.disabled eq 0">
+										<i class="Hui-iconfont lan" title="正常"></i>
+									<elseif condition="$second.disabled eq 1"/>
+										<i class="Hui-iconfont lan" title="禁用中"></i>
+									</if>			
+									<a href="javascript:void(0)" onclick="editCategory({$second.cat_id})">{$second.cat_name}</a>
+									<span style="color: #5eb95e;">({$second.cat_id})</span>
+									
+										<?php 	
+										 	$applFundId=array_search('dealcategory', $nodeAction);
+											 if($applFundId){
+											 	if($nodeController[$applFundId]=="product"  || $roleId==0){
+										 ?>								
+										<a href="javascript:void(0)"  title="单击启用该分类" class="deal" data-type="{$second.disabled}" data-id="{$second.cat_id}" data-name="{$second.cat_name}">
+											<if condition="$second.disabled eq 1">
+													<i class="Hui-iconfont" ></i>
+											<elseif condition="$second.disabled eq 0" />
+													<i class="Hui-iconfont"></i>
+											</if>										
+										</a>
+										<?php }
+										  } ?>									
+										
+								</li>
+								<ul>
+									<volist name="second.NextCat" id="third"> 
+										<li>
+											<if condition="$third.disabled eq 0">
+												<i class="Hui-iconfont lan" title="正常"></i>
+											<elseif condition="$third.disabled eq 1" />
+												<i class="Hui-iconfont lan" title="禁用中"></i>
+											</if>												
+											<a href="javascript:void(0)" onclick="editCategory({$third.cat_id})">{$third.cat_name}</a>
+											<span style="color: #5eb95e;">({$third.cat_id})</span>
+											<a href="javascript:void(0)" onclick="article_edit('{$third.cat_name}分类品牌关联','{:U('Product/choiceBrand',array('catId'=>$third['cat_id']))}')"  title="{$third.cat_name}分类品牌关联">
+												<i class="Hui-iconfont lan" style="margin-left: 10px;">&#xe64d;</i>
+											</a>	
+											<?php 	
+											 	$applFundId=array_search('dealcategory', $nodeAction);
+												 if($applFundId){
+												 	if($nodeController[$applFundId]=="product"  || $roleId==0){
+											 ?>												
+											<a href="javascript:void(0)"  title="单击启用该分类" class="deal" data-type="{$third.disabled}" data-id="{$third.cat_id}" data-name="{$third.cat_name}">
+												<if condition="$third.disabled eq 1">
+														<i class="Hui-iconfont" ></i>
+												<elseif condition="$third.disabled eq 0" />
+														<i class="Hui-iconfont"></i>
+												</if>										
+											</a>											
+											<?php }
+											  } ?>												
+											
+										</li>
+									</volist>
+									<li>
+										<a href="javascript:void(0)" onclick="addCategory({$second.cat_id},3)">
+											<i class="Hui-iconfont lan"></i>							
+											添加分类(“{$second.cat_name}”下)
+										</a>
+									</li>										
+								</ul>
+							</volist>
+								<li class="folder" style="list-style-image:none;">
+									<a href="javascript:void(0)" onclick="addCategory({$first.cat_id},2)">
+										<i class="Hui-iconfont lan"></i>							
+										添加分类(“{$first.cat_name}”下)
+									</a>
+								</li>		
+						</ul>
+					</ul>		
+				</volist>
+				<ul>
+					<li class="folder" style="list-style-image:none;">
+						<a href="javascript:void(0)" onclick="addCategory(0,1)">
+							<i class="Hui-iconfont lan"></i>							
+							添加一级分类
+						</a>
+					</li>		
+					
+				</ul>
+			</div>			
+			
+			<ul id="treeDemo" class="ztree"></ul>
+		</td>
+		<td class="va-t">
+			<IFRAME ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=390px ></IFRAME>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/SimpleTree.js"></script>
+<script type="text/javascript">
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}	
+$(function(){
+
+	$(".st_tree").SimpleTree({
+	
+		/* 可无视代码部分*/
+		click:function(a){
+			if(!$(a).attr("hasChild"))
+				alert($(a).attr("ref"));
+		}
+		
+	});
+	$('.deal').on('click',function(){
+		var catId=$(this).attr('data-id');
+		var catName=$(this).attr('data-name');
+		var type=$(this).attr('data-type');
+		if(type == 0){
+			var typeName="禁用";
+		}else if(type == 1){
+			var NextName="启用";
+		}		
+		layer.confirm('确认'+typeName+'“'+catName+'”吗？',function(index){
+			$.get("__APP__/Product/dealCategory/catId/"+catId+"/type/"+type,function(data){     
+				if(data){
+					layer.msg(typeName+'“'+catName+'”成功!',{icon:1,time:1000});
+				}else{
+					layer.msg(typeName+'“'+catName+'”失败!',{icon:1,time:1000});
+					
+				}
+			});
+			
+		});		
+	});
+
+});
+	function editCategory(catId){
+		var frame = document.getElementById("testIframe");
+		frame.src="__APP__/Product/categoryEdit/catId/"+catId;
+	}
+	function addCategory(parentId,level){
+		var frame = document.getElementById("testIframe");
+		frame.src="__APP__/Product/categoryEdit/parentId/"+parentId+"/level/"+level;
+	}
+	function syncMallCat(){
+		layer.confirm('确认同步商城导航分类吗？',function(index){
+			$.get("__APP__/Product/creatCat",function(data){     
+				if(data){
+					layer.msg(data);
+				}
+			});
+			
+		});			
+	}
+	function syncMallIndexCat(){
+		layer.confirm('确认同步商城首页分类吗？',function(index){
+			$.get("__APP__/Product/creatOldCat",function(data){     
+				if(data){
+					layer.msg(data);
+				}
+			});
+			
+		});			
+	}	
+</script>
+</body>
+</html>

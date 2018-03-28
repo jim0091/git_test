@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#f5f5f5; font-family:"微软雅黑"; font-size:12px;}
+
+
+
+.platform{width:1000px; margin:0 auto;margin-top:50px; margin-bottom: 80px; padding-bottom: 50px; border: 1px solid #c7241d; position: relative;}
+#blank{width: 880px; height:40px; background-color:#f5f5f5; position: absolute; top: -1px; left: 120px; border-bottom: 1px solid #c7241d; border-left: 1px solid #c7241d;}
+.payTit{width:110px; font-size:14px; color:#666666; text-align:center; padding-top:20px;}
+.payTit2{font-size:12px; color:#666666; padding-left:26px; padding-top:35px;}
+.payul{padding-left:26px; margin-top:15px; clear:both; overflow: hidden;}
+.payul li{float:left;}
+.payli{width:215px; height:70px; line-height:70px; border:#CCC solid 1px; text-align:center; margin-right:20px;}
+.payli input,img{vertical-align:middle; margin:0 5px;}
+.payjf{font-size:16px; color:#c7241d; font-weight:800;height:70px; line-height:70px;}
+.payjf2{font-size:16px; color:#c7241d; height:70px; line-height:70px;}
+.paypwd{clear:both;padding-left:26px; padding-top:35px;}
+.paypwd li{float:left;font-size:12px; color:#666666;height:25px; line-height:25px;}
+.paypwd li a{font-size:12px; color:#666666; padding-left:8px;}
+.paypwd li input{width:160px; height:25px; border:#CCC solid 1px;}
+.rechargep{padding-left:26px; color:#de1c14; font-size:12px; font-weight:bold; padding-top:20px; padding-bottom:10px;}
+.recharge{border:#c7241d solid 1px; width:945px; margin:0 auto;  margin-top:30px; height:200px;}
+.recharge div{float:left;}
+.reOne{width:380px; text-align:center; padding-top:20px;}
+.reOne p{border-bottom:#CCC solid 1px; width:100px; margin:0 auto; font-size:13px; color:#333333; font-weight:bold; padding-bottom:2px;}
+.reOne ul{width:280px; margin:0 auto; margin-top:10px; cursor: default;}
+.reOne ul li{float:left; font-size:14px; color:#333333; height:30px;line-height:30px;text-align:left; width:140px;}
+.reOne ul li input{vertical-align:middle; margin-right:3px;}
+.reTwo{width:340px;padding-top:40px;}
+.reTwo ul li{float:left; width:130px; height:45px; line-height:45px; text-align:left; border:#CCC solid 1px; margin:10px 10px; padding-left:5px;
+font-size:10px; color:#333333; cursor: pointer;}
+.reTwo ul li input{vertical-align:middle;}
+.reTwo ul li img{width:29px; height:29px; vertical-align:middle;}
+.reThree{width:200px; margin:0 auto; padding-top:100px; text-align:center;}
+.reThree li{font-size:14px; color:#c7241d; height:30px; line-height:30px;}
+.reThree li a{font-size:14px; color:#FFF; background:#c7241d; padding:5px 20px; font-weight:bold;}
+.paybtn{ padding-left:26px; padding-top:50px;}
+.paybtn a{font-size:18px; color:#FFF;background:#c7241d; padding:15px 30px;}
+.checkCardBorder{ border:red solid 1px;}
+
+
+/*充值状态样式*/
+.anarchy{width:800px; margin:0 auto; margin-top:80px; text-align:center;}
+.resucc{font-size:34px; color:#c6241d;}
+.resucc img{height:85px; vertical-align:middle; margin-top:-30px;}
+.resucc span{vertical-align:middle; padding-left:5px;}
+.anarchy ul{display:inline-block;}
+.anarchy ul li{float:left; height:30px; line-height:30px; margin:0 10px;}
+.rech{font-size:24px; color:#333333;}
+.rech2{font-size:14px; color:#c6241d;}
+
+.anarchy2{width:800px; margin:0 auto; margin-top:80px; text-align:center;}
+.resucc{font-size:34px; color:#c6241d;}
+.resucc img{height:85px; vertical-align:middle; margin-top:-30px;}
+.resucc span{vertical-align:middle; padding-left:5px;}
+.anarchy2 ul{display:inline-block;}
+.anarchy2 ul li{height:30px; line-height:30px; margin:0 10px;}
+.rech{font-size:24px; color:#333333;}
+.rech3{font-size:14px; color:#c6241d;}
+.rech3 a{font-size:14px; color:#333333;}
+.rech3 span{padding-left:8px;}
+
+/*充值弹出框*/
+#tankCard{width:460px; height:260px; background: #FFFFFF}
+#tankCard div.ctBtnSucc{display:inline}
+.points{height:45px; line-height:45px; font-size:16px;font-weight:bold; width:100%;text-align:center; background:#FE5050}
+.ctBtnUl{width:100% ;height:50px;margin-top: 80px;}
+.ctBtnError{ height: 45px;width: 160px; border-radius:3px; background: #FE5050;color: #FFFFFF;font-size: 18px;font-weight: 300;text-align: center;line-height: 45px; float: left; margin-left: 60px;}
+.ctBtnSucc{height: 45px;width: 160px;border-radius:3px;background: #FE5050;color: #FFFFFF;font-size: 18px;font-weight: 300;text-align: center;line-height: 45px; float: left;margin-left: 30px;}
+
+.content{width: 380px; margin: 100px auto; border: 1px solid #FF4138; padding: 20px; border-radius: 5px;}
+.sku-group{font-size: 16px; font-weight: bold;}
+.payment{line-height: 24px; margin-top: 10px;}
+.payment > div{margin:5px 0;}
+.content .phone-div{padding: 8px 25px;}
+.content .phone{ font-size: 14px; width: 80px; float: left;}
+.content .phone-input input{ padding: 3px;}
+.content .code-div{padding: 8px 25px; height: 35px;}
+.content .code{ font-size: 14px; width: 80px; float: left;}
+.content .code-input input{ padding: 3px; width: 65px; float: left; margin-right: 10px;}
+.content .submit{ margin-left: 25px; }
+.content .submit input{padding: 5px 12px; border: 0px;}
+
+.content .pwd-div{padding: 8px 25px;}
+.content .pwd{ font-size: 14px; width: 100px; float: left;}
+.content .pwd-input input{ padding: 3px;}
+.content .rpwd-div{padding: 8px 25px; height: 35px;}
+.content .rpwd{ font-size: 14px; width: 100px; float: left;}
+.content .rpwd-input input{ padding: 3px;}
+
+
+.content input[type="submit"]{background-color:#FF4138; color: #FFF; border: 0px; display: block; border-radius: 3px; margin-top: 10px; cursor: pointer;}
+.content input[name="sendCode"]{width: auto; padding: 5px 6px; border: none; cursor: pointer;   margin-top:0; margin-right:80px; }
+
+.platform .remind{overflow: hidden; padding-left: 26px;}
+.platform .remind li{float: left; font-size: 14px;}

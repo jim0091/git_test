@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/login.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>登录-心意商城</title>
+</head>
+
+<body>
+	<div class="Waddress">
+		<span><img></span>
+		<span>登录</span>
+	</div>
+	<!--tab切换-->
+	<div id="outer">   
+		<div id="content">
+			<!--tab1-->
+			<div class="WtabListOne" style="display:block;">
+				<input type="hidden" id="refer" name="refer" <if condition="$refer eq '' ">value="__APP__/User/userCenter"<else/>value="{$refer}"</if> >
+				<p>
+					<span>手机号码：</span>
+					<span><input type="text" id="userName" name="userName" ></span>
+				</p>
+				<p>
+					<span>登录密码：</span>
+					<span><input type="password" id="password" name='password'></span>
+				</p>
+				<div class="WOnebtn"><a href="javascript:void(0);" id="loginSubmit">登录</a></div>
+			</div> 
+			<div class="" style="display:block;">
+				<a style="float:left;color:#cc0000;" href="{:U('Login/findPwd')}">忘记密码？</a>
+		    	<a style="color:#cc0000;" href="__APP__/Login/register">立即注册</a>		    	
+		    	<a style="float:right;color:#cc0000;" href="{:U('Login/activate')}">快速激活</a>
+			</div> 
+		</div>
+	</div>  
+
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>   
+	<!--END--> 
+<script type="text/javascript">
+	$("#loginSubmit").click(function(){
+		$(".topLoading").show();
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	  	var refer = $("#refer").val();
+	  	var entry = "{$Think.get.entry|default='yes'}";
+	    if(userName==""){
+			$(".topLoading").hide();
+			opLayer('open',"请输您的登录账号！");
+            return;	
+	    }
+	    if(password==""){
+			$(".topLoading").hide();
+			opLayer('open',"请输入您的登录密码！");
+            return;	
+	    } 
+		$.ajax({
+			type: "POST",
+			url:"__APP__/Login/login",
+			data:{userName:userName,password:password},
+			dataType:"text",
+			success: function(data){
+				var res=eval(data);
+				if(parseInt(res[0])>0){
+					
+					if(res[2] != '' && entry == "yes"){
+						refer=res[2];
+					}
+					
+					if(refer != ''){
+						window.location.href=refer;
+					}else{
+						$(".topLoading").hide();
+						opLayer('open',res[1],refer);
+			            return;														
+					}				
+				}else{
+					$(".topLoading").hide();
+					opLayer('open',res[1]);
+		            return;	
+				}
+			},
+			error: function () {
+				$(".topLoading").hide();
+				opLayer('open',"系统繁忙，请重试！");
+	            return;	
+			}
+		});
+	});
+
+</script>
+</body>
+</html>

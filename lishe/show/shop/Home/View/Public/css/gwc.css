@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+ul li{list-style:none;}
+a{text-decoration:none;}
+img{border:none;}
+
+
+.tb-shop{width:1000px; margin:0 auto;}
+.tb-shop table, .tb-shop tr, .tb-shop td{border-collapse: separate;}
+.user-tb{border:#CCC solid 1px; height:30px; line-height:30px; color:#666; width:1000px; font-size:13px;}
+.put{padding-left:15px; width:150px;}
+.put span{padding-left:15px;}
+.new-list{width:275px; text-align: center;}
+.dj{width:130px; text-align: center;}
+.num{width:150px; text-align: center;}
+.je{width:130px; text-align: center;}
+.cz{text-align: center;}
+.sl{width: 150px;}
+.sl > div{overflow:hidden;width:78px;height:20px;border: 1px solid #CCC; margin: 0 auto;}
+.delt{text-align: center;}
+
+.list-tb{border:#CCC solid 1px; color:#666;font-size:13px; width:1000px; margin-top:20px; padding-top: 10px; border-bottom: none;}
+.put2{padding-left:15px; padding-bottom:10px;}
+.put2 span{padding-left:20px;}
+.put2 a{display: inline-block;}
+.put2 a img{vertical-align: middle;}
+/*加减框*/
+.sdddq {font-family: "微软雅黑";font-size: 15px;height: 20px;width: 35px; text-align:center;}
+
+.put3{ padding-left:15px; width:30px;}
+.pt{width:70px;}
+.pt img{width:120px; height:120px;}
+.btn{width:60px;}
+.btn a{color:#FFF; font-size:13px; font-weight:bold; background:#ff2f32; border-radius:8px; padding:5px 10px;}
+.dis{width:265px;}
+.dis a{font-size:13px; color:#666666;}
+.dis p{line-height: 24px;}
+.pir{font-size:13px;color:#c7241d; width: 130px; text-align: center;}
+.sl{width: 150px; }
+.totl{font-size:13px; color:#666666; width: 130px; text-align: center;}
+.bd td{border-bottom:#CCC solid 1px; padding-top:10px; padding-bottom:10px;}
+.descNum{cursor:pointer;text-align:center;width:20px;height:20px;line-height:20px;border-right-width: 1px;border-right-style: solid;border-right-color: #CCC;float:left}
+.currCartQuantity{border-style: none; border-width: 0px; width: 30px; text-align: center; outline: medium none; vertical-align: middle; line-height: 20px;}
+.ascNum{cursor:pointer;text-align:center;width:20px;height:20px;line-height:20px;border-left-width: 1px;border-left-style: solid;border-left-color: #CCC;float:right}
+.getOrderResult{border:0px solid red;padding:10px 20px;}
+.kefu{height: 25px;padding-left: 29px; margin-left:10px; background: url("../images/qq.png") no-repeat; background-size: 22px; line-height: 25px; vertical-align: bottom;}
+.delte_cartId{line-height: 20px;}
+.delte_cartId img{display: inline-block; vertical-align: top; margin-right: 5px;}
+
+.js-tb{width:1000px; border:#CCC solid 1px; margin-top:20px; margin-bottom: 50px; color:#666; width:1000px; font-size:13px; height:75px;}
+.put4{padding-left:15px; width:90px;}
+.put4 span{padding-left:15px;}
+.de a{font-size:13px; color:#666;}
+.totl2{float:right;}
+.totl2 p{font-size:13px;color:#666; text-align:center; line-height: 74px;}
+.to-p span{font-size:15px;color:#c7241d;}
+.to-js{text-align:center; width:100px;}
+.to-js a{font-size:15px; color:#FFF; background:#c7241d; padding:10px 20px; font-weight:bold;}
+
+/* 收货地址 */
+fieldset{padding-top: 15px; padding-left: 30px; padding-bottom: 15px; margin-bottom: 80px; border-width: 1px;}
+legend{font-size: 14px; margin-left: 15px;}
+legend h4{padding: 0 10px;}
+.fieldset td{padding: 5px 0;}
+.recName, .recAddr, .recCode, .recTel{padding: 3px 0 3px 10px; margin: 5px 0;}
+.deliveryAddr{width: 650px; margin: 0 auto;}
+.deliveryAddr .user-tb{width: 100%;}

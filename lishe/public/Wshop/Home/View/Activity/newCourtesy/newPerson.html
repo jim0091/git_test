@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="email=no" name="format-detection" /> 
+	<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+	<meta name="apple-mobile-web-app-title" content="">
+	<title>新人礼遇</title>
+	<link rel="stylesheet" type="text/css" href="/Wshop/Home/View/Activity/newCourtesy/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/Wshop/Home/View/Activity/newCourtesy/css/WnewPerson.css">
+	<link rel="stylesheet" type="text/css" href="/shop/Home/View/Activity/newCourtesy/css/newPerson.css">
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>			
+</head>
+<body>
+	<header><img src="/Wshop/Home/View/Activity/newCourtesy/images/banner1.png" class="w100" /></header>
+	<div class="text_con mauto"><img src="/Wshop/Home/View/Activity/newCourtesy/images/text_con1.png" class="w100" /></div>
+	<section class="main_content1">
+		<ul class="main_content_ul clear">
+			<volist name="catetorys" id="aConfId">
+				<li class="parentMarket">
+					<div class="left_proGroup fl">
+						<p class="proImg"><img src="{$activityCats[$aConfId]['cat_banner_mobile']}" /><span class="proGroupText">{$activityCats[$aConfId]['cat_name']}</span></p>
+						<p class="BottomText">
+							<span class="groupPrice fl">¥<em class="price_em"></em></span>
+							<span class="proName fl">已选择：+¥1 </span>
+						</p>
+					</div>
+					<div class="right_list fl">
+						<ul class="proList clear">
+							<foreach name="aitemInfos[$aConfId]" item="aitem"  key="k">
+								<li data-price="{$aitem['price']}" data-lastPrice="{$aitem['lastPrice']}" data-title="{$aitem['item_name']}" data-aitemId="{$aitem['aitem_id']}" data-store="{$skuStore[$aitem['lastSkuId']]}"  >
+									<div class="listImg"><img src="" data-src="{$itemInfos[$aitemIds[$aitem['lastSkuId']]]['image_default_id']}_m.{:end(explode('.', $itemInfos[$aitemIds[$aitem['lastSkuId']]]['image_default_id']))}" /></div>
+									<span class="listImgMark">¥{$aitem['lastPrice']}</span>
+								</li>
+							</foreach>
+						</ul>
+						<div class="btnGroup mauto"><span class="addCart">加入购物车</span><span class="buyBtn">立即购买</span></div>
+					</div>
+				</li>
+			</volist>
+		</ul>
+	</section>
+	<!--满额返现-->
+	<div class="text_con mauto"><img src="/Wshop/Home/View/Activity/newCourtesy/images/text_con2.png" class="w100" /></div>
+	<section class="main_content2">
+		<ul class="proList2">
+			<volist name="itemIds" id="vo">
+				<li>
+					<div class="pro2Img">
+						<img src="" alt="" data-src="{$itemInfos[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfos[$vo]['image_default_id']))}">
+						<p class="pro2Name">{$itemInfos[$vo]['title']}</p>
+					</div>
+					<div class="pro2Price clear"><span class="price1Sp fl">¥<em>{:sprintf("%.2f",$itemInfos[$vo]['price'])}</em></span><span class="price2Sp fr">{:sprintf("%.2f",$itemInfos[$vo]['price'])*100}积分</span></div>
+					<div class="pro2Btn mauto">
+						<span class="p2Cart"  data-itemId="{$vo}" data-shopId="{$itemInfos[$vo]['shop_id']}" >加入购物车</span>
+						<a href="/wshop.php/Info/index/itemId/{$vo}" >
+							<span class="p2Buy">立即购买</span>
+						</a>
+					</div>
+				</li>				
+			</volist>
+
+		</ul>
+	</section>
+<!--悬浮-->
+	<a href="http://www.lishe.cn/wshop.php/Index" class="linkFix"></a>
+	<a href="/wshop.php/Cart/cart" class="buyCart"><span class="proN">0</span></a>	
+</body>
+<script type="text/javascript" src="/Wshop/Home/View/Activity/newCourtesy/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+var html = document.documentElement;
+var whtml  =html.getBoundingClientRect().width;
+html.style.fontSize = whtml /7.5 + "px";
+
+$('.proList2>li .pro2Img img').css('margin-top',($('.pro2Img').height() - $('.proList2>li .pro2Img img').height()) / 2);
+
+//商品选择
+$('.right_list .proList>li').click(function(){
+	$(this).addClass('active').siblings().removeClass('active');
+	var $this = $(this);
+	
+	var price = $this.attr("data-price");
+	var lastPrice = $this.attr("data-lastPrice");
+	var title = $this.attr("data-title");
+	$this.parents('.parentMarket').find('.price_em').text(price);
+	$this.parents('.parentMarket').find('.proName').text('已选择：+¥'+lastPrice+' 换购'+title);
+	repleceText('.proName',14);
+});
+
+//懒加载
+//触发滚动 防止第一屏不加载
+$("body,html").scrollTop(1);
+lazyLoad();
+function lazyLoad(){
+
+	var bodyH = $(window).height();
+	var docH = $(document).height();
+
+	if(docH < bodyH){
+		$('img').each(function(){
+			var $this = $(this);
+
+			if($this.attr('data-src') != $this.attr('src')){
+				$this.attr('src',$this.attr('data-src'));
+			}
+		});
+	}else{
+		$('img').each(function(){
+			var $this = $(this);
+
+			var winH = $(window).height() + $(window).scrollTop();
+			var thisT = $this.offset().top;
+			var thisH = $this.height();
+			var scrlTop = parseInt($(window).scrollTop()) - parseInt($this.height());;
+
+			if(thisT >= thisT - 100 && thisT <= winH+100 + thisH && $this.attr('src') != $this.attr('data-src')){
+				var dataSrc = $this.attr('data-src');
+				$this.attr('src',dataSrc);
+			}
+
+		});
+	}
+	
+}
+autoSelect();
+function autoSelect(){
+	var proList1 = $('.right_list > .proList').length;
+
+	for(var i=0;i<proList1;i++){
+	
+		for(var j=0;j<$('.proList').eq(i).find('li').length;j++){
+			
+			var store = $('.proList').eq(i).find('li').eq(j).attr("data-store");
+			var seleObj = $('.proList').eq(i).find('li').eq(j);
+			if(store <= 0){
+				continue;
+			}else{
+				$('.proList').eq(i).find('li').eq(j).addClass('active');
+				var price = seleObj.attr("data-price");
+				var lastPrice = seleObj.attr("data-lastPrice");
+				var title = seleObj.attr("data-title");
+				seleObj.parents('.parentMarket').find('.price_em').text(price);
+				seleObj.parents('.parentMarket').find('.proName').text('已选择：+¥'+lastPrice+' 换购'+title);
+				repleceText('.proName',14);
+				break;
+			}
+			
+		}
+	}
+}
+
+
+
+$(document).on('scroll',function(){
+	lazyLoad();
+	$('.proList2>li .pro2Img img').css('margin-top',($('.pro2Img').height() - $('.proList2>li .pro2Img img').height()) / 2);
+});
+$(function(){
+	updateCartNum();
+});
+$('.addCart').click(function(){
+	var dataAiemId = $(this).parents('.parentMarket').find('.active').attr('data-aitemId');
+	var store = $(this).parents('.parentMarket').find('.active').attr('data-store');
+	if(store <= 0){
+		return false;
+	}
+	addCarts(dataAiemId,'add');
+});
+$('.buyBtn').click(function(){
+	var dataAiemId = $(this).parents('.parentMarket').find('.active').attr('data-aitemId');
+	var store = $(this).parents('.parentMarket').find('.active').attr('data-store');
+	if(store <= 0){
+		return false;
+	}		
+	addCarts(dataAiemId,'buy');
+});
+function addCarts(aitemId,type){
+	$.get('__APP__/Activity/aitemAddCart',{aitemId:aitemId},function(data){
+		if(data['code'] == 0){
+			alert(data['msg']);
+		}else if(data['code'] == 1){
+			updateCartNum();
+			if(type == 'add'){
+				alert("成功加入购物车!");
+			}else if(type == 'buy'){
+				window.location.href = "/wshop.php/Cart/cart";
+			}
+		}else if(data['code'] == 3){
+			alert(data['msg']);
+			window.location.href = '/wshop.php/Login/login.html?entry=no&refer=http://www.lishe.cn/wshop.php/activity/newCourtesy';
+		}
+	});
+} 
+function updateCartNum(){
+	$.ajax({
+        type:"POST",
+        url:"__APP__/Activity/updateCartNum",
+        dataType:'text',
+        success:function(data){
+            $(".proN").text(data);
+        }
+    });
+}
+//加入购物车
+$(".p2Cart").click(function(){
+    //商品id
+    var itemId = $(this).attr('data-itemId');//商品id
+    //购买数量
+    var shopId = $(this).attr('data-shopId');//商品id
+    //库存id
+	//检测是否登录
+    $.post('__APP__/Activity/isLogin','',function(data){
+		if(!data){
+        	alert('请先登录!');
+			window.location.href = '/wshop.php/Login/login.html?entry=no&refer=http://www.lishe.cn/wshop.php/activity/newCourtesy';
+			return false;
+		}
+    });        
+    $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+		if(data['code'] == 0){
+            window.location.href="http://www.lishe.cn/wshop.php/Info/index/itemId/"+itemId;
+			return false;
+		}else if(data['code'] == 1){
+			addCart(itemId,data['skuId'],shopId);
+		}
+    	
+    });
+});	
+function addCart(itemId,skuId,shopId){
+	var quantity = 1;
+	var jd_ids = '19_1607_3155_0';
+    $.ajax({
+        type:"POST",
+        url:"__APP__/Info/addItemCart",
+        data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+        dataType:'text',
+        success:function(data){
+            var res = eval(data);
+            if (res[0] == 1) {
+            	alert("成功加入购物车!!");
+               updateCartNum();
+            }else{
+            	alert(res[1]);
+            }
+        }
+    });  	
+}  
+repleceText('.proGroupText',18);
+function repleceText(obj,max){
+	$(obj).each(function(){
+		if($(this).text().length>max){
+			$(this).text($(this).text().substring(0,max));
+			$(this).html($(this).html()+'...');
+		}
+	});
+}
+</script>
+</html>

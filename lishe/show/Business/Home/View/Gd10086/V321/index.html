@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>南方电网VIP商城</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/gd10086/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/gd10086/css/sidebar.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/gd10086/css/dg_mobile.css?v=1">
+	<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+	<style type="text/css">html{height: auto;}</style>
+</head>
+<body style="background-color: #eff3f5;">
+	<div class="close_sidebar_wrap">
+<!--头-->
+	<include file="Gd10086/V321/header" />
+	<!--头-->
+	<!--banner-->
+	<div class="dg_banner1_wrap">
+		<ul class="banner1_list">
+			<volist name="imgList" id="vo">
+				<li><a href="{$vo['refer']}" target="_blank"><img src="{$vo['banner_img']}" /></a></li>
+			</volist>			
+		</ul>
+		<div class="banner1_btn_wrap">
+			<div class="banner1_btn_bg">
+				<volist name="imgList" id="vo">
+					<span <eq name='i' value='1'>class="active"</eq>></span>
+				</volist>			
+			</div>
+		</div>
+	</div>
+	<!--商城公告-->
+	<div class="shopping_ann_wrap mauto">
+		<div class="shopping_ann_left fl">商城公告:</div>
+		<div class="ann_list fl">
+			<ul>
+				<li>● 全国客服热线：<em>400-118-8234 ／ 0755-66632121</em> （周一至周五 上午9：00-12：00 下午14：00-18：00）</li>
+			</ul>
+		</div>
+		<div class="ann_wrap">
+			<a href="#" class="ann_a1"></a><a href="#" class="ann_a2"></a>
+		</div>
+	</div>
+	
+ <volist name="menus" id="menu" key="z">   
+	<div class="dg_product_wrap">
+		<div class="product_title mauto">
+			<div class="pro_blue fl"></div>
+			<h2 class="pro_lefth2 fl">{$menu.name}</h2>
+			<div class="pro_tit2 fl">
+				<switch name="z">
+					<case value="1">RECOMMEND</case>
+					<case value="2">HOME TEXTILES</case>
+					<case value="3">KITCHENWARE</case>
+					<case value="4">FOOD BEVERAGE</case>
+					<case value="5">LUGGAGE AND BAGS</case>
+					<case value="6">PERSONAL CARE</case>
+				</switch>
+			</div>
+			<div class="require_many fr">
+	          	<notempty name="category[$menu['cfid']]">
+			        <volist name="category[$menu['cfid']]" id="class">
+						<a href="__APP__/Gd10086/itemList/cfgId/{$class.item_config_id}/catId/{$class.cat_config_id}" target="_blank">{$class.cat_name}</a>
+			        </volist>  
+			    <else/>
+	             <empty name="menu['category']">
+	                <a href="__APP__/Gd10086/itemList/cfgId/{$menu['cfid']}" target="_blank">查看更多>></a>
+	            </empty>			    
+				</notempty>	
+			</div>
+		</div>
+		<div class="dg_product_list mauto">
+			<div class="left_select_wrap left_select_wrap6 fl" style="background: url({$menu.cat_icon}) no-repeat;">
+				<div class="select_con1">
+					<switch name="z">
+						<case value="1">
+							<a href="/shop.php/Items/itemList?keyword=%E4%BF%9D%E6%B8%A9%E6%9D%AF" target="_blank">保温杯</a>
+							<a href="/shop.php/Items/itemList/catId/1295" target="_blank">户外伞</a>
+							<a href="/shop.php/Items/itemList?keyword=%E9%98%B2%E6%99%92" target="_blank">防晒品</a>
+							<a href="/shop.php/Items/itemList/catId/1124" target="_blank">双肩包</a>
+							<a href="/shop.php/Items/itemList/catId/974" target="_blank">搭帐篷</a>
+							<a href="/shop.php/Items/itemList/catId/666" target="_blank">饱腹品</a>							
+						</case>
+						<case value="2">
+							<a href="/shop.php/Items/itemList/catId/697" target="_blank">套件</a>
+							<a href="/shop.php/Items/itemList/catId/1011" target="_blank">枕头</a>
+							<a href="/shop.php/Items/itemList/catId/1010" target="_blank">被子</a>
+							<a href="/shop.php/Items/itemList/catId/1329" target="_blank">抱枕</a>
+							<a href="/shop.php/Items/itemList/catId/1328" target="_blank">凉席</a>
+							<a href="/shop.php/Items/itemList/catId/1012" target="_blank">毛巾</a>							
+						</case>
+						<case value="3">
+							<a href="/shop.php/Items/itemList/catId/1349" target="_blank">电饭锅</a>
+							<a href="/shop.php/Items/itemList/catId/93" target="_blank">料理机</a>
+							<a href="/shop.php/Items/itemList/catId/95" target="_blank">养生壶</a>
+							<a href="/shop.php/Items/itemList/catId/87" target="_blank">压力锅</a>
+							<a href="/shop.php/Items/itemList/catId/86" target="_blank">电磁炉</a>
+							<a href="/shop.php/Items/itemList/catId/88" target="_blank">豆浆机</a>							
+						</case>
+						<case value="4">
+							<a href="/shop.php/Items/itemList/catId/661" target="_blank">零食</a>
+							<a href="/shop.php/Items/itemList/catId/662" target="_blank">坚果</a>
+							<a href="/shop.php/Items/itemList/catId/664" target="_blank">蜜饯</a>
+							<a href="/shop.php/Items/itemList/catId/663" target="_blank">肉铺</a>
+							<a href="/shop.php/Items/itemList/catId/656" target="_blank">饼干</a>
+							<a href="/shop.php/Items/itemList/catId/659" target="_blank">冲饮</a>							
+						</case>
+						<case value="5">
+							<a href="/shop.php/Items/itemList/catId/1120" target="_blank">拉杆箱</a>
+							<a href="/shop.php/Items/itemList/catId/973" target="_blank">双肩包</a>
+							<a href="/shop.php/Items/itemList/catId/1108" target="_blank">斜挎包</a>
+							<a href="/shop.php/Items/itemList/catId/1123" target="_blank">电脑包</a>
+							<a href="/shop.php/Items/itemList?keyword=%E4%BC%91%E9%97%B2%E5%8C%85" target="_blank">休闲包</a>
+							<a href="/shop.php/Items/itemList/catId/1107" target="_blank">手提包</a>							
+						</case>
+						<case value="6">
+							<a href="/shop.php/Items/itemList/catId/1173" target="_blank">沐浴</a>
+							<a href="/shop.php/Items/itemList/catId/1167" target="_blank">洗发</a>
+							<a href="/shop.php/Items/itemList/catId/1174" target="_blank">润肤</a>
+							<a href="/shop.php/Items/itemList/catId/1180" target="_blank">牙膏</a>
+							<a href="/shop.php/Items/itemList/catId/208" target="_blank">洁面</a>
+							<a href="/shop.php/Items/itemList/catId/1619" target="_blank">面霜</a>							
+						</case>
+					</switch>					
+				</div>
+	           <empty name="menu['category']">
+	                <a href="__APP__/Gd10086/itemList/cfgId/{$menu['cfid']}" target="_blank" class="r_many_btn mauto">
+	            <else />                 
+	                <a href="__APP__/Gd10086/category/cfgId/{$menu['cfid']}" target="_blank" class="r_many_btn mauto">
+	            </empty> 				
+			</div>
+			<div class="product_list_con fl">
+				<ul>
+   					<volist name="list[$menu['cfid']]" id="vo" key="l">
+						<li>
+							<a href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}" target="_blank" class="product_link">
+								<div class="product_img"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" />
+									<switch name="vo.shop_id">
+										<case value="10">
+											<span class="new_pro3 mauto">旗舰</span>
+										</case>
+										<default/>
+											<span class="new_pro2 mauto">自营</span>
+									</switch>
+								</div>
+								<div class="product_name" title="{$vo.title}">{$vo.title}</div>
+								<p class="product_price">¥{:sprintf("%.2f", $vo['price'])}</p>
+							</a>
+						</li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+	</div>
+   </volist> 
+	<div style="height: 80px;"></div>
+	
+	<!--底部-->
+		<include file="Gd10086/V321/foot" />
+	<!--底部-->
+
+	<!--侧边栏1-->
+	<div class="siba_wrap1">
+		<a href="javascript:void(0);" class="dg_floor1"><p>单品</p><p>推荐</p></a>
+		<a href="javascript:void(0);" class="dg_floor1"><p>家居</p><p>家纺</p></a>
+		<a href="javascript:void(0);" class="dg_floor1"><p>日用</p><p>厨具</p></a>
+		<a href="javascript:void(0);" class="dg_floor1"><p>食品</p><p>饮料</p></a>
+		<a href="javascript:void(0);" class="dg_floor1"><p>箱包</p><p>鞋服</p></a>
+		<a href="javascript:void(0);" class="dg_floor1"><p>个护</p><p>清洁</p></a>
+		<a href="javascript:void(0);" class="dg_go_top"><img src="__PUBLIC__/gd10086/images/sb1_top.png" alt=""></a>
+	</div>
+</div>
+	<!--侧边栏2-->
+		<include file="Gd10086/V321/nvaFloat" />
+	<!--侧边栏2-->
+
+	<script type="text/javascript">
+	$(function(){
+		$(".nav_ul>li").eq(6).css('margin-right','0px');
+		/*侧边栏1*/
+		$(document).scroll(function(){
+			if($(document).scrollTop() > 456){
+				$('.siba_wrap1').fadeIn(300);
+			}else{
+				$('.siba_wrap1').fadeOut(300);
+			}
+		});
+	});
+
+
+	</script>
+</body>
+</html>

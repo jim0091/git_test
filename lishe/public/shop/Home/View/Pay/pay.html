@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+<link rel="stylesheet" href="__VIEW__Public/css/address_css.css">
+<link rel="stylesheet" href="__VIEW__Public/css/pay.css">
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript" src="__VIEW__Public/layer/layer.js"></script>
+
+
+<title>支付中心-心意商城</title>
+</head>
+
+<body>
+    <include file="Public/header"/>   
+    <!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+    
+    <div class="platform" style="margin-top:20px;">
+        <div id="blank"></div>
+    <p class="payTit">支付平台</p>
+    <p class="payTit2">选择支付方式</p>
+        <if condition="$paymentInfo['cash_fee'] neq 0">
+            <ul class="payul">
+                <li class="payli"><input type="radio" value=""  checked="checked"/>
+                    <img src="__VIEW__Public/images/alipay_logo.png">
+                </li>
+                <li class="payjf">需支付现金：￥<span>{$paymentInfo['cash_fee']}&nbsp;</span></li>
+            </ul>
+        </if>
+
+        <if condition="$paymentInfo['point_fee'] neq 0">
+            <ul class="payul">
+                <li class="payli"><input type="radio" value=""  checked="checked"/>
+                    <img src="__VIEW__Public/images/logots.png">
+                </li>
+                <li class="payjf">需支付：<span>{$paymentInfo['point_fee']}&nbsp;</span>积分</li>
+            <if condition="($paymentInfo['point_fee'] lt $userDepositInfo['balance']) OR ($paymentInfo['point_fee'] eq $userDepositInfo['balance'])">
+                <input type="hidden" name="paystatus" value="1">
+                <li class="payjf2">，可用积分：{$userDepositInfo['balance']}。</li>
+            <else/>
+                <input type="hidden" name="paystatus" value="0">
+                <li class="payjf2">，可用积分：{$userDepositInfo['balance']}，您的可用积分不足，请充值！</li>
+            </if>
+            </ul>
+        <else/>            
+            <if condition="$paymentInfo['cash_fee'] gt 0 ">
+                <input type="hidden" name="paystatus" value="1">
+            </if>
+        </if>
+       <input type="hidden" name="paymentid" value="{$paymentid}">
+       <input type="hidden" id="paytype" name="paytype" value="online">
+
+       <if condition="($paymentInfo['point_fee'] lt $userDepositInfo['balance']) OR ($paymentInfo['point_fee'] eq $userDepositInfo['balance'])">
+            
+            <empty name="userDepositInfo['md5_password']">
+                <ul class="paypwd">
+                    <li><a href="__APP__/Pay/setPayPwd/paymentid/{$paymentid}">设置支付密码</a></li>
+                </ul>
+            <else/>
+                <ul class="paypwd">
+                    <li>支付密码：</li>
+                    <li><input type="password" name="paypwd" value=""></li>
+                    <li><a href="__APP__/Pay/retrievePwd/paymentid/{$paymentid}">忘记密码？</a></li>
+                </ul>
+            </empty>
+       <else/>
+           <div style="clear:both;"></div>
+           <p class="rechargep">快速充值<span style="padding-left:10px;">&nu;</span></p>
+           <!--充值选择--> 
+            <div class="recharge">
+               <div class="reOne">
+                 <p>请选择充值金额</p>
+                 <ul>
+                  <volist name="rules" id="vo">
+                   <li><input name="jf" type="radio" class="jf" value="{$vo['rechargeAmount']}"  checked="checked"/>充{$vo['rechargeAmount']}送{$vo['presentIntegral']}积分</li>
+                  </volist>
+                   <li style="width:auto"><input style="width:60px;padding:2px;" name="jf" type="text" onkeyup='this.value=this.value.replace(/\D/gi,"")' maxlength="8" class="inputjf" value="" />请输入需要充值的金额</li>
+                 </ul>
+               </div>
+                <div class="reTwo">
+                    <ul>
+                    <li class="paymentType" style="border:red solid 1px">
+                        <input name="jfpt" type="radio" value="alipay"  checked="checked"/>
+                        <img src="__VIEW__Public/images/alipay.png">支付宝付款
+                    </li>
+                    <!-- <li class="paymentType">
+                        <input name="jfpt" type="radio" value="wxpay" />
+                        <img src="__VIEW__Public/images/wxpay.png">微信付款
+                    </li>
+                    <li class="paymentType">
+                        <input name="jfpt" type="radio" value="zepay" />
+                        <img src="__VIEW__Public/images/lspay.png">中E付款
+                    </li> 
+                    <li class="paymentType">
+                        <input name="jfpt" type="radio" value="gepay" />
+                        <img src="__VIEW__Public/images/lspay.png">广E付款
+                    </li> -->
+                    </ul>
+                </div>
+                <div class="reThree">
+                    <ul>
+                    <input type="hidden" name="amount" value="30">
+                    <input type="hidden" name="paymentType" value="alipay">
+                    <li>需支付￥<span class="payMoney">30</span></li>
+                    <li><a href="javascript:void(0)" class="rechargeGo">去充值</a></li>
+                    </ul>
+                </div>
+            </div>
+        </if>
+       <!--end-->
+        <div style="clear:both;"></div>
+        <div style="text-align: left; margin: 18px auto 0px; padding-left: 26px; text-indent: 2em;">
+        现金与积分混合支付的订单，需先支付积分再使用支付宝支付现金部分金额，如果积分支付成功，支付宝支付不成功，则积分将在24小时后返回个人账户，或在【个人中心】查询当前订单，点击【取消订单】，可即时返回支付积分。
+        </div>
+        <p class="paybtn" style="padding-top: 35px;">
+            <a class="conpay">立即支付</a>
+            <a class="payLoading" style="display:none" >支付中...</a>
+        </p>
+    </div>
+
+
+  <!--弹出层-->  
+    <div id="tankCard" style="display:none;">
+        <p class="points" id="congzhires" style="">充值状态</p>
+        <ul class="ctBtnUl">
+            <li class="ctBtnError">
+                支付遇到问题
+            </li>
+            <li class="ctBtnSucc">
+                支付成功
+            </li>
+        </ul>
+    </div>
+
+    <div style="border:0px solid red;">   
+        <include file="Public/footer"/>
+    </div>
+
+<script type="text/javascript">
+    function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+    $(document).ready(function(){
+        var payStatus = $("input[name='paystatus']").val();
+        if (payStatus == 0) {
+            $(".conpay").css('background','#AFAAAA');
+            $(".conpay").removeAttr("href");    
+        };       
+    });
+    //改变积分
+    $("input[name='jf']").click(function(){
+        $(".inputjf").attr("value","");
+        var athis = $(this);
+        var integral = athis.val();
+        $(".payMoney").text(integral);
+        $("input[name='amount']").val(integral);
+    });
+    //积分输入框获取焦点事件
+    $(".inputjf").focus(function(){
+        $("input[name='jf']").removeAttr('checked');
+    });
+    //积分输入框改变事件
+    $(".inputjf").keyup(function(){
+        var athis = $(this);
+        var integral = athis.val();
+        $(".payMoney").text(integral);
+        $("input[name='amount']").val(integral);
+    });
+    //点击支付方式
+    $(".paymentType").bind("click",function(){
+        var athis = $(this);
+        $(".paymentType").css('border','#CCC solid 1px');
+        $(".paymentType").children('input').removeAttr("checked");
+        athis.css('border','red solid 1px');
+        athis.children('input').attr("checked","checked");
+        $("input[name='paymentType']").val(athis.children('input').val());
+    });
+    //去充值
+    $(".rechargeGo").bind('click',function(){
+        var amount = $("input[name='amount']").val();
+        var paymentType = $("input[name='paymentType']").val();
+        if (amount == '') {
+            divPrompt("请填写充值金额！");
+            return;
+        };
+        if (paymentType == '') {
+            divPrompt("请选择充值方式！");
+            return;
+        };
+        layer.open({
+            type: 1,
+            title:false,
+            area: ['auto', 'auto'],
+            closeBtn: 2,
+            shadeClose: false, 
+            skin: 'layui-layer-nobg',
+            content: $("#tankCard")
+        });
+        $.ajax({
+            type:"POST",
+            url:"__APP__/Pay/inteRechDo",
+            data:{money:amount},
+            dataType:'text',
+            success:function(result){
+                var data=eval(result);
+                if (data[0] == 1) {
+                    window.open("__APP__/Recharge/"+paymentType+"/paymentId/"+data[1]);
+                };
+                if (data[0] == 0) {
+                    divPrompt(data[1]);
+                    return; 
+                };
+            }
+        });
+
+
+    });
+    //充值成功，刷新页面
+    $(".ctBtnSucc").click(function(){
+        window.location.reload();
+    });
+
+    //支付
+    $(".conpay").click(function(){
+        var payStatus = $("input[name='paystatus']").val();
+        if (payStatus == 0) { 
+            divPrompt("积分不足，请先充值！");
+            return;
+        };
+        if (payStatus == 1) {                
+            var pwd = $("input[name='paypwd']").val();
+            var paymentid = $("input[name='paymentid']").val();
+            var payType = $("#paytype").val();
+            if (pwd == '') {    
+                divPrompt("请输入支付密码！");          
+                return;   
+            };            
+            $(this).hide();
+            $(".payLoading").show(); 
+            $(".topLoading").show();           
+            $.ajax({
+                type:"POST",
+                url:"__APP__/Pay/operPay",
+                data:{paymentid:paymentid,pwd:pwd,payType:payType},
+                dataType:'text',
+                success:function(result){
+                    var data=eval(result);
+                    var openUrl = "__APP__/Pay/payPrompt/payStatus/"+data[0]+"/paymentId/"+paymentid;
+                    if (data[0] == 1) {                                               
+                        window.location=openUrl;
+                    }
+                    if (data[0] == 2) {
+                        divPrompt(data[1]);
+                        window.location=openUrl;            
+                    }
+                    if (data[0] == 3) {
+                        if (data[1] == '' || data[2] == '')  {
+                            divPrompt("支付跳转失败！");
+                            $(".conpay").show();
+                            $(".payLoading").hide(); 
+                            $(".topLoading").hide();
+                            return;
+                        };
+                        window.location="__APP__/Recharge/"+data[2]+"/paymentId/"+data[1]+"/type/cash";
+                    };
+                    if (data[0] == 0) {
+                        divPrompt(data[1]);
+                        $(".conpay").show();
+                        $(".payLoading").hide(); 
+                        $(".topLoading").hide();                         
+                        return;     
+                    }
+                    
+                }
+            });
+        }; 
+    });
+</script>
+</body>
+
+</html>

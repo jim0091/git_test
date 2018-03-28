@@ -1,0 +1,63 @@
+﻿@charset "utf-8";
+body{background: #daf8f3;padding-bottom: 60px;}
+.header img{width: 100%;}
+.TitText{margin-top: -110px; text-align: center;}
+.TitText img{box-shadow: 5px 0px 30px #c1ece9;}
+.main_con1{width: 1160px;overflow: hidden;}
+.main_list_con>li{float: left;margin-top: 20px;margin-right: 20px; width: 570px;height: 495px;background: #fff;}
+.main_list_con>li>.product1_wrap{position: relative; width: 570px;height: 280px;overflow: hidden;}
+.main_list_con>li>.product1_wrap .market1{position: absolute;top: 0;left: 0;z-index: 9;}
+.main_list_con>li>.product1_wrap>img{width: 570px;height: 280px;}
+.main_list_con>li>.list_name{height: 30px;width: 100%;font-size: 14px;color: #fff;line-height: 30px;background: #7e7e7a;text-align: center;}
+.product_list{padding:10px 5px 0 5px;overflow: hidden;}
+.product_list>ul>li{margin-left: 10px;position: relative; float: left; width: 96px;height: 96px;padding:1px; border:1px solid #dadada;background: #fff;cursor: pointer;}
+.product_list>ul>li .list_product{position: relative;padding:10px;}
+.product_list>ul>li .list_product .lp_img{width: 76px;height: 76px;}
+.product_list>ul>li .list_product .lp_price{position: absolute;z-index: 10;top: 4px;left: 4px;padding:3px 6px;border:1px solid #ee557d;font-size: 12px;text-align: center;line-height: 12px;color: #ee557d;border-radius: 4px;}
+.product_list>ul>li.active{padding:0;border:2px solid #33b3ee;}
+.product_list>ul>li .lp_market{display: none; position: absolute;bottom: 0;right: 0;z-index: 9;}
+.product_list>ul>li.active .lp_market{display: block;}
+.product_text{padding:20px 15px 0 15px;overflow: hidden;}
+.product_text .price{color: #ee557d;font-size: 14px;font-weight: 500;line-height: 33px;}
+.product_text .price .price_em{font-size: 30px;}
+.product_text .pro_name{padding-left: 25px; font-size: 14px;color: #666666;line-height: 33px;}
+.group_btn,.pro_btn{width: 200px;height: 34px;box-sizing: border-box;-ms-box-sizing:border-box;border: 1px solid #ee557d;border-radius: 5px;font-size: 0;}
+.group_btn span,.pro_btn span{display: inline-block;width: 50%;line-height: 32px;height: 32px; font-size: 16px;text-align: center;cursor: pointer;}
+.group_btn .add_cart,.pro_btn .pro_btn1{color: #ee557d;}
+.group_btn .buy_btn,.pro_btn .pro_btn2{color: #fff;background: #ee557d;}
+
+/*满额返现*/
+.main_con2{width: 1162px;overflow: hidden;}
+.mc2_list > li{margin-top: 23px;margin-right: 23px; float: left;width: 214px;height: 286px;background: #fff;}
+.mc2_list > li .mc_pro_img{position: relative; height: 198px;overflow: hidden;}
+.mc2_list > li .mc_pro_img img{width: 100%;height: 198px;}
+.mc2_list > li .mc_pro_img .pro_name2{position: absolute;bottom: 0;width: 100%;height: 30px;text-align: center;color: #fff;font-size: 14px;line-height: 30px;background: #7f7f7f; background: rgba(0,0,0,.5);}
+.pro_text2{padding: 12px 15px 0; height: 24px;overflow: hidden;}
+.pro_text2 .p2_price{ color: #ee557d;font-size: 14px;line-height: 24px;}
+.pro_text2 .p2_price .p2_em{font-size: 30px;}
+.pro_text2 .integer{font-size: 14px;color: #666666;line-height: 33px;}
+.pro_btn{margin-top: 7px;}
+.footer_btn{margin-top: 21px;width: 319px; text-align: center;position: relative;}
+.footer_btn #goTop,.footer_btn .shoping{position: absolute;top: 0;width: 50%;height: 54px;z-index: 999;cursor: pointer;display:block;background-color: #fff;opacity: 0;filter: alpha(opacity=0);}
+.footer_btn #goTop{left: 0;width: 48%;}
+.footer_btn .shoping{right: 0;}
+.floor{position: fixed;right: 40px;top: 150px;width: 120px;height: 240px;border-radius: 10px;overflow: hidden;box-shadow: 5px 0px 30px #c1ece9;}
+.floor a{display: block; width: 100%;height: 50%;box-sizing: border-box;-ms-box-sizing: border-box;}
+.floor .shoping{background: #29b8b0;font-size: 24px;color: #fff;text-align: center;line-height: 36px;padding:25px;}
+.floor .shopCart{position: relative; background: #fff url(../images/icon/Shopping-Cart-icon.png) center center no-repeat;}
+.floor .shopCart .cartNumber{position: absolute;right: 11.66666666666667%;top: 11.66666666666667%;width: 35px;height: 35px;border:1px solid #fff;border-radius: 19px;background: #ee557d;color: #fff;text-align: center;line-height: 38px;}
+.product_text .pro_name { padding-left: 13px;}
+.group_btn.changeColor .add_cart{color:#88887e !important;}
+.group_btn.changeColor .buy_btn{background:#88887e !important;}
+.group_btn.changeColor{border:1px solid #88887e !important;}
+
+
+
+
+
+
+
+
+
+
+

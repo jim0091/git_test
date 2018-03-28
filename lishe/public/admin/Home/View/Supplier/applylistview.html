@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__ADMIN__css/page.css" rel="stylesheet" type="text/css" />
+    <title>管理员列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 供应商管理 <span class="c-gray en">&gt;</span> 供应商入驻申请 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+    <div class="cl pd-5 bg-1 bk-gray mt-20">    	
+    	<span class="r">共有数据：<strong>{$count}</strong> 条</span>
+    </div>
+    <table class="table table-border table-bordered table-bg table-hover" style="margin-top: 25px;">
+        <thead>
+        <tr>
+            <th scope="col" colspan="13">入驻申请列表</th>
+        </tr>
+        <tr class="text-c">
+            <th width="50">ID</th>
+            <th>公司名称</th>
+            <th width="100">联系人</th>
+            <th width="120">联系电话</th>
+            <th width="200">电子邮箱</th>
+            <th width="100">状态</th>
+            <th width="200">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <foreach name="info" item="v">
+        <tr class="text-c">
+            <td>{$v.apply_id}</td>
+            <td style="text-align:left">{$v.company_name}</td>
+            <td>{$v.contact_person}</td>
+            <td>{$v.contact_phone}</td>
+            <td>{$v.contact_email}</td>
+            <td>
+            <?php if($v['type']==0){
+                echo "<span class='label label-warning radius'>未审核</span>";
+                }else if($v['type']==1){
+                    echo "<span class='label label-success radius'>已审核</span>";
+                }else{
+                    echo"<span class='label label-danger radius'>恶意用户</span>";
+                } ?>
+            </td>
+            <td>
+                <?php if($v['type']==0){ ?>
+                <a title="通过审核" href="javascript:;" onclick="tochange({$v.apply_id},1)" class="ml-5" style="text-decoration:none">
+                    <i class="Hui-iconfont">&#xe6e1;</i>
+                </a>
+                <a title="恶意用户" href="javascript:;" onclick="tochange({$v.apply_id},2)" class="ml-5" style="text-decoration:none">
+                    <i class="Hui-iconfont">&#xe6dd;</i>
+                </a>
+                <?php } ?>
+                <a title="查看详情" href="javascript:;" onclick="admin_show('详情','{:U('Supplier/applyShow',array('apply_id'=>$v['apply_id']))}','800','550')" class="ml-5" style="text-decoration:none">
+                    <i class="Hui-iconfont">&#xe695;</i>
+                </a>
+
+            </td>
+        </tr>
+        </foreach>
+         </tbody>
+     </table>
+     {$page}
+ </div>
+ <script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+ <script type="text/javascript" src="__ADMIN__lib/laypage/1.2/laypage.js"></script>
+ <script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script>
+ <script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+ <script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+ <script type="text/javascript">
+     /*
+      参数解释：
+      title	标题
+      url		请求的url
+      id		需要操作的数据id
+      w		弹出层宽度（缺省调默认值）
+      h		弹出层高度（缺省调默认值）
+      */
+     /*管理员-查看*/
+     function admin_show(title, url, id, w, h){
+         layer_show(title,url,w,h);
+     }
+     
+     function tochange(aid,type){
+        layer.confirm('确认要审核吗？',function(index){
+            $.post("{:U('Supplier/Auditing')}",{apply_id:aid,type:type},function(data){
+                if(data.code != 0){
+                    layer.msg("审核成功",{icon:1});
+                    setTimeout(function(){window.location.reload();},800);
+                }else{
+                     layer.msg("审核错误",{icon:2});
+                }
+            });
+        });
+     }
+   
+
+ </script>
+ </body>
+ </html>

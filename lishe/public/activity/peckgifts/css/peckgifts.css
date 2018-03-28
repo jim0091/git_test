@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:url(../images/bg.png) center center; width:100%; height:7400px;}
+
+
+.banner{background:url(../images/banner.png) center center; width:100%; height:872px;}
+
+.Listbg{background:url(../images/Listbg.png) no-repeat center center; width:1200px; height:680px; margin:0 auto; margin-top:30px; padding-top:32px; padding-left:30px;}
+.Listbg img{float:left;}
+
+.floorList{background:url(../images/floorList.png) center center; width:100%; height:856px; margin-top:60px;}
+.floorList2{background:url(../images/floorList2.png) center center; width:100%; height:768px;}
+.floorList3{background:url(../images/floorList3.png) center center; width:100%; height:767px;}
+.floorList4{background:url(../images/floorList4.png) center center; width:100%; height:768px;}
+.floorList5{background:url(../images/floorList5.png) center center; width:100%; height:769px;}
+.floorList6{background:url(../images/floorList6.png) center center; width:100%; height:770px;}
+
+.returnUp{width:1200px; margin:0 auto;text-align:center; margin-top:-15px;}

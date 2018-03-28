@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/login.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>注册-心意商城</title>
+</head>
+
+<body>
+	<div class="Waddress">
+		<span><img></span>
+		<span>注册</span>
+	</div>
+	<!--tab切换-->
+	<div id="outer">   
+		<div id="content">
+			<!--tab1-->
+			<div class="WtabListOne" style="display:block;">
+				<input type="hidden" id="refer" name="refer" value="{$refer}">
+				<p>
+					<span>手机号码：</span>
+					<span><input type="text" id="mobile" name="userName" ></span>
+				</p>
+				<p>
+					<span>登录密码：</span>
+					<span><input type="password" id="password" name='password'></span>
+				</p>
+				<p>
+					<span>确认密码：</span>
+					<span><input type="password" id="rePassword" name='rePassword'></span>
+				</p>
+				<div class="WOnebtn"><a href="javascript:void(0);" id="regSubmit">注册</a></div>
+			</div> 
+			<div class="" style="display:block;">
+				<a style="color:#cc0000;" class="loginGo" href="" >已有账号？去登录 »</a>
+			</div> 
+		</div>
+	</div>  
+
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>   
+	<!--END--> 
+<script type="text/javascript">
+	$(function(){ 
+		var refer = encodeURIComponent("-wshop.php-User-userCenter");
+		var link = "__APP__/Login/login/refer/"+refer;
+		$(".loginGo").attr("href",link);
+	});
+	$('#regSubmit').click(function(){
+		$(".topLoading").show();
+		var mobile=$("#mobile").val();
+		var password=$("#password").val();
+		var rePassword=$("#rePassword").val();
+		var reg=/^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		if (!reg.test(mobile)) {			
+			$(".topLoading").hide();
+			opLayer('open',"手机号码格式不正确！");
+			$("#mobile").focus();
+			return false;
+		}
+		if(password.length<6){
+			$(".topLoading").hide();
+			opLayer('open',"登录密码不能少于6个字符！");
+			$("#password").focus();
+			return false;
+		}
+		if(password!=rePassword){
+			$(".topLoading").hide();
+			opLayer('open',"登录密码和确认密码不相符！");
+			$("#rePassword").focus();
+			return false;
+		}
+		$.ajax({
+			type: "POST",
+			url:"__APP__/Login/signupMember",
+			data: {mobile:mobile,password:password},
+			dataType:"text",
+			success : function (result){
+				var data=eval(result);
+				if(data[0]==100){
+					$(".topLoading").hide();
+					opLayer('open',data[1],"__APP__/User/userCenter");	
+					return;										
+				}else{
+					$(".topLoading").hide();
+					opLayer('open',data[1],data[2]);	
+					return;	
+				}
+			},
+			error: function () {
+				$(".topLoading").hide();
+				opLayer('open',"系统繁忙，请重试！");	
+				return;	
+			}
+		});
+	});	
+</script>
+</body>
+</html>

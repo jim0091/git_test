@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改基本资料</title>
+<meta name="keywords" content="{$webSite['keywords']}" />
+<meta name="description" content="{$webSite['description']}" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__PUBLIC__/wshop/css/base.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/wshop/css/editInfo.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js" type="text/javascript"></script>
+</head>
+<body>
+
+
+
+<div class="content c">
+  <div class="userName"><span>帐户名：</span>{$account}</div>
+  <div class="editInfoBox">
+    <ul class="borderRadius">
+      <li><label>我的昵称：</label><input type="text" value="{$Name}" placeholder="我的昵称" id="nickName"/><div class="c"></div></li>
+      <li><label>电子邮箱：</label><input type="email" value="{$Email}" placeholder="电子邮箱" id="wxEmail"><div class="c"></div></li>
+    </ul>
+    <a href="#" class="button borderRadius" onclick="upProfile();">提　交</a>
+  </div>
+  <div class="c"></div>
+</div>
+<include file="Public/bottom"/>
+<script type="text/javascript">
+$(".borderRadius li:first").css({"border-bottom":"1px #CCC solid"});
+	function upProfile(){
+		var name = $('#nickName').val();
+		var wxEmail=$('#wxEmail').val();
+		if(name == null || name == ''){
+			alert('昵称不能为空');
+			$('#nickName').focus();
+			return false;
+		}
+		if(wxEmail.length > 0){
+			var preg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+			if(!preg.test(wxEmail)){
+				alert('邮箱格式不正确！');
+				$('#wxEmail').focus();
+				return false;
+			}
+		}
+		$.get("{:U('User/userModProfile')}", {name:name,wxEmail:wxEmail},function(data){
+			if(data=='1'){
+                 alert('昵称不能为空');
+			     $('#nickName').focus();
+			}else if(data=='2'){
+				alert("修改信息成功");
+				window.location.reload();
+			}else{
+				alert("暂无修改任何信息");
+			}
+		});
+	}
+
+</script> 
+</body>
+</html>

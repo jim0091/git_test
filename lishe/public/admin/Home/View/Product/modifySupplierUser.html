@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+</head>
+<body>
+<div class="pd-20" style="padding-left: 10%;">
+<nav class="breadcrumb">提示：选择该商品所属的供应商/发货类型  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+	<form action="__URL__/modifySupplierUserDeal" method="get" style="margin-top: 10px;">
+		<input type="hidden" value="{$itemId}" name="itemId" />
+		<div class="col-12">
+			<div class="row cl">
+				<label class="form-label col-1">关键字：</label>
+				<div class="formControls col-2">
+					<input type="text" class="input-text"  placeholder="供应商关键字"  id="keyword">
+				</div>
+				<div class="formControls col-5">
+					<label>选择供应商：</label>
+					<label>
+					<select id="supplier" name="supplierId" class="select-box" style="width:180px;">
+						<present name="info.supplier_id">
+							<option value="{$info.supplier_id}">{$info.company_name}</option>
+						</present>
+					</select>					
+				</div>	
+				<div class="formControls col-12" style="padding-top: 20px;">
+				<div class="formControls col-6">
+					<label>发货类型：</label>
+					<label class="">
+						<input value="1" name="sendType" id="user-Character-0-0-0"  type="radio" 
+							<if condition="$info.send_type eq 1">
+								checked="checked"
+							</if>
+							>自发
+					</label> 
+					&nbsp;&nbsp;
+					<label class="">
+						<input value="2" name="sendType" id="user-Character-0-0-0"  type="radio"
+							<if condition="$info.send_type eq 2">
+								checked="checked"
+							</if>							
+							>代发
+					</label>
+					&nbsp;&nbsp;
+					<label class="">
+						<input value="3" name="sendType" id="user-Character-0-0-0"  type="radio"
+							<if condition="$info.send_type eq 3">
+								checked="checked"
+							</if>							
+							>顺丰发货
+					</label>					
+				</div>					
+				</div>
+			</div>			
+		</div>
+		<div class="col-12" style="text-align: center;padding: 50px 10px;">
+			<button type="submit" class="btn btn-success radius">保存</button>						
+		</div>
+		
+	</form>	
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script>
+window.a=0;
+	$(function(){
+		showSuppliers();
+		$("#keyword").blur(
+			function(){
+				var keywords=$("#keyword").val().trim();
+				if(keywords){
+					showSuppliers('keyword='+keywords);
+					a=1;
+				}else{
+					showSuppliers();
+				}
+			}
+		);
+	});
+	function showSuppliers(data){
+	    var urls = "{:U('Home/Product/allSupplierUser')}" ;
+	    if(a==1){
+		    $( '#supplier' ).empty();
+	    }
+		$.ajax({
+			type:"get",
+			url:urls,
+			data:data,
+			dataType:'json',
+			success:function(data){
+				$.each(data, function(k,v) {
+	          	  	var options = '<option value="' +v.supplier_id+ '">' +v.company_name+ '</option>' ;
+	           	 	$( '#supplier' ).append(options);
+				});
+			},
+			error:function(data){
+				
+			}
+		});	
+	}
+	
+</script>
+</body>
+</html>

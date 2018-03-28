@@ -1,0 +1,103 @@
+	<div class="dg_header1">
+		<div class="dg_header1_con mauto">
+			<div class="dg_left_link fl">
+				<a href="__APP__/Gd10086" class="h_pl0" target="_blank">商城首页</a>
+				<a href="{:C('LISHE_URL')}/shop.php"  target="_blank">心意商城</a>
+				<a href="{:C('LISHE_URL')}/site/help.html"  target="_blank">礼舍帮帮</a>
+			</div>
+			<div class="dg_right_link fr">
+				<notempty name="userName">
+					<a href="{:C('LISHE_URL')}/user.php/Info/index" target="_blank" class="user_telephone">
+						{$userName}
+			        	<notempty name="balance">
+					        (E卡余额:{$balance}元)
+				        </notempty>						
+					</a>
+					<a href="__APP__/Gd10086/logout" class="h_pl0">退出</a>
+					<a href="__ITEM_URL____USER__/Order/orderList"  target="_blank" >我的订单</a>
+					<a href="/shop.php/Order/Cart" target="_blank">购物车</a>
+				</notempty>
+					<a target="_blank" href="http://v.lishe.cn/company/login.html" class="h_pr0">企业登录</a>
+			</div>
+		</div>
+	</div>
+	<div class="dg_header2_wrap">
+		<div class="dg_header2 mauto">
+			<div class="dg_logo_wrap fl"><img src="__PUBLIC__/gd10086/images/mobilelogo.png" alt="中国移动"></div>
+		   	<form action="{:U('Home/Gd10086/itemList')}" id="searchItem">
+				<div class="dg_search_wrap fl">
+					<div class="search_op fl">
+						<select id="cfgId" name="cfgId"  onchange="javascript:getCategory(this.options[this.selectedIndex].value);">
+				      	  <volist name="menus" id="vo">
+								<option value="{$vo.cfid}">{$vo.name}</option>
+						  </volist>
+						</select>					
+						<select id="catId" name="catId"  style="display: none;">
+						</select>
+					</div>
+					<input type="text"  name="itemName" placeholder="输入搜索关键字" class="search_inp fl">
+					<div class="search_btn fr" onclick="search()">搜索</div>
+				</div>
+	 		</form>	
+			<div class="header_buy_cart fr">
+				<a href="/shop.php/Order/Cart" target="_blank" class="hb_cart_a">
+					我的购物车<img src="__PUBLIC__/gd10086/images/right_arrow.png" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<!--导航条-->
+	<div class="dg_nav_wrap">
+		<div class="dg_nav_content mauto">
+			<ul class="nav_ul">
+				<li><a href="__APP__/Gd10086" class="current_a1">商城首页</a></li>
+        		<volist name="menus" id="vo" key="key">
+					<li 
+						class='<notempty name="vo.category">
+							current
+						</notempty>'
+						>
+				        <notempty name="vo.category">
+							<a href="__APP__/Gd10086/category/cfgId/{$vo.cfid}" class="current_a1">{$vo.name}<img src="__PUBLIC__/gd10086/images/three2.png" class="three2" /></a>
+							<ul class="current_con">
+             					<volist name="vo.category" id="cat">
+									<li><a href="__APP__/Gd10086/itemList/cfgId/{$cat.item_config_id}/catId/{$cat.cat_config_id}" target="_blank">{$cat.cat_name}</a></li>
+             					</volist>             	
+							</ul>
+			        	<else/>
+							<a href="__APP__/Gd10086/itemList/cfgId/{$vo.cfid}" class="current_a1">{$vo.name}</a>
+				        </notempty>							
+					</li>        			
+				</volist>
+			</ul>
+		</div>
+	</div>
+	
+  <script>
+  	function getCategory(cfgId){
+			$("#catId").hide();
+            $( '#catId' ).empty() ;
+            var urls = "{:U('Home/Gd10086/nextCategory')}" ;
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'cfgId='+cfgId,
+				dataType:'json',
+				success:function(data){
+					if(data){
+  						$("#catId").show();
+						$.each(data, function(k,v) {
+	                  	  	var options = '<option value="' +v.cat_config_id+ '">' +v.cat_name+ '</option>' ;
+	                   	 	$( '#catId' ).append(options);
+						});
+					}
+				},
+				error:function(data){
+					
+				}
+			});	
+  	}
+  	function search(){
+  		$("#searchItem").submit();
+  	}
+  </script>

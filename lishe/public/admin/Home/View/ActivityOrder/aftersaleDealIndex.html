@@ -1,0 +1,430 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+	.overbtn:hover{
+		background-color: #5a98de;
+	}
+	.sigleOrder{
+		background-color: white;
+		position: relative;
+		left: 135px;
+		top: -40px;
+	}
+	.borderline{
+		border: 1px white solid;
+		border-radius: 5px;
+		padding: 0px 5px;
+	}
+	.nowLocal{
+		background-color: white;
+		color: #5a98de;
+		font-weight: bold;
+	}
+	.right{
+		float: right;
+	}
+	.colorhui{
+		color: #666;
+	}	
+</style>
+<title>图片列表</title>
+</head>
+<body>
+<nav class="breadcrumb" style="position :fixed; width: 100%;">
+	<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>售后待处理
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;刷新本页</i></a>
+	<?php 	
+		 	$applFundId=array_search('exportexcel', $nodeAction);
+			 if($applFundId){
+			 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+		 ?>		
+	<!--<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" onclick="exportExcel()" class="Hui-iconfont">订单导出到Excel</a>-->
+	
+	<?php }
+			  } ?>	
+	
+</nav>
+<div style="padding-top: 35px;">
+	<div class="cl pd-5 bg-1 bk-gray"> 
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<if condition="$roleId eq 0">
+			<a href="{:U('Home/ActivityOrder/aftersaleDealIndex')}">
+				<span class="btn btn-primary radius" id="all"> 
+					全部
+					<span class="borderline">{$number.all}</span>
+				</span> 
+			</a>
+		</if>
+	 	<?php	
+		 	$applFundId=array_search('refundearlyprocess', $nodeAction);
+			 if($applFundId){
+			 	if($nodeController[$applFundId]=="order"  || $roleId==0){		
+
+			 				?>
+			<a href="{:U('Home/ActivityOrder/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_EARLY_PROCESS'))}">
+				<span class="btn btn-primary radius" id="WAIT_EARLY_PROCESS"> 待初审
+					<span class="borderline">{$number.earlyProcess}</span>
+				</span> 
+			</a>
+			<?php								
+			 }
+			  } ?>			
+		
+	 	<?php	
+		 	$applFundId=array_search('refundprocess', $nodeAction);
+		 	$applId=array_search('returnprocess', $nodeAction);
+			 if(!empty($applFundId) || !empty($applId)){
+			 				?>	
+			<a href="{:U('Home/ActivityOrder/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_PROCESS'))}">
+				<span class="btn btn-primary radius" id="WAIT_PROCESS"> 待审核
+					<span class="borderline">{$number.process}</span>
+				</span> 
+			</a>
+			<?php								
+			  } ?>	
+			  
+		<?php 	
+			 	$applFundId=array_search('returnsendfororder', $nodeAction);
+		 		$applsend=array_search('waitreturnfororder', $nodeAction);
+				if(!empty($applFundId) || !empty($applsend)){
+ 				?>		
+			<a href="{:U('Home/ActivityOrder/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_SELLER_CONFIRM_GOODS'))}">
+				<span class="btn btn-primary radius" id="WAIT_SELLER_CONFIRM_GOODS"> 待确认收货
+					<span class="borderline">{$number.getGoods}</span>
+				</span> 
+			</a>		
+			<?php								
+			  } ?>			
+		
+		<!--<a href="{:U('Home/Order/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_PROCESS','onlyType'=>'REFUND'))}">
+			<span class="btn btn-primary radius" id="WAIT_PROCESS"> 待审核(退款)
+				<span class="borderline">{$number.process}</span>
+			</span> 
+		</a>
+		<a href="{:U('Home/Order/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_PROCESS','onlyType'=>'RETURN'))}">
+			<span class="btn btn-primary radius" id="WAIT_PROCESS"> 待审核(退货)
+				<span class="borderline">{$number.process}</span>
+			</span> 
+		</a>
+		<a href="{:U('Home/Order/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_PROCESS','onlyType'=>'EXCHANGE,REPAIR'))}">
+			<span class="btn btn-primary radius" id="WAIT_PROCESS"> 待审核(换货/维修)
+				<span class="borderline">{$number.process}</span>
+			</span> 
+		</a>
+		<a href="{:U('Home/Order/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_SELLER_CONFIRM_GOODS','onlyType'=>'RETURN'))}">
+			<span class="btn btn-primary radius" id="WAIT_SELLER_CONFIRM_GOODS"> 待确认收货(换货)
+				<span class="borderline">{$number.getGoods}</span>
+			</span> 
+		</a>
+		<a href="{:U('Home/Order/aftersaleDealIndex',array('aftersalesStatus'=>'WAIT_SELLER_CONFIRM_GOODS','onlyType'=>'EXCHANGE,REPAIR'))}">
+			<span class="btn btn-primary radius" id="WAIT_SELLER_CONFIRM_GOODS"> 待确认收货(退货/维修)
+				<span class="borderline">{$number.getGoods}</span>
+			</span> 
+		</a>		-->
+		<a href="javascript:void(0)" onClick="searchMoreShow()" style="margin-left: 50px;">
+			<img src="__ADMIN__images/img/searchMore.png" width="25px" title="高级搜索"/>
+		</a>		
+	</div>		
+	<div class="pd-20 searchMore"  style="display: none;">
+		<form action="__APP__/ActivityOrder/aftersaleDealIndex" method="get" id="serach">
+			<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+			<div class="product-tools">
+				<div class="search">
+					<label>售后申请时间：</label>
+					<label>
+				<input type="text" onFocus="WdatePicker()" value="{$searchData.startTime}" name="startTime" id="datemin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onFocus="WdatePicker()" value="{$searchData.endTime}" name="endTime" id="datemax" class="input-text Wdate" style="width:120px;">
+					<label>最后处理时间：</label>
+					<label>
+				<input type="text" onFocus="WdatePicker()" value="{$searchData.dealStartTime}" name="dealStartTime" id="datemin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onFocus="WdatePicker()" value="{$searchData.dealEndTime}" name="dealEndTime" id="datemax" class="input-text Wdate" style="width:120px;">
+					<label>退换货类型：</label>
+					<label>
+					<select id="aftersaleType" name="aftersaleType" class="select-box" style="width:180px;">
+					<notempty name="searchData.thisAfterType">
+						<option value="{$searchData['thisAfterType']['type']}">{$searchData['thisAfterType']['name']}</option>
+					</notempty>
+						<option value="0">全部</option>
+						<option value="ONLY_REFUND">仅退款</option>
+						<option value="REFUND_GOODS">退货退款</option>
+						<option value="EXCHANGING_GOODS">换货</option>
+						<option value="REPAIRING_GOODS">维修</option>
+					</select>
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<label>申请处理进度：</label>
+					<label>
+					<select id="aftersaleProcess" name="aftersaleProcess" class="select-box" style="width:180px;">
+					<notempty name="searchData.thisProcess">
+						<option value="{$searchData['thisProcess']['type']}">{$searchData['thisProcess']['name']}</option>
+					</notempty>
+						<option value="0">全部</option>
+						<option value="WAIT_EARLY_PROCESS">待初审</option>
+						<option value="WAIT_PROCESS">待审核</option>
+						<option value="WAIT_BUYER_SEND_GOODS">待买家回寄</option>
+						<option value="WAIT_SELLER_CONFIRM_GOODS">待确认收货</option>
+						<option value="SELLER_SEND_GOODS">商家已回寄</option>
+						<option value="SELLER_REFUSE">审核不通过</option>
+						<option value="SUCCESS">已完成</option>
+					</select>					
+					<label>订单号：</label>
+					<label>
+					<input type="text" name="tid"  placeholder="订单号" style="width:150px" class="input-text" value="{$searchData.tid}" >
+					</label>							
+					<label>售后单号：</label>
+					<label>
+					<input type="text" name="aftersalesBn"  placeholder="售后单号" style="width:150px" class="input-text" value="{$searchData.aftersalesBn}" >
+					</label>
+					<label>商品：</label>
+					<label>
+					<input type="text" name="goods"  placeholder="商品名称" style="width:150px" class="input-text" value="{$searchData.goods}" >
+					&nbsp;&nbsp;
+					<input type="hidden" name="serachIdentity"   class="input-text" value="1" >
+					<button onClick="serach()" class="btn btn-success radius" ><i  class="Hui-iconfont">&#xe665;</i> 搜索</button>						
+					</label>
+				</div>
+			</div>
+			</form>	
+	</div>
+	<div class="cl pd-5 bg-1 bk-gray"> 
+		&nbsp;&nbsp;<span class="colorhui">售后类型标识:</span><br />&nbsp;&nbsp;
+			<small class="colorhui">退款申请:</small><img src="__ADMIN__images/img/tuikuan.png" width="25px"/>&nbsp;&nbsp;
+			<small class="colorhui">退货申请:</small><img src="__ADMIN__images/img/tuihuo.png" width="25px"/>&nbsp;&nbsp;
+			<small class="colorhui">换货申请:</small><img src="__ADMIN__images/img/huanhuo.png" width="25px"/>&nbsp;&nbsp;
+			<small class="colorhui">维修申请:</small><img src="__ADMIN__images/img/xiuhuo.png" width="25px"/>			
+			<span class="r">共有数据：<strong class="label label-success radius">{$count}</strong> 条</span> 
+	</div>
+	<div class="mt-10">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+					<td align="center" width="10%">售后单号</td>
+					<td align="center" width="10%">订单号</td>
+					<td align="center">商品信息、进度</td>
+					<td align="center" width="5%">订单状态</td>
+					<td align="center" width="5%">售后类型</td>
+					<td align="center" width="10%">申请/最近处理时间</td>
+					<td align="center" width="4%">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-c">
+					<volist name="list" id="order">
+					<tr>
+						<td>
+							<div style="background:url(
+							<if condition="$order.order_status eq 'REFUND'">
+								__ADMIN__images/img/tuikuan.png
+							<elseif condition="$order.order_status eq 'RETURN'"/>	
+								__ADMIN__images/img/tuihuo.png
+							<elseif condition="$order.order_status eq 'EXCHANGE'"/>	
+								__ADMIN__images/img/huanhuo.png
+							<elseif condition="$order.order_status eq 'REPAIR'"/>	
+								__ADMIN__images/img/xiuhuo.png							
+							</if>								
+								) no-repeat right; padding-top: 20px;">
+								{$order.afterInfo.aftersales_bn}
+							</div>						
+						</td>
+						<td class="checkboxs">
+							<span style="cursor:pointer;">{$order.atid}</span>	
+						</td>
+						<td align="left">
+							<notempty name="order.refundFeed">
+								<strong class="c-red">已退款金额：￥{$order.refundFeed}</strong>
+							</notempty>	
+							<volist name="order.items" id="item">
+								<if condition="$item.aftersales_status neq 'NO_APPLY'">
+									<div class="col-12">
+										<div class="col-2">
+											<if condition="$item.item_id gt 0">
+												<a href="__LISHE__/shop.php/Info/index/itemId/{$item.item_id}" target="_blank" title="{$item.item_name}">
+											<else/>
+												<a href="javascript:void(0)"  title="{$item.item_name}">
+											</if>
+												<img src="{$item.item_img}" width="60px" style="max-height: 60px;overflow: hidden;"  />
+											</a>
+										</div>	
+										<div class="col-10">
+											<if condition="$item.disabled eq 1">
+												<img src="__ADMIN__images/img/quxiao.png"  title="通过取消商品的方式使其退款，无需发货！"/>
+											</if>
+											<if condition="$item.aftersales_status neq 'NO_APPLY'">
+													<img src="__ADMIN__images/img/shouhou.png"  width="20px" title="{$order.serviceStatus}"/>
+											</if>
+											<span style="font-size: larger;color: #eb4f38;">{$item.aftersales_num}x</span>
+											<a href="__LISHE__/shop.php/Info/index/itemId/{$item.item_id}" target="_blank" title="{$item.item_name}">
+												{$item.item_name}
+											</a>
+											<br />
+											<strong style="color: #5a98de;">{$item.spec_nature_info}</strong>
+											<span class="label label-success radius">￥{$item.price}</span>
+											<span class="label radius">总{$item.num}件</span>											
+										</div>	
+										<div class="col-2">
+											<img src="__ADMIN__images/img/jindu.png" width="18px"  title="售后状态点"/>
+											<span style="color: #eb4f38;">{$item.aftersalesStatus}</span>
+										</div>
+									</div>
+								</if>
+							</volist>
+						</td>	
+						<td align="center">
+							{$order.orderStatus}
+						</td>
+						<td>
+							{$order.serviceStatus}
+						</td>	
+						<td>
+							<notempty name="order['afterInfo']['created_time']">
+								<span class="colorhui" title="订单申请时间">申</small>:{$order['afterInfo']['created_time']|date="Y-m-d H:i:s",###}<br/>
+							</notempty>
+							<notempty name="order['afterInfo']['modified_time']">
+								<span class="colorhui" title="订单最后处理的时间">处</small>:{$order['afterInfo']['modified_time']|date="Y-m-d H:i:s",###}
+							</notempty>
+						</td>	
+							<td align="center">
+							<a onClick="member_edit('订单详情','{:U('Home/Order/activityDetail',array('tid'=>$order['atid']))}','4','','510')">
+								<span class="label label-success radius overbtn">详情</span>
+							</a>
+					        	
+							<!--退款审核-->
+							 	<?php	
+								 	$applFundId=array_search('refundprocess', $nodeAction);
+									 if($applFundId){
+								 		foreach($order['items'] as $key=>$value){
+								 			if($value['aftersales_status'] == 'WAIT_PROCESS' && $value['aftersales_num']>0){
+								 				?>
+												<in name="order.order_status" value="REFUND">
+													<a onClick="member_edit('订单:{$order.atid}退款审核','{:U('Home/ActivityOrder/refundProcess',array('tid'=>$order['atid']))}','4','','510')">
+														<span class="label label-success radius overbtn" style="margin-top: 10px;">退款审核</span>
+													</a>
+												</in>									 				
+							 				<?php
+								 				break;
+								 			}
+								 		}									
+									  } ?>								
+							<!--退款审核-->	
+					
+
+							<!--退货回寄审核-->
+							<?php 	
+								 	$applFundId=array_search('returnsendfororder', $nodeAction);
+									 if($applFundId){
+									 		foreach($order['items'] as $key=>$value){
+									 			if(($value['aftersales_status'] === 'WAIT_SELLER_CONFIRM_GOODS') && $value['aftersales_num']>0){
+									 				?>
+													<in name="order.order_status" value="RETURN">
+														<a onClick="member_edit('订单:{$order.atid}退货商品回寄确认','{:U('Home/ActivityOrder/returnSendProcess',array('tid'=>$order['atid']))}','4','','510')">
+															<span class="label label-success radius overbtn" style="margin-top: 10px;">回寄确认</span>
+														</a>
+													</in>	
+					 							<?php
+									 				break;
+									 			}
+									 		}
+									  } ?>					
+							<!--退货回寄审核-->	
+							
+							
+						</td>
+					</tr>
+					</volist>					
+				</tr>
+			</tbody>
+		</table>
+		<div class="page" style="text-align: center; padding: 20px 0px 50px 0px;">{$pagestr}</div>
+		
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$( function (){
+		var Id="{$nowLocal}";
+		if(!Id){
+			Id="all";
+		}
+		$("#"+Id).addClass("nowLocal");
+    }) ;	
+	//搜索
+	function serach(){
+		$("#execlType").val("");
+		$("#serach").submit();
+		
+	}	
+	//导出execl
+	function exportExcel(){
+		$("#execlType").val("exportExcel");
+		$("#serach").submit();
+		
+	}
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}	
+	//高级查询
+	window.a=1;
+	function searchMoreShow(){
+		if(a==1){
+			a=0;
+			$(".searchMore").show();
+		}else if(a==0){
+			a=1;
+			$(".searchMore").hide();
+		}
+	}
+</script>
+</body>
+</html>

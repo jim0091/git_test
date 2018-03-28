@@ -1,0 +1,38 @@
+    <div>
+      <ul class="js-goods-list sc-goods-list clearfix list size-3" data-size="3" style="min-height: 580px;"> 
+        		<volist name="list" id="vo">
+    		      <li class="js-goods-card goods-card card"> 
+    		      	<a href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}" class="js-goods link clearfix" data-goods-id="{$vo.item_id}" title="{$vo.title}"> 
+    		        <div class="photo-block"> 
+    		         <img class="goods-photo js-goods-lazy" src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" /> 
+    		        </div> 
+    		        <div class="info"> 
+    		         <p class="goods-title">{$vo.title}</p> 
+    		         <p class="goods-price"><em>￥<?php echo round($vo['price'],1); ?></em></p> 
+    		         <div class="goods-buy btn1"></div> 
+    		        </div>
+    		        </a>
+    		         <div class="js-goods-buy buy-response" data-alias="2x5akazygct0q" data-postage="0" data-buyway="1" data-id="{$vo.item_id}" data-title="{$vo.title}" data-price="{$vo.price}" data-isvirtual="0"></div> 
+    		      </li> 
+        		</volist> 
+            </ul> 
+ <style>
+  .custom-paginations-prev{
+    padding: 60px;
+    color: #09F;
+  }
+  .wborder{
+    border:1px solid #DDD;
+    padding: 5px;
+  }
+ </style> 
+  <div class="custom-paginations-container" style="margin-top: 10px;">  
+   <div  style="text-align: center;">
+    {$pagestr}
+   </div> 
+  </div> 
+</div>
+
+
+
+

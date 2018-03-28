@@ -1,0 +1,33 @@
+.content_wrap{width: 1200px;overflow: hidden;}
+.content{padding-left: 20px;}
+.banner{background:url(../images/banner.png)no-repeat;height: 300px;width: 1200px;overflow: hidden;}
+.banner_main{width:370px;height: 200px;background: #fff;margin-left: 130px;margin-top: 50px;overflow: hidden; }
+.banner_cont{width: 348px;height: 178px;border: 1px solid #cccccc;margin-top: 10px;}
+.banner_cont_text{height: 66px;margin: auto;margin-top: 44px;font-size: 60px;line-height: 60px;text-align: center;}
+.banner_cont_text em{font-size: 30px;  position: relative;top: -25px;}
+.banner_cont_info{width: 130px;font-size: 16px;height: 25px;line-height: 25px;color: #666666;border-top: 1px solid #ccc;}
+
+.content .packs{width: 570px;margin-right: 20px;margin-top: 20px;background: #fff;}
+.content .packs_tit{width: 100%;height: 80px;background: #ffe7d4;margin-bottom: 10px;}
+.packs .tit_cont{height: 55px;position: absolute;  margin-top:25px; margin-left: 236px;font-size: 20px;color: #666666;font-weight:bold;}
+.packs .tit_cont img{vertical-align: middle;display:inline-block;margin-right: 10px;}
+.content .packs_list{width: 570px;margin-left:15px;}
+.content .packs_list .img_list img{width:98px;height:98px;margin-right: 10px;margin-top: 10px;border:1px solid #dadada;}
+.content .buy_info{width: 570px;height: 74px;line-height: 74px;}
+.buy_info .price{color:red;margin-left:15px;}
+.buy_info .price em{display:block;float:left;margin-top:-8px;}
+.buy_info .price .price_big{font-size: 30px;}
+.buy_info .price .price_sma{font-size: 20px;display: block;margin-top: 5px;margin-right: 10px;}
+.buy_info .price .price_mon{font-size: 14px;color: #666666;text-decoration:line-through;display: block;margin-right: 10px;}
+.buy_info .price .price_goods{font-size: 14px;color: #666666;display:block;}
+.buy_info .price .price_com{margin-top: -5px;}
+.buy_car{ width: 200px;height: 32px;line-height: 32px;font-size: 16px;text-align:center; border: 1px solid #ff6363;border-radius:5px;background-color:#fff;margin: 20px 15px 0 0; }
+.buy_car .add_car{width:50%;color:#ff6363;display: block;}
+.buy_car .at_car{width:50%;color:#ff6363;display: block;}
+.buy_car .active{width:50%;color:#fff;background-color: #ff6363;}
+.pendant{height: 122px;width: 110px;position:fixed;margin-left: 1185px;margin-top: 20px;}
+.pendant .pen-list{height: 40px;width: 100%;background: #fff;text-align: center;line-height: 40px;margin-top: 1px;font-size: 14px;}
+.pendant .pen-active{background: #ff6363;color: #fff;}
+.pendant .pen-first{margin-top: 0px;}
+.pendant .num_icon{width:16px;height:16px;background:#ff4138;border-radius:50%;display:block;position:absolute;margin-left:78px;margin-top:-38px;font-size:12px;text-align:center;line-height:16px;border:2px solid #fff;box-shadow:0 0 30px #ccc;color:#fff}
+

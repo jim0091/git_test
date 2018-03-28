@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#FFF; font-family:"微软雅黑"; font-size:12px;}
+
+/*主内容*/
+.main-ct{width:1000px; margin:0 auto;}
+.manva-left{width:190px; float:left;}
+.mact-right{width:810px; float:right;padding-bottom:100px;}
+/*左侧导航*//
+.subNavBox{width:200px;border:solid 1px #ccc;}
+.subNav{border-bottom:solid 1px #ccc;cursor:pointer;font-size:14px;color:#666666;line-height:50px;padding-left:10px;background:url(../images/showjt.png) no-repeat;background-position:90% 50%;
+width:190px;}
+.navContent{border-bottom:solid 1px #ccc;}
+.navContent li a{display:block;width:200px;heighr:45px;font-size:14px;line-height:45px; color:#666666; padding-left:10px; margin:5px 0;}
+.navContent li a img{vertical-align:middle; padding-right:15px;}
+.navContent .active a{color:#FFF;}
+.currentDt{color:#c7241d;}
+.active{color:#FFF; background:#c7241d;}
+.img-hove{display:none;}
+/*活动回顾管理*/
+.stretchRE{width:800px; border:#CCC solid 1px;  margin:0 auto;padding-bottom:30px; margin-left:30px;}
+.sr-ul{border-bottom:#CCC solid 1px; padding-bottom:488px; margin-top:30px;padding-left: 10%;}
+.sr-ul ul{float:left; width:300px; border:#CCC solid 1px; height:450px; margin:0 10px; border-radius:5px;}
+.sr-ul ul img{width:300px;}
+.sr-li{font-size:14px; color:#333333; padding-left:10px; padding-top:10px;}
+.sr-li2{font-size:12px; color:#666666;padding-left:10px; height:65px; padding-top:5px;}
+.sr{font-size:14px; color:#FFF; padding-left:15px; height:40px; line-height:40px; background:#c7241d;}
+.sr-li3 a{font-size:13px; color:#333333; border:#a0a0a0 solid 1px; border-radius:5px; padding:5px 10px; margin:0px 8px;}
+.hed-ul{width:800px; margin:0 auto;margin-top:10px; margin-left:300px; clear:both;} 
+.cs-des{font-size:14px; color:#333333;text-align:left;}
+.text{width:350px;margin-top:30px;border:solid 1px #CCC;height:28px;}
+.text2{width:350px;margin-top:30px;border:solid 1px #CCC;height:70px;}
+.hedl-btn{background:#f2f2f2;width:375px; padding:25px 0; margin-top:30px; margin-left:45px; text-align:center;}
+.hedl-btn a{color:#333232; font-size:20px; background:#FFF;display:block; width:160px; height:50px; line-height:50px; margin:0 auto; border:#CCC solid 1px;}
+.hedl-btn a img{vertical-align:middle; padding-right:10px;}
+/*图片轮播*/
+.sliderbox{width:950px;height:200px;}
+.arrow-btn{margin:35px 0 0 0;display:inline;background:url(../images/arrowLeft-btn.png) no-repeat;width:35px;height:130px;overflow:hidden;cursor:pointer;}
+#btn-left{float:left;margin-left:12px;}
+.arrow-btn2{margin:35px 0 0 0;display:inline;background:url(../images/arrowRight-btn.png) no-repeat;width:35px;height:130px;overflow:hidden;cursor:pointer;}
+#btn-right{float:right;margin-right:6px;cursor:pointer;}
+.slider{width:860px;overflow:hidden;position:relative;height:166px;float:left;}
+.slider ul{position:absolute;left:15px;top:22px;width:1800px;height:140px;list-style:none;}
+.slider li{float:left;width:142px;height:140px;}
+.slider a{display:block;text-decoration:none;color:#073a5e;font-size:12px;font-weight:bold;text-align:center;margin-top:24px; border:#CCC solid 1px; width:125px; height:110px;}
+.slider img{width:90px;display:inline-block!important;}
+/*END*/
+.up-btn{clear:both; text-align:center; padding-top:20px;}
+.up-btn a{margin:0 20px;}
+.sure{color:#FFF;font-size:14px;background:#c7241d; border-radius:5px; padding:5px 40px;}
+.preview{color:#808080;font-size:14px;border-radius:5px;border:#808080 solid 1px; padding:4px 40px;}
+.div-btn{width:800px; border-top:#CCC solid 1px; margin-top:30px;}
+.div-btn p{text-align:center; border:#CCC solid 1px; width:185px; height:55px; line-height:55px; border-radius:5px; margin:0 auto; margin-top:30px; font-size:20px; color:#333232;}
+.div-btn p img{vertical-align:middle;}
+/*头号人物管理*/
+.Topsuspects{width:800px; border:#CCC solid 1px; padding-bottom:30px; margin:0 auto; margin-left:30px;}
+.tp-ul{border-bottom:#CCC solid 1px; padding-bottom:488px; margin-top:30px;padding-left: 10%;}
+.tp-ul ul{float:left; width:300px; border:#CCC solid 1px; height:450px; margin:0 10px; border-radius:5px;}
+.tp-ul ul img{width:300px;}
+.edito{height:470px;}
+#container{width:920px; margin:0 auto; margin-top:30px; height:350px;}
+/*超级新人王管理*/
+.coupleGL{width:800px; border:#CCC solid 1px; padding-bottom:30px; margin:0 auto;margin-left:30px;}
+.cp-ul{width:800px; margin:0 auto;margin-top:10px;}
+.gl-ul{border-bottom:#CCC solid 1px; padding-bottom:488px; margin-top:30px;padding-left: 10%;}
+.gl-ul ul{float:left; width:300px; border:#CCC solid 1px; height:450px; margin:0 10px; border-radius:5px;}
+.gl-ul ul img{width:300px;}
+.sr-li4{font-size:13px; color:#4c4c4c; padding-left:10px; padding-top:10px;}
+.sr-li5{font-size:20px; color:#4c4c4c;padding-left:10px;}
+.sr-li6{font-size:13px; color:#4c4c4c; padding-top:10px 0; padding-left:10px;}
+.s7{padding-top:15px;}
+.cp-des{font-size:14px; color:#333333;margin-right:186px;}
+.text3{width:350px;margin-top:30px;border:solid 1px #CCC;height:33px; line-height:33px;}
+.CP-one{padding-top:35px;}
+.cpo-left{float:left; background:#f2f2f2; width:360px; height:300px; margin-top:-15px; margin-left:30px;text-align:center;}
+.cpo-btn{padding-top:110px;}
+.cpo-btn a{color:#333232; font-size:20px; background:#FFF;display:block; width:160px; height:50px; line-height:50px; margin:0 auto;}
+.cpo-btn a img{vertical-align:middle; padding-right:10px;}
+.cpo-des{font-size:14px; color:#808080;}
+.cpo-right{float:left; background:#f2f2f2; width:350px; height:300px;margin-top:-15px; margin-left:30px;text-align:center;}
+.cpo-ti{font-size:20px; color:#333232;line-height:60px;}
+.cpo-pt2{width:200px; height:200px; background:#FFF; margin:0 auto;}
+.cpo-pt{font-size:14px; color:#808080; padding-top:10px;height: 200px;overflow: hidden;}
+.cpo-btn2{clear:both; text-align:center; padding-top:25px;}
+.cpo-btn2 a{margin:0 20px;}
+.sure{color:#FFF;font-size:14px;background:#c7241d; border-radius:5px; padding:5px 40px;}
+.preview{color:#808080;font-size:14px;border-radius:5px;border:#808080 solid 1px; padding:4px 40px;}
+/*月度寿星管理*/
+.rather{width:800px; border:#CCC solid 1px; padding-bottom:30px; margin:0 auto;margin-left:30px;} 
+.ra-ul{border-bottom:#CCC solid 1px; padding-bottom:488px; margin-top:30px;}
+.ra-ul ul{float:left; width:300px; border:#CCC solid 1px; height:450px; margin:0 10px; border-radius:5px;}
+.ra-ul ul img{width:300px;}

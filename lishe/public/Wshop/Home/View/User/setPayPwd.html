@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Modifypassword.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>设置支付密码-心意商城</title>
+</head>
+
+<body>
+	<div class="Waddress">
+		<span><a href="javascript:" onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+		<span>设置支付密码</span>
+	</div>
+	<!--tab切换-->
+	<div id="outer">   
+		<div id="content">
+			<!--tab1-->
+			<div class="WtabListOne" style="display:block;">
+				<input type="hidden" name="refer" value="{$refer}">
+				<p>
+					<span>支付密码：</span>
+					<span><input type="password" name="paypwd"></span>
+				</p>
+				<p>
+					<span>确认支付密码：</span>
+					<span><input type="password" name='rpaypwd'></span>
+				</p>
+				<div class="WOnebtn"><a href="javascript:void(0);" class="validateId">确定</a></div>
+			</div>  
+		</div>
+	</div>  
+
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>   
+	<!--END--> 
+<script>
+	//提交设置密码
+	$(".validateId").click(function(){		
+		$(".topLoading").show();	
+		var pwd = $("input[name='paypwd']").val();
+		var rpwd = $("input[name='rpaypwd']").val();
+		var refer = $("input[name='refer']").val();		
+		if (pwd == '') {
+			$(".topLoading").hide();
+			opLayer('open',"请输入支付密码！");
+            return;				
+		};
+		if (pwd != rpwd) {
+			$(".topLoading").hide();
+			opLayer('open',"支付密码和确认支付密码必须相同！");
+            return;
+        }
+		$.ajax({
+	        type:"POST",
+	        url:"__APP__/User/doSetPayPwd",
+	        data:{payPwd:rpwd},
+	        dataType:'text',
+	        success:function(data){
+	        	var res = eval(data);
+            	if (res[0] == 1 ) {
+					$(".topLoading").hide();
+					opLayer('open',res[1],refer);
+            	}else{
+					$(".topLoading").hide();
+					opLayer('open',"修改失败，请重试！");
+            	}
+	       	},
+	       	error:function(){
+				$(".topLoading").hide();
+				opLayer('open',"系统繁忙，请重试！");
+	            return;
+		    }
+    	});
+	});
+</script> 
+</body>
+</html>

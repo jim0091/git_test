@@ -1,0 +1,988 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+	.overbtn:hover{
+		background-color: #5a98de;
+	}
+	.sigleOrder{
+		background-color: white;
+		position: relative;
+		left: 135px;
+		top: -40px;
+		z-index:1;
+	}
+</style>
+<title>图片列表</title>
+</head>
+<body>
+<nav class="breadcrumb" style="position :fixed; width: 100%;">
+	<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 订单管理 <span class="c-gray en">&gt;</span> <span>订单列表</span> 
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;刷新本页</i></a>
+	<?php 	
+		 	$applFundId=array_search('exportexcel', $nodeAction);
+			 if($applFundId){
+			 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+		 ?>		
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" onclick="exportExcel()" class="Hui-iconfont">订单导出到Excel</a>
+	
+	<?php }
+			  } ?>	
+	
+</nav>
+<div style="padding-top: 35px;">
+	<div class="pd-20" >
+		<form action="__APP__/Order/index" method="get" id="serach">
+			<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+			<div class="product-tools">
+				<div class="search">
+					<label>下单时间：</label>
+					<label>
+				<input type="text" onfocus="WdatePicker()" value="{$searchData.creatStartTime}" name="creatStartTime" id="datemin" class="input-text Wdate" style="width:100px;">
+				-
+				<input type="text" onfocus="WdatePicker()" value="{$searchData.creatEndTime}" name="creatEndTime" id="datemax" class="input-text Wdate" style="width:100px;">					
+					</label>
+					<label>支付时间：</label>
+					<label>
+					<input type="text" onfocus="WdatePicker()" value="{$searchData.startTime}" name="startTime" id="datemin" class="input-text Wdate" style="width:100px;">-<input type="text" onfocus="WdatePicker()" value="{$searchData.endTime}" name="endTime" id="datemax" class="input-text Wdate" style="width:100px;">
+					</label>
+					<label>商品分类：</label>
+					<label>
+					<select id="catone" name="catone" class="select-box" style="width:180px;" onchange="javascript:getCatone(this.options[this.selectedIndex].value);">
+					<notempty name="searchData.catone">
+						<option value="{$searchData.catone.cat_id}">{$searchData.catone.cat_name}</option>
+					</notempty>					
+					</select>								
+					</label>
+					<label>
+					<select id="cattwo" name="cattwo" class="select-box" style="width:100px;" onchange="javascript:getCattwo(this.options[this.selectedIndex].value);">
+					<notempty name="searchData.cattwo">
+						<option value="{$searchData.cattwo.cat_id}">{$searchData.cattwo.cat_name}</option>
+					</notempty>	
+					<option value="0">全部</option>
+					</select>								
+					</label>
+					<label>
+					<select id="catthree" name="catthree" class="select-box" style="width:100px;" style="display: none;">
+					<notempty name="searchData.catthree">
+						<option value="{$searchData.catthree.cat_id}">{$searchData.catthree.cat_name}</option>
+					</notempty>	
+					<option value="0">全部</option>
+					</select>								
+					</label>				
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<label>所属企业：</label>
+					<label>
+					<select id="company" name="comId" class="select-box" style="width:160px;">
+					<notempty name="searchData.company">
+						<option value="{$searchData.company.com_id}">{$searchData.company.com_name}</option>
+					</notempty>
+					</select>
+					</label>
+					<label>所属店铺：</label>
+					<label>
+					<select id="shop" name="shopId" class="select-box" style="width:160px;">
+					<notempty name="searchData.shop">
+						<option value="{$searchData.shop.shop_id}">{$searchData.shop.shop_name}</option>
+					</notempty>
+					</select>	
+					</label>
+					<label>订单状态：</label>
+					<label><select class="select-box" name="status" style="width:100px;">
+					<notempty name="searchData.status">
+						<option value="{$searchData.status.status}">{$searchData.status.name}</option>
+					</notempty>						
+					<option value="0">全部</option>
+					<option value="TRADE_CLOSED_BY_SYSTEM">已取消</option>
+					<option value="WAIT_BUYER_PAY">待付款</option>
+					<option value="WAIT_SELLER_SEND_GOODS">待发货</option>						
+					<option value="IN_STOCK">备货中</option>						
+					<option value="WAIT_BUYER_CONFIRM_GOODS">待收货</option>						
+					<option value="WAIT_COMMENT">待评价</option>						
+					<option value="TRADE_FINISHED">已完成</option>
+					</select>
+					</label>					
+					<label>售后状态：</label>
+					<label><select class="select-box" name="service" style="width:80px;">
+					<notempty name="searchData.service">
+						<option value="{$searchData.service.type}">{$searchData.service.name}</option>
+					</notempty>						
+					<option value="0">全部</option>
+					<option value="NO_APPLY">无售后</option>
+					<option value="REFUND">退款</option>
+					<option value="CANCEL_REFUND">取消退款</option>
+					<option value="RETURN">退货</option>
+					<option value="CANCEL_RETURN">取消退货</option>
+					<option value="EXCHANGE">换货</option>
+					<option value="CANCEL_EXCHANGE">取消换货</option>
+					<option value="REPAIR">维修</option>
+					<option value="CANCEL_REPAIR">取消维修</option>
+					</select>
+					</label>
+					<label>发货类型：</label>
+					<label><select class="select-box" name="sendType" style="width:80px;">
+					<option value="0">全部</option>
+					<option value="1" <eq name="searchData.sendType" value="1">selected="selected"</eq> >自发</option>
+					<option value="2" <eq name="searchData.sendType" value="2">selected="selected"</eq> >代发</option>
+					<option value="3" <eq name="searchData.sendType" value="3">selected="selected"</eq>  >顺丰</option>
+					</select>
+					</label>
+					<label>活动类型：</label>
+					<label><select class="select-box" name="activityType" style="width:80px;">
+					<option value="0">全部</option>
+					<option value="-1" <eq name="searchData.activityType" value="-1">selected="selected"</eq> >普通</option>
+					<option value="1" <eq name="searchData.activityType" value="1">selected="selected"</eq> >特价</option>
+					<option value="3" <eq name="searchData.activityType" value="3">selected="selected"</eq> >礼包</option>
+					<option value="4" <eq name="searchData.activityType" value="4">selected="selected"</eq> >团购</option>
+					<option value="5" <eq name="searchData.activityType" value="5">selected="selected"</eq> >预售</option>
+					<option value="6" <eq name="searchData.activityType" value="6">selected="selected"</eq> >集配礼包</option>
+					<option value="7" <eq name="searchData.activityType" value="7">selected="selected"</eq>  >组合购</option>
+					</select>
+					</label>						
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<label>商品名称：</label>
+					<label>
+					<input type="text" name="goods"  placeholder="商品名称" style="width:150px" class="input-text" value="{$searchData.goods}" >						
+					</label>
+					<label>关&nbsp;&nbsp;键&nbsp;&nbsp;字：</label>
+					<label>
+					<input type="text" name="tid"  placeholder="订单号/收件人手机号、姓名" style="width:160px" class="input-text" value="{$searchData.tid}">
+					</label>							
+					<label>员工手机：</label>
+					<label>
+					<input type="text" name="mobile"  placeholder="员工手机号" style="width:160px" class="input-text" value="{$searchData.mobile}" >
+					</label>
+					<label>支付单号：</label>
+					<label>
+					<input type="text" name="paymentId"  placeholder="支付单号" style="width:160px" class="input-text" value="{$searchData.paymentId}" >
+					<button onclick="serach()" class="btn btn-success radius" ><i  class="Hui-iconfont">&#xe665;</i> 搜索</button>						
+					</label>					
+				</div>
+			</div>
+			</form>	
+	</div>
+	<div class="cl pd-5 bg-1 bk-gray"> 
+			<span class="r">共有数据：<strong class="label label-success radius">{$count}</strong> 条</span> 
+	</div>
+	<div class="mt-10">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+					<td align="center" width="10%">订单号</td>
+					<td align="center">商品名称/价格/数量</td>
+					<td align="center" width="10%">所属企业</td>
+					<td align="center" width="20%">收货信息</td>
+					<td align="center" width="12%">订单总额/实付金额</td>
+					<td align="center" width="12%">下单/支付时间</td>
+					<td align="center" width="5%">订单状态</td>
+					<td align="center" width="4%">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-c">
+					<volist name="list" id="order">
+					<tr>
+						<td class="checkboxs" style="text-align: center;">
+							<if condition="$order.is_vip gt 0"><img src="__ADMIN__images/img/vip.png"  width="25px"/></if>
+							<gt name="order.trade_type" value="0">
+								<span class="label label-success radius">{:activityType($order['trade_type'])}</span>
+							</gt>
+							<?php if(count($order['sigleOrder']['moreOrder'])>1){
+								?>
+								<div style="float: right;">
+									<a href="javascript:void(0)" class="showSigleOrder" data-key="{$key}">
+										<img src="__ADMIN__images/img/more.png"  width="25px"/>
+										<small style="color: #5a98de;">
+								<?php	
+									echo count($order['sigleOrder']['moreOrder']);
+									
+									?>
+										</small>
+									</a>
+								</div>
+								<?php	
+									}
+								
+								; ?>
+								
+							<span style="cursor:pointer;">{$order.tid}</span>	
+							<span style="display: none;">{$order.sigleOrder.payment_id}</span>
+							<if condition="$order.shop_id eq 10">
+								<notempty name="order.JdnNmber">
+									<span class="label label-success radius">{$order.JdnNmber}</span>
+									<else/>
+									<in name="order.status" value="WAIT_SELLER_SEND_GOODS,IN_STOCK">
+										<span class="label label-danger radius" id="syncOrder">!警告,无京东订单号</span><br />
+										<!--<a href="javascript:void(0)" class="getSyncOrder" data="{$order.tid}">
+											<span class="label label-success radius" style="margin-top: 10px;margin-left: 20%;">重新同步</span>
+										</a>-->
+									</in>
+								</notempty>
+							</if>
+							<div class="sigleOrder" id="sigleOrder{$key}" style="display: none;">
+								<volist name="order.sigleOrder.moreOrder" id="signle">
+									<a title="单击查看该订单详情" onclick="member_edit('{$tid}订单详情','{:U('Home/Order/detail',array('tid'=>$signle))}','4','','510')">
+								        <strong style="color: #5a98de;">{$signle}</strong>
+									</a>
+									<br />
+								</volist>
+							</div>	
+							
+						</td>
+						<td align="left">
+							<notempty name="refundPoint[$order['tid']]">
+								<strong class="c-red">已退款(积分)：￥{$refundPoint[$order['tid']]}</strong>
+							</notempty>	
+							<notempty name="refundCash[$order['tid']]">
+								<strong class="c-red">&nbsp;&nbsp;已退款(现金)：￥{$refundCash[$order['tid']]}</strong>
+							</notempty>							
+							<volist name="order.items" id="item">
+								<if condition="$i neq 1">
+									<div style="border-bottom: 1px #ddd solid;">&nbsp;</div>
+								</if>
+								<div class="col-12" style="padding-top: 5px;">
+								<div class="col-3">
+									<a href="__LISHE__/shop.php/Info/index/itemId/{$item.item_id}" target="_blank" title="{$item.title}">
+										<img src="{$item.pic_path}_t.{:end(explode('.',$item['pic_path']))}" width="60px" style="max-height: 60px;overflow: hidden;"  />
+									</a>
+								</div>
+								<div class="col-9">
+									<if condition="$item.disabled eq 1">
+										<img src="__ADMIN__images/img/quxiao.png"  title="通过取消商品的方式使其退款，无需发货！"/>
+									</if>
+	 							<?php
+							 	$applFundId=array_search('tostock', $nodeAction);
+								 if($applFundId){
+								 	if($nodeController[$applFundId]=="order"  || $roleId==0){ 	
+								 		?>
+										<if condition="$item.status eq 'IN_STOCK'">
+											<img src="__ADMIN__images/img/beihuo.png"  width="15px" title="该商品已备货"/>
+										</if>
+										<gt name="item.sendnum" value="0">
+											<img src="__ADMIN__images/img/fahuo.png"  width="20px" title="该商品已发货"/>
+										</gt>
+									<?php
+									}}?>
+									<if condition="$item.aftersales_status neq 'NO_APPLY'">
+										<img src="__ADMIN__images/img/shouhou.png"  width="20px" title="{$order.serviceStatus}"/>
+									</if>
+								 	<a href="javascript:void(0)" class="sendType" data-oid="{$item.oid}" data-val="{$item.send_type}" data-tid="{$order.tid}">
+										<if condition="$item.send_type eq 2">
+											<img src="__ADMIN__images/img/daifa.png"  width="20px" title="该商品为代发商品"/>
+										<elseif condition="$item.send_type eq 1"/>
+											<img src="__ADMIN__images/img/zifa.png"  width="20px" title="该商品为自发商品"/>
+										<elseif condition="$item.send_type eq 3"/>
+											<img src="__ADMIN__images/img/shunfeng.png"  width="25px" title="该商品为顺丰发货商品"/>											
+										</if>
+									</a>
+									<a href="__LISHE__/shop.php/Info/index/itemId/{$item.item_id}" target="_blank" title="{$item.title}">
+										{$item.title}
+									</a>
+									<br />
+									<strong style="color: #5a98de;">{$item.spec_nature_info}</strong>
+									<span class="label label-success radius">￥{$item.price}</span>
+									<if condition="($item.cash gt 0) or ($item.point gt 0)">
+										<span class="label label-primary radius" title="混合支付金额+积分">
+											<gt name="item.cash" value="0">
+												<span title="商品金额：{$item.cash}">￥{$item.cash}</span>
+											</gt>
+											<gt name="item.point" value="0">
+												<gt name="item.cash" value="0">
+													+
+												</gt>
+												<span title="商品积分：{$item.point}">{$item.point}</span>
+											</gt>	
+										</span>	
+									</if>									
+									<span class="label radius">{$item.num}件</span>
+									<in name="order.order_status" value="REFUND,RETURN">
+										<if condition="$item.aftersales_status eq 'SUCCESS'">
+											<span class="label label-danger radius">已退款</span>
+										</if>
+									</in>
+								</div>
+								</div>
+							</volist>
+						</td>
+						<td align="center">{$order.company}</td>
+						<td align="center">
+							{$order.receiver_name}[{$order.receiver_mobile}]<br />
+							{$order.address}
+						</td>
+						<td align="center">￥{$order.payment}
+							<br/>
+							<span title="混合支付金额+积分">
+								(
+									<gt name="order.cash_fee" value="0">
+										￥{$order.cash_fee}
+									</gt>
+									<gt name="order.point_fee" value="0">
+										<gt name="order.cash_fee" value="0">
+											+
+										</gt>										
+										{$order.point_fee}
+									</gt>
+								)	
+							</span>
+							<hr style="height:1px;border:none;margin-bottom:5px;border-top:1px solid #5A98DE;"/>
+						<if condition="$order.payed_fee gt 0">
+							<span class="label label-success radius">
+						<else/>
+							<span>
+						</if>
+							￥{$order.payed_fee}
+							<br/>
+							(
+								<if condition="($order.payed_cash eq 0) and ($order.payed_point eq 0)">
+									未支付
+								</if>
+							<span title="混合支付金额+积分">
+								<gt name="order.payed_cash" value="0">
+									<span title="支付金额：{$order.payed_cash}">￥{$order.payed_cash}</span>
+								</gt>
+								<gt name="order.payed_point" value="0">
+									<gt name="order.payed_cash" value="0">
+										+
+									</gt>
+									<span title="支付积分：{$order.payed_point}">{$order.payed_point}</span>
+								</gt>
+							</span>								
+							)
+							</span>
+						</td>
+						<td align="center">
+							{$order.created_time}<br />
+							{$order.pay_time}
+							<eq name="order.shop_id" value="10">
+								<a href="javascript:void(0)" title="支付单号">
+							<else/>		
+								<a href="javascript:void(0)" title="查看支付单：{$order.sigleOrder.payment_id}所对应供应商订单" onclick="openFull('支付单：{$order.sigleOrder.payment_id}所对应供应商订单','{:U('Home/SupplierOrder/all',array('keyword'=>$order['sigleOrder']['payment_id']))}','10001')">
+							</eq>
+									<span  class="label label-success radius">{$order.sigleOrder.payment_id}</span>
+								</a>
+						</td>
+						<td align="center">
+							<if condition="$order.status eq 'WAIT_SELLER_SEND_GOODS'">
+								<span class="label label-danger radius">
+							<elseif condition="$order.status eq 'WAIT_BUYER_CONFIRM_GOODS'"/>
+								<span class="label label-success radius">
+							<elseif condition="$order.status eq 'TRADE_FINISHED'"/>
+								<span class="label radius">
+							<elseif condition="$order.status eq 'IN_STOCK'"/>
+								<span class="label label-primary radius">
+							</if>	
+								{$order.orderStatus}
+							</span>
+							<br/>
+							
+							<in name="order.order_status" value="REFUND,RETURN,EXCHANGE,REPAIR">
+								<strong  style="margin-top: 10px;color: #5a98de;">
+							<else/>
+								<in name="order.order_status" value="CANCEL_REFUND,CANCEL_RETURN,CANCEL_EXCHANGE,CANCEL_REPAIR">
+									<span style="margin-top: 10px; color: #666;">
+									<else/>
+									<span>
+								</in>							
+							</in>
+							{$order.serviceStatus}
+							</strong>
+ 							<?php
+						 	$applFundId=array_search('tostock', $nodeAction);
+							 if($applFundId){
+							 	if($nodeController[$applFundId]=="order"  || $roleId==0){ 								
+ 								foreach($order['items'] as $key=>$value){
+						 			if($value['aftersales_status'] == 'NO_APPLY'){										
+									$order['sendGoods']=1;
+									
+ 							}} 
+ 								if(empty($order['sendGoods'])){
+ 									//不发货
+ 									?>
+ 								<in name="order.status" value="WAIT_SELLER_SEND_GOODS,IN_STOCK">
+									<img src="__ADMIN__images/img/nosend.png"  width="20px" style="margin-left: 25%;"/><br />
+									<samll style="color: #eb4f38;">无需发货</samll>
+ 								</in>	
+ 							<?php		
+ 							}}		
+ 								}
+ 							?>	
+						</td>
+						
+						<td align="center">
+							<!--订单详情-->
+							<?php 	
+								 	$applFundId=array_search('detail', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+								 ?>								
+							<a onclick="member_edit('{$order.tid}订单详情','{:U('Home/Order/detail',array('tid'=>$order['tid']))}','4','','510')">
+								<span class="label label-success radius overbtn">详情</span>
+							</a>
+							<br />
+							<?php }
+									  } ?>	
+							<!--订单详情-->
+						
+				        	<!--取消商品-->
+							<?php 	
+								 	$applFundId=array_search('cancelsyncgoods', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+								 ?>	
+								<in name="order.status" value="WAIT_SELLER_SEND_GOODS,IN_STOCK">
+									<if condition="$order.order_status eq 'NO_APPLY'">
+										<a onclick="member_edit('订单:{$order.tid}取消商品','{:U('Home/Order/cancelGoods',array('tid'=>$order['tid']))}','4','','510')">
+											<span class="label label-success radius overbtn" style="margin-top: 10px;">取消商品</span>
+										</a>									
+									</if>	
+								</in>
+							<?php }
+									  } ?>								
+				        	<!--取消商品-->						
+
+
+							<!--申请退款-->
+							
+							<?php 	
+								 	$applFundId=array_search('applyrefund', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+								 ?>
+							<in name="order.status" value="WAIT_SELLER_SEND_GOODS">
+								<if condition="$order.order_status eq 'NO_APPLY'">
+									<a onclick="member_edit('订单:{$order.tid}申请退款','{:U('Home/Order/applyRefund',array('tid'=>$order['tid']))}','4','','510')">
+										<span class="label label-success radius overbtn" style="margin-top: 10px;">申请退款</span>
+									</a>
+								</if>
+							</in>
+							<?php }
+									  } ?>
+							<!--申请退款-->
+							
+						
+							<!--备货-->
+							<?php 	
+								 	$applFundId=array_search('tostock', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+ 									 		foreach($order['items'] as $key=>$value){
+									 			if($value['status'] == 'WAIT_SELLER_SEND_GOODS' && $order['shop_id'] !=10){	
+					 								if(in_array($value['aftersales_status'],array('NO_APPLY','CANCEL_APPLY','SELLER_REFUSE'))){
+									 				
+								 ?>						    
+								<a onclick="member_edit('订单:{$order.tid}选择备货','{:U('Home/Order/toStock',array('tid'=>$order['tid']))}','4','','510')">
+									<span class="label label-success radius  overbtn" data="{$order.tid}" style="margin-top: 10px;">选择备货</span>	
+								</a>								
+							<?php 
+						 				break;
+						 				}
+								 				}
+								 			}							
+								}
+									  } ?>							
+							<!--备货-->
+							
+							<!--发货-->
+							<?php 	
+								 	$applFundId=array_search('sendgoods', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+									 		foreach($order['items'] as $key=>$value){
+									 			if($value['sendnum'] == 0 && $value['disabled']==0){
+					 								if(in_array($value['aftersales_status'],array('NO_APPLY','CANCEL_APPLY','SELLER_REFUSE'))){
+									 				?>
+													<in name="order.status" value="WAIT_BUYER_CONFIRM_GOODS,IN_STOCK">
+														<a onclick="member_edit('订单:{$order.tid}发货','{:U('Home/Order/sendGoods',array('tid'=>$order['tid']))}','4','','510')" title="订单中还有商品没有发货完完成,将显示出发货操作">
+															<span class="label label-success radius overbtn" style="margin-top: 10px;">发货</span>
+														</a>
+													</in>									 				
+									 			<?php	
+									 				break;
+									 			}
+									 			}
+									 		}
+								 }
+									  } ?>								
+							<!--发货-->							
+							
+							
+							<!--退款-->
+							<?php 	
+								 	$applFundId=array_search('refund', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+ 									 		foreach($order['items'] as $key=>$value){
+									 			if($value['aftersales_status'] == 'REFUND_PROCESS'){
+									 				?>
+													<in name="order.order_status" value="REFUND,RETURN">
+														<if condition="$order['payed_fee'] egt $order['refund_fee']">
+															<a onclick="member_edit('订单:{$order.tid}退款','{:U('Home/Order/refund',array('tid'=>$order['tid'],'payType'=>$order['pay_type']))}','4','','510')">
+																<span class="label label-success radius overbtn" style="margin-top: 10px;">退款</span>
+															</a>
+														</if>
+													</in>									 				
+									 			<?php
+									 				break;
+								 				}
+								 			}
+							 		}
+									  } ?>							
+							<!--退款-->
+							
+							<!--退款审核-->
+							 	<?php	
+								 	$applFundId=array_search('refundprocess', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){		
+									 		foreach($order['items'] as $key=>$value){
+									 			if($value['aftersales_status'] == 'WAIT_PROCESS' && $value['aftersales_num']>0){
+									 				?>
+													<in name="order.order_status" value="REFUND">
+														<if condition="$order['payed_fee'] gt $order['refund_fee']">
+															<a onclick="member_edit('订单:{$order.tid}退款审核','{:U('Home/Order/refundProcess',array('tid'=>$order['tid']))}','4','','510')">
+																<span class="label label-success radius overbtn" style="margin-top: 10px;">退款审核</span>
+															</a>
+														</if>
+													</in>									 				
+								 				<?php
+									 				break;
+									 			}
+									 		}									
+									 }
+									  } ?>								
+							<!--退款审核-->
+						
+							<!--退款初审-->
+							 	<?php	
+								 	$applFundId=array_search('refundearlyprocess', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){		
+									 		foreach($order['items'] as $key=>$value){
+									 			if($value['aftersales_status'] == 'WAIT_EARLY_PROCESS' && $value['aftersales_num']>0){
+									 				?>
+													<in name="order.order_status" value="REFUND,RETURN,EXCHANGE,REPAIR">
+														<if condition="$order['payed_fee'] gt $order['refund_fee']">
+															<a onclick="member_edit('订单:{$order.tid}售后初审','{:U('Home/Order/refundEarlyProcess',array('tid'=>$order['tid']))}','4','','510')">
+																<span class="label label-success radius overbtn" style="margin-top: 10px;">售后初审</span>
+															</a>
+														</if>
+													</in>									 				
+								 				<?php
+									 				break;
+									 			}
+									 		}									
+									 }
+									  } ?>								
+							<!--退款初审-->						
+						
+							
+							<!--退货/换货/维修审核-->
+						 	<?php	
+							 	$applFundId=array_search('returnprocess', $nodeAction);
+								 if($applFundId){
+								 	if($nodeController[$applFundId]=="order"  || $roleId==0){							 		
+								 		foreach($order['items'] as $key=>$value){
+								 			if($value['aftersales_status'] == 'WAIT_PROCESS' && $value['aftersales_num']>0){
+								 				?>
+											<in name="order.order_status" value="RETURN">
+													<a onclick="member_edit('订单:{$order.tid}退货审核','{:U('Home/Order/returnProcess',array('tid'=>$order['tid']))}','4','','510')">
+														<span class="label label-success radius overbtn" style="margin-top: 10px;">退货审核</span>
+													</a>
+											</in>		
+											<in name="order.order_status" value="EXCHANGE,REPAIR">
+													<a onclick="member_edit('订单:{$order.tid}换修审核','{:U('Home/Order/returnProcess',array('tid'=>$order['tid'],'afterType'=> 1))}','4','','510')">
+														<span class="label label-success radius overbtn" style="margin-top: 10px;">换修审核</span>
+													</a>
+											</in>												
+								 			<?php	
+								 				break;
+								 			}
+								 		} 									
+
+									 }
+									  } ?>								
+							<!--退货审核-->
+							
+							<!--退货回寄审核-->
+							<?php 	
+								 	$applFundId=array_search('returnsendfororder', $nodeAction);
+									 if($applFundId){
+									 		foreach($order['items'] as $key=>$value){
+									 			if(($value['aftersales_status'] === 'WAIT_SELLER_CONFIRM_GOODS') && $value['aftersales_num']>0){
+									 				?>
+													<in name="order.order_status" value="RETURN">
+														<a onclick="member_edit('订单:{$order.tid}退货商品回寄确认','{:U('Home/Order/returnSendProcess',array('tid'=>$order['tid']))}','4','','510')">
+															<span class="label label-success radius overbtn" style="margin-top: 10px;">回寄确认</span>
+														</a>
+													</in>	
+					 							<?php
+									 				break;
+									 			}
+									 		}
+									  } ?>					
+							<!--退货回寄审核-->		
+							
+							<!--等待回寄-->
+							<?php 	
+								 	$applFundId=array_search('waitreturnfororder', $nodeAction);
+									 if($applFundId){
+									 		foreach($order['items'] as $key=>$value){
+									 			if(($value['aftersales_status'] === 'WAIT_SELLER_CONFIRM_GOODS') && $value['aftersales_num']>0){
+									 				?>
+													<in name="order.order_status" value="EXCHANGE,REPAIR">
+														<a onclick="member_edit('订单:{$order.tid}换修商品回寄确认','{:U('Home/Order/returnSendProcess',array('tid'=>$order['tid'],'afterType'=> 1))}','4','','510')">
+															<span class="label label-success radius overbtn" style="margin-top: 10px;">等待回寄</span>
+														</a>
+													</in>														
+					 							<?php
+									 				break;
+									 			}
+									 }
+									  } ?>								
+							<!--等待回寄-->
+							
+							
+							<!--申请退货-->
+							<?php 	
+								 	$applFundId=array_search('returnitem', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+									 		foreach($order['items'] as $key=>$value){
+									 			if($value['aftersales_status'] == "NO_APPLY"){
+									 				?>
+													<in name="order.status" value="WAIT_COMMENT,TRADE_FINISHED,WAIT_BUYER_CONFIRM_GOODS">
+														<in name="order.order_status" value="NO_APPLY,RETURN">
+															<a onclick="member_edit('订单:{$order.tid}退款/退货','{:U('Home/Order/returnItem',array('tid'=>$order['tid'],'payType'=>$order['pay_type']))}','4','','510')">
+																<span class="label label-success radius overbtn" style="margin-top: 10px;">退款/退货</span>
+															</a>
+														</in>
+													</in>									 				
+									 			<?php
+									 				break;
+									 			}
+									 		}									 		
+									 }
+									  } ?>							
+							<!--申请退货-->
+							
+							
+
+							<!--申请换货/维修-->
+							<?php 	
+								 	$applFundId=array_search('changeitem', $nodeAction);
+									 if($applFundId){
+									 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+									 		?>
+												<in name="order.status" value="WAIT_COMMENT,TRADE_FINISHED">
+													<in name="order.order_status" value="NO_APPLY">
+														<a onclick="member_edit('订单:{$order.tid}申请换货/退货','{:U('Home/Order/changeItem',array('tid'=>$order['tid'],'payType'=>$order['pay_type']))}','4','','510')">
+															<span class="label label-success radius overbtn" style="margin-top: 10px;">申请换修</span>
+														</a>
+													</in>
+												</in>										 				
+								 				<?php	
+								 			}
+											  } ?>								
+							<!--申请换货/维修-->
+							
+							
+							<!--取消售后申请-->
+							 	<?php	
+								 	$applFundId=array_search('cancelaftersale', $nodeAction);
+									 if($applFundId){
+									 		foreach($order['items'] as $key=>$value){
+									 			if(in_array($value['aftersales_status'],array('WAIT_EARLY_PROCESS','WAIT_PROCESS'))){
+									 				?>
+													<in name="order.order_status" value="REFUND,RETURN,EXCHANGE,REPAIR">
+														<if condition="$order['payed_fee'] gt $order['refund_fee']">
+															<a onclick="member_edit('订单:{$order.tid}取消售后申请','{:U('Home/Order/cancelAftersale',array('tid'=>$order['tid']))}','4','','510')">
+																<span class="label label-success radius overbtn" style="margin-top: 10px;" title="取消售后申请">取消售后</span>
+															</a>
+														</if>
+													</in>									 				
+								 				<?php
+									 				break;
+									 			}
+									 		}									
+									  } ?>								
+							<!--取消售后申请-->								
+							
+							
+						</td>
+					</tr>
+					</volist>					
+				</tr>
+			</tbody>
+		</table>
+		<div class="page" style="text-align: center; padding: 20px 0px 50px 0px;">{$pagestr}</div>
+		
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$( function (){
+	//重新同步订单到京东
+	$(".getSyncOrder").click(function(){
+		var tid=$(this).attr("data");
+		$.get("/api.php/Api/syncOrder/tid/"+tid,function(data){     
+			var msg=eval("("+data+")");
+			if(parseInt(msg['code']) > 0){
+				$('#syncOrder').text(msg['code']);
+				$(".getSyncOrder").remove();
+			}else{
+				alert(msg['msg']);
+			}
+		});
+    });
+    var url = "{:U('Home/Product/getCatOne')}" ;
+    $( '#catone' ).append( '<option value="0"> 全部 </option>' ) ;
+	$.ajax({
+		type:"get",
+		url:url,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+           	 	$( '#catone' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}
+	});
+//店铺名			
+    var shopUrls = "{:U('Home/Product/getShop')}" ;
+    $( '#shop' ).append( '<option value="0"> 全部 </option>' ) ;
+	$.ajax({
+		type:"get",
+		url:shopUrls,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.shop_id+ '">' +v.shop_name+ '</option>' ;
+           	 	$( '#shop' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}	
+	});
+//企业名			
+    var companyUrls = "{:U('Home/Order/getCompany')}" ;
+    $( '#company' ).append( '<option value="0"> 全部 </option>' ) ;
+	$.ajax({
+		type:"get",
+		url:companyUrls,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.com_id+ '">' +v.com_name+ '</option>' ;
+           	 	$( '#company' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}			
+        }) ;
+        //显示合单
+        $(".showSigleOrder").on('mouseover',function(){
+        	$(".sigleOrder").hide();
+        	var Id=$(this).attr("data-key");
+        	$("#sigleOrder"+Id).show();
+        });
+        //页面单击
+        $("body").on('click',function(){
+        	$(".sigleOrder").hide();
+        });
+        //自发代发更改
+        $(".sendType").on('click',function(){
+        	var sendType=$(this).attr("data-val");
+        	if(sendType == 2){
+        		var sendName="自发";
+        	}else if(sendType == 1){
+        		var sendName="代发";
+        	}else{
+        		return false;
+        	}
+        	var oid=$(this).attr("data-oid");
+        	var tid=$(this).attr("data-tid");
+        	var thisType=$(this);
+			layer.confirm('确定将该商品的发货类型改为'+sendName+'?',
+			function(index){
+			$.ajax({
+				type:"get",
+				url:"{:U('Home/Order/changeSendType')}",
+				dataType:'json',
+				data:{
+					oid:oid,
+					tid:tid,
+					sendType:sendType
+				},
+				success:function(data){
+					layer.msg(data['msg']);
+					if(data['code'] == 1){
+						if(sendType == 1){
+							thisType.attr('data-val',2);
+							var imgsrc="__ADMIN__images/img/daifa.png";
+						}else if(sendType == 2){
+							thisType.attr('data-val',1);
+							var imgsrc="__ADMIN__images/img/zifa.png";
+						}
+						thisType.children('img').attr('src',imgsrc);
+					}
+				},
+	        }) ;
+	        $(".layui-layer-close1").click();
+			});        	
+        });
+    }) ;	
+	function getCatone(code){
+			$("#catthree").hide();
+		   	$("#catthree").find('option[value="0"]').attr("selected","selected");
+            var url = "{:U('Home/Product/getCatTwo')}" ;
+            $( '#cattwo' ).empty() ;
+            $( '#cattwo' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=2',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#cattwo' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	function getCattwo(code){
+			$("#catthree").show();
+            var url = "{:U('Home/Product/getCatTwo')}" ;
+            $( '#catthree' ).empty() ;
+            $( '#catthree' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=3',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#catthree' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	//搜索
+	function serach(){
+		$("#execlType").val("");
+		$("#serach").submit();
+		
+	}	
+	//导出execl
+	function exportExcel(){
+		$("#execlType").val("exportExcel");
+		$("#serach").submit();
+		
+	}
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}	
+	//重新同步京东订单
+	function againSyncOrder(tid){
+		$.ajax({
+			type:"get",
+			url:"{:U('Home/Order/againSyncOrder')}",
+			data:'tid='+tid,
+			success:function(data){
+				alert(data);
+			}
+			
+		});
+		
+	}
+	//申请退款
+	function applyRefund(tid){
+		var str=prompt("请输入退款原因：","");
+		if(str){
+			$.get("__APP__/Order/applyRefund/tid/"+tid+"/mark/"+str,function(data){
+				if(data){
+					layer.msg('申请退款成功，等待处理!',{icon:1,time:1000});
+					location.reload();
+				}else{
+					layer.msg('申请退款失败!',{icon:1,time:1000});
+					
+				}   
+			});	
+		}
+	}
+	function openFull(title,url,id,w,h){
+		var index = layer.open({
+			type: 2,
+			title: title,
+			content: url
+		});
+		layer.full(index);
+	}	
+</script>
+</body>
+</html>

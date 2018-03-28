@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="__VIEW__Publicold/css/swiper.min.css">
+<link rel="stylesheet" href="__VIEW__Publicold/css/phone.css">
+<script src="__VIEW__Publicold/js/jquery-1.8.2.min.js"></script>
+<script src="__VIEW__Publicold/js/zepto.min.js"></script>
+<script src="__VIEW__Publicold/js/swiper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__VIEW__Publicold/css/index.css">  
+<title>企业福利</title>
+</head>
+
+<body style="padding-bottom: 25px;">
+	
+  <div id="header">
+      <div class="swiper-wrapper">
+      	<volist  name="cartList" id="vo">
+	        <div class="swiper-slide <if condition="$thisId eq $vo['item_config_id']">active</if>">
+			  	<notempty name="vo.cat">		
+			       <a href="{:U('Home/Welfare/cartgoryIndex',array('cfgId' => $vo['item_config_id']))}">
+			  	<else/>
+			       <a href="{:U('Home/Welfare/itemList',array('cfgId' => $vo['item_config_id']))}">
+			  	
+				 </notempty>  	        	
+	        	{$vo.cat_name}
+	        </a>
+	        </div>
+      	</volist>
+      </div>
+   </div>
+
+
+ <volist name="list" id="vo1">
+  <div class="ListPhone">  	
+      <p class="lip"><span>{$vo1.cat_name}</span>
+           <a href="{:U('Home/Welfare/itemList',array('cartId' => $vo1['cat_config_id'],'cfgId' => $vo1['item_config_id']))}">更多 ></a>
+      </p>
+      <div class="listul">
+		<volist name="vo1.items" id="item">
+          <ul>
+            <li style="height: 177px;overflow: hidden;">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">
+            		<img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}">
+            	</a>
+            </li>
+            <li class="puser">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">{$item.title}</a>
+            </li>
+            <li class="pric">￥<?php echo sprintf("%.2f", $item['price']); ?>
+            	<a class="js-goods-buy" data-id="{$item['item_id']}" href="javascript:void(0)">立即兑换</a>
+            </li>
+		        <if condition="$item.flag eq 1">
+		     		<li style="background:url(__VIEW__Publicold/images/wuhuo.png)no-repeat  center  center;background-color:rgba(115,115,131,0.7);min-height:54px;color: white;text-align: center;position:relative; top:-232px;padding-top: 113px;">
+		     			<small>广东无货</small>
+		     		</li>
+		        </if>             
+          </ul>
+		</volist>
+       </div>   
+      <div style="clear:both;"></div>
+  </div>
+</volist>
+
+
+<!--遮罩层start-->
+<div id="maskLayer" style="display:none; height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 1000; transition: none 0.2s ease; opacity: 1; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!--遮罩层end-->
+
+<!--提示框-->
+<div class="motify" style="display: none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+
+<!--下拉start-->
+<div id="selectItem" class="sku-layout sku-box-shadow popup" style="display:none;overflow: hidden; position: fixed; z-index: 1000; bottom: 0px; left: 0px; right: 0px; visibility: visible; transform: translate3d(0px, 0px, 0px); transition: all 300ms ease; opacity: 1; background: white;">
+    <div class="sku-layout-title name-card sku-name-card">
+
+
+</div>
+
+</div>
+<include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>
+
+  <script type="text/javascript">
+  $(function(){
+     $('.swiper-wrapper div').click(function(){
+				if(!$(this).hasClass('active')){ 
+					$(this).addClass('active').siblings().removeClass('active');
+				
+				}
+			})
+	 		
+		
+		var navH = $(".swiper-wrapper").offset().top;
+				//滚动条事件
+		$(window).scroll(function(){
+			//获取滚动条的滑动距离
+			var scroH = $(this).scrollTop();
+		})
+	
+		  var mySwiper1 = new Swiper('#header',{
+			  freeMode : true,
+			  slidesPerView : 'auto'
+		  });
+	
+  });
+
+	
+</script>
+<script src="__VIEW__Publicold/js/common_jquery_75554d22a0.js"></script>
+<script type="text/javascript">
+        $(function(){
+            $(".js-goods-buy").click(function(){
+                 $("#selectItem").html("");
+                var urls="{:U('Home/Itemlist/jionShow')}";
+                var itemid=$(this).attr("data-id");
+                $.ajax({
+                    type:"get",
+                    url:urls,
+                    dataType:'text',
+                    data:'itemId='+itemid,
+                    success:function(data){
+                         $("#selectItem").html(data);
+                    }
+                });
+                $("#selectItem").show();
+                $("#maskLayer").show();
+                $("body").css({overflow:"hidden"}); 
+            });
+            $("#cancel-img").click(function(){       
+                $("#selectItem").hide();
+                $("#maskLayer").hide();
+                $("body").css({overflow:"visible"}); 
+            });
+    });
+
+</script>
+</body>
+</html>

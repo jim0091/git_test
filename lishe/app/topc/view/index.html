@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta charset="UTF-8">
+    <{header}>
+    <link rel="stylesheet" href="images/index.css">
+  </head>
+
+  <body class="is-index">
+    <div style="width: 1190px; margin:0 auto;">
+        <img src="images/banner1.png">
+    </div>
+    <{require file="block/header.html"}>
+    <!-- 主内容区 -->
+    <div class="seaview" style="background: #fff;">
+      <!-- <div class="wrap-lg"> -->
+      <div>
+        <div class="module">
+          <!-- <div class="row cover-content"> -->
+          <div class="row">
+            <!-- 
+            <div class="col-lg-3 box cover-silder-gg"> -->
+            <div class="box">
+              <{widgets id="main_focus"}>
+              <!-- <{widgets id="banners"}> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main" class="main index">
+      <div class="wrap-lg">
+        <div class="module">
+          <{widgets id="activity"}>
+        </div>
+      </div>
+    </div>
+      
+    <div id="main" class="main" style="background: #fff;">
+      <div class="wrap-lg">
+        <div class="topic">
+          <div class="topicLeft">
+            <a href="/activity/index.html" target="_blank">
+              <img width="588" height="261" src="./images/index_two_img.jpg" alt="">
+            </a>
+          </div>
+          <div class="topicRight">
+            <a href="./integral_average.html" target="_blank">
+              <img width="588" height="261" src="./images/index_two_img1.jpg" alt="">
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      
+<style>
+.mind-strategy {
+  background: #f6f4f4;
+}
+.mind-strategy .mind-strategy-title {
+  font-size: 18px;
+  color: #c7241d;
+  padding: 18px 0px 5px 0px;
+}
+.mind-strategy .mind-strategy-nav {
+  display: inline-table;
+  width: 1190px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main {
+  position: relative;
+  float: left;
+  width: 910px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li {
+  position: relative;
+  float: left;
+  width: 287px;
+  margin: 0px 12px 22px 0px;
+  top: 0px;
+  background: #fff;
+  border: 1px solid #bcbcbc;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-transform: scale(1.0);
+  -moz-transform: scale(1.0);
+  -o-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  transform: scale(1.0);
+  -webkit-transition: all .2s eas;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  transition: all .2s ease;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li:hover {
+  position: relative;
+  float: left;
+  width: 287px;
+  margin: 0px 12px 22px 0px;
+  top: -5px;
+  background: #fff;
+  border: 1px solid #bcbcbc;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-transform: scale(.99);
+  -moz-transform: scale(.99);
+  -o-transform: scale(.99);
+  -ms-transform: scale(.99);
+  transform: scale(.99);
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  transition: all .2s ease;
+  /* 设置阴影 */
+  -webkit-box-shadow: 0px 4px 9px #DADADA;
+  -moz-box-shadow: 0px 4px 9px #DADADA;
+  -o-box-shadow: 0px 4px 9px #DADADA;
+  -ms-box-shadow: 0px 4px 9px #DADADA;
+  box-shadow: 0px 4px 9px #DADADA;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom {
+  padding: 10px 12px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-title {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom p {
+  font-size: 12px;
+  color: #aaa;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn img {
+  position: relative;
+  top: 5px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn span {
+  margin: 0px 15px 0px 2px;
+  font-size: 14px;
+  color: #333;
+}
+</style>
+      <!-- 心意攻略 BEGIN -->
+      <div class="mind-strategy">
+        <div class="wrap-lg">
+          <p class="mind-strategy-title">心意攻略</p>
+          <div class="mind-strategy-nav">
+            <div class="mind-strategy-main">
+
+              <ul>
+                <{if $activity_list_start}>
+                <{foreach from=$activity_list_start item=group}>
+                <li>
+                  <a href="<{url action=topc_ctl_activity@activity_item_list id=$group.activity_id}>" target="_blank">
+                    <img width="287" height="132" src="<{$group.slide_images}>" alt="">
+                    <div class="cell-bottom">
+                      <div class="cell-bottom-title"><{$group.activity_name}></div>
+                      <p><{$group.activity_name}></p>
+                      <div class="cell-bottom-btn">
+                        <img src="./images/index_collect_icon.png" alt="">
+                        <span>88</span>
+                        <img src="./images/index_comment_icon.png" alt="">
+                        <span>88</span>
+                        <img src="./images/index_share_icon.png" alt="">
+                        <span>888</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <{/foreach}>
+                <{else}>
+
+                <{/if}>
+                <li>
+                  <a href="/circle_detail.html">
+                    <img width="287" height="132" src="./images/index_spare_img.jpg" alt="">
+                    <div class="cell-bottom">
+                      <div class="cell-bottom-title">愿你寻遍全世界的咖啡香</div>
+                      <p>120种进口咖啡优品</p>
+                      <div class="cell-bottom-btn">
+                        <img src="./images/index_collect_icon.png" alt="">
+                        <span>88</span>
+                        <img src="./images/index_comment_icon.png" alt="">
+                        <span>88</span>
+                        <img src="./images/index_share_icon.png" alt="">
+                        <span>888</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/circle_detail.html">
+                    <img width="287" height="132" src="./images/index_spare_img.jpg" alt="">
+                    <div class="cell-bottom">
+                      <div class="cell-bottom-title">愿你寻遍全世界的咖啡香</div>
+                      <p>120种进口咖啡优品</p>
+                      <div class="cell-bottom-btn">
+                        <img src="./images/index_collect_icon.png" alt="">
+                        <span>88</span>
+                        <img src="./images/index_comment_icon.png" alt="">
+                        <span>88</span>
+                        <img src="./images/index_share_icon.png" alt="">
+                        <span>888</span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+<style>
+.mind-strategy .mind-strategy-nav .mind-strategy-right {
+  position: relative;
+  float: right;
+  width: 244px;
+  padding: 12px 17px;
+  border: 1px solid #bcbcbc;
+  background: #F2F2F1;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-title {
+  font-size: 16px;
+  color: #c7241d;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom {
+  padding: 10px 12px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .title {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst .price {
+  float: left;
+  font-size: 18px;
+  color: #c7241d;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst .price i {
+  font-size: 14px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst .original-price {
+  margin-left: 14px;
+  text-decoration: line-through;
+  position: relative;
+  top: 4px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list {
+  background: #fff;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list .mind-strategy-right-list-nav {
+  padding: 10px;
+  width: 100%;
+  height: 90px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li {
+  border-bottom: 1px solid #dcdcdc;
+  overflow: hidden;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li.mind-strategy-right-list-more {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  padding: 15px 0px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li.mind-strategy-right-list-more img {
+  position: relative;
+  top: 3px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-img {
+  float: left;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right {
+  float: left;
+  padding-left: 8px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .title {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .price {
+  float: left;
+  font-size: 18px;
+  color: #c7241d;
+  margin: 0px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .price i {
+  font-size: 14px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .original-price {
+  text-decoration: line-through;
+  margin: 0px;
+}
+</style>
+            <!-- 礼舍橱窗 BEGIN -->
+            <div class="mind-strategy-right">
+              <span class="mind-strategy-right-title">礼舍橱窗</span>
+              <div class="mind-strategy-right-top">
+                    <a href="/item.html?item_id=5">
+                  <img width="243" height="215" src="./images/index_spare_img1.jpg" alt="">
+                  <div class="cell-bottom">
+                    <span class="title">伦敦学院风双肩包</span>
+                    <p class="price-lst">
+                      <span class="price"><i>￥</i>268</span>
+                      <span class="original-price">￥369</span>
+                    </p>
+                    <span class="sales">销量（<i>15</i>）</span>
+                  </div>
+                </a>
+              </div>
+              <div class="mind-strategy-right-list">
+                <ul>
+                  <li>
+                    <a href="/item.html?item_id=5">
+                      <div class="mind-strategy-right-list-nav">
+                        <div class="mind-strategy-right-list-img">
+                          <img width="90" height="90" src="./images/index_spare_img2.jpg" alt="">
+                        </div>
+                        <div class="mind-strategy-right-list-right">
+                          <p class="title">满天星台灯</p>
+                          <p class="price"><i>￥</i>210</p>
+                          <p class="original-price">￥278</p>
+                          <span class="sales">销量（<i>15</i>）</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/item.html?item_id=5">
+                      <div class="mind-strategy-right-list-nav">
+                        <div class="mind-strategy-right-list-img">
+                          <img width="90" height="90" src="./images/index_spare_img2.jpg" alt="">
+                        </div>
+                        <div class="mind-strategy-right-list-right">
+                          <p class="title">满天星台灯</p>
+                          <p class="price"><i>￥</i>210</p>
+                          <p class="original-price">￥278</p>
+                          <span class="sales">销量（<i>15</i>）</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/item.html?item_id=5">
+                      <div class="mind-strategy-right-list-nav">
+                        <div class="mind-strategy-right-list-img">
+                          <img width="90" height="90" src="./images/index_spare_img2.jpg" alt="">
+                        </div>
+                        <div class="mind-strategy-right-list-right">
+                          <p class="title">满天星台灯</p>
+                          <p class="price"><i>￥</i>210</p>
+                          <p class="original-price">￥278</p>
+                          <span class="sales">销量（<i>15</i>）</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="mind-strategy-right-list-more">
+                    <img src="./images/refresh_icon.png" alt="">
+                    <span>换一组看看</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- 礼舍橱窗 END -->
+          </div>
+        </div>
+      </div>
+      <!-- 心意攻略 END -->
+    </div>
+    <!-- 主内容区 END -->
+
+
+    <!-- Footer END -->
+    <{require file="block/footer.html"}>
+
+  </body>
+</html>

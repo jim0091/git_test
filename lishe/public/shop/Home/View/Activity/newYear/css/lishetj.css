@@ -1,0 +1,83 @@
+/* Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{text-decoration:none;}
+img{border:0;}
+
+html{min-width: 1200px;}
+body{width: 100%; height: 6260px; background: url("../images/bg.jpg") no-repeat center center;}
+.tjwrap{width: 1200px; height: 100%; margin: 0 auto; overflow: hidden;}
+.giftbags{width: 100%; height: 84px; margin-top: 936px; position: relative;}
+.baglink{display: block; width: 160px; height: 43px; position: absolute;}
+.giftbags .p5k{top: 40px; left: 31px;}
+.giftbags .p10k{top: 20px; left: 275px;}
+.giftbags .p15k{top: 0; left: 519px;}
+.giftbags .p20k{top: 20px; left: 763px;}
+.giftbags .p30k{top: 40px; left: 1007px;}
+.morebtn{width: 100%; height: 40px;}
+.checkmore{display: block; width: 115px; height: 100%; float: right;}
+.buybtn{width: 100%; height: 30px; position: relative;}
+.buylink{display: block; width: 60px; height: 100%; position: absolute;}
+.tobuy1{top: 0; left: 229px;}
+.tobuy2{top: 0; left: 514px;}
+.tobuy3{top: 0; left: 799px;}
+.tobuy4{top: 0; left: 1084px;}
+.xcmore{margin-top: 256px;}
+.xcbuy{margin-top: 411px;}
+.xymore{margin-top: 225px;}
+.xybuy{margin-top: 411px;}
+.ndmore{margin-top: 226px;}
+.ndbuy{margin-top: 401px;}
+.ndbuy2{margin-top: 380px;}
+.nzmore{margin-top: 218px;}
+.nzbuy{margin-top: 401px;}
+.nzbuy2{margin-top: 380px;}
+.lxmore{margin-top: 217px;}
+.lxbuy{margin-top: 401px;}
+.lxbuy2{margin-top: 380px;}
+.backtop{display: block; width: 100px; height: 110px; margin: 288px auto 0 auto;}
+#quicklink{width: 360px; height: 299px; background: url("../images/quicklink.png") no-repeat; position: fixed; top: 50%; margin-top: -150px; left: -190px;}
+.backhome, .mygift{display: block; width: 110px; height: 40px; margin-left: 72px;}
+.backhome{margin-top: 83px;}
+.mygift{margin-top: 16px;}

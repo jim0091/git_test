@@ -1,0 +1,49 @@
+﻿body{ background: #fff512;}
+.main{padding:0 4.5%;}
+section img,.title img{width: 100%;vertical-align: top;}
+.title{margin-top: 0.73rem;}
+.draw_bg2{position: relative;margin-top: 0.15rem; overflow: hidden;}
+.draw_bg2 #yellow_bg{width: 8.94rem;height: 8.94rem;left: 0;right: 0;margin:0 auto;}
+.draw_bg2 #jp_bg{position: absolute; width: 7.8rem;height: 7.8rem;top: 0.57rem;left: 0.58rem;}
+.draw_bg2 #start{position: absolute;z-index: 10;top: 2.6rem;left: 0;right: 0;margin:0 auto; width: 2.59rem;height: 3.18rem;}
+/*中奖名单*/
+.luck_list{margin-top: 0.3rem;padding:1.05rem 0.62rem 0; width: 9.06rem;height: 4.1rem;background: url(../images/name_list.png) no-repeat;background-size: cover;box-sizing: border-box;}
+.list_text{width: 3.63rem;color: #fff;}
+.list_text .list_text_tit{font-size: 0.25rem;}
+.list_text .list_text_tit span{display: inline-block;height: 0.26rem;line-height: 0.26rem;font-size: 0.28rem;}
+.list_text .sp1{width: 2rem;}
+.list_text .name_wrap{height: 81px;overflow: hidden;}
+.list_text .name_wrap ul li{height: 19px;line-height: 19px;	 border-bottom: 1px dashed #fff;font-size: 0.25rem;}
+.list_text .name_wrap ul li span{display: inline-block; }
+.list_text .name_wrap ul li .sp3{width: 1.8rem;}
+.clickshow{margin-top: 0.56rem;text-align: center;height: 0.4rem; overflow: hidden;}
+.clickshow img{width: 4.2rem;}
+.small_ba{margin-top: 0.5rem;}
+.small_ba a{display: block;}
+.small_ba img{width: 100%;}
+.product{position: relative; margin-top: 0.43rem;}
+.product a{position: absolute;width: 49%;height: 100%;top: 0;}
+.product .link1{left: 0;}
+.product .link2{right: 0;}
+.showmany{margin-top: 0.85rem;}
+.showmany img{width: 100%;}
+.gotop{margin-top: 0.63rem; text-align: center;}
+.gotop img{width: 2rem;}
+.footer img{width: 100%;vertical-align: top;}
+.prize_popup{display: none; position: fixed;z-index: 999;top: 50%;left: 50%;margin-left: -2.94rem;margin-top: -1.91rem; text-align: center;}
+.prize_popup img{width: 5.93rem;height: 3.92rem;}
+.prize_popup #close{position: absolute;right: 0.13rem;top: 0;width: 0.8rem;height: 0.8rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

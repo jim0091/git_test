@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>礼舍-添加收货地址</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<meta content="IE=11.0000" http-equiv="X-UA-Compatible" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<meta name="MobileOptimized" content="320">
+<link href="__PUBLIC__/wshop/css/base.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/wshop/css/editAddr.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/wshop/js/jquery.js" type="text/javascript"></script>
+<style>
+	 option{
+		font-size:12px;
+	}
+</style>
+</head>
+<body>
+
+
+
+<!-- <a href="javascript:window.history.go(-1);" class="backlast" style="margin-top:-20px;"></a> -->
+<div class="content" style="margin:0px auto; padding:5% 0%;font-size:12px;">
+	<div class="editAddr borderRadius">
+		<div class="editAddrTit" style="color:#cc0000;font-weight:normal;">添加收货地址</div>
+            <input type="hidden" value="{$currParam}" id="getCurrParam">  
+		<ul>
+			<li>
+				<label><font color="#ff9900">*</font>收货人：</label>
+				<input type="text" style="margin-top:-9px;" class="recName" value="" placeholder="请填写收货人姓名"/>
+			</li>
+
+			<li>
+				<label><font color="#ff9900">*</font>选择地区：</label>
+				<!-- <span id="province">广东省</span>&nbsp; -->
+				<select name="" id="province" style="margin-top:-8px;">
+					<option value="0" selected>请选择</option>	
+						<foreach name="provinceArr" item="row">
+						<option data-value="{$row['name']}" value="{$row['jd_id']}">{$row['name']}</option>
+					   </foreach>
+				</select>
+				<!-- <span id="city">深圳市</span> -->
+				<select name="" id="wxCity" style="display:none;margin-top:-8px;">
+					 
+				</select>
+
+				<select id="selBar" name="" style="display:none;margin-top:-8px;">
+					 
+				</select>
+
+                <select name="" id="wxArea" style="display:none;margin-top:0px;">
+                	
+                </select>
+			</li>
+			<li>
+				<label><font color="#ff9900">*</font>收货地址：</label>
+				<input type="text" class="recAddr" style="margin-top:-8px;" placeholder="请填写地址" value="" />
+			</li>
+			<li>
+				<label>邮政编码：</label>
+				<input type="text" class="recCode" style="margin-top:-8px;" placeholder="请填写邮政编码" value="" />
+			</li>
+			<li>
+				<label><font color="#ff9900">*</font>电话号码：</label>
+				<input type="text" class="recTel" style="margin-top:-8px;" placeholder="请填写电话号码" value="" />
+			</li>
+		</ul>
+	</div>
+	<div class="btnGp" align="center">
+		<a href="javascript:void(0);" id="setDefAddr" class="ckdAddr" isDefault="1" key="saveAddress"><span></span><font style="border:0px solid red;line-height:26px;">设为默认地址</font></a>
+		<input type="button" value="保存" class="saveBtn" style="background:#c7241d;"/>
+	</div>
+</div>
+<!-- footer  start -->
+<include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>   
+
+<!-- footer  end-->
+<script>
+	 $(function(){
+	 	 $("#province").bind('change','option',function(){
+	 	 	 $("#wxCity").hide();
+	 	 	 $("#selBar").hide();
+	 	 	 $("#wxArea").hide();
+
+	 	 	 $("#wxCity").empty();
+	 	 	 $("#selBar").empty();
+	 	 	 $("#wxArea").empty();
+	 	 	 $(this).attr("selected",true);
+	           var proItem = $(this).val();
+	           if(proItem > 0){
+	                $.post("{:U('Order/getCity')}","proItem="+proItem,function(msg){
+	                    if(msg != 0){
+	                    	   $("#wxCity").show();
+	                    	   $("#wxCity").empty();
+	                           $("#wxCity").append(msg);
+	                           $("#selBar").empty();
+	                           $("#wxArea").empty();
+	                       }
+	                });
+	           }           
+	 	 });
+
+	  $("#wxCity").bind('change','option',function(){
+	  	$("#selBar").hide();
+	 	$("#wxArea").hide();
+
+	    $("#selBar").empty();
+	    $("#wxArea").empty();
+        var cityItem = $(this).val();
+        $(this).attr("selected",true);
+	       if(cityItem > 0){
+
+	       	 $.post("{:U('Order/getArea')}","cityItem="+cityItem,function(msg){
+	                    if(msg != 0){
+	                    	   $("#selBar").show();
+	                    	   $("#selBar").empty();
+	                           $("#selBar").append(msg);
+	                           $("#wxArea").empty();
+	                       }
+	                });
+	       }  
+	  }); 
+
+	  $("#selBar").bind('change','option',function(){
+
+	 	 $("#wxArea").hide();
+	  	 $("#wxArea").empty();
+	  	 var areaItem = $(this).val();
+	  	 $(this).attr("selected",true);
+	  	 if(areaItem > 0){
+
+	  	 	$.post("{:U('Order/getTown')}","areaItem="+areaItem,function(msg){
+	  	 		 if(msg != 0){
+	  	 		 	$("#wxArea").show();
+                 	$("#wxArea").empty();
+                 	$("#wxArea").append(msg);
+	  	 		 }
+	  	 	});
+
+	  	 }
+	  });
+
+	 });
+</script>
+<script type="text/javascript" src="__PUBLIC__/wshop/js/editAddr.js"></script>
+</body>
+</html>

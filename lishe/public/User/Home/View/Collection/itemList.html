@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->
+			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="collectionItem">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">我的商品收藏</p>
+						<!-- <span class="favoriteManage">批量管理</span> -->
+					</div>
+					<!-- <div class="fsgoods-type">
+						<ul>
+							<li class="fstypes"><a href="">全部商品</a></li>
+							<li class="fstypes"><a href="">爽肤水(1)</a></li>
+							<li class="fstypes"><a href="">多用途锅(1)</a></li>
+							<li class="fstypes"><a href="">test</a></li>
+							<li class="fstypes"><a href="">test</a></li>
+							<li class="fstypes"><a href="">test</a></li>
+							<li class="fstypes"><a href="">多用途锅(1)</a></li>
+
+							<li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li><li class="fstypes"><a href="">多用途锅(1)</a></li>
+						</ul>
+						<span class="fs-showmore"><a href="javascript:;" class="fs-unfold">更多</a></span>
+					</div> -->
+					<ul class="collected-goods">
+						<volist name="itemList" id="vo">
+						<li class="favorite-goods">
+							<a class="goods-link" href="__SHOP__/Info/index/itemId/{$vo['item_id']}" target="_black">
+								<img class="fs-goodspic" src="{$vo['image_default_id']}_m.{:end(explode('.',$vo['image_default_id']))}">
+								<p class="fs-goodsname">{$vo['goods_name']}</p>
+								<p class="fs-goodsprice">￥{:number_format($vo['goods_price'],2)}</p>
+							</a>
+							<a class="deletefs" href="javascript:;" data-id="{$vo['gnotify_id']}"></a>
+						</li>
+						</volist>
+					</ul>
+				</div>
+				<div class="pages">
+					{$pagestr}
+				</div>
+				<style type="text/css">
+					.pages a.prev{width: 68px;}
+					.pages div a{margin-left: 5px;}
+					.pages a.next{width:68px;}
+					.pages .current {
+					    color: #FFF;
+					    background-color: #FF3737;
+					    display: inline-block;
+					    width: 38px;
+					    height: 38px;
+					    line-height: 38px;
+					    text-align: center;
+					    margin-left: 5px;
+					    cursor: default;
+					}
+				</style>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">
+	$(".deletefs").click(function(){
+		var gid = $(this).attr('data-id');
+		$.post("{:U('Collection/itemDel')}",{gid:gid},function(msg){
+			if(msg==1){
+				window.location.reload();
+			}else{
+				divPrompt('删除失败！');
+				return false;
+			}
+		});	
+	});
+</script>		
+</body>
+</html>

@@ -1,0 +1,182 @@
+<style type="text/css">
+.head { width:100%; background-color: #a12124; margin-bottom: 60px;}
+  .head .nav {width: 1190px;height: 100px;margin: 0 auto;}
+  .head .img {padding-top: 23px;padding-left: 24px; float: left;}
+  .head .p1 {float: left;font-size: 23px;color: white;margin: 0px 10px 0px 20px;line-height: 100px;} 
+  .head .right {float: right;}
+  .head .right .p {
+color: white;
+font-family: 微软雅黑;
+font-size: 16px;
+text-align: right;
+margin: 0px;
+padding: 0px;
+top: 16px;
+position: relative;
+  }
+  /* .head .right .img {margin-top: -14px;} */
+</style>
+<div class="head">
+  <div class="nav">
+      <img class="img" src="http://www.lishe.cn/themes/luckymall1/images/personal_logo.png">
+      <p class="p1">礼舍，是一种情感的交流</p>
+    <div class="right">
+        <p class="p">招商咨询热线</p>
+        <img class="img" src="http://www.lishe.cn/themes/luckymall1/images/index_phone.png">
+      </div>
+    </div>
+</div>
+
+
+
+<style>
+.signup-content-top {
+  position: relative;
+  width: 600px;
+  height: 100px;
+  margin: 0px auto 20px auto;
+}
+.signup-content-top .signup-content-top-sub {
+  float: left;
+  width: 110px;
+  margin: 0px 5px;
+  text-align: center;
+}
+.signup-content-top .signup-content-top-sub .signup-content-top-sub-num {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: #c7241d;
+  text-align: center;
+  font-size: 18px;
+  line-height: 30px;
+  color: #fff;
+  padding: 1px;
+  position: relative;
+  z-index: 1;
+}
+.signup-content-top .signup-content-top-sub .signup-content-top-sub-line {
+  width: 100%;
+  height: 10px;
+  background: #c7241d;
+  position: relative;
+  top: -20px;
+}
+.signup-content-top .signup-content-top-sub span {
+  position: relative;
+  font-size: 12px;
+  color: #c7241d;
+}
+
+.signup-content-top .prev .signup-content-top-sub-num {
+  background: #E29090;
+}
+.signup-content-top .prev .signup-content-top-sub-line {
+  background: #E29090;
+}
+.signup-content-top .prev span {
+  color: #E29090;
+}
+.signup-content-top .next .signup-content-top-sub-num {
+  background: #ccc;
+}
+.signup-content-top .next .signup-content-top-sub-line {
+  background: #ccc;
+}
+.signup-content-top .next span {
+  color: #ccc;
+}
+</style>
+
+<div class="signup-content-top">
+  <div class="signup-content-top-sub prev">
+    <div class="signup-content-top-sub-num">1</div>
+    <div class="signup-content-top-sub-line"></div>
+    <span>账号注册/登陆</span>
+  </div>
+  <div class="signup-content-top-sub">
+    <div class="signup-content-top-sub-num">2</div>
+    <div class="signup-content-top-sub-line"></div>
+    <span>提交申请资料</span>
+  </div>
+  <div class="signup-content-top-sub next">
+    <div class="signup-content-top-sub-num">3</div>
+    <div class="signup-content-top-sub-line"></div>
+    <span>审核通过/预约</span>
+  </div>
+  <div class="signup-content-top-sub next">
+    <div class="signup-content-top-sub-num">4</div>
+    <div class="signup-content-top-sub-line"></div>
+    <span>店铺开通</span>
+  </div>
+  <div class="signup-content-top-sub next">
+    <div class="signup-content-top-sub-num">5</div>
+    <div class="signup-content-top-sub-line"></div>
+    <span>店铺设置</span>
+  </div>
+</div>
+
+
+<style type="text/css">
+.left-side, .content-header {
+  display: none;
+}
+.right-side {
+  margin: 0;
+}
+.right-side .content {
+  padding: 0px;
+  background: #fff;
+}
+.right-side .content .table-bordered {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+}
+.right-side .content .table-bordered tr.info td {
+  color: #333;
+  background-color: #F5AFB1;
+}
+</style>
+
+<form action="<{url action=topshop_ctl_enterapply@apply}>" method="post" class="form-horizontal" role="form">
+    <div class="panel panel-outter">
+        <div class="panel-heading text-center">
+            <h4>商城入驻协议</h4>
+        </div>
+        <div class="panel-body agreement-panel">
+            <div>
+                <{$content}>
+            </div>
+            <div class="checkbox text-center form-group">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="license" value="true" required>我已阅读并同意以上协议
+                </label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg btn-width-md">下一步</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    function ajaxSubmit (e) {
+        var form = e.target;
+        e.preventDefault();
+        $.post(form.action, $(form).serialize(), function(rs) {
+            rs = JSON.parse(rs);
+            if(rs.error) {
+                $('#messagebox').message(rs.message);
+                return;
+            }
+            if(rs.success) {
+                $('#messagebox').message(rs.message, 'success');
+            }
+            if(rs.redirect) {
+                location.href = rs.redirect;
+            }
+        });
+    }
+</script>

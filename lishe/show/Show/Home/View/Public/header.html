@@ -1,0 +1,71 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	  $('li.mainlevel').mousemove(function(){
+	  $(this).find('ul').slideDown("2000");
+	  });
+	  $('li.mainlevel').mouseleave(function(){
+	  $(this).find('ul').slideUp("fast");
+	  });
+	  
+	});
+</script>
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/Retrospective.css">
+<div class="header">
+     <div class="heade-ct">
+        <p class="he-p">
+        <a href="/"><img <notempty name="logo">src="{$logo}"</notempty>></a>        	
+        </p>
+        <!--横向二级导航-->
+           <ul class="navLeft">
+               <li class="mainlevel"><a href="/">首页</a></li> 
+               <li class="mainlevel"><a href="{:U('Home/Index/about')}">关于我们</a>
+                  <ul class="sub_nav_01">
+                    <li><a href="{:U('Home/Index/about')}">公司简介</a></li>
+                    <li><a href="{:U('Home/Index/organization')}">企业架构</a></li>
+                   </ul>
+               </li>
+               <li class="mainlevel"><a href="{:U('Home/Index/partner')}">伙伴动态</a>
+                  <ul class="sub_nav_01">
+                    <li><a href="{:U('Home/Index/activity')}">活动回顾</a></li>
+                    <li><a href="{:U('Home/Index/important')}">头号人物</a></li>
+                    <li><a href="{:U('Home/Index/super')}">超级新人王</a></li>
+                    <li><a href="{:U('Home/Index/birthday')}">月度寿星</a></li>
+                   </ul>
+               </li> 
+               <li class="mainlevel"><a href="{:U('Home/Index/industry')}">新闻中心</a>
+                    <ul class="sub_nav_01">
+                    <li><a href="{:U('Home/Index/industry')}">行业聚焦</a></li>
+                    <li><a href="{:U('Home/Index/coverage')}">媒体报道</a></li>
+                    <li><a href="{:U('Home/Index/notice')}">企业公告</a></li>
+                   </ul>
+               </li>    
+               <li class="mainlevel"><a href="{:U('Home/Item/index')}">企业福利</a></li>   
+            </ul>
+        <!--end-->
+            <ul class="navRight">
+               <li class="ur">
+				<empty name="userId">
+					
+		            <a href="{:U('Home/Login/index')}">个人登录</a>
+					
+					<else/>
+	               	<span style="color: white;font-size: 18px;">{$userName}&nbsp;</span>,<a href="{:U('Home/Login/logout')}">退出<span><img src="__PUBLIC__/companyShow/images/Showjt.png"></span></a>
+		            <!--<li><a href="{:U('Home/Login/logout')}" style="color:#c7241d">名字，退出</a><span>|</span></li>-->
+					
+				</empty>               	
+               	
+               </li>
+               <li class="ur2"><a href="http://www.lishe.cn/shop.html" target="_blank"><img src="__PUBLIC__/companyShow/images/shopLogo.png">进入商城</a></li>
+            </ul>
+     </div>
+     <div style="clear:both;"></div>
+ </div>
+ 	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>

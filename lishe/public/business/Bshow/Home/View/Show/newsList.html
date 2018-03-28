@@ -1,0 +1,116 @@
+
+       
+       
+       <p class="tank-p"><span>
+       	<empty name="newsLocal">
+       			<empty name="sets">
+       				<else/>
+       				设置新闻头条
+       			</empty>
+       		<else/>
+	       	{$newsLocal}
+       	</empty>
+       
+       </span>
+           	<a href="javascript:void(0);" >
+           		<img src="__PUBLIC__/companyShow/images/sFind.png" onclick="search()">
+           	</a>
+           	<span class="tk-put">
+           	<input type="text" class="text3" placeholder="搜索新闻" id="keyword"/></span></p>
+              <div class="tab-right">
+                <div  style="display:block">
+                   <table cellspacing="0" style="width: 95%;margin-left: 25px;" id="ajax_lists">
+                     <tr class="tab-tit">
+                       <td></td>
+                       <td>新闻</td>
+                       <td>新闻级别</td>
+                       <td>发布时间</td>
+                     </tr>
+                     <volist name="news" id="vo">
+		                     <tr class="chbg">
+		                       <td style="width:120px;"><img src="{$vo.pic}" /></td>
+		                       <td style="width:300px; text-align:left; padding-left:10px;">
+		                       	<p class="ch-p">{$vo.title}</p>
+	           					<p class="ch-p2">{$vo.vice_title}</p>
+	           			<td class="ch-tr">
+                       	 	<a href="javascript:void(0);"  class="rankName"><span>{$vo.rankName}</span></a>
+	           				<select class="text2 rankchange" style="width: auto; display: none;border-radius: 5px;border: #c7241d solid 1px; "  id="{$vo.news_id}">
+		                       <option value="1"
+		                       		<if condition="$vo.rank eq 1">
+		                       			selected="selected"
+		                       		</if>
+		                       	
+		                       	>普通</option>
+		                       <option value="2" 
+		                       	
+		                       		<if condition="$vo.rank eq 2">
+		                       			selected="selected"
+		                       		</if>	
+		                       		
+		                       	>头条新闻</option>
+		                       <option value="3"
+		                       	
+		                       		<if condition="$vo.rank eq 3">
+		                       			selected="selected"
+		                       		</if>		                       	
+		                       	>置顶头条</option>
+                     		  </select>
+	           			</td>		
+		                  </td>
+		                       <td class="ch-tr">{$vo.creat_time}<p style="padding-top:10px;">
+		                       	
+                   	       			<empty name="sets"> 
+                   	       				<!--不是新闻头条设置页面过来的时候显示这些操作-->
+				                       	<a href="{:U('Home/Show/newsCenter',array('newsId'=>$vo['news_id']))}" target="showls" onclick="showifm()">修改</a>
+				                       	<a href="javascript:void(0);" onclick="del({$vo.news_id})">删除</a>
+					       			</empty>
+		                       
+		                       </p></td>
+		                       
+		                     </tr>
+                      </volist>	
+  
+                   </table>
+                   <ul class="tab-fy">
+					<li class="pager" style="cursor: pointer;">{$pagestr}</li>
+                   </ul>
+                </div>
+              </div>
+             <!--end-->
+ 
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+ 
+ <script>
+  	$(function(){
+  		$('.rankName').on('click',function(){
+  			$(this).hide();
+			$(this).next(".rankchange").slideDown("fast");
+  		});		
+   		$('.rankchange').on('change',function(){
+   			
+//			$(this).next(".rankchange").slideDown("fast");
+			var toUrl="{:U('Home/Show/changeNewsRank')}"; 
+   			var news_id=$(this).attr("id");
+   			var category=$(this).val();
+   			$(this).focusout(function(){
+   				var thisText=$(this).find("option:selected").text()
+				$(this).hide();
+				$(this).prev(".rankName").text(thisText);
+				$(this).prev(".rankName").slideDown("fast");
+   			});
+   			$.ajax({
+   				type:"get",
+   				url:toUrl,
+   				data:'newsId='+news_id+'&rank='+category,
+   				success:function(data){
+// 					alert(data);
+   				}
+   				
+   			});
+   			
+  		});	 		
+  		
+  	});
+  	
+  	
+  </script>         

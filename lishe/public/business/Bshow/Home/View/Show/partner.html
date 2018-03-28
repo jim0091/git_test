@@ -1,0 +1,286 @@
+
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/partnerIndex.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".{$show}").show();
+
+	})
+</script>
+
+         <!--轮播海报管理-->
+         <div class="CarouselPt" style="display: none;">
+             <p class="Cp-tit">轮播海报管理</p>
+             <!--轮播海报-->
+             <div class="CP-one">
+                 <p class="cpo">轮播海报一</p>   
+                 <ul class="cpo-left">
+                 <li class="cpo-btn"><a href="javascript:void(0)" onclick="poster1File.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>轮播图最佳尺寸1600PX*450PX</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt">
+	                    	<img id="showposter1" 
+                    	<notempty name="posterPic.0">
+                    		src="{$posterPic[0]}"
+                    	</notempty>  	                    		
+	                    		width="300px">
+
+                    
+                    </li>
+                    <li class="cpo-pt">1600PX*450PX</li>
+                 </ul>
+         		<input type="file" style="display: none;" id="poster1File" name="poster1File" onchange="uploadPic('poster1');"/>
+				<input type="hidden" id="poster1">
+				<input type="hidden" id="localposter1" value="0">
+                 <p class="cpo-btn2"><a href="javascript:void(0)" class="sure" onclick="upload('poster1')">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></p>
+             </div>
+             <div class="CP-one">
+                 <p class="cpo">轮播海报二</p>   
+                 <ul class="cpo-left">
+                 <li class="cpo-btn"><a href="javascript:void(0)" onclick="poster2File.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>轮播图最佳尺寸1600PX*450PX</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt">
+	                    	<img id="showposter2"                 
+                    	<notempty name="posterPic.1">
+                    		src="{$posterPic[1]}"
+                    	</notempty>  	                    		
+	                    		 width="300px">
+
+                    
+                    </li>
+                    <li class="cpo-pt">1600PX*450PX</li>
+          			<input type="file" style="display: none;" id="poster2File" name="poster2File" onchange="uploadPic('poster2');"/>
+					<input type="hidden" id="poster2">    
+					<input type="hidden" id="localposter2" value="1">
+                 </ul>
+                 <p class="cpo-btn2"><a href="javascript:void(0)" class="sure" onclick="upload('poster2')">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></p>
+             </div>
+             <div class="CP-one">
+                 <p class="cpo">轮播海报三</p>   
+                 <ul class="cpo-left">
+                 <li class="cpo-btn"><a href="javascript:void(0)" onclick="poster3File.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择新闻</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>轮播图最佳尺寸1600PX*450PX</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt">
+                    	
+	                    	<img id="showposter3" 
+                    	<notempty name="posterPic.2">
+                    		src="{$posterPic[2]}"
+                    	</notempty>  	                    		
+	                    		width="300px">
+                    </li>
+                    <li class="cpo-pt">1600PX*450PX</li>
+          			<input type="file" id="poster3File" style="display: none;" name="poster3File" onchange="uploadPic('poster3');"/>
+					<input type="hidden" id="poster3"> 
+					<input type="hidden" id="localposter3" value="2">
+                 </ul>
+                 <p class="cpo-btn2"><a href="javascript:void(0)" class="sure" onclick="upload('poster3')">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></p>
+             </div>
+         </div>
+
+
+
+
+<script>
+ 		function uploadPic(types){
+		var inputName = types+'File';
+		var img=$('#'+types).val();
+		var delurl="__APP__/CompanyShow/delImg/channel/brand/file/"+img;
+		if(img!=''){
+			$.get(delurl, function(result){
+			});
+		}
+		urls="__APP__/CompanyShow/uploadImg/channel/brand/inputName/"+inputName+"/types/"+types;
+		$.ajaxFileUpload ({
+			url :urls,
+			secureuri :false,
+			fileElementId :inputName,
+			dataType : 'text',
+			success : function (data,status){
+				if(data!='undefined'){
+					var dataArr=eval("("+data+")");
+					if(dataArr[0]<=0){
+						if(dataArr[0]==-4){
+							alert(dataArr[1]);
+						}else{
+							alert('Error：'+dataArr[1]);
+						}
+					}else{
+						$("#show"+types).attr("src","/business/"+dataArr[1]);
+						$('#'+types).val(dataArr[1]);
+					} 
+				} 
+			}, 
+			error: function (data, status, e){
+				alert('Faild！');
+			}
+		});
+	}
+	function upload(types){
+		var fileload=$("#"+types).val();
+		var local=$("#local"+types).val();
+		if(!fileload){
+			alert("还未上传海报图片!");
+			return false;
+		}else{
+		urls="__APP__/Show/uploadres";
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'file='+fileload+'&local='+local,
+				success:function(data){
+					if(data){
+						
+						alert(data);
+					}
+				}
+			});
+		}
+	}
+ 	
+ </script>        
+         
+         
+         
+         
+         
+         
+         
+         <!--头条新闻管理-->
+         <div class="headline" style="display: none;" >
+            <p class="Cp-tit">头条新闻管理</p>
+             <div class="hedl">
+               <p class="hedp">头条新闻一</p>
+                 <ul class="hed-ul">
+                  <li class="cs-des"><span style="color:#F00; padding-left:15px;">*</span>标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="color:#F00">*</span>副标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="padding-left:20px;">链接：</span><input type="text" class="text"/></li>
+                  <li class="cs-des2">（如果没有，可以不写，格式如：http://www.lishe.cn/）</li>
+                  <li class="hedl-btn"><a href="javascript:void(0)" class="tank"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择新闻</a></li>
+                  <li class="cpo-btn2"><a href="javascript:void(0)" class="sure">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></li>
+                 </ul>
+             </div>
+             <div class="hedl">
+               <p class="hedp">头条新闻二</p>
+                 <ul class="hed-ul">
+                  <li class="cs-des"><span style="color:#F00; padding-left:15px;">*</span>标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="color:#F00">*</span>副标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="padding-left:20px;">链接：</span><input type="text" class="text"/></li>
+                  <li class="cs-des2">（如果没有，可以不写，格式如：http://www.lishe.cn/）</li>
+                  <li class="hedl-btn"><a href="javascript:void(0)" class="tank"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择新闻</a></li>
+                  <li class="cpo-btn2"><a href="javascript:void(0)" class="sure">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></li>
+                 </ul>
+             </div>
+             <div class="hedl">
+               <p class="hedp">头条新闻三</p>
+                 <ul class="hed-ul">
+                  <li class="cs-des"><span style="color:#F00; padding-left:15px;">*</span>标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="color:#F00">*</span>副标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="padding-left:20px;">链接：</span><input type="text" class="text"/></li>
+                  <li class="cs-des2">（如果没有，可以不写，格式如：http://www.lishe.cn/）</li>
+                  <li class="hedl-btn"><a href="javascript:void(0)" class="tank"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择新闻</a></li>
+                  <li class="cpo-btn2"><a href="javascript:void(0)" class="sure">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></li>
+                 </ul>
+             </div>
+             <div class="hedl">
+               <p class="hedp">头条新闻四</p>
+                 <ul class="hed-ul">
+                  <li class="cs-des"><span style="color:#F00; padding-left:15px;">*</span>标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="color:#F00">*</span>副标题：<input type="text" class="text"/></li>
+                  <li class="cs-des"><span style="padding-left:20px;">链接：</span><input type="text" class="text"/></li>
+                  <li class="cs-des2">（如果没有，可以不写，格式如：http://www.lishe.cn/）</li>
+                  <li class="hedl-btn"><a href="javascript:void(0)" class="tank"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择新闻</a></li>
+                  <li class="cpo-btn2"><a href="javascript:void(0)" class="sure">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></li>
+                 </ul>
+             </div>
+         </div>
+         
+  
+         <!--弹出层选择新闻-->
+          <div id="mianEmp">
+             <p class="tank-p"><span>选择新闻</span><a href="javascript:void(0)"><img src="__PUBLIC__/companyShow/images/sFind.png"></a><span class="tk-put"><input type="text" class="text2" placeholder="搜索新闻"/></span></p>
+             <div class="tk-left">
+                <ul class="tk-ul">
+                  <li>行业聚焦</li>
+                  <li>媒体报道</li>
+                  <li>企业公告</li>
+                </ul>
+             </div>
+             <div class="tk-right">
+               <table cellspacing="0">
+                 <tr class="tk-th">
+                   <td>&nbsp;&nbsp;姓名</td>
+                   <td>发布时间</td>
+                 </tr>
+                 <tr class="tk-tr">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr trbg">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr trbg">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr trbg">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr trbg">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+                 <tr class="tk-tr trbg">
+                   <td>【礼业观察】礼物说，B轮过后</td>
+                   <td>2016-3-14</td>
+                 </tr>
+               </table>
+               <ul>
+                 <li class="fy"><a href="javascript:void(0)">1</a></li>
+                 <li class="fy"><a href="javascript:void(0)">2</a></li>
+                 <li class="fy"><a href="javascript:void(0)">3</a></li>
+                 <li class="fy"><a href="javascript:void(0)">4</a></li>
+                 <li class="fy">...</li>
+                 <li class="fy"><a href="javascript:void(0)">下一页</a></li>
+                 <li class="sure2"><a href="javascript:void(0)">确定</a></li>
+               </ul>
+             </div>
+          </div>
+          <script type="text/javascript">
+                  $('.tank').on('click', function(){
+                            layer.open({
+                                type: 1,
+                                title:false,
+                                area: ['auto', 'auto'],
+                                shadeClose: true, 
+                                content: $("#mianEmp")
+                            });
+                        });
+             </script>

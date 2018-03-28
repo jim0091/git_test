@@ -1,0 +1,14 @@
+<volist name="itemList" id="item">
+	<li>
+		<div class="product_img">
+			<a href="{:U('Info/index',array('itemId'=>$item['item_id']))}">
+				<img src="{$item.image_default_id}_s.{:end(explode('.',$item['image_default_id']))}">
+			</a>
+		</div>
+		<p class="product_name">{$item['title']}</p>
+		<div class="pro_item">
+			<span class="fl point"><em>{$item['price']*100}</em>积分</span>
+			<span class="fr shoping_cart_ls p2Cart" itemId="{$item['item_id']}" shopId="{$item['shop_id']}"></span>
+		</div>
+	</li>
+</volist>

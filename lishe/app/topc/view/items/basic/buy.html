@@ -1,0 +1,213 @@
+ <div class="choose">
+
+<!-- 品牌 -->
+  <div class="choose-spec1" id="spec_select1">
+    <div class="dt1" style="  width: 85px;  height: 30px;  font-size: 14px;  float: left;">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</div>
+    <div class="dd choose-item-wrap1"  style="  width: 100px;  float: left;">
+<a href="<{url action=topc_ctl_shopcenter@index shop_id=$item.shop_id}>" class="btn btn-sm btn-import" style="border: 1px solid red;"><span style="background: white;"><span style="color: red;">进入店铺</span></span><span style="  margin: 0px;  background: red;  padding: 2px;  width: 17px;  text-align: center; font-weight: bold;">&gt;</span></a>
+
+    </div>
+  </div>
+
+<!-- <!-- 配送 -->
+<!-- <div class="choose-spec1" id="spec_select1">
+   
+    <div class="dt1" style="  width: 85px;  height: 30px;  font-size: 16px;  float: left;">配送</div>
+
+    <div class="dd choose-item-wrap1"  style="  width: 100px;  float: left;">
+
+
+       <span style="color: black;  font-size: 17px;">圆通/EMS</span>
+       
+
+    </div>
+
+  </div> -->
+
+
+  <!-- 收货地区 -->
+<div class="choose-spec1" id="spec_select1">
+   
+    <div class="dt1" style="  width: 85px;  height: 30px;  font-size: 14px;  float: left;">收货地区：</div>
+
+    <div class="dd choose-item-wrap1" style="width: 465px;  float: left;font-size: 14px;color: black;">
+       <span ><span style="color: red;">全国</span>地区内发货（快递到市到县不到镇村）</span>
+    </div>
+
+  </div>
+	<{if $item.shop_id == 10}>
+   <!-- 20160612 开始 -->
+   <input type="hidden" name="item_id" value="<{$item.item_id}>" id="item_id">
+   
+   <div class="choose-spec1" id="spec_select1">  
+    <div class="dt1" style="  width: 85px;  height: 30px;  font-size: 14px;  float: left;">配&nbsp;送&nbsp;至：</div>
+    <div class="dd choose-item-wrap1" style="width: 465px;  float: left;font-size: 14px;color: black;border:0px solid red;">     
+      <link type="text/css" rel="stylesheet" href="/app/topc/jd_addr/css/css.css" />
+      <ul id="list1" style="width:620px;margin:0px auto 0 auto;0px solid red;">
+  <li id="summary-stock">
+    <div class="dd">
+      <div id="store-selector" style="border:0px solid red;">
+        <div class="text" style=""><div></div><b></b></div>
+        <div onclick="$('#store-selector').removeClass('hover')" class="close"></div>
+      </div>&nbsp;<strong><span class="lishe_goods_for"></span></strong>
+      <div id="store-prompt"><strong></strong></div>
+    </div>
+  </li>
+</ul>
+<script src="/app/topc/jd_addr/js/location.js"></script>
+    </div>
+  </div>
+  <{/if}>
+   <!-- 20160612 结束 -->
+  <{if $item.valid == true}>
+  <{if $item.spec_desc}>
+  <div class="choose-spec" id="spec_select" style="width: 700px;">
+   <{foreach from=$item.spec_desc item=spec key=spec_id}>
+    <div class="dt" style="  width: 85px;  height: 30px;  font-size: 14px;  float: left;"><{$item.spec.specName.$spec_id}>：</div>
+    <div class="dd choose-item-wrap">
+     
+<!--<{foreach from=$spec item=spec_value key=spec_value_id }>
+      <div class="choose-item" data-id='<{$spec_value_id}>' title="<{$spec_value.spec_value}>">
+        <{if $spec_value.spec_image_url}>
+        <img src="<{$spec_value.spec_image_url|storager:"t"}>" background='<{$spec_value.spec_image_url}>'>
+        <{else}>
+        <{$spec_value.spec_value}>
+        <{/if}>
+      </div>
+      <{/foreach}>-->
+ <{foreach from=$spec item=spec_value key=spec_value_id }>
+      <div class="choose-item" data-id='<{$spec_value_id}>' title="<{$spec_value.spec_value}>">
+        <{if $spec_value.spec_image_url}>
+        <a href="<{$spec_value_id}>"><img src="<{$spec_value.spec_image_url|storager:"t"}>"  background='<{$spec_value.spec_image_url}>'  width="25" height="25"></a>
+        <{else}>
+        <a href="<{$spec_value_id}>"><i><{$spec_value.spec_value}></i></a>
+        <{/if}>
+        <span class="icon icon-dropdown">
+          <i class="icon icon-checkmark-d"></i>
+        </span>
+      </div>
+      <{/foreach}>
+    
+</div>
+    <{/foreach}>
+  </div>
+  <{/if}>
+  <{if  $item.realStore > 0}>
+  <div class="choose-quantity" style="    width: 700px;">
+    <div class="dt" style="  width: 85px;  height: 30px;  font-size: 14px;  float: left;">数量：</div>
+    <div class="dd">
+       <div class="buy-number">
+          <a href="javascript:void(0);" class="btn btn-add"><i class="icon icon-chevron-up"></i></a>
+          <a href="javascript:void(0);" class="btn btn-reduct"><i class="icon icon-chevron-down"></i></a>
+          <input type="text"  name="item[quantity]" min="1" max="<{if $activityDetail.activity_info.buy_limit}><{$activityDetail.activity_info.buy_limit}><{else}><{$item.realStore}><{/if}>" value="1" class="action-quantity-input">
+        </div>
+        <div class="buy-info">请选择配送地区查看是否有货</div>
+    </div>
+  </div>
+  <{/if}>
+  <{/if}>
+<!--   <div class="choose-remind clearfix">
+    <div class="dt">您已选择：</div>
+    <div class="dd">
+<span class="choose-curr-spec"></span>&nbsp;<span class="choose-curr-size"></span>&nbsp;<span class="choose-curr-num">1</span>件</div>
+  </div> -->
+  <div class="btn-wrap" id="disableBuy" style="display: none">
+  	<button type="button" class="btn btn-simple btn-xl action-notify">
+      <span><span>所选地区无货</span></span>
+    </button>
+  </div>
+  <div class="btn-wrap" id="goToBuy">
+    <input type="hidden" name="item[sku_id]" value="<{$item.default_sku_id}>">
+    <button type="button" class="btn btn-simple btn-xl action-notify<{if $item.valid}> hide<{/if}>">
+      <span><span>暂不销售</span></span>
+    </button>
+    <{if $item.realStore > 0}>
+      <{if $nologin!=1}>
+        <a href="javascript:void()" class="btn btn-import btn-xl btn-fastbuy btn-fastbuy-withoutlogin<{if !$item.valid}> hide<{/if}>"><span><span>立即兑换</span></span></a>
+        <a style="border:2px solid #C7241D;border-radius:6px;" href="<{url action=topc_ctl_passport@signin next_page=$next_page}>" class="btn btn-caution btn-xl btn-addcart<{if !$item.valid}> hide<{/if}>"><span style="color: #C7241D;background: white;"><span>加入购物车</span></span></a>
+        <{else}>
+        <button type="submit" class="btn btn-import btn-xl btn-fastbuy action-fastbuy<{if !$item.valid}> hide<{/if}>"><span><span>立即兑换</span></span></button>
+        <a style="border:2px solid #C7241D;border-radius:6px;" href="<{url action=topc_ctl_cart@add}>" class="btn btn-caution btn-xl btn-addcart action-addcart<{if !$item.valid}> hide<{/if}>"><span style="color: #C7241D;background: white;"><span>加入购物车</span></span></a>
+      <{/if}>
+      <{else}>
+    	<button type="button" class="btn btn-simple btn-xl action-notify">
+      <span><span>暂不销售</span></span>
+    	</button>
+    <{/if}>
+
+    <{*if $item.valid && $item.realStore == 0*}>
+    <a href="javascript:void(0);" class="btn btn-caution btn-xl btn-addcart action-open-dialog  <{if !$item.valid || $item.realStore > 0}> hide <{/if}>">
+      <span><span>到货通知</span></span>
+    </a>
+    <!--注册协议弹框-->
+    <div id="dialog" style="display:none;">
+      <div class="agreement">
+        <div >该货品暂时缺货，请在下面输入您的邮箱地址，当我们有现货供应时，我们会发送邮件通知您！</div>
+        <div>
+          <ul>
+            <li class="form-row">
+              <label class="form-label"><em>*</em>邮箱地址：</label>
+              <span class="form-act has-figure">
+                <input type="text" name="email" id="ea" value="" placeholder="邮箱号" class="w180" >
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="detail-dialog-btn">
+          <a href class="btn btn-simple btn-xl dialog-btn-submit"><span><span>提交</span></span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<script>
+$('.action-open-dialog').click(function (e) {
+    e.preventDefault();
+    $('#dialog').dialog({
+        width: 400,
+        height: 230,
+        title:'到货通知',
+        modal:true,
+        onShow: function(){
+          var self = this;
+          this.content.find('.dialog-btn-submit').click(function (e) {
+            var email = self.content.find('input[name=email]').val();
+            if(confirm("确定要提交吗？")){
+                var url = "<{url action=topc_ctl_memberItem@userNotifyItem}>";
+                var shopId = "<{$item.shop_id}>";
+                var item_id= "<{$item.item_id}>";
+                var sku_id = $('input[name="item[sku_id]"]').val();
+                var data = 'shop_id='+shopId+'&item_id='+item_id+'&sku_id='+sku_id+'&email='+email;
+                console.log(data);
+                $.post(url,data,function(rs){
+                  if(rs.error) {
+                    Message.error(rs.message);
+                  }else{
+                    Message.success(rs.message);
+                  }
+                });
+            }
+          });
+        }
+    });
+});
+$('.btn-fastbuy-withoutlogin').click(function(){
+  var item_id= "<{$item.item_id}>";
+  var nextUrl = '<{url action=topc_ctl_default@redirect}>';
+  var aimUrl  = '<{url action=topc_ctl_item@index item_id=$item.item_id}>';
+  var signinUrl = '<{url action=topc_ctl_passport@signin}>';
+  var paramsUrl = 'mode=fastbuy&';
+  var postData = paramsUrl + $('#items_action_form').serialize();
+  // nextUrl = nextUrl + '?method=post&json_response=true&url=' + aimUrl + '&' + postData;
+  nextUrl = aimUrl + '&' + postData;
+  window.location.href=signinUrl + '?next_page=' + escape(nextUrl);
+
+
+
+});
+
+</script>
+
+ 

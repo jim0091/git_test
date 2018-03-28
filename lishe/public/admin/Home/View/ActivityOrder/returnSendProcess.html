@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>退款</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb">
+	<strong style="color: #5a98de;">订单状态：{$orderInfo.orderStatus}</strong>
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+  <div class="form form-horizontal">
+	  <div class="row cl">
+	      <label class="form-label col-2">订单号：</label>
+	      <div class="formControls col-5">
+			<!--订单详情-->
+			<a onclick="member_edit('{$orderInfo.tid}订单详情','{:U('Home/Order/activityDetail',array('tid'=>$orderInfo['atid']))}','4','','350')">
+		        <strong style="color: #5a98de;">{$orderInfo.atid}</strong>
+			</a>
+			<!--订单详情-->	        
+	      </div>
+	      <div class="col-5"></div>
+	    </div>
+    <div class="row cl">
+      <label class="form-label col-2">售后类型：</label>
+      <div class="formControls col-5">
+       {$orderInfo.serviceStatus}
+      </div>
+      <div class="col-5"></div>
+    </div>  
+    <div class="row cl">
+      <label class="form-label col-2">管理员备注：</label>
+      <div class="formControls col-10">
+       {$orderInfo.cancel_reason}
+      </div>
+    </div>  
+	<div style="border-bottom: 1px solid #e5e5e5;padding-top: 10px;"></div>
+<form action="__URL__/returnSendProcessDeal" method="post">
+    <div class="row cl">
+    <div class="row cl">
+      <label class="form-label col-2">支付订单总额：</label>
+      <div class="formControls col-5">
+      	 ￥{$orderInfo.payed_fee}
+      </div>
+      <div class="col-5"></div>
+    </div>     	
+      <label class="form-label col-2">申请售后商品：</label>
+      <div class="formControls col-10">
+      	<volist name="items" id="item">
+    	<input type="hidden" value="{$item.order_id}" name="oids[]">
+	        	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;"  class="itemList" data-price="{$item['price']*$item['aftersales_num']}">
+	        		<if condition="$item.aftersales_num gt 0">
+	        			<if condition="$item.aftersales_status eq 'SUCCESS'">
+		        			<span class="c-red">已退{$item['aftersales_num']}件</span>
+	        			<else/>
+		        			<small class="c-red">申请售后{$item['aftersales_num']}件</small>
+	        			</if>
+	        		</if>
+		      		<if condition="$item.disabled eq 1">
+    					<input type="hidden" value="1" name="refundsType">
+		        		<span class="label radius">已取消(退款)</span>
+			        </if>
+			        <small style="color: #5a98de;">(总{$item['num']}件,总值<span class="c-red" style="font-size: large;">￥<?php echo $item['price']*$item['num'] ?></span>)</small>
+	        		<span title="{规格：$item['spec_nature_info']}">{$item['item_name']}</span>
+	        	</p>
+        		<p>
+        			<notempty name="item.reason">
+	        			<small style="color:#666;">申请理由：{$item.reason}</small>
+	        			<br />
+        			</notempty>
+        			<notempty name="item.description">
+	        			<small style="color:#666;">申请描述：{$item.description}</small>
+	        			<br />
+        			</notempty>  
+        			<notempty name="item.evidence_pic">
+	        			<small style="color:#666;">上传的凭证:</small>
+	        			<a href="{$item.evidence_pic}" target="_blank">
+	        				<img src="{$item.evidence_pic}" width="100px" style="max-height: 100px;overflow: hidden;"/>
+	        			</a>
+        			</notempty>         			
+        		</p>
+        </volist>
+      </div>
+    </div>   
+	<div style="border-bottom: 1px solid #e5e5e5;padding-top: 10px;"></div>
+    <div class="row cl">
+      <label class="form-label col-2">回寄信息：</label>
+      <div class="formControls col-10">
+    		<p>
+    			<if condition="empty($sendInfo)">
+	    			<small style="color:#666;">用户拒收，请等待商品的返回</small>
+    			<else/>
+	    			<notempty name="addrInfo.name">
+		    			<small style="color:#666;">收货人：{$addrInfo.name}</small>
+		    			<br />
+		    		</notempty>
+	    			<notempty name="addrInfo.phone">
+		    			<small style="color:#666;">收货人手机号：{$addrInfo.phone}</small>
+		    			<br />
+		    		</notempty>	
+	    			<notempty name="addrInfo.addr">
+		    			<small style="color:#666;">收货人地址：{$addrInfo.addr}</small>
+		    			<br />
+		    		</notempty>		
+	    			<notempty name="sendInfo.logi">
+		    			<small style="color:#666;">快递公司：{$sendInfo.logi}</small>
+		    			<br />   
+		    		</notempty>		
+	    			<notempty name="sendInfo.logi_no">
+		    			<small style="color:#666;">快递单号：{$sendInfo.logi_no}</small>
+		    			<br />    
+		    		</notempty>			    		
+	    			<small style="color:#666;">用户说明：{$sendInfo.content}</small>
+	    			<br />     			
+	    			<small style="color:#666;">上传的凭证:</small>
+	    			<notempty name="sendInfo.evidence_pic">
+		    			<a href="{$sendInfo.evidence_pic}" target="_blank">
+		    				<img src="{$sendInfo.evidence_pic}" width="100px" style="max-height: 100px;overflow: hidden;"/>
+		    			</a>
+	    			</notempty>
+    			</if>
+    		</p>
+      </div>
+    </div> 
+
+
+	<div style="border-bottom: 1px solid #e5e5e5;padding-top: 10px;"></div>
+    <input type="hidden" value="{$orderInfo.atid}" name="tid">
+    
+	<notempty name="afterType">
+		 <table class="table table-border table-bordered table-bg mt-20">
+		    <thead>
+		      <tr>
+		        <th colspan="2" scope="col" style="background-color: #5EB95E;color: white;">收货人信息</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td width="150">收货人</td>
+		        <td><span>{$info.receiver_name}</span></td>
+		      </tr>
+		      <tr>
+		        <td>收货人手机号</td>
+		        <td><span>{$info.receiver_mobile}</span></td>
+		      </tr>			      
+		      <tr>
+		        <td>收货地区</td>
+		        <td><span>{$info.receiver_state}{$info.receiver_city}{$info.receiver_district}</span></td>
+		      </tr>				      
+		      <tr>
+		        <td>收货地址</td>
+		        <td><span>{$info.receiver_address}</span></td>
+		      </tr>		
+		    </tbody>				    
+		  </table>			
+		<nav class="breadcrumb">
+			<strong style="color: #5a98de;">商品发货：</strong>
+		</nav>		  
+		<input type="hidden" value="{$afterType}" name="afterType">
+	     <div class="row cl">
+	      <label class="form-label col-2">快递名称：</label>
+	      <div class="formControls col-5">
+	      	<input type="text" name="logi" class="input-text " placeholder="输入发货快递的名称" width="100%"/>
+	      </div>
+	      <div class="col-5"> </div>
+	    </div>  
+	    <div class="row cl">
+	      <label class="form-label col-2">快递单号：</label>
+	      <div class="formControls col-5">
+	      	<input type="text" name="logi_no" class="input-text " placeholder="输入发货快递单号" width="100%"/>
+	      </div>
+	      <div class="col-5"> </div>
+	    </div>  
+	    <div class="row cl">
+	      <label class="form-label col-2">发货说明：</label>
+	      <div class="formControls col-5">
+	        <textarea id="mark" class="textarea" name="content"  placeholder="请输入发货说明（前台用户看）" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+	        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+	      </div>
+	      <div class="col-5"> </div>
+	    </div>
+	     <div class="row cl" style="margin-bottom: 20px;">
+	      <div class="col-9 col-offset-2">
+	        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确认回寄&nbsp;&nbsp;" id="saveRefund">
+	      </div>
+	    </div>     		
+	<else/>   		
+    		
+	   <div class="row cl">
+	      <label class="form-label col-2"><span class="c-red">*</span>最后退款金额：</label>
+	      <div class="formControls col-3">
+	        <input type="text" class="input-text text-c"  style="width:120px" value="0.00" placeholder="请输入退款金额" name="refundFee" id="refundFee">&nbsp;&nbsp;元
+	      </div>
+	      <div class="col-7"><span style="color: #5a98de;">提示：(给的是售后商品总价值，可看情况修改)该金额为审核通过后的最后退款金额，请谨慎填写！</span> </div>
+	    </div> 
+	    <div class="row cl">
+	      <label class="form-label col-2">审核意见：</label>
+	      <div class="formControls col-5">
+	        <textarea id="mark" class="textarea" name="content"  placeholder="请输入留给退款操作的备注" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+	        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+	      </div>
+	      <div class="col-5"> </div>
+	    </div>
+	    <div class="row cl" style="margin-bottom: 20px;">
+	      <div class="col-9 col-offset-2">
+	        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确认收到货并等待退款&nbsp;&nbsp;" id="saveRefund">
+	      </div>
+	    </div>
+	    
+    </notempty>
+ 
+    
+</form>   
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+</body>
+<script>
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}	
+	$(function(){
+		var totalPrice=0;
+		$(".itemList").each(function(){
+			var price=$(this).attr('data-price');
+			 totalPrice = Number(totalPrice)+decimal(Number(price),2);
+		})	
+		$("#refundFee").val(toDecimal2(totalPrice));
+	});	
+	function decimal(num,v){  
+	    var vv = Math.pow(10,v);  
+	    return Math.round(num*vv)/vv;  
+	} 
+    //制保留2位小数，如：2，会在2后面补上00.即2.00    
+    function toDecimal2(x) {    
+        var f = parseFloat(x);    
+        if (isNaN(f)) {    
+            return false;    
+        }    
+        var f = Math.round(x*100)/100;    
+        var s = f.toString();    
+        var rs = s.indexOf('.');    
+        if (rs < 0) {    
+            rs = s.length;    
+            s += '.';    
+        }    
+        while (s.length <= rs + 2) {    
+            s += '0';    
+        }    
+        return s;    
+    } 		
+</script>
+</html>

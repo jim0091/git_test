@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+<link rel="stylesheet" href="__VIEW__Public/css/IndustryGather.css">
+<link rel="stylesheet" href="__VIEW__Public/css/gwc.css">
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<title>添加收货地址-礼品商城</title>
+<style>
+	
+</style>
+</head>
+
+<body>
+	<include file="Public/header"/>
+	<div style="clear:both;"></div>
+	<div class="layout" style="border:0px solid red;margin-top:50px;">
+		<div class="deliveryAddr">
+			<fieldset>
+			<input type="hidden" id="refer" value="{$refer}">
+			<table class="user-tb" style="border:0px;">
+				<legend><h4 style="color:#cf241d;">添加收货地址</h4></legend>
+				<tr>
+					<td style="border:0px solid red;width:80px;padding-left:15px;">
+						<font style="color:#cf241d;padding:2px;">*</font>收货人:
+					</td>
+					<td style="border:0px solid red;">
+						<input type="text" class="recName" placeholder="请填写收货人" value="" size="60">
+					</td>
+				</tr> 
+				<tr> 
+					<td style="padding-left:15px;"><font style="color:#cf241d;padding:2px;">*</font>选择地区:</td>
+					<td>
+						<select name="" id="province"  style="margin-top:-8px;">
+							<option value="0">请选择</option>  
+							<foreach name="provinceArr" item="row">
+							<option data-value="{$row['name']}" value="{$row['jd_id']}" >{$row['name']}</option>
+							</foreach>
+						</select>
+						<select name="" id="wxCity" style="margin-top:-8px;">
+							<option value="0" >请选择</option>  
+						</select>
+						<select id="selBar" name="" style="margin-top:-8px;">
+							<option value="0" >请选择</option> 
+						</select>
+						<select name="" id="wxArea" style="margin-top:0px;">
+							<option value="0" >请选择</option>  
+						</select>
+
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-left:15px;">
+						<font style="color:#cf241d;padding:2px;">*</font>收货地址:
+					</td>
+					<td>
+						<input type="text" class="recAddr" placeholder="请填写详细的收货地址" value="{$currAddressInfo['addr']}" size="60">
+					</td>
+				</tr> 
+				<tr> 
+					<td style="padding-left:15px;">
+						<font style="color:#cf241d;padding:2px;">&nbsp;&nbsp;</font>邮政编码:
+					</td>
+					<td>
+						<input type="text" class="recCode" placeholder="请填写邮政编码" value="{$currAddressInfo['zip']}" size="60">
+					</td>
+				</tr>
+				<tr>  
+					<td style="padding-left:15px;">
+						<font style="color:#cf241d;padding:2px;">*</font>电话号码:
+					</td>
+					<td>
+						<input type="text" class="recTel" size="60" placeholder="请填写电话号码" value="{$currAddressInfo['mobile']}">
+					</td>
+				</tr>  
+				<tr>
+					<td colspan="2" style="padding-left:15px;">&nbsp;&nbsp;
+						<input type="radio" id="setDefAddr" value="{$currAddressInfo['def_addr']}" 
+						<eq name="currAddressInfo.def_addr" value="1">checked</eq>>&nbsp;&nbsp;设为默认地址
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" onclick="javascript:window.history.back();" style="background:#cf241d;color:white;border:0px;cursor:pointer;padding:4px;margin-left:150px;" value=" 返 回 ">
+						<input type="button" class="saveBtn" style="background:#cf241d;color:white;border:0px;cursor:pointer;padding:4px;margin-left:150px;" value=" 保 存 ">
+					</td>
+				</tr>
+			</table> 
+			</fieldset>
+		</div>  
+	</div>
+	<input type="hidden" name="" id="app" value="__APP__">
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script>
+	$(function(){
+		$("#province").bind('change','option',function(){
+			$("#wxCity").hide();
+			$("#selBar").hide();
+			$("#wxArea").hide();
+			$("#wxCity").empty();
+			$("#selBar").empty();
+			$("#wxArea").empty();
+			$(this).attr("selected",true);
+			var proItem = $(this).val();
+			if(proItem > 0){
+				$.post("{:U('UserCenter/getCity')}","proItem="+proItem,function(msg){
+					if(msg != 0){
+						$("#wxCity").show();
+						$("#wxCity").empty();
+						$("#wxCity").append(msg);
+						$("#selBar").empty();
+						$("#wxArea").empty();
+					}
+				});
+			}           
+		});
+
+		$("#wxCity").bind('change','option',function(){
+			$("#selBar").hide();
+			$("#wxArea").hide();
+			$("#selBar").empty();
+			$("#wxArea").empty();
+			var cityItem = $(this).val();
+			$(this).attr("selected",true);
+			if(cityItem > 0){
+				$.post("{:U('UserCenter/getArea')}","cityItem="+cityItem,function(msg){
+					if(msg != 0){
+						$("#selBar").show();
+						$("#selBar").empty();
+						$("#selBar").append(msg);
+						$("#wxArea").empty();
+						}
+				});
+			}  
+		}); 
+
+		$("#selBar").bind('change','option',function(){
+		 	$("#wxArea").hide();
+			$("#wxArea").empty();
+			var areaItem = $(this).val();
+			$(this).attr("selected",true);
+			if(areaItem > 0){
+				$.post("{:U('UserCenter/getTown')}","areaItem="+areaItem,function(msg){
+					if(msg != 0){
+						$("#wxArea").show();
+						$("#wxArea").empty();
+						$("#wxArea").append(msg);
+					}
+				});
+			}
+		});
+	});
+</script>
+<script type="text/javascript" src="__VIEW__Public/js/editNewAddr.js"></script>
+</body>
+</html>

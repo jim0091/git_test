@@ -60,6 +60,11 @@
               <item name="git_test" type="b2602c69:ProjectViewProjectNode" />
               <item name="git_test" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="git_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="git_test" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -98,12 +103,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522202376056</updated>
-      <workItem from="1522202377236" duration="1621000" />
+      <workItem from="1522202377236" duration="1900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1621000" />
+    <option name="totallyTimeSpent" value="1900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />

@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Wrecharge.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>支付-心意商城</title>
+</head>
+
+<body>
+	<div class="Waddress">
+      <span><a href=""><img ></a></span>
+      <span>订单支付</span>
+    </div>
+    <div class="Wpayment">
+    	<input type="hidden" name="paymentid" value="{$paymentid}">
+		<p>订单编号：<span style="color:#333333;">{$paymentInfo['payment_id']}</span></p>
+
+		<if condition="$paymentInfo['cash_fee'] gt 0">
+		<p>
+			现金支付：<span style="color:#ff4138;">¥{:round($paymentInfo['cash_fee'],2)}</span>
+		</p>
+		<p style="position: relative;" class="wxpayClass"><span style="margin-left: 30px;"></span>
+			<input type="radio" id="cbxWxpay" class="chk_1" name="paytype1" value="wxpay" checked/>
+			<label for="cbxWxpay"></label>
+			<img src="__VIEW__Public/images/WePayLogo.png" style="width:110px;height:31px;position:absolute;top:13px; margin-left: 5px;"/>
+		</p>
+		<p style="position: relative;" class="alipayClass"><span style="margin-left: 30px;"></span>
+			<input type="radio" id="cbxAlipay" class="chk_1" name="paytype1" value="alipay"/>
+			<label for="cbxAlipay"></label>
+			<img src="__VIEW__Public/images/alipay_logo.png" style="width:120px;height:40px;position:absolute;top:13px;"/>
+		</p>
+		</if>
+
+		<if condition="$paymentInfo['point_fee'] gt 0">
+		<p>
+			积分支付：<span style="color:#ff4138;">{$paymentInfo['point_fee']}</span>
+		</p>
+		<p style="position: relative;"><span style="margin-left: 30px;"></span>
+			<input type="checkbox" id="cbxRecharge" class="chk_1" name="paytype2" value="deposit" checked disabled="disabled"/>
+			<label for="cbxRecharge"></label>
+			<img src="__VIEW__Public/images/logots.png" style="width:112px;height:34px;position:absolute;top:13px;"/>
+		</p>
+		<p>我的积分：<span style="color:#ff4138;">{$userDepositInfo['balance']}</span>&nbsp;<span style="color:#333333;">积分</span></p>
+		</if>
+
+		<if condition="$userDepositInfo['md5_password'] eq ''">
+			<p><a href="__APP__/User/setPayPwd/paymentid/{$paymentid}">请先设置支付密码</a></p>
+	</div>
+		<elseif condition="$userDepositInfo['balance'] lt $paymentInfo['point_fee']"/>
+			<p><a href="__APP__/Pay/inteRech" style="color:red">积分不足，请充值</a></p>
+	</div>
+		<else />
+			<p>支付密码：
+				<input type="password" class="payput" name="paypwd">&nbsp;&nbsp;
+				<a href="__APP__/User/retrievePwd/paymentid/{$paymentid}/tab/paypwd" style="color:red">忘记支付密码？</a>
+			</p>
+	</div>
+	<div class="Wrecntn">
+		<a href="javascript:void(0);" class="conpay">支付</a>
+		<a href="javascript:void(0);" class="conpayHide" style="display:none;">支付中..</a>
+	</div>
+	</if>
+
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>  
+<script type="text/javascript">
+	$(document).ready(function(){
+		is_weixin();
+	});
+	function is_weixin(){
+		var ua = navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i) !="micromessenger") {
+			$(".wxpayClass").hide();
+			$(".wxpayClass").children('.chk_1').prop('checked',false);
+			$(".alipayClass").children('.chk_1').prop('checked',true);
+		}else{
+			$(".alipayClass").hide();
+			$(".wxpayClass").children('.chk_1').prop('checked',true);
+			$(".alipayClass").children('.chk_1').prop('checked',false);
+		}
+	};
+
+	$(".conpay").click(function(){
+		$(".topLoading").show();
+		$(this).hide();
+		$(".conpayHide").show();
+		//var payType = $("input[name='paytype2']").val();
+		var payType = $("input[type='radio'][name='paytype1']:checked").val();
+		//积分支付
+		//if (payType == 'deposit') {
+		var pwd = $("input[name='paypwd']").val();
+		var paymentid = $("input[name='paymentid']").val();
+		if (pwd == '') {
+			$(".topLoading").hide();
+			$(this).show();
+			$(".conpayHide").hide();
+			opLayer('open',"请输入支付密码！");
+			return;
+		};
+		$.ajax({
+			type:"POST",
+			url:"__APP__/Pay/operPay",
+			data:{paymentid:paymentid,pwd:pwd,payType:payType},
+			dataType:'text',
+			success:function(result){
+				var data=eval(result);
+				if (data[0] == 1) {
+					$(".topLoading").hide();
+					opLayer('open',data[1],"__APP__/User/userCenter");
+					return;
+				}
+				if (data[0] == 2) {
+					$(".topLoading").hide();
+					opLayer('open',data[1],"__APP__/User/userCenter");
+					return;
+				}
+				if (data[0] == 3) {
+					//opLayer('open', payType);
+					if(payType == 'wxpay'){
+						window.location.href="__APP__?c=pay&a=onlinePay&paymentId="+data[1];
+					}else{
+						if(payType == 'alipay'){
+							window.location.href="__APP__?c=Pay&a=alipay&paymentId="+data[1];
+						}
+					}
+				};
+				if (data[0] == 0) {
+					$(".topLoading").hide();
+					$(".conpay").show();
+					$(".conpayHide").hide();
+					opLayer('open',data[1]);
+					return;
+				}
+			}
+		});
+		//};
+	});
+</script>
+</body>
+</html>

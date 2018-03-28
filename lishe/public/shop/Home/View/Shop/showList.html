@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{$shop['shop_name']}-心意商城</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="__VIEW__Public/css/goodslist.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+	<!-- 
+	<script src="__VIEW__Public/js/goodslist.js"></script>
+	 -->
+	<style type="text/css">
+	.pages a.prev{width: 68px;}
+	.pages div a{margin-left: 5px;}
+	.pages a.next{width:68px;}
+	.pages .current{width: 38px;height:38px;display: inline-block;text-align: center;margin-left: 5px;}
+	.active{color: red !important;}
+	</style>	
+</head>
+<body style="overflow:scroll;overflow-x:hidden">
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<!-- 头部搜索 -->
+	<include file="Public/headerFind"/>	
+	<!-- 商品细分类 -->
+	<input type="hidden" id="shopId" value="{$shopId}">
+	<input type="hidden" id="shopCat" value="{$shopCat}"> 
+	<input type="hidden" id="shopCatChild" value="{$shopCatChild}">
+	<input type="hidden" id="sortby" value="1"/>
+	<input type="hidden" id="curPage" value="1">
+	<input type="hidden" id="sp" value="">
+	<input type="hidden" id="ep" value="">
+	<div class="wrap">
+		<div class="category">
+			<ul>
+				<li><a href="javascript:;" >{$shop['shop_name']}</a></li>
+				<li><a href="javascript:;" id="crumbs1">全部商品</a></li>
+				<li><a href="javascript:;" id="crumbs2" style="display: none;">全部</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 分类选择 -->
+	<div class="wrap" id="keywords">
+		<!-- 关键词选择框 -->
+		<div class="choose_keywords">
+			<!--品牌-->
+			<div class="keyword">
+				<div class="keyword_left">店铺分类：</div>
+				<div class="brandKeyword_right">	
+					<ul>
+						<li catid="-1"><a href="javascript:;" value="-1">全部商品</a></li>
+						<volist name="shopCatArr1" id="cat">
+							<li catid="{$cat['cat_id']}"><a href="javascript:;" value="{$cat['cat_id']}">{$cat['cat_name']}</a></li>
+						</volist>
+					</ul>
+					<!-- <div class="more_keyword fold">收起</div> -->
+				</div>
+			</div>
+			<!--相关分类-->
+				<div class="keyword" id="catChildBox" style="display: none;">
+				<div class="keyword_left">相关分类：</div>
+				<div class="keyword_right">
+					<volist name="shopCatArr2" id="catList">
+					<ul id="catChild{$key}" style="display: none;">
+						<li><a href="javascript:;" value="-1">全部</a></li>
+						<volist name="catList" id="cat">
+							<li><a href="javascript:;" value="{$cat['cat_id']}">{$cat['cat_name']}</a></li>
+						</volist>
+					</ul>
+					</volist>
+					<ul id="catChildNone" style="display: none;">
+						<li><a href="javascript:;" value="-1">全部</a></li>
+					</ul>
+					<!-- <div class="more_keyword fold">收起</div> -->
+				</div>
+				</div>
+			<!--
+			<!--属性-->
+<!-- 			<volist name="propsArr" id="propsVo">
+			<div class="keyword">
+				<div class="keyword_left">{$propsVo['prop_name']}：</div>
+				<div class="keyword_right">	
+					<ul>
+						<volist name="propsVo['propValue']" id="pvalueVo">
+							<li><a href="javascript:;" data="{$propsVo['prop_id']}" value="{$pvalueVo['prop_value_id']}">{$pvalueVo['prop_value']}</a></li>
+						</volist>						
+					</ul>
+					<div class="more_keyword fold">收起</div>
+				</div>
+			</div>
+			</volist> -->
+
+		</div>
+		
+		<!-- 排序筛选 -->
+ 		<div class="sort">
+			<ul>
+				<li class="current" sortby="1"><a href="javascript:;">综合排序</a></li>
+				<li class="sortbysales" sortby="2"><a href="javascript:;">销量</a></li>
+				<li class="sortbyprice" sortby="3"><a href="javascript:;">价格</a></li>
+				<li class="sortbytime" sortby="5"><a href="javascript:;">上架时间</a></li>
+			</ul>
+			<div class="pricedomain">
+				<input type="text" id="sprice" placeholder="￥">&ndash;<input type="text" id="eprice" placeholder="￥">
+				<a href="javascript:priceSearch();">确定</a>
+			</div>
+			<div class="changepage">
+				<div><span id="sortpage">0</span>/<span id="totalpage">0</span></div>
+				<div>
+					<a href="javascript:sortPrevPage();"></a>
+					<a href="javascript:sortNextPage();"></a>
+				</div>
+			</div>
+			<div class="totalnumber">
+				<div>共<span id="totalitem">0</span>件商品</div>
+			</div>
+		</div>
+		
+		<div id="itemList">
+			<!-- 搜索商品列表 -->
+			<ul class="goodslist">
+				<volist name="itemList" id='item'>
+					<li style="height: 316px;">
+						<div class="pics">
+							<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}" target="_blank">
+								<img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}" >
+							</a>
+						</div>
+						<div class="price">
+							<div class="points">
+								{$item['price']*100|sprintf="%.0f",###} <span>积分</span>
+							</div>
+							<div class="cash">
+								￥{$item['price']|sprintf="%.2f",###}
+							</div>
+						</div>
+						<div class="name">
+							<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}" target="_blank">
+								<p>{$item['title']}</p>
+							</a>
+						</div>
+					</li>
+				</volist>
+			</ul>
+			
+			<!--分页-->
+       		<div class="pages">
+				{$pagestr}
+			</div>
+		
+		</div>
+
+		<!-- 店铺推荐 -->
+		<notempty name="randCatItemList">
+		<div class="recommend">
+			<div>
+				<ul class="title" id="rec_title">
+					<li class="current">店铺推荐</li>
+					<!-- <div class="changebtn"><a href="">换一批</a></div> -->
+				</ul>
+			</div>
+			<div id="rec_info">
+				<ul class="rec_preview">
+					<volist name="randCatItemList" id="randvo">
+					<li>
+						<a class="rec_pics" href="{:U('Home/Info/index',array('itemId'=>$randvo['item_id']))}"  target="_blank">
+							<img src="{$randvo.image_default_id}_m.{:end(explode('.',$randvo['image_default_id']))}" width="113" height="113">
+						</a>
+						<a class="rec_goods_name" href="{:U('Home/Info/index',array('itemId'=>$randvo['item_id']))}">{$randvo['title']}</a>
+						<p class="rec_price">￥{$randvo['price']|sprintf="%.2f",###}</p>
+					</li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+		</notempty>
+
+		<!-- 猜你喜欢 -->
+<!-- 		<div class="recommend">
+			<div>
+				<ul class="title" id="rec_title">
+					<li class="current">猜你喜欢</li>
+					<div class="changebtn"><a href="">换一批</a></div>
+				</ul>
+			</div>
+			<div id="rec_info">
+				<ul class="rec_preview">
+					<volist name="randCatItemList" id="randvo">
+					<li>
+						<a class="rec_pics" href="{:U('Home/Info/index',array('itemId'=>$randvo['item_id']))}" target="_blank"><img src="{$randvo.image_default_id}_m.{:end(explode('.',$randvo['image_default_id']))}" width="113" height="113"></a>
+						<a class="rec_goods_name" href="{:U('Home/Info/index',array('itemId'=>$randvo['item_id']))}" target="_blank">{$randvo['title']}</a>
+						<p class="rec_price">￥{$randvo['price']|sprintf="%.2f",###}</p>
+					</li>
+					</volist>
+					
+				</ul>
+			</div>
+		</div> -->
+	</div>
+
+	<!--底部-->
+    <include file="Public/footer"/>
+</body>
+<script type="text/javascript">
+$(function(){
+	$("#curPage").val(1);
+
+	//赠送下拉菜单
+	$(".send").each(function(){
+		$(this).mouseenter(function(){
+			$(this).children(".sidebar_hide").fadeIn(100);
+			$(this).find(".arrow").addClass("rotate_in");
+		});
+		$(this).mouseleave(function(){
+			$(this).children(".sidebar_hide").stop();
+			$(this).children(".sidebar_hide").fadeOut(100);
+			$(this).find(".arrow").removeClass("rotate_in");
+		})
+	});
+    
+	
+    //店铺分类
+    $(".brandKeyword_right ul li").click(function(){
+    	var shopCat = $(this).find("a:first");
+    	var shopCatVal = shopCat.attr('value');
+    	var shopCatName = shopCat.text();
+    	$("#shopCat").val(shopCatVal);
+    	$("#crumbs1").text(shopCatName);
+    	$(this).siblings().children("a.active:first").removeClass('active');
+    	$(this).find("a:first").addClass("active");
+    	shopCatVal = parseInt(shopCatVal);
+    	if(shopCatVal == -1){
+    		$("#crumbs2").hide();
+    		$("#catChildBox").hide();
+    		itemFind(-1);
+    		return;
+    	}
+    	$("#crumbs2").show();
+    	$("#crumbs2").text('全部');
+
+    	var catChild = $("#catChild"+shopCatVal);
+    	if(catChild.length == 0){
+    		catChild = $("#catChildNone");
+    	}
+    	
+   		$("#catChildBox").show();
+   		catChild.siblings().hide();
+   		catChild.show();
+   		catChild.find("li a.active").removeClass('active');
+       	catChild.find("li:first a:first").addClass('active');
+       	$("#curPage").val(1);
+       	itemFind(-1);
+    });
+    
+    $(".keyword_right ul li").click(function(){
+    	var shopCatChild = $(this).find("a:first");
+    	var shopCatChildVal = shopCatChild.attr('value');
+    	var shopCatChildName = shopCatChild.text();
+    	$("#shopCatChild").val(shopCatChildVal);
+    	$("#crumbs2").text(shopCatChildName);
+    	$(this).siblings().children("a.active:first").removeClass('active');
+    	$(this).find("a:first").addClass("active");
+    	
+    	$("#curPage").val(1);
+    	itemFind(shopCatChildVal)
+    });
+    
+    //排序
+    $("li[sortby]").click(function() {
+    	var curSortby = $("#sortby").val();
+    	var sortby = $(this).attr("sortby");
+    	if (sortby == 3 || sortby == 4) {
+    		var result = sortPrice (this);
+    		sortby = result > 1 ? result : sortby;
+    	} else if (curSortby == sortby) {
+    		return false;
+    	}
+    	$("#sortby").val(sortby);
+    	$(this).siblings(".current").removeClass("current");
+    	$(this).addClass("current");
+    	$("#curPage").val(1);
+    	itemFind(-1);
+    });
+    
+    //处理价格排序
+    function sortPrice (obj) {
+    	var sort_up_white = 'url("/shop/Home/View/Public/images/sort_up_white.png")';
+    	var sort_down = 'url("/shop/Home/View/Public/images/sort_down.png")';
+    	var rtSortby = -1;
+    	var sortby = $(obj).attr("sortby");
+    	if ($(obj).hasClass("current")) {
+			if (sortby == 3) {
+				$(obj).css("background-image", sort_up_white);
+				$(obj).attr("sortby", 4);
+				rtSortby = 4;
+			} else {
+				$(obj).css("background-image", sort_down);
+				$(obj).attr("sortby", 3);
+				rtSortby = 3;
+			}
+		} else {
+			$(obj).css("background-image", sort_down);
+		}
+    	
+    	return rtSortby;
+    }
+    
+    //默认点击主分类
+    var catid = $("#shopCat").val();
+	$(".brandKeyword_right ul li[catid='"+catid+"']").click();
+});
+
+function itemFind(shopCatChild){
+	if(typeof(shopCatChild) == "undefined"){
+		shopCatChild = $("#shopCatChild").val();
+	}
+	var shopId = $("#shopId").val();
+    var curPage = $("#curPage").val();
+    var shopCat = $("#shopCat").val();
+    var sortby = $("#sortby").val();
+    var sp = $("#sp").val();
+    var ep = $("#ep").val();
+    $.ajax({ 
+        type:"get",
+        url:"{:U('Shop/itemList')}",
+        data: {shopId:shopId,p:curPage,shopCat:shopCat,shopCatChild:shopCatChild,sortby:sortby,sp:sp,ep:ep},
+        success: function(data){
+            //$("#itemList ul").remove();
+            $("#itemList").html(data);
+            $(".pages a").attr('href','javascript:;');
+            $("html,body").animate({scrollTop:280}, 500);
+            
+            $("#sortpage").text(curPage); //商品总数
+            $("#totalitem").text($("#itemCount").val()); //商品总数
+            $("#totalpage").text($("#pageCount").val()); //商品总数
+        }
+    }); 
+}
+
+//下一页
+function sortNextPage() {
+	var pageCount = $("#pageCount").val();
+	pageCount = parseInt(pageCount);
+	if(typeof(pageCount) == "undefined"){
+		return false;
+	}
+	var nowpage = $("#curPage").val();
+	nowpage = parseInt(nowpage);
+	if (nowpage >= pageCount) {
+		return false;
+	}
+  	$("#curPage").val(nowpage*1+1);
+  	itemFind();
+}
+
+//上一页
+function sortPrevPage() {
+	var nowpage = $("#curPage").val();
+	nowpage = parseInt(nowpage);
+	if(nowpage <= 1) 
+		return false;
+  	$("#curPage").val(nowpage*1-1);
+  	itemFind();
+}
+
+//价格区间检索
+function priceSearch() {
+	var sprice = $.trim($("#sprice").val());
+	var eprice = $.trim($("#eprice").val());
+	var reg = /^\d+(\.\d+)?$/;
+	if(sprice != '' && !reg.test(sprice)){
+		alert('价格有误');
+		return false;
+	}
+	if(eprice != '' && !reg.test(eprice)){
+		alert('价格有误');
+		return false;
+	}
+	$("#sp").val(sprice);
+	$("#ep").val(eprice);
+	$("#curPage").val(1);
+	itemFind();
+}
+</script>
+</html>

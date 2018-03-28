@@ -1,0 +1,125 @@
+<!--shop header-->
+<div class="shopheader">
+  <div class="shopheader-bg" style="background-image:url(<{$background_image.image_id|storager}>);"></div>
+  <div class="wrap-lg shopheader-content" >
+    <div class="row">
+      <div class="col-lg-4 shop-logo">
+        <{if $background_image.show_shop_logo != 'off' }>
+        <a href="<{url action=topc_ctl_shopcenter@index shop_id=$shopdata.shop_id}>">
+          <img src="<{$shopdata.shop_logo|storager}>">
+        </a>
+        <{/if}>
+        <{if $background_image.show_shop_name != 'off'}>
+        <div><{$shopdata.shop_id|shopname}></div>
+        <{/if}>
+      </div>
+      <div class="col-lg-9 shop-slogan"><{if $background_image.show_shop_desc != 'off'}><{$shopdata.shop_descript}><{/if}></div>
+
+      <{if $nologin!=1}>
+      <a href="<{url action=topc_ctl_passport@signin next_page=$next_page}>" class="shop-favorite" ><i class="icon icon-star"></i>收藏店铺</a>
+      <{else}>
+      <a href="<{url action=topc_ctl_collect@ajaxFavshop}>" data-ajax-data="shop_id=<{$shopdata.shop_id}>" class="shop-favorite" rel='_request'><i class="icon icon-star"></i>收藏店铺</a>
+      <{/if}>
+
+      <{im qq=$shopdata.qq wangwang=$shopdata.wangwang}>
+
+    </div>
+  </div>
+</div>
+
+
+<style type="text/css">
+.category4 {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    z-index: 99;
+    padding: 0px;
+    line-height: 1.5;
+    background: #fff;
+    border-top: 2px solid #C7241D;
+}
+.category4.category4-col1 {
+    background: #C7241D;
+    border: 0px;
+    border-top: 2px solid #C7241D;
+}
+.category4 .category-item {
+    float: left;
+    margin: 0;
+}
+.category4 .category-sub-col {
+    float: left;
+    margin-right: 0px;
+}
+.category4 .category-sub a {
+    display: block;
+    margin-bottom: 0px;
+    color: #FFF;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    padding: 3px 25px;
+    height: 24px;
+    min-width: 80px;
+}
+.category4 .category-sub a:hover {
+    color: #C7241D;
+    background: #fff;
+}
+.category4 .category-sub .category-sub-col-item {
+    width: 100%;
+    height: 30px;
+}
+.category4 .category-sub .category-sub-col-item:hover {
+    background: #fff;
+}
+</style>
+<!-- nav -->
+<div id="nav" class="nav" style="border-bottom: 2px solid #C7241D;">
+  <div class="wrap-lg">
+    <div class="row shop-nav">
+      <div class="col-lg-13 nav-main">
+        <div class="menu">
+          <div class="shop-category">
+            <a href="<{url action=topc_ctl_shopcenter@index shop_id=$shopdata.shop_id}>" class="on">店铺首页</a>
+          </div>
+          <{foreach from=$navdata item=item}>
+          <div class="shop-category">
+            <{if $item.menu}>
+            <a class="link" href="<{url action=topc_ctl_shopcenter@search shop_id=$shopdata.shop_id shop_cat_id=$item.cat_id}>"><{$item.menu}></a>
+            <{else}>
+            <a class="link" href="<{$item.url}>"><{$item.name}></a>
+            <{/if}>
+            <{if $item.children}>
+            <!-- <i class="icon icon-arrow-down-b" data-icon="\2808"></i> -->
+            <div class="category4 category4-col1">
+              <div class="category-item">
+                <div class="category-item">
+                  <div class="category-sub">
+                    <div class="category-sub-col">
+                      <{foreach from=$item.children item=cat}>
+                      <div class="category-sub-col-item"><a class="link" href="<{url action=topc_ctl_shopcenter@search shop_id=$shopdata.shop_id shop_cat_id=$cat.cat_id}>"><{$cat.menu}></a></div>
+                      <{/foreach}>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <{/if}>
+          </div>
+          <{/foreach}>
+        </div>
+      </div>
+      <div class="col-lg-3 searchbar-small">
+        <form action="<{url action=topc_ctl_shopcenter@search}>" method="get" id="shop_search" data-async="false">
+          <input type="text" name="n" id="item_title" required>
+          <input type="hidden" id="shop_id" name="shop_id" value="<{$shopdata.shop_id}>">
+          <button type="submit" class="btn icon icon-search-a shop-search"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

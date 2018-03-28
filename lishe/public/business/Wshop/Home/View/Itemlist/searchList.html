@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html class="" lang="zh-cmn-Hans" >
+<head>
+
+
+    <meta name="description" content="" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">    <meta http-equiv="cleartype" content="on">
+    <meta name="referrer" content="always">  
+  <title>商品搜索- 礼舍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />       
+  <link rel="stylesheet" href="__PUBLIC__/wshop/css/itemlist.css"> 
+  <link rel="stylesheet" href="__PUBLIC__/wshop/css/shopnav_custom_0ff1f6a625.css">      
+  <link rel="stylesheet" href="__PUBLIC__/wshop/css/showcase_e872cc66b7.css" onerror="_cdnFallback(this)" media="screen">       
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wshop/css/index.css">  
+  <body >
+   
+  <div class="container "> 
+   <div class="content "> 
+    <div class="content-body"> 
+     <form class="search-form" action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+      <input type="searchs" class="search-input" placeholder="商品搜索：请输入商品关键字" name="keyword" value="{$keyword}" /> 
+      <span class="search-icon"></span> 
+      <!-- <span class="close-icon hide"></span> --> 
+     </form> 
+
+    <input type='hidden' name="ajaxpost" id="ajaxpost" value="ajaxpost">
+    <input type="hidden" name="keyword" value="{$keyword}" > 
+    <input type="hidden" id="newpage" value="1"> 
+     <div id="itemList">
+      <div>
+     <ul class="js-goods-list sc-goods-list clearfix list size-3" data-size="3" style="min-height: 580px;"> 
+        <empty name="list">
+          <li class="text-center empty-list">
+                <p class="desc">没有找到相关的商品～</p>
+                <a href="{:U('Home/Index/index')}" class="tag tag-orange tag-home">去逛逛</a>
+          </li>
+        	<else/>
+        		<volist name="list" id="vo">
+    		      <li class="js-goods-card goods-card card"> 
+    		      	<a href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}" class="js-goods link clearfix" data-goods-id="{$vo.item_id}" title="{$vo.title}"> 
+    		        <div class="photo-block"> 
+    		         <img class="goods-photo js-goods-lazy" data-src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" /> 
+    		        </div> 
+    		        <div class="info"> 
+    		         <p class="goods-title">{$vo.title}</p> 
+    		         <p class="goods-price"><em>￥<?php echo round($vo['price'],1); ?></em></p> 
+    		         <div class="goods-buy btn1"></div> 
+    		        </div>
+    		        </a>
+    		         <!--<div class="js-goods-buy buy-response" data-alias="2x5akazygct0q" data-postage="0" data-buyway="1" data-id="{$vo.item_id}" data-title="{$vo.title}" data-price="{$vo.price}" data-isvirtual="0"></div>--> 
+    		      </li> 
+        		</volist>  
+        </empty>
+     </ul>
+   </div>
+
+ <style>
+  .custom-paginations-prev{
+    padding: 60px;
+    color: #09F;
+  }
+  .wborder{
+    border:1px solid #DDD;
+    padding: 5px;
+  }
+ </style> 
+  <div class="custom-paginations-container" style="margin-top: 10px;">  
+   <div  style="text-align: center;">
+    {$pagestr}
+   </div> 
+  </div>  
+       </div>
+  
+    </div> 
+ 
+   </div>
+  </div>
+
+<!--遮罩层start-->
+<div id="maskLayer" style="display:none; height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 1000; transition: none 0.2s ease; opacity: 1; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!--遮罩层end-->
+
+<!--提示框-->
+<div class="motify" style="display: none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+
+<!--下拉start-->
+<div id="selectItem" class="sku-layout sku-box-shadow popup" style="display:none;overflow: hidden; position: fixed; z-index: 1000; bottom: 0px; left: 0px; right: 0px; visibility: visible; transform: translate3d(0px, 0px, 0px); transition: all 300ms ease; opacity: 1; background: white;">
+    <div class="sku-layout-title name-card sku-name-card"></div>
+</div>
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js"></script>
+<script type="text/javascript">
+        $(function(){
+          $(".js-goods-buy").click(function(){
+           $("#selectItem").html("");
+            var urls="{:U('Home/Itemlist/jionShow')}";
+            var itemid=$(this).attr("data-id");
+            $.ajax({
+              type:"get",
+              url:urls,
+              dataType:'text',
+              data:'itemId='+itemid,
+              success:function(data){
+                 $("#selectItem").html(data);
+              }
+            });
+              $("#selectItem").show();
+              $("#maskLayer").show();
+              $("body").css({overflow:"hidden"}); 
+          });
+          $("#cancel-img").click(function(){       
+              $("#selectItem").hide();
+              $("#maskLayer").hide();
+              $("body").css({overflow:"visible"}); 
+          });
+    });
+
+    //下一页
+    $("#itemList").delegate('a.next','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1+1);
+      itemFind();
+    });
+    //上一页
+    $("#itemList").delegate('.prev','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1-1);
+      itemFind();
+    }); 
+
+    function itemFind(search){
+      var keyword = $("input[name='keyword']").val();
+      if(search){
+          $("#newpage").val(1);
+      }
+        var ajaxpost = $("#ajaxpost").val();
+        var newPage = $("#newpage").val();
+        $.ajax({ 
+            type:"get",
+            url:"{:U('Itemlist/searchList')}",
+            data: {p:newPage,keyword:keyword,ajaxpost:ajaxpost},
+            success: function(data){
+                $("#itemList div").remove();
+                $("#itemList").html(data);
+                $('body,html').animate({scrollTop:0},1);  
+                return false; 
+            }
+        }); 
+    } 
+
+</script>
+
+  
+ <include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>   
+    </body>
+</html>

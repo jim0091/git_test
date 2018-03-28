@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼舍帮帮-礼舍,情感的交流</title>
+	<meta name="keywords" content="礼舍,礼舍网,福利,企业福利,礼品">
+	<meta name="description" content="礼舍网，一站式高端礼品采购、定制电子商务平台，致力于为客户提供创新的顾问式、定制化融合礼品解决方案的服务。">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="/v1/css/reset_css.css">
+	<link rel="stylesheet" href="/v1/css/head_bottom.css">
+	<link rel="stylesheet" href="/v1/css/quiz.css">
+	<script src="/v1/js/jQuery.v1.8.3.min.js"></script>
+	<script src="/v1/js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){	
+		$.get("/api.php/Api/getLoginInfo", function(result){
+			var account=eval(result);
+			if(account[0]>0){
+				$('#loginBox').hide();
+				$('#memberBox').show();
+				$('#userName').text(account[3]);
+			}
+		});
+		var cartNum=$.cookie('CARTNUMBER');
+		if(cartNum==undefined){
+			cartNum=0;
+		}
+		$('#cart_number').text(cartNum);
+	}); 
+	</script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="/" class="logo1"></a>
+			<ul>
+				<li class="nav_link"><a href="/">礼舍首页</a></li>
+				<li class="nav_link"><a href="/shop.html" target="_blank">心意商城</a></li>
+				<li class="nav_link current"><a href="/v1/help.html">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<li id="loginBox"><a href="/shop.php/Sign">会员登录</a></li>
+           		<li id="memberBox" style="display: none"><a href="/member-index.html" id="userName"></a></li>
+				<li><a href="http://zs.lishe.cn" target="_blank">商家中心</a></li>
+				<li><a href="http://v.lishe.cn/company/login.html"  target="_blank">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 头部搜索 -->
+	<div class="head">
+		<div class="wrap">
+			<a href="/" class="logo2"></a>
+			<div class="search_bar">
+				<form action="/shop.php/Items/itemList" method="get" id="goods_search">
+					<input type="text" name="keyword" class="search_text" placeholder="综合搜索" onfocus="this.placeholder=''" onblur="this.placeholder='综合搜索'">
+					<a class="search_button" href="javascript:void(0);"></a>
+				</form>
+				<ul class="search_commend">
+					<li><a href="/shop.php/Items/itemList?keyword=休闲食品">休闲食品</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=个人用品">个人用品</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=餐具">餐具</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=护肤">护肤</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=清洁">清洁</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=家电">家电</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=饮料">饮料</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=甜食">甜食</a></li>
+				</ul>
+			</div>
+			<div class="my_cart">
+				<a class="cart" href="/cart.html">我的购物车</a>
+				<div class="right_arrow"></div>
+				<div id="cart_number"></div>
+			</div>	
+		</div>
+	</div>
+
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 左侧导航条 -->
+			<div class="help_center" style="height:370px;">
+				<div class="help_center_head">帮助中心</div>
+				<div class="left_nav">
+					<ul>
+						<li><a href="/v1/help.html">服务条款</a></li>
+						<li><a href="/v1/help.html">操作指南</a></li>
+						<li><a href="/v1/help.html">礼舍简介</a></li>
+						<li><a href="/v1/help.html">常见问题</a></li>
+						<li><a href="/v1/help.html">人员招聘</a></li>
+						<li><a href="/v1/help.html">合作伙伴</a></li>
+						<li><a href="/v1/help.html">联系我们</a></li>
+						<li><a href="javasctipt:;" class="current">员工关爱问答</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content">
+				<div class="content_inner">
+					<!-- 服务条款 -->
+					<div class="pages">
+						<div class="page_title">
+							<p>帮助中心</p>
+							<p class="arrow"></p>
+							<p class="category">员工关爱问答</p>
+						</div>
+						<div class="help_details">
+							<h2 style="font-size: 20px;font-weight: bolder;color: black; width:100%; text-align:center; height:70px; line-height:70px;">员工关爱项目客户咨询常见问题问答（3.0）</h2>							
+							<p class="second_title">1、	售后服务打哪个电话？售后电话占线的情况下还有其它反馈渠道吗？</p>
+							<p>
+								员工关爱专线客服热线400 1188 261（咨询时间暂定：周一至周五上午9:00-12：00，下午13：30-18:00，节假日除外），若售售电话占线，您可以点击员工关爱商城首页右侧导航栏【咨询服务】进入提交您的宝贵意见或建议，我们会及时回复，感谢！
+							</p>
+							<p class="second_title">2、如何登录员工关爱专区？</p>
+							<p>
+								<font style="color:red;font-size:24px; ">外网</font>登录<a href="http://www.haihetao.com"  target="_blank" >www.haihetao.com</a>，点击“员工关爱”。输入用户名（您的手机号码）和密码。（首次登录先点“员工激活”，自行设置初始密码）
+								<img src="/v1/images/hht_head.png" style="margin-top:5px;">
+							</p>
+							<p class="second_title">3、用户名和密码是什么?</p>
+							<p>
+								用户名即您在公司登记的手机号码。首次登录员工关爱平台，请您先点击“员工激活”，根据提示激活账号，并设置登录密码。返回登录页面后，即可使用用户名(手机号)和密码登录员工关爱专区选购心仪商品。
+								</br>
+								<img src="/v1/images/hht_login.png" style="margin-top:5px;">
+							</p>
+							<p class="second_title">4、支付密码是什么?</p>
+							<p>
+								购买心仪商品时，在购物车点击“去结算”，提交订单后选择“立即支付”，输入支付密码才能进行结算购买；首次下单时需要设置支付密码，请点击页面下方“设置密码”，按步骤设置支付密码后再返回结算页面进行结算。
+							</p>
+							<p class="second_title">5、忘记密码怎么办?</p>
+							<p>
+								登录密码忘记了，在登录页面点右下方【忘记密码】，按提示重新设置新密码即可。
+								支付密码忘记了，在结算页面点右侧【忘记密码】，按提示重新设置新密码即可。
+							</p>
+							<p class="second_title">6、什么时候可以激活账号？</p>
+							<p>
+								当您收到员工关爱发送的积分开通短信通知时，即可按照短信所述流程激活账号。
+							</p>
+							<p class="second_title">7、为什么账号激活不了？</p>
+							<p>
+								员工关爱专区只有系统中已经备案的手机号码方可激活。若您的账号不能激活，请联系您所在的公司人力资源部门或工会负责人，确认您所提供的手机号码是否正确，也可以拨打员工关爱客服热线进行咨询。
+							</p>
+							<p class="second_title">8、在哪里可以查询到我的积分余额？</p>
+							<p>
+								进入员工关爱页面后，点页面上方“我的订单”进入会员中心，在左侧导航栏“我的信息”中点“我的资产”，即可查询可用福利积分余额。
+								<img src="/v1/images/user_point.png" style="margin-top:5px; max-width:900px;">
+							</p>
+							<p class="second_title">9、员工关爱的积分有效期是多久？</p>
+							<p>
+								员工关爱的积分有效期为2年，积分到期前会以短信形式提醒。
+							</p>
+							<p class="second_title">10、我的积分可以在海核淘使用吗?</p>
+							<p>
+								不可以。海核淘目前仅支持员工一卡通消费，劳保、福利等积分可在员工关爱专区和心意商城消费。
+							</p>
+							<p class="second_title">11、订单已下单并支付成功，还能取消吗？</p>
+							<p>
+								成功支付的订单不能自行取消，如需取消，请尽快联系客服热线：4001188261。（温馨提示：已支付成功并已发货的京东订单，如需取消，可拒收货，一旦收货可能会产生邮费需买家承担。）
+							</p>
+							<p class="second_title">12、订单取消后，什么时候可以退还积分？</p>
+							<p>
+								申请退款成功后3-7个工作日会退还积分到个人账户。可以通过查询余额确认是否退还。如有异常，请联系客服4001188261。
+							</p>
+							<p class="second_title">13、成功支付的订单发货周期为多久？</p>
+							<p>
+								订单支付成功后7日内到货，如遇节假日则顺延，或重大电商活动期间（例如双11、双12等）发货会有所延迟，敬请谅解。
+							</p>
+							<p class="second_title">14、已收到的商品需退货怎么办？</p>
+							<p>
+								1.线上操作:确认收货后，可以在【我的订单】→ 进入【会员中心】我的交易 → 【我的订   	单】→ 【申请退/换货】（温馨提示：待客服工作人员审核通过后处理，退款到账时间：审	核通过后3-7个工作日退款到账）；
+								2.请联系客服4001188261处理。（非质量问题退换货邮费由买家承担，退货后原订单如不	满包邮条件的，我们将在退款中直接扣除此订单的邮费。每个商品详情介绍页最下方附“商	品退/换货服务说明”，其中注明不提供退换货服务的商品，购买时请注意）。
+							</p>
+							<p class="second_title">15、京东价98折是什么意思？</p>
+							<p>
+								员工关爱专区的商品显示为“旗舰店”的，是我们与京东自营合作的商品，京东自营商品享有京东PC端前台正价98折优惠，但不包括京东的各种活动价，例如：团购、秒杀、买赠、用券、直降、移动端等活动。系统每日两次自动与京东系统匹配并判断商品正价的售价，如您发现您需要购买的“旗舰店”商品高于京东价，请通过4001188261或通过线上【咨询服务】反馈，我们将不胜感激
+							</p>
+							<p class="second_title">16、品牌内购活动多久一次，从哪里进入购买？</p>
+							<p>
+								品牌内购活动每个星期都会更新，具体活动内容请查看员工关爱首页正上方的广告轮播图。                      	点击轮播图即可进入购买页面。
+							</p>
+							<p class="second_title">17、心意商城也没有我想要的产品，是否可以添加？如果可以，通过什么渠道申请？</p>
+							<p>
+								将您所需的商品或商品种类说明，发送至客服邮箱guanai@haihetao.com。我们将根据您的需求定时汇总（建议在每周四前提交您的需求与建议），如果添加成功，商品会先进入心意商城，欢迎您在心意商城选购，如添加不成功，建议您选购心意商城上其它同类商品，感谢您的理解！
+							</p>
+							<p class="second_title">18、平台商品太少，没有我合适的？</p>
+							<p>
+								我们商品品类会逐渐丰富，商品数量也在不断增加，请持续关注我们，我们将逐步完善做到最好，为您提供优质的商品与服务，感谢您的理解！
+							</p>
+							<p class="second_title">19、如何进入“心意商城”？</p>
+							<p>
+								进入员工关爱专区后，在网页上方点击“心意商城”即可进入心意商城。
+								<img src="/v1/images/hht_head_link.png" style="margin-top:5px;">
+							</p>
+							<p class="second_title">20、想购买商品但积分余额不足怎么办？可以使用现金、一卡通混合支付么？</p>
+							<p>
+								积分余额不足时，暂只支付宝在线充值，不支持核电一卡通支付。
+  								具体流程如下：
+								【会员中心】→【我的信息】→【我的资产】→【去充值】→输入充值金额点【充值】
+								<img src="/v1/images/user_point_record.png" style="margin-top:5px; max-width:900px;">
+								<img src="/v1/images/user_recharge.png" style="margin-top:5px; max-width:900px;">
+								</br>
+								备注：1.您可以选择固定金额充值，也可以自定义充值金额；</br>
+      							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      							2.后续增加支付方式时会发及时通知，敬请关注！	
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--底部-->
+	<div id="footer">
+	   <div class="footerdimension">
+	       <div class="footertop">
+	           <div class="footertopLeft">
+	               <ul>
+	                  <li class="footerUser">导航</li>
+	                  <li class="footerMenu"><a href="help.html#2" target="_blank">礼舍简介</a></li>
+	                  <li class="footerMenu"><a href="companysingle.html" target="_blank">礼舍做什么</a></li>
+	                  <li class="footerMenu"><a href="http://www.lishe.cn/theme/evaluate/index.html" target="_blank">伙伴说什么</a></li>
+	                  <li class="footerMenu"><a href="/" target="_blank">心意商城</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">咨询</li>
+	                  <li class="footerMenu"><a href="help.html#0" target="_blank">服务条款</a></li>
+	                  <li class="footerMenu"><a href="http://vip.lishe.cn" target="_blank">礼舍动态</a></li>
+	                  <li class="footerMenu"><a href="help.html#4" target="_blank">人员招聘</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">礼舍帮帮</li>
+	                  <li class="footerMenu"><a href="help.html#1" target="_blank">礼舍教学操作指南</a></li>
+	                  <li class="footerMenu"><a href="help.html" target="_blank">礼舍使用全攻略</a></li>
+	                  <li class="footerMenu"><a href="help.html#3" target="_blank">常见问题</a></li>
+	                  <li class="footerMenu"><a href="help.html#6" target="_blank">联系我们</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">加入我们</li>
+	                  <li class="footerMenu"><a href="http://zs.lishe.cn/" target="_blank">供应商入驻</a></li>
+	                  <li class="footerMenu"><a href="http://v.lishe.cn/company/login.html" target="_blank">企业入驻</a></li>
+	                  <li class="footerMenu"><a href="help.html#5" target="_blank">合作伙伴</a></li>
+	               </ul>
+	           </div>
+	           <div class="footertopRight">
+	               <ul>
+	                 <li class="footerPhone"><img src="/v1/images/indexPhone.png">400-1188-234</li>
+	                 <li class="footerConnection">联系我们</li>
+	               </ul>
+	               <ul>
+	                 <li><img src="/v1/images/IndexWx.png"></li>
+	               </ul> 
+	           </div>   
+	       </div>
+	       <div style="clear:both;"></div>
+	       <div class="footerbottom">
+	          <ul class="footerbottomLeft">
+	            <li>© 2005-2016 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1</li>
+	            <li>All rights Reserved.</li>
+	          </ul>
+	          <ul class="footerbottomRight">
+	            <li class="footerbottomRightPhone">全国客服热线：400-1188-234 </li>
+	            <li class="footerbottomRightTime">周一至周五 9:00-18:00</li>
+	          </ul>
+	       </div>
+	       <div style="clear:both;"></div>
+	   </div>    
+	</div>
+</body>
+</html>

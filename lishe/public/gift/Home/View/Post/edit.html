@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/editorshk.css">
+<link rel="stylesheet" href="__CSS__/ChooseGifts.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<title>编辑贺卡</title>
+<style>
+#shareDiv {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 99999;
+}
+</style>
+</head>
+<body>
+ <div class="oddsdesdiv">
+    <ul>
+      <li><img src="{$itemInfo['itemImg']}"></li>
+      <li>{$itemInfo['title'] | mb_substr=0,20,'utf8'}...</li>
+      <li class="odes">{$itemInfo['spec_nature_info']}</li>
+    </ul>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="Mycards">
+    <ul>
+       <li>我的贺卡：</li>
+       <li class="shk"><img src="__IMG__/shk.png" id="cardPic"></li>
+       <li class="bj" id="chooseCardBox">
+       	<img src="__IMG__/bj.png"><!-- <img src="__IMG__/add.png" id="addCard"> -->
+       </li>
+    </ul>
+  </div>
+  <!-- 
+  <div class="Speech">
+      <ul>
+       <li>送上语音：</li>
+       <li><input type="text" class="bentxt3"></li>
+    </ul> 
+  </div>
+   -->
+  <div style="clear:both;"></div>
+  <form action="{:U('Post/save')}" method="post" id="blessForm">
+  <input name="post_id" id="postId" value="-1" type="hidden">
+  <input name="card_id" id="cardId" value="-1" type="hidden">
+  <div class="benediction">
+      <ul>
+        <li><span>送上祝福：</span><input type="text" name="bless_title" id="bless_title" class="bentxt"></li>
+        <li><span>对TA说：</span><input type="text" name="bless_word" id="bless_word" class="bentxt2"></li>
+        <li><span>你是谁：</span><input type="text" name="giver_name" id="giver_name" class="bentxt3"><input type="checkbox" name="is_anonymous" value="1" id="checkbox_a1" class="chk_1" checked /><label for="checkbox_a1"></label>&nbsp;匿名</li>
+        <li><span>TA的姓名：</span><input type="text" name="receiver_name" id="receiver_name" class="bentxt3"></li>
+        <li><span>TA的电话：</span><input type="text" name="receiver_phone" id="receiver_phone" class="bentxt3"></li>
+      </ul>
+  </div>
+  </form>
+  <div style="clear:both;"></div>
+  <div class="give">
+    <a href="javascript:void(0)" id="saveForm">赠送</a>
+  </div>
+  <div id="shareDiv" style="display: none; text-align: center;">
+  	<div style="margin-top: 20%;">
+  		<p><span style="color: green;font-size: 1.5rem;">恭喜</span>，系统已接收您的礼物信息， </p>
+  		<p>请点击右上角‘发送给朋友’（如图）</p>
+  		<p style="color: ">快块分享给TA吧 ^_^！</p>
+  	</div>
+  	<div style="margin-top: 5%;">
+  		<img src="__IMG__/tipshare.png" style="width: 70%;">
+  	</div>
+  </div>
+</body>
+<script src="__JS__/cardlist.js" type="text/javascript"></script>
+<script>
+wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx76ffa4c15fe721bf', // 必填，公众号的唯一标识
+    timestamp: {$timestamp}, // 必填，生成签名的时间戳
+    nonceStr: '{$noncestr}', // 必填，生成签名的随机串
+    signature: '{$signature}',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+$(document).ready(function(){
+	//初始化贺卡列表
+	$('.wall').jaliswall({ item: '.article' });
+	
+	$("#saveForm").click(function(){
+		//校验数据
+		var cardId = $("#cardId").val();
+		var blessTitle = $("#bless_title").val();
+		blessTitle = $.trim(blessTitle);
+		var blessWord = $("#bless_word").val();
+		blessWord = $.trim(blessWord);
+		var giverName = $("#giver_name").val();
+		giverName = $.trim(giverName);
+		var receiverName = $("#receiver_name").val();
+		receiverName = $.trim(receiverName);
+		var receiverPhone = $("#receiver_phone").val();
+		receiverPhone = $.trim(receiverPhone);
+		
+		var reg = /^[1-9]*$/;
+		if(!reg.test(cardId)){
+			alert("请选择贺卡");
+			return false;
+		}
+		if(blessTitle==""){
+			alert("请填写祝贺语");
+			return false;
+		}
+		if(blessWord==""){
+			alert("请填写你想对TA说的话");
+			return false;
+		}
+		if(giverName==""){
+			alert("请填写你的名字");
+			return false;
+		}
+		if(receiverName==""){
+			alert("请填写TA的名字");
+			return false;
+		}
+		//验证手机号
+		var reg = /^1\d{10}$/;
+		if(!reg.test(receiverPhone)){
+			alert("收货人手机号有误，请核对");
+			return false;
+		}
+		
+		if(blessTitle.length > 32){
+			alert(blessTitle.length);
+			alert("祝贺语太长（限32个字）");
+			return false;
+		}
+		
+		if(blessWord.length > 100){
+			alert("对TA说的话太长（限100个字）");
+			return false;
+		}
+		
+		if(giverName.length > 10){
+			alert("你的名字太长了（限10个字）");
+			return false;
+		}
+		
+		if(receiverName.length > 10){
+			alert("TA的名字太长了（限10个字）");
+			return false;
+		}
+		
+		if(confirm("确认提交保存吗？")){
+			//异步提交
+			$.post($("#blessForm").attr('action'), $("#blessForm").serialize(), function(result){
+				if(result.code == 1){
+					$("#shareDiv").show();
+					$("#postId").val(result.postid);
+					var cardpic= $("#cardPic").attr("src");
+					wx.onMenuShareAppMessage({
+					    title: '您有一份礼物', // 分享标题
+					    desc: '有人送给你祝福，点击领取吧!', // 分享描述
+					    link: result.shareurl, //分享链接
+					   	imgUrl: cardpic, // 分享图标
+					   	type: '', // 分享类型,music、video或link，不填默认为link
+					  	dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					    success: function () {
+					        // 用户确认分享后执行的回调函数
+					        $.post("{:U('Post/shared')}",{post_id:result.postid});
+					        alert('已成功分享！');
+					        WeixinJSBridge.call('closeWindow');
+					    }
+					});
+				}else{
+					alert(result.msg);
+				}
+			});
+		}
+		return false;
+	});
+	
+	$("#chooseCardBox img").click(function(){
+		location.href = "{:U('Post/cardlist')}";
+	})
+	//加载贺卡信息
+	$.get("{:U('Post/myCard')}",{random:Math.random()},function(result){
+		if(result.code == 1){
+			var data = result.data;
+			$("#cardId").val(data.card_id);
+			$("#bless_title").val(data.bless_title);
+			$("#bless_word").val(data.bless_word);
+			var picurl = "http://{$_SERVER['HTTP_HOST']}/"+data.card_pic_thumb;
+			$("#cardPic").attr("src",picurl);
+		}
+	})
+});
+</script>
+</html>

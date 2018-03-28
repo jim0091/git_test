@@ -1,0 +1,29 @@
+<div class="seckill mauto">
+	<div class="seckill_tit">
+		<div class="seckill_left_text">{$groupInfo['group_title']}</div>
+		<!--<div class="seckill_date mauto">
+			<em>06</em>
+			<em class="em">36</em>
+			<em>56</em>
+		</div>-->
+		<a class="seckill_right_text">{$groupInfo['group_vice_title']}</a>
+	</div>
+	<ul class="seckill_con">
+		<volist name="info" id="vo">
+		<li class="show_hide" data-stime="{$vo['start_time']}" data-etime="{$vo['end_time']}">
+			<div class="seckill_img">
+				<a href="{$vo['refer_link']}" target="_blank">
+					<img src="{$vo['position_pic']}" alt="" />
+				</a>
+			</div>
+			<div class="seckill_text">
+				<p class="seckill_text_name">{$vo['position_name']}</p>
+				<h2 title="{$vo['position_title']}">{$vo['position_title']}</h2>
+				<p class="seckill_text_con">{$vo['position_vice_title']}</p>
+				<p class="sec_price"><em>{$vo['item_price'] * 100}</em>积分</p>
+				<a href="{$vo['refer_link']}" class="buy" target="_blank">立即抢购</a>
+			</div>
+		</li>
+		</volist>		
+	</ul>
+</div>

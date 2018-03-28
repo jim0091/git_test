@@ -1,0 +1,732 @@
+	<div class="sidebar-wrap">
+		<!--侧边栏图标-->
+		<div class="sidebar fl">
+			<div class="s-icon-wrap">
+				<div class="s-icon1">
+					<div class="me" title="我的资产"><img src="__PUBLIC__/gd10086/img/icon/me.png" /></div>
+					<div class="car_wrap" title="购物车">
+						<div class="buy_car">
+							<i><img src="__PUBLIC__/gd10086/img/icon/buy_car.png" /></i>
+							<p class="buy_text">购物车</p>
+							<div class="buy_number"><empty name="userInfo['cartCount']">0<else/>{$userInfo['cartCount']}</empty></div>
+						</div>
+					</div>
+					<div class="icon_tre">
+						<div class="tre_icon1" title="我的收藏"><img src="__PUBLIC__/gd10086/img/icon/collect.png" alt="" /></div>
+						<div class="tre_icon2" title="我看过的"><img src="__PUBLIC__/gd10086/img/icon/me_look.png" alt="" /></div>
+						<div class="tre_icon3"><img src="__PUBLIC__/gd10086/img/icon/message.png" alt="" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="s-icon2">
+					<div class="ewm-p"><img src="__PUBLIC__/gd10086/img/icon/ewm.png" alt="" /><img src="__PUBLIC__/gd10086/img/ewm.png" class="ewm"></div>
+					<div class="something" title="反馈意见"><img src="__PUBLIC__/gd10086/img/icon/something.png" alt="" /></div>
+					<div id="back_top"><img src="__PUBLIC__/gd10086/img/icon/gotop.png" alt="" /></div>
+			</div>
+		</div>
+		<!--侧边栏内容-->
+		<div class="s-content fr">
+			<!--我的资产-->
+			<div class="user-asset show_bar">
+				<a href="__SITE_URL__/member-index.html" target="_blank">
+					<div class="user-con mauto">
+						<div class="data-img">
+							<img src="__PUBLIC__/gd10086/img/head.png" alt="" />
+						</div>
+						<p class="data-name">
+							<notempty name="userName">
+								{$userName}
+							<else/>
+								{$account}
+							</notempty>
+						</p>
+					</div>
+				</a>
+				<div class="asset mauto">
+					<div class="asset-title mauto">
+						<div class="h2 mauto">我的资产</div>
+					</div>
+					<div class="asset-con">
+							<div class="welfare">
+								<div class="a-icon mauto">
+									<img src="__PUBLIC__/gd10086/img/welfare.png"/>
+								</div>
+								<div class="asset-con1">福利积分</div>
+								<div class="asset-con2">{$userInfo['point']}</div>
+							</div>
+							<div class="volume">
+								<div class="a-icon mauto">
+									<img src="__PUBLIC__/gd10086/img/volume.png"/>
+								</div>
+								<div class="asset-con1">优惠卷</div>
+								<div class="asset-con2">{$userInfo['coupon']}张</div>
+							</div>
+							<div class="money">
+								<div class="a-icon mauto">
+									<img src="__PUBLIC__/gd10086/img/money.png"/>
+								</div>
+								<div class="asset-con1">礼舍币</div>
+								<div class="asset-con2">
+									<empty name="userInfo['points']['point_count']">0<else/>{$userInfo['points']['point_count']}</empty>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+					</div>
+					<div class="volume-item">
+						<!--暂无优惠券隐藏-->
+						<!--<div class="volume-i">
+							<div class="sum fl"><em>¥</em>2000</div>
+							<div class="volume-text fl">
+								<p class="v-p1">无门槛</p>
+								<p class="v-p2">11/25</p>
+								<p class="v-p3">-11/30</p>
+							</div>
+						</div>-->
+					</div>
+				</div>
+			</div>
+			<!--购物车-->
+			<div class="buyCar show_bar">
+				<div class="asset-title mauto">
+						<div class="h2 mauto">购物车</div>
+				</div>
+                <notempty name="userInfo['cart']">
+					<ul class="product-wrap mauto">
+              		  <volist name="userInfo['cart']" id="vo" >
+						<li id="{$vo['cart_id']}">
+							<div class="pro-i fl">
+								<img src="{$vo['image_default_id']}"/>
+							</div>
+							<div class="pro-text fl">
+								<p class="pro-name" title="{$vo['title']}">{$vo['title']}</p>
+								<p class="leaderboard">
+									<span class="fl"><em>{$vo['price']*100}</em>积分</span>
+									<span class="fr">×{$vo['quantity']}</span>
+								</p>
+	                      		<input type="hidden" id="num_{$vo.cart_id}"  value="{$vo['quantity']}" >
+								<input type="hidden" id="sku_{$vo.cart_id}" value="{$vo.sku_id}" />
+								<input type="hidden" class="lsprice"  id="totl_{$vo.cart_id}" value="{$vo['price']*100*$vo['quantity']}" />
+								<div class="product-num">
+										<div class="reckod fl">
+											<a href="javascript:void(0)" class="subtract fl" data="{$vo.cart_id}"><img src="__PUBLIC__/gd10086/img/subtract.png"/></a>
+											<span class="item-num">{$vo['quantity']}</span>
+											<a href="javascript:void(0)" class="add fr" data="{$vo.cart_id}" ><img src="__PUBLIC__/gd10086/img/add.png"/></a>
+										</div>
+										<a href="javascript:void(0)" class="remove-product fr" data-id="{$vo.cart_id}"><img src="__PUBLIC__/gd10086/img/icon/remove_03.png"/></a>
+								</div>
+							</div>
+						</li>
+						</volist>
+					</ul>
+				</notempty>
+					<div class="empty_wrap" style="display: none;" id="cartEmpty">
+						<img src="__PUBLIC__/gd10086/img/sidebar_empty.png" />
+						<p>您的购物车还是空的哦～</p>
+					</div>				
+                <empty name="userInfo['cart']">
+					<!--购物车为空显示-->
+					<div class="empty_wrap">
+						<img src="__PUBLIC__/gd10086/img/sidebar_empty.png" />
+						<p>您的购物车还是空的哦～</p>
+					</div>
+                <else/>
+					<!--结算-->
+					<div id="gocart">
+						<div class="balance mauto clearfix">
+							<p class="left_bala fl">共<em id="itmeNum">{$userInfo['cartCount']}</em>件商品</p>
+							<p class="right_bala fr" >共计:<em id="priceTol">{$userInfo['cartSumPrice']}</em>积分</p>
+						</div>
+						<a href="/shop.php/Order/Cart">
+							<div class="balance_btn mauto">进入购物车结算</div>
+						</a>
+					</div>
+                </empty>				
+			</div>
+			<!--我的收藏-->
+			<div class="me-collet show_bar">
+				<div class="asset-title mauto">
+						<div class="h2 mauto">我的收藏</div>
+				</div>
+                <notempty name="userInfo['fav']">
+					<ul class="collet-con">
+						<volist name="userInfo['fav']" id="fav">
+							<a href="__ITEM_URL__/shop.php/Info/index/itemId/{$bl.item_id}" target="_blank">
+								<li title="{$fav['goods_name']}">
+									<div class="collet-img">
+										<img src="{$fav.image_default_id}" alt="" />
+									</div>
+									<p class="collet-name">{$fav['goods_price']*100}积分</p>
+								</li>
+							</a>
+						</volist>
+					</ul>
+				<else/>
+					<!--我的收藏为空显示-->
+					<div class="empty_wrap">
+						<img src="__PUBLIC__/gd10086/img/sidebar_empty.png" />
+						<p>您还没有收藏商品哦～</p>
+					</div>
+				</notempty>
+			</div>
+			<!--我看过的-->
+			<div class="me-seeed show_bar">
+				<div class="asset-title mauto">
+						<div class="h2 mauto">我看过的</div>
+				</div>
+				<div class="h20"></div>
+				<!--今天-->
+				<notempty name="userInfo['history']">
+					<notempty name="userInfo['history']['today']">
+						<div class="see-con">
+							<span class="today mauto">今天</span>
+							<ul class="collet-con">
+								<volist name="userInfo['history']['today']" id="bl">
+									<a href="__ITEM_URL__/shop.php/Info/index/itemId/{$bl.item_id}" target="_blank">
+										<li title="{$bl.title}">
+											<div class="collet-img">
+												<img src="{$bl.img}" alt="" />
+											</div>
+											<p class="collet-name">{$bl['price']*100}积分</p>
+										</li>
+									</a>
+								</volist>
+							</ul>
+						</div>
+					</notempty>
+					<notempty name="userInfo['history']['yesterday']">
+						<div class="see-con">
+							<span class="today mauto">昨天</span>
+							<ul class="collet-con">
+								<volist name="userInfo['history']['yesterday']" id="bl">
+									<a href="__ITEM_URL__/shop.php/Info/index/itemId/{$bl.item_id}" target="_blank">
+										<li title="{$bl.title}">
+											<div class="collet-img">
+												<img src="{$bl.img}" alt="" />
+											</div>
+											<p class="collet-name">{$bl['price']*100}积分</p>
+										</li>
+									</a>
+								</volist>
+							</ul>
+						</div>
+					</notempty>
+					<notempty name="userInfo['history']['other']">
+						<div class="see-con">
+							<span class="today mauto">一天前</span>
+							<ul class="collet-con">
+								<volist name="userInfo['history']['other']" id="bl">
+									<a href="__ITEM_URL__/shop.php/Info/index/itemId/{$bl.item_id}" target="_blank">
+										<li title="{$bl.title}">
+											<div class="collet-img">
+												<img src="{$bl.img}" alt="" />
+											</div>
+											<p class="collet-name">{$bl['price']*100}积分</p>
+										</li>
+									</a>
+								</volist>
+							</ul>
+						</div>
+					</notempty>	
+				</notempty>
+				<!--2016.12.28-->
+				
+				<div class="save-text">只保存最近十条浏览记录</div>
+				<empty name="userInfo['history']">
+					<!--浏览为空显示-->
+					<div class="empty_wrap" >
+						<img src="__PUBLIC__/gd10086/img/sidebar_empty.png" />
+						<p>您还没有浏览商品呢～</p>
+					</div>
+				</empty>
+			</div>
+			<!--我的消息-->
+			<div class="message show_bar">
+				<div class="asset-title mauto">
+						<div class="h2 mauto">我的消息</div>
+				</div>
+				<!--消息为空显示-->
+				<div class="empty_wrap">
+					<img src="__PUBLIC__/gd10086/img/sidebar_empty.png" />
+					<p>您还没有收到消息哦～</p>
+				</div>
+			</div>
+			<!--意见反馈-->
+			<div class="waring show_bar">
+				<div class="asset-title mauto">
+						<div class="h2 mauto" value="1">意见反馈</div>
+				</div>
+				<div class="waring-sele mauto">
+					<div class="fl" value="1">意见反馈</div>
+					<span class="san fr"></span>
+					<div class="opation" value="2">商品登记</div>
+				</div>
+				<div class="box-item" style="text-align: center;margin-top: 5px;display: none;">
+	                <p class="box-p">
+              			<select class="left_level1" style="width:146px;">
+                            <option value="0" selected>--请选择--</option>
+                            <volist name="levelList" id="vo">
+                            <option value="{$vo['cat_id']}" >{$vo['cat_name']}</option>
+                            </volist>                        
+                        </select>
+                        <select class="left_level2" style="width:146px; margin-top:3px;">
+                            <option value="0" selected>--请选择--</option>
+                        </select>
+                        <input type="hidden" class="left_checkLevel3" value="1">
+                        <select class="left_level3" style="width:146px; margin-top:3px;">
+                            <option value="0" selected>--请选择--</option>
+                        </select>
+	                </p>					
+				</div>
+				<textarea class="war-text mauto feed-back" placeholder="欢迎您对平台提出宝贵意见(限300字)"></textarea>
+				<div class="submit mauto abutton">提交</div>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		totalPoint();
+		/*侧边栏图标*/
+		$('.me').click(function(){
+				//我的资产
+				show_bar('.user-asset');
+		});
+		$('.car_wrap').click(function(){
+				//购物车
+				show_bar('.buyCar');
+		});
+		$('.tre_icon1').click(function(){
+				//我的收藏
+				show_bar('.me-collet');
+		});
+		$('.tre_icon2').click(function(){
+				//我看过的
+				show_bar('.me-seeed');
+		});
+		$('.something').click(function(){
+				//意见反馈
+				show_bar('.waring');
+		});
+		$('.tre_icon3').click(function(){
+				//我的消息
+				show_bar('.message');
+		});
+		
+		var cls2 = null;
+		function show_bar(cls){
+			cls2 = cls;
+			if($(cls).attr('barOff')){
+				$('.sidebar-wrap').animate({
+					'right':'-230px'
+				},300);
+				$(cls).attr('barOff','');
+			}else{
+				$('.sidebar-wrap').animate({
+					'right':'0px'
+				},300);
+
+				$('.show_bar').attr('barOff','');
+				$('.show_bar').hide();
+				$(cls).show();
+				$(cls).attr('barOff',true);
+			}
+			
+		}
+		$('.me,.car_wrap,.tre_icon1,.tre_icon2,.something,.tre_icon3').click(function(){
+			if($(this).attr('style')){
+				$('.me,.car_wrap,.tre_icon1,.tre_icon2,.something,.tre_icon3').css('background-color','');
+			}else{
+				$('.me,.car_wrap,.tre_icon1,.tre_icon2,.something,.tre_icon3').css('background-color','');
+				$(this).css('background-color','#c40000');
+			}
+			
+		});
+		
+		//限制字符个数
+		$('.pro-name').each(function(){
+			var maxwidth=14;
+			if($(this).text().length>maxwidth){
+				$(this).text($(this).text().substring(0,maxwidth));
+				$(this).html($(this).html()+'..');
+			}
+		});
+		
+		//意见反馈
+		var waringOff = true;
+		var sele = null;
+		$('.waring-sele .san').click(function(){
+			if(waringOff){
+				$('.opation').show();
+			}else{
+				$('.opation').hide();
+			}
+		 	waringOff = !waringOff;
+		});
+		$('.waring-sele .opation').click(function(){
+			sele = $('.waring-sele .fl').text();
+			$('.waring-sele .fl').html($(this).text());
+			$(this).html(sele);
+			if($(this).text() == '意见反馈'){
+				$(this).attr('value',1);
+				$('.waring-sele .fl').attr('value',2);
+			}else{
+				$(this).attr('value',2);
+				$('.waring-sele .fl').attr('value',1);
+			}
+			$('.opation').hide();
+			waringOff = true;
+		});
+		
+		/*购物车商品数量增加*/
+		var pro_Num = 1;
+		$('.add').click(function(){
+            var curr_cartId=$(this).attr('data');
+            var curr_cartNum=$('#num_'+curr_cartId).val();
+            var sku_id=$('#sku_'+curr_cartId).val();
+            var athis = $(this);
+            $.get("/shop.php/Order/opCart/op/inc/gid/"+curr_cartId+"/num/"+curr_cartNum+"/sku_id/"+sku_id, function(result){
+                var res = eval(result);
+                if(res[0] == 0){
+                    alert(res[1]);
+                    return false;
+                }else{
+	                var newNum=parseInt(curr_cartNum)+1;
+	                $('#num_'+curr_cartId).val(newNum);
+	                $("#totl_"+curr_cartId).val(res[1]*100);
+					athis.parent().children('.item-num').html(newNum); 
+					totalPoint();
+                }
+            });		
+		});
+		$('.subtract').click(function(){
+	        var athis = $(this);
+	        var curr_cartId=$(this).attr('data');
+	        var curr_cartNum=$('#num_'+curr_cartId).val();
+	        num=parseInt(curr_cartNum);
+	        if(num<=1){
+	            $(this).attr("disabled","disabled");
+	            return false;
+	        }else{
+	            $(this).removeAttr("disabled"); 
+		        $.get("/shop.php/Order/opCart/op/dec/gid/"+curr_cartId+"/num/"+num, function(result){
+		            var res = eval(result);       
+		            var newNum=parseInt(num)-1;
+		            $('#num_'+curr_cartId).val(newNum);
+		            $("#totl_"+curr_cartId).val(res[1]*100);
+					athis.parent().children('.item-num').html(newNum);
+					totalPoint();
+		        });			
+	        }
+		});
+		//计算总价
+		function totalPoint(){
+			var priceValue = 0;
+			$('.lsprice').each(function(){
+				priceValue += parseInt($(this).val());
+			});
+			$("#priceTol").text(priceValue);			
+		}
+//		购物车总价
+		function cartTotalPoint(){
+			var cartNum = $("#itmeNum").text();
+			if(cartNum == 0){
+				$("#cartEmpty").show();
+				$("#gocart").hide();
+			}
+            $.get("{:U('Gd10086/cartTotalPoint')}",'',function(data){
+            	if(data>0){
+					$("#priceTol").text(data);			
+            	}
+			});
+		}
+	    //删除购物车信息
+	    $('.remove-product').click(function(){
+	        if(window.confirm('您确认删除购物车中商品吗')){
+	            var deleCartId=$(this).attr("data-id");
+				var This = $(this);
+	            $.get("/shop.php/Order/deleteCartId",{cartId:deleCartId},function(msg){
+	                if(msg=='1'){
+//	                    window.location.reload();
+	                    // 对已选，未删除处理
+						This.parents('li').animate({
+							opacity:0,
+							height:0 + 'px'
+						},300);
+						var oldNum = $("#itmeNum").text();
+						var newNum = parseInt(oldNum)-1;
+						$("#itmeNum").text(newNum);
+						$(".buy_number").text(newNum);
+						cartTotalPoint();
+						setTimeout(function(){
+							This.parents('li').remove();
+						},300);	                    
+	                }else{
+	                    alert('购物车商品删除失败！');
+	                }
+	            });
+	        }
+	    });		
+		/*删除购物车中商品*/
+//		$('.remove-product').click(function(){
+//			var This = this;
+//			$(this).parents('li').animate({
+//				opacity:0,
+//				height:0 + 'px'
+//			},300);
+//			
+//			setTimeout(function(){
+//				$(This).parents('li').remove();
+//			},300);
+//			
+//		});
+		
+		/*返回顶部*/
+		$('#back_top').click(function(){
+			$('html,body').animate({
+				scrollTop:0 + 'px'
+			},500);
+		});
+
+		//楼层选项left
+		floor_list();
+		function floor_list(){
+			var dg_pl_left = $('.dg_product_list').offset().left - 86;
+			if(dg_pl_left < 0){
+				dg_pl_left = 0;
+			}
+			$('.siba_wrap1').css('left',dg_pl_left);
+		}
+		$(window).resize(function(){
+			floor_list();
+		});
+		//楼层豪华电梯直达
+		floorTop();
+		function floorTop(){
+			var floor_arr = [];
+			$('.dg_product_wrap').each(function(i){
+				floor_arr[i] = $('.dg_product_wrap').eq(i).offset().top;
+			});
+			$('.siba_wrap1 .dg_floor1').click(function(){
+				var floorA = $(this).index();
+				$('html,body').animate({
+					scrollTop : floor_arr[floorA] + 'px'
+				});
+			});
+		}
+		//关闭侧边栏2
+		$('.close_sidebar_wrap').click(function(){
+			$('.me,.car_wrap,.tre_icon1,.tre_icon2,.something,.tre_icon3').css('background-color','');
+			$('.sidebar-wrap').animate({
+					'right':'-230px'
+			},300);
+			$(cls2).attr('barOff','');
+			
+		});
+
+		//限制商品名称长度
+		repleceText('.product_list_con ul li .product_link .product_name',15);
+		function repleceText(obj,max){
+			$(obj).each(function(){
+				if($(this).text().length>max){
+					$(this).text($(this).text().substring(0,max));
+					$(this).html($(this).html()+'...');
+				}
+			});
+		}
+
+		//banner轮播图
+		banner_play();
+		function banner_play(){
+			var banner_left =  $(document).width()-1920;
+			$('.banner1_list li a img').css('margin-left',banner_left / 2);
+			
+			var sideNum = 0;
+			var sideBtn = null;
+			$(".banner1_list li").eq(0).show();
+			$('.banner1_btn_bg span').mouseover(function(){
+				var This = this;
+			
+				sideBtn = setInterval(function(){
+					$(This).addClass('active').siblings().removeClass('active');
+					var btnIndex = $(This).index();
+					siLi = btnIndex;
+		
+					$('.banner1_list li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+				},100);
+			});
+			$('.banner1_btn_bg span').mouseout(function(){
+				clearInterval(sideBtn);
+			});
+
+			var siLi = 0;
+			var timer = setInterval(play,4000);
+			
+			//鼠标移入移出效果
+		    $(".banner1_btn_bg span").hover(function() {
+			  clearInterval(timer);
+			  }, function() {
+			  timer=setInterval(play,4000);
+	  	   });
+		    $(".banner1_list li").hover(function() {
+			  clearInterval(timer);
+			  }, function() {
+			  timer=setInterval(play,4000);
+	  	   });
+
+			function play(){
+				siLi++;
+				siLi = siLi > $('.banner1_btn_bg span').length-1 ? 0 : siLi; 
+				
+				$('.banner1_btn_bg span').eq(siLi).addClass('active').siblings().removeClass('active');
+				
+				$('.banner1_list li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+			}
+		}
+
+		//公告滚动
+		ann_play();
+		function ann_play(){
+			var gnum = 0;
+			var annOff = true;
+			var annTimer = null;
+			annTimer = setInterval(function(){
+				gnum--;
+				annTop();
+			},5000);
+			$('.ann_a1').click(function(){
+				if(annOff){
+					gnum--;
+					annTop();
+				}
+				annOff = false;
+			});
+			$('.ann_a2').click(function(){
+				if(gnum < 0 && annOff){
+					gnum++;
+					annTop();
+				}
+				annOff = false;
+			});
+
+			function annTop(){
+				if(gnum <　-($('.ann_list ul li').length - 1)){
+					gnum = 0;
+				}
+				$('.ann_list ul').animate({
+					'margin-top':gnum * 50 + 'px'
+				},600,function(){
+					annOff = true;
+				});
+			}
+		}
+		//左边返回顶部
+		$('.dg_go_top').click(function(){
+			$('html,body').animate({
+				scrollTop:0 + 'px'
+			},50);
+		});
+		
+	});
+	
+		//三级分类
+	   $(".left_level1").bind('change','option',function(){
+	        $(".left_level2").empty();
+	        $(".left_level3").empty();
+	        $(this).attr("selected",true);
+	        var pid = $(this).val();
+	        if(pid > 0){
+	            $.post("__APP__/{$control}/getLevel","pid="+pid,function(msg){
+	                if(msg == 0){
+	                   alert("分类不存在！");
+	                   return;
+	                } 
+	                $(".left_level2").append(msg);
+	            });
+	        }           
+	    });
+	    $(".left_level2").bind('change','option',function(){
+	        $(".left_level3").empty();
+	        $(this).attr("selected",true);
+	        var pid = $(this).val();
+	        if(pid > 0){
+	            $.post("__APP__/{$control}/getLevel","pid="+pid,function(msg){
+	                if(msg == 0){
+	                   alert("分类不存在！");
+	                   return;                    
+	                }
+	                if (msg == -1) {
+	                    $('.left_checkLevel3').val('0');
+	                    $('.left_level3').hide();
+	                }else{
+	                    $(".left_level3").append(msg);
+	                }                
+	            });
+	        }           
+	    });	
+		
+    //意见反馈
+    $('.opation').on('click',function(){
+    	var changeval = $(this).attr('value');
+        if (changeval == 2) {
+            $(".box-item").show();
+        }else{
+            $(".box-item").hide();
+        }    	
+    });
+		//意见反馈单击提交
+    $(".abutton").click(function(){
+        var promType = $('.waring-sele .fl').attr('value');
+        var itemName = '暂无';//$(".item-name").val();
+        var itemLink = '暂无';//$('.item-link').val();
+        var feedBack = $('.feed-back').val();
+        var level1 = $('.left_level1').val();
+        var level2 = $('.left_level2').val();
+        var level3 = $('.left_level3').val();
+        var checkLevel3 = $('.left_checkLevel3').val();
+        if (promType == 2) {
+            if (itemName == '') {
+                alert("请填写商品名称！");
+                return false;
+            };
+            if (itemLink == '') {
+                alert("请填写外站链接！");
+                 return false;               
+            };
+            if (level1 == 0) {
+                alert("请选择一级分类！");
+                 return false;                 
+            };
+            if (level2 == 0) {
+                alert("请选择二级分类！");
+                return false;               
+            };
+            if (checkLevel3 == 1) {                
+                if (level3 == 0) {
+                    alert("请选择三级分类！");
+                     return false;                  
+                };
+            };
+        };
+        if (feedBack == '') {
+            alert("请填写外反馈内容！");
+            return false;
+        };
+        $.ajax({ 
+            type:"post",
+            url:"__APP__/{$control}/feedBack",
+            data: {promType:promType,itemName:itemName,itemLink:itemLink,feedBack:feedBack,level1:level1,level2:level2,level3:level3},
+            success: function(data){
+                var res = eval(data);
+                if (res[0] == 1) {
+                    alert(res[1]);
+                    $('.item-link').val('');
+                    $(".item-name").val('');
+                    $('.feed-back').val('');
+                }else{
+                    alert(res[1]);
+                }
+            }
+        }); 
+
+    });		
+	</script>	

@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>微商城首页-心意商城</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/WmallsIndex.css">
+<link rel="stylesheet" href="__VIEW__Public/css/swiper.min.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/swiper.min.js"></script>
+</head>
+<style type="text/css">
+.swiper-pagination-bullet{width:6px;height:6px; display:inline-block; border-radius:50%; background:#FFF; opacity:1;}
+.swiper-pagination-bullet-active{background:#FF443C; opacity:1;}
+</style>
+<body>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <volist name="shuDetailList" id="shuvo">
+                <div class="swiper-slide">
+                    <a href="{$shuvo['refer']}"><img src="{$shuvo['banner_img']}"></a>
+                </div>                
+            </volist>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        </div>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+    		autoplay : 2000,
+            paginationClickable: true
+        });
+    </script>
+    <!--头部-->
+    <div class="pindexheader">
+        <span><img src="__VIEW__Public/images/WmallsLogo.png"></span>
+        <span>
+            <a href="#"><img src="__VIEW__Public/images/Wglasses.png"></a>
+            <form action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+                <input type="text" name="keyword" placeholder="快选一份礼物,送给亲爱的TA吧">
+            </form>
+        </span>
+    </div>
+    <!--导航-->
+    <div class="pindexNva">
+       <ul class="pindexNvaul">
+            <li><a href="{:U('Index/index')}">首页</a></li>
+            <volist name="newindexItem" id="voIndex" >
+            <if condition="$voIndex['type'] eq 2">
+                <li class="active{$voIndex['index_id']}" value="{$voIndex['index_id']}">
+                    <a href="javascript:">{$voIndex['name']}</a>
+                </li>
+                <!-- <li><a href="#">送男神</a></li>
+                <li><a href="#">送长辈</a></li>
+                <li><a href="#">送领导</a></li> -->
+            </if>
+            </volist>
+       </ul>
+    </div>
+    <div style="clear:both"></div>
+    <!--送礼对象-->
+    <div class="toiletriesListObj">
+        <volist name="newindexItem" id="voIndex" >
+        <div class="obj{$voIndex['index_id']} objItem">
+        <if condition="$voIndex['type'] eq 2">
+            <volist name="voIndex['item']" id="vo" key="k" empty="暂时没有商品">
+                <ul>
+                    <li><a class="toiImg" href="__APP__/Info/index/itemId/{$vo.forkey_item_id}"><img src="{$vo.img_default_id}_m.{:end(explode('.',$vo['img_default_id']))}"></a></li>
+                    <li class="toileli"><a href="__APP__/Info/index/itemId/{$vo.forkey_item_id}">{$vo['abstract']}</a></li>
+                    <li class="toiname"><a href="__APP__/Info/index/itemId/{$vo.forkey_item_id}">{$vo.title}</a></li>
+                    <li class="toipric">
+                        <a href="__APP__/Info/index/itemId/{$vo.forkey_item_id}">
+                            <!--{$vo['price']*100}积分-->
+                            <if condition="$vo['cash'] gt 0 && $vo['point'] gt 0">
+                                ¥{:round($vo['cash'], 2)} + {$vo['point']}积分
+                                <elseif condition="$vo['cash'] gt 0"/>
+                                ¥{:round($vo['cash'], 2)}
+                                <elseif condition="$vo['point'] gt 0"/>
+                                {$vo['point']}积分
+                                <else/>
+                                ¥{:round($vo['price'], 2)}
+                            </if>
+                        </a>
+                    </li>
+                </ul>
+            </volist>
+        </if>
+        </div>   
+        </volist>        
+    </div>
+
+    <!--新人礼遇-->
+    <div class="toiletries">
+        <a href="/wshop.php/activity/newCourtesy">
+            <img src="http://www.lishe.cn/Upload/banner/2017-04-19/20170419135331.png"></a>
+    </div>
+    <div class="toiletriesList">
+        <ul>
+            <li><a class="toiImg" href="/wshop.php/Info/index/itemId/17958" style="height: 144.256px;"><img src="http://www.lishe.cn/images/52/2d/e1/81aaa1b449ee3638c9d61eb4ac66b6789a7e429c.jpg_m.jpg"></a></li>
+            <li class="toiname"><a href="/wshop.php/Info/index/itemId/17958">奥妙 全自动无磷洗衣粉 1100g</a></li>
+            <li class="toipric">
+                <a href="/wshop.php/Info/index/itemId/17958">
+                    2380积分
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li><a class="toiImg" href="/wshop.php/Info/index/itemId/18067" style="height: 144.256px;"><img src="http://www.lishe.cn/images/79/c2/74/fe48ee1f9334769c9a558e5e1739835b26ff70c5.jpg_m.jpg"></a></li>
+            <li class="toiname"><a href="/wshop.php/Info/index/itemId/18067">黑人水清新牙膏140g 清泉薄荷</a></li>
+            <li class="toipric">
+                <a href="/wshop.php/Info/index/itemId/18067">
+                    1490积分
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li><a class="toiImg" href="/wshop.php/Info/index/itemId/18094" style="height: 144.256px;"><img src="http://120.76.102.64/images/3d/e1/7b/5521103f4bdc8b0f6eda393ebd488e3b613e88c1.jpg_m.jpg"></a></li>
+            <li class="toiname"><a href="/wshop.php/Info/index/itemId/18094">飘柔去屑洗发水焗油去屑750ml</a></li>
+            <li class="toipric">
+                <a href="/wshop.php/Info/index/itemId/18094">
+                    5800积分
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li><a class="toiImg" href="/wshop.php/Info/index/itemId/18165" style="height: 144.256px;"><img src="http://120.76.102.64/images/47/1d/84/aa1481a4a17d164df041aecc2164c6d3f60d52bb.jpg_m.jpg"></a></li>
+            <li class="toiname"><a href="/wshop.php/Info/index/itemId/18165">沙宣洗发水炫亮彩护400ml</a></li>
+            <li class="toipric">
+                <a href="/wshop.php/Info/index/itemId/18165">
+                    5900积分
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--列表内容-->
+    <volist name="newindexItem" id="voIndex" >
+    <if condition="$voIndex['type'] eq 0">
+        <div class="toiletries"><img src="{$voIndex.icon}"></div>
+        <div class="toiletriesList">
+            <volist name="voIndex['item']" id="vo" key="k" empty="暂时没有商品">
+            <ul>
+                <li><a class="toiImg" href="__APP__/Info/index/itemId/{$vo.forkey_item_id}"><img src="{$vo.img_default_id}_m.{:end(explode('.',$vo['img_default_id']))}"></a></li>
+                <li class="toiname"><a href="__APP__/Info/index/itemId/{$vo.forkey_item_id}">{$vo.title}</a></li>
+                <li class="toipric">
+                    <a href="__APP__/Info/index/itemId/{$vo.forkey_item_id}">
+                        <!--{$vo['price']*100}积分-->
+                        <if condition="$vo['cash'] gt 0 && $vo['point'] gt 0">
+                            ¥{:round($vo['cash'], 2)} + {$vo['point']}积分
+                            <elseif condition="$vo['cash'] gt 0"/>
+                            ¥{:round($vo['cash'], 2)}
+                            <elseif condition="$vo['point'] gt 0"/>
+                            {$vo['point']}积分
+                            <else/>
+                            ¥{:round($vo['price'], 2)}
+                        </if>
+                    </a>
+                </li>
+            </ul>
+            </volist>
+        </div>
+    </if>
+    </volist>
+    <div style="clear:both;"></div>
+    <input id="nvaNum" type="hidden" value="0">  
+    <include file="Public/bottom"/>
+<script type="text/javascript">
+    $(function(){
+        var $li = $('.Wmallsfixedfootul li');
+        $li.click(function(){
+            if(!$(this).hasClass('activefoot')){
+                $(this).addClass('activefoot').siblings().removeClass('activefoot');
+            }
+        });
+    });
+
+    $(".pindexNvaul li").eq(0).addClass("active");
+    var defaultObjId = $(".pindexNvaul li").eq(0).attr("value");
+    $(".obj"+defaultObjId).show();
+    $('.pindexNvaul li').click(function(){
+        $(".toiletries").remove();
+        $(".toiletriesList").remove();
+        $(".pindexNvaul li").removeClass("active");
+        $(this).addClass('active');
+        var objId = $(".pindexNva ul li.active").attr('value');
+        $(".objItem").hide();
+        $(".obj"+objId).show();
+    });
+
+
+</script>
+<script>
+    var $tjImg = $(".toiImg");
+    var $tjImgHeight = $(window).width()*0.98*0.46;
+    $tjImg.each(function(){
+        $(this).css("height", $tjImgHeight);
+    });
+</script>
+</body>
+</html>

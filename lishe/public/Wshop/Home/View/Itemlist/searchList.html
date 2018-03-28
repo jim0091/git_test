@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/classifyList.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<title>商品搜索-心意商城</title>
+    
+</head>
+
+<body>
+    <div class="clafiyHeader">
+        <div class="clafiyHeaderdiv">
+            <div><a href="javascript:" onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></div>
+            <div>
+                <form action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+                    <input type="text" name="keyword" placeholder="企业福利,给你最好的的关怀" class="Wglasput" value="{$keyword}">
+                </form>
+            </div>
+            <div class="classifyDownIcon"><img src="__VIEW__Public/images/classifyDownIcon.png"></div>
+        </div>    
+    </div>   
+    <div class="clafiyListul">
+        <volist name="list" id="vo">
+            <ul>
+                <li>
+                    <a class="goods-pic-preview" href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a>
+                </li>
+                <li class="classname">
+                    <a href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}">{$vo.title}</a>
+                </li>
+                <li class="classpric">
+                    <a href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}">{$vo['price']*100}积分</a>
+                </li>
+            </ul>
+        </volist>
+    </div>   
+
+    <!--下拉层-->
+    <div class="dropdown">
+        <div class="mark"></div>        
+        <form id="findItem" action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+        <input type="hidden" name="keyword" value="{$keyword}">
+        <input type="hidden" name="catId" value="{$catId}">
+        <input type="hidden" name="brand" id="brandId" value="{$brand}">
+        <div class="dialog">
+            <div class="clasFyprice">
+                <p>价格</p>
+                <p>
+                    <span>价格区间(元）</span>
+                    <input type="text" name="minPrice" placeholder="最低价" class="downput" value="{$minPrice}">
+                    <span style="color:#000000; padding:0 1rem;">-</span>
+                    <input type="text" name="maxPrice" placeholder="最高价" class="downput" value="{$maxPrice}">
+                </p>
+            </div>
+            <div class="downbrands">
+                <p class="downbrandsp"><span>品牌</span><span><img src="__VIEW__Public/images/clfydown.png"></span></p>
+                <ul class="downbrandsul">   
+                <li <if condition="$brand eq 0">class="downactive"</if> value="0">全部</li>                 
+                    <volist name="brandList" id="vo">
+                        <li <if condition="$brand eq $vo['brand_id']">class="downactive"</if> value="{$vo['brand_id']}">{:getTableRow('syscategory_brand','brand_id',$vo['brand_id'],'brand_name')}</li>
+                    </volist>
+                </ul>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="downbrandsbtn">
+                <a class="findItem" href="javascript:void(0)">搜索</a>
+            </div>            
+        </div>
+        </form>
+ 
+    </div>
+
+    <style>
+        .custom-paginations-prev{
+            padding: 60px;
+            color: #09F;
+        }
+        .wborder{
+            border:1px solid #DDD; 
+            padding: 5px;
+        }
+    </style> 
+    <div class="custom-paginations-container" style="margin-top: 10px;">  
+        <div  style="text-align: center;">
+            {$pagestr}
+        </div> 
+    </div> 
+    <input id="nvaNum" type="hidden" value="1">  
+    <include file="Public/bottom"/> 
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var searchbar = false;
+
+            if(searchbar==false){
+                $(".classifyDownIcon").click(function(){
+                    $(".dropdown").show();
+                    $("html").addClass('select-options');
+                    $("body").css("height", "100%");
+                    $(".Wmallsfixedfoot").css("left","100%");
+                    searchbar = true;
+                }); 
+            }else{
+                $(".downbrandsbtn").click(function(){
+                    $(".dropdown").hide();
+                    $("html").removeClass('select-options');
+                    $("body").removeAttr("style");
+                    $(".Wmallsfixedfoot").removeAttr("style");
+                    searchbar = false;
+                });
+            } 
+        
+            $('.downbrandsul li').click(function(){
+                var brandId = $(this).attr('value');
+                $("#brandId").val(brandId);
+                if(!$(this).hasClass('downactive')){
+                    $(this).addClass('downactive').siblings().removeClass('downactive');
+                }
+            });
+            $(".findItem").click(function(){
+                $("#findItem").submit();
+            });
+            $(".mark").click(function(){
+                $(".dropdown").hide();
+                $("html").removeClass('select-options');
+                $("body").removeAttr("style");
+                $(".Wmallsfixedfoot").removeAttr("style");
+                searchbar = false;
+            });
+        });
+    </script>
+</body>
+</html>

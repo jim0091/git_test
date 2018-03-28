@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="__ADMIN__lib/layui/css/layui.css">
+	<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />  
+</head>
+<body>
+<nav class="breadcrumb">
+	<a class="layui-btn layui-btn-normal  r mr-20" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<form class="layui-form" action="{:U('Mallconfigure/editAdPostionDeal')}" id="submitFrom" method="post" enctype="multipart/form-data" style="padding-bottom: 20px;">
+	<present name="info.position_id">
+	  <input type="hidden" name="postionId" value="{$info.position_id}" />
+	</present>  
+  <div class="layui-form-item">
+    <label class="layui-form-label">广告位名称</label>
+    <div class="layui-input-block">
+      <input name="data[position_name]" value="{$info.position_name}" id="groupName" lay-verify="title" autocomplete="off" placeholder="请输入广告位名称" class="layui-input groupname" type="text" onfocus="giveTips('(必填项)：广告位名称区分不同广告位的标志!',this)" maxlength="15">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">链接类型:</label>
+    <div class="layui-input-block">
+      <!--<input name="data[link_type]" value="1" title="商品" checked="" type="radio"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i></div>-->
+      <!--<input name="data[link_type]" value="2" title="分类" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></div>-->
+      <!--<input name="data[link_type]" value="3" title="品牌" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></div>-->
+      <!--<input name="data[link_type]" value="4" title="网页" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></div>-->
+      <!--<input name="data[link_type]" value="5" title="产品组" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></div>-->
+    </div>
+  </div>
+<div class="layui-tab layui-tab-card">
+  <ul class="layui-tab-title">
+    <li 
+    	<notpresent name="info">
+	    	class="layui-this"
+    		<else/>
+    		<eq name="info.link_type" value="1">
+	    		class="layui-this"
+    		</eq>
+    	</notpresent>
+    	
+    	>
+    	<input name="data[link_type]" value="1" title="商品" 
+	    	<notpresent name="info">
+    			checked=""
+	    		<else/>
+	    		<eq name="info.link_type" value="1">
+    				checked=""
+	    		</eq>
+	    	</notpresent>    		
+    		type="radio">
+    	<div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i></li>
+    <li 
+    		<eq name="info.link_type" value="4">
+	    		class="layui-this"
+    		</eq>
+    	>
+    	<input name="data[link_type]" value="4" title="网页" type="radio"
+    		<eq name="info.link_type" value="4">
+    				checked=""
+    		</eq>    		
+    		>
+    	<div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></li>
+    <!--<li class=""><input name="data[link_type]" value="2" title="分类" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></li>-->
+    <!--<li class=""><input name="data[link_type]" value="3" title="品牌" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></li>-->
+    <!--<li class=""><input name="data[link_type]" value="5" title="产品组" type="radio"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i></li>-->
+  </ul>
+  <div class="layui-tab-content" style="height: 100px;">
+    <div class="layui-tab-item 
+	    	<notpresent name="info">
+    			layui-show
+	    		<else/>
+	    		<eq name="info.link_type" value="1">
+    				layui-show
+	    		</eq>
+	    	</notpresent>      	
+    	
+    	">
+			<div class="layui-inline">
+	      <label class="layui-form-label">
+						商品ID:
+	      </label>
+	      <div class="layui-input-inline">
+	        <input name="itemId" value="{$info.item_id}" lay-verify="number" id="itemId" autocomplete="off" class="layui-input" type="number" onMouseOver="giveTips('输入商品Id,需要校验商品,检验商品是否存在!',this)">
+	      </div>
+	      	<a class="layui-btn layui-btn-normal" onclick="checkItem()">校验商品</a>
+	    </div>
+			<div class="layui-inline" style="padding-top: 20px;">
+	      <label class="layui-form-label">
+						显示价格:
+	      </label>
+	      <div class="layui-input-inline" >
+	        <input name="price" value="{$info.item_price}" onkeyup="clearNoNum(this)" id="price" autocomplete="off" class="layui-input" type="text" onMouseOver="giveTips('商品价格（元）!',this)">
+	      </div>
+	  		    元
+	    </div>	    
+    </div>
+    <div class="layui-tab-item
+	    		<eq name="info.link_type" value="4">
+    				layui-show
+	    		</eq>    	
+    	">
+    	<label class="layui-form-label">链接地址</label>
+      <div class="layui-input-block">
+      	<input name="referLink" id="referLink" value="{$info.refer_link}" lay-verify="title" autocomplete="off" placeholder="请输入位跳转链接" class="layui-input" type="text" onfocus="giveTips('(选填项)：广告位区域需要跳转时填写跳转链接!',this)" maxlength="80">
+      </div>
+   
+  	</div>
+    <!--<div class="layui-tab-item">分类预留入口</div>-->
+    <!--<div class="layui-tab-item">品牌预留入口</div>-->
+    <!--<div class="layui-tab-item">产品组预留入口</div>-->
+  </div>
+</div>    
+  <div class="layui-form-item">
+    <label class="layui-form-label">标题</label>
+    <div class="layui-input-block">
+      <input name="data[position_title]" value="{$info.position_title}" id="title" lay-verify="title" autocomplete="off" placeholder="请输入广告位标题" class="layui-input" type="text" onfocus="giveTips('商品名称或标题!',this)" maxlength="28">
+    </div>
+  </div>  
+   <div class="layui-form-item">
+    <label class="layui-form-label">副标题</label>
+    <div class="layui-input-block">
+      <input name="data[position_vice_title]" value="{$info.position_vice_title}" lay-verify="title" autocomplete="off" placeholder="请输入广告位副标题" class="layui-input" type="text" onfocus="giveTips('(选填项)：广告位需要副标题等文字时填写!',this)" maxlength="48">
+    </div>
+  </div>   
+   <div class="layui-form-item">
+    <label class="layui-form-label">广告位图片</label>
+    <div class="layui-input-block">
+    	<img id="imgsrc" src="{$info.position_pic}" style="width: 80px;max-height: 100px;"  />
+     <input name="positionPic" type="file" onMouseOver="giveTips('广告位需要banner图时上传!',this)"  style="border: 1px #5FB878 solid; border-radius: 5px;padding:2px 5px;color: #5FB878;">
+    </div>
+  </div> 	
+<div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">日期（始）</label>
+      <div class="layui-input-inline">
+        <input name="startTime" value="{$info['startTime']}" onMouseOver="giveTips('需要限制日期的设置!',this)" id="date" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})" type="text">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">日期（终）</label>
+      <div class="layui-input-inline">
+        <input name="endTime" value="{$info['endTime']}" onMouseOver="giveTips('需要限制日期的设置!',this)" id="date" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})" type="text">
+      </div>
+    </div>
+  </div> 
+   <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-block">
+     <input name="orderSort" lay-verify="number" value="{$info['order_sort']}" autocomplete="off" class="layui-input" type="number" onMouseOver="giveTips('广告位排序数字降序,默认不排序!',this)"  maxlength="4">
+    </div>
+  </div> 	  
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">广告位描述</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" id="position_desc" maxlength="200" name="data[position_desc]" class="layui-textarea" onfocus="giveTips('对广告位描述!',this)">{$info['position_desc']}</textarea>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <a class="layui-btn" onclick="saveForm()">立即提交</a>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+
+</body>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layui/layui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script>
+	//只能输入最多两位小数
+	function clearNoNum(obj){  
+	   obj.value = obj.value.replace(/[^\d.]/g,"");  //清除“数字”和“.”以外的字符  
+	   obj.value = obj.value.replace(/^\./g,"");  //验证第一个字符是数字而不是.  
+	  obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的  
+	  obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");  
+	  obj.value=obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数  
+	}  
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form()
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+});
+layui.use('element', function(){
+  var $ = layui.jquery
+  ,element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
+  
+  //触发事件
+  var active = {
+    tabAdd: function(){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title: '新选项'+ (Math.random()*1000|0) //用于演示
+        ,content: '内容'+ (Math.random()*1000|0)
+      })
+    }
+    ,tabDelete: function(){
+      //删除指定Tab项
+      element.tabDelete('demo', 2); //删除第3项（注意序号是从0开始计算）
+    }
+    ,tabChange: function(){
+      //切换到指定Tab项
+      element.tabChange('demo', 1); //切换到第2项（注意序号是从0开始计算）
+    }
+  };
+  
+  $('.site-demo-active').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+function giveTips(title,obj){
+		layer.tips(title, obj, {
+	  tips: [3, '#5FB878']
+	});	
+}
+//校验商品
+function checkItem(){
+	var itemId=$("#itemId").val();
+	if(itemId==""){
+		layer.msg("请输入商品ID");
+		return false;
+	}
+	$.get("__APP__/Mallconfigure/getThisItemIfo",{itemId:itemId},function(msg){
+			var data =eval(msg);
+			if(data == null){
+				layer.msg("输入商品ID对应商品不存在!");
+				return false;
+			}
+			if(data['item_id']){
+				$("#title").val(data['title']);
+				$("#imgsrc").attr("src",data['image_default_id']);
+				$("#subpic").val(data['image_default_id']);
+				$("#price").val(data['price']);
+			}else{
+				layer.msg("输入商品ID对应商品不存在!");
+			}
+	});
+	
+}
+function saveForm(){
+	var groupName=$("#groupName").val();
+	var title=$("#title").val();
+	var groupDesc=$("#groupDesc").val();
+	var linkType=$("input[type='radio']:checked").val();
+	if(linkType==1){
+		//商品
+		var itemId=$("#itemId").val();
+		if(itemId==""){
+			layer.msg("请输入商品ID");
+			return false;
+		}
+	}else if(linkType==4){
+		//链接
+		var referLink=$("#referLink").val();
+		if(referLink==""){
+					layer.msg("请输入跳转链接!");
+					return false;		
+		}	
+		
+	}
+	if(title==""){
+		layer.msg("广告位标题不能为空!");
+		return false;		
+	}
+	if(groupName==""){
+		layer.msg("请输入广告位名称!");
+		return false;
+	}
+	if(groupName.length>15){
+		layer.msg("广告位名称字数至多为15字!");
+		return false;		
+	}
+	if(groupDesc==""){
+		layer.msg("请输入广告位描述!");
+		return false;
+	}	
+	$("#submitFrom").submit();
+}
+</script>
+</html>

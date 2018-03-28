@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>festival-福利更简单</title>
+	<link rel="shortcut icon" href="/shop/Home/View/Activity/midAutumnFestival/images/icon/bitbug_favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/shop/Home/View/Activity/midAutumnFestival/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/shop/Home/View/Activity/midAutumnFestival/css/public.css"> 
+	<link rel="stylesheet" type="text/css" href="/shop/Home/View/Activity/midAutumnFestival/css/new_index.css"> 
+</head>
+<style>
+	.imgsiz{
+		width: 232px;
+		max-height: 232px;
+		overflow: hidden;
+	}
+	.divPrompt {
+	    height: 100%;
+	    width: 100%;
+	    position: fixed;
+	    _position: absolute;
+	    top: 0;
+	    z-index: 1000;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	    background-color: #F6F4F4;
+	    display: none;
+	    margin: auto auto;
+	}
+	.divPromptContent {
+	    position: fixed;
+	    _position: absolute;
+	    left: 42%;
+	    top: 40%;
+	    color: #000000;
+	    z-index: 1001;
+	    display: none;
+	    border: 1px solid #c1a1a1;
+	    padding: 30px 40px 30px 40px;
+	    background-color: #f6f4f4;
+	    border-radius: 5px;
+	    -webkit-border-radius: 8px;
+	    -moz-border-radius: 8px;
+	    -webkit-box-shadow: #666 0px 0px 10px;
+	    -moz-box-shadow: #666 0px 0px 10px;
+	    box-shadow: #666 0px 0px 10px;
+	}
+	
+/*提示加载弹出框*/
+.topLoading{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:1000;opacity:0.3; filter: alpha(opacity=30); background-color:#F6F4F4;  margin:auto auto;}
+.topLoading img{position:absolute;left:50%;top:49%}	
+</style>
+<body>
+    <!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+    
+	<div class="header2_wrap">
+		<div class="header2 mauto">
+			<div class="header2_link1 fl">
+				<notempty name="comName">
+					<span class="lishe_sp fl">{$comName}</span>
+				</notempty>
+				<a href="/user.php/Info/index">
+					<span class="lishe_sp2 fl" style="color: #333333;">
+						<notempty name="userName">
+							{$userName}
+						<else/>	
+							未登录
+						</notempty>
+					</span>
+				</a>
+				<a href="http://www.lishe.cn/shop.php" class="link_a fl">首页</a>
+				<a href="http://www.lishe.cn/shop.php" target=_blank class="link_a fl">心意商城</a>
+			</div>
+			<div class="header2_link2 fr">
+				<notempty name="uid">
+					<span class="ls_sp account">账户余额<b class="clon">:</b><em>¥{$deposit}</em></span>
+				<else/>
+					<a href="/shop.php/Sign/index">
+						<span class="ls_sp quit">登录</span>
+					</a>					
+				</notempty>
+					<a href="/shop.php/Order/Cart" class="ls_sp shopingCart">购物车(<em class="cartNumber" >0</em>)</a>
+				<notempty name="uid">
+					<a href="{:U('Sign/logout')}">
+						<span class="ls_sp quit">退出登录</span>
+					</a>
+				</notempty>
+			</div>
+		</div>
+	</div>
+	<!--banner1-->
+	<div class="banner_wrap">
+		<div class="banner_list1">
+			<img src="/shop/Home/View/Activity/midAutumnFestival/images/index_banner_head.png" class="index_banner_head">
+		</div>
+	</div>
+	<div class="repeat_bg"></div>
+	<!--时令节日-->
+	<div class="index_con1">
+		<h2 class="floor_tit"><img src="/shop/Home/View/Activity/midAutumnFestival/images/floor_tit1.png" alt=""></h2>
+		<div class="product_list product_list3">
+			<ul class="product_ul">
+				<volist name="seasonal.rec" id="vo" offset="0" length="9">
+					<li>
+						<span class="product_img">
+							<a href="/shop.php/Info/index/itemId/{$vo}" target="_blank">
+								<img class="imgsiz" src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfo[$vo]['image_default_id']))}" alt="" data-src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfo[$vo]['image_default_id']))}" >
+							</a>
+						</span>
+						<div class="product_text">
+							<p class="product_name">{$itemInfo[$vo]['title']}</p>
+							<p class="product_price1">{$itemInfo[$vo]['price']*100}积分</p>
+							<div class="buy_product">
+								<div class="buy_bumber"><span class="subtract fl">-</span><input type="text" value="1" class="number_inp" data-shopId="{$itemInfo[$vo]['shop_id']}" maxlength="5" data-item="{$vo}" ><span class="add fr">+</span></div>
+								<span class="buy_cart_icon"><img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/buy_cart_icon.png" alt=""></span>
+							</div>
+						</div>
+					</li>
+				</volist>
+
+			</ul>
+			<div class="query_m fl">
+				<a href="{:U('Activity/singleArea',array('acid'=>$seasonal['activity_config_id']))}" target="_blank" class="query_m2">
+					<p class="query_m_text">查看更多</p>
+					<p class="big_arrow"><img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/big_arrow.png" alt=""></p>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;_zoom:1;"></div>
+	<!--爆款推荐-->
+	<div class="index_con2">
+		<h2 class="floor_tit"><img src="/shop/Home/View/Activity/midAutumnFestival/images/floor_tit2.png" alt=""></h2>
+		<div class="product_list">
+			<ul class="product_ul" id="boom" >
+				<volist name="hotRecommend.rec" id="vo">
+					<li>
+						<span class="product_img">
+							<a href="/shop.php/Info/index/itemId/{$vo}" target="_blank">
+								<img class="imgsiz" src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfo[$vo]['image_default_id']))}" alt="">
+							    <switch name="key">
+							        <case value="0">
+										<b class="pro_mark1">热销</b>
+							        </case>
+							        <case value="1">
+							        	<b class="pro_mark2">大牌</b>
+							        </case>
+							        <case value="2">
+							        	<b class="pro_mark3">特惠</b>
+							        </case>
+							    </switch>								
+							</a>
+						</span>
+						<div class="product_text">
+							<p class="product_name">{$itemInfo[$vo]['title']}</p>
+							<p class="product_price1">{$itemInfo[$vo]['price']*100}积分</p>
+							<div class="buy_product">
+								<div class="buy_bumber"><span class="subtract fl">-</span><input type="text" value="1" maxlength="5" class="number_inp" data-shopId="{$itemInfo[$vo]['shop_id']}" data-item="{$vo}" ><span class="add fr">+</span></div>
+								<span class="buy_cart_icon"><img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/buy_cart_icon.png" alt=""></span>
+							</div>
+						</div>
+					</li>
+				</volist>
+			</ul>
+		</div>
+		<img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/50_left_arrow.png" class="left_arrow" id="boomLeft">
+		<img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/50_right_arrow.png" class="right_arrow" id="boomRight">
+	</div>
+	<div style="clear: both;_zoom:1;"></div>
+	<!--超值套餐-->
+	<div class="index_con3">
+		<h2 class="floor_tit"><img src="/shop/Home/View/Activity/midAutumnFestival/images/floor_tit3.png" alt=""></h2>
+		<div class="gift_con">
+			<ul id="superList">
+			<volist name="packageArr" id="vo">
+				<li <eq name="key" value="0">class="active"</eq> data-aConfId="{$vo.activity_config_id}" >
+					<div class="sum_item">
+						<div class="sum_con"><em>¥</em>{$vo.cat_content}</div>
+						<p class="gift_text">优惠套装礼包</p>
+					</div>
+				</li>				
+			</volist>
+			</ul>
+		</div>
+		<div class="product_list product_list2 product_list3 package">
+
+		</div>
+		<img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/50_left_arrow.png" class="left_arrow" id="superLeft">
+		<img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/50_right_arrow.png" class="right_arrow" id="superRight">
+	</div>
+	<div style="clear: both;_zoom:1;"></div>
+	<div style="clear: both;_zoom:1;"></div>
+	<!--单品凑单-->
+	<div class="index_con3">
+	<h2 class="floor_tit"><img src="/shop/Home/View/Activity/midAutumnFestival/images/floor_tit4.png" alt=""></h2>
+	<div class="gift_con gift_con2">
+		<ul class="coudan">
+			<volist name="singleProList" id="vo">
+				<li <eq name="key" value="0">class="active"</eq> data-aConfId="{$vo.activity_config_id}" >
+					<div class="sum_item">
+						<div class="sum_con"><em>¥</em>{$vo.cat_name} - <em>¥</em>{$vo.cat_content}</div>
+						<p class="gift_text">单品专区</p>
+					</div>
+				</li>				
+			</volist>
+		</ul>
+	</div>
+	<div class="product_list product_list3 product_list3_coudan">
+
+	</div>
+	</div>
+	<div style="clear: both;_zoom:1;"></div>
+	<div style="height: 90px;"></div>
+	<!--楼层-->
+	<div class="floor_fx">
+		<div class="floor_banner"><img src="/shop/Home/View/Activity/midAutumnFestival/images/zhongqiu_happy.png" alt=""></div>
+		<span class="floor_item">时令节日</span>
+		<span class="floor_item">爆款推荐</span>
+		<span class="floor_item">超值套餐</span>
+		<span class="floor_item">单品凑单</span>
+		<span class="floor_item" id="goTop">返回顶部</span>
+	</div>
+	<!--底部图标-->
+	<div class="page_footer"><div class="mauto"><img src="/shop/Home/View/Activity/midAutumnFestival/images/page_footer.png" alt=""></div></div>
+	<div class="footer_text">
+		<p>© All rights Reserved. 2005-2017 礼舍网 版权所有，并保留所有权利。客服电话：400-118-8234 ／ 0755-66632121 </p>
+		<p>ICP备案证书号:粤ICP备15033641号-1</p>
+	</div>
+</body>
+<script type="text/javascript" src="/shop/Home/View/Activity/midAutumnFestival/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		updateCartNum();
+		getSingleProList();
+		getPackageList();
+	});	
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }	
+	var newIndex = {};
+
+	//单品切换
+	newIndex.cutt=function(){
+		$('.index_con3').on('click','.gift_con #superList li',function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			getPackageList();
+		})
+	}
+	newIndex.cutt();
+	//	凑单
+	newIndex.coudan=function(){
+		$('.index_con3').on('click','.gift_con .coudan li',function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			getSingleProList();
+		})
+	}
+	newIndex.coudan();
+	//	加减
+	newIndex.add=function(){
+		$('body').on('click','.add',function(){
+			var sort=$(this).siblings('.number_inp');
+			changeinp(sort,'add');
+		})
+		$('body').on('click','.subtract',function(){
+			var sort=$(this).siblings('.number_inp');
+			changeinp(sort,'inc');
+		})
+	}
+	newIndex.add();
+	//直接输入购物车数字
+	 $('.number_inp').on('keyup',function(){
+	 	$(this).val($(this).val().replace(/\D/g,''));
+	 	var num = $(this).val();
+	 	if(num == 0){
+	 		num = 1;
+	 		$(this).val(num);
+	 	}
+	 	var old = $(this).attr('data-num');
+	 	if(num == old){
+	 		return false;
+	 	}
+	 	if(num == ''){
+	 		num = 1;
+	 		$(this).val(num);
+	 	}
+		var type = $(this).attr('data-type');
+		if(type == 'page'){
+			var aitemId = $(this).attr('data-aitemId');
+        	$(".topLoading").show();
+			checkPageStore(aitemId,num,$(this));
+		}else{ 
+			getSkuStore(num,$(this));
+		}
+	 });
+	//加减
+	function changeinp(sort,type){
+		var inp=parseInt(sort.val());
+		if(type == 'add'){
+			var num = inp+1;
+			getSkuStore(num,sort);
+		}else if(type ="inc" && inp>=2){
+			var num = inp-1;
+			getSkuStore(num,sort);
+		}
+	}
+	//校验sku库存
+	function getSkuStore(num,sort){
+ 		$(".topLoading").show();
+		var type = sort.attr('data-type');
+		if(type == 'page'){
+			var aitemId = sort.attr('data-aitemId');
+			checkPageStore(aitemId,num,sort);
+		}else{ 	
+			var itemId=sort.attr('data-item');
+	        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+				if(data['code'] == 0){
+ 					$(".topLoading").hide();
+					divPrompt('选择商品属性!');
+					window.open('/shop.php/Info/index/itemId/'+itemId);
+				}else if(data['code'] == 1){
+					checkStore(data['skuId'],num,sort);
+				}
+	        });	
+		}
+	}
+	//校验礼包库存
+	function checkPageStore(aitemId,num,sort){
+        $.post('__APP__/Activity/checkPageStore',{aitemId:aitemId,num:num},function(data){
+        	$(".topLoading").hide();
+			if(data['code'] == 1){
+				sort.val(num);
+				sort.attr('data-num',num);
+			}else{
+				divPrompt(data['msg']);
+			}
+        });			
+	}
+	function checkStore(skuId,num,sort){
+        $.post('__APP__/Activity/checkSkuStore',{skuId:skuId,num:num},function(data){
+        	$(".topLoading").hide();
+			if(data){
+				sort.val(num);
+				sort.attr('data-num',num);
+			}else{
+				divPrompt('超过购买数量!');
+			}
+        });	
+	}
+	//加入购物车
+	$('.buy_cart_icon').on('click',function(){
+		$(".topLoading").show();
+		var sort = $(this).siblings('.buy_bumber').find('.number_inp');
+		var num = parseInt(sort.val());
+		var type = sort.attr('data-type');
+		if(type == 'page'){
+			var aitemId = sort.attr('data-aitemId');
+			addCarts(aitemId,num,sort);
+		}else{
+			var itemId = sort.attr('data-item');
+	        var shopId = sort.attr('data-shopId');//商品id			
+	        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+				if(data['code'] == 0){
+ 					$(".topLoading").hide();
+					divPrompt('选择商品属性!');
+					window.open('/shop.php/Info/index/itemId/'+itemId);
+				}else if(data['code'] == 1){
+					addCart(itemId,data['skuId'],shopId,num,sort);
+				}
+	        	
+	        });		
+		}
+	});	
+    function addCart(itemId,skuId,shopId,quantity,sort){
+    	var jd_ids = '19_1607_3155_0';
+         $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+            dataType:'text',
+            success:function(data){
+            	$(".topLoading").hide();
+            	var res = eval(data);
+                if (res[0] == 1) {
+					divPrompt('成功加入购物车!');
+    				sort.val(1);
+                    updateCartNum();               
+                }else{
+					divPrompt(res[1]);
+                	if(res[2]){
+    					window.location.href = '/shop.php/Sign/index';
+                	}
+                }
+            }
+        });   	
+    }	
+    //礼包加入购物车
+	function addCarts(aitemId,num,sort){
+    	$.get('__APP__/Activity/aitemAddCart',{aitemId:aitemId,num:num},function(data){
+    		$(".topLoading").hide();
+    		if(data['code'] == 0){
+				divPrompt(data['msg']);
+    		}else if(data['code'] == 1){
+    			updateCartNum();
+				sort.val(1);
+				divPrompt('成功加入购物车!');
+    		}else if(data['code'] == 3){
+				divPrompt(data['msg']);
+    			window.location.href = '/shop.php/Sign/index';
+    		}
+    	});		
+	}
+	//banner居中
+	newIndex.imgAuto = function(obj){
+		var viewW = $(window).width();
+		var objW = $(obj).width();
+		$(obj).css('left',(viewW - objW) / 2);
+	}
+	newIndex.imgAuto('.index_banner_head');
+
+	//商品列表margin
+	newIndex.clearMargin = function(){
+		var thisIndex = 0;
+		$('.product_list3 .product_ul li').each(function(){
+			thisIndex = $(this).index() +1;
+			if(!(thisIndex % 5) && thisIndex != 0){
+				$(this).css('margin-right',0);
+			}
+		});
+	}
+	newIndex.clearMargin();
+
+	//爆款
+	newIndex.boom = function(){
+		var boomL = $('#boom li').length;
+		var BoomNum = 0;
+		$('#boom').css('width',(232 + 10) * boomL);
+
+		$('#boomLeft').click(function(){
+			if(BoomNum > 0){
+				BoomNum --;
+			}
+
+			$('#boom').animate({
+				'left' : -BoomNum * 1210
+			},300);
+		});
+		$('#boomRight').click(function(){
+			if(BoomNum < (boomL/5)-1){
+				BoomNum ++;
+			}
+			$('#boom').animate({
+				'left' : -BoomNum * 1210
+			},300);
+		});
+		
+	}
+	newIndex.boom();
+
+	//超值套餐
+	newIndex.super = function(){
+		var boomL = $('#superList li').length;
+		var superW = $('#superList li').eq(0).width();
+		var superNum = 0;
+
+		$('#superList').css('width',superW * boomL);
+		$('#superLeft').click(function(){
+			if(superNum > 0){
+				superNum --;
+			}
+
+			$('#superList').animate({
+				'left' : -superNum * superW
+			},300);
+		});
+
+		$('#superRight').click(function(){
+			if(superNum < boomL - 5){
+				superNum ++;
+			}
+
+			$('#superList').animate({
+				'left' : -superNum * superW
+			},300);
+		});
+	}
+	newIndex.super();
+
+	//楼层
+	newIndex.floor = function(){
+		var conRight = $('.product_list').offset().left - $('.floor_fx').width() - 20;
+		if(conRight < 0){
+			conRight = 0;
+		}
+		$('.floor_fx').css('right',conRight);
+
+
+		$(document).scroll(function(){
+			var floorArr = [];
+			$('.floor_tit').each(function(i){
+				var floorT = $('.floor_tit').eq(i).offset().top;
+				floorArr.push(floorT);
+				var scrollT = $(document).scrollTop();
+				var floor_item=$('.floor_banner .floor_item').eq(i);
+				var wHeight = $(window).height();
+				if(scrollT>floorArr[i]-wHeight/2){
+					$('.floor_item').eq(i).addClass('active').siblings().removeClass('active');
+				}
+			});
+		});
+		$('.floor_fx > .floor_item').click(function(){
+			if($(this).index() > 0 && $(this).index() < 5){
+				var i = $(this).index() - 1;
+				var floorT = $('.floor_tit').eq(i).offset().top;
+				$('html,body').animate({
+					scrollTop:floorT + 'px'
+				},200);
+			}
+		});
+		$('#goTop').click(function(){
+			$('html,body').animate({
+				scrollTop:0 + 'px'
+			},200);
+		});
+	}
+	newIndex.floor();
+
+
+	$('#superList').mouseover(function(){
+		setTimeout(function(){
+
+		},200);
+	});
+
+	$(window).resize(function(){
+		newIndex.imgAuto('.index_banner_head');
+		newIndex.floor();
+	});
+	
+
+	//取出单品凑单
+	function getSingleProList(){
+		var aConfId = $('.gift_con .coudan').find('.active').attr('data-aConfId');
+		if(!aConfId){
+			return false;
+		}
+	 	$(".topLoading").show();
+		$.get('__APP__/Activity/getSingleProList',{aConfId:aConfId},function(data){
+			$('.product_list3_coudan').html(data);
+			newIndex.clearMargin();
+	 		$(".topLoading").hide();
+		});
+	}
+	//礼包
+	function getPackageList(){
+		var aConfId = $('.gift_con #superList').find('.active').attr('data-aConfId');
+		if(!aConfId){
+			return false;
+		}
+	 	$(".topLoading").show();
+		$.get('__APP__/Activity/getPackageList',{aConfId:aConfId},function(data){
+			$('.package').html(data);
+			newIndex.clearMargin();
+	 		$(".topLoading").hide();
+		});		
+	}
+	//购物车数量
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Info/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $(".cartNumber").text(data);
+            }
+        });
+	}  		
+</script>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+<meta charset="UTF-8">
+<title>礼舍心意商城</title>
+<script src="/app/site/statics/scripts/lib/jquery.js?1464770770"></script>
+<script src="/app/site/statics/scripts/lib/jquery.cookie.js?1464770770"></script>
+<link href="/app/topc/statics/stylesheets/layout.css?1464770770" rel="stylesheet" media="screen, projection" />
+<link href="/app/topc/statics/stylesheets/theme.css?1464770770" rel="stylesheet" media="screen, projection" />
+<link rel="stylesheet" href="/themes/luckymall1/images/index.css" />
+  </head>
+  <body>
+    <!-- 顶部导航 -->
+<div id="topbar" class="topbar">
+  <div class="wrap-lg">
+    <div class="topbar-left">
+    <!-- 顶部导航 -->
+          <div class="small-signin">
+            <div class="line"></div>
+            <a href="/" target="_blank">礼舍首页</a>
+            <div class="line"></div>
+            <a href="/shop.html" target="_blank">心意商城</a>
+            <div class="line"></div>
+            <a href="/help_index.html" target="_blank">礼舍帮帮</a>
+          </div>
+          </div>
+    <div class="topbar-right">
+      <div class="subnav">
+        <a href="/shop.php/Sign" id="login_521" style="display: none;">会员登录</a>
+        <div class="line"></div>
+        <a href="/shop/" target="_blank">商家中心</a>
+        <div class="line"></div>
+        <a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+.head { width:100%; background-color: #a12124;}
+  .head .nav {width: 1190px;height: 100px;margin: 0 auto;}
+  .head .img {padding-top: 23px;padding-left: 24px; float: left;}
+  .head .p1 {float: left;font-size: 23px;color: white;margin: 0px 10px 0px 20px;line-height: 100px;} 
+  .head .right {float: right;}
+  .head .right .p {
+color: white;
+font-family: 微软雅黑;
+font-size: 16px;
+text-align: right;
+margin: 0px;
+padding: 0px;
+top: 16px;
+position: relative;
+  }
+  .head .right .img {margin-top: -14px;}
+</style>
+<div class="head">
+  <div class="nav">
+      <img class="img" src="/themes/luckymall1/images/personal_logo.png">
+      <p class="p1">礼舍，是一种情感的交流</p>
+    <div class="right">
+        <p class="p">招商咨询热线</p>
+        <img class="img" src="/themes/luckymall1/images/index_phone.png">
+      </div>
+    </div>
+</div>
+<div id="main" class="main">
+<style type="text/css">
+.signin2 {
+	position: relative;
+	margin: 0 auto;
+	width: 500px;
+}
+.signin2 h1.header-title {
+	text-align: center;
+}
+</style>
+
+<div class="signin2">
+<h1 class="header-title">用户注册</h1>
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#mobile").focus();
+	$('#addReg').click(function(){
+		var mobile=$("#mobile").val();
+		var password=$("#password").val();
+		var rePassword=$("#rePassword").val();
+		var reg=/^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		if (!reg.test(mobile)) {
+			alert("手机号码格式不正确！");
+			$("#mobile").focus();
+			return false;
+		}
+		var imgCode=$("#imgCode").val();
+		if(imgCode.length<4){
+			alert("验证码不正确！");
+			$("#imgCode").focus();
+			return false;
+		}
+		if(password.length<6){
+			alert("登录密码不能少于6个字符！");
+			$("#password").focus();
+			return false;
+		}
+		if(password!=rePassword){
+			alert("登录密码和确认密码不相符！");
+			$("#password").focus();
+			return false;
+		}
+		$('#addReg').slideUp();
+		$('#msg').slideDown();
+		urls="/business/index.php/User/signupMember";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				mobile:mobile,
+				password:password,
+				imgCode:imgCode
+			},
+			success : function (result,status){
+				var data=eval(result);
+				if(data[0]==100){
+					alert('注册成功，礼舍欢迎您！');
+					window.location.href="/member-index.html";
+				}else{
+					alert(data[1]);
+					$('#addReg').slideDown();
+					$('#msg').slideUp();
+				}
+			},
+			error: function () {
+				alert('error：'+result);
+				$("#mobile").focus();
+				$('#addReg').slideDown();
+				$('#msg').slideUp();
+			}
+		});
+	});	
+});
+//更换图形验证码
+function getImgCode(){
+	var captcha_img = $('#captcha-container').find('img')  
+	var verifyimg = captcha_img.attr("src"); 
+	captcha_img.attr('title', '点击刷新');  
+	if(verifyimg.indexOf('/?')==0){
+        captcha_img.attr("src", verifyimg+'/?random='+Math.random());  
+    }else{  
+        captcha_img.attr("src", verifyimg.replace(/\?.*$/,'')+'?random'+Math.random());  
+    }
+}
+</script>
+  <ul>
+    <li class="form-row">
+      <label class="form-label"><em>*</em>手机号码</label>
+      <span class="form-act has-figure">
+        <input type="text" class="input-block action-account-check" id="mobile" placeholder="请填写有效的手机号" maxlength="11" required autofocus>
+        <i class="icon-user input-figure"></i>
+      </span>
+    </li>
+    <li class="form-row">
+      <label class="form-label"><em>*</em>设置密码</label>
+      <span class="form-act has-figure">
+        <input type="password" class="input-block auto-password-check-handle" id="password" placeholder="6-20个字符" required minlength="6" maxlength="20">
+        <i class="icon-lock input-figure"></i>
+      </span>
+    </li>
+    <li class="form-row">
+      <label class="form-label"><em>*</em>确认密码</label>
+      <span class="form-act has-figure">
+        <input type="password" class="input-block" id="rePassword" maxlength="20" placeholder="再次填写密码" required>
+        <i class="icon-lock input-figure"></i>
+      </span>
+    </li>
+    <li class="form-row verify-code action-verifycode">
+      <label class="form-label"><em>*</em>验证码</label>
+      <span class="form-act" id="captcha-container">
+        <input type="text" class="verify-input input-st" name="imgCode" id="imgCode" required size="4" maxlength="4">
+        <img align="absmiddle" class="auto-change-verify-handle" id="vocde" src="/business/index.php/System/getImgCode" alt="验证码" width="100" height="30">
+        <div class="inline auto-change-verify-handle"><div>看不清？</div><a href="javascript:void(0);" onclick="getImgCode()">换一张</a></div>
+      </span>
+    </li>
+    <li class="form-row">
+      <label class="form-label">&nbsp;</label>
+      <span class="form-act">
+        <input type="checkbox" class="x-checkbox" name="license" id="for_license" checked>
+        <label for="for_license">我已阅读并同意<a href="/help_index.html" class="action-open-dialog" target="_blank">《礼舍网服务协议》</a></label>
+      </span>
+    </li>
+    <li class="form-row">
+      <label class="form-label">&nbsp;</label>
+      <span class="form-act">
+      	<input type="hidden" name="next_page" value="/shop.php/Sign">
+        <button type="submit" class="btn btn-import btn-block" id="addReg"><span><span>立即注册</span></span></button>
+        <button type="submit" class="btn btn-import btn-block" id="msg" disabled="disabled" style="display: none">注册中，请稍后...</button>
+      </span>
+    </li>
+
+    <li class="form-row">
+      <label class="form-label">&nbsp;</label>
+      <span class="form-act">
+        <a class="link-color to-login" href="/shop.php/Sign">已有账号？去登录 &raquo;</a>
+      </span>
+    </li>
+  </ul>
+
+</div>
+</div>
+  <style>
+  .footer-logo {
+    background: #3d3d3d;
+  }
+  .footer-logo div {
+    padding: 15px 0px;
+  }
+
+.footer-bottom {
+	background: #3d3d3d;
+	text-align: center;
+	height: 80px;
+}
+.footer-bottom div.footer-bottom-info {
+	position: relative;
+	top: 5px;
+	z-index: 65537;
+	padding: 5px 0px 0px 0px;
+}
+.footer-bottom div p {
+  margin: 0px;
+}
+.footer-bottom div p.cate {
+  color: #B3ADAD;
+  margin-bottom: 8px;
+}
+.footer-bottom div p.cate a {
+  color: #B3ADAD;
+}
+.footer-bottom div p.cate a:hover {
+  text-decoration: underline;
+}
+.footer-bottom div p.cpoyright {
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  background: #262626;
+  height: 229px;
+}
+.footer div.wrap-lg {
+  padding: 25px 0px;
+}
+.footer div.footer-main-left {
+  float: left;
+  width: 600px;
+  text-align: left;
+}
+.footer div.footer-main-left .footer-main-left-top {
+  display: inline-block;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left {
+  width: 150px;
+  float: left;
+  margin-right: 35px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left div {
+  border-bottom: 1px solid #c7241d;
+  font-size: 18px;
+  width: 150px;
+  height: 32px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left span {
+  float: left;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left span.icon-right {
+  float: right;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left ul {
+  display: inline-table;
+  position: relative;
+  left: -35px;
+  padding-top: 5px;
+  font-size: 14px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left ul li {
+  line-height: 22px;
+}
+
+.footer div.footer-main-left .footer-main-left-bottom {
+  width: 520px;
+  margin-top: 25px;
+  border-top: 1px solid #c7241d;
+}
+.footer div.footer-main-left .footer-main-left-bottom span {
+	width: 150px;
+  	font-size: 16px;
+  	float: left;
+  	display: block;
+  	
+}
+.footer div.footer-main-left .footer-main-left-bottom span.line {
+  width: 35px;
+  color: #c7241d;
+  text-align: center;
+}
+
+.footer div.footer-main-middle {
+  float: left;
+}
+.footer div.footer-main-middle p {
+  font-size: 18px;
+  background: #3d3d3d;
+  line-height: 24px;
+}
+.footer div.footer-main-right {
+  float: right;
+  margin: 45px 45px 0px 0px;
+}
+</style>
+    <!-- Footer BEGIN -->
+    <div class="footer-logo">
+      <div class="wrap-lg">
+        <img src="/themes/luckymall1/images/index_foot_logo.png" alt="">
+      </div>
+    </div>
+    <div class="footer">
+      <div class="wrap-lg">
+        <div class="footer-main-left">
+          <div class="footer-main-left-top">
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>导航</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul>
+                <li>
+                  <a href="/theme/help.html">礼舍能做啥</a>
+                </li>
+                <li>
+                  <a href="/theme/evaluate/index.html">伙伴说什么</a>
+                </li>
+                <li>
+                  <a href="/">心意商城</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>咨询</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul>
+                <li>
+                  <a href="/help_index.html">服务条款</a>
+                </li>
+                <!--<li>
+                  <a href="/theme/礼舍动态.html">礼舍动态</a>
+                </li>-->
+                <li>
+                  <a href="/help_recruitment.html">人员招聘</a>
+                </li>
+                <li>
+                  <a href="/help_resume.html">礼舍简介</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>礼舍帮帮</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul style="left: 0px;">
+                <li>
+                  <a href="/help_problem.html">常见问题</a>
+                </li>
+                <li>
+                  <a href="/help_summary.html">礼舍教学操作指南</a>
+                </li>
+                <li>
+                  <a href="/help_summary.html">礼舍使用全攻略</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-main-left-bottom">
+            <a href="/help_we.html"><span >联系客服</span></a>
+            <span class="line">|</span>
+            <a href="http://v.lishe.cn/company/login.html"><span>企业入驻</span></a>
+            <span class="line">|</span>
+            <a href="/shop/"><span>供应商入驻</span></a>
+          </div>
+        </div>
+        <div class="footer-main-middle">
+         <a href="/help_we.html"> <p>联系我们&nbsp;&nbsp;&nbsp;&nbsp;></p></a>
+          <img src="/themes/luckymall1/images/index_foot_erweima.png" alt="">
+        </div>
+        <div class="footer-main-right">
+          <img src="/themes/luckymall1/images/index_foot_contact.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+		<div class="wrap-lg footer-bottom-info">
+			<p class="cate"><a href="/help_resume.html">公司简介</a> | <a href="/help_partner.html">合作伙伴</a> | <a href="/help_recruitment.html">人才招聘</a> | <a href="/help_we.html">联系我们</a></p>
+			<p class="cpoyright">? 2012-2016 深圳市欣子文化传播有限公司 版权所有，并保留所有权利。 ICP备案证书号:<a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备12076725号-2</a></p>
+		</div>
+    </div>
+    <!-- Footer END -->  </body>
+</html>

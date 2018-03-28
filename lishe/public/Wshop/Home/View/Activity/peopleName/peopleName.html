@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="/Wshop/Home/View/Activity/peopleName/images/icon/liimg.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="email=no" name="format-detection" /> 
+	<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+	<meta name="apple-mobile-web-app-title" content="">
+	<title>超准！一秒测出你是《人民的名义》里的谁！！！</title>
+	<link rel="stylesheet" type="text/css" href="/Wshop/Home/View/Activity/peopleName/css/peopName.css">
+</head>
+<body>
+	<div class="content1">
+		<img src="/Wshop/Home/View/Activity/peopleName/images/gifImg.gif" class="gifImg" />
+		<img src="/Wshop/Home/View/Activity/peopleName/images/conImg1.png" class="conImg1" />
+		<img src="/Wshop/Home/View/Activity/peopleName/images/conImg2.png" class="conImg2" />
+		<img src="/Wshop/Home/View/Activity/peopleName/images/sure.png" class="conImg3" />
+		<img src="/Wshop/Home/View/Activity/peopleName/images/conImg4.png" class="conImg4" />
+		<div class="select">
+			<p class="problem">为什么手机开了飞行模式从5楼扔出去还是坏了？</p>
+			<p>
+				<span class="seleSp"><input type="checkbox" /><label>A.没有驾驶员</label></span>
+				<span class="seleSp"><input type="checkbox" /><label>B.楼下没有人接住</label></span>
+			</p>
+		</div>
+	</div>
+	<div class="content2" style="display: none;">
+		<img src="/Wshop/Home/View/Activity/peopleName/images/1.png" class="obj1" />
+		<img src="/Wshop/Home/View/Activity/peopleName/images/backIndex.png" class="backIndex" />
+		<img src="/Wshop/Home/View/Activity/peopleName/images/con2Img2.png" class="con2Img2" />
+	</div>
+	<div class="give"><img src="/Wshop/Home/View/Activity/peopleName/images/give.png" class="img1"></div>
+	<div class="loadCon" id="load">
+	 	<p class="loadText">加载中...</p>
+	 	<p class="loadText" id="percent"></p>
+	</div> 
+</body>
+<script type="text/javascript" src="/Wshop/Home/View/Activity/peopleName/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+    var html = document.documentElement;
+	var whtml  =html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /6.4 + "px";
+
+	//随机
+	var arrImg = ['/Wshop/Home/View/Activity/peopleName/images/1.png','/Wshop/Home/View/Activity/peopleName/images/2.png','/Wshop/Home/View/Activity/peopleName/images/3.png','/Wshop/Home/View/Activity/peopleName/images/4.png','/Wshop/Home/View/Activity/peopleName/images/5.png','/Wshop/Home/View/Activity/peopleName/images/6.png','/Wshop/Home/View/Activity/peopleName/images/7.png','/Wshop/Home/View/Activity/peopleName/images/8.png','/Wshop/Home/View/Activity/peopleName/images/9.png','/Wshop/Home/View/Activity/peopleName/images/10.png'];
+
+	function randomNum(){
+		return parseInt(9 * Math.random());
+	}
+	$('.conImg3').on('touchstart',function(){
+		if($('.seleSp input').eq(0).attr('checked') || $('.seleSp input').eq(1).attr('checked')){
+			$('.content1').hide();
+			$('.content2').show();
+			$('.content2').addClass('scal');
+			$('.obj1').attr('src','');
+			$('.obj1').attr('src',arrImg[randomNum() + 1]);
+		}
+		
+	});
+	//分享
+	$('.con2Img2').on('touchstart',function(){
+		$('.give').fadeIn(100);
+		//$('.img2').fadeIn(100);
+	});
+	$('.give').on('touchstart',function(){
+		$(this).fadeOut(50);
+		//$('.img2').fadeOut(50);
+	});
+
+		//选择
+	$('.seleSp input').on('click',function(){
+		$('.seleSp input').each(function(){
+			$(this).removeAttr('checked');
+		});
+		$(this).attr('checked',"true");
+	});
+
+	//返回首页
+	$('.backIndex').on('touchstart',function(){
+		$('.content1').show();
+		$('.content2').hide();
+	});
+
+	//加载中
+	//图片加载进度
+	function perFun(){
+	    var imgs = $("img");
+	    var len = 0;
+	    var src = '/Wshop/Home/View/Activity/peopleName/images/gifImg.gif'
+	    var img = new Image();
+	    	img.src = src;
+
+	    if($('.gifImg').height() > 50){
+	    	$('#load').hide();
+		    $('.content1').show();
+		}else{
+			for(var i=0; i<imgs.length; i++){
+		     imgs[i].onload = function(){
+		          len++;
+
+		          /*percent.innerText = Math.round(len*100/imgs.length + '%');*/
+		          var progress = parseInt(len*100) / imgs.length;
+
+		          $('#percent').html(progress + '%');
+		         
+
+		          	$('#load').hide();
+		          	$('.content1').show();	
+
+		    }
+		}
+		}
+	    
+ 	}
+ 	perFun();
+ 	
+</script>
+</html>

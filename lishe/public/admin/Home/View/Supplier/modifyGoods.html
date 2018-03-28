@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/html5.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>修改商品信息</title>
+</head>
+<body>
+<div class="pd-20">
+	<form action="{:U('Supplier/modifySupplier/supplier_id/','','')}/{$data['supplier_id']}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-member-add">
+		<input type="hidden" name="supplier_id" value="{$data['supplier_id']}"/>
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>用户名：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['username']}" placeholder="" id="username" name="username" datatype="*2-16"  nullmsg="用户名不能为空">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>密码：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="" placeholder="如填写则修改用户密码" id="password" name="password"   >
+			</div>
+			<div class="col-4"> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>性别：</label>
+			<div class="formControls col-5 skin-minimal">
+				<div class="radio-box">
+					<input  type="radio" id="sex-1" value="1" name="sex" <if condition="$data['sex'] eq 1 ">checked</if>  nullmsg="请选择性别！">
+					<label for="sex-1">男</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-2" value="0" name="sex" <if condition="$data['sex'] eq 0 ">checked</if>>
+					<label for="sex-2">女</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="sex-3" name="sex" value="-1" <if condition="$data['sex'] eq -1 ">checked</if>>
+					<label for="sex-3">未知</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>公司名称：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['company_name']}" placeholder="" id="company_name" name="company_name"  nullmsg="请输入公司名称">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>联系人：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['contact_name']}" placeholder="" id="name" name="name"   nullmsg="联系人">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>联系人电话：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['contact_tel']}" placeholder="" id="tel" name="tel" datatype="*2-255"   nullmsg="手机不能为空">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>公司地址：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['company_address']}" placeholder="" id="company_address" name="company_address"   nullmsg="请输入公司地址">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">公司联系方式：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['company_contact']}" placeholder="" id="company_contact" name="company_contact">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">公司法人：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['artificial_person']}" placeholder="" id="artificial_person" name="artificial_person">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">公司网址：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['company_site']}" placeholder="" id="company_site" name="company_site">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">公司传真：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['company_fax']}" placeholder="" id="company_fax" name="company_fax">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">公司类别：</label>
+			<div class="formControls col-2">
+			  <span class="select-box">
+					<select name="company_type" class="select">
+						<option value="0" <eq name="data.company_type" value="0">selected="selected"</eq>>无</option>
+						<option value="1" <eq name="data.company_type" value="1">selected="selected"</eq>>国营</option>
+					</select>
+			  </span>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">公司性质：</label>
+			<div class="formControls col-2">
+          <span class="select-box">
+				<select name="company_nature" class="select">
+					<option value="0" <eq name="data.company_nature" value="0"> selected="selected"</eq>>无</option>
+					<option value="1" <eq name="data.company_nature" value="1">selected="selected"</eq>>工厂</option>
+				</select>
+          </span>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">经营范围：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['type']}" placeholder="" id="type" name="type"  nullmsg="请输入经营范围">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3"><span class="c-red">*</span>送货周期：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['cycle']}" placeholder="" id="cycle" name="cycle"   nullmsg="请输入结算周期">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<!-- 资料上传 start-->
+		<div class="row cl">
+			<label class="form-label col-3">营业执照复印件：</label>
+			<div class="formControls col-5">
+				<span class="btn-upload form-group">
+					<input class="input-text upload-url" value="{$data['license_file']}" type="text" name="uploadfile-1" id="uploadfile-1" readonly   nullmsg="请添加附件！" style="width:200px">
+					<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+					<input type="file" multiple name="license_file" class="input-file">
+        		</span>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">税务登记复印件：</label>
+			<div class="formControls col-5">
+				<span class="btn-upload form-group">
+					<input class="input-text upload-url" value="{$data['tax_file']}" type="text" name="uploadfile-2" id="uploadfile-2" readonly   nullmsg="请添加附件！" style="width:200px">
+					<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+					<input type="file" multiple name="tax_file" class="input-file">
+        		</span>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">开户许可证复印件：</label>
+			<div class="formControls col-5">
+				<span class="btn-upload form-group">
+					<input class="input-text upload-url" value="{$data['account_file']}" type="text" name="uploadfile-3" id="uploadfile-3" readonly   nullmsg="请添加附件！" style="width:200px">
+					<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+					<input type="file" multiple name="account_file" class="input-file">
+        		</span>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">合同附件：</label>
+			<div class="formControls col-5">
+				<span class="btn-upload form-group">
+					<input class="input-text upload-url"  <notempty name="contractFileName"> value="{$contractFileName}" </notempty> type="text" name="uploadfile-2" id="uploadfile-2" readonly   nullmsg="请添加附件！" style="width:200px">
+					<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+					<input type="file" multiple name="contract_file" class="input-file">
+        		</span>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+
+		<div class="row cl">
+			<label class="form-label col-3">合作方式：</label>
+			<div class="formControls col-5 skin-minimal">
+				<div class="radio-box">
+					<input type="radio" id="cooperation_method-1" value="1" name="cooperation_method" <eq name="data.cooperation_method" value="1">checked="checked"</eq>>
+					<label for="sex-1">自营</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="cooperation_method-2" value="2" name="cooperation_method" <eq name="data.cooperation_method" value="2">checked="checked"</eq>>
+					<label for="sex-2">店铺入驻</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">入驻金：</label>
+			<div class="formControls col-1">
+				<input type="text" value="{$data['join_amount']}" class="input-text" placeholder="" id="join_amount" name="join_amount" >
+			</div>
+			<div class="formControls col-4 skin-minimal">
+				<div class="radio-box">
+					<input type="radio" value="1" name="join_amount_type" <eq name="data.join_amount_type" value="1">checked="checked"</eq>>
+					<label for="sex-1">现金</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="2" name="join_amount_type" <eq name="data.join_amount_type" value="2">checked="checked"</eq>>
+					<label for="sex-2">货款抵扣</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">保证金：</label>
+			<div class="formControls col-1">
+				<input type="text" class="input-text" value="{$data['deposit_amount']}"  placeholder="" id="deposit_amount" name="deposit_amount"  nullmsg="请输入保证金">
+			</div>
+			<div class="formControls col-4 skin-minimal">
+				<div class="radio-box">
+					<input type="radio" value="1" name="deposit_amount_type" <eq name="data.deposit_amount_type" value="1">checked="checked"</eq>>
+					<label for="sex-1">现金</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio"  value="2" name="deposit_amount_type" <eq name="data.deposit_amount_type" value="2">checked="checked"</eq>>
+					<label for="sex-2">货款抵扣</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">交货方式：</label>
+			<div class="formControls col-5 skin-minimal">
+				<div class="radio-box">
+					<input type="radio" value="1" name="delivery_mode" <eq name="data.delivery_mode" value="1">checked="checked"</eq>>
+					<label for="sex-1">免费配送</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="2" name="delivery_mode" <eq name="data.delivery_mode" value="2">checked="checked"</eq>>
+					<label for="sex-2">免费代发</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="3" name="delivery_mode" <eq name="data.delivery_mode" value="3">checked="checked"</eq>>
+					<label for="sex-2">快递费月结</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="-1" name="delivery_mode" <eq name="data.delivery_mode" value="-1">checked="checked"</eq>>
+					<label for="sex-2">其他</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">发票类型：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['invoice_type']}" placeholder="" id="invoice_type" name="invoice_type">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">结算方式：</label>
+			<div class="formControls col-5 skin-minimal">
+				<div class="radio-box">
+					<input type="radio" value="1" name="settle_type" <eq name="data.settle_type" value="1">checked="checked"</eq>>
+					<label for="sex-1">月结</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio"  value="2" name="settle_type" <eq name="data.settle_type" value="2">checked="checked"</eq>>
+					<label for="sex-2">货到付款</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="3" name="settle_type" <eq name="data.settle_type" value="3">checked="checked"</eq>>
+					<label for="sex-2">预付款</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="-1" name="settle_type" <eq name="data.settle_type" value="-1">checked="checked"</eq>>
+					<label for="sex-2">其他</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">结算条件：</label>
+			<div class="formControls col-5 skin-minimal">
+				<div class="radio-box">
+					<input type="radio" value="1" name="settle_mode" <eq name="data.settle_mode" value="1">checked="checked"</eq>>
+					<label for="sex-1">10号前对账</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio"value="2" name="settle_mode" <eq name="data.settle_mode" value="2">checked="checked"</eq>>
+					<label for="sex-1">见票后付款</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="3" name="settle_mode" <eq name="data.settle_mode" value="3">checked="checked"</eq>>
+					<label for="sex-1">15-20号统一付款</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" value="-1" name="settle_mode" <eq name="data.settle_mode" value="-1">checked="checked"</eq>>
+					<label for="sex-1">其他</label>
+				</div>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">结算银行：</label>
+			<div class="formControls col-2">
+          <span class="select-box">
+				<select name="bankcard_name" class="select">
+					<option value="" <empty name="data.bankcard_name"> selected="selected" </empty>>无</option>
+					<option value="中国银行" <eq name="data.bankcard_name" value="中国银行">selected="selected"</eq>>中国银行</option>
+				</select>
+          </span>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">银行卡号：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$data['bankcard_num']}" placeholder="" id="bankcard_num" name="bankcard_num">
+			</div>
+			<div class="col-4"> </div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-3">备注：</label>
+			<div class="formControls col-5">
+				<textarea name="remarks" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符"  dragonfly="true"  onKeyUp="textarealength(this,100)">{$data['remarks']}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+			</div>
+			<div class="col-4"> </div>
+		</div>
+		<div class="row cl">
+			<div class="col-9 col-offset-3">
+				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("form-admin-add").Validform({
+		tiptype:2,
+		callback:function(form){
+			form[0].submit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>产品管理-{$siteTitle}</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/manage.css">
+<script language="javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/manage.js"></script>
+<style>
+	.size{
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		
+		
+	}
+</style>
+<script>
+//	var selectCategory = function(parent,selected,sid){
+//	var parent=$('#parent'+sid).val();
+//	if(parent==0){
+//		$('#category').remove();
+//	}else{
+//		$.get("__APP__?c=Category&a=getSubCategory&parent="+parent+"&call=showAttr", function(result){
+//			$('#category'+sid).remove();
+//			$(result).appendTo($('#categorySelecter'+sid));
+//		});		
+//	}
+//}
+</script>
+</head>
+<body>
+<include file="Public/header" />
+	<div class="container">
+		<div class="wrapper">
+			<div class="main">
+				<h1>
+					<strong>产品管理</strong>
+					<span style=" display: block; float: right;"><a  href="javascript:void(0)" onclick="exportExcel()" class="tools-button" >导出到Excel</a></span>
+				</h1>
+				<div class="main-box">
+				<a  href="__URL__" class="tools-button">全部</a></span>
+				<form action="__APP__/Goods" method="get" id="serach">
+					<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+					<div class="product-tools">
+						<div class="search">
+							<label>商品排序：</label>
+							<label><select name="order" style="width:80px;">
+							<option value="0" >默认</option>
+							<option value="1"<if condition="$condition.order eq '1'">
+								selected="selected"
+								<else/>
+							</if>>毛利率高到底</option>
+							</select>
+							</label>							
+							<label>毛利率：</label>
+							<label>
+							<span><input type="text" name="srate" id="srate" class="txt w60" value="{$condition.srate}"></span>
+							<span>-&nbsp;</span>
+							<span><input type="text" name="erate" id="erate" class="txt w60" value="{$condition.erate}"></span>
+							</label>
+							<label>进货价格区间：</label>
+							<label>
+							<span><input type="text" name="jsrate" id="sprice" class="txt w60" value="{$condition.jsrate}"></span>
+							<span>-&nbsp;</span>
+							<span><input type="text" name="jerate" id="eprice" class="txt w60" value="{$condition.jerate}"></span>
+							</label>
+							<label>销售价格区间：</label>
+							<label>
+							<span><input type="text" name="csrate" id="sprice" class="txt w60" value="{$condition.csrate}"></span>
+							<span>-&nbsp;</span>
+							<span><input type="text" name="cerate" id="eprice" class="txt w60" value="{$condition.cerate}"></span>
+							</label>							
+							<label>状态：</label>
+							<label><select name="status" style="width:80px;">
+							<option value="0">全部</option>
+							<option value="onsale" <if condition="$condition.status eq 'onsale'">
+								selected="selected"
+								<else/>
+							</if>>上架中</option>
+							<option value="instock"<if condition="$condition.status eq 'instock'">
+								selected="selected"
+								<else/>
+							</if>>已下架</option>
+							</select>
+							</label>
+
+						</div>
+						<div class="search" style="padding-top: 20px;">
+							<label>分类：</label>
+							<label>
+							<select id="catone" name="catone" onchange="javascript:getCatone(this.options[this.selectedIndex].value);">
+							<option value="0">全部</option>
+							</select>								
+							</label>
+							<label>
+							<select id="cattwo" name="cattwo" onchange="javascript:getCattwo(this.options[this.selectedIndex].value);">
+							<option value="0">全部</option>
+							</select>								
+							</label>
+							<label>
+							<select id="catthree" name="catthree" style="display: none;">
+							<option value="0">全部</option>
+							</select>								
+							</label>							
+							
+							<label>关键词：</label>
+							<label>
+							<input type="text" class="tools-input" name="keywords" value="{$condition.keywords}" style="width:130px">							
+							<span style="margin-left:180px;">
+								<a href="javascript:void(0)" onclick="serach()" class="tools-button"  style="width: 150%;border-radius: 5px;">
+									确定
+								</a>
+							</span>
+							</label>
+						</div>
+					</div>
+					</form>
+					<table border="0" cellpadding="0" cellspacing="0"
+						class="product-list">
+						<thead>
+							<tr>
+								<td align="center" width="5%">ID</td>
+								<td align="center" width="6%">图片</td>
+								<td align="center">标题</td>
+								<td align="center" width="6%">销售价</td>
+								<td align="center" width="6%">进货价</td>
+								<td align="center" width="6%">毛利率</td>
+								<td align="center" width="6%">库存</td>
+								<td align="center" width="13%">分类</td>
+								<td align="center" width="10%">店铺</td>
+								<td align="center" width="6%">状态</td>
+								<td align="center" width="5%">jd链接</td>
+							</tr>
+						</thead>
+						<tbody>
+							<volist name="list" id="item">
+							<tr id="order_{$item['orderId']}">
+								<td class="checkboxs">{$item['item_id']}</td>
+								<td align="center"><img src="{$item['image_default_id']}_t.jpg" width="60"></td>
+								<td align="left">{$item['title']}</td>
+								<td align="center">{$item['price']}</td>
+								<td align="center">{$item['cost_price']}</td>
+								<td align="center">{$item['profit_rate']}</td>
+								<td align="center">{$item['store']}</td>
+								<td align="center">{$item['cat_name']}</td>
+								<td align="center">{$item['company_name']}</td>
+								<td align="center">{$item['status']=="onsale" ? "上架中":"已下架"}</td>
+								<td align="center">
+									<notempty name="item.jd_sku">
+										<a href="http://item.jd.com/{$item['jd_sku']}.html" title="商品京东地址" target="_blank">
+											打开
+										</a>
+										<else/>
+											无
+									</notempty>
+								</td>
+							</tr>
+							</volist>
+						</tbody>
+					</table>
+					<div class="page">{$page}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pack"></div>
+	<div class="clear"></div>
+	<include file="Public/footer" />
+</body>
+<script type ="text/javascript">
+$( function (){
+            var url = "{:U('Home/Goods/getCatOne')}" ;
+            $( '#catone' ).empty() ;
+            $( '#catone' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#catone' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+			
+			//搜索条件选择项\n
+//				var catonev={$condition.catone};
+//			   $("#catone").find('option[value="0"]').text(1);
+        }) ;	
+	function getCatone(code){
+			$("#catthree").hide();
+		   	$("#catthree").find('option[value="0"]').attr("selected","selected");
+            var url = "{:U('Home/Goods/getCatTwo')}" ;
+            $( '#cattwo' ).empty() ;
+            $( '#cattwo' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=2',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#cattwo' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	function getCattwo(code){
+			$("#catthree").show();
+            var url = "{:U('Home/Goods/getCatTwo')}" ;
+            $( '#catthree' ).empty() ;
+            $( '#catthree' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=3',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#catthree' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	//搜索
+	function serach(){
+		$("#execlType").val("");
+		$("#serach").submit();
+		
+	}	
+	//导出execl
+	function exportExcel(){
+		$("#execlType").val("exportExcel");
+		$("#serach").submit();
+		
+	}
+</script>
+
+
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/recharge.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<title>快速充值</title>
+</head>
+<script type="text/javascript">
+
+<?php if ($jsApiParameters) { ?>
+	//调用微信JS api 支付
+		function jsApiCall(){
+			WeixinJSBridge.invoke(
+				'getBrandWCPayRequest',
+				<?php echo $jsApiParameters; ?>,
+				function(res){
+					var errMsg = res['err_msg'].split(":");
+					WeixinJSBridge.log(res.err_msg);
+					if(errMsg[1] == 'ok'){
+						alert('支付成功');
+						location.href = "{$redirectURL}";
+					}else{
+						alert('支付失败');
+						location.href = "{$redirectURL}";
+					}
+				}
+			);
+		}
+
+		function callpay(){
+			if (typeof(WeixinJSBridge) == "undefined"){
+				if( document.addEventListener ){
+					document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+				}else if (document.attachEvent){
+					document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+					document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+				}
+			}else{
+				jsApiCall();
+			}
+		}
+
+		$(function(){ 
+			callpay();
+		});	
+<?php }?>
+	
+</script>
+<body>
+  <div class="rechargeJf">
+     <div class="rechargeLeft">
+        <p>充值积分：</p>
+     </div>
+     <div class="rechargeRight">
+     	<empty name="points">
+     		<ul class="Rtul" id="Rtul">
+	           <li class="active" val="1000">1000</li>
+	           <li val="3000">3000</li>
+	           <li val="5000">5000</li>
+	           <li val="8000">8000</li>
+	           <li val="10000">10000</li>
+	           <li val="30000">30000</li>
+	        </ul>
+     	<else/>
+     		<ul class="Rtul" id="Rtul">
+	           <li val="1000" <eq name="points" value="1000">class="active"</eq>>1000</li>
+	           <li val="3000" <eq name="points" value="3000">class="active"</eq>>3000</li>
+	           <li val="5000" <eq name="points" value="5000">class="active"</eq>>5000</li>
+	           <li val="8000" <eq name="points" value="8000">class="active"</eq>>8000</li>
+	           <li val="10000" <eq name="points" value="10000">class="active"</eq>>10000</li>
+	           <li val="30000" <eq name="points" value="30000">class="active"</eq>>30000</li>
+	        </ul>
+     	</empty>
+     </div>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="payways">
+      <div class="payLeft">
+         <p>充值方式：</p>
+      </div>
+      <div class="payRight">
+         <ul>
+           <li id="wxpayClass"><input type="radio" id="radio-1-1" name="radio-1-set" value="1" class="regular-radio" checked="checked"/><label for="radio-1-1"></label><img src="__IMG__/WX.png"></li>
+           <li id="alipayClass"><input type="radio" id="radio-1-2" name="radio-1-set" value="2" class="regular-radio" /><label for="radio-1-2"></label><img src="__IMG__/Alipay.png"></li>
+         </ul>
+      </div>
+  </div>
+  <div style="clear:both;"></div>
+  <div class="Znumerical">
+     <p><span style="color:#757575;">需支付：</span><span style="color:#f34167; padding-right:2%;" id="price">10</span>元</p>
+  </div>
+  <div class="forthwith">
+     <a href="javascript:void(0)" id="recharge">立即充值</a>
+  </div>
+  <form action="__SELF__" method="post" style="display: none;" id="rechargeForm">
+  	<input name="points" id="points" value="1000"/>
+  	<input name=payType id="payType" value="1"/>
+  </form>
+</body>
+<script>
+function is_weixin(){ 
+    var ua = navigator.userAgent.toLowerCase(); 
+    if(ua.match(/MicroMessenger/i) !="micromessenger") { 
+        $("#wxpayClass").remove();
+    }else{
+    	$("#alipayClass").remove();
+    } 
+}; 
+$(document).ready(function(){
+	is_weixin();
+	$('#Rtul li').click(function(){
+		if(!$(this).hasClass('active')){
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+		var val = $(this).attr('val');
+		val = parseInt(val);
+		var price = val / 100;
+		$("#price").text(price);
+	})
+	
+	$("#recharge").click(function(){
+		var points = $("#Rtul li.active").eq(0).attr('val');
+		var payType  = $("input[name='radio-1-set']:checked").val();
+		var reg = /^\+?[1-9]\d*$/;
+		if(!reg.test(points)){
+			return false;
+		}
+		if(payType !=1 && payType != 2){
+			return false;
+		}
+		$("#points").val(points);
+		$("#payType").val(payType);
+		//$("#rechargeForm").submit();
+		$.post($("#rechargeForm").attr('action'),$("#rechargeForm").serialize(),function(result){
+			if(result.code==1){
+				window.location.href=result.url;
+			}else{
+				alert(result.msg);
+			}
+		})
+	})
+})
+</script>
+</html>

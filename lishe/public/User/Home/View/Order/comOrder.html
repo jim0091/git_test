@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>企业订单</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+	<script src="__VIEW__Public/js/order.js"></script>
+	<style type="text/css">
+		.pages a.prev{width: 68px;}
+		.pages div a{margin-left: 5px;}
+		.pages a.next{width:68px;}
+		.pages .current {
+		    color: #FFF;
+		    background-color: #FF3737;
+		    display: inline-block;
+		    width: 38px;
+		    height: 38px;
+		    line-height: 38px;
+		    text-align: center;
+		    margin-left: 5px;
+		    cursor: default;
+		}
+	</style>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="comOrder">
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<!-- 
+					<div class="right-top-s">
+						<p class="right-title-s">订单中心&nbsp;&gt;&nbsp;企业福利订单</p>
+					</div>
+					 -->
+					<div class="order_status">
+						<ul class="all_orders">
+							<li id="qy">企业权益订单</li>
+							<!-- <li id="giftcard">礼品卡订单</li> -->
+						</ul>
+					</div>
+					<table class="companyorder" id="qyorder">
+						<tr>
+							<th>权益名称</th>
+							<th>企业</th>
+							<th>订单编号</th>
+							<th>兑换时间</th>
+							<th>收货信息</th>
+							<th>订单状态</th>
+							<th>操作</th>
+						</tr>
+						<volist name="receverOrderList" id="recever">
+						<tr>
+							<td>{$categoryArr[$recever['activity_config_id']]['cat_name']}春节福利礼包</td>
+							<td>{$comArr[$recever['com_id']]['com_name']}</td>
+							<td>{$recever['atid']}</td>
+							<td>{$recever['receive_time']}</td>
+							<td>
+								<span>{$orderArr[$recever['order_id']]['receiver_name']}</span><br>
+								<span>{$orderArr[$recever['order_id']]['receiver_phone']}</span><br>
+								<span class="com_addr">
+									{$orderArr[$recever['order_id']]['receiver_state']}
+									{$orderArr[$recever['order_id']]['receiver_city']}
+									{$orderArr[$recever['order_id']]['receiver_district']}
+									{$orderArr[$recever['order_id']]['receiver_address']}
+								</span>
+							</td>
+							<td>{$orderStatus[$tradeArr[$recever['atid']]]}</td>
+							<td>
+								<a href="" class="seedetails">查看订单详情</a><br>
+								<eq name="recever['is_thx']" value="0">
+									<a href="javascript:;" class="thx_com" receverid="{$recever['recever_id']}">答谢企业</a>
+								<else/>
+									<a href="javascript:;">已答谢</a>
+								</eq>
+							</td>
+						</tr>
+						</volist>
+					</table>
+
+					<!-- 翻页 -->
+					<div class="pages">
+						{$pagestr}
+					</div>
+
+					<!-- 答谢弹框 -->
+					<div class="shadow"></div>
+					<div class="thx-window">
+						<div class="to_company">
+							<div class="tbrow">
+								<div class="tbcell vat txr">对企业说：</div>
+								<div class="tbcell"><textarea name="" id="thxContent" placeholder="写下您最想对企业说的话吧！(限50字)"></textarea></div>
+							</div>
+							<div class="tbrow">
+								<div class="tbcell vat txr">给企业选个小礼物：</div>
+								<div class="tbcell">
+									<ul class="gift_list" id="giftList">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<a href="javascript:void(0)" class="thx_btn" id="thxBtn">答谢企业</a>
+						<div class="close_window"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" id="receverId" value=""/>
+	</div>
+
+	<script>
+		/*答谢弹窗*/
+		$(".thx_com").click(function(){
+			//加载数据
+			$.post("{:U('order/thxImg')}",function(result){
+				if(result.code == 1){
+					var html = "";
+					$.each(result.data,function(key,val){
+						html += '<li class="thx_gift" giftid="'+val.id+'">';
+						html += '<img src="__VIEW__Public/images/transparent.png" style="background-image:url('+val.url+')">';
+						html += '<span class="selectedgift"></span></li>';
+					});
+					$("#giftList").html(html);
+				}
+			});
+			$("#receverId").val($(this).attr('receverid'));
+			$(".shadow").show();
+			$(".thx-window").show();
+		});
+		/*关闭弹窗*/
+		$(document).mouseup(function(e){
+			var _con = $(".thx-window");
+			if(!_con.is(e.target) && _con.has(e.target).length===0){
+				_con.hide();
+				$(".shadow").hide();
+			}
+		});
+		$(".gift_list").on("click","li.thx_gift",function(){
+			$(".thx_gift").removeClass('chosed');
+			$(this).addClass('chosed')
+		});
+		//答谢企业
+		$("#thxBtn").click(function(){
+			//检测数据
+			var thxContent = $("#thxContent").val();
+			thxContent = $.trim(thxContent);
+			var giftid = $(".thx_gift.chosed").eq(0).attr('giftid');
+			var receverId = $("#receverId").val();
+			if(thxContent == ""){
+				alert("请输入你对企业想说的话");
+				return false;
+			}
+			if(thxContent.length >= 50){
+				alert("答谢内容限制为50个字");
+				return false;
+			}
+			if(typeof(giftid) == "undefined"){
+				alert("选择小礼物");
+				return false;
+			}
+			if(receverId == ""){
+				alert('错误，请刷新页面');
+				return false;
+			}
+			//提交数据
+			$.post("{:U('order/thx')}",{receverId:receverId,giftid:giftid,thxContent:thxContent},function(result){
+				if(result.code == 1){
+					alert('提交成功');
+					//关闭窗口
+					$(".shadow").hide();
+					$(".thx-window").hide();
+					//设置按钮样式
+					var obj = $('a[orderid="'+orderId+'"]').eq(0);
+					obj.css("color","#666");
+					obj.unbind();
+					obj.text('已答谢');
+				}else{
+					alert(result.msg);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

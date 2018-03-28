@@ -1,0 +1,2515 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta charset="UTF-8">
+<!--↑↑模板中请务必使用HTML5的标准head结构↑↑-->
+<meta name="generator" content="b2b2c" />
+<meta name="author" content="shopex UED Team" />
+<!-- <title>礼舍心意-B2B2C商城</title> -->
+<title>礼舍心意商城</title>
+<link rel="icon" href="http://www.lishe.cn/public/statics/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://www.lishe.cn/public/statics/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="__PUBLIC__/gaway/css/Gawaylist.css">
+<link href="/app/topc/statics/stylesheets/layout.css?1464749457" rel="stylesheet" media="screen, projection" />
+<link href="/app/topc/statics/stylesheets/theme.css?1464749457" rel="stylesheet" media="screen, projection" />
+<link rel="stylesheet" href="/themes/luckymall1/images/index.css" />
+<script type="text/javascript" src="__PUBLIC__/gaway/js/jquery.js"></script>
+<script src="__PUBLIC__/js/jquery.cookie.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+  </head>
+  <body style="border:0px solid red;overflow-x:hidden;">
+    <!-- 顶部导航 -->
+<div id="topbar" class="topbar">
+  <div class="wrap-lg">
+    <div class="topbar-left">
+      
+    <!-- 顶部导航 -->
+          <div class="small-signin">
+            <div class="line"></div>
+            <a href="/" target="_blank">礼舍首页</a>
+            <div class="line"></div>
+            <a href="/shop.php" target="_blank">心意商城</a>
+            <div class="line"></div>
+            <a href="/site/help.html" target="_blank">礼舍帮帮</a>
+          </div>    </div>
+    <div class="topbar-right">
+      <div class="subnav">
+            <a href="/shop.php/Sign" id="loginBox">会员登录</a>
+			<div id="memberBox" class="small-member" style="display:none; float: left; color: #c7241d;">
+			<a href="/member-index.html" style="margin: 0px; padding: 0px; color: #a12124;" ><span id="userName"></span></a>
+			<a href="/shop.php/Sign/logout.html" style="margin: 0px; color: #a12124;">退出</a>
+			</div>
+            <div class="line"></div>
+            <a href="/shop/" target="_blank">商家中心</a>
+            <div class="line"></div>
+            <a href="http://vip.lishe.cc/company/login.html" target="_blank">企业登录</a>
+          </div>
+ </div>
+  </div>
+</div>
+
+<style>
+.advertisement {
+  display: none;
+}
+</style>
+
+<!-- 头部信息栏 -->
+<div id="header" class="header">
+  <div class="wrap-lg">
+    <div class="row">
+      <div class="col-4">
+        <div class="logo"><a href="/shop.php"><img src="/images/37/29/e4/0c77d6903cb5f9a8b6eadd903bc8d40c49703057.jpg" style="width: 208px;"></a></div>
+      </div>
+      <div class="col-lg-10">
+        <div class="searchbar">
+  <form action="/shop.php/Items/itemList" method="get" id="goods_search">
+    <input type="text" name="keyword" id="" class="x-input" placeholder="综合搜索">
+    <a href="javascript:void(0);" class="btn btn-search">搜索</a>
+  </form>
+  <div class="hots">
+    <span>热门搜索：</span>
+        <a href="/shop.php/Items/itemList?keyword=平板电视">平板电视</a>
+        <a href="/shop.php/Items/itemList?keyword=童装">童装</a>
+        <a href="/shop.php/Items/itemList?keyword=手机">手机</a>
+      </div>
+</div>
+
+<script>
+  $('.btn-search').click(function(){
+    $('#goods_search').submit();
+  })
+</script>
+      </div>
+      <div class="col-3">
+        <div class="minicart" id="minicart_">
+  <a href="/shop.php/Order/Cart" class="btn btn-simple btn-lg">
+    <span>
+    	<img src="http://www.lishe.cn/themes/luckymall1/images/shopping_icon.png" alt="" style="margin: 0px 8px; position: relative; top: 3px;">我的购物车<i style="display: inline-block; position: relative; margin-right: 10px; padding-left: 20px; font-size: 20px; line-height: 1; vertical-align: text-top;"><b data-type="1" class="up-cat-number">0</b>></i>
+    </span>
+  </a>
+</div>
+
+<script>
+//获取cookie，读取购物车现有商品数量
+updateCartNumber('#minicart_ .up-cat-number');
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 页面导航栏 -->
+<div id="nav" class="nav" style="border-bottom: 2px solid #a12124;">
+  <div class="wrap-lg">
+    <div class="row">
+      <div class="col-lg-3 nav-left"><meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+            
+<style>
+.category .category-sub{
+  width: 966px !important;
+}
+</style>
+<div id="category_handle">
+  <div class="big-cate">
+    <a href="#">全部商品分类</a>
+  </div>
+  <div class="category" id="category_box">
+    <ul class="category-primary">
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            家用电器            -->
+            家用电器            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">大家电&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1403">平板电视</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1404">空调</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1405">冰箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1406">洗衣机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1407">家庭影院</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1408">DVD</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1409">迷你音响</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1410">冷柜/冰吧</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1411">酒柜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1412">家电配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">厨卫大电&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1414">油烟机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1415">燃气灶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1416">烟灶套装</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1417">消毒柜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1418">洗碗机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1419">电热水器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1420">燃气热水器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1422">嵌入式厨电</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">厨房小电&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/83">电饭煲</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/84">微波炉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/85">电烤箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/86">电磁炉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/87">电压力锅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/88">豆浆机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/90">咖啡机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/91">面包机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/92">榨汁机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/93">料理机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/94">电饼铛</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/95">养生壶/煎药壶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/96">酸奶机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/97">煮蛋器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/98">电水壶/热水瓶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/99">电炖锅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/100">多用途锅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/101">电烧烤炉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/102">电热饭盒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/103">其他厨房电器</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">生活电器&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/104">电风扇</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/105">冷风扇</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/108">吸尘器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/106">净化器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/107">扫地机器人</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/109">加湿器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/110">挂烫机/熨斗</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/111">取暖电器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/112">插座</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/113">电话机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/114">净水器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/115">饮水机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/116">除湿器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/117">干衣机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/118">清洁机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/119">收/录音机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/120">其他生活电器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/121">生活电器配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">个护健康&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1424">剃须刀</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1425">口腔护理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1426">电吹风</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1427">美容器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1428">卷/直发器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1429">理发器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1430">剃/脱毛器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1431">足浴盆</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1432">健康秤/厨房秤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1433">按摩器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1434">按摩椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1435">血压计</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1436">血糖仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1437">体温计</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1438">计步器/脂肪检测仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1439">其他健康电器</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">五金家装&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1441">电动工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1442">手动工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1443">仪器仪表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1444">浴霸/排气扇</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1445">灯具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1446">LED灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1447">洁身器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1448">水槽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1449">龙头</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1450">淋浴花洒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1451">厨卫五金</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1452">家具五金</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1453">门铃</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1454">电气开关</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1455">插座</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1456">电工电料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1457">监控安防</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1458">电线/线缆</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            手机、数码            -->
+            手机、数码            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">手机通讯&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/165">手机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1376">对讲机</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">手机配件&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/178">手机电池</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1459">移动电源</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/179">蓝牙耳机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/180">充电器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1460">数据线</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/181">手机耳机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/182">手机支架</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/183">贴膜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/184">手机存储卡</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/185">保护套</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/186">车载配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/187">苹果周边</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/188">创意配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/190">手机饰品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/191">拍照配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">影像摄影&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1462">数码相机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1463">单电/微单相机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1464">单反相机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1465">拍立得</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1466">运动相机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1467">摄像机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1468">镜头</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1469">户外器材</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1470">影棚器材</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1471">冲印服务</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1472">数码相框</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">数码配件&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1474">存储卡</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1475">读卡器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1476">支架</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1477">滤镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1478">闪光灯/手柄</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1479">相机包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1480">三脚架/云台</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1481">相机清洁/贴膜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1482">机身附件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1483">镜头附件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1484">电池/充电器</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">影音娱乐&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1486">耳机/耳麦</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1487">音箱/音响</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1488">便携/无线音箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1489">收音机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1490">麦克风</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1491">MP3/MP4</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1492">专业音频</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">智能设备&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/240">智能手环</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/242">智能手表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/244">智能眼镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/246">智能机器人</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/247">运动跟踪器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/248">健康监测</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/251">智能配饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/254">智能家居</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/256">体感车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/258">无人机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/259">其他配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">电子教育&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1885">学生平板</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1886">点读机/笔</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1887">早教益智</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1888">录音笔</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1889">电纸书</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1890">电子词典</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1891">复读机</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            电脑、办公            -->
+            电脑、办公            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">电脑整机&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1501">笔记本</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1502">游戏本</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1503">平板电脑</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1504">平板电脑配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1505">台式机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1506">一体机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1892">服务器/工作站</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1507">笔记本配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">电脑配件&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1508">CPU</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1509">主板</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1510">显卡</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1511">硬盘</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1512">SSD固态硬盘</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1893">内存</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1513">机箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1514">电源</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1515">显示器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1516">刻录机/光驱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1517">声卡/扩展卡</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1518">散热器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1519">装机配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1520">组装电脑</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">外设产品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1521">鼠标</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1522">键盘</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1523">键鼠套装</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1524">网络仪表仪器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1525">U盘</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1526">移动硬盘</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1527">鼠标垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1528">摄像头</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1529">线缆</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1530">手写板</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1531">硬盘盒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1532">电脑工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1533">电脑清洁</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1534">UPS电源</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1535">插座</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">游戏设备&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1536">游戏机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1537">游戏耳机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1538">手柄/方向盘</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1539">游戏软件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1540">游戏周边</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">网络产品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1541">路由器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1542">网卡</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1543">交换机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1544">网络存储</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1545">4G/3G上网</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1546">网络盒子</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1547">网络配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">办公设备&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1548">投影机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1549">投影配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1550">多功能一体机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1551">打印机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1552">传真设备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1553">验钞/点钞机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1554">扫描设备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1555">复合机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1556">碎纸机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1557">考勤机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1558">收款/POS机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1559">会议音频视频</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1560">保险柜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1561">装订/封装机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1807">安防监控</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1808">办公家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1809">白板</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">文具耗材&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1562">硒鼓/墨粉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1563">墨盒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1564">色带</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1565">纸类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1566">办公文具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1567">学生文具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1568">文件管理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1569">本册/便签</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1570">计算器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1571">笔类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1572">画具画材</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1573">财会用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1574">刻录碟片/附件</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            家居、家具、家装、厨具            -->
+            家居、家具、家装、厨具            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">厨具&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/430">烹饪锅具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/431">刀剪菜板</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/432">厨房配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/433">水具酒具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/434">餐具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/435">茶具/咖啡具</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">家装建材&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1578">灯饰照明</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1579">厨房卫浴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1580">五金工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1581">电工电料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1582">墙地面材料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1583">装饰材料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1584">吸顶灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1585">淋浴花洒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1586">开关插座</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1587">油漆涂料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1588">龙头</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">家纺&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/697">床品套件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1010">被子</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1011">枕芯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1327">蚊帐</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1328">凉席</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1012">毛巾浴巾</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1325">床单被罩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1326">床垫/床褥</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1009">毯子</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1329">抱枕靠垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1330">窗帘/窗纱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1894">电热毯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1332">布艺软饰</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">家具&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1589">卧室家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1590">客厅家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1591">餐厅家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1592">书房家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1593">儿童家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1594">储物家具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1595">阳台/户外</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1596">商业办公</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1597"> 床</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1598">床垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1599">沙发</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1600">电脑椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1601">衣柜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1602">茶几</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1603">电视柜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1604">餐桌</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1605">电脑桌</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1606">鞋架/衣帽架</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">灯具&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1607">台灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1608">吸顶灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1609">筒灯射灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1610">LED灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1611">节能灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1612">落地灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1895">五金电器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1613">应急灯/手电</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1614">装饰灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1615">吊灯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1616">氛围照明</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">生活日用&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1008">收纳用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1295">雨伞雨具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1296">净化除味</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1297">浴室用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/728">洗晒/熨烫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1298">缝纫/针织用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1072">清洁工具</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">家装软饰&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1280">桌布/罩件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1281">地毯地垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1282">沙发垫套/椅垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1283">装饰字画</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1284">装饰摆件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1285">手工/十字绣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1286">相框/照片墙</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1287">墙贴/装饰贴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1288">花瓶/花艺</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1289">香薰蜡烛</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1290">节庆饰品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1291">钟饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1617">布艺隔断</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1293">创意家居</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1294">保暖防护</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            内衣、配饰            -->
+            内衣、配饰            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">内衣&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1211">文胸</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1212">睡衣/家居服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1213">男士内裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1214">女士内裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1215">塑身美体</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1216">文胸套装</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1217">情侣睡衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1218">吊带/背心</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1219">少女文胸</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1220">休闲棉袄</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1221">商务男袜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1222">连裤袜/丝袜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1223">美腿袜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1224">打底裤袜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1225">抹胸</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1226">内衣配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1227">大码内衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1228">打底衫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1344">泳衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1810">秋衣秋裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1811">保暖内衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1812">情趣内衣</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">配饰&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1233">太阳镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1896">光学镜架/镜片</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1235">男士腰带/礼盒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1236">防辐射眼镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1237">老花镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1238">女士丝巾/围巾/披肩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1239">男士丝巾/围巾</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1240">棒球帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1241">遮阳帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1242">鸭舌帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1243">贝雷帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1244">礼帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1897">毛绒帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1246">防晒手套</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1247">真皮手套</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1248">围巾/手套/帽子套装</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1249">遮阳伞</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1250">女士腰带/礼盒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1251">口罩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1252">假领</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1898">毛绒/布面料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1899">领带/领结/领带夹</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1255">耳罩/耳包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1256">袖扣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1257">钥匙扣</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            个护化妆、清洁用品、宠物            -->
+            个护化妆、清洁用品、宠物            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">面部护肤&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1618">卸妆</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/208">洁面</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1164">爽肤水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1619">乳液面霜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1620">精华</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1621">眼霜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1622">防晒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1165">面膜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1071">剃须</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1166">套装</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">洗发护发&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1167">洗发</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1168">护发</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1169">染发</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1170">造型</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1171">假发</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1172">套装</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">身体护肤&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1173">沐浴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1174">润肤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1623">精油</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1175">颈部</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1176">手足</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1177">纤体塑形</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1178">美胸</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1179">套装</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">口腔护理&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1180">牙膏/牙粉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1181">牙刷/牙线</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1182">漱口水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1183">套装</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">女性护理&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1184">卫生巾</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1185">卫生护垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1186">私密护理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1188">脱毛膏</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">香水彩妆&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/730">女士香水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1624">男士香水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1189">底妆</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1191">眉笔</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1625">睫毛膏</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1626">眼线</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1627">眼影</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1192">唇膏/彩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1190">腮红</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1193">美甲</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1194">美妆工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1195">套装</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">清洁用品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1196">纸品湿巾</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1070">衣物清洁</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1069">清洁工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1068">家庭清洁</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1197">一次性用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1198">驱虫用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1199">皮具护理</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">宠物生活&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1901">水族用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1902">宠物主粮</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1903">宠物零食</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1905">猫砂/尿布</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1906">洗护美容</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1907">家居日用</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1908">医疗保健</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1909">出行装备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1910">宠物玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1911">宠物牵引</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1912">宠物驱虫</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            鞋靴、箱包、珠宝、奢侈品            -->
+            鞋靴、箱包、珠宝、奢侈品            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">时尚女鞋&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1633">单鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1634">休闲鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1635">帆布鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1636">鱼嘴鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1637">妈妈鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1638">凉鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1639">拖鞋/人字拖</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1640">布鞋/绣花鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1641">坡跟鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1642">松糕鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1643">防水台</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1644">高跟鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1645">踝靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1646">内增高</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1647">女靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1648">马丁靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1649">雪地靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1650">雨鞋/雨靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1651">鞋配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">流行男鞋&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1652">休闲鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1653">商务休闲鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1654">正装鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1655">帆布鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1656">工装鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1657">增高鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1658">拖鞋/人字拖</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1659">凉鞋/沙滩鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1660">雨鞋/雨靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1661">定制鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1662">男靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1663">传统布鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1664">功能鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1665">鞋配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">潮流女包&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1106">单肩包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1107">手提包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1108">斜挎包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1109">双肩包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1110">钱包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1111">手拿包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1112">卡包/零钱包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1113">钥匙包</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">精品男包&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1114">商务公文包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1115">单肩/斜挎包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1116">男士手包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1117">双肩包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/732">男士钱包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1118">卡包名片夹</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1119">钥匙包</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">功能箱包&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1120">拉杆箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1121">拉杆包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1122">旅行包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1123">电脑包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1124">休闲运动包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1125">相机包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1126">腰包/胸包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1127">登山包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1128">旅行配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1129">书包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1130">妈咪包</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">奢侈品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1666">箱包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1667">钱包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1668">服饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1669">腰带</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1670">鞋靴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1671">太阳镜/眼镜框</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1672">饰品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1673">配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1674">GUCCI</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1675">COACH</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1676">雷朋</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">礼品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1137">火机烟具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1138">军刀军具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1139">美妆礼品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1140">工艺礼品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1141">礼盒礼券</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1142">礼品文具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1143">收藏品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1883">古董把玩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1145">礼品定制</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1146">创意礼品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1147">婚庆用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1149">鲜花绿植</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">珠宝首饰&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1677">黄金</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1678">K金</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1679">时尚饰品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1680">钻石</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1681">翡翠玉石</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1682">银饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1683">水晶玛瑙</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1684">彩宝</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1685">铂金</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1686">木手串/把件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1687">珍珠</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            运动户外、钟表            -->
+            运动户外、钟表            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">运动鞋包&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/901">跑步鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/902">休闲鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/903">篮球鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/907">帆布鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/904">板鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/911">拖鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/905">运动包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/906">足球鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/908">乒羽网鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/909">训练鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/910">专项运动鞋</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">运动服饰&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/923">T恤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/916">运动裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/921">健身服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/912">运动套装</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/919">运动背心</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/913">羽绒服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/914">卫衣/套头衫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/915">棉服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/917">夹克/风衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/918">运动配饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/920">兵羽网服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/922">毛衫/线衫</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">健身训练&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1708">跑步机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1709">健身车/动感单车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/926">哑铃</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/927">仰卧板/收腹机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1710">甩脂机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1711">踏步机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/930">运动护具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/931">瑜伽舞蹈</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/932">武术搏击</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1814">综合训练器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1815">其他大型器械</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1816">其他中小型器械</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">骑行运动&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/936">山地车/公路车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/937">折叠车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/938">电动车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/939">平衡车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/940">其他整车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/941">骑行装备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/942">骑行服</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">体育用品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/943">乒乓球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/944">羽毛球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/945">篮球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/946">足球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/947">轮滑滑板</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/948">网球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/949">高尔夫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/950">台球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/951">排球</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/952">棋牌麻将</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/953">其他</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">户外鞋服&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1689">户外风衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1690">徒步鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1691">T恤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1692">冲锋衣裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1693">速干衣裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1694">越野跑鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1695">滑雪服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1696">羽绒服/棉服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1697">休闲衣裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1913">抓绒衣裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1699">溯溪鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1700">沙滩/凉拖</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1701">休闲鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1702">软壳衣裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1703">功能内衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1704">军迷服饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1705">登山鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1706">工装鞋</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1707">户外袜</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">户外装备&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/974">帐篷/垫子</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/981">望远镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/978">野餐烧烤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/979">便携桌椅床</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/973">背包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/989">户外配饰</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/984">军迷用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/975">睡袋/吊床</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/985">救援装备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/977">户外照明</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/983">旅游用品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/980">户外工具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/982">户外仪表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/976">登山攀岩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/987">极限户外</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/988">冲浪潜水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1914">滑雪装备</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">垂钓用品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/990">鱼竿鱼线</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/991">浮漂鱼饵</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/992">钓鱼桌椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/993">钓鱼配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/994">钓箱鱼包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/995">其他</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">游泳用品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/996">泳镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/997">泳帽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/998">游泳包防水包</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/999">男士泳衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1000">女士泳衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1001">比基尼</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1002">其他</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">钟表&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1003">男表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1004">女表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1005">儿童表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1712">智能手表</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1713">座钟挂钟</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            汽车用品            -->
+            汽车用品            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">车载电器&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1342">行车记录仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1343">导航仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/777">电源</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/778">电器配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/779">净化器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/780">车载影音</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/781">车载冰箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/782">安全预警仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/783">倒车雷达</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/784">蓝牙设备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/785">智能驾驶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/786">车载电台</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/787">吸尘器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/788">智能车机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/789">汽车音响</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/790">车载生活电器</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">美容清洗&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/791">车蜡</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/792">镀晶镀膜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/793">补漆笔</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/794">玻璃水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/795">清洁剂</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/796">洗车机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/797">洗车水枪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/798">汽车配件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/799">毛巾掸子</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">汽车装饰&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/800">脚垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/801">座垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/802">座套</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/803">后备箱垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/804">方向盘套</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/731">头枕腰靠</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/805">香水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/806">空气净化</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/441">功能小件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/807">车衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/808">挂件摆件</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/809">车身装饰件</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">安全自驾&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1918">安全座椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1919">胎压监测</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1920">充气泵</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1921">防盗设备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1922">应急救援</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1923">保温箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1924">储物箱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1925">自驾野营</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1926">摩托车装备</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1927">摩托车</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            母婴、玩具、乐器            -->
+            母婴、玩具、乐器            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">奶粉&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1715">婴儿奶粉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/718">孕妈奶粉</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">营养辅食&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1723">米粉/菜粉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1724">面条/粥</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1725">果泥/果汁</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1726">益生菌/初乳</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1727">DHA</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1728">钙铁锌/维生素</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1729">清火/开胃</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1730">宝宝零食</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">尿裤湿巾&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1731">婴儿尿裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/829">拉拉裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/828">成人尿裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/826">婴儿湿巾</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">喂养用品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/838">奶嘴奶瓶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/839">吸奶器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/841">暖奶消毒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/842">辅食料理机</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/840">牙胶安抚</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1739">食物存储</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/843">儿童餐具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/844">水壶/水杯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1740">围兜/防溅衣</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">洗护用品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/830">宝宝护肤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/835">日常护理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/831">洗发沐浴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1737">洗澡用具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/833">洗衣液/皂</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/832">理发器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1738">婴儿口腔清洁</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/836">座便器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/837">驱蚊防蚊</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">寝具服饰&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1741">睡袋/抱被</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1742">家居床品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1743">安全防护</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1744">爬行垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1745">婴儿内衣</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1746">婴儿礼盒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1747">婴儿鞋帽袜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1748">婴儿外出服</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">妈妈专区&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1749">防辐射服</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1750">孕妈装</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1751">孕妇护肤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1752">妈咪包/背婴带</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1753">待产护理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1754">产后塑身</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1755">文胸/内裤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1756">防溢乳垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1757">孕期营养</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">童车童床&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1758">安全座椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/847">婴儿推车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/846">婴儿床</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1915">婴儿床垫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/848">餐椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/849">学步车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/850">三轮车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/851">自行车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/852">扭扭车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/853">滑板车</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/854">电动车</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">玩具&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1916">适用年龄</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/890">遥控/电动</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/891">益智玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/892">积木拼插</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/893">动漫玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/894">毛绒布艺</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/895">模型玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/896">健身玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/897">娃娃玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/898">DIY玩具</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/899">创意减压</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">乐器&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1759">钢琴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1760">电子琴/电钢琴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1761">吉他/尤克里里</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1762">打击乐器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1763">西洋管弦</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1764">民族乐器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1765">乐器配件</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            食品、酒类、生鲜、特产            -->
+            食品、酒类、生鲜、特产            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">水果蔬菜&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1382">苹果</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1383">奇异果</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1384">芒果</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1395">大樱桃</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1385">时令水果</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1399">叶菜类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1400">茄果瓜类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1770">根茎类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1771">鲜菌菇</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1772">葱姜蒜椒</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">海鲜水产&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1386">虾类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1773">鱼类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1388">蟹类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1389">贝类</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1390">海参</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1397">海产干货</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">猪牛羊肉&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1777">牛肉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1778">羊肉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1779">猪肉</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">禽类蛋品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1785">鸡肉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1787">蛋类</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">冷冻食饮&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1790">水饺</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1791">汤圆</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1792">面点</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1793">火锅丸串</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1817">速冻半成品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1818">奶酪/黄油</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">中外名酒&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/442">白酒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/650">葡萄酒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/651">洋酒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/652">啤酒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/653">黄酒/养生酒</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/654">收藏酒/陈年老酒</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">进口食品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/655">牛奶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/656">饼干蛋糕</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/657">糖果/巧克力</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/658">休闲零食</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/659">冲调饮品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/660">粮油调味</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">休闲食品&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/661">休闲零食</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/662">坚果炒货</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/663">肉干肉脯</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/664">蜜饯干果</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/665">糖果/巧克力</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/666">饼干蛋糕</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/667">无糖食品</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">地方特产&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1796">新疆</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1797">四川</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1798">云南</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1799">湖南</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1800">内蒙</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1801">北京</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1802">山西</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1803">福建</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1804">东北</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1805">其他</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">茗茶&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/678">铁观音</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/679">普洱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/680">龙井</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/681">绿茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/682">红茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/683">乌龙茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/684">花草茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/685">花果茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/686">黑茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/687">白茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/688">养生茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/689">其他茶</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">饮料冲调&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/690">牛奶乳品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/691">饮料</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/692">饮用水</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/693">咖啡/奶茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/694">蜂蜜/柚子茶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/695">冲饮谷物</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/696">成人奶粉</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">粮油调味&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/698">米面杂粮</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/699">食用油</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/700">调味品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/701">南北干货</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/702">方便食品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/703">有机食品</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+            <li class="category-primary-li">
+        <div class="category-primary-item">
+          <a>
+            <!--
+            医药保健            -->
+            医药保健            <span class="icon icon-arrow-right"></span>
+            <i style="background-position: 0px 0px;"></i>
+          </a>
+          <span class="active-arrow"></span>
+        </div>
+        <div class="category-sub" style="min-height:416px">
+                    <div class="category-sub-item">
+            <div class="category-sub-title">营养健康&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1838">调节免疫</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1837">调节三高</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1839">缓解疲劳</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1840">美体塑身</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1841">美容养颜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1842">肝肾养护</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1843">肠胃养护</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1844">明目益智</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1845">骨骼健康</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1846">改善睡眠</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1847">抗氧化</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1848">耐缺氧</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">营养成分&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1849">维生素/矿物质</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1850">蛋白质</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1851">鱼油/磷脂</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1852">螺旋藻</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1853">番茄红素</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1854">叶酸</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1855">葡萄籽</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1856">左旋肉碱</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1857">辅酶Q10</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1858">益生菌</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1859">玛咖</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1860">膳食纤维</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1861">牛初乳</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1862">胶原蛋白</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1863">大豆异黄酮</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1864">芦荟提取</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1865">酵素</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">滋补养生&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1866">阿胶</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1867">蜂蜜/蜂产品</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1868">枸杞</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1870">燕窝</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1871">海参</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1904">冬虫夏草</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1873">人参/西洋参</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1874">三七</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1875">鹿茸</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1876">雪蛤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1877">青钱柳</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1878">石斛/枫斗</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1879">灵芝/袍子粉</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1880">当归</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1881">养生茶饮</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1882">药食同源</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">保健器械&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/625">血压计</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1819">血糖仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1820">血氧仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/628">体温计</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/629">体重秤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1821">胎心仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1822">呼吸制氧</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1823">雾化器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1824">助听器</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1825">轮椅</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1826">拐杖</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1827">中医保健</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1828">养生器械</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1829">理疗仪</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1830">家庭护理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1831">智能健康</a></li>
+                              </ul>
+            </div>
+          </div>
+                    <div class="category-sub-item">
+            <div class="category-sub-title">护理护具&nbsp;&nbsp;></div>
+            <div class="category-sub-sub-title">
+              <ul>
+                                <li><a href="/shop.php/Items/itemList/catId/1832">隐形眼镜</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/1833">护理液</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/643">口罩</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/644">眼罩/耳塞</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/645">跌打损伤</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/646">暖贴</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/647">鼻喉护理</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/648">眼部保健</a></li>
+                                <li><a href="/shop.php/Items/itemList/catId/649">美体护理</a></li>
+                              </ul>
+            </div>
+          </div>
+                  </div>
+      </li>
+          </ul>
+  </div>
+</div>
+<script>
+ 
+var category = $('#category_box');
+
+if ($('body').hasClass('is-index')) {
+
+  category.addClass('is-display');
+}
+else {
+
+  var category_handle = $('#category_handle');
+
+  category_handle.hover(function() {
+      category.fadeIn();
+  },
+  function() {
+      category.fadeOut();
+  });
+}
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var num;
+		$('.menu-ul>li[id]').hover(function(){
+			/*下拉框出现*/
+			var Obj = $(this).attr('id');
+			num = Obj.substring(3, Obj.length);
+			$('#box-'+num).slideDown(300);
+		},function(){
+
+			/*下拉框消失*/
+			$('#box-'+num).hide();
+		});
+
+		$('.hidden-box').hover(function(){
+			/*保持图标向上*/
+			$(this).show();
+		},function(){
+			$(this).slideUp(200);
+		});
+		$.get("/api.php/Api/getLoginInfo", function(result){
+			var account=eval(result);
+			if(account[0]>0){
+				$('#loginBox').hide();
+				$('#memberBox').show();
+				$('#userName').text(account[3]);
+				if(account[4]!=''){
+					$('li a.on').attr('href',account[4]);
+					$('#shopIndex').attr('href',account[4]);
+					$('#compnayIndex').attr('href',account[4]);
+					$('#compnayIndex').text('我的企业');
+				}
+				if(account[5]!=''){
+					$('#compnayIndex').attr('href',account[5]);
+					$('#compnayIndex').text('我的企业');
+				}
+			}
+		});	
+	});
+
+</script>
+</div>
+      <div class="offset-lg-3 nav-main" >
+        
+        <div class="menu" style="border:0px solid red;">
+
+          <ul class="menu-ul" style="border:0px solid red;margin-left:-300px;" >
+                 <li><a style="font-size:14px;background:white;" href="/shop.php">首页</a></li>
+                 <li id="li-1"><a class="<eq name="Think.get.flag" value="0">on</eq>" style="font-size:14px;background:white;" href="{:U('Gaway/index',array('flag'=>'0'))}">赠送对象<span><img src="__PUBLIC__/gaway/images/jt.png"></span></a></li>
+                 <li id="li-2"><a class="<eq name="Think.get.flag" value="1">on</eq>" style="font-size:14px;background:white;" href="{:U('Gaway/index',array('flag'=>'1'))}">赠送情景<span><img src="__PUBLIC__/gaway/images/jt.png"></span></a></li>
+              
+                 <li><a style="font-size:14px;background:white;" href="/shop.php/Best/index">礼舍推荐</a></li>
+         </ul>
+
+          <div id="box-1" class="hidden-box hidden-loc-index" style="margin-left:-210px;width:80px;">
+            <ul >
+                  <foreach name="configDis" item="row" >
+                     <if condition="$row.flag eq 0">
+                      <li style="border:0px;"><a style="font-size:14px;" href="{:U('Gaway/search',array('id'=>$row['id'],'flag'=>0))}">{$row['send_type']}</a></li>
+                    </if>  
+                </foreach>
+            </ul>
+        </div>
+
+          <div id="box-2" class="hidden-box hidden-loc-us" style="margin-left:-235px;width:80px;">
+            <ul>
+                <foreach name="configDis" item="row" >
+                   <if condition="$row.flag eq 1">
+                    <li style="border:0px;"><a style="font-size:14px;" href="{:U('Gaway/search',array('id'=>$row['id'],'flag'=>1))}">{$row['send_type']}</a></li>
+                  </if>  
+              </foreach>
+            </ul>
+        </div>
+
+
+        </div>
+      
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <div id="main" class="main">
+      <style>
+.advertisement {
+  display: block;
+}
+</style>
+
+<style>
+.index-ext-banner {
+	position: relative;
+	width: 100%;
+	height: 472px;
+	/*
+	background: url(http://www.lishe.cn/themes/luckymall1/images/index/object/objects_banner.jpg);
+	background-size: cover;
+	*/
+}
+.index-ext-banner img {
+	width: 100%;
+	height: 100%;
+}
+</style>
+<div class="index-ext-banner" style="border:0px solid red;z-index:-1000;">
+</div>
+
+ <div class="layout" style="margin-top:-440px;">
+
+     <ul class="tow">
+       <li> <img src="__PUBLIC__{$resItem['subImg']}"> </li>
+       <li class="title" style="color:#222222;font-size:22px;">{$resItem['title']}</li>
+       <li class="des" style="color:#555555;font-size:18px;">{$resItem['subtitle']}</li>
+      <!--  <li class="con" style="color:#88888b;font-size:16px;">{$resItem['contents']}</li> -->
+
+      <!--  <li class="logo"><img src="__PUBLIC__/gaway/images/lo.png"><span>{$resItem['collect_num']}</span><img src="__PUBLIC__/gaway/images/dp.png" class="dp"><span>{$resItem['comment_num']}</span><a href="#" class="fx"><img src="__PUBLIC__/gaway/images/fx.png"></a><span>{$resItem['share_num']}</span></li> -->
+
+     </ul>
+      <ul class="list">
+         <li class="con" style="color:#88888b;font-size:16px;">{$resItem['contents']}</li>
+      </ul>
+     
+     <foreach name="resItemDetail" item="vo" key="k"> 
+         <ul class="list" style="border:0px;margin-bottom:20px;">
+           <li class="tit"><img src="__PUBLIC__/gaway/images/t{$k+1}.png"><span>{$vo['title']}</span></li>
+           <li class="ldes">{$vo['subtitle']}</li>
+
+            <if condition="!empty($vo['link'])">
+           <li style="text-align:center;"><a target="_blank" href="{$vo['link']}">
+            <img src="__PUBLIC__/{$vo['img']}"></a></li>
+            <else/>
+             <li style="text-align:center;"><img src="__PUBLIC__/{$vo['img']}"></li>
+            </if>
+
+           <if condition="!empty($vo['link'])">
+           <li class="mon"><span class="num" style="float:left;font-size:20px;">{$vo['count']}<span style="font-size:14px;">积分</span></span>
+            <span class="btn" style="border:0px solid red;float:right;margin-right:50px;"><a style="font-size:16px;" target="_blank" href="{$vo['link']}">查看详情</a></span>
+          </li>
+         </if>
+
+          <li class="mon">
+            &nbsp;
+          </li>
+
+         </ul>
+     </foreach>
+      
+  </div>
+
+
+
+
+<style>
+.mind-strategy {
+	background: #f6f4f4;
+}
+.mind-strategy .mind-strategy-title {
+	font-size: 18px;
+	color: #c7241d;
+	padding: 18px 0px 5px 0px;
+}
+.mind-strategy .mind-strategy-nav {
+	display: inline-table;
+	width: 1190px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main {
+	position: relative;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li {
+	position: relative;
+	float: left;
+	width: 338px;
+	margin: 0px 56px 42px 0px;
+	top: 0px;
+	background: #fff;
+	border: 1px solid #bcbcbc;
+	border-radius: 5px;
+	overflow: hidden;
+	/*
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: all .2s eas;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	-ms-transition: all .2s ease;
+	transition: all .2s ease;
+	*/
+	/* 设置阴影 */
+	-webkit-box-shadow: 0px 4px 9px #DADADA;
+	-moz-box-shadow: 0px 4px 9px #DADADA;
+	-o-box-shadow: 0px 4px 9px #DADADA;
+	-ms-box-shadow: 0px 4px 9px #DADADA;
+	box-shadow: 0px 4px 9px #DADADA;
+}
+ 
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li img.goods-img {
+	border-bottom: 1px solid #bcbcbc;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom {
+	padding: 10px 12px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-title {
+	font-size: 14px;
+	color: #333;
+	padding: 5px 0px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn {
+	height: 45px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn span {
+	margin: 0px 15px 0px 0px;
+	font-size: 16px;
+	color: #c7241d;
+	font-weight: bold;
+	line-height: 45px;
+	float: left;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn span.integral tt {
+	margin-right: 15px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn span.snap-up {
+	position: relative;
+	float: right;
+	color: #fff;
+	font-weight: normal;
+	padding: 0px 20px;
+	background: #c7241d;
+	border-radius: 5px;
+}
+</style>
+ 
+
+<script type="text/javascript">
+// $(document).ready(function () {
+// 	$('#nav').find('.menu a').eq(1).addClass('on').siblings().removeClass('on');
+// });
+</script>
+    </div>
+    <style>
+.tip-absolute {
+	position: absolute;
+	width: 88px;
+	top: 784px;
+    right: 6%;
+    background: #a12124;
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    z-index: 9999;
+	/*
+	filter:alpha(opacity=60);  
+	-moz-opacity: 0.6;  
+	-khtml-opacity: 0.6;  
+	opacity: 0.6;
+	*/
+}
+.tip-fixed {
+    position: fixed;
+    /* width: 92px; */
+    top: 10%;
+    right: 6%;   
+}
+.tip-on-bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+.tip-absolute .tip-fixed-nav {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.tip-absolute p {
+    margin: 0px;
+}
+.tip-absolute a {
+    color: #fff;
+}
+
+.tip-absolute .tip-fixed-username {
+    background: #A12124;
+    padding: 6px 0px;
+    border-radius: 6px;
+}
+.tip-absolute .tip-fixed-username p {
+	font-size: 16px;
+}
+.tip-absolute .tip-fixed-username span {
+	font-size: 14px;
+}
+
+.tip-absolute .tip-fixed-bottom {
+	padding: 8px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance {
+	border-bottom: 1px solid #D78C97;
+	padding-bottom: 6px;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance p {
+	font-size: 14px;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance span {
+	font-size: 30px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-shopping-cart {
+    padding: 6px 0px;
+	border-bottom: 1px solid #D78C97;
+	font-size: 14px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-shopping-cart tt {
+	font-size: 24px;
+	font-weight: bold;
+	padding-right: 3px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up, .tip-absolute .tip-fixed-bottom .tip-fixed-help {
+	position: relative;
+    padding: 6px 0px;
+    border-bottom: 1px solid #D78C97;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up, .tip-absolute .tip-fixed-bottom .tip-fixed-help:hover {
+    padding: 6px 0px;
+    border-bottom: 1px solid #D78C97;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up p, .tip-absolute .tip-fixed-bottom .tip-fixed-help p {
+    margin: 5px 0px;
+    padding: 3px 8px;
+    background: #c7241d;
+    border-radius: 5px;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: width,height .5s linear;
+	-moz-transition: width,height .5s linear;
+	-o-transition: width,height .5s linear;
+	-ms-transition: width,height .5s linear;
+	transition: width,height .5s linear;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up p:hover, .tip-absolute .tip-fixed-bottom .tip-fixed-help p:hover {
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-o-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transform: scale(1.05);
+	-webkit-transition: width,height .5s linear;
+	-moz-transition: width,height .5s linear;
+	-o-transition: width,height .5s linear;
+	-ms-transition: width,height .5s linear;
+	transition: width,height .5s linear
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-help img {
+    position: absolute;
+    bottom: 28px;
+	left: 55px;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: all .5s eas;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-help img:hover {
+    bottom: 31px;
+	left: 58px;
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-top {
+	cursor: pointer;
+	padding: 10px 0px 5px 0px;
+}
+
+@media screen and (max-width: 1530px) {
+    .tip-absolute {
+        display: none;
+    }
+}
+@media screen and (max-width: 1600px) {
+    .tip-absolute {
+        right: 3%;
+    }
+}
+@media screen and (max-width: 1800px) {
+    .tip-absolute {
+        right: 4%;
+    }
+}
+</style>
+		 
+<script>
+var name = decodeURIComponent($.cookie('UNAME') || '');
+if(name){
+    $("#sp_uname_557").html(name).fadeIn();
+    $("#sp_login_557").fadeOut();
+}
+else{
+    $("#sp_login_557").fadeIn();
+    $("#sp_uname_557").fadeOut();
+}
+
+//获取cookie，读取购物车现有商品数量
+updateCartNumber('#minicart_ .up-cat-number');
+
+$(document).ready(function() {
+
+    $('.tip-fixed-top').bind({
+		'click': function() {
+			$('html, body').animate({scrollTop:0}, 'slow');
+		}
+	});
+	
+	if ($('body').hasClass('is-index')) { 
+
+		var h_num=$(window).scrollTop();   
+
+		if (h_num > 784){   
+
+			var _window_height = $(window).height();
+			var _tip_absolute = $('.tip-absolute').height();
+
+			var _tmp_top = (_window_height - _tip_absolute) / 2;
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').addClass('tip-fixed');       
+		} 
+		else {   
+			
+    		var _tmp_top = $('.module .row .box .slider').height() + 321;
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').removeClass('tip-fixed');           
+		}    
+	}
+});
+
+$(window).scroll( function (){  
+	
+	if ($('body').hasClass('is-index')) { 
+
+		var h_num=$(window).scrollTop();   
+
+		if (h_num > 784){   
+
+			var _window_height = $(window).height();
+			var _tip_absolute = $('.tip-absolute').height();
+
+			var _tmp_top = (_window_height - _tip_absolute) / 2;
+			console.log('window_height -- : ' + _window_height);
+			console.log('tip_absolute -- : ' + _tip_absolute);
+			console.log('tmp_top -- : ' + _tmp_top);
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').addClass('tip-fixed');       
+		} 
+		else {
+
+    		var _tmp_top = $('.module .row .box .slider').height() + 321;
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').removeClass('tip-fixed');       
+		}    
+	}    
+});
+</script>
+
+
+ <!-- Footer BEGIN -->
+<style>
+  .footer-logo {
+    background: #3d3d3d;
+    margin-top:{$num};
+    overflow-x:hidden;
+  }
+  .footer-logo div {
+    padding: 15px 0px;
+  }
+
+.footer-bottom {
+  background: #3d3d3d;
+  text-align: center;
+  height: 80px;
+  overflow-x:hidden;
+}
+.footer-bottom div.footer-bottom-info {
+  position: relative;
+  top: 5px;
+  z-index: 65537;
+  padding: 5px 0px 0px 0px;
+}
+.footer-bottom div p {
+  margin: 0px;
+}
+.footer-bottom div p.cate {
+  color: #B3ADAD;
+  margin-bottom: 8px;
+}
+.footer-bottom div p.cate a {
+  color: #B3ADAD;
+}
+.footer-bottom div p.cate a:hover {
+  text-decoration: underline;
+}
+.footer-bottom div p.cpoyright {
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  background: #262626;
+  height: 229px;
+  overflow-x:hidden;
+}
+.footer div.wrap-lg {
+  padding: 25px 0px;
+}
+.footer div.footer-main-left {
+  float: left;
+  width: 600px;
+  text-align: left;
+}
+.footer div.footer-main-left .footer-main-left-top {
+  display: inline-block;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left {
+  width: 150px;
+  float: left;
+  margin-right: 35px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left div {
+  border-bottom: 1px solid #c7241d;
+  font-size: 18px;
+  width: 150px;
+  height: 32px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left span {
+  float: left;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left span.icon-right {
+  float: right;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left ul {
+  display: inline-table;
+  position: relative;
+  left: -35px;
+  padding-top: 5px;
+  font-size: 14px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left ul li {
+  line-height: 22px;
+}
+
+.footer div.footer-main-left .footer-main-left-bottom {
+  width: 520px;
+  margin-top: 25px;
+  border-top: 1px solid #c7241d;
+}
+.footer div.footer-main-left .footer-main-left-bottom span {
+  width: 150px;
+    font-size: 16px;
+    float: left;
+    display: block;
+    
+}
+.footer div.footer-main-left .footer-main-left-bottom span.line {
+  width: 35px;
+  color: #c7241d;
+  text-align: center;
+}
+
+.footer div.footer-main-middle {
+  float: left;
+}
+.footer div.footer-main-middle p {
+  font-size: 18px;
+  background: #3d3d3d;
+  line-height: 24px;
+}
+.footer div.footer-main-right {
+  float: right;
+  margin: 45px 45px 0px 0px;
+}
+</style> 
+   
+    <div class="footer-logo" style="">
+      <div class="wrap-lg">
+        <img src="/themes/luckymall1/images/index_foot_logo.png" alt="">
+      </div>
+    </div>
+    <div class="footer" style="overflow:hidden">
+      <div class="wrap-lg">
+        <div class="footer-main-left">
+          <div class="footer-main-left-top">
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>导航</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul>
+                <li>
+                  <a href="/theme/help.html">礼舍能做啥</a>
+                </li>
+                <li>
+                  <a href="/theme/evaluate/index.html">伙伴说什么</a>
+                </li>
+                <li>
+                  <a href="/">心意商城</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>咨询</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul>
+                <li>
+                  <a href="/help_index.html">服务条款</a>
+                </li>
+                <!--<li>
+                  <a href="/theme/礼舍动态.html">礼舍动态</a>
+                </li>-->
+                <li>
+                  <a href="/help_recruitment.html">人员招聘</a>
+                </li>
+                <li>
+                  <a href="/help_resume.html">礼舍简介</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>礼舍帮帮</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul style="left: 0px;">
+                <li>
+                  <a href="/help_problem.html">常见问题</a>
+                </li>
+                <li>
+                  <a href="/help_summary.html">礼舍教学操作指南</a>
+                </li>
+                <li>
+                  <a href="/help_summary.html">礼舍使用全攻略</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-main-left-bottom">
+            <a href="/help_we.html"><span >联系客服</span></a>
+            <span class="line">|</span>
+            <a href="http://120.76.43.74/company/login.html"><span>企业入驻</span></a>
+            <span class="line">|</span>
+            <a href="/shop/"><span>供应商入驻</span></a>
+          </div>
+        </div>
+        <div class="footer-main-middle">
+         <a href="/help_we.html"> <p>联系我们&nbsp;&nbsp;&nbsp;&nbsp;></p></a>
+          <img src="/themes/luckymall1/images/index_foot_erweima.png" alt="">
+        </div>
+        <div class="footer-main-right">
+          <img src="/themes/luckymall1/images/index_foot_contact.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom" style="border:0px solid red;overflow-x:hidden;">
+    <div class="wrap-lg footer-bottom-info">
+      <p class="cate"><a href="/help_resume.html">公司简介</a> | <a href="/help_partner.html">合作伙伴</a> | <a href="/help_recruitment.html">人才招聘</a> | <a href="/help_we.html">联系我们</a></p>
+      <p class="cpoyright">© 2012-2016 深圳礼舍科技有限公司 版权所有，并保留所有权利。 ICP备案证书号:<a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备12076725号-2</a></p>
+    </div>
+    </div>
+
+   
+    <!-- Footer END --> 
+</body>
+</html>
+
+ 
+
+   

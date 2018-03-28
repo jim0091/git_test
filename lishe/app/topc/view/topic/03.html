@@ -1,0 +1,264 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/03/banner3.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">102</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >203</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>1522</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">人生最幸福的事情就是有家为你敞开大门、舒适的大床给你安全感。酷暑早已潜入，什么？你的‘抗日’床品装备还没有跟上脚步？那就把你的幸福交给我吧！</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">凉而不冰的健康蔺草席</span></strong></p>
+                <p>天然蔺草精制而成的草席，舒适而不刺激，颠覆了传统草席的硬质感。还有人会失眠？失眠是谁？失眠是什么？</p>
+                <a href="/item.html?item_id=7172" target="_blank">
+                  <img style="width:100%; " src="./images/topic/03/1.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">28,322</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="/item.html?item_id=7172" target="_blank" title="老席匠(Laoxijiang) 凉席 草席 蔺草菱纹席套装三件套 可折叠天然席子 180*198cm床"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">冰凉清爽你说了算</span></strong></p>
+                <p>精选上等的冰丝凉席，和黏黏的被子说再见！让你忘记正值炎炎夏日，睡眠成为真正的享受。</p>
+                <a href="/item.html?item_id=7177" target="_blank">
+                  <img style="width:100%; " src="./images/topic/03/2.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">19,502</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="/item.html?item_id=7177" target="_blank" title="北极绒家纺 夏凉席子 冰丝席三件套凉席 可折叠单双人空调席子 牡丹盛世-咖 150*195cm"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">享受每一晚的丝丝柔滑</span></strong></p>
+                <p>优选好蚕丝，通过手工精心织造，才能锻就冬暖夏凉的上乘品质，丝丝柔滑却能为你铸造最温暖的城堡，亲肤贴身的面料，永远值得你倾心追寻！</p>
+                <a href="/item.html?item_id=3093" target="_blank">
+                  <img style="width:100%; " src="./images/topic/03/3.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">57,722</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="/item.html?item_id=3093" target="_blank" title="水星家纺 曼菲斯100%柞蚕丝春秋被 加大被芯 单人被子150*210cm"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">以爱之名，享受生活</span></strong></p>
+                <p>采用全棉缎纹缔造，柔软如娇嫩肌肤，尽情翻滚吧！仿佛置身穿越梦境之旅，体验魔法师般的奇幻世界。家就在这里，这就是属于你的时尚生活。</p>
+                <a href="/item.html?item_id=2665" target="_blank">
+                  <img style="width:100%; " src="./images/topic/03/4.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">48,902</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="/item.html?item_id=2665" target="_blank" title="LOVO罗莱公司出品 全棉缎纹印花双人1.5米床四件套 梅丽尔"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">睡好了才是硬道理</span></strong></p>
+                <p>战斗力只剩下百分之五？上班休息时间的正确打开方式——U型枕！无论工作多忙，头等大事可不能怠慢，全方位托扶颈椎，可随时尽享舒适，抽空小憩一会儿，还你满满能量。</p>
+                <a href="/item.html?item_id=3215" target="_blank">
+                  <img style="width:100%; " src="./images/topic/03/5.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">6,762</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="/item.html?item_id=3215" target="_blank" title="AiSleep睡眠博士U型记忆颈枕"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">紫色的梦境都是浪漫的</span></strong></p>
+                <p>亲密贴合你的肩颈部，还有草本植物薰衣草陪你入睡，让你一夜安眠，熟睡的那份安宁仿佛只为你而生，精神饱满才能以最好的状态展开新的一天哦。</p>
+                <a href="/item.html?item_id=2155" target="_blank">
+                  <img style="width:100%; " src="./images/topic/03/6.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">7,644</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="/item.html?item_id=2155" target="_blank" title="Aisleep睡眠博士薰衣草花香枕头"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+    var _main_content_detail_lst = $('.main-content-div ul li');
+    var _count = _main_content_detail_lst.length;
+    for (var i =0; i < _count; i++) {
+      var _num = i + 1;
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

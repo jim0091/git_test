@@ -1,0 +1,55 @@
+<div class="list borderRadius">
+	<div class="listTit">优惠券</div>
+	<if condition="empty($coupon)">
+		<div class="noneCoupon">暂无可用优惠券！</div>
+	<else/>        	
+		<volist name="coupon" id="item">
+			<div class="goodsList couponList">
+			<p>{$item.name}</p>
+			<span data="{$item.coupon_id}" class="useCoupon" id="coupon_{$item.coupon_id}">使用</span>
+			<span id="scoupon_{$item.coupon_id}" class="useCur" style="display:none">已选择</span>
+			<span style="color:#FF6600">-{$item.amount}</span>
+			<input type="hidden" id="amount_{$item.coupon_id}" value="{$item.amount}" />
+			<div class="c"></div>
+			</div>
+		</volist>
+	</if>
+</div>
+
+<ul class="posDetail">
+    <li>订单总额：￥<span id="totalBox">{$totalPrice}</span></li>
+    <input type="hidden" name="total" id="total" value="{$total}" />
+    <input type="hidden" name="coupon" id="coupon" value="0" />
+    <li><input type="submit" style="border: 0px;" value="提交订单" class="orderSbt" /></li>
+</ul>
+
+<script type="text/javascript">	
+	//使用优惠券
+	var useCoupon=function (){
+		var cpid=$(this).attr('data');
+		if(cpid == 0){
+            alert("未获取到优惠券信息！");
+            return false;
+        }
+        var newAmount=$('#amount_'+cpid).val();//新优惠券的金额
+        var coupon=$('#coupon').val();//已设置使用的优惠券
+        var total=$('#total').val();//原来总价格
+        if(coupon>0){
+        	var amount=$('#amount_'+coupon).val();//已设置使用的优惠券的金额
+        	newTotal=parseFloat(total)+parseFloat(amount)-parseFloat(newAmount);//新的总价格
+        	$('#scoupon_'+coupon).hide();
+        	$('#coupon_'+coupon).show();
+        }else{
+        	newTotal=parseFloat(total)-parseFloat(newAmount);//新的总价格
+        }
+        $('#coupon').val(cpid);//设置使用新的优惠券        
+        $('#totalBox').text(newTotal);
+        $('#total').val(newTotal);        
+        $('#scoupon_'+cpid).show();
+        $('#coupon_'+cpid).hide();
+	}
+	
+	$(function () {
+		$(".useCoupon").bind("click", useCoupon);
+	})
+</script>

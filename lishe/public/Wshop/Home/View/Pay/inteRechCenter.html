@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>积分充值列表-心意商城</title>
+<meta name="keywords" content="礼舍,订单中心" />
+<meta name="description" content="礼舍,订单中心" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__VIEW__Public/css/inteRech.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__VIEW__Public/css/Modifypassword.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+</head>   
+<body>
+
+<div class="head">	
+	<div id="tabDiv">
+		<ul id="tab">
+			<li class="current"><a href="{:U('Pay/inteRechCenter')}" >订单中心</a></li>
+			<li><a href="{:U('Pay/inteRech')}">充值中心</a></li>
+		</ul>
+	</div>  
+<!-- 	<ul class="nav" style="">
+	    <li class="inteRechAll inteRecBottom">
+	    	<a href="{:U('Pay/inteRechCenter')}" >订单</a>
+	    </li>
+	    <li class="inteRechInte">
+	    	<a href="{:U('Pay/inteRech')}">充值</a>
+	    </li>
+	</ul>  -->
+</div>
+
+<div class="content c" style="margin-bottom:30px;">
+	<ul class="inteRechUl" style="padding:5px;">
+		<volist name="paymentList" id="vo">
+			<li class="fs">
+				<div class="inteRechId">
+					&nbsp;充值单号：{$vo['payment_id']}<if condition="$vo['pay_name'] neq ''">[{$vo['pay_name']}]</if>
+				</div>
+				<div class="inteRech">
+					<div class="inteRechL"><span>积分</span>&nbsp;{$vo['money']*100}</div>
+					<div class="inteRechR"><a <if condition="$vo.status eq 'succ'">class='succ' >充值成功<else/>class='fail' >充值失败</if> </a></div>
+				</div>
+			</li>
+		</volist>
+		
+		<div class="c"></div>
+	</ul>
+
+</div>
+
+
+<div style="width:100%;height:15px"></div>
+<include file="Public/bottom"/>

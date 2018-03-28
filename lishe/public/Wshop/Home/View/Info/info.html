@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="" lang="zh-cmn-Hans"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="format-detection" content="telephone=no">    <meta http-equiv="cleartype" content="on">
+<meta name="referrer" content="always">
+<link rel="shortcut icon" href="">    
+<title>{$itemInfo.title}-心意商城</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="__VIEW__Publicold/css/base.css" rel="stylesheet" type="text/css" />
+<link href="__VIEW__Publicold/css/confirm.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__VIEW__Publicold/css/index.css">
+<!--商品图片下的价格描述等-->  
+<link rel="stylesheet" href="__VIEW__Publicold/css/goods_0c81994559.css" onerror="_cdnFallback(this)" media="screen">      
+<!--jquery.js-->
+<script charset="utf-8" src="__VIEW__Publicold/js/jquery.js"></script>
+<!--图片轮播-->
+<script charset="utf-8" src="__VIEW__Publicold/js/base_8d577ac5e1.js"></script>
+<script charset="utf-8" async="" src="__VIEW__Publicold/js/swp_goods_dc375e0821.js"></script>
+<script charset="utf-8" async="" src="__VIEW__Publicold/js/sku_66bfcf35f4.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<style type="text/css">
+    html,body{overflow-x: hidden;}
+    .sub_title{padding: 5px 10px;color: red;line-height:20px;}
+    .warm{padding: 10px 10px;color: red;} 
+    .second-con{width: 100%;height: 0.9rem;}
+    .second-con .productTime1{float: left;width: 72%;height: 100%;background: url(__VIEW__Public/images/secondBg.png);background-size: 100% 100%;}
+    .second-con .productTime1 .productTime1_con1{float: left;font-size: 0.3rem;line-height: 0.9rem;color: #fff;padding:0 0.11rem;}
+    .second-con .productTime1 .productTime1_con1 em{font-size: 0.6rem;}
+    .second-con .productTime1_text{float: left;height: 0.9rem;color: #fff;}
+    .second-con .productTime1_text .productTime1_text1{margin-top: 0.16rem;margin-bottom: 0.1rem; height: 0.19rem;line-height: 0.19rem;font-size: 0.24rem;color: #fff;}
+    .second-con .productTime1_text .productTime1_text2{width: 1.18rem;height: 0.28rem;line-height: 0.28rem;border:1px solid #fff;box-sizing: border-box;-webkit-box-sizing:border-box;text-align: center;font-size: 0.2rem;color: #fff;}
+    .second-con .productTime1_text .productTime1_text2 .productTime1_text2_icon{float: left;width: 0.25rem;height: 100%;background: #fff url(__VIEW__Public/images/productTime1_text2_icon.png) center center no-repeat;background-size: 0.21rem 0.23rem;}
+    .second-con .productTime2{float: left;width: 28%;height: 100%;background: #ffebed;text-align: center;}
+    .second-con .productTime2 .productTime2_p2{font-size: 0;-webkit-text-size-adjust:none;}
+    .second-con .productTime2 .productTime2_p1{font-size: 0.2rem;height: 0.35rem;line-height: 0.35rem;color: #ff3248;}
+    .second-con .productTime2 .productTime2_s{display: inline-block;margin:0 0.04rem; width: 0.48rem;height: 0.44rem;line-height: 0.44rem;color: #fff;font-size: 0.24rem; border-radius: 0.06rem;background:#ff3248;}
+    .second-con .productTime2 b{display: inline-block;width: 2px;font-size: 12px;color: #ff3252;text-align: center;}
+    /*团购*/
+    .grayBuy .productTime1{background: url(__VIEW__Public/images/secondBg2.png);}
+    .grayBuy .productTime1_text .productTime1_text2 .productTime1_text2_icon{background: #fff url(__VIEW__Public/images/productTime1_text2_icon2.png) center center no-repeat;background-size: 0.21rem 0.23rem;}
+    .grayBuy .productTime2 .productTime2_p1{color: #dc32d5;}
+    .grayBuy .productTime2 .productTime2_s{background: #dc32d5;}
+    .grayBuy .productTime2 b{color: #dc32d5;}
+    .grayBuy .productTime2{background: #fbebff;}
+	.swp .swiper-wrapper{background:#fff;}
+
+</style>
+</head>
+<body class=" body-fixed-bottom">    
+<div class="container wap-goods internal-purchase" style="min-height: 522px;">
+<div class="content ">
+<div class="content-body">       
+    <div class="custom-image-swiper custom-goods-swiper js-swp swp">
+        <div class="swiper-wrapper js-swp-wrap" style="height: 320px;" data-height="320">
+            <volist name="itemInfo['new_list_images']" id="vo">
+                <div class="swp-page" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; display: block; transform: translate3d(0px, 0px, 0px);">
+                    <img class="" src="{$vo}">
+                </div>
+            </volist>
+        </div>
+        <div class="swiper-pagination js-swiper-pagination">
+            <ul class="swp-thumbnail-list">
+                <li class="swiper-pagination-switch swiper-active-switch"></li>
+                <li class="swiper-pagination-switch"></li>
+                <li class="swiper-pagination-switch"></li>
+                <li class="swiper-pagination-switch"></li>
+            </ul>
+        </div>
+    </div>    
+    <input type="hidden" id="item_id" name="item_id" value="{$itemInfo['item_id']}">
+    <input type="hidden" id="shopId" name="shop_id" value="{$itemInfo['shop_id']}">
+    <input type="hidden" id="defaultSkuId" value="{$defaultSkuId}">
+    <!-- <input type="hidden" id="itemStatus" name="item_status" value="{$itemStatus['status']}"> -->
+    <!--秒杀--> <!--团购加grayBuy-->
+    <div class="second-con" style="display:none" id="actPanel">
+    	<div class="productTime1">
+            <div class="productTime1_con1" id="actPrice">￥<em>0</em>.00</div>
+            <div class="productTime1_text">
+                <p class="productTime1_text1"><s id="actMktPrice">￥0.00</s></p>
+                <p class="productTime1_text2" id="actName"><i class="productTime1_text2_icon"></i>礼舍秒杀</p>
+             </div>
+        </div>
+       
+        <div class="productTime2">
+            <p class="productTime2_p1">距结束还剩</p>
+            <p class="productTime2_p2">
+                <span class="productTime2_s" id="hourE">66</span><b>:</b><span class="productTime2_s" id="minute">66</span><b>:</b><span class="productTime2_s" id="second">66</span>
+            </p>
+        </div>
+    </div>
+    
+    <div class="goods-header">
+        <h2 class="title">{$itemInfo.title}</h2>
+        <div class="sub_title">{$itemInfo.sub_title}</div>
+        <div class="goods-price ">
+            <div class="activity-price current-price">
+                <span></span>
+                <i class="js-goods-price price">
+                    <!--<switch name="payType">
+                        <case value="1"><span style="font-size: 14px;color:#ed5050;">¥ </span>{:round($itemInfo['cash'], 2)} + {$itemInfo['point']} 积分</case>
+                        <case value="2"><span style="font-size: 14px;color:#ed5050;">¥ </span>{:round($itemInfo['price'], 2)}</case>
+                        <case value="3"><span style="font-size: 14px;color:#ed5050;">¥ </span>{:round($itemInfo['cash'], 2)}</case>
+                        <case value="4">{$itemInfo['point']} 积分</case>
+                        <default />
+                    </switch>-->
+                    <if condition="$itemInfo['cash'] gt 0 && $itemInfo['point'] gt 0">
+                        ¥{:round($itemInfo['cash'], 2)} + {$itemInfo['point']}积分
+                        <elseif condition="$itemInfo['cash'] gt 0"/>
+                        ¥{:round($itemInfo['cash'], 2)}
+                        <elseif condition="$itemInfo['point'] gt 0"/>
+                        {$itemInfo['point']}积分
+                        <else/>
+                        ¥{:round($itemInfo['price'], 2)}
+                    </if>
+                    <!--{:round($itemInfo['price'],2)*100}积分-->
+                </i>
+            </div>
+            <!--<em class="old-price">原价：{:round($itemInfo['price']*1.2,2)*100}积分</em>-->
+        </div>  
+    </div>    
+    <notempty name="itemInfo.warm_reminder">          
+        <hr class="with-margin">
+        <div class="warm">{$itemInfo.warm_reminder}</div>
+    </notempty>
+    <hr class="with-margin">
+    <div class="js-trade-reward trade-reward">
+    	<div class="trade-reward-content">
+    	    <span class="trade-reward-tag font-size-12">优惠</span>
+    	    <span class="js-trade-reward-info font-size-12 trade-reward-info">
+    	        {$freepostageLimitMoney}	    </span>
+    	    <span class="js-arrow-down arrow hide arrow-down"></span>
+    	</div>
+    </div>  
+    <div class="sku-detail adv-opts" style="border-top:none;">
+        <hr class="with-margin">
+        <div class="sku-detail-inner adv-opts-inner">
+            <div class="sku-group select-sku">
+                <dl class="sku-item js-select-sku" id="item-norms">
+                    <dt>规格：</dt>
+                    <dd class="norms default">
+                        <volist name="propsList" id="vo" empty="$propsListEmpty">
+                            <span class="js-sku-s1">{$vo.prop_name}</span>，
+                        </volist>
+
+                    </dd>
+                    <dd class="norms havevalue" style="display:none">                        
+                    </dd>
+                </dl>
+                <hr>
+            </div>
+            <dl id="disp-address">
+                <dt>配送至：</dt>
+                <dd class="norms default">
+                    请选择
+           
+                </dd>
+                <dd class="norms havevalue" style="display:none"></dd>
+            </dl>
+            <hr>
+        </div>
+    </div>
+    <div class="js-detail-container" style="margin-top: 5px;" id="marketObj">
+        <div class="js-tabber-container goods-detail">
+            <div class="js-tabber tabber tabber-n2 clearfix orange">
+                <button data-type="goods" class="active">商品详情</button>
+            </div>
+            <div class="js-tabber-content">
+                <div class="js-part js-goods-detail goods-tabber-c" data-type="goods">
+            	    <div class="js-components-container components-container" style="margin-top:5px;line-height:22px;font-size:1.0rem;">
+                        {$itemDesc['pc_desc']}
+                        <br>
+                        <include file="mbservice"/>                         
+                    </div>
+        		</div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="js-bottom-opts js-footer-auto-ele bottom-fix">            
+        <div class="btn-2-1">
+            <a href="javascript:;" class="js-buy-it btn btn-orange-dark">立即购买</a>
+        </div>
+        <div class="btn-2-1">
+            <a href="javascript:;" class="js-add-cart btn btn-white">加入购物车</a>
+        </div>
+    </div>
+    <div class="js-recommend">
+	    <p class="center font-size-14 c-black" style="padding: 5px 0;margin-top: 10px;">更多精选商品</p>
+	    <div class="js-recommend-goods-list">
+            <ul class="js-goods-list sc-goods-list pic clearfix size-1 " data-size="1" data-showtype="card" style="visibility: visible;">    
+            <volist name="itemList" id="vo">
+                <li class="js-goods-card goods-card small-pic card ">
+                    <a href="__APP__/Info/index/itemId/{$vo.item_id}" class="js-goods link clearfix" target="_blank" title="{$vo.title}">
+                        <div class="photo-block" data-width="800" data-height="800">
+                            <img class="goods-photo js-goods-lazy" src="{$vo.image_default_id}">
+                        </div>
+                        <div class="info clearfix info-title info-price btn0">
+                            <p class=" goods-title ">{$vo.title}</p>
+                            <p class="goods-sub-title c-black hide">{$vo.title}</p>
+                            <p class="goods-price">
+                                <em>
+                                    <!--{:round($vo['price'],2)*100}积分-->
+                                    <if condition="$vo['cash'] gt 0 && $vo['point'] gt 0">
+                                        ¥{:round($vo['cash'], 2)} + {$vo['point']}积分
+                                        <elseif condition="$vo['cash'] gt 0"/>
+                                        ¥{:round($vo['cash'], 2)}
+                                        <elseif condition="$vo['point'] gt 0"/>
+                                        {$vo['point']}积分
+                                        <else/>
+                                        ¥{:round($vo['price'], 2)}
+                                    </if>
+                                </em>
+                            </p>
+                            <!--<p class="goods-price-taobao ">原价：{:round($vo['mkt_price']*1.2,2)*100}积分</p>-->
+                        </div>
+                    </a>
+                </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+</div>                  
+</div>    
+</div>
+<include file="Public/newCat"/>
+<include file="Public/itemInfoShow"/>
+<include file="Public/popuLoading"/>
+<include file="Public/popuLayer"/>   
+<style type="text/css">
+    .Wtankdiv {top: 5%; width: 75%; height: 275px; z-index: 1100;}
+    .Tanksentences {font-size: 0.3rem;}
+    .Tanksurebtn a {width: 35%; height: 44px; line-height: 44px; font-size: 0.4rem; margin-top: 7%;}
+    .Tankpt {margin-top: 1%; }
+    .Tankclose {text-align: right; margin-right: 3%; margin-top: 3%; }
+    .Tankclose img {width: 7%; vertical-align: middle; }
+    .sku-layout-title .goods-base-info .goods-price{font-size: 18px;}
+</style> 
+</body>
+<script>
+
+	var secondFn = {};
+	secondFn.year = 1;
+	secondFn.month = 1;
+	secondFn.day = 1;
+	
+	//加根节点font-size
+	secondFn.addFontSize = function(){
+		var html=document.documentElement;
+		var whtml=html.getBoundingClientRect().width;
+		html.style.fontSize=whtml/7.5 + 'px';
+	}
+	 secondFn.addFontSize();
+
+	//去掉html节点font-size
+	secondFn.removeFontSize = function(){
+		var marketObj = $('#marketObj').offset().top;
+		
+		$(document).on('touchmove',function(){
+			if($(document).scrollTop() > marketObj||$(".second-con").css("display")=='none'){
+				$('html').removeAttr('style');
+			}else{
+				secondFn.addFontSize();
+			}
+		});
+        $(document).scroll(function(){
+            if($(document).scrollTop() > marketObj||$(".second-con").css("display")=='none'){
+                $('html').removeAttr('style');
+            }else{
+                secondFn.addFontSize();
+            }
+        });
+
+	}
+    secondFn.removeFontSize();
+    /*倒计时*/
+	var interval = 1000; 
+	function ShowCountDown(year,month,day) 
+	{ 
+		var now = new Date(); 
+		var endDate = new Date(year, month-1, day); 
+		var leftTime=endDate.getTime()-now.getTime(); 
+		var leftsecond = parseInt(leftTime/1000); 
+		var day1=parseInt(leftsecond/(24*60*60*6)); 
+		//var day1=Math.floor(leftsecond/(60*60*24)); 
+		var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+		var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+		var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+		//var cc = document.getElementById(divname); 
+		//cc.innerHTML = "提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒"; 
+		$('#hourE').text(hour);
+		$('#minute').text(minute);
+		$('#second').text(second);
+	}
+	ShowCountDown(secondFn.year, secondFn.month,secondFn.day);
+	window.setInterval(function(){ShowCountDown(secondFn.year, secondFn.month,secondFn.day);}, interval); 
+</script>
+</html>

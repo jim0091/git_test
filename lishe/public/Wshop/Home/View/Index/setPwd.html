@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html class="" lang="zh-cmn-Hans" style="position: relative; overflow: hidden; height: 798px;">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">    
+    <meta http-equiv="cleartype" content="on">
+    <meta name="referrer" content="always">
+	<title>卡激活</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+	<script src="__VIEW__Publicold/js/common_jquery_75554d22a0.js"></script>
+	<link rel="stylesheet" href="__VIEW__Publicold/css/itemlist.css">    
+    <link rel="stylesheet" href="__VIEW__Publicold/css/buyer_8ad7e4bfb7.css" onerror="_cdnFallback(this)" media="screen">  
+    <style type="text/css">
+    .form-obj{height:45px;  line-height:45px;margin: 0 auto;position: relative;}
+	.form-obj div{float:left;width:49%;border: 1px solid #ddd; text-align:center;margin: 0 auto;position: relative;}
+	.form-obj div.cus{border-radius:5px 0px 0px 5px;border-right: 0px}
+	.form-obj div.emp{border-radius:0px 5px 5px 0px;}
+    </style>
+</head>  
+<body class=" " style="overflow: hidden; height: 798px;">
+    <div class="container js-modal-login" style="min-height: 798px;"></div>   
+    
+    
+    
+  <div id="J0CrCkNB30" style="height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 1000; opacity: 1; transition: none 0.2s ease; background-color: rgba(0, 0, 0, 0.901961);"></div>
+  <div id="2aP6TBEknv" class="popout-box" style="overflow: hidden; visibility: visible; display: block; opacity: 1; position: absolute; z-index: 1000; transition: opacity 300ms ease; top: 55%; left: 50%; transform: translate3d(-50%, -50%, 0px); border-radius: 4px; width: 270px; padding: 15px; background: white;">
+  	<form class="js-login-form popout-login" method="GET" action="">
+    <div class="header c-green center">
+        <h2>登录密码设置</h2>
+    </div>
+
+    <fieldset class="wrapper-form font-size-14">
+        
+        <div class="form-item">
+            <label for="pwd">密码</label>
+            <input id="pwd" name="pwd" type="password" maxlength="11" autocomplete="off" placeholder="请输入登录密码">
+        </div>   
+        <div class="form-item">
+            <label for="repwd">确认密码</label>
+            <input id="repwd" name="repwd" type="password" maxlength="11" autocomplete="off" placeholder="请确认登录密码">
+        </div>   
+        
+        <div class="js-help-info font-size-12 error c-orange"></div>
+    </fieldset>
+	<input type="hidden" id="refer" value="{$refer}">
+    <div class="action-container">
+        <button type="button" id="addReg" class="js-confirm btn btn-green btn-block font-size-14">
+            确认
+        </button>
+        
+    </div>
+
+
+<!--提示框-->
+<div class="motify" style="display: none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+
+
+<script>
+$(document).ready(function (){
+
+	$('#addReg').click(function(){
+		var pwd=$("#pwd").val();
+		var repwd=$("#repwd").val();
+		if(pwd == ''){
+            $(".motify").show();
+            $(".motify-inner").text("请输入您的登录密码！");
+            $('.motify').delay(1000).hide(0);
+            return;
+		}
+		if(repwd != pwd){
+            $(".motify").show();
+            $(".motify-inner").text("登录密码和确认密码不相符！");
+            $('.motify').delay(1000).hide(0);
+            return;
+		}
+		urls="__APP__/Cactive/doSetPwd";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				pwd:pwd
+			},
+			success : function (result,status){
+				var data=eval(result);
+				
+				if(data[0] == 1){
+					alert(data[1]);
+					window.location.href=data[2];										
+				}else{
+		            $(".motify").show();
+		            $(".motify-inner").text(data[1]);
+		            $('.motify').delay(1000).hide(0);
+		            return;
+				}
+			}
+		});
+	});	
+});
+
+
+</script>
+
+</div>
+</body>
+</html>

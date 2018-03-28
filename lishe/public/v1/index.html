@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>礼舍-情感的交流</title>
+<meta name="keywords" content="礼舍,礼舍网,福利,企业福利,礼品">
+<meta name="description" content="礼舍网，一站式高端礼品采购、定制电子商务平台，致力于为客户提供创新的顾问式、定制化融合礼品解决方案的服务。">
+<link rel="stylesheet" href="/v1/css/index.css">
+<script type="text/javascript" src="/v1/js/jquery.js"></script>
+<script type="text/javascript" src="/v1/js/slide.js"></script>
+<script type="text/javascript" src="/v1/js/Logoslide.js"></script>
+<script type="text/javascript" src="/v1/js/index.js"></script>
+</head>
+
+<body>
+   <div class="header">
+       <div class="heapt"><img src="/v1/images/Indexlogo.png"></div>
+       <div class="heaLeft">
+         <ul>
+           <li class="current"><a href="/">礼舍首页</a></li>
+           <li><a href="/shop.php" target="_blank">心意商城</a></li>
+           <li><a href="/v1/help.html" target="_blank">礼舍帮帮</a></li>
+           <li><a href="http://vip.lishe.cn/index.php/Cactive/customerIndex.html" target="_blank">积分卡激活</a></li>
+         </ul>
+       </div>
+       <div class="heaRight">
+         <ul>
+           {loginStatus}
+           <li><a href="http://zs.lishe.cn" target="_blank">商家中心</a></li>
+           <li><a href="http://v.lishe.cn/company/login.html"  target="_blank">企业登录</a></li>
+         </ul>
+      </div>
+      <div style="clear:both;"></div>
+   </div>
+    <!--banner轮播-->
+   <div class="slides">
+	<div class="slideInner">
+		<a href="http://v.lishe.cn/company/register.html" style="background:url(/v1/images/indexbanner.png) no-repeat center center; width:100%;"></a>
+		<a href="http://v.lishe.cn/company/login.html" style="background:url(/v1/images/indexbanner2.png) no-repeat center center;width:100%;"></a>
+		<a href="/shop.html" style="background:url(/v1/images/indexbanner3.png) no-repeat center center;width:100%;"></a>
+	</div>
+  </div>
+<script >
+$(document).ready(function() {
+  $(window).resize(function(){
+    $(".slideInner").slide({
+      slideContainer: $('.slideInner a'),
+      effect: 'easeOutCirc',
+      autoRunTime: 2000,
+      slideSpeed: 2000,
+      nav: true,
+      autoRun: true,
+    });
+  }).resize();
+});
+</script>
+ <!--轮播end-->
+ <!--福利-->
+  <div class="Inservices">
+     <p class="insp">礼舍，为您提供员工福利解决方案</p>
+     <p class="insp2">礼舍聚焦员工福利，关注老板、员工、HR的福利痛点，以互联网的方式，<br/>一键解决企业福利问题，让老板放心,HR省心,员工安心。</p>
+     <ul>
+       <li class="Inpt"><a href="/v2/bosshremployee.html#0" target="_blank"></a></li>
+       <li class="Inbtn"><a href="/v2/bosshremployee.html#0" target="_blank">让老板放心 </a></li>
+     </ul>
+     <ul>
+       <li class="Inpt2"><a href="/v2/bosshremployee.html#1" target="_blank"></a></li>
+       <li class="Inbtn"><a href="/v2/bosshremployee.html#1" target="_blank">让HR省心</a></li>
+     </ul>
+     <ul>
+       <li class="Inpt3"><a href="/v2/bosshremployee.html#2" target="_blank"></a></li>
+       <li class="Inbtn"><a href="/v2/bosshremployee.html#2" target="_blank">让员工开心</a></li>
+     </ul>
+     <div style="clear:both"></div>
+  </div>
+  <!--情感平台-->
+    <div class="Inplatbg">
+      <div class="Inplat">
+          <p class="insp">礼舍，打造互联网时代企业与员工的情感交流平台</p>
+          <p class="insp2">礼舍，专注于企业与员工的关系，针对大、中、小企业，打造企业专属交流平台，<br/>让企业HR轻松知道员工的喜好与选择。</p>
+          <!--tab切换-->
+           <div class="tab">
+				<ul class="clearfix">
+					<li class="clearfixli active">For企业</li>
+					<li class="clearfixli2">For个人</li>
+				</ul>
+			</div>
+            
+			<div class="tab-content">
+                <!--tab1-->
+				<div class="content  current">
+                       <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#companys0" target="_blank"><img src="/v1/images/qgyg.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#companys0" target="_blank">就让员工爽</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys0" target="_blank">一键发放福利</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys0" target="_blank">定制专属服务</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys0" target="_blank">定制走心礼品</a></li>
+                    </ul>
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#companys1" target="_blank"><img src="/v1/images/qgyg2.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#companys1" target="_blank">攻略秘籍库</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys1" target="_blank">员工情商管理秘籍</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys1" target="_blank">员工福利激励攻略</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys1" target="_blank">重大节日送礼指南</a></li>
+                    </ul>
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#companys2" target="_blank"><img src="/v1/images/qgyg3.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#companys2" target="_blank">百变心意礼</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys2" target="_blank">积分兑换商品</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys2" target="_blank">做任务赢积分</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys2" target="_blank">别人福利发啥</a></li>
+                    </ul>
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#companys3" target="_blank"><img src="/v1/images/qgyg4.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#companys3" target="_blank">给老板汇报</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys3" target="_blank">员工满意反馈</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys3" target="_blank">周期积分发放</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#companys3" target="_blank">年度福利账单</a></li>
+                    </ul>
+                   
+                </div>
+                <!--tab1end-->
+                <!--tab2-->
+				<div class="content">
+                
+                   
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#customer0" target="_blank"><img src="/v1/images/qgqy.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#customer0" target="_blank">福利自个挑</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer0" target="_blank">积分兑换商品</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer0" target="_blank">乐享玩赚积分</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer0" target="_blank">向领导讨福利</a></li>
+                    </ul>
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#customer1" target="_blank"><img src="/v1/images/qgqy2.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#customer1" target="_blank">选择困难症</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer1" target="_blank">亲友节日送礼指南</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer1" target="_blank">领导上司攻心攻略</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer1" target="_blank">选择困难症</a></li>
+                    </ul>
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#customer2" target="_blank"><img src="/v1/images/qgqy3.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#customer2" target="_blank">社交赚人品</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer2" target="_blank">给亲友发红包</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer2" target="_blank">给领导送祝福</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer2" target="_blank">送个暖心好礼</a></li>
+                    </ul>
+                    <ul class="conul">
+                       <li class="tablibg"><a href="/v2/companysingle.html#customer3" target="_blank"><img src="/v1/images/qgqy4.png"></a></li>
+                       <li class="tabli"><a href="/v2/companysingle.html#customer3" target="_blank">我都买了啥</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer3" target="_blank">我的福利收藏夹</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer3" target="_blank">月度积分账单</a></li>
+                       <li class="tabli2"><a href="/v2/companysingle.html#customer3" target="_blank">年度福利收支</a></li>
+                    </ul>
+                </div>
+                <!--tab2end-->
+                
+			</div>  
+           <div style="clear:both;"></div>
+          <!--end-->
+      </div>
+      
+ </div>
+   
+
+<!--资源-->
+    <div class="shortages">
+        <p class="insp">礼舍，整合行业优秀资源，为您提供最优质服务</p>
+        <p class="insp2">礼舍，联手顺丰，提供最快的物流速度；牵手京东，提供海量商品选择；<br/>引入滴滴、格瓦拉等供应商，为您提供最优质增值服务。</p>
+        <div class="shopt">
+          <div class="centerlogo"></div>
+          <div class="rotate"></div>
+          <div class="group1 partner1"></div>
+          <div class="group1 partner2"></div>
+          <div class="group1 partner3"></div>
+          <div class="group2 partner4"></div>
+          <div class="group2 partner5"></div>
+          <div class="group3 slogan1"></div>
+          <div class="group3 slogan2"></div>
+          <div class="group3 slogan3"></div>
+        </div>
+    </div>
+ <!--合作伙伴-->
+    <div class="jointWork">
+        <div class="joint">
+           <p class="insp">他们选择了礼舍</p>
+           <p class="insp2">迄今为止，礼舍已经成功为大族激光、正章干洗、招商局等大型企业提供员工福利解决方案，<br/>超过500家企业正在使用礼舍！ 礼舍正在以其优质的服务赢得越来越多的企业加入！</p>
+        </div>
+        
+       <div id="js_banner" class="banner">
+           <ul id="js_banner_img" class="banner_img clear">
+               <li class="bgli01">
+                   <div class="banner_inner"></div>
+               </li>
+               <li class="bgli02">
+                   <div class="banner_inner"></div>
+               </li>
+           </ul>
+           <div class="banner_common">
+               <a id="js_banner_pre" href="javascript:;" class="banner_pre"></a>
+               <a id="js_banner_next" href="javascript:;" class="banner_next"></a>
+           </div>
+      </div>
+        
+        
+        <div class="joinbtn"><a href="http://v.lishe.cn/company/register.html">加入礼舍开启福利新模式</a></div>
+   </div>   
+   
+   
+     <script type="text/javascript">
+			$(document).ready(function(){
+				$(".tab li").click(function(){
+					var index = $(this).index();
+					
+					if(!$(this).hasClass("active") && index == 0){
+						$(this).addClass("active");
+						$(this).siblings().removeClass("active2");
+					}
+					if(!$(this).hasClass("active2") && index == 1){
+						$(this).addClass("active2");
+						$(this).siblings().removeClass("active");
+					}
+					
+					$(".tab-content .content").eq(index).addClass("current").siblings().removeClass("current");
+				})
+		
+			})
+		</script>
+        
+        <!--logo轮播-->
+        <script type="text/javascript">
+			$(function(){
+				var $window = $(window),
+				window_width = $window.width();
+				$('#js_banner, #js_banner_img li').width(window_width);
+		
+				var urlParam = G.util.parse.url(),
+					startFrame = 0;
+				if (urlParam.search && ('banner' in urlParam.search)) {
+					startFrame = (parseInt(urlParam.search['banner'])-1) || 0;
+				}
+
+		    /*添加圆点按钮*/
+				new $.Tab({
+					target: $('#js_banner_img li'),
+					effect: 'slide3d',
+					animateTime: 1000,
+					stay: 3000,
+					playTo: startFrame,
+					autoPlay: true,
+					merge: true,
+					prevBtn: $('#js_banner_pre'),
+					nextBtn: $('#js_banner_next')
+				});
+				$('#js_banner_img').css('left','-' + (window_width * startFrame) + 'px');
+			})
+		</script>
+        
+        <!--底部-->
+        <div id="footer">
+           <div class="footerdimension">
+               <div class="footertop">
+                   <div class="footertopLeft">
+                       <ul>
+                          <li class="footerUser">导航</li>
+                          <li class="footerMenu"><a href="/v1/help.html#2" target="_blank">礼舍简介</a></li>
+                          <li class="footerMenu"><a href="/v2/companysingle.html#companys0" target="_blank">礼舍做什么</a></li>
+                          <li class="footerMenu"><a href="http://www.lishe.cn/theme/evaluate/index.html" target="_blank">伙伴说什么</a></li>
+                          <li class="footerMenu"><a href="/shop.html" target="_blank">心意商城</a></li>
+                       </ul>
+                       <ul>
+                          <li class="footerUser">咨询</li>
+                          <li class="footerMenu"><a href="/v1/help.html#0" target="_blank">服务条款</a></li>
+                          <li class="footerMenu"><a href="http://vip.lishe.cn" target="_blank">礼舍动态</a></li>
+                          <li class="footerMenu"><a href="/v1/help.html#4" target="_blank">人员招聘</a></li>
+                       </ul>
+                       <ul>
+                          <li class="footerUser">礼舍帮帮</li>
+                          <li class="footerMenu"><a href="/v1/help.html#1" target="_blank">礼舍教学操作指南</a></li>
+                          <li class="footerMenu"><a href="/v1/help.html" target="_blank">礼舍使用全攻略</a></li>
+                          <li class="footerMenu"><a href="/v1/help.html#3" target="_blank">常见问题</a></li>
+                          <li class="footerMenu"><a href="/v1/help.html#6" target="_blank">联系我们</a></li>
+                       </ul>
+                       <ul>
+                          <li class="footerUser">加入我们</li>
+                          <li class="footerMenu"><a href="http://zs.lishe.cn/" target="_blank">供应商入驻</a></li>
+                          <li class="footerMenu"><a href="http://v.lishe.cn/company/login.html" target="_blank">企业入驻</a></li>
+                          <li class="footerMenu"><a href="/v1/help.html#5" target="_blank">合作伙伴</a></li>
+                       </ul>
+                   </div>
+                   <div class="footertopRight">
+                       <ul>
+                         <li class="footerPhone"><img src="/v1/images/indexPhone.png">400-1188-234</li>
+                         <li class="footerConnection">联系我们</li>
+                       </ul>
+                       <ul>
+                         <li><img src="/v1/images/IndexWx.png"></li>
+                       </ul> 
+                   </div>   
+               </div>
+               <div style="clear:both;"></div>
+               <div class="footerbottom">
+                  <ul class="footerbottomLeft">
+                    <li>© 2005-2016 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1</li>
+                    <li>All rights Reserved.</li>
+                  </ul>
+                  <ul class="footerbottomRight">
+                    <li class="footerbottomRightPhone">全国客服热线：400-1188-234 </li>
+                    <li class="footerbottomRightTime">周一至周五 9:00-18:00</li>
+                  </ul>
+               </div>
+               <div style="clear:both;"></div>
+           </div>    
+        </div>
+</body>
+</html>

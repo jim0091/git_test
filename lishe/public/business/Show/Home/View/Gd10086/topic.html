@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>生鲜预售专区-中国移动VIP积分商城</title>
+<link rel="stylesheet" href="__PUBLIC__/gd10086/css/delicacy.css" />
+    <link rel="stylesheet" href="__PUBLIC__/gd10086/css/mobile.css">
+    <link href="/app/topc/statics/stylesheets/layout.css?1463813935" rel="stylesheet" media="screen, projection" />
+    <link href="/app/topc/statics/stylesheets/theme.css?1463813935" rel="stylesheet" media="screen, projection" />
+	<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="/themes/luckymall1/images/index.css">
+</head>
+<body>
+<div id="topbar" class="topbar">
+  <div class="wrap-lg">
+    <div class="topbar-left">
+    <!-- 顶部导航 -->
+          <div class="small-signin" style="width:360px">
+            <div class="line"></div>
+            <a href="__APP__/Gd10086" target="_blank">E卡通商城首页</a>
+            <div class="line"></div>
+            <a href="/shop.html" target="_blank">心意商城</a>
+            <div class="line"></div>
+            <a href="/help_index.html" target="_blank">礼舍帮帮</a>
+          </div>    </div>
+    <div class="topbar-right">
+      <div class="subnav">
+            <div id="member_514" class="small-member" style="float: left; color: rgb(199, 36, 29);">
+              <a href="/member-index.html" style="margin: 0px; padding: 0px; color: #a12124;"><span 
+
+id="uname_514">{$person.phone}</span></a>
+              <a href="{:U('Home/Gd10086/logout')}" style="margin: 0px; color: #a12124;">退出</a>
+            </div>
+            <div class="line"></div>
+            <a href="/shop/" target="_blank">商家中心</a>
+            <div class="line"></div>
+            <a href="http://vip.lishe.cc/company/login.html" target="_blank">企业登录</a>
+          </div>
+  </div>
+  </div>
+</div> 	
+ <div class="layout">
+         <div class="eat-pt">
+           <img src="{$activity.banner}" />
+           <p>{$activity.content}</p>
+         </div>
+        <div class="more-ul">
+		 	<volist name="list" id="vo">
+            <ul>
+              <li><a target="_blank" href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"  width="310" height="311" /></a></li>
+
+              <li class="eat-li" style="width:150px;height:42px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;"><a target="_blank" href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}">{$vo.title}</a></li>
+              <li><a href="#" class="eat-sp"><span>￥{:round($vo['price'],2)}</span></a><span class="eat-sp2"><a target="_blank" href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}">购买</a></span></li>
+            </ul>
+			</volist>
+         </div>
+         <div style="clear:both; padding-bottom:20px;"></div>
+		 <div class="pager">{$pagestr}</div>
+    </div>
+</body>
+</html>
+
+<style>
+.pager { text-align:center; margin-top:0px; margin-bottom:0px; padding:10px; clear:both; padding-bottom:20px;}
+.pager ul{margin:0; width:auto; height:20px;display:inline-block; }
+.pager ul li{list-style:none;border:#999999 1px solid;text-align:center; margin:3px; background:#999999;float:left;}
+
+.pager ul li a{display:block;background:#FFF;color:#000000;text-align: center;}
+
+.pager ul li a:hover{text-decoration:none;	background:#FF0033;}
+.bg-light-blue{background-color: #3c8dbc !important;}
+.bg-light-blue:hover{background-color: #dd4b39 !important;}
+.bg-red{background-color: #dd4b39 !important;}
+.badge{
+	border-radius: 15px;
+	padding:3px 13px 3px 10px;
+	color: white;
+	margin-right:8px;
+	text-align: center;
+}
+</style>	

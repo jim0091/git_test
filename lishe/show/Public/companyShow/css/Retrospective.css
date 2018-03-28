@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#f6f4f4; font-family:"微软雅黑"; font-size:12px;}
+
+/*头部*/
+.header{background:#a12124; width:100%; height:100px; line-height:100px;}
+.heade-ct{width:1200px; margin:0 auto;}
+.he-p{float:left;}
+.he-p img{vertical-align:middle; margin-right:10px;}
+/*横向二级菜单*/
+.navLeft .mainlevel{float:left;text-align:center;display:block;}
+.navLeft .mainlevel a {color:#fff;font-size:16px;padding:0 20px;display:block;}
+.navLeft .mainlevel a:hover {background:#FFF;color:#991332;}
+.navLeft .mainlevel ul{position:absolute;display:none;}
+.navLeft .mainlevel li {float:left;}
+.navLeft .mainlevel li a {color:#4d4d4d;display:block; line-height:25px; height:25px;padding:0 12px;}
+.navLeft .mainlevel li a:hover {color:#991332;}
+/*end*/
+.navRight{float:right;}
+.navRight li{float:left;padding:0 15px;}
+.ur a{font-size:16px; color:#FFF;}
+.ur a img{padding-left:12px;}
+.ur2 a{color:#991332; background:#FFF; padding:5px 8px; border-radius:10px; font-size:16px;}
+.ur2 a img{vertical-align:middle; padding-right:5px;}
+
+/*内容*/
+.retpactive{width:1200px; margin:0 auto; margin-top:50px;}
+.sumLeft{width:300px; float:left; padding-bottom:30px;}
+.let-p{font-size:18px; color:#991332;padding-left:15px; border-bottom:#CCC solid 1px; height:30px; line-height:30px;}
+.left-top{border:#CCC solid 1px; height:260px;background:#FFF;}
+.left-top ul{padding-top:10px;}
+.left-li{line-height:30px;}
+.left-li a{font-size:14px; color:#4d4d4d; padding-left:20px;}
+.slect{border-left:#991332 solid 5px;line-height:30px;}
+.slect a{font-size:14px; color:#991332; padding-left:15px;}
+.left-bom{border:#CCC solid 1px; height:200px;background:#FFF; margin-top:20px; padding-bottom:10px;}
+.left-bom ul{padding-top:10px;}
+.left-bom ul li{line-height:25px;}
+.left-bom ul li a{font-size:14px; color:#4d4d4d; padding-left:15px;}
+.left-bom ul li a span{padding:0 7px; color:#CCC;}
+
+.resRight{width:870px; float:right; border:#CCC solid 1px; padding-bottom:30px; background:#FFF;}
+.resRight ul{height:200px; width:800px; margin:0 auto; border-bottom:#CCC solid 1px; padding:10px 0;}
+.resRight ul img{float:left; width:300px; max-height:200px; overflow: hidden; padding-right:15px;}
+.rg-titl{font-size:20px; color:#333333; padding-bottom:10px;}
+.rg-des{font-size:16px; color:#666666; line-height:22px; padding-bottom:10px; height:50px;}
+.rg-time{font-size:14px; color:#808080;}

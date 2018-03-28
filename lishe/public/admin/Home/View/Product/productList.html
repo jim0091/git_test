@@ -1,0 +1,520 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__ADMIN__js/jquery-1.8.2.min.js" ></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}
+	.keywords_div{position: absolute; width:300px; border: 1px solid #DADADA;z-index:66; display: none;margin-left: 60px; background-color: white; margin-top: -2px;}
+	.keywords_li{height: 25px;line-height: 25px; padding-left:5px;cursor:pointer;}
+	.keywords_li span.keywords{float: left;}
+	.keywords_li span.num{float: right;margin-right: 5px;}
+
+</style>
+<title>图片列表</title>
+</head>
+<body>
+<nav class="breadcrumb" style="position :fixed; width: 100%;">
+	<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> <span>产品列表</span> 
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="__URL__/productList" title="刷新" ><i class="Hui-iconfont">&#xe68f;刷新本页</i></a>
+
+	<?php 	
+		 	$applFundId=array_search('proexportexcel', $nodeAction);
+			 if($applFundId){
+			 	if($nodeController[$applFundId]=="product"  || $roleId==0){
+		 ?>		
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" onclick="exportExcel()" class="Hui-iconfont">产品导出到Excel</a>
+	<?php }
+			  } ?>	
+
+
+
+</nav>
+<div style="padding-top: 35px;">
+	<div class="pd-20" >
+		<form action="__APP__/Product/productList" method="get" id="serach">
+			<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+			<div class="product-tools">
+				<div class="search">
+					<label>商品排序：</label>
+					<label><select  name="order" class="select-box" style="width:110px;">
+					<option  value="0" >默认</option>
+					<option value="1"<if condition="$condition.order eq '1'">
+						selected="selected"
+						<else/>
+					</if>>毛利率高到底</option>
+					</select>
+					</label>							
+					<label>毛利率：</label>
+					<label>
+					<span><input type="text" name="srate" id="srate" style="width:80px"  class="txt w60 input-text" value="{$condition.srate}"></span>
+					<span>-&nbsp;</span>
+					<span><input type="text" name="erate" id="erate" style="width:80px" class="txt w60 input-text" value="{$condition.erate}"></span>
+					</label>
+					<label>进货价格区间：</label>
+					<label>
+					<span><input type="text" name="jsrate" id="sprice" style="width:80px"  class="txt w60 input-text" value="{$condition.jsrate}"></span>
+					<span>-&nbsp;</span>
+					<span><input type="text" name="jerate" id="eprice" style="width:80px"  class="txt w60 input-text" value="{$condition.jerate}"></span>
+					</label>
+					<label>销售价格区间：</label>
+					<label>
+					<span><input type="text" name="csrate" id="sprice"style="width:80px"  class="txt w60 input-text" value="{$condition.csrate}"></span>
+					<span>-&nbsp;</span>
+					<span><input type="text" name="cerate" id="eprice" style="width:80px"  class="txt w60 input-text" value="{$condition.cerate}"></span>
+					</label>	
+					<label>状态：</label>
+					<label><select class="select-box" name="status" style="width:80px;">
+					<notempty name="condition.status">
+						<option value="{$condition.status.status}">{$condition.status.name}</option>
+					</notempty>							
+					<option value="0">全部</option>
+					<option value="onsale" >上架中</option>
+					<option value="instock"<if condition="$condition.status eq 'instock'">
+						selected="selected"
+						<else/>
+					</if>>已下架</option>
+					</select>
+					</label>						
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<label>店铺：</label>
+					<label>
+					<select id="shop" name="shopId" class="select-box" style="width:180px;">
+					<notempty name="condition.shop">
+						<option value="{$condition.shop.shop_id}">{$condition.shop.shop_name}</option>
+					</notempty>				
+					</select>					
+					<label>分类：</label>
+					<label>
+					<select id="catone" name="catone" class="select-box" style="width:180px;" onchange="javascript:getCatone(this.options[this.selectedIndex].value);">
+					<notempty name="condition.catone">
+						<option value="{$condition.catone.cat_id}">{$condition.catone.cat_name}</option>
+					</notempty>		
+					</select>								
+					</label>
+					<label>
+					<select id="cattwo" name="cattwo" class="select-box" style="width:100px;" onchange="javascript:getCattwo(this.options[this.selectedIndex].value);">
+					<notempty name="condition.cattwo">
+						<option value="{$condition.cattwo.cat_id}">{$condition.cattwo.cat_name}</option>
+					</notempty>	
+					<option value="0"> 全部 </option>
+					</select>								
+					</label>
+					<label>
+					<select id="catthree" name="catthree" class="select-box" style="width:120px;" style="display: none;">
+					<notempty name="condition.catthree">
+						<option value="{$condition.catthree.cat_id}">{$condition.catthree.cat_name}</option>
+					</notempty>		
+					<option value="0"> 全部 </option>
+					</select>								
+					</label>							
+					
+					<label>关键词：</label>
+					<label>
+					<input type="text" name="keywords" id="" placeholder="搜索供应商" style="width:200px" class="input-text" value="{$condition.keywords}" >
+					<label>商品ID：</label>
+					<label>
+					<input type="text" name="itemId" id=""  style="width:50px" class="input-text" value="{$condition.itemId}" >			
+					</label>
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<label>供应商：</label>
+					<input type="text" name="" autocomplete="off" id="keywordSearch" placeholder="供应商搜索" style="width:250px" class="input-text" value="" >
+					<div id="keywordList" class="keywords_div"></div>
+					<label>
+					<select name="supplierId" id="supplierId" class="select-box" style="width:180px;">
+						<option value="0">全部</option>
+						<volist name="supplierAll" id="supplier">
+							<option value="{$supplier.supplier_id}"  <eq name="condition.supplierId" value="$supplier.supplier_id">selected="selected"</eq> >{$supplier.company_name}</option>
+						</volist>
+					</select>					
+					<button onclick="serach()" class="btn btn-success radius"><i  class="Hui-iconfont">&#xe665;</i> 搜索</button>						
+				</div>
+			</div>
+			</form>	
+	</div>
+	<div class="cl pd-5 bg-1 bk-gray"> 
+			<span class="r">共有数据：<strong class="label label-success radius">{$goods.count}</strong> 条</span> </div>
+	<div class="mt-10">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+					<td align="center" width="5%">ID</td>
+					<td align="center" width="6%">图片</td>
+					<td align="center">商品名称</td>
+					<td align="center" width="54%" colspan="4" style="padding:0">
+						<table>
+							<tr>
+								<td width="32%">商品规格</td>
+								<td width="15%">SKU</td>
+								<td width="18%">库存/残次品/预占库存/销量</td>
+								<td width="35%">市场价/销售价/进货价/毛利率</td>
+							</tr>
+						</table>						
+					</td>
+					<td align="center" width="12%">店铺</td>
+					<td align="center" width="8%">操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-c">
+					<volist name="goods.list" id="item">
+					<tr id="order_{$item['orderId']}">
+						<td class="checkboxs">{$item['item_id']}</td>
+						<td align="center">
+							<a href="__LISHE__/shop.php/Info/index/itemId/{$item.item_id}" target="_blank" title="{$item.title}">
+								<img src="{$item['image_default_id']}_t.{:end(explode('.',$item['image_default_id']))}" width="65">
+							</a>
+						</td>
+						<td align="left">
+							<if condition="$item.send_type eq 2">
+								<img src="__ADMIN__images/img/daifa.png"  width="20px" title="该商品为代发商品"/>
+							<elseif condition="$item.send_type eq 1"/>
+								<img src="__ADMIN__images/img/zifa.png"  width="20px" title="该商品为自发商品"/>
+							<elseif condition="$item.send_type eq 3"/>
+								<img src="__ADMIN__images/img/shunfeng.png"  width="25px" title="该商品为顺丰发货商品"/>								
+							</if>	
+							<a href="__LISHE__/shop.php/Info/index/itemId/{$item.item_id}" target="_blank" title="{$item.title}">
+								{$item['title']}
+							</a>	
+							
+						</td>
+
+						<td align="center" colspan="4" style="padding:0">
+							<table style="height:90px !important; min-height:90px;;min-height:90px;" >
+								<volist name="item['skuInfo']" id="sku">
+								<tr class="text-c" >
+									<td width="32%">
+										{$sku['spec_info']}
+										<br/>
+										<font style="color:#5A98DE">条码：{$sku['barcode']}</font>
+									</td>
+									<td width="15%">{$sku['sku_id']}</td>
+									<td width="18%">{$sku['store']}&nbsp;<font style="color:red">|</font>&nbsp;{$sku['inferior']}&nbsp;<font style="color:red">|</font>&nbsp;{$sku['freez']}&nbsp;<font style="color:red">|</font>&nbsp;{$sku['sold_quantity']}</td>
+									<td width="35%">
+										{$sku['mkt_price']}&nbsp;<font style="color:red">|</font>&nbsp;{$sku['price']}&nbsp;<font style="color:red">|</font>&nbsp;{$sku['cost_price']}&nbsp;<font style="color:red">|</font>&nbsp;<?php echo sprintf("%.2f", (($sku['price']-$sku['cost_price'])/$sku['price'])*100);  ?>%
+									</td>
+								</tr>
+								</volist>
+							</table>
+							
+						</td>
+						<td align="center">
+							{$item['shop_name']}
+							<if condition="$item['shop_id'] neq 10">							
+							<a onclick="member_edit('商品Id{$item['item_id']}选择供应商','{:U('Home/Product/modifySupplierUser',array('itemId'=>$item['item_id']))}','4','','300')">
+								<span  class="label label-success radius">选择供应商</span>
+							</a>
+							</if>
+							<br />
+						<notempty name="item.supperName">
+							<strong style="color: #5A98DE;">供：{$item['supperName']}</strong>
+							<br />
+						</notempty>
+							<?php 	
+							 	$applFundId=array_search('modifysupplieruser', $nodeAction);
+								if($applFundId){
+								 	
+							 ?>									
+						<?php } ?>								
+						</td>
+						<td class="td-manage" style="font-size: 16px;">
+							<a style="text-decoration:none" class="ml-5" onClick="product_edit('商品详情','{:U('Home/Product/productInfo',array('itemId'=>$item['item_id']))}','10001')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>
+							<notempty name="item.jd_sku">
+							<a style="text-decoration:none" href="http://item.jd.com/{$item['jd_sku']}.html" target="_black" title="商品京东地址"><i class="Hui-iconfont">&#xe6f1;</i></a>
+							</notempty>							
+						 	<a href="javascript:void(0)" class="goodStatus" data-itemid="{$item['item_id']}" data-val="{$item['status']}">
+								{$item['status']=="onsale" ? "<i class='Hui-iconfont' title='已上架'><font style='color:#5eb95e;'>&#xe6dc;</font></i>":"<i class='Hui-iconfont' title='已下架'><font style='color:red;'>&#xe6de;</font></i>"}
+							</a>
+							<a style="text-decoration:none" class="ml-5" onclick="member_edit('商品Id{$item['item_id']}修改分类','{:U('Home/Product/modifyCategory',array('itemId'=>$item['item_id']))}','4','','300')" href="javascript:;" title="修改分类"><i class="Hui-iconfont">&#xe681;</i></a>							
+						</td>
+					</tr>
+					</volist>					
+				</tr>
+			</tbody>
+		</table>
+		<div class="page" style="text-align: center; padding: 20px 0px 50px 0px;">{$page}</div>
+		
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$( function (){
+//	一级分类
+    var url = "{:U('Home/Product/getCatOne')}" ;
+    $( '#catone' ).append( '<option value="0"> 全部 </option>' ) ;
+	$.ajax({
+		type:"get",
+		url:url,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+           	 	$( '#catone' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}
+	});
+//店铺名		
+    $( '#shop' ).append( '<option value="0"> 全部 </option>' ) ;
+    var shopUrls = "{:U('Home/Product/getShop')}" ;
+	$.ajax({
+		type:"get",
+		url:shopUrls,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.shop_id+ '">' +v.shop_name+ '</option>' ;
+           	 	$( '#shop' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}
+	});	
+			
+			//搜索条件选择项\n
+//				var catonev={$condition.catone};
+//			   $("#catone").find('option[value="0"]').text(1);
+
+    }) ;
+    
+//更改上下架
+//充值详情
+    $(".goodStatus").on('click',function(){
+    	var itemId=$(this).attr("data-itemid");
+		layer.open({
+		  type: 2,
+		  title: '商品ID:'+itemId+',更改上下架',
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['360px', '35%'],
+		  content: '__APP__/Product/modifyItemStatus/itemId/'+itemId
+		}); 	   	
+//  	var goodStatus=$(this).attr("data-val");
+//  	var itemId=$(this).attr("data-itemid");
+//  	var thisType=$(this);
+//		goodChgStatus(goodStatus,itemId,thisType);
+    });  
+//上下架
+	function goodChgStatus(goodStatus,itemId,thisType){
+    	if(goodStatus == 'instock'){
+    		var goodsName="上架";
+    	}else if(goodStatus == "onsale"){
+    		var goodsName="下架";
+    	}
+		layer.confirm('确定将该商品ID为：'+itemId+'的商品的状态置为'+goodsName+'?',
+		function(index){
+		$.ajax({
+			type:"get",
+			url:"{:U('Home/Product/changeItemStatus')}",
+			dataType:'json',
+			data:{
+				goodsStatus:goodStatus,
+				itemId:itemId,
+			},
+			success:function(data){
+				if(data){
+    				if(goodStatus == 'instock'){
+						thisType.attr('data-val','onsale');
+					}else if(goodStatus == "onsale"){
+						thisType.attr('data-val','instock');
+					}
+					layer.msg("商品"+goodsName+"成功！",function(){
+						location.reload();
+					});
+				}else{
+					layer.msg("商品"+goodsName+"失败！");
+				}
+			},
+        }) ;
+        $(".layui-layer-close1").click();
+		});  		
+	}
+	function getCatone(code){
+			$("#catthree").hide();
+		   	$("#catthree").find('option[value="0"]').attr("selected","selected");
+            var url = "{:U('Home/Product/getCatTwo')}" ;
+            $( '#cattwo' ).empty() ;
+            $( '#cattwo' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=2',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#cattwo' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+	function getCattwo(code){
+			$("#catthree").show();
+            var url = "{:U('Home/Product/getCatTwo')}" ;
+            $( '#catthree' ).empty() ;
+            $( '#catthree' ).append( '<option value="0"> 全部 </option>' ) ;
+			$.ajax({
+				type:"get",
+				url:url,
+				data:'parent_id='+code+'&level=3',
+				dataType:'json',
+				success:function(data){
+					$.each(data, function(k,v) {
+                  	  	var options = '<option value="' +v.cat_id+ '">' +v.cat_name+ '</option>' ;
+                   	 	$( '#catthree' ).append(options);
+					});
+				},
+				error:function(data){
+					
+				}
+			});
+		
+	}
+
+	//搜索
+	function serach(){
+		$("#execlType").val("");
+		$("#serach").submit();
+		
+	}	
+	//导出execl
+	function exportExcel(){
+		$("#execlType").val("exportExcel");
+		$("#serach").submit();
+		
+	}
+	
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}	
+	/*商品详情-编辑*/
+	function product_edit(title,url,id){
+		var index = layer.open({
+			type: 2,
+			title: title,
+			content: url
+		});
+		layer.full(index);
+	}
+
+	$(".search_button").click(function(){
+		$("#goods_search").submit();
+	});
+	$('#keywordSearch').blur(function(){	
+		setTimeout(function(){
+			$('#keywordList').hide();	
+		},200);		
+	});
+	$('#keywordSearch').focus(function(){	
+		if($('#keywordList').is(":empty")){
+			$('#keywordList').hide();
+		}else{
+			$('#keywordList').show();
+		}
+		
+	});
+	$('#keywordSearch').bind('input propertychange', function() {
+		var keywords = $.trim($(this).val());
+		console.log(keywords);
+		if (keywords != '') {
+			$.ajax({
+	            type:"POST",
+	            url:"{:U('Home/Product/selectKeyword')}",
+	            data:{keywords:keywords},
+	            dataType:'text',
+	            success:function(data){
+	            	if (data == "") {
+		                $('#keywordList').hide();
+		    			$("#keywordList").empty();
+	            	}else{
+						$('#keywordList').show();
+		    			$("#keywordList").empty();
+	                	$("#keywordList").append(data);
+	                }
+	            },
+	            error:function(){
+	                $('#keywordList').hide();
+	    			$("#keywordList").empty();
+	            }
+	        });
+	    }else{
+	    	$('#keywordList').hide();
+	    	$("#keywordList").empty();
+	    }
+	}); 
+	$("#keywordList").on("mouseover","ul li",function(){
+		$(this).css('background-color','#FF3737');
+		$(this).css('color','white');
+	});
+	$("#keywordList").on("mouseout","ul li",function(){
+		$(this).css('background-color','white');
+		$(this).css('color','black');
+	});
+	$("#keywordList").on("click","ul li",function(){
+		var checkKeywords = $(this).children(".keywords").text();
+		var supplierId = $(this).children(".keywords").attr('data-supplierId');
+		$("#keywordSearch").val(checkKeywords);
+    	$('#keywordList').hide();
+    	$("#keywordList").empty();
+    	$("#goods_search").submit();
+    	$("#supplierId option[value='"+supplierId+"']").attr("selected","selected");
+	});	
+</script>
+</body>
+</html>

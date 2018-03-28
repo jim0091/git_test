@@ -1,0 +1,83 @@
+/* 安全中心 */
+.suggestion{margin: 15px 0;}
+.security-wrap{border: 1px solid #DADADA; padding: 0 20px; font-size: 13px;}
+.scategory{font-size: 14px; font-weight: bold; display: inline-block; vertical-align: top;}
+.loginpassword, .paypassword{padding: 20px 0;}
+.loginpassword{border-bottom: 1px dotted #DADADA;}
+.sdescription{display: inline-block; vertical-align: top; margin: 0 20px;}
+.changepassword{float: right; font-size: 12px;}
+.findpassword{float: right; font-size: 12px; margin-left: 10px;}
+.changepassword:hover, .findpassword:hover{color: #FF4138;}
+
+/* 修改密码 */
+.changeP{font-size: 14px; margin: 20px;}
+.changeP td{padding: 10px;}
+.txar{text-align: right;}
+.changeP input{padding: 5px; border: 1px solid #AAA;}
+.changeP input:focus{border: 1px solid #00C0EF;}
+.changeP .confirmbtn{padding: 20px 10px 10px 10px;}
+.confirmbtnA{padding: 5px 15px; background-color: #FF4138; color: #FFF;}
+
+/* 找回密码 */
+.Sstatus{margin-top: 15px;}
+.Ssteps{display: inline-block; vertical-align: top; padding: 5px 20px; background-color: #F0F0F0; margin-right: 10px; position: relative;}
+.triangleR{width: 0; height: 0; border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 10px solid #F0F0F0; position: absolute; top: 0; right: -10px;}
+.triangleL{width: 0; height: 0; border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 11px solid #FFF; position: absolute; top: 0; left: 0;}
+.Ssteps.current{background-color: #FF4138; color: #FFF;}
+.Ssteps.current .triangleR{border-left-color: #FF4138;}
+.findP td{padding: 15px;}
+.findP label{margin-left: 15px;}
+.findP label:first-child{margin-left: 0;}
+.findP input[type="radio"]{vertical-align: -2px; margin-right: 5px;}
+.findP input[type="text"], .findP input[type="password"]{padding: 0 3px; border: 1px solid #AAA; height: 30px; vertical-align: middle;}
+.findP input[type="text"]:focus, .findP input[type="password"]:focus{border-color: #00C0EF;}
+.verifypic{display: inline-block; width: 100px; height: 30px; border: 1px solid #DADADA; vertical-align: middle;}
+.verifypic img{width: 100%; height: 100%;}
+.changeVpic:hover{color: #FF4138;}
+.getVcode{display: inline-block; vertical-align: middle; height: 28px; border: 1px solid #DADADA; background-color: #F5F5F5; line-height: 28px; padding: 0 10px; margin-left: 10px;}
+.getVcode:hover{border-color: #00C0EF;}
+.nextstep{display: inline-block; padding: 8px 12px; background-color: #FF4138; color: #FFF;}
+#setNewPass{margin-top: 10px;}
+#setDone{margin: 30px 0 0 20px; font-size: 18px; color: #00C0EF;}
+#setNewPass, #setDone{display: none;}
+/*意见反馈*/
+.feedback-wrap{padding: 0 20px; font-size: 13px; margin-top: 20px;}
+.feedback-wrap table{width: 100%;border: 1px solid #DADADA}
+.feedback-wrap table th{border: 1px solid #DADADA; padding: 10px 0; background-color: #F5F5F5; color: #333;}
+.feedback-wrap table td{border: 1px solid #DADADA; padding: 5px; text-align: center; line-height: 22px; vertical-align: middle; font-size: 12px;}
+.feedback-wrap table td a:hover{color: #FF4138;}
+/*意见反馈详情*/
+
+/* 订单详情 */
+.textcenter{text-align: center; padding-top: 25px;}
+.status_icon{display: inline-block; position: relative;}
+.status_icon .progress_bar{display: inline-block; width: 80%; height: 6px; position: absolute; top: 15px; background-color: #EEE; left: 0; right: 0; margin: auto;}
+span.order_details{font-weight: normal;}
+.status_progress{display: inline-block; vertical-align: top; margin-left: 95px;}
+.status_note{margin-top: 20px; padding-bottom: 30px; border-bottom: 1px dashed #DADADA;}
+.status_note span{font-weight: bold;}
+.status_progress .steps{width: 36px; padding: 12px 0; border-radius: 50%; background-color: #EEE; color: #000; margin: 0 auto; position: relative;}
+.status_progress.on .steps{background-color: #38C0FF; color: #FFF;}
+.status_progress .stripeR{position: absolute; width: 60px; height: 6px; top: 15px; left: 35px;}
+.status_progress .stripeL{position: absolute; width: 60px; height: 6px; top: 15px; left: -59px;}
+.status_progress.on .stripeR, .status_progress.on .stripeL{background-color: #38C0FF; line-height: 16px;}
+.status_progress.on .status_text{color: #38C0FF;}
+.status_progress:first-of-type{margin-left: 0;}
+.status_progress:first-of-type .stripeL{display: none;}
+.status_progress:last-of-type .stripeR{display: none;}
+.status_text{margin-top: 10px; color: #999;}
+.order_box{border-bottom: 1px dashed #DADADA;}
+.box_title{font-weight: bold; font-size: 14px; margin: 15px 0 10px 10px;}
+.box_details{line-height: 24px; margin-left: 20px; margin-bottom: 15px;}
+.box_details table{border: 1px solid #DADADA; width: 100%; margin-top: 5px; text-align: center;}
+.box_details table th:first-child{text-align: left; padding-left: 10px;}
+.box_details table th{background-color: #F5F5F5; color: #333;}
+.box_details table td{border-top: 1px solid #DADADA;}
+.ordered_goods{text-align: left; width: 480px;}
+.ordered_goods img{width: 63px; height: 63px; border: 1px solid #DADADA; vertical-align: middle; margin: 4px 5px 4px 8px;}
+.ordered_link{color: #666; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; display: inline-block; max-width: 300px; vertical-align: middle;}
+.order_bill{display: table; float: right; margin-top: 20px; font-size: 13px; color: #333;}
+.tbrow{display: table-row;}
+.tbcell{display: table-cell;}
+.order_bill .tbcell{text-align: right; padding-right: 10px; padding-bottom: 10px;}
+.rmb{color: #FF4138;}

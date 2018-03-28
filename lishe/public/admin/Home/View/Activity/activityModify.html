@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 平台活动管理 <span class="c-gray en">&gt;</span> 活动列表<span class="c-gray en">&gt;</span>编辑 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+	<form action="{:U('Home/Activity/activityModifySave')}" method="post" class="form form-horizontal" id="form-article-add">
+		<input type="hidden" value="{$info.aid}" name="aid" />
+		<present name="type">
+			<input type="hidden" value="{$type}" name="type" />
+		</present>
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>专题/活动名称：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$info.activity_name}" placeholder="专区名称/分类名称" name="data[activity_name]">
+			</div>
+		</div>
+		<eq name="roleId" value="0">
+			<div class="row cl">
+				<label class="form-label col-2">活动标识：</label>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" value="{$info.Identification}" placeholder="活动标识" name="data[Identification]">
+				</div>
+			</div>		
+		</eq>	
+	    <!--<div class="row cl">
+	      <label class="form-label col-2">所属公司：</label>
+	      <div class="formControls col-5"> <span class="select-box">
+	        <select id="company" class="select" size="1" name="data[com_id]">
+	        	<notempty name="info.com_id">
+    				<option value="{$info.com_id}"> {$comName} </option>
+	        	</notempty>
+	        </select>
+	        </span> </div>
+	      <div class="col-5"> </div>
+	    </div>			-->
+		<!--<div class="row cl">
+			<label class="form-label col-2">活动周期：</label>
+			<div class="formControls col-10">
+			<label>
+				<input type="text" onfocus="WdatePicker()" value="{$info.start_time}" name="data[startTime]" id="datemin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onfocus="WdatePicker()" value="{$info.end_time}" name="data[endTime]" id="datemax" class="input-text Wdate" style="width:120px;">				
+				<span style="color: #5a98de;">添加类型为“专题”时可不填</span>
+			</label>
+			</div>
+		</div>	-->
+	    <div class="row cl">
+	      <label class="form-label col-2"><span class="c-red">*</span>类型：</label>
+	      <div class="formControls col-10"> 
+			<label class="">
+				<input value="1" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 1">
+						checked="checked"						
+					</if>
+					>活动
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="2" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 2">
+						checked="checked"						
+					</if>					
+					>专题
+			</label>  
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="3" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 3">
+						checked="checked"						
+					</if>					
+					>礼包
+			</label> 
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="4" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 4">
+						checked="checked"						
+					</if>					
+					>团购
+			</label> 
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="5" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 5">
+						checked="checked"						
+					</if>					
+					>预售
+			</label> 
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="6" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 6">
+						checked="checked"						
+					</if>					
+					>集配礼包
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="7" name="data[type]" id="user-Character-0-0-0"  type="radio"
+					<if condition="$info.type eq 7">
+						checked="checked"						
+					</if>					
+					>组合购
+			</label>			
+		 </div>
+	    </div>	
+	    <!--<div class="row cl">
+	      <label class="form-label col-2">模板：</label>
+	      <div class="formControls col-10"> 
+	      	<volist name="themes" id="vo">
+	      		<div class="col-3">
+					<label class="">
+						<input value="{$vo.id}" name="data[theme_id]" id="user-Character-0-0-0"  type="radio"
+						<if condition="$info['theme_id'] eq $vo['id']">
+							checked="checked"						
+						</if>					
+						>	  
+		      			{$vo.filename}<br />
+		      			<notempty name="vo.preview">
+			      			<img src="{$vo.preview}" width="100px" style="max-height: 130px;overflow: hidden;"/>
+		      			</notempty>
+					</label>      	
+	      		</div>
+	      	</volist>
+		 </div>
+	    </div>	    -->
+		<div class="row cl" style="margin-top: 50px;">
+			<div class="col-8 col-offset-4">
+				<button type="submit" class="btn btn-success radius" type="button">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script>
+	$(function(){
+//企业名			
+    var companyUrls = "{:U('Home/Order/getCompany')}" ;
+    $( '#company' ).append( '<option value="0"> 全部 </option>' ) ;
+	$.ajax({
+		type:"get",
+		url:companyUrls,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.com_id+ '">' +v.com_name+ '</option>' ;
+           	 	$( '#company' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}			
+        }) ;	
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<include file="head" />
+    <!--/sidebar-->
+<script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">待审核订单</span></div>
+    </div>
+    <div class="search-wrap">
+        <div class="search-content">
+            <form action="#" method="post">
+                <table class="search-tab">
+                    <!--tr>
+                        <th width="120">选择分类:</th>
+                        <td>
+                            <select name="search-sort" id="">
+                                <option value="class00">全部</option>
+                                <option value="class01">运动健身</option>
+                                <option value="class02">旅游</option>
+                                <option value="class03">文学艺术</option>
+                                <option value="class04">演讲</option>
+                                <option value="class05">经济</option>
+                                <option value="class06">电影</option>
+                                <option value="class07">科技</option>
+                                <option value="class08">美食</option>
+                            </select>
+                        </td>
+                        <th width="70">关键字:</th>
+                        <td><input class="common-text" placeholder="关键字" name="keywords" value="" id="" type="text"></td>
+                        <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                    </tr-->
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="result-wrap">
+        <form name="myform" id="myform" method="post">
+
+            <div class="result-content">
+                <table class="result-tab" min-width="100%">
+                    <tr style="font-weight:bold;text-align:center;">
+                        <td class="tc" width="3%"></td>
+                        <td style="width:6%;">订单编号</td>
+                        <td style="width:6%;">结算方式</td>
+                        <td style="width:9%;">仓库</td>
+                        <td style="width:6%;">单品数量</td>
+                        <td style="width:5%;">总金额</td>
+                        <td style="width:6%;">建立人</td>
+                        <td style="width:13%;">建立时间</td>
+                        <td>仓库联系人</td>
+                        <td>仓库联系电话</td>
+                        <td style="width:10%;">备注</td>
+                        <td style="width:6%;">状态</td>
+                        <td style="width:12%;">操作</td>
+                    </tr>
+                    <volist name="list" id="val">
+                        <tr>
+                            <td class="tc"><input name="id[]" value="" type="checkbox"></td>
+                            <td>{$val['order_id']}</td>
+                            <td>{$val['settlement_method']}</td>
+                            <td>{$warehouses[$val['warehouse_id']]['name']}</td>
+                            <td>{$val['skuCount']}</td>
+                            <td>{$val['prices']}</td>
+                            <td>{$val['build_people']}</td>
+                            <td>{$val['build_time']}</td>
+                            <td>{$warehouses[$val['warehouse_id']]['contacts']}</td>
+                            <td>{$warehouses[$val['warehouse_id']]['tel']}</td>
+                            <td align="center">{$val['remarks']}</td>
+                        <td align="center">待审核</td>
+                        <td  align="center"><a href="javascript::" onclick="layer_show('查看','{:U('Home/editOrder/',array('order_id'=>$val['order_id']))}','1','800','500')">详情 </a><a href="javascript::" onclick="checkOrder('{$val['order_id']}','2')"> 审核通过 </a><a onclick="checkOrder('{$val['order_id']}','-1')" href="javascript::"> 不通过 </a></td>
+
+                    </tr>
+                    </volist>
+                </table>
+                <div class="list-page">
+                    {$page}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--/main-->
+</div>
+</body>
+<script>
+    layui.use('layer', function(){
+    });
+    function layer_show(title,url,w,h){
+        if (title == null || title == '') {
+            title=false;
+        };
+        if (url == null || url == '') {
+            url="404.html";
+        };
+        if (w == null || w == '') {
+            w=800;
+        };
+        if (h == null || h == '') {
+            h=($(window).height() - 50);
+        };
+        layer.open({
+            type: 2,
+            area: ['800px', '500px'],
+            fix: false, //不固定
+            maxmin: true,
+            shade:0.4,
+            title: title,
+            content: url
+        });
+    }
+    function checkOrder(id,status){
+
+        layer.confirm('确认审核？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+
+            layer.prompt({title: '如有需要请填写备注，管理员会查看的~', formType: 2}, function(text){
+                var data={'order_id':id,"status":status,"remarks":text};
+                $.post("{:U('Home/checkOrder/')}",data,function(res){
+                    if(res=="1"){
+                        layer.msg("成功");
+                    }else{
+                        layer.msg("审核失败");
+                    }
+                    window.location.reload();
+                });
+            });
+        }, function(){
+            layer.msg("取消");
+        });
+    }
+
+</script>
+</html>

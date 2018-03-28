@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{$itemInfo['title']}-心意商城</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/address_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/groupBuy.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+	<script src="__VIEW__Public/js/jquery.xdomainrequest.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<!-- 头部搜索 -->
+	<include file="Public/headerFind"/>
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+
+	<!-- 商品预览 -->
+	<div class="wrap" id="goods_info">
+		<!-- 商品细分类 -->
+		<div class="category">
+			<ul>
+				<volist name="resCatList" id="rcl">
+				<li><a href="__APP__/Items/itemList/catId/{$rcl['cat_id']}">{$rcl['cat_name']}</a></li>
+				</volist>
+			</ul>
+		</div>
+		<input type="hidden" id="item_id" name="item_id" value="{$itemInfo['item_id']}">
+ 		<input type="hidden" id="shopId" name="shop_id" value="{$itemInfo['shop_id']}">
+		<input type="hidden" id="itemStatus" name="item_status" value="{$itemInfo['status']}">
+		<input type="hidden" id="store" name="item_store" value="{$store}">
+		<!-- 商品详情 -->
+		<!-- 左边图片预览 -->
+		<div class="details_left">
+			<div id="preview_big"></div>
+			<div id="preview_small">
+				<volist name="itemInfo['new_list_images']" id="itemImg"  offset="0" length='5'>
+					<img src="{$itemImg}_l.{:end(explode('.',$itemImg))}" class="pics">
+				</volist>				
+			</div>
+			<div class="links">
+				<div class="collection">
+            		<if condition="$uid eq 0">
+						<span class="">收藏商品</span>
+					<else/>
+						<input type="hidden" name="userFav" class="user-fav" value="{$itemInfo['item_id'],$uid|getUserFav}">
+						<span class="doUserFav">收藏商品</span>
+					</if>
+				</div>
+				<div class="share">分享到：
+					<a class="jiatitle" id="wechat" href="javascript:;" onclick="jiathis_sendto('weixin')"; return false><span class="jtico jtico_weixin"></span></a>
+					<a class="jiatitle" id="qq" href="javascript:;" onclick="jiathis_sendto('cqq')"; return false><span class="jtico jtico_qq"></span></a>
+					<a class="jiatitle" id="qzone" href="javascript:;" onclick="jiathis_sendto('qzone')"; return false><span class="jtico jtico_qzone"></span></a>	
+					<a class="jiatitle" id="weibo" href="javascript:;" onclick="jiathis_sendto('tsina')"; return false><span class="jtico jtico_tsina"></span></a>					
+				</div>
+				<script type="text/javascript" src="__VIEW__Public/js/share/jia.js" charset="utf-8"></script>
+			</div>
+		</div>
+		<!-- 中间 -->
+		<div class="details_middle">
+			
+			<div class="goods_name">
+				{$itemInfo['title']}
+			</div>
+
+			<div class="sub_title">
+				&nbsp;&nbsp;&nbsp;
+				{$itemInfo['sub_title']}
+				<eq name="itemInfo['shop_id']" value="10">
+					<in name="comId" value="1466483633689,1472818301299,1472637383793,1474186315741,1469444223094,1481022194594,1482585376631,1482914272399,1482913917347">
+						<a href="http://item.jd.com/{$itemInfo['jd_sku']}.html" target="_black">[去京东商城]</a>
+					</in>
+				</eq>	
+			</div>
+
+			<table class="sku-info-box" id="sku-info-nomal-0">
+				<tr class="benefits">
+					<td>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</td>
+					<td class="price">
+						<span class="itemPrice">￥{$itemInfo['newPrice']}&nbsp;</span>
+						<span class="itemShopPrice" style="text-decoration:line-through;color: #999;font-size: 12px;"></span>
+					</td>
+				</tr>
+				<tr class="benefits">
+					<td class="tdTitle"></td>
+					<td class="cashPoint">
+						<span class="skuCashPoint"></span> 
+						<span class="itemShopBalance" style="text-decoration:line-through;color: #999;font-size: 12px;"></span>
+						<span class="jifen" style="font-size:14px;"></span>
+					</td>
+				</tr>
+				<tr class="benefits">
+					<td>促销信息：</td>
+					<td class="sale">{$freepostageLimitMoney}</td>
+				</tr>
+				<!-- <tr class="benefits">
+					<td>领&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;券：</td>
+					<td>
+						<div class="coupon coupon1"></div>
+						<div class="coupon coupon2"></div>
+						<div class="coupon coupon3"></div>
+					</td>
+				</tr> -->
+				<tr>
+					<td>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</td>
+					<td class="band"><span>{$resBrandInfo['brand_name']}</span></td>
+				</tr>
+				</table>
+				
+				<!--倒计时-->
+				<div class="time_limited" style="display:none;" id="time-limit-box">
+					<div class="time_limited_item1">
+						<!--秒杀 加 tlLookIcon2-->
+						<span class="tlLookIcon" id="acIcon"></span>
+						<span class="ls_tlText" id="acName"></span>
+					</div>
+					<div class="time_limited_item2">
+						<div class="tl_item2_text"><em class="tl_Time_Text" id="dayText">6</em>天<em class="tl_Time_Text" id="hourE">6</em>小时<em class="tl_Time_Text" id="minute">66</em>分<em class="tl_Time_Text" id="second">6</em>秒<span class="tl_Time_Text2">后结束</span></div>
+					</div>
+				</div>
+				<!--------------------------秒杀 start--------------------------->
+			<!--商品信息-->
+			<volist name="seckilArr" id="seckil">
+			<php>
+				$acid = $seckil['activity_config_id'];
+				$skuId = $seckil['sku_id'];
+				$seckilAct = $actArr[$acid];
+								
+				$maxBuyTimes = $seckilAct['max_join_num'];
+				if(!empty($actSkuTimesArr[$skuId]) && is_numeric($actSkuTimesArr[$skuId])){
+					$maxBuyTimes = $maxBuyTimes - $actSkuTimesArr[$skuId];
+					$maxBuyTimes = $maxBuyTimes < 1 ? -1 : $maxBuyTimes;
+				}
+			
+				$remain = $sKuList[$skuId]['remain'];
+			
+				$seckilTime = $seckil['end_time'];
+				$seckilHour = date('Y', $seckilTime);
+				$seckilMinute = date('m', $seckilTime);
+				$seckilSecond = date('d', $seckilTime);
+			</php>
+			<div class="product_data_content sku-info-box" style="display:none;" skuNum="{$remain}" max-buytimes="{$maxBuyTimes}" id="sku-info-s-{$seckil['sku_id']}" hour="{$seckilHour}" minute="{$seckilMinute}" second="{$seckilSecond}">
+				<dl class="ls_pdcon_dl">
+					<dt class="ls_pdcon_dt">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格<em class="ls_dt_m">:</em></dt>
+					<dd class="ls_pdcon_dd">￥{$seckil['price']|sprintf='%.2f',###}&nbsp;</dd>
+				</dl>
+				<dl class="ls_pdcon_dl">
+					<dt class="ls_pdcon_dt">促销信息<em class="ls_dt_m">:</em></dt>
+					<dd class="ls_pdcon_dd">{$freepostageLimitMoney}<b>(若有赠品，赠完为止)</b></dd>
+				</dl>
+				<dl class="ls_pdcon_dl">
+					<dt class="ls_pdcon_dt">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌<em class="ls_dt_m">:</em></dt>
+					<dd class="ls_pdcon_dd"><span>{$resBrandInfo['brand_name']}</span></dd>
+				</dl>
+			</div>
+			</volist>
+			<!--------------------------秒杀 end--------------------------->
+			
+			<!--------------------------团购 start---------------------------> 
+			<!--团选购-->
+			<volist name="groupBuyItemArr" id="groupBuyItems">
+				<php>
+					$parentSkuId = $key;
+				</php>
+				<div style="display:none;" class="sku-info-box" id="sku-info-g-{$parentSkuId}">
+				<!--商品信息-->
+				<div class="product_data_content">
+					<dl class="ls_pdcon_dl">
+						<dt class="ls_pdcon_dt">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格<em class="ls_dt_m">:</em></dt>
+						<dd class="ls_pdcon_dd">￥{$skuPriceArr[$parentSkuId]|sprintf='%.2f',###}&nbsp;</dd>
+					</dl>
+					<dl class="ls_pdcon_dl">
+						<dt class="ls_pdcon_dt">促销信息<em class="ls_dt_m">:</em></dt>
+						<dd class="ls_pdcon_dd">{$freepostageLimitMoney}<b>(若有赠品，赠完为止)</b></dd>
+					</dl>
+					<dl class="ls_pdcon_dl">
+						<dt class="ls_pdcon_dt">品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌<em class="ls_dt_m">:</em></dt>
+						<dd class="ls_pdcon_dd"><span>{$resBrandInfo['brand_name']}</span></dd>
+					</dl>
+				</div>
+				<div class="select_buy_content">
+					<ul class="select_buy_content_ul">
+						<volist name="groupBuyItems" id="item" >
+							<php>
+								$acid = $key;
+								$skuId = $item['sku_id'];
+								
+								$buyCount = empty($groupBuyCount[$skuId]) ? 0 : $groupBuyCount[$skuId];
+								
+								$groupBuy = $actArr[$acid];
+								$groupDiffNum = $groupBuy['achieve_num'] - ($buyCount % $groupBuy['achieve_num']);
+								$groupPer = ($groupBuy['achieve_num'] - $groupDiffNum) / $groupBuy['achieve_num'];
+								$groupPer = round($groupPer*100);
+								
+								$maxBuyTimes = $groupBuy['max_join_num'];
+								if(!empty($actSkuTimesArr[$skuId]) && is_numeric($actSkuTimesArr[$skuId])){
+									$maxBuyTimes = $maxBuyTimes - $actSkuTimesArr[$skuId];
+									$maxBuyTimes = $maxBuyTimes < 1 ? -1 : $maxBuyTimes;
+								}
+								
+								$remain = $sKuList[$skuId]['remain'];
+								
+								$groupTime = $groupBuy['end_time'];
+								$groupHour = date('Y', $groupTime);
+								$groupMinute = date('m', $groupTime);
+								$groupSecond = date('d', $groupTime);
+							</php>
+							<li class="groupBuy" skuid="{$item['sku_id']}" skuNum="{$remain}" max-buytimes="{$maxBuyTimes}" hour="{$groupHour}" minute="{$groupMinute}" second="{$groupSecond}">
+								<div class="group_person"><span class="group_person_number">{$groupBuy['achieve_num']}人团</span></div>
+								<div class="group_price">￥<em class="group_price_em">{$item['price']|sprintf='%.2f',###}</em>/件</div>
+								<div class="group_person_progress">
+									<div class="person_progress_wrap"><span class="progress_text" style="width: {$groupPer}%;"></span></div>
+									<span class="progress_number">还差{$groupDiffNum}人成团</span>
+								</div>
+							</li>
+						</volist>
+					</ul>
+				</div>
+				<div style="clear: both;"></div>
+				<div class="group_waring" >{$groupBuy['cat_content']}</div>
+				</div>
+			</volist>	
+			<!--------------------------团购 end--------------------------->
+			<table>	
+				<tr>
+					<td>配&nbsp;&nbsp;送&nbsp;至：</td>
+					<td class="address">
+						<ul id="list1" style="margin:10px auto 0 auto;">
+							<li id="summary-stock">
+								<div class="dd">
+									<div id="store-selector">
+										<div class="text"><div></div><b></b></div>                   
+										<div onclick="$('#store-selector').removeClass('hover')" class="close"></div>
+									</div><!--store-selector end-->
+									<div id="store-prompt"><strong></strong></div><!--store-prompt end-->
+								</div>
+							</li>
+						</ul>
+						<span id="instock" class="lishe_goods_for"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="products">选择产品：</td>
+					<td>
+						<span id="size">
+							<volist name="sKuList" id="skvo">
+								<php>
+									$acid = 0;
+									$skuid = $skvo['sku_id'];
+									$type = $skvo['type'];
+									if ($type == 1) {
+										$acid = $skvo['sku_id'];
+									} else if ($type == 4) {
+										$acid = empty($skvo['parent_sku_id']) ? 0 : $skvo['parent_sku_id'];
+										$skuid = $acid;
+									}
+								</php>
+								<div id="sku_{$skuid}" class="skuShow" data-stime="{$skvo['start_time']}" data-etime="{$skvo['end_time']}" acid="{$acid}" sku-type="{$skvo['type']}">
+								<input type="hidden" class="skuId" name="sku_id" value="{$skvo['sku_id']}" >
+								<input type="hidden" class="skuNum" name="sku_num" value="{$skvo['remain']}">
+								<input type="hidden" class="skuPrice" name="sku_price" value="{$skvo['price']}">
+								<input type="hidden" class="skuShopPrice" name="sku_shop_price" value="{$skvo['shop_price']}">
+								<input type="hidden" class="skuCash" name="sku_cash" value="{$skvo['cash']}">
+								<input type="hidden" class="skuPoint" name="sku_point" value="{$skvo['point']}">
+ 								
+								<empty name="skvo['spec_info']" >
+									默认规格	
+								<else />
+								{$skvo['spec_info']}
+								</empty>
+								<if condition="$skvo['type'] eq 4"><b class="productMark">团</b>
+								<elseif condition="$skvo['type'] eq 1"/><b class="productMark">秒</b>
+								</if>
+								</div>		
+							</volist>
+							<span id="moresize">更多...</span>	
+							<input type="hidden" value="{$selectedSku}" id="selectedSku">
+							<input type="hidden" value="{$limited}" id="limited">
+							<input type="hidden" id="defaultSkuId" value="{$defaultSkuId}"/>
+						</span>
+					</td>
+				</tr>
+			</table>
+			<div class="buy">
+				<div id="number">
+					<input type="text" value="1" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')">
+					<div id="btn_add"></div>
+					<div id="btn_reduce"></div>
+				</div>
+				<if condition="($itemInfo['status'] eq 0) or ($limited eq 1)">
+					<div id="outofstock" style="display: block"></div>
+				<else/>				
+					<div id="add_to_cart" style="display: none"></div>
+					<div id="outofstock" style="display: block"></div>
+					<div id="add_success">
+						<div id="closebtn"></div>
+						<p>商品成功加入购物车</p>
+						<a  href="javascript:void(0)" onclick="location.reload()">继续购物</a>
+						<a href="__APP__/Order/Cart" class="checkmycart">我的购物车</a>
+					</div>					
+				</if>
+				<script type="text/javascript" src="__VIEW__Public/js/details.js"></script>	
+				<script type="text/javascript" src="__VIEW__Public/js/location.js"></script>				
+			</div>
+			<div class="itemTp">{$itemInfo['warm_reminder']}</div>
+
+		</div>
+		<!-- 右边商家 -->
+		<div class="seller">
+			<?php $shopInfo = getShopInfo($itemInfo['shop_id']);?>
+			<div class="logo3"><img src="{$shopInfo['shop_logo']}" style="max-height:56px"></div>
+			<div class="seller_name">
+				<span class="bold" style="display: inline-flex;">卖家：</span>
+				<a href="{:U('Shop/showList',array('shopId'=>$itemInfo['shop_id']))}" target="_blank">{$shopInfo['shop_name']}</a>
+				<!-- <a href="__LISHE_URL__/shopcenter.html?shop_id={$itemInfo['shop_id']}" target="_blank">{$shopInfo['shop_name']}</a>  -->
+			</div>
+			<div class="contact">
+				<span class="bold" style="display: inline-flex;">联系客服：</span>
+				<a href="tencent://message/?uin={$shopInfo['qq']}&Site=网站&Menu=yes">店铺客服</a>
+			</div>
+			<div class="scores">
+				<ul>
+					<li class="bold">评分明细</li>
+					<li>商品评分：<span>4.8</span>分</li>
+					<li>服务评分：<span>4.8</span>分</li>
+					<li>配送评分：<span>5.0</span>分</li>
+				</ul>
+				<ul class="compare">
+					<li class="bold">与行业相比</li>
+					<li><span>83.63%</span></li>
+					<li><span>83.63%</span></li>
+					<li><span>100%</span></li>
+				</ul>
+			</div>
+			<div class="store_button">
+				<!-- <a href="__LISHE_URL__/shopcenter.html?shop_id={$itemInfo['shop_id']}" target="_blank" class="button1">进店逛逛</a> -->
+				<a href="{:U('Shop/showList',array('shopId'=>$itemInfo['shop_id']))}" target="_blank" class="button1">进店逛逛</a>
+				<if condition="$uid eq 0">
+					<a href="" class="button2 shopFav">收藏店铺</a>
+				<else/>
+					<input type="hidden" name="shopFav" class="shop-fav" value="{$itemInfo['shop_id'],$uid|getShopFav}">
+					<a href="javascript:void(0);" class="button2 doShopFav">收藏店铺</a>
+				</if>
+			</div>
+		</div>
+	</div>
+
+	<!-- 推荐和评价 -->
+	<div class="comments">
+		<div class="wrap">
+			<!-- 推荐 -->
+			<div class="recommend">
+				<div>
+					<ul class="title" id="rec_title">
+						<li class="current">相关推荐</li>
+						<!-- <li>配件推荐</li> -->
+					</ul>
+				</div>
+				<div id="rec_info">
+					<ul class="rec_preview current">
+						<volist name="itemList" id="ilvo">
+						<li>
+							<a class="rec_pics" href="__APP__/Info/index/itemId/{$ilvo.item_id}">
+								<img src="{$ilvo.image_default_id}_m.{:end(explode('.',$ilvo['image_default_id']))}" width="113" height="113">
+							</a>
+							<a class="rec_goods_name" href="__APP__/Info/index/itemId/{$ilvo.item_id}">{$ilvo.title}</a>
+							<p class="rec_price">￥<?php echo sprintf("%.2f",$ilvo['price']); ?></p>
+						</li>
+						</volist>						
+					</ul>
+				</div>
+			</div>
+			<!-- 评价左部 -->
+			<div class="comments_left">
+				<div class="store">
+					<div class="title_left">
+						<a href="">{$shopInfo['shop_name']}</a>
+						<a class="contact_qq" href="tencent://message/?uin={$shopInfo['qq']}&Site=网站&Menu=yes"></a>
+					</div>
+					<div class="store_button">
+						<!-- <a class="button1" href="__LISHE_URL__/shopcenter.html?shop_id={$itemInfo['shop_id']}" target="_blank">进店逛逛</a> -->
+						<a class="button1" href="{:U('Shop/showList',array('shopId'=>$itemInfo['shop_id']))}" target="_blank">进店逛逛</a>
+						<if condition="$uid eq 0">
+							<a href="" class="button2 shopFav">收藏店铺</a>
+						<else/>
+							<input type="hidden" name="shopFav" class="shop-fav" value="{$itemInfo['shop_id'],$uid|getShopFav}">
+							<a href="javascript:void(0);" class="button2 doShopFav">收藏店铺</a>
+						</if>
+					</div>
+				</div>
+				<div class="search_inside">
+					<div class="title_left">店内搜索</div>
+					<form action="__LISHE_URL__/search.html" method="post" id="goods_search_shop">
+						<input type="text" name="keyword" placeholder="关键字">
+						<a href="javascript:void(0);" class="search_button_shop"></a>
+					</form>
+				</div>
+				<div>
+					<div class="title_left">相关分类</div>
+					<div class="category_list">
+						<ul>
+							<volist name="catList" id="civo">
+								<li><a href="__APP__/Items/itemList/catId/{$civo['cat_id']}">{$civo['cat_name']}</a></li>
+							</volist>
+						</ul>
+					</div>
+				</div>
+				<div>
+					<div class="title_left">看了又看</div>
+					<div class="see_more">
+						<ul>
+							<volist name="browList" id="blvo">
+								<li>
+									<a class="rec_pics" href="__APP__/Info/index/itemId/{$blvo.item_id}">
+										<img src="{$blvo.img}_m.{:end(explode('.',$blvo['img']))}" width="113" height="113">
+									</a>
+									<a class="rec_goods_name" href="__APP__/Info/index/itemId/{$blvo.item_id}">{$blvo.title}</a>
+									<p class="rec_price">￥<?php echo sprintf("%.2f",$blvo['price']); ?></p>
+								</li>								
+							</volist>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 评价右部 -->
+			<div class="comments_right">
+				<div>
+					<ul class="title" id="com_title">
+						<li class="current">商品详情</li>
+						<!-- <li class="traderate">用户评价</li> -->
+						<li class="consul">商品咨询</li>
+					</ul>
+				</div>
+
+				<div id="com_info">
+					<!-- 商品详情************************ -->
+					<div id="goods_details" class="current">						
+						商品编号：{$itemInfo['bn']}<br />
+						{$itemDesc['pc_desc']}
+						<br />
+					<img src="__VIEW__Public/images/aftersale.png" width="100%">
+					</div>
+
+					<!-- 用户评价
+					<div class="customer_comments">
+						<div class="comments_general">
+							<div class="rate_score">
+								<div><span>100</span>%</div>
+								<p>好评率</p>
+							</div>
+							<div class="progress_bar">
+								<p>好评 <progress value="90" max="100"></progress> 90%</p>
+								<p>中评 <progress value="10" max="100"></progress> 10%</p>
+								<p>差评 <progress value="0" max="100"></progress> 0%</p>
+							</div>
+							<div class="impression">
+								<p>买家印象</p>
+								<ul>
+									<li>价格实惠</li>
+									<li>质量好</li>
+									<li>发货快</li>
+									<li>包装不错</li>
+									<li>服务态度好</li>
+									<li>质量一般</li>
+								</ul>
+							</div>
+						</div>
+						<div id="all_comments">
+							<ul>
+								<?php $itemCount = getTableRow('sysitem_item_count','item_id',$itemInfo['item_id']);?>
+								<li class="current rateAll">全部({$itemCount['rate_count']})</li>
+								<li class="rateGood">好评({$itemCount['rate_good_count']})</li>
+								<li class="rateNeutral">中评({$itemCount['rate_neutral_count']})</li>
+								<li class="rateBad">差评({$itemCount['rate_bad_count']})</li>
+							</ul>
+						</div>
+						<input type="hidden" id="newpage" value="1"> 
+						<input type="hidden" id="rateVal" value="rateAll"> 
+						<input type="hidden" id="rate" value="rateAll"> 
+						<div id="comments_content">
+							<!-- 全部 
+							<ul class="current rateAll">								
+							</ul>
+							<!-- 好评
+							<ul class="rateGood">						
+							</ul>
+							<!-- 中评 
+							<ul class="rateNeutral">
+							</ul>
+							<!-- 差评 
+							<ul class="rateBad">
+							</ul>
+						</div>
+					</div>
+					 -->
+					<!-- 商品咨询 -->
+					<div class="consult">
+						<div id="all_Q">
+							<ul>
+								<li class="current consulAll">全部咨询({$itemInfo['item_id'],'all'|getConsulCount})</li>
+								<li class="consulItem">商品咨询({$itemInfo['item_id'],'item'|getConsulCount})</li>
+								<li class="consulStore">库存及配送({$itemInfo['item_id'],'store'|getConsulCount})</li>
+								<li class="consulPay">支付问题({$itemInfo['item_id'],'payment'|getConsulCount})</li>
+								<li class="consulInv">发票及保修({$itemInfo['item_id'],'invoice'|getConsulCount})</li>
+							</ul>
+						</div>
+
+						<input type="hidden" id="consulpage" value="1"> 
+						<input type="hidden" id="consulVal" value="consulAll"> 
+						<input type="hidden" id="consul" value="consulAll"> 
+						<div id="all_Q_context">
+							<!--全部-->
+							<ul class="consult_text current consulAll">								
+							</ul>
+							<!--商品-->
+							<ul class="consult_text consulItem">
+							</ul>
+							<!--库存及配送-->
+							<ul class="consult_text consulStore">
+							</ul>
+							<!--支付问题-->
+							<ul class="consult_text consulPay">
+							</ul>
+							<!--发票及保修-->
+							<ul class="consult_text consulInv">
+							</ul>
+						</div>
+						<form class="input_consult">
+							<table>
+								<tr>
+									<td>声&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</td>
+									<td>您可以在购买前对产品包装、颜色、运输、库存等方面进行咨询，我们有专人进行回复！因厂家随时会更新一些产品的包装、颜色、产地等参数，所以该回复仅在当时对提问者有效，其他网友仅供参考！<br>咨询回复的工作时间为&nbsp;周一至周五，9:00至18:00，请耐心等待工作人员回复。
+									</td>
+								</tr>
+								<tr>
+									<td>咨询类型：</td>
+									<td id="Qtype">
+										<label class="current"><input type="radio" class="check" name="question_type" value="item" checked="true">商品咨询</label>
+										<label><input type="radio" class="check" name="question_type" value="store" checked="false">库存及配送</label>
+										<label><input type="radio" class="check" name="question_type" value="payment" checked="false">支付问题</label>
+										<label><input type="radio" class="check" name="question_type" value="invoice" checked="false">发票及保修</label>
+									</td>
+								</tr>
+								<tr class="input_textarea">
+									<td>咨询内容：</td>
+									<td>
+										<textarea id="consul-centent" name="centent" placeholder="请输入您要咨询的问题(5-200字)"></textarea>
+										<p id="char_left">还可以输入<span>200</span>字</p>
+									</td>
+								</tr>
+								<tr id="phone">
+									<td>联系方式：</td>
+									<td>
+										<input type="text" id="phonenum" placeholder="请输入您的手机号码">
+										<!-- <label class="noname"><input type="checkbox" name="anonymous" value="" checked="false">匿名</label> -->
+									</td>
+								</tr>
+							</table>
+							<input type="input" id="submitQ" value="提交" >
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="__VIEW__Public/js/event.js"></script>	
+	<!--底部-->
+	<include file="Public/footer"/>
+
+	<script type="text/javascript">	
+
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+	//加入购物车
+    $("#add_to_cart").click(function(){
+        $(".topLoading").show();
+        //商品id
+        var itemId = {$itemInfo.item_id};//商品id
+        //库存id
+        var skuId = $("#size").children(".current").children("input.skuId").val();
+        //购买数量
+        var quantity = $("#number").children("input")[0].value;
+		var shopId = $("#shopId").val();
+		var jd_ids = $("#summary-stock .text div").attr("title");
+        $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+                if (res[0] == 1) {
+        			$(".topLoading").hide();
+                    $("#add_success").fadeIn(300);  
+                    updateCartNum();               
+                }else{
+                	if (res[2] != '') {
+                		window.location.href=res[2];
+                	}else{
+        				$(".topLoading").hide();
+                		divPrompt(res[1]);
+                	}                    
+                }
+            }
+        });
+    });
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Info/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $("#cart_number").text(data);
+            }
+        });
+	}
+
+    //收藏商品
+    $(".collection").click(function(){
+    	var itemId = {$itemInfo.item_id};//商品id
+    	$.ajax({
+            type:"POST",
+            url:"__APP__/Info/favGoods",
+            data:{itemId:itemId},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+                if (res[0] == 1) {
+                	$(".doUserFav").text(res[2]);
+                    divPrompt(res[1]);
+                }else{
+                	$(".doUserFav").text(res[2]);
+                    divPrompt(res[1]);
+                }
+            }
+        });
+    });
+
+    //收藏店铺
+    $(".doShopFav").click(function(){
+    	var shopId = {$itemInfo.shop_id};
+    	$.ajax({
+            type:"POST",
+            url:"__APP__/Info/favShop",
+            data:{shopId:shopId},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+                if (res[0] == 1) {
+                	$(".doShopFav").text(res[2]);
+                    divPrompt(res[1]);
+                }else{
+                	$(".doShopFav").text(res[2]);
+                    divPrompt(res[1]);
+                }
+            }
+        });
+    });
+
+    //商品评价
+    $(".traderate").click(function(){
+		pageAjax();	
+	});
+	$("li.rateAll").click(function(){
+		$("#rate").val("rateAll");
+		$("#rateVal").val("rateAll");
+		$("#newpage").val(1);
+		pageAjax();
+	});
+	$("li.rateGood").click(function(){
+		$("#rate").val("rateGood");
+		$("#rateVal").val("good");
+		$("#newpage").val(1);
+		pageAjax();
+	});
+	$("li.rateNeutral").click(function(){
+		$("#rate").val("rateNeutral");
+		$("#rateVal").val("neutral");
+		$("#newpage").val(1);
+		pageAjax();
+	});
+	$("li.rateBad").click(function(){
+		$("#rate").val("rateBad");
+		$("#rateVal").val("bad");
+		$("#newpage").val(1);
+		pageAjax();
+	});
+	$("#comments_content").delegate('.pages div a.num','click',function(){ 
+      	//当前页
+      	var nowpage = $(this).children("span").text(); 
+        $("#newpage").val(nowpage);    
+        pageAjax();
+    });
+    //下一页
+    $("#comments_content").delegate('.pages div a.next','click',function(){
+	    var nowpage = $("#newpage").val();
+	    $("#newpage").val(nowpage*1+1);
+	    pageAjax();
+    });
+    //上一页
+    $("#comments_content").delegate('.pages div .prev','click',function(){
+      	var nowpage = $("#newpage").val();
+      	$("#newpage").val(nowpage*1-1);
+      	pageAjax();
+    });
+    function pageAjax(){
+    	var itemId = {$itemInfo['item_id']};
+    	var newPage = $("#newPage").val();
+    	var rate = $("#rate").val();
+    	var rateVal = $("#rateVal").val();
+    	$.ajax({
+            type:"GET",
+            url:"__APP__/Info/traderateList",
+            data:{itemId:itemId,rateVal:rateVal,p:newPage},
+            dataType:'text',
+            success:function(data){
+            	$("#comments_content ."+rate+" li").remove();
+            	$("#comments_content ."+rate).html(data);           
+            }
+        });
+    }
+
+    //商品咨询
+    $(".consul").click(function(){
+		consulAjax();	
+	});
+	$("li.consulAll").click(function(){
+		$("#consul").val("consulAll");
+		$("#consulVal").val("consulAll");
+		$("#consulpage").val(1);
+		consulAjax();
+	});
+	$("li.consulItem").click(function(){
+		$("#consul").val("consulItem");
+		$("#consulVal").val("item");
+		$("#consulpage").val(1);
+		consulAjax();
+	});
+	$("li.consulStore").click(function(){
+		$("#consul").val("consulStore");
+		$("#consulVal").val("store");
+		$("#consulpage").val(1);
+		consulAjax();
+	});
+	$("li.consulPay").click(function(){
+		$("#consul").val("consulPay");
+		$("#consulVal").val("payment");
+		$("#consulpage").val(1);
+		consulAjax();
+	});
+	$("li.consulInv").click(function(){
+		$("#consul").val("consulInv");
+		$("#consulVal").val("invoice");
+		$("#consulpage").val(1);
+		consulAjax();
+	});
+    $("#all_Q_context").delegate('ul .pages div a.num','click',function(){ 
+      	//当前页
+      	var nowpage = $(this).children("span").text(); 
+        $("#consulpage").val(nowpage);    
+        consulAjax();
+    });
+    //下一页
+    $("#all_Q_context").delegate('ul .pages div a.next','click',function(){
+	    var nowpage = $("#consulpage").val();
+	    $("#consulpage").val(nowpage*1+1);
+	    consulAjax();
+    });
+    //上一页
+    $("#all_Q_context").delegate('ul .pages div .prev','click',function(){
+      	var nowpage = $("#consulpage").val();
+      	$("#consulpage").val(nowpage*1-1);
+      	consulAjax();
+    });
+    function consulAjax(){
+    	var itemId = {$itemInfo['item_id']};
+    	var consulPage = $("#consulpage").val();
+    	var consul = $("#consul").val();
+    	var consulVal = $("#consulVal").val();
+    	$.ajax({
+            type:"GET",
+            url:"__APP__/Info/consulList",
+            data:{itemId:itemId,consulVal:consulVal,p:consulPage},
+            dataType:'text',
+            success:function(data){
+            	$("#all_Q_context ."+consul+" li").remove();
+            	$("#all_Q_context ."+consul).html(data);         
+            }
+        });
+    };
+
+    //咨询
+    $("#submitQ").click(function(){
+    	var consulType = $('#Qtype label input[name="question_type"]:checked ').val();
+    	var centent = $("#consul-centent").val();
+    	var mobile = $("#phonenum").val();
+    	var itemId = {$itemInfo['item_id']};
+    	var itemName = "{$itemInfo['title']}";
+    	var shopId = {$itemInfo['shop_id']};
+    	var shopName = "{$shopInfo['shop_name']}";
+    	if (consulType == '') {
+    		divPrompt("请选择问题类型！");
+    		return false;
+    	};
+    	if (centent == '') {
+    		divPrompt("请输入问题描述！");
+    		return false;    		
+    	};
+    	if (mobile == '') {
+    		divPrompt("请填写您的电话！");
+    		return false;    		
+    	};
+    	if (itemId == '') {
+    		divPrompt("商品id不能为空！");
+    		return false;     		
+    	};
+    	if (shopId == '') {
+    		divPrompt("店铺id不能为空！");
+    		return false;     		
+    	};
+    	$.ajax({
+            type:"POST",
+            url:"__APP__/Info/consulAdd",
+            data:{itemId:itemId,itemName:itemName,shopId:shopId,shopName:shopName,mobile:mobile,centent:centent,consulType:consulType},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+            	if (res[0] == 1) {
+            		divPrompt(res[1]);
+            		$("#consul-centent").val("");
+            		$("#phonenum").val("");
+            	}else{
+            		divPrompt(res[1]);
+            	}
+            }
+        });
+    });
+
+	//店内搜索
+	$(".search_button_shop").click(function(){
+		$("#goods_search_shop").submit();
+	});
+	
+	/*********************** 团购 *************************/
+	var groupBuy = {}
+	var hour = 2017;
+	var minute = 12;
+	var second = 1;
+	
+	//清除margin-right
+	groupBuy.marginClear = function(){
+		$('.select_buy_content_ul>li').each(function(){
+			if($(this).index()+1 % 2 && $(this).index() != 0){
+				$(this).css('margin-right',0);
+			}
+		});
+	}
+	groupBuy.marginClear();
+	//选择团
+	groupBuy.selectGroup = function(){
+		$('.select_buy_content_ul').on('click','li',function(){
+			$(this).addClass('active').siblings().removeClass('active');
+		});
+	}
+	groupBuy.selectGroup();
+	//选择产品
+	groupBuy.selectProduct = function(){
+		$('.ls_pdcon_dd>.ls_product').on('click',function(){
+			$(this).addClass('active').siblings().removeClass('active');
+		});
+	}
+	groupBuy.selectProduct();
+	//倒计时
+	groupBuy.ShowCountDown = function(year,month,day){
+		var now = new Date(); 
+		var endDate = new Date(year, month-1, day); 
+		var leftTime=endDate.getTime()-now.getTime(); 
+		var leftsecond = parseInt(leftTime/1000); 
+		//var day1=parseInt(leftsecond/(24*60*60*6)); 
+		var day1=Math.floor(leftsecond/(60*60*24)); 
+		var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+		var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+		var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+		//var cc = document.getElementById(divname); 
+		//cc.innerHTML = "提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒"; 
+		$('#dayText').text(day1);
+		$('#hourE').text(hour);
+		$('#minute').text(minute);
+		$('#second').text(second);	 
+	}
+	window.setInterval(function(){groupBuy.ShowCountDown(hour, minute, second);}, 1000);
+	//团购时间
+	$(".select_buy_content_ul li").click(function(){
+		hour = $(this).attr('hour');
+		minute = $(this).attr("minute");
+		second = $(this).attr("second");
+	});
+	//秒杀时间
+	$("#size div").click(function(){
+		var skuType = $(this).attr("sku-type");
+		var acid = $(this).attr("acid");
+		if(skuType == 1){
+			hour = $("#sku-info-s-"+acid).attr("hour");
+			minute = $("#sku-info-s-"+acid).attr("minute");
+			second = $("#sku-info-s-"+acid).attr("second");
+		}		
+	});
+	</script>
+</body>
+</html>

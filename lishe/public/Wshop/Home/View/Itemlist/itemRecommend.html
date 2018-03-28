@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Wrecommend.css">
+<link rel="stylesheet" href="__VIEW__Public/css/swiper.min.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/swiper.min.js"></script>
+<title>礼舍推荐-心意商城</title>
+</head>
+<style type="text/css">
+.swiper-pagination-bullet{width:6px;height:6px; display:inline-block; border-radius:50%; background:#FFF; opacity:1;}
+.swiper-pagination-bullet-active{background:#FF443C; opacity:1;}
+</style>
+
+<body>
+<div class="recomheader">
+    <span><a href="javascript:" onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+    <span>礼舍推荐</span>
+</div>
+
+<!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <volist name="shuDetailList" id="shuvo">
+        <div class="swiper-slide">
+            <a href="{$shuvo['refer']}"><img src="{$shuvo['banner_img']}"></a>
+        </div>
+        </volist>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        autoplay : 2000,
+        paginationClickable: true
+    });
+</script>
+
+<!--主内容-->
+<volist name="activity"  id="vo">
+    <div class="Lsthealth">
+        <a href="{$vo['more_link']}"><img src="{$vo['banner']}"></a>
+    </div>
+    <!-- Swiper -->
+    <div class="swiper-container2">
+        <div class="swiper-wrapper">
+            <volist name="list[$key]" id="item">
+                <div class="swiper-slide">
+                    <ul>
+                        <li>
+                            <a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">
+                                <img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}">
+                            </a>
+                        </li>
+                        <li class="title"><a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">{$item.title}</a></li>
+                        <li>
+                            <a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">{$item['price']*100}积分</a>
+                        </li>
+                    </ul>
+                </div>
+            </volist>
+        </div>
+    </div> 
+</volist>
+<input id="nvaNum" type="hidden" value="2">
+<include file="Public/bottom"/>  
+<script>
+    var swiper = new Swiper('.swiper-container2', {
+        slidesPerView: "auto",
+        paginationClickable: true,
+        spaceBetween: 8,
+        freeMode : true,
+        slidesOffsetBefore: 3,
+        slidesOffsetAfter: 3
+    });
+</script>
+</body>
+</html>

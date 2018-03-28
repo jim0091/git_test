@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>festival-福利更简单</title>
+	<link rel="shortcut icon" href="{$STATIC}/images/icon/bitbug_favicon.ico">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/public.css"> 
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/twostyle.css">
+</head>
+<body>
+	<div class="header2_wrap">
+		<div class="header2 mauto">
+			<div class="header2_link1 fl">
+				<notempty name="comName">
+					<span class="lishe_sp fl">{$comName}</span>
+				</notempty>
+				<empty name="uid">
+					<span class="lishe_sp2 fl">未登录</span>
+				<else /> 
+					<span class="lishe_sp2 fl">{$userName}</span>
+				</empty> 
+				<a href="/" class="link_a fl">首页</a>
+				<a href="/shop.php" class="link_a fl">心意商城</a>
+			</div>
+			<div class="header2_link2 fr">
+				<empty name="uid">
+					<a href="__APP__/Sign/index" class="ls_sp quit">登录</a>
+				<else /> 
+					<span class="ls_sp account">账户余额<b class="clon">:</b><em>¥{$deposit|number_format=2}</em></span>
+				</empty> 
+				<a href="/shop.php/Order/Cart" class="ls_sp shopingCart">购物车(<em class="cartNumber">0</em>)</a>
+				<notempty name="uid">
+					<a href="{:U('Sign/logout')}" class="ls_sp quit">退出登录</a>
+				</notempty> 
+			</div>
+		</div>
+	</div>
+	<div class="content_wrap mauto">
+		<div class="content ">
+			<div class="banner">
+				<div class="banner_main">
+					<div class="banner_cont mauto">
+						<div class="banner_cont_text"><em>￥</em>{$catContent}</div>
+						<div class="banner_cont_info mauto">超值优惠礼包专区</div>
+					</div>
+				</div>
+			</div>
+			
+			<volist name="aitems" id="aitem" key="n">
+				<div class="packs fl">
+					<div class="packs_tit ">
+						<div class="tit_cont mauto"><img src="{$STATIC}/images/icon/s_icon.png">组合套装{$n}</div>					
+					</div>
+					<ul class="packs_list fl">
+						<volist name="skuArr[$aitem['aitem_id']]" id="sku">
+							<php>$itemId = $skuItemMap[$sku['sku_id']];</php>
+							<li class="img_list fl"><img src="{$itemPicMap[$itemId]}" alt="" onclick="window.open('{:U('Info/index',array('itemId'=>$itemId))}')" style="cursor:pointer"></li>
+						</volist>
+					</ul>
+					<div class="buy_info fl">
+						<div class="price fl">
+							<em>￥</em>
+							<span class="price_big  fl">{$aitem['price']|intval}</span>
+							<span class="price_sma fl">.00</span>
+							<span class="price_mon price_com fl ">￥{$aitem['shop_price']}</span>
+							<span class="price_goods price_com  fl">合计{$aitem['itemCount']|default=0}件商品</span>
+						</div>
+						<div class="buy_car fr">
+							<a class="add_car active fl" aitemid="{$aitem['aitem_id']}"  href="javascript:void(0);">加入购物车</a>
+							<a class="at_car  fl" aitemid="{$aitem['aitem_id']}" href="javascript:void(0);">立即购买</a>
+						</div>
+					</div>
+				</div>
+			</volist>
+		</div>
+		
+		<div class="pendant">
+			<div class="pen-list pen-first pen-active" onclick="window.location.href='/shop.php'" style="cursor:pointer">心意商城</div>
+			<div class="pen-list"  onclick="window.location.href='/shop.php/Order/Cart'" style="cursor:pointer">购物车<a class="num_icon cartNumber">0</a></div>
+			<div class="pen-list" id="goTop" style="cursor:pointer">TOP</div>
+		</div>
+	</div>
+	<div style="height: 60px;"></div>
+<script type="text/javascript" src="{$STATIC}/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+	$('#goTop').click(function(){
+			$('html,body').animate({
+					scrollTop:0 + 'px'
+			},200);
+	});
+	
+	$('.add_car').click(function(){
+		var aitemid = $(this).attr('aitemid');
+		addCarts(aitemid,'add');
+	});
+	$('.at_car').click(function(){
+		var aitemid = $(this).attr('aitemid');
+		addCarts(aitemid,'buy');
+	});
+	function addCarts(aitemId,type){
+    	$.get('__APP__/Activity/aitemAddCart',{aitemId:aitemId},function(data){
+    		if(data['code'] == 0){
+    			alert(data['msg']);
+    		}else if(data['code'] == 1){
+    			updateCartNum();
+    			if(type == 'add'){
+    				alert("成功加入购物车!");
+    			}else if(type == 'buy'){
+    				window.location.href = "/shop.php/Order/Cart";
+    			}
+    		}else if(data['code'] == 3){
+    			alert(data['msg']);
+    			window.location.href = '/shop.php/Sign/index';
+    		}
+    	});		
+	}
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Info/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $(".cartNumber").text(data);
+            }
+        });
+	}
+	
+	updateCartNum();
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+		<form action="__SELF__" method="get" id="serach">
+			<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+			<div class="product-tools">
+				<div class="search">
+					<label>下单时间：</label>
+					<label>
+				<input type="text" onfocus="WdatePicker()"  name="cStart" value="{$search['cStart']}" id="datemin" class="input-text Wdate" style="width:100px;">
+				-
+				<input type="text" onfocus="WdatePicker()" name="cEnd" value="{$search['cEnd']}" id="datemax" class="input-text Wdate" style="width:100px;">					
+					</label>
+					<label>发货时间：</label>
+					<label>
+					<input type="text" onfocus="WdatePicker()" name="pStart" value="{$search['pStart']}" id="datemin" class="input-text Wdate" style="width:100px;">-
+					<input type="text" onfocus="WdatePicker()" name="pEnd" value="{$search['pEnd']}" id="datemax" class="input-text Wdate" style="width:100px;">
+					</label>
+					<label>供应商：</label>
+					<label>
+					<input type="text"  value="" id="supKeyword"  placeholder="供应商关键字再选择" style="width:140px" class="input-text"  >						
+					<select name="supplierId" class="select-box" style="width:180px;" id="suppliers">
+						<option value="0">全部</option>
+						<volist name="supplierAll" id="supplier">
+							<option value="{$supplier.supplier_id}"  <eq name="search.supplierId" value="$supplier.supplier_id">selected="selected"</eq> >{$supplier.company_name}</option>
+						</volist>
+					</select>						
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<!--//全部订单才显示该条件-->
+					<eq name="Think.ACTION_NAME" value="all">
+						<label>订单状态：</label>
+						<label><select class="select-box" name="orderStatus" style="width:100px;">
+						<option value="all" <eq name="search['orderStatus']" value="all">selected="selected"</eq> >全部</option>
+						<option value="WAIT_SELLER_SEND_GOODS" <eq name="search['orderStatus']" value="WAIT_SELLER_SEND_GOODS">selected="selected"</eq> >待发货</option>						
+						<option value="WAIT_BUYER_CONFIRM_GOODS" <eq name="search['orderStatus']" value="WAIT_BUYER_CONFIRM_GOODS">selected="selected"</eq> >待收货</option>						
+						<option value="WAIT_COMMENT" <eq name="search['orderStatus']" value="WAIT_COMMENT">selected="selected"</eq> >待评价</option>						
+						<option value="TRADE_FINISHED" <eq name="search['orderStatus']" value="TRADE_FINISHED">selected="selected"</eq> >已完成</option>
+						</select>
+						</label>
+					</eq>
+					<!--//全部订单才显示该条件-->					
+					<label>商品名称：</label>
+					<label>
+					<input type="text" name="title" value="{$search['title']}"  placeholder="商品名称" style="width:150px" class="input-text"  >						
+					</label>
+					<label>关&nbsp;&nbsp;键&nbsp;&nbsp;字：</label>
+					<label>
+					<input type="text" name="keyword"  placeholder="订单号/收件人手机、姓名/支付单号" style="width:200px" class="input-text" value="{$search['keyword']}" >
+					</label>	
+					<label>商城单号：</label>
+					<label>
+					<input type="text" name="tid"  placeholder="商城订单号" style="width:160px" class="input-text" value="{$search['tid']}" >
+					</label>					
+					<button onclick="serach()" class="btn btn-success radius" ><i  class="Hui-iconfont">&#xe665;</i> 搜索</button>						
+					</label>					
+				</div>
+			</div>
+			</form>	

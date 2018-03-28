@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+/*加载更多页面*/
+
+/*END*/
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+.layout{background:#d2f5fd; margin-top:-7px;}
+.pt{ text-align:center; padding-top:30px;}
+.eat-pt{width:1000px; margin:0 auto; text-align:center; padding-top:50px;}
+.eat-pt p{color:#0a0909; font-size:12px; padding-top:20px; line-height:25px;}
+.more-ul{width:1000px; margin:0 auto;}
+.more-ul ul{float:left; background:#FFF; border:#CCC solid 1px; height:260px;width:175px; margin:10px 10px;}
+.more-ul img{width:175px; height:175px;}
+.eat-li{margin-top:8%;}
+.eat-li a{font-size:12px; color:#000000; padding-left:5px;}
+.eat-li2 {font-size:11px; color:#999999; padding-left:5px; text-decoration:line-through;}
+.eat-li2 span{font-weight:bold; font-size:11px; padding-right:5px;}
+.eat-sp{font-size:12px; color:#c7241d;font-weight:bold; padding-left:5px; float:left}
+.eat-sp span{font-size:15px;}
+.eat-sp2{ float:right; padding-right:5px;}
+.eat-sp2 a{color:#FFF; background:#c7241d; padding:3px 8px;border-radius:5px;}
+.eat-lib a{font-size:12px; color:#000000; padding-left:5px;}
+
+/*导航*/
+.wec{font-size:16px; background:url(../images/cp.png) no-repeat; width:120px; height:50px;}
+.wec a{font-size:16px; color:#FFF; line-height:50px;}
+/*.yu{font-size:16px;width:120px; height:30px; padding:5px 0;margin:5px 0;}
+.yu a{font-size:16px; color:#FFF; line-height:30px;}
+.yu:hover{background:#74b6d7; width:120px; height:30px;}*/
+
+.yu3{font-size:22px;}
+.yu4 img{border:none;}
+.yu5{background-color:#1a96d3; margin-top:-5px; padding:5px 0;}
+.side-bar{width:120px;position:fixed;right:7%;top:200px;text-align:center;color:#FFFFFF;font-size:14px;border-radius:6px; z-index:10;}
+.sb-cell span{display:block;margin-bottom:2px;}
+.side-sprite{background:url(../images/cpLogo.png) no-repeat; width:149px; height:120px; position:absolute; top:-22%; z-index:-1;}
+@media (max-width: 1366px){.side-bar{width:120px;position:fixed;right:2%;top:200px;background-color:#1a96d3;text-align:center;color:#FFFFFF;font-size:14px;border-radius:6px;}
+}

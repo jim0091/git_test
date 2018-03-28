@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Wshoppingcart.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>购物车-心意商城</title>
+<style type="text/css">
+.market{position: relative;}
+.marketIcon{position: absolute;top: 1px;left: 1px;width: 40% !important;z-index: 66;border: none !important;border-radius: 0px !important;}
+</style>
+</head>
+
+<body>
+	<div class="Worders">
+		<span><a onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+		<span>购物车</span>
+	</div>
+	<!--商品列表-->
+	<notempty name="shopInfo">
+	<volist name="shopInfo" id="shopID">
+	<div class="shoppList">
+		<p class="shallp">
+			<input type="checkbox" id="checkbox_shop{$shopID['shop_id']}" class="chk_1 shopCheckbox currShopItem_{$shopID['shop_id']} cheShopId{$shopID['shop_id']}" value="{$shopID['shop_id']}" data-story-writer="1"/>
+			<label for="checkbox_shop{$shopID['shop_id']}"></label>
+			<img src="__VIEW__Public/images/orderhead.png">{$shopID['shop_name']}
+		</p>
+		<!--列表循环-->
+		<volist name="cartInfo" id="cart">
+        <if condition="$shopID['shop_id'] eq $cart['shop_id']">
+		<div class="shoppdiv">
+			<div class="shopLeft">
+				<span>
+					<input type="checkbox" id="checkbox_a{$cart.cart_id}" data='common' class="chk_2 itemCheckbox ItemSelect_{$cart['shop_id']} cartId{$cart.cart_id}" data-shopId="{$cart['shop_id']}" data-cartId="{$cart['cart_id']}" value="{$cart.cart_id}" <if condition="$cart['isFreez'] eq 33"><if condition="($cart['cash'] eq 0) AND ($cart['point'] eq 0)">data-story-writer='0'<else/>data-story-writer="1"</if><else/>data-story-writer='0'</if>  <if condition="$cart['itemStatus'] eq 'onsale'">data-novelist="onsale"<else/>data-novelist="instock"</if> data-activityType="{$cart.type}" data-maxNum ="{$cart.maxNum}" data-aitemId= "{$cart.aitem_id}"/>
+					<label for="checkbox_a{$cart.cart_id}"></label>
+				</span>
+				<span class="market"><a href="{:U('/Info/index/itemId/'.$cart['item_id'])}">
+					<img src="{$cart.image_default_id}_m.{:end(explode('.',$cart['image_default_id']))}"></a>
+                    <if condition="$cart.type eq 1">
+                        <img src="__VIEW__Public/images/miaosha.png" class="marketIcon">
+                    <elseif condition="$cart.type eq 2"/>
+                           
+                    <elseif condition="$cart.type eq 3"/>
+                           
+                    <elseif condition="$cart.type eq 4"/>
+                        <img src="__VIEW__Public/images/tuangou.png" class="marketIcon">
+                    <elseif condition="$cart.type eq 5"/>
+                        <img src="__VIEW__Public/images/yushou.png" class="marketIcon">
+                    <elseif condition="$cart.type eq 7"/>
+                        <img src="__VIEW__Public/images/zuhegou.png" class="marketIcon">
+                    <else/>
+                    </if>                        
+				</span>
+			</div>
+			<div class="shopRight">
+				<p>
+					<span class="shopspan">
+						<a href="{:U('/Info/index/itemId/'.$cart['item_id'])}">{$cart['title']}</a>
+					</span>
+					<span class="shoppt">
+						<img class="delItem" data-cartId="{$cart['cart_id']}" src="__VIEW__Public/images/deleteIcon.png">
+					</span>
+				</p>
+				<p style="color:#999; font-size:0.9rem; overflow:hidden; margin-bottom:0.8rem;">
+					<span><a href="#">{$cart['spec_info']}</a></span>
+					<span class="itemIsFreez_{$cart['cart_id']}" style="float:right; color:#FF4138;">
+						<if condition="$cart['itemStatus'] eq 'onsale'">
+							<if condition="$cart['isFreez'] eq 33"><else/>无货</if>
+						</if>
+                        <if condition="$cart['itemStatus'] neq 'onsale' OR ($cart['cash'] eq '0.000') AND ($cart['point'] eq 0)">
+                            已下架
+                        </if>
+                        <if condition="($cart['cash'] eq '0.000') AND ($cart['point'] eq 0)">
+                            已下架
+                        </if>
+                        <if condition="$cart['maxNum'] eq 1">
+                            超过购买限制
+                        </if>
+					</span>
+				</p>
+                <div style="overflow:hidden;">
+                    <p class="pointprice">
+                        <a href="#"><!--{$cart['price']*100}积分-->
+                            <switch name="cart['payType']">
+                                <case value="1">¥{:round($cart['cash'], 2)} + {$cart['point']}积分</case>
+                                <case value="2">¥{:round($cart['price'], 2)}</case>
+                                <case value="3">¥{:round($cart['cash'], 2)}</case>
+                                <case value="4">{$cart['point']}积分</case>
+                                <default />
+                            </switch>
+                        </a>
+                    </p>
+                    <p class="gw_num">
+                        <em class="jian <if condition='$cart.type neq 7'>descNumClick</if>" style="<if condition='$cart.quantity eq 1'>color:#d5d5d5;</if>" data-cartId="{$cart.cart_id}" data-shopId="{$cart['shop_id']}">-</em>
+                        <input type="text" value="{$cart.quantity}" disabled="disabled" class="num" id="num_{$cart.cart_id}" />
+                        <input type="hidden" id="sku_{$cart.cart_id}" value="{$cart.sku_id}" />
+                        <em class="add <if condition='$cart.type neq 7'>ascNumClick</if>" data-cartId="{$cart.cart_id}">+</em>
+                    </p>
+                </div>
+			</div>
+		</div>
+		</if>
+		</volist>
+	</div>
+	</volist>
+	</notempty>
+
+<!--结算-->
+<div class="ordersPay">
+	<ul>
+		<li class="Paybtn"><a href="javascript:void();" class="getOrderResult">去支付<span class="totallNum">(0)</span></a></li>
+		<li class="totalled">合计:<span class="tatq">0</span><br/><span class="tatq2">不含运费</span></li>
+		<li>
+			<input type="checkbox" id="checkbox_all" class="chk_3 CheckedAll" data-story-writer="1" />
+			<label for="checkbox_all" ></label>全选
+		</li>
+	</ul>
+</div>
+<include file="Public/popuLoading"/>
+<include file="Public/popuLayer"/>  
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//加的效果
+		$(".ascNumClick").click(function(){
+			$(".topLoading").show();
+			var n=$(this).prev().val();			
+            var cartId=$(this).attr('data-cartId');
+            var cartNum=$('#num_'+cartId).val();
+            var sku_id=$('#sku_'+cartId).val();
+			$.get("__APP__/Cart/opCart/op/inc/cartId/"+cartId+"/num/"+cartNum+"/sku_id/"+sku_id, function(result){
+                $(".topLoading").hide();
+                var res = eval(result);
+                if(res[0] == 1){
+                	if (res[2] == 34) {
+	                	opLayer('open',res[1]);
+	                    return false;                		
+                	};
+                }
+                var newNum = parseInt(cartNum) + 1;
+				$('#num_'+cartId).val(newNum);
+
+                var selectCartIds='';
+                $(".itemCheckbox").each(function(){
+                    if($(this).prop('checked')==true){
+                        selectCartIds += $(this).val() + ',';
+                    }         
+                });
+                if ( selectCartIds != '') {
+                	getCartId(selectCartIds); 
+                };         
+			});
+		});
+		//减的效果
+		$(".descNumClick").click(function(){
+			$(".topLoading").show();
+			var n=$(this).prev().val();			
+            var cartId=$(this).attr('data-cartId');
+            var shopId=$(this).attr("data-shopId");
+            var cartNum=$('#num_'+cartId).val();
+            var sku_id=$('#sku_'+cartId).val();
+            if (cartNum < 2) {
+            	opLayer('open',"无法再减了！");
+				$(".topLoading").hide();
+            	return false;
+            };
+			$.get("__APP__/Cart/opCart/op/dec/cartId/"+cartId+"/num/"+cartNum+"/sku_id/"+sku_id, function(result){
+                $(".topLoading").hide();
+                var res = eval(result);
+                if(res[0] == 1){
+                	if (res[2] == 33) {
+                		$(".itemIsFreez_"+cartId).hide();
+                        $(".cartId"+cartId).attr("data-story-writer",1);
+                        $(".cheShopId"+shopId).attr("data-story-writer",1);
+                        $(".CheckedAll").attr("data-story-writer",1);
+                	};
+                }
+                var newNum = parseInt(cartNum) - 1;
+                if (newNum == 1) {
+                	$(this).css("color","#d5d5d5");
+                };
+				$('#num_'+cartId).val(newNum);               
+
+                var selectCartIds='';
+                $(".itemCheckbox").each(function(){
+                    if($(this).prop('checked')==true){
+                        selectCartIds += $(this).val() + ',';
+                    }
+                    if ($(this).attr('data-story-writer') == 0) {
+                        $(".CheckedAll").attr("data-story-writer","0");
+                    };         
+                });         
+                if ( selectCartIds != '') {
+                	getCartId(selectCartIds); 
+                }; 
+			});
+		});
+	});
+    //验证是否有不同活动类型的特殊商品
+    function checkSpecial(activityTypes){
+        var arr = activityTypes.substring(0,$.trim(activityTypes,'').length-1).split(',');
+        for(var i in arr){
+            if (arr[0] != arr[i]) {
+                if ((arr[0] != '7' || (arr[i] !='0' && arr[i] != '1')) && (arr[0] != '0' || (arr[i] !='7' && arr[i] != '1')) && (arr[0] != '1' || (arr[i] !='0' && arr[i] != '7'))) {               
+                    opLayer('open',"团购、预售等特殊订单无法同时下单，请单独选择！");
+                    $(".topLoading").hide(); 
+                    return false;
+                };
+            };
+            if (arr[0] == '4' && arr[1] == '4') {                  
+                opLayer('open',"团购、预售等特殊订单无法同时下单，请单独选择！");
+                $(".topLoading").hide(); 
+                return false;                    
+            };
+
+        }
+    }
+    //选中对应组合购的商品
+    function checkedZHG(aitemIds,isChecked){
+
+        var arr = aitemIds.substring(0,$.trim(aitemIds,'').length-1).split(',');
+        var tmp = new Array(); 
+        for(var m in arr){
+            tmp[arr[m]]=1;
+        }
+        //再把键和值的位置再次调换
+        var tmparr = new Array(); 
+        for(var n in tmp){
+            tmparr.push(n);
+        }
+        for(var i in tmparr){            
+            $("input[data='common']").each(function(){
+                if (tmparr[i] != '0') {
+                    if ($(this).attr('data-aitemId') == tmparr[i]) {
+                        if (isChecked == true) {
+                            $(this).prop('checked',true);
+                        }else{
+                            $(this).prop('checked',false);
+                        }                        
+                    }; 
+                }                 
+            });            
+            var shopIds = '';
+            $('.shopItemSelect').each(function(){
+                shopIds += $(this).val() + ',';
+            });
+            var shopIdArr = shopIds.substring(0,$.trim(shopIds,'').length-1).split(',');
+            for(var n in shopIdArr){
+                checkboxShop(shopIdArr[n]);
+            } 
+        };
+    }
+    //选中店铺复选框
+    function checkboxShop(shopId){
+        var isChecked = 1;
+        $('.ItemSelect_'+shopId).each(function(){
+            if ($(this).prop('checked') == false) {
+                 isChecked = 0;
+            };
+        });
+        if (isChecked == 1) {
+            $('.cheShopId'+shopId).prop('checked',true);
+        }else{
+            $('.cheShopId'+shopId).prop('checked',false);
+        }
+    }
+	//删除购物车信息
+	$(".delItem").click(function(){
+		if(window.confirm('您确认删除购物车中商品吗')){
+        	var deleCartId=$(this).attr("data-cartId");
+        	$.post("{:U('Cart/deleteCartId')}",{cartId:deleCartId},function(res){
+        		var data = eval(res);
+                if(data[0] == 1){
+                    window.location.reload();
+                }else{
+                	opLayer('open','购物车商品删除失败！');
+                }
+        	});
+    	}
+	});
+
+	function getCartId(cartIds){		
+        $.get("{:U('Cart/getSelectPrice')}",{cartIds:cartIds},function(res){
+        	var data = eval(res);
+            if(data[0] == 1){
+                $('.totallNum').text("("+data[1]+")");
+                //$('.tatq').text(data[2]);
+                var totalPrice = '';
+                if(data[2] > 0 && data[3] > 0){
+                    totalPrice = "¥" + data[2] + " + " + data[3] + "积分";
+                }else{
+                    if(data[2] > 0){
+                        totalPrice = "¥" + data[2];
+                    }else{
+                        totalPrice = data[3] + "积分";
+                    }
+                }
+                $('.tatq').text(totalPrice);
+            }else{
+                $('.totallNum').text('(0)');
+                $('.tatq').text('0');
+            }
+        });
+    }
+    itemCount = $(".itemCheckbox").size();
+	//选中商品
+	$(".itemCheckbox").click(function(){
+		var shopId = $(this).attr("data-shopId");
+        var athis = $(this);
+		var shopItemsNum=$('.ItemSelect_'+shopId).size();
+        var aitemId = $(this).attr('data-aitemId');
+		var shopSelectItemNum = 0;
+        var selectItemNum = 0;
+        var xy = 0;
+        var selectCartIds="";
+        var activityTypes = '';
+        $(".itemCheckbox").each(function(){
+            //组合购
+            if (athis.prop('checked') == true) {                    
+                if ($(this).attr('data-aitemId') == aitemId && $(this).attr('data-aitemId') != 0) {
+                    $(this).prop('checked',true);
+                    selectCartIds += $(this).val() + ',';
+                    xy = parseInt(xy) + 1;
+                    checkboxShop($(this).attr('data-id'));
+                };
+            }else{
+                if ($(this).attr('data-aitemId') == aitemId && $(this).attr('data-aitemId') != 0) {
+                    $(this).prop('checked',false);
+                    checkboxShop($(this).attr('data-id'));
+                };
+            } 
+            if ($(this).prop('checked')==true) {
+                activityTypes += $(this).attr('data-activityType') + ',';
+                //验证是否有不同活动类型的特殊商品
+                if(checkSpecial(activityTypes) == false){
+                    athis.prop('checked',false);
+                    return false;
+                };
+                selectItemNum += 1;
+                selectCartIds += $(this).val() + ',';
+            };
+        });
+		$(".ItemSelect_"+shopId).each(function(){
+			if ($(this).prop('checked')==true) {
+				shopSelectItemNum += 1;
+			};
+		});
+		if (shopItemsNum == shopSelectItemNum) {
+			$('.currShopItem_'+shopId).prop('checked',true);
+		}else{
+			$('.currShopItem_'+shopId).prop('checked',false);
+		}
+		if (itemCount == selectItemNum) {
+			$('.CheckedAll').prop('checked',true);
+		}else{
+			$('.CheckedAll').prop('checked',false);
+		}
+        getCartId(selectCartIds);
+	});
+	//选中店铺
+    var shopCount=$('.shopCheckbox').size();
+	$(".shopCheckbox").click(function(){
+        var athis = $(this);  
+		var shopId = $(this).val();   
+        var activityTypes =''; 
+        var aitemId = ''; 
+        $(".ItemSelect_"+shopId).each(function(){
+            activityTypes += $(this).attr('data-activityType') + ',';
+            console.log(activityTypes);
+            aitemId +=$(this).attr('data-aitemId') + ',';
+            //验证是否有不同活动类型的特殊商品
+            if(checkSpecial(activityTypes) == false){
+                athis.prop('checked',false);
+                return false;
+            }; 
+        }); 
+        var aTypes = '';
+        var isTS = 0;
+        $("input[data='common']:checked").each(function(){
+            aTypes += $(this).attr('data-activityType') + ','+activityTypes;
+            //验证是否有不同活动类型的特殊商品
+            if(checkSpecial(aTypes) == false){
+                athis.prop('checked',false);
+                isTS = 1;
+                return false;
+            };
+        });  
+        if($(this).prop('checked')==true){  
+            $('.ItemSelect_'+shopId).prop('checked',true);                    
+        }else{
+            if (isTS == 0) {
+                $('.ItemSelect_'+shopId).prop('checked',false); 
+            };          
+        }
+        if (isTS == 0) {
+            checkedZHG(aitemId,athis.prop("checked")); 
+        };
+        var selectShopNum = 0;
+        var selectCartIds='';
+        $(".shopCheckbox").each(function(){       
+            if($(this).prop('checked')==true){
+              selectShopNum += 1;   
+            }
+            if(selectShopNum==parseInt(shopCount)){
+                $(".CheckedAll").prop('checked',true);
+            }else{
+            	$(".CheckedAll").prop('checked',false);
+            }
+            var getShopId=$(this).val();
+            $(".ItemSelect_"+getShopId).each(function(){
+                if($(this).prop('checked')==true){
+                    selectCartIds += $(this).val() + ',';
+                }
+            });
+        });
+        getCartId(selectCartIds);
+	});
+	//选中所有
+	$(".CheckedAll").click(function(){
+        var selectCartIds='';
+        var activityTypes ='';
+        if($(this).prop('checked')==true){
+            $(".itemCheckbox").each(function(){
+                activityTypes += $(this).attr('data-activityType') + ',';
+                selectCartIds += $(this).val() + ',';
+            }); 
+            //验证是否有不同活动类型的特殊商品
+            console.log(activityTypes);
+            if(checkSpecial(activityTypes) == false){
+                return false;
+            };
+            $(".shopCheckbox").prop('checked',true);  
+            $(".itemCheckbox").prop('checked',true);          
+            
+        }else{
+            $(".shopCheckbox").prop('checked',false);  
+            $(".itemCheckbox").prop('checked',false); 
+            $(this).prop('checked',false);
+        }
+        getCartId(selectCartIds);
+    });
+
+    // 结算
+    $('.getOrderResult').click(function(){
+        $(".topLoading").show();
+        var selectCartStr='';
+        $(".itemCheckbox").each(function(a1,b1){
+            if($(this).prop('checked')==true){
+                selectCartStr += $(this).val() + ',';                                              
+            }
+        }); 
+        var isStore = 1;
+        var isStatus = 1;
+        var maxNum = 1;
+        $(".shoppList").find(".itemCheckbox").each(function(){
+            if ($(this).attr("data-story-writer") == 0 && $(this).is(':checked') == true) {
+                isStore = 0;                    
+            } 
+            if ($(this).attr("data-novelist") == 'instock' && $(this).is(':checked') == true) {
+                isStatus = 0;                    
+            }  
+            if ($(this).attr("data-maxNum") == '1' && $(this).is(':checked') == true) {
+                maxNum = 0;                    
+            }         
+        });
+        if (isStore == 0 ) {
+            opLayer('open','选中的商品库存不足！');
+            $(".topLoading").hide();
+            return false;            
+        };
+        if (isStatus == 0 ) {
+            opLayer('open','选中的商品已下架！');
+            $(".topLoading").hide();
+            return false;            
+        };
+        if (maxNum == 0) {
+            opLayer('open','选中的商品超过限制购买数量！');
+            $(".topLoading").hide();
+            return false; 
+        };
+        if(selectCartStr==''){
+            opLayer('open','请先勾选需要购买的商品！');
+            $(".topLoading").hide();
+            return false;
+        }else{
+            window.location.href="__APP__/Order/order/itemList/"+selectCartStr;
+        }            
+    });
+
+</script>
+</body>
+</html>

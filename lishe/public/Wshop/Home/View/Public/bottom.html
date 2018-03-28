@@ -1,0 +1,23 @@
+
+<link href="__VIEW__Public/css/navfoot.css" rel="stylesheet">	
+    <div style="clear:both;"></div>
+    <!--悬浮导航-->
+    <div class="Wmallsfixedfoot">
+        <ul class="Wmallsfixedfootul">
+            <li class="activefoot"><a href="{:U('Home/Index/index')}"><p class="glyphicon-bell"></p><p>首页</p></a></li>
+            <li><a href="{:U('Home/Itemlist/classifyList')}"><p class="glyphicon-ok"></p><p>分类</p></a></li>
+            <li><a href="{:U('Home/Itemlist/itemRecommend')}"><p class="glyphicon-adjust"></p><p>礼舍推荐</p></a></li>
+            <li><a href="{:U('User/userCenter')}"><p class="glyphicon-barcode"></p><p>个人中心</p></a></li>
+        </ul>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        var navNum =$("#nvaNum").val();
+        if ($("#nvaNum").length > 0) {
+            $(".Wmallsfixedfootul li").removeClass("activefoot");
+            $(".Wmallsfixedfootul li").eq(navNum).addClass("activefoot");
+        }else{
+            $(".Wmallsfixedfootul li").eq(0).addClass("activefoot");
+        }
+    });
+</script>

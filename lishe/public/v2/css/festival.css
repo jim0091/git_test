@@ -1,0 +1,47 @@
+﻿@charset "utf-8";
+body{background: #ffffff;}
+img{vertical-align: top;}
+.header_banner img{width: 100%;min-width: 1092px;}
+.festival_text1{margin-top: 57px;text-align: center;color: #333333;}
+.festival_text1_con{padding-top: 32px; width: 944px;font-weight: 500;line-height: 28px;}
+.festival_text_btn{margin-top: 70px; width: 188px;height: 48px;line-height: 48px;font-size: 24px;border-radius: 10px; border:1px solid #000000;}
+.festival_text1_p2{width: 944px;line-height: 1;margin-top: 20px;}
+/*banner切换*/
+.banner_tab_content{margin-top: 40px; width: 1092px;}
+.con_btn_wrap{width: 1092px;height: 60px;}
+.tab_btn_list1{width: 1092px;height: 60px;border-radius: 10px 10px 0 0;}
+.tab_btn_list1 > li{float: left; width: 156px;height: 60px;line-height: 60px;color: #fff;text-align: center;font-size: 20px;background: #ffa09b;cursor: pointer;transition: .3s;}
+.tab_btn_list1 > li > img{vertical-align: middle;margin-right: 10px;}
+.tab_btn_list1 > li:hover,.tab_btn_list1 > li.active{margin-top: -20px; height: 80px;line-height: 80px;background:#ff4138;}
+.tab_btn_list1 > li:nth-child(1){border-radius: 10px 0 0 0;}
+.tab_btn_list1 > li:nth-child(7){border-radius: 0 10px 0 0;}
+.tab_btn_list1 > li:nth-child(1) > img{position: relative;top: -5%;}
+.banner_list,.banner_list>ul>li{position: relative; width: 1092px;height: 500px;overflow: hidden;}
+.banner_list>ul>li{display: none; position: absolute;top: 0;left: 0;}
+.banner_list>ul>li .festival_banner_list{width: 1092px;height: 500px;}
+.festival_text2{margin-top: 65px;}
+/*banner2切换*/
+.banner_tab_content2{margin-top: 73px;position: relative;}
+.festival_banner2>li{display: none; position: absolute;top: 0;left: 0;z-index: 10;}
+.festival_banner2>li .festival_banner2_img{width: 100%;min-width: 1092px;}
+.banner_sidebar_wrap{position: relative;top: 0;z-index: 100; width: 1092px;height: 100%;}
+.banner_sidebar{width: 400px;background: rgba(255,255,255,.6); height: 100%;}
+.b2_btn_list{margin-top: 38%; overflow: hidden;}
+.b2_btn_list .b2_btn{display: block;margin-left: auto;margin-right: auto;margin-bottom: 20px; width: 248px;height: 56px;line-height: 56px;border-radius: 10px; border:1px solid #333333;color: #333333;text-align: center;font-size: 24px;cursor: pointer;transition: .3s;}
+.b2_btn_list .b2_btn.active{border:1px solid #ff4138;color: #fff;background: #ff4138;}
+.banner_sidebar .sidebar_text{display: none;text-indent: 30px; margin-top: 5px; width: 257px;font-size: 16px;color: #ff4138;}
+/*礼舍优势*/
+.lishe_content{height: 705px;width: 100%;background: #f5f5f5;}
+.lishe_con_tit{padding-top: 70px;text-align: center;}
+.lishe_con_item{margin-top: 67px; width: 1160px;}
+.lishe_con_item > ul >li{float: left;transition: .5s; margin-right: 20px; width: 273px;height: 398px;border:1px solid #cccccc;border-radius: 10px;text-align: center;background: #fff;}
+.lishe_con_item > ul >li .lishe_con{padding: 40px 0 23px;}
+.lishe_con_item > ul >li:hover{box-shadow: 0px 15px 25px rgba(0,0,0,0.1);transform:translateY(-20px);-webkit-transform:translateY(-20px);}
+.lishe_con_item > ul >li > p{font-size: 16px;color: #666666;line-height: 28px;}
+/*来自客户的声音*/
+.sound_content{width: 100%;height: 685px;background: url(../images/shutterstock_1547605221.png) no-repeat;text-align: center;}
+.sound_content .sound_tit{padding-top: 50px;}
+.sound_content .sound_text{padding-top: 35px;}
+
+
+

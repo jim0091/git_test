@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/page.css">
+          
+     <volist name="news" id="vo" offset="0" length='1'>
+
+          <ul>
+              <li class="imgs"><img src="{$img}{$vo.pic}"></li>
+              <li class="itp">{$vo.title}</li>
+              <li class="itp2">{$vo.abstract}<span><a href="{:U('Home/Index/coverageDetail',array('newsId'=>$vo['news_id'],'type'=>1))}">[详细]</a></span></li>
+              <li class="itp3">发布时间：{$vo.creat_time}</li>
+            </ul>
+    </volist>    
+    
+            <div style="clear: both;width:100%;"></div>
+         <div class="IRig-bom">
+     <volist name="news" id="vo" offset="1">
+		<a href="{:U('Home/Index/coverageDetail',array('newsId'=>$vo['news_id'],'type'=>1))}"> 
+            <ul>
+              <li><img src="{$img}{$vo.pic}"></li>
+              <li class="itb">{$vo.title}</li>
+              <li class="itb2">{$vo.abstract}</li>
+              <li class="itb3">发布时间：{$vo.creat_time}</li>
+            </ul>
+    	</a>
+	</volist>
+            <p class="newMore pager">{$pagestr}</p>
+            
+	</div>

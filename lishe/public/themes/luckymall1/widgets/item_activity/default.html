@@ -1,0 +1,235 @@
+<!--
+<div class="module-hd"><{$setting.class_name}><span><{$setting.class_detail}></span></div>
+<div class="module-bd daily-promotion clearfix">
+  <ul>
+    <{foreach from=$setting.data item=item}>
+    <li>
+      <div class="promotion-type hui"><{$item.activity_tag}></div>
+      <div class="thumb"><a href="<{url action=topc_ctl_item@index item_id=$item.item_id}>"><img src="<{$item.item_default_image}>" width="121" height="121" alt="<{$item.title}>"></a></div>
+      <div class="caption">
+        <h2><a href="<{url action=topc_ctl_item@index item_id=$item.item_id}>"><{$item.title}></a></h2>
+        <div class="get-promotion" >
+          <div class="promotion-price">
+            <div class="old-price"><{$item.price|cur}></div>
+            <div class="new-price">秒杀价<br><span class="price-num"><{$item.activity_price|cur}></span></div>
+          </div>
+          <a href="<{url action=topc_ctl_item@index item_id=$item.item_id}>" class="promotion-buy">
+            立即抢<br>GO!
+          </a>
+        </div>
+      </div>
+    </li>
+    <{/foreach}>
+  </ul>
+</div>
+-->
+
+
+        
+<style>
+.row .dailySalePicOne .all {
+  position: relative;
+  padding: 3px 8px;
+}
+.row .dailySalePicOne .dspo-top {
+  text-align: left;
+  padding: 4px 0px 6px 0px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.row .dailySalePicOne .dspo-top img {
+  padding-right: 7px;
+}
+.row .dailySalePicOne .dspo-top span .dspo-top-time {
+  font-size: 12px;
+}
+.row .dailySalePicOne .dspo-top span .dspo-top-time i {
+  margin: 0px 2px;
+}
+.row .dailySalePicOne .dspo-img {
+  height: 78px;
+  width: 100%;
+  position: relative;
+  padding: 6px 0px;
+}
+.row .dailySalePicOne .dspo-title {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  line-height: 15px;
+  margin: 3px 0px;
+  text-align:center;
+}
+.row .dailySalePicOne .dspo-bottom
+ {
+  height: 30px;
+  line-height: 30px;
+  padding-top:12px;
+}
+ .dspo-price {
+  float: left;
+  font-size: 16px;
+  color: #c7241d;
+}
+ .dspo-price i {
+  font-size: 14px;
+}
+ .dspo-original-price {
+  float: left;
+  margin-left: 8px;
+  text-decoration: line-through;
+}
+ .dspo-btn {
+  padding: 0px 10px;
+  font-size: 14px;
+  background: #c7241d;
+  color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  right: 8px;
+}
+
+.topic {
+  height: 261px;
+  margin-top: 27px;
+  margin-bottom: 30px;
+}
+.topic .topicLeft {
+  float: left;
+}
+.topic .topicRight {
+  float: right;
+}
+</style>
+        
+        <div class="row">
+          <{foreach from=$setting.data item=item}>
+            <div class="col-lg-4 dailySalePicOne item-lst">
+              <a href="<{url action=topc_ctl_item@index item_id=$item.item_id}>">
+                <div class="all">
+                    <div class="dspo-top" style="border:0px solid red;">
+                      <img src="./images/index_time_icon.png" alt="">
+                      <span>
+                        <input type="hidden" name="times" class="times" value="<{$item.times}>" />
+                        <{if $item.now_time < $item.start_time }>
+                        距开始：<span class="dspo-top-time"><i>0</i>天<i>0</i>时<i>0</i>分<i>0</i>秒</span>
+                        <{elseif $item.now_time > $item.start_time && $item.now_time < $item.end_time }>
+                        距结束：<span class="dspo-top-time"><i>0</i>天<i>0</i>时<i>0</i>分<i>0</i>秒</span>
+                        <{else}>
+                        已结束
+                        <{/if}>
+                      </span>
+                    </div>
+                    <div class="dspo-img">
+                      <img src="<{$item.item_default_image}>" alt="" style="height: 100%;">
+                    </div>
+                    <div class="dspo-title">
+                      <span><{$item.title}></span>
+                    </div>
+                    <div class="dspo-bottom">
+                      <span class="dspo-price"><i></i><{$item.activity_price*100}>&nbsp;积分</span>
+                      <span class="dspo-btn">
+                          <{if $item.now_time < $item.start_time }>
+                          即将开始
+                          <{elseif $item.now_time > $item.start_time && $item.now_time < $item.end_time }>
+                          立即抢购
+                          <{else}>
+                          查看商品
+                          <{/if}>
+                      </span>
+                    </div>
+                </div>
+              </a>
+            </div>
+          <{/foreach}>
+          <!--
+          <div class="col-lg-4 dailySalePicOne">
+            <a href="#">
+              <div class="all">
+                  <div class="dspo-top">
+                    <img src="./images/index_time_icon.png" alt="">
+                    <span>
+                      距开始：<span class="dspo-top-time"><i>0</i>天<i>19</i>时<i>45</i>分<i>15</i>秒</span>
+                    </span>
+                  </div>
+                  <div class="dspo-img">
+                    <img src="./images/index_time_img.jpg" alt="">
+                  </div>
+                  <div class="dspo-title">
+                    <span>【好吃到爆】波兰FLIS可可夹心饼干95克</span>
+                  </div>
+                  <div class="">>
+                    <span class="dspo-price"><i></i>￥268</span>
+                    <span class="dspo-original-price">￥369</span>
+                    <span class="dspo-btn">即将开始</span>
+                  </div>
+              </div>
+            </a>
+          </div>
+          -->
+          <div class="col-lg-4 dailySalePicOne" style="margin-right: 0px;">
+            <a href="./activity/index.html">
+              <img width="228" height="195" src="./images/index_time_more.png" alt="">
+            </a>
+          </div>
+        </div>
+
+
+<script>
+$(document).ready(function() {
+
+    init();
+});
+
+var init = function() {
+
+    var _item_lst = $('.item-lst');
+
+    // console.log('_item_lst -- : ' + _item_lst.length);
+
+    for (var i = 0; i < _item_lst.length; i++) {
+
+        var _this = _item_lst.eq(i);
+
+        var _index = _item_lst.index(_this);
+        var _times = _this.find('.times').val();
+        // console.log('times -- : ' + _times);
+        // if (_times == null || _times.trim() == '' || _times.trim().length == 0) {
+        if (_times == null || _times == '' || _times.length == 0) {
+            continue;
+        }
+
+        timer(_index, _times);
+    }
+}
+
+var timer = function(_index, _intDiff) {
+
+    window.setInterval(function() {
+
+        var day=0,
+            hour=0,
+            minute=0,
+            second=0;//时间默认值
+
+        if(_intDiff > 0){
+
+            day = Math.floor(_intDiff / (60 * 60 * 24));
+            hour = Math.floor(_intDiff / (60 * 60)) - (day * 24);
+            minute = Math.floor(_intDiff / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(_intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+        }
+
+        if (minute <= 9) minute = '0' + minute;
+        if (second <= 9) second = '0' + second;
+
+        // console.log('day --: ' + day + '; hour --: ' + hour + '; minute -- : ' + minute + '; second -- : ' + second);
+        var _dspo_top_time_i = $('.item-lst').eq(_index).find('.dspo-top-time i');
+        _dspo_top_time_i.eq(0).text(day);
+        _dspo_top_time_i.eq(1).text(hour);
+        _dspo_top_time_i.eq(2).text(minute);
+        _dspo_top_time_i.eq(3).text(second);
+
+        _intDiff--;
+    }, 1000);
+} 
+</script>

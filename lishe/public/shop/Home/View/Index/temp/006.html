@@ -1,0 +1,17 @@
+<div class="banner_item mauto">
+	<ul class="banner_ul">
+		<volist name="info" id="vo">
+		<li class="show_hide" data-stime="{$vo['start_time']}" data-etime="{$vo['end_time']}">
+			<div class="bann_img">
+				<a href="{$vo['refer_link']}" target="_blank">
+					<img src="{$vo['position_pic']}" alt="" />
+				</a>
+			</div>
+			<div class="bann_text">
+				<p class="bp_1">{$vo['position_title']}</p>
+				<p class="bp_2">{$vo['item_price'] * 100}积分</p>
+			</div>
+		</li>
+		</volist>
+	</ul>
+</div>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/gd10086/css/Mobilemalls.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<title>中国移动VIP积分商城</title>
+</head>
+<body>
+    <!--头部-->
+  <include file="Public/gd10086/header" />
+
+  <!--banner-->
+	  <div class="Mbanner2" style="background: url({$tempContent['banner']}) no-repeat center "></div>
+	  <p style="text-align: center;">{$tempContent['content']}</p>
+ <volist name="list" id="com">   
+ 	<notempty name="com['list']">  
+ 		
+<!--列表-->
+	     <div class="loornva2">
+	          <ul style="width: 100%;text-align: center;">
+	            <li style="border-top:#33acfb solid 2px; border-bottom:none;">
+	            	<a href="javascript:void(0)">{$com.cat_name}</a>
+	            </li>
+	            <li style="float: right;">
+					<a style="color: #33acfb;" href="__APP__/Gd10086/itemList/cfgId/{$com.item_config_id}/catId/{$com.cat_config_id}" target="_blank" >查看更多>></a>
+	            	
+	            </li>
+	          </ul>
+	       </div>
+	       <div class="loorList2" style="margin-bottom: 50px;">
+       		<volist name="com['list']" id="vo" key="l">
+	           <ul>
+	              <li class="lorpt">
+	              	<a href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}" target="_blank">
+              			<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}">
+	              	</a
+	              </li>
+	              <li class="lorUser liheight">
+	              	<a href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}" target="_blank" title="{$vo.title}">
+	              		<span class="shopIcon">
+		              		<if condition="$vo.shop_id eq 10">
+		              			旗舰
+		              			<else/>
+		              			自营
+		              		</if>
+	              		</span>	              		
+	              		{$vo.title}
+	              	</a>
+	              </li>
+	              <li class="lorpic">￥{:round($vo['price'],2)}
+	              	<a href="/item.html?item_id={$vo.item_id}&from={:md5($vo['item_id'])}" target="_blank">兑换</a>
+	              </li>
+			        <if condition="$vo.flag eq 1">
+			     		<li style="padding-top: 10px;background-color:rgba(51,172,251,0.6);min-height:40px;color: white;text-align: center;position:relative;top: -80px;">
+			     			<small style="color: white; font-size: larger;font-weight: bold;">广东无货</small>
+			     		</li>
+			  		</if> 		              
+	           </ul>
+			</volist>
+	           <div style="clear:both;"></div>
+	       </div>
+    </notempty>
+ </volist>
+
+
+       <!--返回-->
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/gd10086/images/Mtop.png"></a></div>
+    </div>
+</body>
+</html>

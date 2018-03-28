@@ -1,0 +1,13 @@
+
+    <div class="classifyBanner"><img src="{$list[$catId]['nav_banner']}"></div>
+    <div class="classifyList">
+        <volist name="subCat" id="cvo">
+            <a href="{:U('/Itemlist/searchList?catId='.$cvo['cat_id'])}">
+            <ul>
+                <li><img src="{$cvo['cat_logo']}"></li>
+                <li>{$cvo['cat_name']}</li>
+            </ul>
+            </a>
+        </volist>
+        <div style="clear:both;"></div>
+    </div>

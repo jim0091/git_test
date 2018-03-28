@@ -1,0 +1,465 @@
+<script type="text/javascript">
+$('#header').hide();
+$('#nav').hide();
+</script>
+<style type="text/css">
+
+img {border:0px;}
+a {text-decoration:none;}
+
+.head { width:100%; background-color: #a12124;}
+  .head .nav {width: 1190px;height: 100px;margin: 0 auto;}
+  .head .img {padding-top: 23px;padding-left: 24px; float: left;}
+  .head .p1 {float: left;font-size: 23px;color: white;margin: 0px 10px 0px 20px;line-height: 100px;} 
+  .head .right {float: right;}
+  .head .right .p {
+color: white;
+font-family: 微软雅黑;
+font-size: 16px;
+text-align: right;
+margin: 0px;
+padding: 0px;
+top: 16px;
+position: relative;
+  }
+  .head .right .img {margin-top: -14px;}
+</style>
+<div class="head">
+  <div class="nav">
+      <img class="img" src="images/index_logo.png">
+      <p class="p1">礼舍，是一种情感的交流</p>
+    <div class="right">
+        <p class="p">招商咨询热线</p>
+        <img class="img" src="images/index_phone.png">
+      </div>
+    </div>
+</div>
+
+
+<style>
+.theme-help-top {
+	position: relative;
+	background: url(images/theme/help/banner.jpg);
+	width: 100%;
+	height: 400px
+}
+.theme-help-top .theme-help-top-bg {
+	position: absolute;
+	/*
+	width: 100%;
+	height: 400px;
+	background: url(./images/theme/help/help_banner.jpg);
+	background-size: cover;
+	*/
+}
+.theme-help-top .theme-help-top-title {
+	height: 40px;
+	position: relative;
+	padding: 180px 10px 10px 10px;
+}
+.theme-help-top .theme-help-top-title span {
+	font-size: 18px;
+	line-height: 40px;
+	color: #fff;
+}
+.theme-help-top .theme-help-top-title span.theme-help-top-title-left {
+	float: left;
+}
+.theme-help-top .theme-help-top-title span.theme-help-top-title-right {
+	float: right;
+}
+.theme-help-top .theme-help-top-list {
+	width: 100%;
+	height: 160px;
+}
+
+
+
+
+
+
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-left {
+	float: left;
+}
+.theme-help-top .theme-help-top-list .theme-help-top-list-left li {
+	float: left;
+	width: 123px;
+	height: 123px;
+	padding-right: 12px;
+	cursor: pointer;
+}
+
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-left  li img.select {
+	display: none;
+}
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-left  li.hover img.default{
+	display: none;
+}
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-left  li.hover img.select{
+	display: block;
+}
+
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-right {
+	float: right;
+}
+.theme-help-top .theme-help-top-list .theme-help-top-list-right li {
+	float: left;
+	width: 123px;
+	height: 123px;
+	padding-left: 12px;
+	cursor: pointer;
+}
+
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-right  li img.select {
+	display: none;
+}
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-right  li.hover img.default {
+	display: none;
+}
+
+.theme-help-top .theme-help-top-list .theme-help-top-list-right  li.hover img.select{
+	display: block;
+}
+
+
+.theme-help-cate {
+
+}
+.theme-help-cate .theme-help-cate-nav {
+	position: relative;
+	height: 65px;
+	padding-top: 30px;
+	border-bottom: 2px solid #c7241d;
+	text-align: center;
+}
+.theme-help-cate .theme-help-cate-nav div {
+	height: 100%;
+	background: #E6E6DC;
+	font-size: 32px;
+	line-height: 64px;
+	color: #B2AFAF;
+	width: 590px;
+	cursor: pointer;
+}
+.theme-help-cate .theme-help-cate-nav div.theme-help-cate-left {
+	float: left;
+}
+.theme-help-cate .theme-help-cate-nav div.theme-help-cate-right {
+	float: right;
+}
+.theme-help-cate .theme-help-cate-nav div:hover, .theme-help-cate .theme-help-cate-nav div.m {
+	background: #c7241d;
+	color: #fff;
+}
+
+.theme-help-content img{
+	width: 100%;
+}
+.theme-help-content li {
+	display: none;
+}
+
+.theme-normal-bottom {
+	background: #f6f4f4;
+}
+.theme-normal-bottom-nav {
+	position: relative;
+	width: 1140px;
+	height: 45px;
+	padding: 25px;
+	text-align: center;
+	line-height: 45px;
+	margin: 0 auto;
+}
+.theme-normal-bottom .theme-normal-bottom-left, .theme-normal-bottom .theme-normal-bottom-right {
+	width: 569px;
+	height: 100%;
+	float: left;
+}
+.theme-normal-bottom .theme-normal-bottom-left {
+	border-right: 2px solid #bcbcbc;
+}
+.theme-normal-bottom a {
+	padding: 8px 60px;
+	background: #c7241d;
+	font-size: 24px;
+	color: #fff;
+	border-radius: 6px;
+	margin: 0px 5px;
+}
+</style>
+
+<div class="theme-help-top">
+	<div class="wrap-lg">
+		<div class="theme-help-top-bg"></div>
+		<div class="theme-help-top-title">
+			<span class="theme-help-top-title-left">FOR企业</span>
+			<span class="theme-help-top-title-right">FOR个人</span>
+		</div>
+		<div class="theme-help-top-list">
+			<ul class="theme-help-top-list-left">
+				<li class="li1">
+					<img src="/index/images/help/employee_default.png" class="default" />
+					<img src="/index/images/help/employee_select.png"  class="select" />	
+				</li>
+				<li class="li2">
+					<img src="/index/images/help/raiders_default.png" class="default" />
+					<img src="/index/images/help/raiders_select_.png" class="select" />
+				</li>
+				<li class="li3">
+					<img src="/index/images/help/variety_default.png" class="default" />
+					<img src="/index/images/help/variety_select.png" class="select" />
+				</li>
+				<li class="li4">
+					<img src="/index/images/help/boss_default.png" class="default" />
+					<img src="/index/images/help/boss_select.png" class="select" />
+				</li>
+			</ul>
+			<ul class="theme-help-top-list-right">
+				<li class="li5">
+					<img src="/index/images/help/welfare_default.png" class="default" />
+					<img src="/index/images/help/welfare_select.png" class="select" />
+				</li>
+				<li class="li6">
+					<img src="/index/images/help/gifts_default.png" class="default" />
+					<img src="/index/images/help/gifts_select.png" class="select" />
+				</li>
+				<li class="li7">
+					<img src="/index/images/help/socially_default.png" class="default" />
+					<img src="/index/images/help/socially_select.png" class="select" />
+				</li>
+				<li class="li8">
+					<img src="/index/images/help/buy_default.png" class="default" />
+					<img src="/index/images/help/buy_select.png" class="select" />
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="theme-help-cate">
+	<div class="wrap-lg theme-help-cate-nav">
+		<div class="theme-help-cate-left">FOR企业</div>
+		<div class="theme-help-cate-right">FOR个人</div>
+	</div>
+</div>
+
+<div class="theme-help-content">
+	<div class="wrap-lg">
+		<div class="theme-help-content-enterprise">
+			<ul>
+				<li>
+					<img id="img1" src="/index/images/help/enterprise_img1.jpg" />
+				</li>
+				<li>
+					<img id="img2" src="/index/images/help/enterprise_img2.jpg" />
+					<img src="/index/images/help/enterprise_img3.jpg" />
+				</li>
+				<li>
+					<img id="img3" src="/index/images/help/enterprise_img4.jpg" />
+				</li>
+				<li>
+					<img id="img4" src="/index/images/help/enterprise_img5.jpg" />
+					<img src="/index/images/help/enterprise_img6.jpg" />
+				</li>
+			</ul>
+		</div>
+		<div class="theme-help-content-personal" style="display: none;">
+			<ul>
+				<li>
+					<img id="img5" src="/index/images/help/personal_img1.jpg" />
+					<img src="/index/images/help/personal_img2.jpg" />
+				</li>
+				<li>
+					<img id="img6" src="/index/images/help/personal_img3.jpg" />
+				</li>
+				<li>
+					<img id="img7" src="/index/images/help/personal_img4.jpg" />
+					<img src="/index/images/help/personal_img5.jpg" />
+				</li>
+				<li>
+					<img id="img8" src="/index/images/help/personal_img6.jpg" />
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="theme-normal-bottom">
+	<div class="theme-normal-bottom-nav">
+		
+		<div class="theme-normal-bottom-left">
+			<a href="http://v.lishe.cn/company/register.html" target="_blank">企业注册</a>
+			<a href="http://v.lishe.cn/company/login.html" target="_blank">企业登陆</a>
+		</div>
+		<div class="theme-normal-bottom-right">
+			<a href="http://www.lishe.cn/passport-signup.html" target="_blank">个人注册</a>
+			<a href="http://www.lishe.cn/passport-signin.html" target="_blank">个人登陆</a>
+		</div>
+
+	</div>
+</div>
+
+
+
+<script type="text/javascript" src="/app/site/statics/scripts/lib/jquery.js"></script>
+<script type="text/javascript" src="/index/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	init();
+	var _theme_help_cate_div = $('.theme-help-cate .wrap-lg').find('div');
+	_theme_help_cate_div.bind({
+		click: function(){
+			var _this = $(this);
+			var _index = _theme_help_cate_div.index(_this);
+			_this.addClass('m').siblings().removeClass('m');
+			$('.theme-help-content .wrap-lg').find('div').eq(_index).fadeIn().siblings().fadeOut();
+		}
+	});
+    
+    var _change = $('.theme-help-top .wrap-lg .theme-help-top-list');
+    var _change_li = _change.find('li');
+
+    var _content = $('.theme-help-content');
+
+    _change_li.hover(function() {
+		
+		var _index = _change_li.index($(this));
+		
+		_change.find('li').eq(_index).addClass('hover');
+	}, 
+	function() {
+
+		var _this = $(this);
+
+		if (_this.hasClass('tmp')) {
+			return;
+		}
+		
+		_this.removeClass('hover');
+	});
+
+	_change_li.bind({
+
+		click: function() {
+
+			var _this = $(this);
+
+			var _index = _change_li.index(_this);
+
+			_change_li.removeClass('hover tmp').eq(_index).addClass('hover tmp');
+
+			if (3 >= _index) {
+				_theme_help_cate_div.eq(0).addClass('m').siblings().removeClass('m');
+				$('.theme-help-content .wrap-lg').find('div').eq(0).fadeIn().siblings().fadeOut();
+			}
+			else {
+				_theme_help_cate_div.eq(1).addClass('m').siblings().removeClass('m');
+				$('.theme-help-content .wrap-lg').find('div').eq(1).fadeIn().siblings().fadeOut();
+			}
+			_content.find('li').eq(_index).fadeIn().siblings().fadeOut();
+		}
+	});
+	
+	$('.theme-help-cate-left').click(function(){
+		$('.theme-help-cate-left').addClass('m').siblings().removeClass('m');
+		$('.theme-help-content-enterprise').fadeIn().siblings().fadeOut(function() {
+			$('html,body').animate({scrollTop:$('#img1').offset().top}, 635);
+		});
+	});
+	
+	$('.theme-help-cate-right').click(function(){
+		$('.theme-help-cate-right').addClass('m').siblings().removeClass('m');
+		$('.theme-help-content-personal').fadeIn().siblings().fadeOut(function() {
+			$('html,body').animate({scrollTop:$('#img5').offset().top}, 635);
+		});    
+	});
+
+/*
+  $('.li1').click(function(){
+    $('.theme-help-cate-left').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-enterprise').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img1').offset().top}, 635);
+    });
+  });
+  $('.li2').click(function(){
+    $('.theme-help-cate-left').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-enterprise').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img2').offset().top}, 1385);
+    });    
+  });
+  $('.li3').click(function(){
+    $('.theme-help-cate-left').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-enterprise').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img3').offset().top}, 2668);
+    });    
+  });
+  $('.li4').click(function(){
+    $('.theme-help-cate-left').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-enterprise').fadeIn().siblings().fadeOut(function(){
+    	$('html,body').animate({scrollTop:$('#img4').offset().top}, 3311);
+    });    
+  });
+  $('.li5').click(function(){
+    $('.theme-help-cate-right').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-personal').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img5').offset().top}, 635);
+    });    
+  });
+  $('.li6').click(function(){
+    $('.theme-help-cate-right').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-personal').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img6').offset().top}, 1890);
+    });    
+  });
+  $('.li7').click(function(){
+    $('.theme-help-cate-right').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-personal').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img7').offset().top}, 2542);
+    });    
+  });
+  $('.li8').click(function(){
+    $('.theme-help-cate-right').addClass('m').siblings().removeClass('m');
+    $('.theme-help-content-personal').fadeIn().siblings().fadeOut(function() {
+    	$('html,body').animate({scrollTop:$('#img8').offset().top}, 3784);
+    });    
+  });
+*/
+
+});
+
+var init = function() {
+
+	var _index = jQuery.url.param("item") == null ? '0' : jQuery.url.param("item");
+
+	var _change = $('.theme-help-top .wrap-lg .theme-help-top-list');
+    var _change_li = _change.find('li');
+
+	// _change_li.eq(_index).trigger('click');
+
+	_change_li.removeClass('hover tmp').eq(_index).addClass('hover tmp');
+
+	var _theme_help_cate_div = $('.theme-help-cate .wrap-lg').find('div');
+    var _content = $('.theme-help-content');
+
+	if (3 >= _index) {
+		_theme_help_cate_div.eq(0).addClass('m').siblings().removeClass('m');
+		$('.theme-help-content .wrap-lg').find('div').eq(0).fadeIn().siblings().fadeOut();
+	}
+	else {
+		_theme_help_cate_div.eq(1).addClass('m').siblings().removeClass('m');
+		$('.theme-help-content .wrap-lg').find('div').eq(1).fadeIn().siblings().fadeOut();
+	}
+
+	_content.find('li').eq(_index).fadeIn().siblings().fadeOut();
+}
+
+</script>

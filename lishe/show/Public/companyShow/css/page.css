@@ -1,0 +1,19 @@
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+	}
+	.pageos:hover{
+		background-color:#C7241D ;
+		color: white;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}

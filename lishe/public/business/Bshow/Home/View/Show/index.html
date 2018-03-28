@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/ShowPtlogo.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/layer/layer.js"></script>
+<title>企业秀-礼舍</title>
+</head>
+
+<body>
+<!--头部-->
+  <div class="hea-top">
+         <ul class="hed-left">
+            <li><a href="/" target="_blank" style="padding:7px 5px; margin-right:8px;">礼舍首页</a></li>
+            <li><a href="/shop.html" target="_blank">心意商城</a><span>|</span></li>
+            <li><a href="/help_index.html" target="_blank">礼舍帮帮</a></li>
+         </ul>
+         <ul class="hed-right">
+			<empty name="userName">
+				
+            <li><a href="http://v.lishe.cn/company/login.html">企业登录</a></li>
+				
+				<else/>
+	            <li>{$userName},<span>|</span>
+	            	<a href="{:U('Home/Show/logout')}">
+	            		退出
+	            	</a>
+	            	
+	            </li>
+				
+			</empty>
+            
+         </ul>
+  </div>
+  <div class="hea-bom">
+      <div class="hbom-cnt">
+          <ul class="hb-left">
+            <li class="hbom-li"><a href="#"><img src="__PUBLIC__/companyShow/images/lishe.png"></a></li>
+            <li><p class="hbom">礼舍,是一种情感的交流
+</p><p class="hbom-a">已认证</p></li>
+          </ul>
+          <ul class="hb-right">
+            <li class="hr">一企一舍咨询热线</li>
+            <li class="hr2">400-883-9916</li>
+          </ul>
+      </div>
+  </div> 
+  <!--头部end-->
+  <!--图标logo-->
+  <div class="hed-nva">
+      <div class="nva-ul">
+      <a href="http://v.lishe.cn/company/frame.html">
+         <ul>
+           <li><img src="__PUBLIC__/companyShow/images/111111.png"></li>
+           <li class="nu">人员管理</li>
+         </ul>
+       </a> 
+       <a href="http://v.lishe.cn/company/tasteser.html">
+         <ul>
+           <li><img src="__PUBLIC__/companyShow/images/2313.png"></li>
+           <li class="nu">福利管理</li>
+         </ul>
+       </a>
+       <a>
+         <ul style="background:#c7241d;">
+           <li><img src="__PUBLIC__/companyShow/images/wirte3.png"></li>
+           <li class="nu2">企业SHOW</li>
+         </ul>
+       </a>  
+       <a href="http://v.lishe.cn/company/zhmessage.html">
+         <ul>
+           <li><img src="__PUBLIC__/companyShow/images/1342111.png"></li>
+           <li class="nu">企业钱包</li>
+         </ul>
+       </a>
+       <a href="http://v.lishe.cn/company/product2.html">
+         <ul>
+           <li><img src="__PUBLIC__/companyShow/images/liftproduct.png"></li>
+           <li class="nu">商品定制</li>
+         </ul>
+       </a>
+      </div>
+  </div>
+  <div class="pt">
+     <p class="pt-banner"><img src="__PUBLIC__/companyShow/images/showban.png" ></p> 
+  </div>
+  <!--左侧导航代码-->
+  <script type="text/javascript">
+	$(function(){
+	$(".subNav").click(function(){
+				
+				$(this).next(".navContent").slideToggle(500).siblings(".navContent").slideUp(500);
+		})	
+		$('.navContent li.active').find('.img-hove').show().siblings('.img-old').hide();
+		$('.navContent li').click(function(){
+			$('.img-hove').hide();
+		    $('.img-old').show();
+			if(!$(this).hasClass('active')){
+			//$(this).addClass('active').siblings().removeClass('active');
+			$('.navContent li').removeClass('active')
+			$(this).addClass('active');
+			$(this).find('.img-hove').show();
+			$(this).find('.img-old').hide();
+		}
+		})
+		$('.subNav').click(function(){
+			if(!$(this).hasClass('currentDt')){
+				$(this).addClass('currentDt').siblings().removeClass('currentDt');
+			}
+		})
+	})
+</script>
+
+  <!--主内容-->
+  <div class="main-ct">
+     <!--左边导航-->
+     <div class="manva-left">
+         <div class="subNavBox">
+            <div class="subNav currentDt">伙伴登录设置</div>
+            <ul class="navContent">
+                    <li onclick="iFrameHeight(500)">
+                    	<a href="{:U('Home/CompanyShow/modify',array('local' => 'upload'))}" target="showls">
+                    	<img class="img-old" src="__PUBLIC__/companyShow/images/qyl.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qylw.png">上传logo</a></li>
+                    <li onclick="iFrameHeight(500)">
+                    	<a href="{:U('Home/CompanyShow/modify',array('local' => 'copyrights'))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl2.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl2w.png">底部版权信息管理</a></li>
+                    <li onclick="iFrameHeight(700)">
+                    	<a href="{:U('Home/CompanyShow/modify',array('local' => 'mod'))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl3.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl3w.png">模板设置 </a></li>
+            </ul>
+            <div class="subNav">伙伴首页设置</div>
+            <ul class="navContent" style="display:none;">
+                    <li>
+                    	<a href="{:U('Home/Show/partner',array('local' => 'CarouselPt'))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl4.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl4w.png">轮播海报管理</a></li>
+                    <li onclick="iFrameHeight(800)">
+                    	<a href="{:U('Home/Show/topNews')}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl5.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl5w.png">头条新闻管理</a></li>
+            </ul>
+            <div class="subNav">企业简介设置</div>
+            <ul class="navContent" style="display:none;">
+                    <li onclick="iFrameHeight(650)">
+                    	<a href="{:U('Home/Show/profile',array('local' => 'qybriefing'))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl6.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl6w.png">企业简介管理</a></li>
+                    <li onclick="iFrameHeight(650)">
+                    	<a href="{:U('Home/Show/profile',array('local' => 'qyinfrastructure'))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl7.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl7w.png">企业架构管理</a></li>
+            </ul>
+            <div class="subNav">伙伴动态设置</div>
+            <ul class="navContent" style="display:none;">
+                    <li onclick="iFrameHeight(650)">
+                    	<a href="{:U('Home/Show/activityReview')}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl8.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl8w.png">活动回顾管理</a></li>
+                    <li onclick="iFrameHeight(650)">
+                    	<a href="{:U('Home/Show/topPerson')}" target="showls"> 
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl9.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl9w.png">头号人物管理</a></li>
+                    <li onclick="iFrameHeight(650)">
+                    	<a href="{:U('Home/Show/actives')}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl10.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl10w.png">超级新人王管理</a></li>
+                    <li onclick="iFrameHeight(650)">
+                    	<a href="{:U('Home/Show/monthBirthday')}" target="showls">
+                    		<img class="img-old"src="__PUBLIC__/companyShow/images/qyl11.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl11w.png">月度寿星管理</a></li>
+            </ul>
+            <div class="subNav">新闻中心设置</div>
+            <ul class="navContent" style="display:none;">
+                    <li>
+	                	<a id="editnew" href="{:U('Home/Show/newsCenter')}" target="showls">
+	                		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl5.png">
+	                   	 	<img class="img-hove" src="__PUBLIC__/companyShow/images/qyl5.png">添加新闻
+	                	</a>
+                    </li>
+                   	<li onclick="iFrameHeight(800)">
+                   		<a href="{:U('Home/Show/newsset',array('type' => 1))}" target="showls">
+                   			<img class="img-old" src="__PUBLIC__/companyShow/images/qyl12.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl12w.png">行业聚焦管理</a></li>
+                    <li onclick="iFrameHeight(800)">
+                    	<a href="{:U('Home/Show/newsset',array('type' => 2))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl13.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl13w.png">媒体报道管理</a></li>
+                    <li onclick="iFrameHeight(800)">
+                    	<a href="{:U('Home/Show/newsset',array('type' => 3))}" target="showls">
+                    		<img class="img-old" src="__PUBLIC__/companyShow/images/qyl14.png"><img class="img-hove" src="__PUBLIC__/companyShow/images/qyl14w.png">企业公告管理</a></li>
+            </ul>
+        </div>
+         
+     </div>
+     <!--右内容-->
+     <div class="mact-right">
+
+     	
+     	<div id="leamain">
+
+       <iframe name="showls"  marginheight="0" marginwidth="0" frameborder="0" scrolling="no" width="850" height=100% id="iframepage" onLoad="iFrameHeight()" ></iframe>
+
+       <!--<iframe name="showls"  marginheight="0" marginwidth="0" frameborder="0" scrolling="no" width="835px" height=100% id="iframepage" onLoad="iFrameHeight()" ></iframe>-->
+
+
+			<script type="text/javascript" language="javascript">
+			    function iFrameHeight(height) {
+		        var ifm= document.getElementById("iframepage");
+			    	if(height){
+			            ifm.height = height;
+			    		
+			    	}else{
+			
+			        var subWeb = document.frames ? document.frames["iframepage"].document :
+			
+			ifm.contentDocument;
+			
+			            if(ifm != null && subWeb != null) {
+			
+			            ifm.height = subWeb.body.scrollHeight;
+			
+			            }
+						}
+			    }
+			</script> 
+
+     </div>
+     
+      	<div id="showright">
+     		
+     	</div>
+     	
+      </div>
+  </div>
+  <script type="text/javascript">
+      $(document).ready(function(){
+		var num;
+		$('.menu-ul>li[id]').hover(function(){
+		   
+			/*下拉框出现*/
+			var Obj = $(this).attr('id');
+			num = Obj.substring(3, Obj.length);
+			$('#box-'+num).slideDown(300);
+		},function(){
+			
+			/*下拉框消失*/
+			$('#box-'+num).hide();
+		});
+
+		$('.hidden-box').hover(function(){
+			/*保持图标向上*/
+			$(this).show();
+		},function(){
+			$(this).slideUp(200);
+		});
+			$(".currentDt ul li").on('click',function(){
+				$("li").removeClass("active");
+				$(this).addClass("active");
+			});
+			window.top.showls.location="{:U('Home/CompanyShow/modify',array('local' => 'upload'))}";
+//			loginSet('upload');
+//			$("#leamain").hide();
+    });
+			//伙伴登陆设置
+//		function loginSet(vals){
+//			var loginSetUrl="{:U('Home/CompanyShow/modify')}";
+//			$.ajax({
+//				type:"get",
+//				url:loginSetUrl,
+//				dataType:'text',
+//				data:'local='+vals,
+//				success:function(data){
+//					$("#leamain").hide();
+//					$("#showright").show();
+//					$("#showright").html(data);
+//					
+//				}
+//				
+//			});
+//	}
+//				//伙伴首页设置
+//		function partner(vals){
+//				var loginSetUrl="{:U('Home/Show/partner')}";
+//			$.ajax({
+//				type:"get",
+//				url:loginSetUrl,
+//				dataType:'text',
+//				data:'local='+vals,
+//				success:function(data){
+//					$("#leamain").hide();
+//					$("#showright").show();
+//					$("#showright").html(data);
+//					
+//				}
+//				
+//			});		
+//		}
+//	//公司简介设置
+//	function profile(vals){
+//				var loginSetUrl="{:U('Home/Show/profile')}";
+//			$.ajax({
+//				type:"get",
+//				url:loginSetUrl,
+//				dataType:'text',
+//				data:'local='+vals,
+//				success:function(data){
+//					$("#leamain").hide();
+//					$("#showright").show();
+//					$("#showright").html(data);
+//				}
+//				
+//			});				
+//	}
+////伙伴动态设置
+//	function actives(vals){
+//				var loginSetUrl="{:U('Home/Show/actives')}";
+//			$.ajax({
+//				type:"get",
+//				url:loginSetUrl,
+//				dataType:'text',
+//				data:'local='+vals,
+//				success:function(data){
+//					$("#leamain").hide();
+//					$("#showright").show();
+//					$("#showright").html(data);
+//				}
+//				
+//			});			
+//	}
+//	//新闻中心设置
+//		function newsset(vals){
+//				var loginSetUrl="{:U('Home/Show/newsset')}";
+//			$.ajax({
+//				type:"get",
+//				url:loginSetUrl,
+//				dataType:'text',
+//				data:'type='+vals,
+//				success:function(data){
+//					$("#leamain").hide();
+//					$("#showright").show();
+//					$("#showright").html(data);
+//				}
+//				
+//			});					
+//		}
+//		//显示ifram
+//		function showifm(){
+//			$("#showright").hide();
+//			$("#leamain").show();
+//			
+//		}
+    </script>
+    <!--主内容end-->
+    <!--尾部-->
+    <div class="foot-logo">
+       <p><img src="__PUBLIC__/companyShow/images/lishe.png"></p>
+    </div>
+    <div class="footer">
+       <div class="fot-ct">
+          <div class="fot-one">
+             <div class="one-ul">
+                <ul>
+                  <li class="ou"><a href="#">导航<span>&gt;</span></a></li>
+                  <li class="ou2"><a href="#">礼舍能做啥</a></li>
+                  <li class="ou2"><a href="#">伙伴说什么</a></li>
+                  <li class="ou2"><a href="#">心意商城</a></li>
+                </ul>
+                <ul>
+                  <li class="ou"><a href="#">资讯<span>&gt;</span></a></li>
+                  <li class="ou2"><a href="#">服务条款</a></li>
+                  <li class="ou2"><a href="#">礼舍动态</a></li>
+                  <li class="ou2"><a href="#">人员动态</a></li>
+                </ul>
+                <ul>
+                  <li class="ou"><a href="#">礼舍帮帮<span>&gt;</span></a></li>
+                  <li class="ou2"><a href="#">常见问题</a></li>
+                  <li class="ou2"><a href="#">礼舍教学操作指南</a></li>
+                  <li class="ou2"><a href="#">礼舍使用全攻略</a></li>
+                </ul>
+             </div>
+             <div class="one-ul2">
+                <ul>
+                  <li><a href="#">联系客服</a></li>
+                  <li class="line">|</li>
+                  <li><a href="#">企业入驻</a></li>
+                  <li class="line">|</li>
+                  <li><a href="#">供应商入驻</a></li>
+                </ul>
+             </div>
+          </div>
+          <div class="fot-two">
+             <ul>
+               <li class="ft">联系我们<span style="padding-left:8px;">&gt;</span></li>
+               <li><img src="__PUBLIC__/companyShow/images/1_32.gif"></li>
+             </ul>
+          </div>
+          <div class="fot-three">
+             <p>全国服务热线</p>
+             <p>400-826-7710</p>
+             <p><span>周一至周五</span><span style="padding-left:10px;">9:00-18:00</span></p>
+          </div>
+       </div>
+    </div>
+    <div class="fot-bom">
+       <p class="fb"><a href="#">公司简介</a><span>|</span><a href="#">新闻动态</a><span>|</span><a href="#">合作伙伴</a><span>|</span><a href="#">人才招聘</a><span>|</span><a href="#">联系我们</a></p>
+       <p class="fb2">© 2005-2014 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1</p>
+    </div>
+</body>
+</html>

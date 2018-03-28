@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="__ADMIN__lib/layui/css/layui.css">
+	<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />  
+</head>
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+	.overbtn:hover{
+		background-color: #5a98de;
+	}
+	.sigleOrder{
+		background-color: white;
+		position: relative;
+		left: 135px;
+		top: -40px;
+		z-index:1;
+	}
+	.layui-table td, .layui-table th{
+		font-size: 13px;
+	}
+</style>
+<body>
+<nav class="breadcrumb">
+	<a class="layui-btn layui-btn-normal  r mr-20" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<blockquote class="layui-elem-quote layui-quote-nm">
+	<button class="layui-btn layui-btn-normal addgroup"><i class="layui-icon"></i> 添加广告组</button>
+	
+	
+</blockquote>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>广告组列表<button class="layui-btn layui-btn-primary layui-btn-small layui-btn-radius">{$number}</button></legend>
+	<form action="__SELF__" method="get" style="float: right;">
+	    <div class="layui-input-inline">
+	      <input name="gropName" value="{$gropName}" placeholder="广告组名称/描述/标题/副标题" lay-verify="email" autocomplete="off" class="layui-input" type="text" style="border: 1px solid #1E9FFF;width: 190px;">
+	    </div>
+		<button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-small">搜索</button>
+	</form>  
+</fieldset>
+<table class="layui-table" >
+  <colgroup>
+    <col width="5%">
+    <col width="15%">
+    <col >
+    <col width="7%">
+    <col width="12%">
+    <col width="8%">
+    <col width="10%">
+    <col width="8%">
+    <col width="6%">
+    <col width="8%">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名称</th>
+      <th>描述</th>
+      <th>广告规格</th>
+      <th>企业</th>
+      <th>所属区</th>
+      <th>所属模块</th>
+      <th>使用模板</th>
+      <th>适用平台</th>
+      <th>操作</th>
+    </tr> 
+  </thead>
+  <tbody>
+  	<volist name="list" id="vo">
+    <tr>
+      <td>{$vo.group_id}</td>
+      <td onmouseover="giveTips('单击查看({$vo.group_name})下的广告位',this)"  onclick="fullOpen('{$vo.group_name}','{:U('Home/Mallconfigure/adPositionIndex',array('groupId'=>$vo['group_id'],'type'=>'readonly'))}')"  >
+      		{$vo.group_name}
+      </td>
+      <td>{$vo.group_desc}</td>
+      <td>{$vo.ad_spec}</td>
+      <td>
+				<eq name="vo.com_group" value="0">
+					---
+					<else/>
+						<foreach name="vo.com" item="com" key="k">
+							<br />
+							{$com.com_name}
+						</foreach>
+				</eq>
+      </td>
+      <td onmouseover="giveTips('{$newAreas[$vo['area_id']]['area_desc']}',this)" title="标识:{$newAreas[$vo['area_id']]['identify']}">
+	      	{$newAreas[$vo['area_id']]['area_name']}
+      </td>
+      <td onmouseover="giveTips('{$newModules[$vo['module_id']]['module_desc']}',this)">
+      		{$newModules[$vo['module_id']]['module_name']}
+      </td>
+      <td onmouseover="giveTips('{$newTemps[$vo['template_id']]['template_desc']}',this)">
+      		<notempty name="vo['template_id']">
+      				<notempty name="newTemps[$vo['template_id']]['template_pic']">
+      					<a href="{$newTemps[$vo['template_id']]['template_pic']}" target="_blank">
+				   		   	<img src="{$newTemps[$vo['template_id']]['template_pic']}" style="max-width: 90px;" />
+      					</a>
+      				</notempty>
+		      	<else/>
+		      		---
+      		</notempty>
+      </td>      
+      <td>
+				<eq name="vo.use_platform" value="1">
+					pc 端
+				</eq>
+				<eq name="vo.use_platform" value="2">
+					wap 端
+				</eq>
+				<eq name="vo.use_platform" value="3">
+					app端 
+				</eq>      	
+      </td>      
+      <td>
+      	<i class="layui-icon" style="font-size: 16px; color: #1E9FFF;cursor:pointer;" onclick="openPage('编辑{$vo.group_name}','{:U('Home/Mallconfigure/editAdGroup',array('groupId'=>$vo['group_id']))}',800)" onmouseover="giveTips('编辑广告组：{$vo.group_name}',this)"></i>
+      	&nbsp;
+      	<i class="layui-icon" style="font-size: 16px; color: #FF5722;cursor:pointer;" onclick="openPage('{$vo.group_name}','{:U('Home/Mallconfigure/choicePosition',array('groupId'=>$vo['group_id']))}',1000)" onmouseover="giveTips('管理该广告组下的广告位',this)">&#xe636;</i>
+      	&nbsp;
+      	<gt name="vo.template_id" value="0">
+	      	<i class="layui-icon" onclick="buildTemp({$vo.group_id})" style="font-size: 16px; color: #009688;cursor:pointer;" onmouseover="giveTips('生成模板文件',this)" >&#xe609;</i>
+      	</gt>
+      </td>
+    </tr>
+  	</volist>
+  </tbody>
+</table>
+		<div style="text-align: center; padding: 30px 30px;">
+			{$pagestr}
+		</div>
+</body>
+</body>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layui/layui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script>
+  layui.use(['layer', 'form'], function(){
+		  var layer = layui.layer,form = layui.form();
+		});
+	$(".addgroup").on('click',function(){
+		openPage('添加广告组','{:U("Home/Mallconfigure/editAdGroup")}');
+	});
+	function openPage(title,urls,w='480'){
+		layer.open({
+		  type: 2,
+		  title: title,
+		  shadeClose: false,
+		  shade: 0.8,
+		  area: [w+'px', '90%'],
+		  content:urls  //iframe的url
+		}); 		
+	}
+	//全屏弹出
+	function fullOpen(title,urls){
+		var index = layer.open({
+		  type: 2,
+		  title: title,
+		  content: urls,
+		  area: ['320px', '195px'],
+		  maxmin: true
+		});
+		layer.full(index);		
+	}
+	function giveTips(title,obj){
+			layer.tips(title, obj, {
+		  tips: [3, '#1E9FFF']
+		});	
+	}		
+	function buildTemp(groupId){
+		$.post("__LISHE__/shop.php/Index/dyTemp",{groupId:groupId},function(msg){
+				var data=eval(msg);
+				if(data){
+					layer.msg(data['msg']);
+				}
+			
+		});
+	}
+</script>
+</html>

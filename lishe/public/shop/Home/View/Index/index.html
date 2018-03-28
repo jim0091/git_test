@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>心意商城</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="shortcut icon" href="__VIEW__Public/images/index/images/icon/bitbug_favicon.ico" />
+	<link rel="stylesheet" href="__VIEW__Public/css/index.css?v=1">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<!-- 头部搜索 -->
+	<include file="Public/headerFind"/>
+	<!--bannar-->
+	<!--外层皮肤-->
+<!--<div class="skin_content1">
+	<div class="skin_content2"> -->
+			<div class="banner_wrap">
+				<ul class="side_ul">
+					<volist name="shuDetailList" id="vo">
+						<li>
+							<a href="{$vo['refer']}" target="_blank">
+								<img src="{$vo['banner_img']}"/>
+							</a>
+						</li>
+					</volist>
+				</ul>
+				<div class="banner_btn_wrap mauto">
+					<!--轮播图按钮-->
+					<div class="banner_btn mauto">				
+						<volist name="shuDetailList" id="vo">
+							<a class="" target="_blank"></a>
+						</volist>
+					</div>
+				</div>
+			</div>
+			
+<!-- </div>
+	</div> -->
+	<!--banner侧边栏-->
+	<div class="article_wrap mauto">
+		<div class="banner_article">
+			<div class="article_user">
+				<if condition="empty($uid)">
+					<div class="user_head">						
+						<img src="__VIEW__Public/images/index/images/icon/user_head2.png" class="head_img"/>
+					</div>
+					<span class="a_sp">亲爱的</span>
+					<a href="__APP__/Sign/index"><span class="a_sp name_color plogin" >请登录</span></a>
+					<a href="__APP__/Sign/index" class="a_sp">&nbsp;免费注册></a>
+				<else />
+					<div class="user_head">					
+						<img src="__VIEW__Public/images/index/images/icon/user_head.png" class="head_img"/>
+					</div>
+					<span class="a_sp">Hi,你好~</span>
+					<span class="a_sp name_color">{$userName}</span>
+					<span class="a_sp">&nbsp;&nbsp;欢迎回来！</span>
+				</if>
+			</div>
+			<div class="welfare mauto">
+				<p><img src="__VIEW__Public/images/index/images/icon/welfare1.png"/>福利积分</p>
+					<if condition="empty($uid)">
+						<p class="wel_num mb17">0</p>
+					<else/>
+						<p class="wel_num mb17">{$userDeposit['balance']}</p>
+					</if>
+				<p><img src="__VIEW__Public/images/index/images/icon/warfare2.png"/>我的卡卷</p>
+					<if condition="empty($uid)">
+						<p class="wel_num">0</p>
+					<else />
+						<p class="wel_num">0</p>
+					</if>
+			</div>
+			<div class="article_link">
+				<a href="__USER__/Order/orderList" target="_blank">我的订单</a>
+				<a href="__USER__/Info/assetCenter" target="_blank">福利积分</a>
+				<a href="__USER__/Info/index" target="_blank">个人中心</a>
+			</div>
+		</div>
+	</div>
+	<!--公告-->
+	<div class="announ_wrap mauto">
+		<ul class="ann_ul">
+			<li>尊敬的用户，由于400电话例行维护升级，原400-1188-234暂停使用，若有问题，请拨打021-61542557</li>
+			<li>九阳现已入驻礼舍心意商城</li>
+			<li><a href="__LISHE_URL__/activity/appliances/" target="_blank">家电焕新节，全场最高劲省1000元</a></li>
+			<li><a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%AF%8C%E5%AE%89%E5%A8%9C">富安娜家纺</a>现已入驻礼舍心意商城</li>
+			<li>倍乐思巧克力甜蜜来袭，某东价直降50元</li>
+		</ul>
+		<em class="em1">商城公告:</em>
+		<div class="ann_btn">
+			<a href="javascript:void(0);" id="ann_gotop"><img src="__VIEW__Public/images/index/images/icon/top_arrow.png" alt="" /></a>
+			<a href="javascript:void(0);" id="ann_gobottom"><img src="__VIEW__Public/images/index/images/icon/bottom_arrow.png" alt="" /></a>
+		</div>
+	</div>
+	<!--商品栏1-->	
+
+	<!--<include file="Temp/index/0/5_1"/>	
+	<include file="Index/index/1_0"/> -->
+	{$content}
+	
+	<div style="height: 30px;"></div>
+	<!--帮助中心-->
+	<!--<div class="help">
+		<div class="help_con mauto">
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+			<a href=""></a>
+		</div>
+	</div>-->
+	<div style="clear: both;"></div>
+    <!--底部-->
+    <include file="Public/footer"/>
+
+	<!--侧边栏-->
+	
+
+	<script>
+		$(document).ready(function(){
+			/*菜单*/
+			$('#channels li').bind({
+				mouseover:function(){
+					$(this).children('.details').show();
+				},
+				mouseout:function(){
+					$(this).children('.details').hide();
+				}
+			});
+			
+			$(document).on("click", "#stock_area_item ul li a", function(){
+				alert("a");
+			});
+			
+			//限制字符个数
+			repleceText('.best_find3 li .find3_name',25);
+			repleceText('.bann_text .bp_1',14);
+			repleceText('.find_text .find_p1',6);
+			function repleceText(obj,max){
+				$(obj).each(function(){
+					if($(this).text().length>max){
+						$(this).text($(this).text().substring(0,max));
+						$(this).html($(this).html()+'...');
+					}
+				});
+			}
+			
+			
+			var banner_left =  $('.banner_wrap').width()-$('.side_ul li a img').width();
+			$('.side_ul li a img').css('margin-left',banner_left / 2);
+			
+			/***banner轮播图***/
+			$(".banner_btn a:first").addClass("active");
+
+			var banner_left =  $('.banner_wrap').width()-1920;
+			$('.side_ul li a img').css('margin-left',banner_left / 2);
+			
+			var sideNum = 0;
+			var sideBtn = null;
+			$(".side_ul li").eq(0).show();
+			$('.banner_btn a').mouseover(function(){
+				var This = this;
+			
+				sideBtn = setInterval(function(){
+					$(This).addClass('active').siblings().removeClass('active');
+					var btnIndex = $(This).index();
+					siLi = btnIndex;
+		
+					$('.side_ul li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+				},100);
+			});
+			$('.banner_btn a').mouseout(function(){
+				clearInterval(sideBtn);
+			});
+
+			
+			var siLi = 0;
+			var timer = setInterval(play,3000);
+			
+			
+			//鼠标移入移出效果
+		    $(".banner_btn a").hover(function() {
+			  clearInterval(timer);
+			  }, function() {
+			  timer=setInterval(play,3000);
+	  	   });
+		    $(".side_ul li").hover(function() {
+			  clearInterval(timer);
+			  }, function() {
+			  timer=setInterval(play,3000);
+	  	   });
+
+			function play(){
+				siLi++;
+				siLi = siLi > $('.banner_btn a').length-1 ? 0 : siLi; 
+				
+				$('.banner_btn a').eq(siLi).addClass('active').siblings().removeClass('active');
+				
+				$('.side_ul li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+			}
+
+			
+			/*倒计时*/
+			var interval = 1000; 
+			function ShowCountDown(year,month,day,divname) 
+			{ 
+				var now = new Date(); 
+				var endDate = new Date(year, month-1, day); 
+				var leftTime=endDate.getTime()-now.getTime(); 
+				var leftsecond = parseInt(leftTime/1000); 
+				//var day1=parseInt(leftsecond/(24*60*60*6)); 
+				var day1=Math.floor(leftsecond/(60*60*24)); 
+				var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+				var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+				var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+				var cc = document.getElementById(divname); 
+				//cc.innerHTML = "提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒"; 
+				$('#hourE').text(hour);
+				$('#minute').text(minute);
+				$('#second').text(second);
+			}
+			window.setInterval(function(){ShowCountDown(2017,1,19,'divdown1');}, interval); 
+			
+			
+			/***/
+			
+			/*公告*/
+			var gnum = 0;
+			var annOff = true;
+			setInterval(function(){
+				gnum++;
+				if(gnum > $('.ann_ul li').length-1){
+						gnum = 0;
+				}
+				announ();
+			},3000);
+			
+			function announ(){
+				$('.ann_ul').animate({
+					marginTop:gnum * -50 + 'px'
+				},1000);
+				
+				annOff = true;
+			}
+			
+			$('#ann_gotop').click(function(){
+				if(annOff){
+					gnum++;
+					if(gnum > $('.ann_ul li').length-1){
+						gnum = 0;
+					}
+					announ();
+				}
+				
+				annOff = false;
+			});
+			$('#ann_gobottom').click(function(){
+				if(annOff){
+					gnum--;
+					if(gnum < 0){
+						gnum = 0;
+					}
+					announ();
+				}
+				
+				annOff = false;
+			});
+
+			//广告位显示/隐藏控制
+			$(".show_hide").each(function(){
+				var stime = $(this).attr("data-stime");
+				var etime = $(this).attr("data-etime");
+				var nowtime = Date.parse(new Date())/1000;	
+				if (stime != '') {
+					if (etime != '') {					
+						if (stime > nowtime || nowtime > etime) {
+							$(this).hide();
+						};						
+					}else{
+						if (stime > nowtime) {
+							$(this).hide();
+						};
+					}
+				}else{
+					if (etime != '') {
+						if (nowtime > etime) {
+							$(this).hide();
+						};
+					}
+				}
+
+			});	
+			
+			//去掉第五个商品的margin
+			var ItemLi = $('.banner_item .banner_ul li');
+			var ItemIndex = 0;
+			var Itemresult = 0;
+
+			$.each(ItemLi,function(){
+
+				ItemIndex = $(this).index() + 1;
+				Itemresult = ItemIndex / 5;
+				if(parseInt(Itemresult) == Itemresult){
+					$(this).css('margin-right','0px');
+				}
+			});
+
+			//皮肤
+		var skin = {};
+
+		skin.dw_skin = function(){
+
+			var dwskinGif1;
+
+			var	banner_wrap_left = $('.banner_wrap').offset().left;
+			$('.dw_skin2').css('right',$(document).width() - banner_wrap_left);
+			$('.dw_skin3').css('right',$(document).width() - banner_wrap_left - 15);
+
+			if(banner_wrap_left - 180 < 0){
+				dwskinGif1 = 0;
+			}else{
+				dwskinGif1 = banner_wrap_left - 180;
+			}
+			$('.dwskinGif1').css('right',dwskinGif1);
+		}
+		skin.dw_skin();
+		$(window).resize(function(){
+			skin.dw_skin();
+		});
+
+
+		});
+	</script>
+
+</body>
+</html>

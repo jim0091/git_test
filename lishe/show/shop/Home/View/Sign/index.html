@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>用户登录-礼舍心意商城</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/sign/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/sign/css/signin.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+	<script src="__VIEW__Public/js/jquery.cookie.js"></script>
+	<script src="__VIEW__Public/sign/js/signin.js"></script>
+</head>
+<body>
+		<!-- 顶部导航 -->
+		<include file="Public/header"/>	
+
+		<!-- 登录框 -->
+		<div class="signin">
+			<!-- 登录 -->
+			<div id="signin">
+				<div class="title">礼舍会员登录</div>		
+				<div class="form">
+					<div><input type="text" id="userName" placeholder="请输入手机号码" maxlength="11"><div class="close"></div></div>
+					<div><input type="password" id="password" placeholder="请输入登录密码" maxlength="20"></div>
+					<div class="agrees">
+						<label for="autologin"><input type="checkbox" id="autologin">自动登录</label>
+						<a href="javascript:;" class="forgetpassword">忘记密码?</a>
+					</div>
+					<div class="wronghint" id="singinMsg" style="display: none"></div>
+					<input type="submit" value="登录" id="singinBtn">
+					<div class="quicklink">
+						<a href="javascript:;" class="newuser">注册会员</a>
+						<div></div>
+						<a href="javascript:;" class="quickactivate">快速激活</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- 注册 -->
+			<div id="register">
+				<div class="title">礼舍会员注册</div>
+				<div class="form">
+					<div><input type="text" id="signupMobile" placeholder="请输入有效的手机号" maxlength="11"></div>
+					<div><input type="password" id="signupPassword" placeholder="请设置密码，长度6-20字符，不能有特殊字符" maxlength="20"></div>
+					<div><input type="password" id="signupPasswordRe" placeholder="请再次输入密码" maxlength="20"></div>
+					<div id="identify">
+						<input type="text" id="imgCheckCode" placeholder="图片验证码，不区分大小写" maxlength="4">
+						<div id="captcha-container">
+						<a href="javascript:void(0);" onclick="getImgCode()" title="点击刷新验证码">
+							<img align="absmiddle" id="vocde" src="/shop.php/System/getImgCode">
+						</a>
+						</div>
+					</div>
+					<div class="agrees">
+						<label for="signupAgree"><input type="checkbox" checked="checked" id="signupAgree">我已阅读并同意</label>
+						<a href="/site/help.html" target="_blank">《礼舍网服务协议》</a>
+					</div>
+					<div class="wronghint" style="display: none" id="signUpMsg"></div>
+					<input type="submit" value="注册" id="signUpBtn">
+					<div class="haveid">已有账号? <a href="javascript:;" class="loginnow">点此登录</a></div>
+				</div>
+			</div>
+
+			<!-- 激活 -->
+			<div id="activation">
+				<div class="title">礼舍会员激活</div>		
+				<div class="form">
+					<div><input type="text" placeholder="请输入要激活的手机号" id="activateMobile" maxlength="11"></div>
+					<div id="identify">
+						<input type="text" id="mobileCode" placeholder="输入验证码" maxlength="6">
+						<input type="button" id="getMobileCode" value="获取验证码">
+					</div>
+					<div><input type="password" id="activatePassword" placeholder="请设置密码，长度6-20字符，不能有特殊字符" maxlength="20"></div>
+					<div><input type="password" id="activatePasswordRe" placeholder="请再次输入密码" maxlength="20"></div>
+					<div class="agrees">
+						<label for="activateAgree"><input type="checkbox" checked="checked" id="activateAgree" value="yes">我已阅读并同意</label>
+						<a href="/site/help.html" target="_blank">《礼舍网服务协议》</a>
+					</div>
+					<div class="wronghint" style="display: none" id="activateMsg"></div>
+					<input type="submit" value="激活" id="activateBtn">
+					<div class="quicklink">
+						<a href="javascript:;" class="newuser">注册</a>
+						<div></div>
+						<a href="javascript:;" class="loginnow">登录</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- 注册成功 -->
+			<div id="reg_success">
+				<div class="title">礼舍会员注册</div>
+				<div class="success_icon"></div>
+				<div class="success_mes">注册成功，欢迎加入礼舍!</div>
+			</div>
+
+			<!-- 激活成功 -->
+			<div id="act_success">
+				<div class="title">礼舍会员激活</div>
+				<div class="success_icon"></div>
+				<div class="success_mes">激活成功!</div>
+			</div>
+
+			<!-- 重置密码成功 -->
+			<div id="reset_success">
+				<div class="title">重置密码</div>
+				<div class="success_icon"></div>
+				<div class="success_mes">重置密码成功，请重新登录!</div>
+			</div>
+
+			<!-- 找回密码 -->
+			<div id="find_password"> 
+				<div class="title">找回密码</div>		
+				<div class="form">
+					<div><input type="text" placeholder="请输入要找回密码的手机号" id="getPassMobile" maxlength="11"></div>
+					<div id="identify2">
+						<input type="text" id="getPassMobileCode" placeholder="输入验证码" maxlength="6">
+						<input type="button" id="getPassCheckCode" value="获取验证码">
+					</div>
+					<div><input type="password" id="getPassPassword" placeholder="设置新密码，长度6-20字符，不能有特殊字符" maxlength="20"></div>
+					<div><input type="password" id="getPassPasswordRe" placeholder="请再次输入新密码" maxlength="20"></div>
+					<div class="wronghint" style="display: none" id="getPassMsg"></div>
+					<input type="submit" value="确定" id="getPassBtn">
+					<div class="quicklink">
+						<a href="javascript:;" class="newuser">注册</a>
+						<div></div>
+						<a href="javascript:;" class="loginnow">登录</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="copyright">
+			<input type="hidden" id="refer" value="{$refer}">
+			<p>&#169; 2005-2016 礼舍网 版权所有&nbsp;&nbsp;ICP备案证书号：粤ICP备15033641号-1&nbsp;&nbsp;All&nbsp;rights&nbsp;Reserved.</p>
+		</div>
+
+
+<!-- IE兼容模块 -->
+<!--[if lte IE 9]>
+<script src="__VIEW__Public/sign/js/placeholder_for_ie.js"></script>
+<script type="text/javascript">
+	$("#userName").placeholder({
+		word: "用户名/邮箱地址/手机号",
+		evtType: "keydown"
+	});
+	$("#password").placeholder({
+		word: "请输入密码",
+	});
+	$("#signupMobile").placeholder({
+		word: "请输入有效的手机号",
+		evtType: "keydown",
+	});
+	$("#signupPassword").placeholder({
+		word: "请输入密码",
+	});
+	$("#signupPasswordRe").placeholder({
+		word: "请输入密码",
+	});
+	$("#imgCheckCode").placeholder({
+		word: "图片验证码",
+	})
+	$("#activateMobile").placeholder({
+		word: "请输入要激活的手机号",
+		evtType: "keydown",
+	});
+	$("#mCheckCode").placeholder({
+		word: "输入验证码",
+		evtType: "keydown",
+	})
+	$("#activatePassword").placeholder({
+		word: "请输入密码",
+	});
+	$("#activatePasswordRe").placeholder({
+		word: "请输入密码",
+	});
+	$("#findphone").placeholder({
+		word: "请输入要找回密码的手机号",
+	});
+	$("#verify3").placeholder({
+		word: "输入验证码",
+		evtType: "keydown",
+	});
+	$("#password6").placeholder({
+		word: "请输入密码",
+	});
+	$("#password7").placeholder({
+		word: "请输入密码",
+	});
+</script>
+<![endif]-->
+
+</body>
+</html>

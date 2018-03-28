@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel="stylesheet" href="__PUBLIC__/zzgx/css/reset-1.css">
+<link rel="stylesheet" href="__PUBLIC__/zzgx/css/zhengzhang_login-1.css">
+</head>
+<body>
+<div class="header">
+    <img class="header-logo" src="__PUBLIC__/zzgx/images/logo-1.png" alt=""/>
+    <p class="fl header-title">专属积分商城</p>
+    <div class="header-phone fr">
+        <img class="fl" src="__PUBLIC__/zzgx/images/phone.png" alt=""/>
+        <p class="fl">021-61542562</p>
+    </div>
+</div>
+<div class="content">
+    <div class="content-children">
+        <div class="explain">
+            <h1>走进洗衣券当钱花的时代</h1>
+            <i></i>
+            <p>1. 正章干洗商城注册即可用干洗券兑换积分，积分价值与干洗券实物面额等同</p>
+            <p>2. 商城10万+商品可使用积分消费</p>
+            <p>3. 如有登录/注册或兑换疑问，欢迎拨打客服热线：021-61542562</p>
+            <span>*兑换过程需要支付9%的手续费，一切解释权由深圳礼舍科技有限公司所有</span>
+        </div>
+        <div class="register">
+            <div class="register-logo">
+                <img src="__PUBLIC__/zzgx/images/register-logo.png" alt=""/>
+            </div>
+            <div class="register-name">
+                <input class="r-name" type="text" id="username" name="username" placeholder="请输入手机号"/>
+                <input class="r-pwd" type="password" id="password" name='password' placeholder="请输入密码"/>
+                <img class="get-name" src="__PUBLIC__/zzgx/images/r_name.png" alt=""/>
+                <img class="get-pwd" src="__PUBLIC__/zzgx/images/r-pwd.png" alt=""/>
+                <div class="set-perpetual">
+                    <div class="set-skip fl">
+                        <p class="set-btn fl"><span class=""></span></p>
+                        <p class="set-record fl"  id="rem_inp">自动登录</p>
+                    </div>
+                    <div class="fr register-forget">
+                        <a href="{:C(LISHE)}/shop.php/sign" style="color:#666;" ><span class="register-forget-border">注册</span></a>
+						<a href="{:C(LISHE)}/shop.php/sign/index/refer/findPasswd" style="color:#666;"><span>忘记密码?</span></a>
+                    </div>
+                </div><span id="loginMsg" style="display: none; color:red;margin-top: 8px;">账号密码车位</span>
+            </div>
+			
+            <div class="login-btn" id="loginBut">登录</div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <p>&copy;2005-2016 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
+    <p>ICP备案证书号:粤ICP备15033641号-1</p>
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script>
+$('.set-skip').on('click',function(){
+    $('.set-btn').toggleClass('set-btn-click');
+    $('.set-btn>span').toggleClass('set-btn-span');
+})
+</script>
+</body>
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#loginBut").click(function(){
+	  	var username = $("#username").val();
+	  	username = $.trim(username);
+	  	var password = $("#password").val();
+	  	password = $.trim(password);
+	  	
+	    if(username == ""){
+	      alert('请输入您的用户名！');
+	      $("#username").focus();
+	      return false;
+	    }
+	    if(password == ""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    }
+	    $(this).attr("disabled",true);
+		$.post("__APP__?c=Login&a=login",{userName:username,password:password,mark:'zzgx',check:'n'},function(result){
+			var data = eval(result);
+			if(data[0] > 0){
+				if(data[2]!=''){
+					window.location.href=data[2];
+				}else{
+					window.location.href="__APP__/Index/index";
+				}					
+			}else{
+				$("#loginBut").attr("disabled",false);;
+				$("#loginMsg").show().text(data[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</html>

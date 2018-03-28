@@ -1,0 +1,72 @@
+<style>
+.help-content {
+	min-height: 880px;
+}
+.help-content .content_left{
+	width:213px;
+	height:857px;
+	background:#FFF;
+    float: left;
+	border:1px solid #d8d8d8;}
+.help-content .content_left h3{
+	padding:8% 0px 0px 4%;}
+.help-content .nav li{width: 140px; height: 50px; line-height: 50px; font-size: 14px;}
+.help-content .content_right{ 
+	float: right;
+    width: 950px; }
+.help-content .content_right .h3{
+	background:#f6f4f4;}
+.help-content .content_right .h3 h3{
+	text-align:center;
+	line-height:50px;}
+.help-content .content_right .content_text{
+	background:#FFF;
+    float: left;
+	border:1px solid #d8d8d8;}
+.help-content .content_text p{     
+	font-size: 16px;
+    line-height: 40px;
+    margin: 10px;}
+.help-content .content_right img{
+	width: 95%;
+    padding: 0px 3%;}   
+.help-content .nav {padding: 0px 0px 0px 38px;}
+.help-content .nav .li{color:#ff6600;}     
+.help-content .nav li a{ text-decoration: none;
+         color: #666;}
+.help-content .nav .color{ color: #ff6600;}
+</style>
+
+	<div class="help-content wrap-lg">
+    	<div class="content_left">
+        	<h3>帮助中心</h3>
+        	<ul class="nav">
+            	<li><a href="help_index.html">服务条款</a></li>
+                <li class="li"><a href="help_summary.html" class="color">礼舍教学操作指南</a></li>
+                <li><a href="help_resume.html">礼舍简介</a></li>
+                <li><a href="help_problem.html">常见问题</a></li>
+                <li><a href="help_recruitment.html">人员招聘</a></li>
+                <li><a href="help_partner.html">合作伙伴</a></li>
+                <li><a href="help_we.html">联系我们</a></li>
+            </ul>
+        </div>
+        <div class="content_right">
+        	<div class="h3">
+            	<h3>礼舍教学指南</h3>
+            </div>
+            <img src="./images/help/content_img1.jpg">
+            
+        </div>
+	</div>
+
+<script>
+$(document).ready(function() {
+
+	var _h_content_right = $('.help-content .content_right').height() + 21;
+	
+	if (880 < _h_content_right) {
+		$('.help-content').height(_h_content_right);
+	}
+});
+</script>
+

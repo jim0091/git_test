@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Wrecharge.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>订单生成成功-礼舍</title>
+</head>
+
+<body>
+	<div class="Waddress">
+      <span><a href=""><img ></a></span>
+      <span>订单生成成功！</span>
+    </div>
+    <div class="Wpayment">
+    	<input type="hidden" name="paymentid" value="{$paymentid}">
+		<p>订单编号：<span style="color:#333333;">{$paymentInfo['payment_id']}</span></p>
+
+		<if condition="$paymentInfo['cash_fee'] gt 0">
+			<p>
+				现金支付：<span style="color:#ff4138;">¥{:round($paymentInfo['cash_fee'],2)}</span>
+			</p>
+			<p style="position: relatives;" class="wxpayClass"><span style="margin-left: 30px;"></span>
+				<input type="radio" id="cbxWxpay" class="chk_1" name="paytype1" value="wxpay" checked/>
+				<label for="cbxWxpay"></label>
+				<img src="__VIEW__Public/images/WePayLogo.png" style="width:110px;height:31px; margin-left: 5px;vertical-align: middle;"/>
+			</p>
+		</if>
+	</div>
+	<if condition="$paymentInfo['cash_fee'] gt 0">
+		<div class="Wrecntn">
+			<a href="javascript:void(0);" class="conpay">立即支付</a>
+			<a href="javascript:void(0);" class="conpayHide" style="display:none;">支付中..</a>
+		</div>	
+	<else/>
+		<div class="Wrecntn">
+			<a href="javascript:void(0);" class="">无法使用积分支付</a>
+		</div>
+	</if>
+
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>  
+<script type="text/javascript">
+	$(".conpay").click(function(){
+		$(".topLoading").show();
+		$(this).hide();
+		$(".conpayHide").show();
+		var paymentid = $("input[name='paymentid']").val();
+		$.ajax({
+			type:"POST",
+			url:"__APP__/Extension/operPay",
+			data:{paymentid:paymentid},
+			dataType:'text',
+			success:function(result){
+				var data=eval(result);
+				if (data[0] == 1) {
+					$(".topLoading").hide();
+					opLayer('open',data[1],"__APP__/User/userCenter");
+					return;
+				}
+				if (data[0] == 2) {
+					$(".topLoading").hide();
+					opLayer('open',data[1],"__APP__/User/userCenter");
+					return;
+				}
+				if (data[0] == 3) {
+					window.location.href="__APP__/Extension/onlinePay/paymentId/"+data[1];					
+				};
+				if (data[0] == 0) {
+					$(".topLoading").hide();
+					$(".conpay").show();
+					$(".conpayHide").hide();
+					opLayer('open',data[1]);
+					return;
+				}
+			}
+		});
+	});
+</script>
+</body>
+</html>

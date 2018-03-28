@@ -1,0 +1,30 @@
+	<div class="head">
+		<div class="wrap">
+			<a href="__LISHE_URL__/shop.php" class="logo2"></a>
+			<div class="search_bar">
+				<form action="__LISHE_URL__/shop.php/Items/itemList" method="get" id="goods_search">
+					<input type="text" name="keyword" class="search_text" placeholder="综合搜索" onfocus="this.placeholder=''" onblur="this.placeholder='综合搜索'" value="{$keyword}">
+					<a class="search_button" href="javascript:void(0);"></a>
+				</form>
+				<ul class="search_commend">
+					<li><a href="/activity/appliances/?ssgzj0411" target="_blank">家电特惠活动</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/662" target="_blank">坚果炒货</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=饼干" target="_blank">办公室下午茶</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/650" target="_blank">天长地酒</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/100" target="_blank">智能厨电</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=锅" target="_blank">厨房锅具</a></li>
+				</ul>
+			</div>
+			<div class="my_cart">
+				<a class="cart" href="/shop.php/Order/Cart" target="_bank">我的购物车</a>
+				<div class="left_arrow"></div>
+				<div id="cart_number">{$uid|getCartCount}</div>
+			</div>
+			<script type="text/javascript">
+				$(".search_button").click(function(){
+					$("#goods_search").submit();
+				});
+			</script>
+			
+		</div>
+	</div>

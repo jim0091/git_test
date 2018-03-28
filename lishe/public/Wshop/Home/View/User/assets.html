@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Myassets.css">
+<title>我的资产-心意商城</title>
+</head>
+
+<body>
+    <div class="Waddress">
+        <span><a href="javascript:" onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+        <span>我的资产</span>
+    </div>
+   
+    <div class="Myassets">
+        <div class="MyassetsList">
+            <a href="">
+                <ul>
+                    <li>{$depositInfo['balance']}</li>
+                    <li>福利积分</li>
+                </ul>
+            </a>
+            <a href="{:U('User/coupons')}">
+                <ul>
+                    <li>{$userCouponCount}</li>
+                    <li>优惠卷</li>
+                </ul>
+            </a>
+            <a href="">
+                <ul>
+                    <li>0</li>
+                    <li>礼舍币</li>
+                </ul>
+            </a>
+        </div>    
+    </div>
+</body>
+</html>

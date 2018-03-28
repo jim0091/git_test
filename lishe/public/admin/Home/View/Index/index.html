@@ -1,0 +1,886 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<LINK rel="Bookmark" href="/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__skin/red/skin.css" rel="stylesheet" type="text/css" id="skin" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>礼舍商城后台管理系统</title> 
+<meta name="keywords" content="礼舍商城后台管理系统">
+<meta name="description" content="礼舍商城后台管理系统">
+</head>
+<body>
+<header class="Hui-header cl"> <a class="Hui-logo l" title="H-ui.admin v2.3" href="/">礼舍商城后台管理系统</a><a class="Hui-logo-m l" href="/" title="H-ui.admin">H-ui</a> <span class="Hui-subtitle l">V2.0</span>
+	<nav class="mainnav cl" id="Hui-nav">
+		<ul>
+			<li class="dropDown dropDown_click"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
+				<ul class="dropDown-menu radius box-shadow">
+					<li><a href="javascript:;" onclick="article_add('添加资讯','article-add.html')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
+					<li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.html')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
+					<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.html')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
+					<li><a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<ul class="Hui-userbar">
+		<li><span style="font-size:16px;">{$Think.session.roleName}</span></li>
+		<li class="dropDown dropDown_hover"><a href="#" class="dropDown_A"><span style="font-size: 14px;">{$realName}</span> <i class="Hui-iconfont">&#xe6d5;</i></a>
+			<ul class="dropDown-menu radius box-shadow">
+				<li><a href="javascript:void(0)" onclick="member_edit('个人信息/修改密码','{:U('Home/Admin/memberEdit')}','4','','510')">修改密码</a></li>
+				<li><a href="{:U('Home/Login/logout')}">切换账户</a></li>
+				<li><a href="{:U('Home/Login/logout')}">退出</a></li>
+			</ul>
+		</li>
+		<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
+		<li id="Hui-skin" class="dropDown right dropDown_hover"><a href="javascript:;" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
+			<ul class="dropDown-menu radius box-shadow">
+				<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
+				<li><a href="javascript:;" data-val="blue" title="蓝色">蓝色</a></li>
+				<li><a href="javascript:;" data-val="green" title="绿色">绿色</a></li>
+				<li><a href="javascript:;" data-val="red" title="红色">红色</a></li>
+				<li><a href="javascript:;" data-val="yellow" title="黄色">黄色</a></li>
+				<li><a href="javascript:;" data-val="orange" title="绿色">橙色</a></li>
+			</ul>
+		</li>
+	</ul>
+	<a aria-hidden="false" class="Hui-nav-toggle" href="#"></a> </header>
+<aside class="Hui-aside">
+	<input runat="server" id="divScrollValue" type="hidden" value="" />
+	<div class="menu_dropdown bk_2">
+	<if condition="$roleId eq 0">
+		<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="__ADMIN__article-list.html" href="javascript:void(0)">资讯管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe6bb;</i>微送礼管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="{:U('Gift/cardList')}" href="javascript:void(0)">贺卡管理</a></li>
+					<li><a _href="{:U('Gift/tagList')}" href="javascript:void(0)">搜索标签</a></li>
+					<li><a _href="{:U('Gift/tradeList')}"  href="javascript:void(0)">交易管理</a></li>
+					<!-- <li><a _href="{:U('Bag/tradeList')}"  href="javascript:void(0)">礼包交易</a></li> -->
+				</ul>
+			</dd>
+		</dl>
+	</if>
+		<?php 	
+	 		$supplierId=array_search('supplierview', $nodeAction);
+		 	if($supplierId){
+	 	?>
+		<dl id="menu-supplier2">
+			<dt><i class="Hui-iconfont">&#xe62b;</i> 供应商管理 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+				<?php 	
+				 		$ApplyListId=array_search('applylistview', $nodeAction);
+		 				if($ApplyListId){
+	 				?>
+					<li><a _href="{:U('Supplier/applylistview')}" href="javascript:void(0)">供应商入驻申请</a></li>
+
+					<?php } ?>
+
+					<?php 	
+				 		$supplierListId=array_search('supplierlistview', $nodeAction);
+		 				if($supplierListId){
+	 				?>
+					<li><a _href="{:U('Supplier/supplierListView')}" href="javascript:void(0)">供应商管理</a></li>
+					<?php } ?>
+
+					<?php 	
+				 		$supplierListId=array_search('suppliersenderlist', $nodeAction);
+		 				if($supplierListId){
+	 				?>
+					<li><a _href="{:U('Supplier/supplierSenderList')}" href="javascript:void(0)">供应商发货人设置</a></li>
+					<?php } ?>
+
+
+					<?php 	
+				 		$goodsListId=array_search('goodslistview', $nodeAction);
+		 				if($goodsListId){
+	 				?>
+					<li><a _href="{:U('Supplier/goodsListView')}" href="javascript:void(0)">商品管理</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$supplierRecycleId=array_search('supplierrecycle', $nodeAction);
+		 				if($supplierRecycleId){
+	 				?>
+					<li><a _href="{:U('Supplier/supplierRecycle')}" href="javascript:void(0)">供应商回收站</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$goodsRecycleId=array_search('goodsrecycle', $nodeAction);
+		 				if($goodsRecycleId){
+	 				?>
+					<li><a _href="{:U('Supplier/goodsRecycle')}" href="javascript:void(0)">商品回收站</a></li>
+					<?php } ?>
+				</ul>
+			</dd>
+		</dl>
+		<?php } ?>
+
+		<?php 	
+	 		$supplierId=array_search('quotation', $nodeAction);
+		 	if($supplierId){
+	 	?>
+		<dl id="menu-supplier2">
+			<dt><i class="Hui-iconfont">&#xe62b;</i> 报价单管理 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+				<?php 	
+				 		$ApplyListId=array_search('allquotationlist', $nodeAction);
+		 				if($ApplyListId){
+	 				?>
+					<li><a _href="{:U('Quotation/allQuotationList')}" href="javascript:void(0)">全部报价单</a></li>
+
+					<?php } ?>
+
+					<?php 	
+				 		$supplierListId=array_search('attachequotationlist', $nodeAction);
+		 				if($supplierListId){
+	 				?>
+					<li><a _href="{:U('Quotation/attacheQuotationList')}" href="javascript:void(0)">待审核（采销专员）</a></li>
+					<?php } ?>
+					<?php 
+						$goodsRecycleId=array_search('managerquotationlist', $nodeAction);
+		 				if($goodsRecycleId){
+					?>
+					<li><a _href="{:U('Quotation/managerQuotationList')}" href="javascript:void(0)">待审核（采销经理）</a></li>
+					<?php } ?>
+					<?php 
+						$goodsRecycleId=array_search('directorquotationlist', $nodeAction);
+		 				if($goodsRecycleId){
+					?>
+					<li><a _href="{:U('Quotation/directorQuotationList')}" href="javascript:void(0)">待审核（采销总监）</a></li>
+					<?php } ?>
+					<?php 
+						$goodsRecycleId=array_search('financequotationlist', $nodeAction);
+		 				if($goodsRecycleId){
+					?>
+					<li><a _href="{:U('Quotation/financeQuotationList')}" href="javascript:void(0)">待审核（财务）</a></li>
+					<?php } ?>				
+					<?php 
+						$goodsRecycleId=array_search('achievequotationlist', $nodeAction);
+		 				if($goodsRecycleId){
+					?>
+					<li><a _href="{:U('Quotation/achieveQuotationList')}" href="javascript:void(0)">已生效报价单</a></li>
+					<?php } ?>	
+				</ul>
+			</dd>
+		</dl>
+		<?php } ?>
+		
+		<?php 	
+	 		$purchaseplanId=array_search('purchaseplanview', $nodeAction);
+		 	if($purchaseplanId){
+	 	?>
+		<dl id="menu-supplier-plan">
+			<dt><i class="Hui-iconfont">&#xe6c1;</i> 采购计划管理 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+				 		$allPlanListId=array_search('allplanlist', $nodeAction);
+		 				if($allPlanListId){
+	 				?>
+					<li><a _href="{:U('Purchase/allPlanList')}" href="javascript:void(0)">全部计划</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$planApproveListId=array_search('planapprovelist', $nodeAction);
+		 				if($planApproveListId){
+	 				?>
+					<li><a _href="{:U('Purchase/planApproveList')}" href="javascript:void(0)">待审核</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$handlePlanListId=array_search('handleplanlist', $nodeAction);
+		 				if($handlePlanListId){
+	 				?>
+					<li><a _href="{:U('Purchase/handlePlanList')}" href="javascript:void(0)">已审核</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$cancelPlanListId=array_search('cancelplanlist', $nodeAction);
+		 				if($cancelPlanListId){
+	 				?>
+					<li><a _href="{:U('Purchase/cancelPlanList')}" href="javascript:void(0)">已取消</a></li>
+					<?php } ?>
+				</ul>
+			</dd>
+		</dl>
+		<?php } ?>
+		
+		<?php 	
+	 		$purchaseOrderId=array_search('purchaseorderview', $nodeAction);
+		 	if($purchaseOrderId){
+	 	?>
+		<dl id="menu-supplier-order">
+			<dt><i class="Hui-iconfont">&#xe6c6;</i> 采购订单管理 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+				 		$allOrderListId=array_search('allorderlist', $nodeAction);
+		 				if($allOrderListId){
+	 				?>
+					<li><a _href="{:U('Purchase/allOrderList')}" href="javascript:void(0)">全部订单</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$firstApproveListId=array_search('firstapprovelist', $nodeAction);
+		 				if($firstApproveListId){
+	 				?>
+					<li><a _href="{:U('Purchase/firstApproveList')}" href="javascript:void(0)">待初审（采购员）</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$directorApproveListId=array_search('directorapprovelist', $nodeAction);
+		 				if($directorApproveListId){
+	 				?>
+					<li><a _href="{:U('Purchase/directorApproveList')}" href="javascript:void(0)">待复审（主管）</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$handleOrderListId=array_search('handleorderlist', $nodeAction);
+		 				if($handleOrderListId){
+	 				?>
+					<li><a _href="{:U('Purchase/handleOrderList')}" href="javascript:void(0)">已审核</a></li>
+					<?php } ?>
+					
+					<?php 	
+				 		$cancelOrderListId=array_search('cancelorderlist', $nodeAction);
+		 				if($cancelOrderListId){
+	 				?>
+					<li><a _href="{:U('Purchase/cancelOrderList')}" href="javascript:void(0)">已取消</a></li>
+					<?php } ?>
+					
+				</ul>
+			</dd>
+		</dl>
+		<?php } ?>
+		<?php 	
+	 		$purchaseOrderId=array_search('storagelistview', $nodeAction);
+		 	if($purchaseOrderId){
+	 	?>			
+		<dl id="menu-supplier-store">
+			<dt><i class="Hui-iconfont">&#xe645;</i> 入库管理 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="{:U('Supplier/storageListView')}" href="javascript:void(0)">入库记录</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<?php } ?>		
+	<if condition="$roleId eq 0">
+		<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="__ADMIN__picture-list.html" href="javascript:void(0)">图片管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</if>
+	<?php 	
+	 	$applFundId=array_search('productpageindex', $nodeAction);
+		 if($applFundId){
+		 	if($nodeController[$applFundId]=="product" || $roleId==0){
+	 ?>	
+		<dl id="menu-product">
+			<dt><i class="Hui-iconfont">&#xe620;</i> 商品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+						 	$applFundId=array_search('category', $nodeAction);
+							 if($applFundId){
+						 ?>		
+						<li><a _href="{:U('Home/Product/brandList')}" href="javascript:void(0)">品牌管理</a></li>
+					</if>
+					<?php 
+							}
+							   ?>						
+					<?php 	
+						 	$applFundId=array_search('category', $nodeAction);
+							 if($applFundId){
+						 ?>							
+						<li><a _href="{:U('Home/Product/category')}" href="javascript:void(0)">分类管理</a></li>
+					<?php 
+							}
+							   ?>	
+					<?php 	
+						 	$applFundId=array_search('shopcategory', $nodeAction);
+							 if($applFundId){
+						 ?>		
+						<li><a _href="{:U('Home/Product/shopCategory')}" href="javascript:void(0)">店铺分类</a></li>
+					</if>
+					<?php 
+							}
+							   ?>								   
+					
+					<?php 	
+						 	$applFundId=array_search('productlist', $nodeAction);
+							 if($applFundId){
+						 ?>						
+						<li><a _href="{:U('Home/Product/productList')}" href="javascript:void(0)">商品管理</a></li>
+					<?php 
+							}
+							  ?>	
+					<?php 	
+						 	$applFundId=array_search('fulldiscountindex', $nodeAction);
+							 if($applFundId){
+						 ?>							
+						<li><a _href="{:U('Home/Mallconfigure/specialPriceIndex')}" href="javascript:void(0)">特价商品管理</a></li>
+					<?php 
+							}
+							   ?>								  
+				</ul>
+			</dd>
+		</dl>
+		<?php }
+				}
+				   ?>			
+		<dl id="menu-order">
+			<dt><i class="Hui-iconfont">&#xe687;</i> 商城订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+						 	$applFundId=array_search('index', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					<li><a _href="{:U('Home/Order/index')}" href="javascript:void(0)">全部订单</a></li>
+					<?php 
+							}
+							   ?>
+					<?php 	
+						 	$applFundId=array_search('sendorderindex', $nodeAction);
+							 if($applFundId){
+						 ?>								   
+					<li><a _href="{:U('Home/Order/sendOrderIndex')}" href="javascript:void(0)">发货订单</a></li>
+					<?php 
+							}
+							   ?>							   
+					<?php 	
+						 	$applFundId=array_search('aftersaledealindex', $nodeAction);
+							 if($applFundId){
+						 ?>								  	
+					<li><a _href="{:U('Home/Order/aftersaleDealIndex')}" href="javascript:void(0)">售后待处理</a></li>
+					<?php 
+							}
+							   ?>								   
+							  	
+					<?php 	
+						 	$applFundId=array_search('aftersaleorderindex', $nodeAction);
+							 if($applFundId){
+						 ?>								  	
+					<li><a _href="{:U('Home/Order/aftersaleOrderIndex')}" href="javascript:void(0)">售后订单</a></li>
+					<?php 
+							}
+							   ?>		
+							   
+					<?php 	
+						 	$applFundId=array_search('refundorderindex', $nodeAction);
+							 if($applFundId){
+						 ?>								  	
+					<li><a _href="{:U('Home/Order/refundOrderIndex')}" href="javascript:void(0)">退款订单</a></li>
+					<?php 
+							}
+							   ?>								   
+					
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-order">
+			<dt><i class="Hui-iconfont">&#xe627;</i> 活动订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+						 	$applFundId=array_search('index', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					
+					<li><a _href="{:U('Home/Order/activity')}" href="javascript:void(0)">全部订单</a></li>
+					<?php 
+							}
+							   ?>						
+					<?php 	
+						 	$applFundId=array_search('aftersaledealindex', $nodeAction);
+							 if($applFundId){
+						 ?>								  	
+					<li><a _href="{:U('Home/ActivityOrder/aftersaleDealIndex')}" href="javascript:void(0)">售后待处理</a></li>
+					<?php 
+							}
+							   ?>								   
+							  	
+					<?php 	
+						 	$applFundId=array_search('aftersaleorderindex', $nodeAction);
+							 if($applFundId){
+						 ?>								  	
+					<li><a _href="{:U('Home/ActivityOrder/aftersaleOrderIndex')}" href="javascript:void(0)">售后订单</a></li>
+					<?php 
+							}
+							   ?>		
+							   
+					<?php 	
+						 	$applFundId=array_search('refundorderindex', $nodeAction);
+							 if($applFundId){
+						 ?>								  	
+					<li><a _href="{:U('Home/ActivityOrder/refundOrderIndex')}" href="javascript:void(0)">退款订单</a></li>
+					<?php 
+							}
+							   ?>						
+					
+				</ul>
+			</dd>
+		</dl>
+
+				   
+		<?php
+			 	$applFundId=array_search('supplierorder', $nodeAction);
+				 if($applFundId){
+			 ?>						
+			<dl id="menu-order">
+				<dt><i class="Hui-iconfont">&#xe626;</i> 供应商订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<?php
+							 	$applFundId=array_search('all', $nodeAction);
+								 if($applFundId){  ?>								
+						<li><a _href="{:U('Home/SupplierOrder/all')}" href="javascript:void(0)">全部订单</a></li>
+							<?php } ?>	
+						<?php
+							 	$applFundId=array_search('waitsend', $nodeAction);
+								 if($applFundId){  ?>									
+						<li><a _href="{:U('Home/SupplierOrder/waitSend')}" href="javascript:void(0)">待发货订单</a></li>
+							<?php } ?>	
+						<?php
+							 	$applFundId=array_search('sended', $nodeAction);
+								 if($applFundId){  ?>							
+						<li><a _href="{:U('Home/SupplierOrder/sended')}" href="javascript:void(0)">已发货订单</a></li>
+							<?php } ?>	
+						<?php
+							 	$applFundId=array_search('aftersale', $nodeAction);
+								 if($applFundId){  ?>							
+						<li><a _href="{:U('Home/SupplierOrder/afterSale')}" href="javascript:void(0)">售后订单</a></li>
+							<?php } ?>	
+						
+						<?php
+							 	$applFundId=array_search('ordermonitorin', $nodeAction);
+								 if($applFundId){  ?>							
+						<li><a _href="{:U('Home/SupplierOrder/orderMonitorin')}" href="javascript:void(0)">订单监控</a></li>
+							<?php } ?>	
+						
+						<?php
+							 	$applFundId=array_search('monitorinorderlist', $nodeAction);
+								 if($applFundId){  ?>							
+						<li><a _href="{:U('Home/SupplierOrder/monitorinOrderList')}" href="javascript:void(0)">订单监控分布</a></li>
+							<?php } ?>	
+						
+					</ul>
+				</dd>
+			</dl>			
+		<?php 
+				}
+				   ?>	
+				   
+				   
+		<?php
+			 	$applFundId=array_search('vrindex', $nodeAction);
+				 if($applFundId){
+			 ?>						
+			<dl id="menu-order">
+				<dt><i class="Hui-iconfont">&#xe626;</i> 虚拟订单<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a _href="{:U('Home/FictitiousOrder/vrIndex')}" href="javascript:void(0)">虚拟订单</a></li>
+					</ul>
+				</dd>
+			</dl>			
+		<?php 
+				}
+				   ?>	
+				   
+	<?php 	
+		 	$applFundId=array_search('recharge', $nodeAction);
+			 if($applFundId){
+		 ?>				
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe63a;</i> 充值管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+						 	$applFundId=array_search('zzgxindex', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					<li><a _href="{:U('Home/Recharge/zzgxIndex')}" href="javascript:void(0)">正章充值管理</a></li>
+					<?php 
+							}
+							   ?>
+					<!--<?php   
+                             $applFundId=array_search('pointreg', $nodeAction);
+                              if($applFundId){
+                          ?>
+                     <li><a _href="{:U('Home/Recharge/pointreg')}" href="javascript:void(0)">积分返现</a></li>
+                     <?php 
+                             }
+                                ?>
+                    <?php   
+                             $applFundId=array_search('returnlist', $nodeAction);
+                              if($applFundId){
+                          ?>
+					<li><a _href="{:U('Home/Recharge/returnList')}" href="javascript:void(0)">满返管理</a></li>
+					<?php 
+                             }
+                                ?>-->
+                    <?php   
+                             $applFundId=array_search('procedure', $nodeAction);
+                              if($applFundId){
+                          ?>
+					<li><a _href="{:U('Home/Recharge/procedure')}" href="javascript:void(0)">手续费支付列表</a></li>
+					<?php 
+                             }
+                                ?>
+					<?php   
+                             $applFundId=array_search('dryclean', $nodeAction);
+                              if($applFundId){
+                          ?>
+					<li><a _href="{:U('Home/Recharge/dryclean')}" href="javascript:void(0)">干洗券兑换列表</a></li>
+					<?php 
+                             }
+                                ?>								
+				</ul>
+			</dd>
+		</dl>
+		<?php 
+				}
+				   ?>					   
+				   
+	<?php 	
+	 	$applFundId=array_search('productactivitypageindex', $nodeAction);
+		 if($applFundId){
+	 ?>	
+		<dl id="menu-order">
+			<dt><i class="Hui-iconfont">&#xe61d;</i> 平台配置管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<?php 	
+						 	$applFundId=array_search('activityindex', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					<li><a _href="{:U('Home/Mallconfigure/adPositionIndex')}" href="javascript:void(0)">广告位管理</a></li>
+					<?php
+							}
+							  ?>					
+					
+					<?php 	
+						 	$applFundId=array_search('activityindex', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					<li><a _href="{:U('Home/Mallconfigure/adGroupIndex')}" href="javascript:void(0)">广告组管理</a></li>
+					<?php
+							}
+							  ?>
+							  
+							  
+					<?php 	
+						 	$applFundId=array_search('activityindex', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					<li><a _href="{:U('Home/Activity/activityIndex')}" href="javascript:void(0)">活动&专题</a></li>
+					<?php
+							}
+							  ?>						
+					
+					
+					<?php 	
+						 	$applFundId=array_search('companysetting', $nodeAction);
+							 if($applFundId){
+						 ?>						
+					<li><a _href="{:U('Home/Activity/companySetting')}" href="javascript:void(0)">企业产品</a></li>
+					<?php 
+							}
+							   ?>	
+							   
+					<?php 	
+						 	$applFundId=array_search('categorynav', $nodeAction);
+							 if($applFundId){
+						 ?>						
+						<li><a _href="{:U('Home/Product/categoryNav')}" href="javascript:void(0)">微商城分类导航</a></li>
+					<?php 
+							}
+							   ?>								   
+							   
+					<?php 	
+						 	$applFundId=array_search('givescene', $nodeAction);
+							 if($applFundId){
+						 ?>									
+						<li><a _href="{:U('Home/Mallconfigure/giveScene')}" href="javascript:void(0)">赠送情景</a></li>
+					<?php 
+							}
+							   ?>	
+					<?php 	
+						 	$applFundId=array_search('wshopindex', $nodeAction);
+							 if($applFundId){
+						 ?>								   
+						<li><a _href="{:U('Home/Mallconfigure/wshopIndex')}" href="javascript:void(0)">微商城首页</a></li>
+					<?php 
+							}
+							   ?>	
+							   
+					<?php 	
+						 	$applFundId=array_search('mallindexrush', $nodeAction);
+							 if($applFundId){
+						 ?>								   
+						<li><a _href="{:U('Home/Mallconfigure/mallIndexRush')}" href="javascript:void(0)">商城首页抢购</a></li>
+					<?php 
+							}
+							   ?>							
+						
+					<?php 	
+						 	$applFundId=array_search('shufflingfigure', $nodeAction);
+							 if($applFundId){
+						 ?>							
+						<li><a _href="{:U('Home/Mallconfigure/shufflingFigure')}" href="javascript:void(0)">商城轮播图</a></li>
+					<?php 
+							}
+							   ?>	
+							   
+					<?php 	
+						 	$applFundId=array_search('fulldiscountindex', $nodeAction);
+							 if($applFundId){
+						 ?>							
+						<li><a _href="{:U('Home/Mallconfigure/fulldiscountIndex')}" href="javascript:void(0)">促销规则</a></li>
+					<?php 
+							}
+							   ?>		
+				</ul>
+			</dd>
+		</dl>
+		<?php 
+				}
+				   ?>	
+		
+		<!--<dl id="menu-page">
+			<dt><i class="Hui-iconfont">&#xe626;</i> 页面管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="__ADMIN__page-home.html" href="javascript:void(0)">首页管理</a></li>
+					<li><a _href="__ADMIN__page-flinks.html" href="javascript:void(0)">友情链接</a></li>
+				</ul>
+			</dd>
+		</dl>-->
+	<?php 	
+		 	$applFundId=array_search('feedback', $nodeAction);
+			 if($applFundId){
+		 ?>				
+		<dl id="menu-comments">
+			<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<if condition="$roleId eq 0">
+						<li><a _href="__ADMIN__http://h-ui.duoshuo.com/admin/" href="javascript:;">评论列表</a></li>
+					</if>
+					<li><a _href="{:U('Home/Comment/feedback')}" href="javascript:void(0)">意见反馈</a></li>
+				</ul>
+			</dd>
+		</dl>
+		<?php 
+				}
+				   ?>			
+	<if condition="$roleId eq 0">
+		<!--<dl id="menu-order">
+			<dt><i class="Hui-iconfont">&#xe63a;</i> 财务管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="__ADMIN__order-list.html" href="javascript:void(0)">订单列表</a></li>
+					<li><a _href="__ADMIN__recharge-list.html" href="javascript:void(0)">充值管理</a></li>
+					<li><a _href="__ADMIN__invoice-list.html" href="javascript:void(0)">发票管理</a></li>
+				</ul>
+			</dd>
+		</dl>-->
+		<dl id="menu-member">
+			<dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="__ADMIN__member-list.html" href="javascript:;">会员列表</a></li>
+					<li><a _href="__ADMIN__member-del.html" href="javascript:;">删除的会员</a></li>
+					<li><a _href="__ADMIN__member-level.html" href="javascript:;">等级管理</a></li>
+					<li><a _href="__ADMIN__member-scoreoperation.html" href="javascript:;">积分管理</a></li>
+					<li><a _href="__ADMIN__member-record-browse.html" href="javascript:void(0)">浏览记录</a></li>
+					<li><a _href="__ADMIN__member-record-download.html" href="javascript:void(0)">下载记录</a></li>
+					<li><a _href="__ADMIN__member-record-share.html" href="javascript:void(0)">分享记录</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</if>
+	<if condition="$roleId eq 0">
+			<dl id="menu-admin">
+				<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a _href="{:U('Home/Admin/role')}" href="javascript:void(0)">角色管理</a></li>
+						<li><a _href="{:U('Home/Admin/permission')}" href="javascript:void(0)">权限管理</a></li>
+						<li><a _href="{:U('Home/Admin/memberList')}" href="javascript:void(0)">管理员列表</a></li>
+					</ul>
+				</dd>
+			</dl>
+	</if>
+			
+			
+
+	<?php 	
+		 	$applFundId=array_search('statistics', $nodeAction);
+			 if($applFundId){
+		 ?>			
+		<dl id="menu-tongji">
+			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+				<?php 	
+		 			$StatId=array_search('monthstat', $nodeAction);
+			 		if($StatId){
+		 		?>	
+					<li><a _href="{:U('Home/Statistics/monthStat')}" href="javascript:void(0)">月销售额统计</a></li>
+				<?php 
+					}
+				?>
+
+				<?php 	
+		 			$StatId=array_search('dailystat', $nodeAction);
+			 		if($StatId){
+		 		?>	
+					<li><a _href="{:U('Home/Statistics/dailyStat')}" href="javascript:void(0)">日销售额统计</a></li>
+				<?php 
+					}
+				?>
+
+				<?php 	
+		 			$StatId=array_search('goodsstat', $nodeAction);
+			 		if($StatId){
+		 		?>	
+					<li><a _href="{:U('Home/Statistics/goodsStat')}" href="javascript:void(0)">商品销售统计</a></li>
+				<?php 
+					}
+				?>
+
+				<?php 	
+		 			$StatId=array_search('companystat', $nodeAction);
+			 		if($StatId){
+		 		?>	
+					<li><a _href="{:U('Home/Statistics/companyStat')}" href="javascript:void(0)">企业销售统计</a></li>
+				<?php 
+					}
+				?>
+
+				<?php 	
+		 			$StatId=array_search('supplierstat', $nodeAction);
+			 		if($StatId){
+		 		?>	
+					<li><a _href="{:U('Home/Statistics/supplierStat')}" href="javascript:void(0)">供应商销售统计</a></li>
+				<?php 
+					}
+				?>
+				</ul>
+			</dd>
+		</dl>
+		<?php 
+				}
+				   ?>			
+	<if condition="$roleId eq 0">
+		<dl id="menu-system">
+			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a _href="__ADMIN__system-base.html" href="javascript:void(0)">系统设置</a></li>
+					<li><a _href="__ADMIN__system-category.html" href="javascript:void(0)">栏目管理</a></li>
+					<li><a _href="__ADMIN__system-data.html" href="javascript:void(0)">数据字典</a></li>
+					<li><a _href="__ADMIN__system-shielding.html" href="javascript:void(0)">屏蔽词</a></li>
+					<li><a _href="__ADMIN__system-log.html" href="javascript:void(0)">系统日志</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</if>
+	</div>
+</aside>
+<div class="dislpayArrow"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+<section class="Hui-article-box">
+	<div id="Hui-tabNav" class="Hui-tabNav">
+		<div class="Hui-tabNav-wp">
+			<ul id="min_title_list" class="acrossTab cl">
+				<li class="active"><span title="我的桌面" data-href="__ADMIN__welcome.html">我的桌面</span><em></em></li>
+			</ul>
+		</div>
+		<div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a></div>
+	</div>
+	<div id="iframe_box" class="Hui-article">
+		<div class="show_iframe">
+			<div style="display:none" class="loading"></div>
+			<iframe scrolling="yes" frameborder="0" src="__ADMIN__welcome.html"></iframe>
+		</div>
+	</div>
+</section>
+<input type="hidden" id="PUBLIC" value="__ADMIN__">
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+/*资讯-添加*/
+function article_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*图片-添加*/
+function picture_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*产品-添加*/
+function product_add(title,url){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*用户-添加*/
+function member_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+	/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}	
+</script> 
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/jquery.cookie.js"></script>
+<link rel="stylesheet" href="/business/Show/Home/View/Gd10086/css/Mbstretch.css">
+<link href="__PUBLIC__/lishe/css/style.css" rel="stylesheet" type="text/css" />
+<title>活动专题-中国移动VIP积分商城</title>
+</head>
+
+<body>
+<!--头部-->
+ <div class="header">
+      <div class="hea-top">
+         <ul class="hed-left">
+            <li><a href="__APP__/Gd10086">E卡通商城首页</a><span>|</span></li>
+            <li><a href="/shop.html">心意商城</a><span>|</span></li>
+            <li><a href="/help_index.html">礼舍帮帮</a></li>
+         </ul>
+         <ul class="hed-right">
+         	<if condition="!empty($userName)">
+            <li><a href="/member-index.html" style="color:#c7241d;">Hi,{$userName}</a><span>|</span><a href="__APP__/Gd10086/logout" style="color:#c7241d;">退出</a></li>
+            <else/>
+            <li><a href="__APP__/Gd10086/login" style="color:#c7241d;">登录</a><span>|</span><a href="__APP__/User/signup" style="color:#c7241d;">注册</a></li>
+            </if>
+            <li><span>|</span></li>
+            <li><a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a></li>
+         </ul>
+      </div>
+ </div>  
+ 
+ <div class="nva">
+      <ul>
+        <li><a href="__APP__/Gd10086/goodsList/cfgId/9"><img src="/business/Show/Home/View/Gd10086/images/nva.png"></a></li>
+        <li><a href="__APP__/Gd10086/goodsList/cfgId/1/catId/282-283-284-286-288-289"><img src="/business/Show/Home/View/Gd10086/images/nva2.png"></a></li>
+        <li><a href="__APP__/Gd10086/goodsList/cfgId/2/catId/207-419-420-425-426-427-428-1423"><img src="/business/Show/Home/View/Gd10086/images/nva3.png"></a></li>
+        <li><a href="__APP__/Gd10086/goodsList/cfgId/3/catId/1577-412-407"><img src="/business/Show/Home/View/Gd10086/images/nva4.png"></a></li>
+        <li><a href="__APP__/Gd10086/goodsList/cfgId/4/catId/62-61"><img src="/business/Show/Home/View/Gd10086/images/nva5.png"></a></li>
+        <li><a href="__APP__/Gd10086/topic/aid/1"><img src="/business/Show/Home/View/Gd10086/images/nva6.png"></a></li>
+      </ul>
+ </div>  
+ <div style="background:#fef35d; height:20px; "></div>
+ <div style="text-align:center;margin-top:20px;"><img src="/business/Show/Home/View/Gd10086/images/write1.png"></div>
+ <!--列表-->
+ <volist name="activity" id="vo">
+ <div style="text-align:center;margin:20px 0;"><img src="{$vo['banner']}"></div>
+ <div class="shList"> 
+ 	<volist name="list[$vo['id']]" id="item">
+    <ul>
+       <li class="pt"><a target="_blank" href="/shop.php/Info/index/itemId/{$item.item_id}/from/{:md5($item['item_id'])}"><img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}"/></a></li>
+       <li class="spname"><a target="_blank" href="/shop.php/Info/index/itemId/{$item.item_id}/from/{:md5($item['item_id'])}">{$item.title}</a></li>
+       <li><span class="pric"><a>￥{$item.price}</a></span><span class="gmbtn"><a target="_blank" href="/shop.php/Info/index/itemId/{$item.item_id}/from/{:md5($item['item_id'])}">立即购买</a></span></li>
+    </ul>
+    </volist>
+    <div style="clear:both;width:100%"></div>
+ </div>
+</volist>
+
+<!--end-->
+ <div style="width:1197px; margin:0 auto; margin-top:20px;">
+    <p><a href="/shop.html"><img src="/business/Show/Home/View/Gd10086/images/write2.png"></a></p>
+ </div>
+ <!--右侧悬浮框-->
+	<div class="tip-absolute" id="moveId">
+		<div style="float:left;position:absolute; top:-10px; left:-10px;background-color:#FFF; width:15px; height:15px; line-height:12px; text-align:center; border-radius:15px;color:#F00; z-index:100000;" id="close">×</div>
+		<div class="tip-fixed-nav">
+			<div class="tip-fixed-username">
+				<p>Welcome</p>
+	            <!--<p>{$userName}</p>-->
+			</div>
+			<div class="tip-fixed-bottom">
+	            <div class="sb-cell">
+	                <span>福利积分</span>
+	                <span class="yu">{$deposit}</span>
+	            </div>
+	            <div class="sb-cell">
+	                <span>我的购物车</span>
+	                <span class="yu2"><a href="/cart.html" id="cartNum">0</a></span>
+	            </div>
+				<a href="/recharge.html">
+					<div class="tip-fixed-top-up">
+						<p>立即充值</p>
+					</div>
+				</a>
+				<div class="tip-fixed-help">
+					<p><a href="/help_index.html" target="_blank">礼舍帮帮</a></p>
+					<img src="/business/Show/Home/View/Gd10086/images/sprite.png"/>
+				</div>
+				<div class="tip-fixed-top">
+					<p>TOP</p>
+					<a href="javascript:scroll(0,0)"><img src="/business/Show/Home/View/Gd10086/images/arrow.png"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="Public/business_footer" />
+	<script type="text/javascript">
+		var oBox = document.getElementById('moveId');
+		oBox.onmousedown = function(e){
+			var oEvent =e || window.event,
+			disL = oEvent.clientX - oBox.offsetLeft,
+			disT = oEvent.clientY - oBox.offsetTop,
+			maxL = document.documentElement.clientWidth - oBox.offsetWidth,
+			maxT = document.documentElement.clientHeight - oBox.offsetHeight;
+			document.onmousemove = function(e){
+				var oEvent = e || window.event,
+				disX = oEvent.clientX - disL,
+				disY = oEvent.clientY - disT;
+				if(disX <= 0){ disX = 0}
+				if(disY <= 0){ disY = 0}
+				if(disX >= maxL){ disX = maxL}
+				if(disY >= maxT){ disY = maxT}
+				oBox.style.left = disX + 'px';
+				oBox.style.top = disY + 'px';
+			}
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+		
+		$('#close').click(function(){
+			$('#moveId').hide();
+		});
+
+		$(document).ready(function (){
+			var cartNum=$.cookie('CARTNUMBER');
+			$('#cartNum').text(cartNum);
+		});
+	</script> 
+	 
+</body>
+</html>

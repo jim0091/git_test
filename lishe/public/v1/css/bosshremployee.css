@@ -1,0 +1,35 @@
+/* 通用 */
+a{text-decoration:none; color: #666;}
+img{border:none;}
+body{font-size:12px; font-family:"微软雅黑";}
+input{outline: none;}
+
+
+/* 背景图 */
+.banner{width: 100%; height: 450px; background: url("../images/banner_boss.jpg") no-repeat;}
+body{background-color: #F3F3F3;}
+
+/* 标题框 */
+.position{width: 320px; height: 180px; margin: -352px auto 0 auto; font-size: 18px; text-align: center; color: #FFF;}
+.position .title{font-size: 30px; font-weight: bold; font-family: "SimHei";}
+.position p{margin-top: 10px; font-family: "SimHei";}
+.user_type{width: 296px; height: 40px; border: 1px solid #FFF; margin: 65px auto 0 auto; border-radius: 21px; overflow: hidden; cursor: pointer;}
+.user_type li{float: left; line-height: 40px; text-align: center; font-size: 17.43px; width: 98px; background: transparent;}
+.user_type li a{color: #FFF;}
+.user_type .active{background-color: #FF4138;}
+.hrtags{border-left: 1px solid #FFF; border-right: 1px solid #FFF; width: 100px;}
+
+/* 内容 */
+.introduction{width: 1098px; padding-bottom: 100px; border: 1px solid #CCC; margin: 100px auto 0 auto; border-radius: 5px; background-color: #FFF; box-shadow: 0 5px 15px 0 rgba(255,55,55,0.15); -webkit-box-shadow: 0 5px 15px 0 rgba(255,55,55,0.15); -moz-box-shadow: 0 5px 15px 0 rgba(255,55,55,0.15); -o-box-shadow: 0 5px 15px 0 rgba(255,55,55,0.15);}
+.pages{display: none; margin: -43px auto 0 auto; width: 850px; padding-top: 310px; position: relative;}
+.pages.current{display: block;}
+.content_title{font-size: 24px; font-weight: bold;}
+.question{font-size: 18px; margin-top: 40px; font-weight: bold; color: #333;}
+.answer{font-size: 14px; line-height: 20px; margin-top: 12px; color: #666;}
+.answer p{color: #FF4138;}
+#boss{background: url("../images/boss.png") no-repeat;}
+#boss .pics{width: 371px; height: 229px; background: url("../images/boss1.png") no-repeat; position: absolute; right: -40px; top: 620px;}
+#hr{background: url("../images/hr.png") no-repeat;}
+#hr .pics{width: 307px; height: 185px; background: url("../images/hr1.png") no-repeat; position: absolute; right: -70px; top: 880px;}
+#employee{background: url("../images/employee.png") no-repeat;}
+#employee .pics{width: 196px; height: 211px; background: url("../images/employee1.png") no-repeat; position: absolute; right: 0; top: 485px;}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>礼舍-修改密码</title>
+<meta name="keywords" content="礼舍,修改密码" />
+<meta name="description" content="礼舍,修改密码" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__PUBLIC__/wshop/css/base.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/wshop/css/editPwd.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js" type="text/javascript"></script>
+</head>   
+<body>	
+
+
+
+<div class="content c" >
+  <div class="userName"><span>帐户名：</span>{$account}</div>
+  <div class="editPwdBox">
+    <form id="form1" name="form1" method="post" class="regForm" action="#" >
+    <ul class="borderRadius">
+      <li><label for="pwd">当前密码：</label><input type="password" placeholder="请输入当前密码"  id="pwd"><div class="c"></div></li>
+      <li><label for="pwd1">新密码：</label><input type="password" placeholder="请输入新密码" id="npwd"><div class="c"></div></li>
+      <li><label for="pwd2">确认密码：</label><input type="password" placeholder="请再输入一次新密码" id="cpwd"><div class="c"></div></li>
+    </ul>
+    <a href="#" class="button borderRadius" onclick="upPwd();">提　交</a>
+    </form>
+  </div>
+  <div class="c"></div>
+</div>
+<include file="Public/bottom"/>
+<script type="text/javascript">
+$(".borderRadius li:not(:nth-last-child(1))").css({"border-bottom":"1px #CCC solid"});
+	function upPwd(){
+		var pwd = $('#pwd').val();
+		pwd = $.trim(pwd);
+		if(pwd == null || pwd == ''){
+			alert('密码不能为空');
+			$('#pwd').focus();
+			return false;
+		}
+		var npwd = $('#npwd').val();
+		npwd = $.trim(npwd);
+		if(npwd == null || npwd == ''){
+			alert('新密码不能为空');
+			$('#npwd').focus();
+			return false;
+		}
+		var cpwd = $('#cpwd').val();
+		cpwd = $.trim(cpwd);
+		if(cpwd == null || cpwd == ''){
+			alert('确认不能为空');
+			$('#cpwd').focus();
+			return false;
+		}
+		if(npwd.length<6 || npwd.length>18){
+			alert('新密码长度在6到18个字符之间');
+			$('#npwd').focus();
+			return false;
+		}
+		if(cpwd.length<6 || cpwd.length>18){
+			alert('确认密码长度在6到18个字符之间');
+			$('#cpwd').focus();
+			return false;
+		}
+
+		$.get("{:U('User/changePw')}",{ pwd:pwd,npwd:npwd,cpwd:cpwd},function(data){
+				if(data=='1'){
+					alert("密码修改成功");
+					window.location.href="{:U('Login/logout')}";
+				}else if(data=='-1'){
+					alert("原密码不能为空");
+				}else if(data=='-2'){
+					alert("新密码不能为空");
+				}else if(data=='-3'){
+					alert("新密码长度在6到18个字符之间");
+				}else if(data=='-4'){
+					alert("新密码与确认密码不同");
+					$('#cpwd').focus();
+				}else if(data=='-5'){
+					alert("修改失败,请检查");
+				}
+		});
+	}
+
+
+</script> 
+  </body>     
+</html>

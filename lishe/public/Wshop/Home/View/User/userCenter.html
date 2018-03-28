@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Wmembercenter.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<title>会员中心-心意商城</title>
+</head>
+
+<body>
+    <!--用户信息-->
+    <div class="userinformation">
+        <div class="Usertop">
+            <a href="javascript:" onclick="history.back();"><img src="__VIEW__Public/images/userReturn.png"></a>
+            <a href="{:U('User/editUserInfo')}"><img src="__VIEW__Public/images/userSet.png"></a>
+        </div>
+        <div class="Userhead">
+            <ul>
+               <li><img src="__VIEW__Public/images/head.png"></li>
+               <li><p class="Userheadname">{$userInfo['name']}</p><p class="Userheadcomp">{$depositInfo['comName']}</p></li>
+               <li><a href="{:U('Pay/inteRech')}">充值</a></li>
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="UserheadUl">
+            <ul class="smallUl">
+                <li>{$depositInfo['balance']}</li>
+                <li>可用</li>
+            </ul>
+            <ul>
+                <li><img src="__VIEW__Public/images/bthread.png"></li>
+            </ul>
+            <ul class="smallUl">
+                <li>{$depositInfo['commonAmount']}</li>
+                <li>通用</li>
+            </ul>
+            <ul>
+                <li><img src="__VIEW__Public/images/bthread.png"></li>
+            </ul>
+            <ul class="smallUl">
+                <li>{$depositInfo['limitAmount']}</li>
+                <li>限制</li>
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+      
+   </div>
+   
+    <!--订单状态-->
+    <div class="orderStatus">
+        <a href="{:U('User/orderList',array('status'=>'WAIT_BUYER_PAY'))}">
+            <div class="orderCt">
+                <p><img src="__VIEW__Public/images/Userorders.png">订单中心</p>
+                <p>全部订单<img src="__VIEW__Public/images/aJt.png"></p>
+            </div>
+        </a>
+        <div class="orderStatusList">
+            <a href="{:U('User/orderList',array('status'=>'WAIT_BUYER_PAY'))}">
+                <ul>
+                    <li><img src="__VIEW__Public/images/paymenticon.png"></li>
+                    <li>待付款</li>
+                    <notempty name="count['WAIT_BUYER_PAY']">
+                    <li class="num">{$count['WAIT_BUYER_PAY']}</li>
+                    </notempty>
+                </ul>
+            </a>
+            <a href="{:U('User/orderList',array('status'=>'WAIT_SELLER_SEND_GOODS'))}">
+                <ul>
+                    <li><img src="__VIEW__Public/images/emiticon.png"></li>
+                    <li>待发货</li>
+                    <notempty name="count['WAIT_SELLER_SEND_GOODS']">
+                    <li class="num">{$count['WAIT_SELLER_SEND_GOODS']}</li>
+                    </notempty>
+                </ul>
+            </a>
+            <a href="{:U('User/orderList',array('status'=>'WAIT_BUYER_CONFIRM_GOODS'))}">
+                <ul>
+                    <li><img src="__VIEW__Public/images/collecticon.png"></li>
+                    <li>待收货</li>
+                    <notempty name="count['WAIT_BUYER_CONFIRM_GOODS']">
+                    <li class="num">{$count['WAIT_BUYER_CONFIRM_GOODS']}</li>
+                    </notempty>
+                </ul>
+            </a>
+            <a href="{:U('User/orderList',array('status'=>'WAIT_COMMENT'))}">
+                <ul>
+                    <li><img src="__VIEW__Public/images/evaluateicon.png"></li>
+                    <li>待评价</li>
+                    <notempty name="count['WAIT_COMMENT']">
+                    <li class="num">{$count['WAIT_COMMENT']}</li>
+                    </notempty>
+                </ul>
+            </a>
+            <a href="{:U('User/orderList',array('status'=>'NO_APPLY'))}">
+                <ul>
+                    <li><img src="__VIEW__Public/images/refundsicon.png"></li>
+                    <li>退款/售后</li>
+                </ul>
+            </a>
+        </div> 
+        <div style="clear:both;"></div>      
+    </div>
+ 
+    <!--列表-->
+    <div class="UsermemList">
+        <!-- <a href="#">
+            <p><img src="__VIEW__Public/images/Usercompany.png">我的企业<span><img src="__VIEW__Public/images/aJt.png"></span></p>
+        </a> -->
+        <a href="{:U('User/assets')}">
+            <p><img src="__VIEW__Public/images/Userassets.png">我的资产<span><img src="__VIEW__Public/images/aJt.png"></span></p>
+        </a>
+        <a href="{:U('Welfare/index')}">
+            <p><img src="__VIEW__Public/images/Userwelfare.png">我的福利<span><img src="__VIEW__Public/images/aJt.png"></span></p>
+        </a>
+        <a href="{:U('User/retrievePwd')}">
+            <p><img src="__VIEW__Public/images/Userpwd.png">修改密码<span><img src="__VIEW__Public/images/aJt.png"></span></p>
+        </a>
+        <a href="{:U('User/addrList')}">
+            <p><img src="__VIEW__Public/images/place.png">地址管理<span><img src="__VIEW__Public/images/aJt.png"></span></p>
+        </a>
+        <a href="http://www.lishe.cn/mobile/">
+            <p><img src="__VIEW__Public/images/aboutlis.png">关于礼舍<span><img src="__VIEW__Public/images/aJt.png"></span></p>
+        </a>
+    </div>
+    <div class="downbrandsbtn">
+        <a class="findItem" href="{:U('Login/logout')}">退出登录</a>
+    </div> 
+    <input id="nvaNum" type="hidden" value="3">
+    <include file="Public/bottom"/>
+</body>
+</html>
+

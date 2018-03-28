@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style>
+	.cl{
+		padding: 10px;
+	}
+</style>
+</head>
+<body>
+<form class="layui-form" action="{:U('Product/itemStatusDeal')}" id="submitFrom" method="post"  style="padding:10px 20px 5px 5px;">
+	<div class="row cl">
+	    <input name="itemId" value="{$info['item_id']}" type="hidden" />
+	    <div class="row cl">
+	      <label class="form-label col-12">更改商品状态为：</label>
+	      <div class="formControls col-12"> 
+			<label class="">
+				<input value="1" name="status" id="user-Character-0-0-0"  type="radio"
+					<eq name="info.status" value="1">
+						checked="checked"						
+					</eq>
+					>上架
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="2" name="status" id="user-Character-0-0-0"  type="radio"
+					<eq name="info.status" value="2">
+						checked="checked"						
+					</eq>
+					>下架
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="3" name="status" id="user-Character-0-0-0"  type="radio"
+					<eq name="info.status" value="3">
+						checked="checked"						
+					</eq>
+					>永久下架
+			</label>
+			&nbsp;&nbsp;			
+	  	</div>
+	  </div>
+		<div class="row cl" style="position: absolute;bottom: 0px;left: 85px;">
+			<div class="col-8 col-offset-4">
+				<button  class="btn btn-success radius" type="submit" >&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+</body>
+</html>

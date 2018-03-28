@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;vertical-align: top;}
+input{border:0; outline:none;}
+input::-ms-clear{display:none;}
+html{width: 100%;height: 100%;}
+body{font-family:Microsoft Yahei;overflow:hidden;
+background: url(../images/bg.png) no-repeat center center; width: 100%; height: 100%; background-size: 100% 100%;}
+
+
+.logtoContent{background: url(../images/loginbg.png) no-repeat center center;width:950px; height:550px; margin:0 auto; margin-top: 175px;}
+.logingift{width: 463px;  float: left;}
+.logingift img{width:348px; height:317px; margin-left: 115px; margin-top: 114px;}
+.loginCircle{width: 487px; float: right;}
+.Logoto{margin-top:80px; margin-bottom: 18px;}
+.Logoto img{max-width:200px; max-height:100px; margin-left: 158px;}
+.inputdiv{text-align: center;}
+.inputuser{width:250px; height:44px; line-height: 44px; border: solid 1px #dadada; border-radius:23px; margin-top:22px;
+font-size: 14px; color: #333333; padding-left: 48px; outline-color: #50c6fa;}
+/*错误边框颜色*/
+.erroruser{width:250px; height:44px;line-height: 44px; border: solid 1px #ff4138; border-radius:23px; margin-top:22px;
+font-size: 14px; color: #333333; padding-left: 48px;}
+.user{background: url(../images/Usericon.png) no-repeat 18px center;}
+.pwd{background: url(../images/Passwordicon.png) no-repeat 18px center;}
+.revisePwd{width: 268px; margin: 0 auto; margin-top: 14px; font-size: 14px; height: 14px; line-height: 14px; color:#999999;}
+.revisePwd a{color:#999999;}
+.revisePwd a:hover{color:#46c3fa;}
+.loLeft{float: left;}
+.PdRight{float: right; margin-right: 8px;}
+.nor{vertical-align: -2px; padding-right: 10px; height: 13px; width: 13px; cursor: pointer;}
+.nel{vertical-align: -2px; padding-right: 10px; height: 13px; width: 13px; display: none;cursor: pointer;}
+.error{width:280px;margin:0 auto; font-size: 14px; color: #ff4138; height: 14px; line-height: 14px; margin-top: 38px;}
+.loginbtn a{display: block; width: 300px; height: 46px; line-height: 46px; margin: 0 auto; margin-top: 14px;
+font-size: 18px; color: #ffffff; background: #46c3fa; text-align: center; border-radius: 23px;}
+.loginbtn a:hover{background: #04affb;}
+.activation{width: 180px; margin: 0 auto; height: 16px; line-height:16px; margin-top: 22px;}
+.line{width: 1px;font-size: 12px; height: 16px; color: #CCCCCC;margin: 0 20px;}
+.activation a{font-size: 14px;color:#999999;}
+.activation a:hover{color:#46c3fa;}

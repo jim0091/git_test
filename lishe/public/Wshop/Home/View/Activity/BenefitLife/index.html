@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<title>新人礼遇</title>
+	<link rel="stylesheet" type="text/css" href="/Wshop/Home/View/Activity/BenefitLife/css/activityStyle.css">
+</head>
+<body>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+	<div class="header w100"><img src="/Wshop/Home/View/Activity/BenefitLife/images/banner.png" /></div>
+	<!--切换按钮-->
+	<div class="tabBtn" id="tabBtn">
+		<ul>
+			<li class="active">口腔护理</li>
+			<li>面部护理</li>
+			<li>洗护精选</li>
+			<li>滋润养颜</li>
+			<li>居家精品</li>
+		</ul>
+	</div>
+	<!--商品2-->
+	<div class="content" style="display: block;">
+		<ul>
+			<volist name="itemArr['oral']" id="vo" >
+				<li>
+					<div>
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" >
+							<img src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.',$itemInfo[$vo]['image_default_id']))}"  />
+						</a>
+					</div>
+					<p class="proName">{$itemInfo[$vo]['title']}</p>
+					<p class="price"><span class="priceSum fl"><i>¥</i>{:sprintf("%1.2f", $itemInfo[$vo]['price'])}</span><span class="fr">{$itemInfo[$vo]['price']*100}积分</span></p>
+					<div class="btnGroup">
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" class="buyLeft">马上抢</a>
+						<a href="javascript:void(0)" class="addCart" data-itemId="{$itemInfo[$vo]['item_id']}" data-shopId="{$itemInfo[$vo]['shop_id']}" >
+							加入购物车
+						</a>
+					</div>					
+				</li>
+			</volist>
+		</ul>
+	</div>	
+	<!--商品-->
+	<div class="content" >
+		<ul>
+			<volist name="itemArr['facial']" id="vo" >
+				<li>
+					<div>
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" >
+							<img src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.',$itemInfo[$vo]['image_default_id']))}"  />
+						</a>
+					</div>
+					<p class="proName">{$itemInfo[$vo]['title']}</p>
+					<p class="price"><span class="priceSum fl"><i>¥</i>{:sprintf("%1.2f", $itemInfo[$vo]['price'])}</span><span class="fr">{$itemInfo[$vo]['price']*100}积分</span></p>
+					<div class="btnGroup">
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" class="buyLeft">马上抢</a>
+						<a href="javascript:void(0)" class="addCart" data-itemId="{$itemInfo[$vo]['item_id']}" data-shopId="{$itemInfo[$vo]['shop_id']}" >
+							加入购物车
+						</a>
+					</div>					
+				</li>
+			</volist>
+		</ul>
+	</div>
+	
+
+	<!--商品3-->
+	<div class="content">
+		<ul>
+			<volist name="itemArr['line']" id="vo" >
+				<li>
+					<div>
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" >
+							<img src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.',$itemInfo[$vo]['image_default_id']))}"  />
+						</a>
+					</div>
+					<p class="proName">{$itemInfo[$vo]['title']}</p>
+					<p class="price"><span class="priceSum fl"><i>¥</i>{:sprintf("%1.2f", $itemInfo[$vo]['price'])}</span><span class="fr">{$itemInfo[$vo]['price']*100}积分</span></p>
+					<div class="btnGroup">
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" class="buyLeft">马上抢</a>
+						<a href="javascript:void(0)" class="addCart" data-itemId="{$itemInfo[$vo]['item_id']}" data-shopId="{$itemInfo[$vo]['shop_id']}" >
+							加入购物车
+						</a>
+					</div>					
+				</li>
+			</volist>
+		</ul>
+	</div>
+	<!--商品4-->
+	<div class="content">
+		<ul>
+			<volist name="itemArr['beauty']" id="vo" >
+				<li>
+					<div>
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" >
+							<img src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.',$itemInfo[$vo]['image_default_id']))}"  />
+						</a>
+					</div>
+					<p class="proName">{$itemInfo[$vo]['title']}</p>
+					<p class="price"><span class="priceSum fl"><i>¥</i>{:sprintf("%1.2f", $itemInfo[$vo]['price'])}</span><span class="fr">{$itemInfo[$vo]['price']*100}积分</span></p>
+					<div class="btnGroup">
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" class="buyLeft">马上抢</a>
+						<a href="javascript:void(0)" class="addCart" data-itemId="{$itemInfo[$vo]['item_id']}" data-shopId="{$itemInfo[$vo]['shop_id']}" >
+							加入购物车
+						</a>
+					</div>					
+				</li>
+			</volist>
+			
+		</ul>
+	</div>
+	<!--商品5-->
+	<div class="content">
+		<ul>
+			<volist name="itemArr['home']" id="vo" >
+				<li>
+					<div>
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" >
+							<img src="{$itemInfo[$vo]['image_default_id']}_m.{:end(explode('.',$itemInfo[$vo]['image_default_id']))}"  />
+						</a>
+					</div>
+					<p class="proName">{$itemInfo[$vo]['title']}</p>
+					<p class="price"><span class="priceSum fl"><i>¥</i>{:sprintf("%1.2f", $itemInfo[$vo]['price'])}</span><span class="fr">{$itemInfo[$vo]['price']*100}积分</span></p>
+					<div class="btnGroup">
+						<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/{$itemInfo[$vo]['item_id']}" class="buyLeft">马上抢</a>
+						<a href="javascript:void(0)" class="addCart" data-itemId="{$itemInfo[$vo]['item_id']}" data-shopId="{$itemInfo[$vo]['shop_id']}" >
+							加入购物车
+						</a>
+					</div>					
+				</li>
+			</volist>
+		
+		</ul>
+	</div>
+	<a href="http://www.lishe.cn/wshop.php/Index" class="linkFix"></a>
+	<a href="/wshop.php/Cart/cart" class="buyCart"><span class="proN">0</span></a>
+	<a href="javascript:void(0);" class="buyCart backTop"></a>
+</body>
+<script type="text/javascript" src="/Wshop/Home/View/Activity/BenefitLife/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript" src="/Wshop/Home/View/Activity/BenefitLife/js/iscroll.js"></script>
+<script type="text/javascript">
+	(function(){
+		var html = document.documentElement;
+		var whtml  =html.getBoundingClientRect().width;
+		html.style.fontSize = whtml /10 + "px";
+	})()
+	$(function(){
+		updateCartNum();
+	});
+	//滑动切换
+	var btnW = 0;
+	$('.tabBtn ul li').each(function(){
+		btnW += $(this).outerWidth();
+	});
+	$('.tabBtn ul').css('width',btnW + 2);
+	var Scroll = new iScroll('tabBtn',{hScrollbar:false, vScrollbar:false});
+
+	$('.tabBtn ul li').bind('touchend',function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		$('.content').hide();
+		$('.content').eq($(this).index()).fadeIn();
+	});
+//限制商品名称长度
+		repleceText('.proName',10);
+		function repleceText(obj,max){
+			$(obj).each(function(){
+				if($(this).text().length>max){
+					$(this).text($(this).text().substring(0,max));
+					$(this).html($(this).html()+'...');
+				}
+			});
+		}
+    //加入购物车
+    $(".addCart").click(function(){
+        //商品id
+        var itemId = $(this).attr('data-itemId');//商品id
+        //购买数量
+        var shopId = $(this).attr('data-shopId');//商品id
+        //库存id
+    	//检测是否登录
+        $.post('__APP__/Activity/isLogin','',function(data){
+			if(!data){
+            	alert('请先登录!');
+                window.location.href="http://www.lishe.cn/wshop.php/Login/login/index";
+				return false;
+			}
+        });        
+        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+			if(data['code'] == 0){
+                window.location.href="http://www.lishe.cn/wshop.php/Info/index/itemId/"+itemId;
+				return false;
+			}else if(data['code'] == 1){
+				addCart(itemId,data['skuId'],shopId);
+			}
+        	
+        });
+    });	
+    function addCart(itemId,skuId,shopId){
+    	var quantity = 1;
+    	var jd_ids = '19_1607_3155_0';
+        $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+            dataType:'text',
+            success:function(data){
+                var res = eval(data);
+                if (res[0] == 1) {
+                   updateCartNum();
+                }else{
+                	alert(res[1]);
+                }
+            }
+        });  	
+    }  
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Activity/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $(".proN").text(data);
+            }
+        });
+	}
+	//回到顶部
+	$('.backTop').on('touchend',function(){
+		$('body,html').animate({
+			'scrollTop' : 0
+		},200);
+	});
+</script>
+</html>

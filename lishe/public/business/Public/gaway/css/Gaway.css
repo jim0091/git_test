@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{font-family:"微软雅黑";}
+
+.menu{margin:40px auto 0 auto;text-align:center;height:36px;line-height:36px;width:1000px;position:relative; padding-left:300px;}
+.menu-ul li span{padding-left:5px;}
+.menu-ul>li a{width: 120px;height: 100%; display: block; float: left; background:#FFF; color: #88888b;cursor: pointer;font-size:14px;}
+.menu-ul>li a:hover{ color:#c7241d;}
+.hidden-box{width:120px;position: absolute;display:none;background:#FFF;top:30px;}
+.hidden-box>ul li{border-top:dashed #CCCCCC 1px;}
+.hidden-box>ul li a{list-style-type: none;color: #88888b;cursor: pointer;font-size:14px;}
+.hidden-box li a:hover{color:#c7241d;}
+.hidden-loc-index{left:420px;}
+.hidden-loc-us{left:538px;}
+
+.nav-m{width:970px; margin:0 auto; margin-top:10px; border:#CCC solid 1px; border-radius:5px; padding-bottom:20px;cursor:pointer;}
+.nav-m ul{width:800px; clear:both; padding:15px 0; margin-left:20px;}
+.nav-m ul li{float:left; padding-left:30px;color:#88888b; font-size:14px;}
+.typeFree li.active{color:#c7241d;}
+
+.list{width:1000px; margin:0 auto; margin-top:30px;}
+.list ul{float:left; margin:0 10px; width:310px;border:#CCC solid 1px; border-radius:5px; height:330px;}
+.pt img{width:310px;}
+.title{padding:10px 0;}
+.title a{color:#55555b; font-size:18px; padding-left:15px;}
+.con{padding:0 15px;}
+.con a{color:#88888b; font-size:14px;}
+.logo{padding-top:30px;padding-left:15px;}
+.logo span{padding-left:8px;}
+.dp{padding-left:25px;}
+.fx{padding-left:25px;}
+.logo img{vertical-align:middle;}
+.list ul:hover{box-shadow:0px 0px 12px 0px #666;animation:5s 10s both linear;transform:translate(0,-5px);}
+   
+	

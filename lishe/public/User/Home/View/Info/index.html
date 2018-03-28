@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+	<script src="__VIEW__Public/js/echarts.common.min.js"></script>
+</head>
+<body>
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->
+			
+			<include file="Public/navLeft"/>
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="welcome">
+						您好，
+						<span class="user_name">{$userName}</span>，
+						欢迎进入会员中心
+						<div class="user_level level1">
+							普通会员
+						</div>
+					</div>
+					
+					<div class="my_wrap">	
+						<div>
+							<div class="basic_info">
+								<p class="right_line">我的信息</p>
+								<div class="head_and_info">
+									<span class="user_head"><img src="__VIEW__Public/images/user_head.png"></span>
+									<div class="three_info">
+										<p>{$userName}</p>
+										<p class="company_name" style="height:25px;">{$companyInfo['com_name']}</p>
+										<p>{$account}</p>
+									</div>
+								</div>
+							</div>
+							<div class="money_distribute">
+								<div><p class="right_line">我的资产</p></div>
+								<div id="canvas" style="width:220px; height:220px; margin-top:20px; margin-left:15px; float:left"></div>
+								<div class="legend">
+									<div class="general">
+										<span class="legend_icon"></span>
+										<span>通用积分</span>
+										<span style="color:red;">{$userDepositInfo['commonAmount']}</span>
+										<a href="__SHOP__" class="gotouse" target="_black">
+											去消费
+											<span class="ltriAgl"></span>
+										</a>
+									</div>
+									<!-- <div class="labor">
+										<span class="legend_icon"></span>
+										<span>限制积分</span>
+										<a href="" class="gotouse">
+											去消费
+											<span class="ltriAgl"></span>
+										</a>
+										<a href="" class="transfer">转为通用积分</a>
+									</div> -->
+									<div class="care">
+										<span class="legend_icon"></span>
+										<span>限制积分</span>
+										<span style="color:red;">{$userDepositInfo['limitAmount']}</span>
+										<!-- <a href="" class="gotouse">
+											去消费
+											<span class="ltriAgl"></span>
+										</a>
+										<a href="" class="transfer">转为通用积分</a> -->
+									</div> 
+								</div>
+							</div>
+						</div>
+					</div>
+						
+					
+					<div class="right-top">
+						<p class="right-title">为你推荐</p>
+						<span class="favoriteManage" onclick="window.location.reload()">换一批</span>
+					</div>
+					<ul class="collected-goods">
+						<volist name="itemList" id="vo">
+						<li class="favorite-goods">
+							<a class="goods-link" href="__SHOP__/Info/index/itemId/{$vo['item_id']}" target="_black">
+								<img class="fs-goodspic" src="{$vo['image_default_id']}_m.{:end(explode('.',$vo['image_default_id']))}">
+								<p class="fs-goodsname">{$vo['title']}</p>
+								<p class="fs-goodsprice">￥{:number_format($vo['price'],2)}</p>
+							</a>
+						</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById("canvas"));
+
+		option = {
+		    title:{
+		        text: '总额',
+		        subtext: "{$userDepositInfo['balance']}",
+		        x: 'center',
+		        y: '85',
+		        textStyle: {
+		            fontSize: '10',
+		            color: '#5b5b5b'
+		        },
+		        subtextStyle: {
+		            fontSize: '10',
+		            color: '#5b5b5b'
+		        }
+		    },
+		    tooltip: {
+		        trigger: 'item',
+		        formatter: "{b}: <br/> {c}分({d}%)",
+		        textStyle: {
+		            fontSize: '12'
+		        },
+		        confine: true
+		    },
+		    series: [
+		        {
+		            name:'积分类别',
+		            type:'pie',
+		            radius: ['35%','90%'],
+		            avoidLabelOverlap: false,
+		            label: {
+		                normal: {
+		                    show: true,
+		                    position: 'inside',
+		                    textStyle: {
+		                        fontSize: '12',
+		                        fontWeight: 'bold'
+		                    }
+		                },
+		                emphasis: {
+		                    show: true,
+		                    textStyle: {
+		                        fontSize: '14',
+		                        fontWeight: 'bold'
+		                    }
+		                }
+		            },
+		            labelLine: {
+		                normal: {
+		                    show: false
+		                }
+		            },
+		            itemStyle: {
+		            	normal:{
+		            		label:{
+		            			show: true,
+		            			formatter: "{c}"
+		            		}
+		            	}
+		            },
+		            data:[
+		                {value:"{$userDepositInfo['commonAmount']}", name:'通用积分', itemStyle: {normal:{color:'#5FB29D'}}},
+		                //{value:"{$userDepositInfo['limitAmount']}", name:'限制积分', itemStyle: {normal:{color:'#CF3546'}}}
+		            ]
+		        }
+		    ]
+		};
+
+		myChart.setOption(option);
+	</script>	
+</body>
+</html>

@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:url(../images/bgy.png) center center; width:100%; height:10242px;}
+
+.Banner{background:url(../images/Banner.png) center center; width:100%; height:800px;}
+.Chrisdrop{width:1200px; margin:0 auto; text-align:center;}
+.BuyingApple{background:url(../images/floralborder.png) no-repeat center center; width:1300px; height:672px; margin:0 auto; margin-top:45px;} 
+.apple{width:1200px; margin:0 auto;text-align:center; padding-top:30px;}
+.chocolate{width:1200px; margin:0 auto; padding-left:12px; margin-top:25px;}
+.chocolate img{float:left;}
+.brand{width:1200px; margin:0 auto;text-align:center; margin-top:150px;}
+.brandArea{width:1200px; margin:0 auto; margin-top:45px;}
+.brandArea img{float:left;margin-bottom:55px;}
+.Cheerydrop{width:1200px; margin:0 auto;text-align:center;margin-top:310px;}
+.CheeryListup{width:1200px; margin:0 auto; margin-top:60px;}
+.CheeryListup img{float:left;}
+.CheeryListdown{width:1200px; margin:0 auto;}
+.CheeryListdown img{float:left; margin-top:25px;}
+.ckMore{font-size:20px; font-family:黑体; width:1200px; margin:0 auto; text-align:right;} 
+.ckMore a{color:#FFF;}
+.Joydrop{width:1200px; margin:0 auto;text-align:center;margin-top:90px;}
+.JoyListup{width:1200px; margin:0 auto; margin-top:75px;}
+.JoyListup img{float:left;}
+.ckMore2{font-size:20px; font-family:黑体; width:1200px; margin:0 auto; text-align:right;}
+.ckMore2 a{color:#a23a3f;}
+.Fuandrop{width:1200px; margin:0 auto;text-align:center;margin-top:405px;}
+.Dovedrop{width:1200px; margin:0 auto;text-align:center;margin-top:67px;}
+.returnUp{width:1200px; margin:0 auto;text-align:center;margin-top:140px;}
+/*弹出一*/
+.tankpic{position:absolute; top:1000px; z-index:3; left:0; right:0; width:1200px; margin:0 auto; text-align:center; display:none;}
+.tankpic2{position:absolute; top:1000px; z-index:3; left:0; right:0; width:1200px; margin:0 auto; text-align:center; display:none;}

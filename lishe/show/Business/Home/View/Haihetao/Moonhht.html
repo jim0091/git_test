@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/haihetao/css/Moonhht.css">
+<title>海核淘中秋福利</title>
+</head>
+
+<body>
+    <div class="heder">
+        <ul>
+          <li>
+            <if condition="$uid eq 0">
+                    欢迎您，<span><a href="{:U('Haihetao/login')}">请登录</a></span> 
+                    <else/>
+                    欢迎您，{$userName}&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="__APP__/Haihetao/orderList" target="_blank">活动订单</a>&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="{:U('Haihetao/logout')}">退出</a></span> 
+            </if>
+        </li>
+         
+          <li><a href="http://www.haihetao.com/customer" target="_blank">我的核淘</a>&nbsp;|&nbsp;</li>
+     
+          <li><a href="/help_index.html" target="_blank">帮助中心</a>&nbsp;|&nbsp;</li>
+          <li>客服邮箱：guanai@haihetao.com&nbsp;&nbsp;咨询电话：0755-33088319</li>
+        </ul>
+     </div>
+     <div class="mohhtBan">
+         <div class="mohhtBanLogo"><img src="__PUBLIC__/haihetao/images/Mohtlogo.png"></div>
+     </div>
+     <!--主内容-->
+     <div class="mohhtCt">
+         <div class="hdflakes">
+             <img src="__PUBLIC__/haihetao/images/flakes.png">
+         </div>
+         <div class="flakes">
+             <img src="__PUBLIC__/haihetao/images/flakes2.png" class="flak2">
+             <a href="{:U('Haihetao/order',array('aitem_id'=>'1'))}">
+                <img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="flak"></a>
+         </div>
+         <div style="clear:both;"></div>
+         <div class="crab">
+            <img src="__PUBLIC__/haihetao/images/crab.png" class="crabpt">
+            <a href="{:U('Haihetao/order',array('aitem_id'=>'2'))}">
+                <img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="crabbtn"></a>
+         </div>
+         <div style="clear:both;"></div>
+         <div class="Mooparts">
+             <img src="__PUBLIC__/haihetao/images/parts.png">
+             <a href="{:U('Haihetao/order',array('aitem_id'=>'3'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn.png"></a>
+             <a href="{:U('Haihetao/order',array('aitem_id'=>'4'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn.png"></a>
+             <a href="{:U('Haihetao/order',array('aitem_id'=>'5'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn.png"></a>
+             <a href="{:U('Haihetao/order',array('aitem_id'=>'6'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn.png"></a>
+         </div>
+         
+         <div class="hairyCrab">
+             <img src="__PUBLIC__/haihetao/images/hairyCrab.png" class="harcr">
+             <a href="{:U('Haihetao/order',array('aitem_id'=>'7'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="crabbtn"></a>
+         </div>
+         <div style="clear:both;"></div>
+         <div class="partsOne">
+            <img src="__PUBLIC__/haihetao/images/parts2.png" class="ptone">
+            <a href="{:U('Haihetao/order',array('aitem_id'=>'8'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="ptone2"></a>
+         </div> 
+         <div class="partsOne">
+            <img src="__PUBLIC__/haihetao/images/parts3.png" class="ptone">
+            <a href="{:U('Haihetao/order',array('aitem_id'=>'9'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="ptone5"></a>
+         </div> 
+         <div class="partsOne">
+            <img src="__PUBLIC__/haihetao/images/parts4.png" class="ptone">
+            <a href="{:U('Haihetao/order',array('aitem_id'=>'10'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="ptone3"></a>
+         </div>
+         <div class="partsOne">
+            <img src="__PUBLIC__/haihetao/images/parts5.png" class="ptone">
+            <a href="{:U('Haihetao/order',array('aitem_id'=>'11'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="ptone3"></a>
+         </div>
+         <div class="partsOne">
+            <img src="__PUBLIC__/haihetao/images/parts6.png" class="ptone">
+            <a href="{:U('Haihetao/order',array('aitem_id'=>'12'))}"><img src="__PUBLIC__/haihetao/images/mohhtbtn2.png" class="ptone4"></a>
+         </div>
+         <div class="footwords">
+            <img src="__PUBLIC__/haihetao/images/footwords.png">
+         </div>
+        
+     </div>
+</body>
+</html>

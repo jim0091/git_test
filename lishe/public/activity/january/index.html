@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<title>一月</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="css/january.css"/>
+</head>
+<body>
+	<section class="section1">
+		<div class="left_cloud"><img src="img/left_cloud.png"/></div>
+		<div class="right_cloud"><img src="img/right_cloud.png"/></div>
+		<div class="little"><img src="img/little_person.png"/></div>
+		<div class="think"><img src="img/think_you.png"/></div>
+		<footer class="kitchen">
+			<img src="img/kitchen.png" />
+		</footer>
+		<div class="hello"><img src="img/hello.png"/></div>
+		<div class="arrow"><img src="img/arrow.png"/></div>
+	</section>
+	<!--日历-->
+	<section class="section2" >
+		<div class="calendar" id="calendar">
+			<img src="img/calendar.png"/>
+			<span><img src="img/click.png" id="click_img" style="display: block;"/></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<div class="time_item">
+				<img src="img/time_1.png" id="time"/>
+				<img src="img/delete.png" id="delete"/>
+			</div>
+		</div>
+	</section>
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js "></script>
+<script>
+	var html = document.documentElement;
+	var whtml  =html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /10 + "px";
+	/*日历详情图片*/
+	var time_url =new Array('img/time_1.png','img/time_2.png','img/time_3.png','img/time_4.png','img/time_5.png');
+	
+	$('#calendar span').bind('touchend',function(e){
+
+		$('#time').attr('src',time_url[$(this).index() - 1]);
+		$('#click_img').hide();
+		$('.time_item').show();
+		$('#calendar span').hide();
+	});
+	
+	$('#delete').bind('touchend',function(e){
+		$('.time_item').hide();
+		$('#calendar span').show();
+	});
+	
+	$('.arrow').bind('touchend',function(e){
+		$('#calendar').addClass('calendar2');
+		$('section').css('transform','translateY(-100%)');
+	});
+	
+</script>
+</html>

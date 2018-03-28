@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link href="__PUBLIC__/lishe/css/global.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/lishe/css/style.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script src="__PUBLIC__/js/enter.js"></script>	
+<title>礼舍会员登录</title>
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#userName").focus();
+	$("#loginBtn").click(function(){
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	    if(userName==""){
+	      alert('请输入您的用户名！');
+	      $("#userName").focus();
+	      return false;
+	    }
+	    if(password==""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    } 
+
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password,
+				mark:'{$control}'
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(msg[0]>0){
+//					var refer=msg[2];
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="__APP__/Index/index";	
+					}				
+				}else{
+					alert(msg[1]);
+					$("#userName").focus();
+				}
+			},
+			error: function () {
+				alert('error：'+msg[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</head>
+
+<body>
+	 <div class="header">
+		   <div class="nav">
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt="" class="fl"/>
+				<a href="{:C('LISHE')}" target="_blank" title="" class="fl">礼舍首页</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt="" class="fl" />
+				<a href="{:C('LISHE')}/shop.php" target="_blank" title="" class="fl">心意商城</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt="" class="fl" />
+				<a href="{:C('LISHE')}/site/help.html" target="_blank" title="" class="fl">礼舍帮帮</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt=""  class="fr"/>
+                <a href="{:C('LISHE')}/shop/passport/signin.html" target="_blank" title="" class="fr">商家中心</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt=""  class="fr"/>
+                <a href="http://v.lishe.cn/company/login.html" target="_blank" title="" class="fr">企业登录</a>
+                <div class="cb"></div>
+			</div>
+            <div class="headerSlide">
+                <div class="tbox1mbox">
+                      <ul id="slides" class="tbox1mboxul">
+                          <li><img src="<notempty name='logo'>{$logo}<else/>__PUBLIC__/lishe/images/logoFs_03.png</notempty>"></li>
+                      </ul>
+               </div>              
+                <div class="login">
+                         <ul>
+                           <li class="fl" id="company">会员登录</li>
+                         </ul>
+                    <div class="personLogin">
+                      
+                        <input type="text" placeholder="请输入用户名" class="user  text" maxlength="11" onKeyPress="if(event.keyCode==13) {return false;}" id="userName"/><br/>
+                        <span class="error-user"></span>
+                        <input type="password" placeholder="请输入密码" class="pwd text" id="password"/><br/>
+                        <span class="error-pwd"></span>
+                        <input type="checkbox" />
+                        <span class="next ntLogin">下次自动登录</span><a href="{:C('LISHE')}/shop.php/sign/index/refer/findPasswd" target="_blank" title="找回密码" class="next" >忘记密码？</a><br/>
+                        <a href="javascript:;" title="登录" class="btnLogin" id="loginBtn">登&nbsp;&nbsp;&nbsp;录</a><br/>
+                        <p class="loginFooter">
+							<a href="{:U('Home/Cactive/index')}" target="_blank">礼品卡激活</a>
+                        	<a href="{:C('LISHE')}/shop.php/sign/index/refer/activation" style="float: right;" target="_blank" title="企业员工激活">企业员工激活 >></a>
+                        </p>
+                        <input type="hidden" id="refer" value="{$refer}">
+                    </div>
+               </div>
+               
+               
+            </div>
+	</div>
+<div id="footer">
+    <div class="container">
+		<p class="tl_li9" style="padding-top: 20px;">© 2005-2016 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
+		<p class="tl_li9">ICP备案证书号:粤ICP备15033641号-1</p>
+    </div>
+</div>
+</body>
+</html>

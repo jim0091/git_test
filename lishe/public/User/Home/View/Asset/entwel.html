@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>企业权益</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<input type="hidden" name="" id="current" value="entwel">
+			<!-- 中间左侧导航 -->
+			<include file="Public/navLeft"/>
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<div class="qy_cpwrap">
+							<volist name="activityList" id="act">
+							<div class="qy_coupon">
+								<h3>{$assetArr[$act['activity_config_id']]}</h3>
+								<p>兑换春节福利礼包一份</p>
+								<p class="qy_bless">{$comName}祝您春节快乐!</p>
+								<p class="qy_due">截止日期：<php>echo $act['expire_time']</php></p>
+								<eq name="act['is_expire']" value="1">
+									<a class="qy_usecp" style="cursor: pointer;background-color: #bbb; color: #fff;" href="javascript:void(0)">已过期</a>
+								<else/>
+									<a class="qy_usecp" style="cursor: pointer;" href="__LISHE_URL__/shop.php/gift/rececer?recid={$act['recever_id']}">立即领取</a>
+								</eq>	
+							</div>
+							</volist>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>

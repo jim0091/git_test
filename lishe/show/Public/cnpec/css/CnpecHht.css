@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0px;}
+ul li{list-style:none;}
+a{text-decoration:none;}
+img{ border:0px;}
+body{font-family:"微软雅黑"; background:#fff9f9;}
+/*头部*/
+.header{background:#fcfcfc;height:30px; width:100%;}
+.header ul{width:58%; margin:0 auto; font-size:14px;}
+.header ul li{float:left; line-height:30px;}
+.header ul li a{color:#666;}
+.nva-u{padding-left:10px;color:#F00;} 
+/*banner*/
+.banner{background:url(../images/banner_cgn.png) center center; width:100%; height:500px;}
+/*目录*/
+.directories{width:1000px; margin:30px auto; text-align:center;}
+.directories ul{display:inline-block;}
+.directories ul li{float:left; width:100px; height:35px; line-height:35px; text-align:center; margin:0 5px;}
+.directories ul li a{display:block; font-size:16px; color:#FFF; background:#e76440;}
+/*兑换页样式*/
+.satnav{width:1000px; margin:0 auto; text-align:center; margin-top:100px;}
+.stp{font-size:30px; color:#e76440; font-family:"微软雅黑";}
+.stp span{padding-left:120px;}
+.stp a{float:right; font-size:14px; color:#e76440;font-family:"微软雅黑";  margin-right:10px; margin-top:16px;}
+.satnavUl{display:inline-block; padding:20px 0;}
+.satnavUl li{float:left;width:110px; height:40px;font-size:16px; color:#666; border:#666 solid 1px; line-height:40px; text-align:center; cursor:pointer;background-color: #fff}
+/*.satnavUl li.cnactive{color:#FFF; background:#e76440; cursor:pointer;}*/
+.satnavUl li:hover{color:#FFF; background:#e76440; cursor:pointer;border:#e76440 solid 1px;}
+
+/*列表*/
+.eat-ul{width:1000px;margin:0 auto; clear:both; text-align:left;}
+.eat-ul ul{float:left; border:#00add6 solid 1px; margin:10px 10px;background:#FFF;height:240px; width:175px;}
+.pt-mid{text-align:center;}
+.eat-ul img{width:150px; height:150px;} 
+.eat-li{height:50px;}
+.eat-li a{font-size:12px; color:#000000; padding-left:5px;}
+.eat-sp{font-size:12px; color:#c7241d;font-weight:bold; padding-left:5px;}
+.eat-sp span{font-size:15px;}
+.eat-sp2{float:right; margin-right:10px;}
+.eat-sp2 a{color:#FFF; background:#c7241d; padding:3px 8px;border-radius:5px;}
+/*返回顶部*/
+.returned{background:#e76440; width:100%; height:215px; margin-top:130px;}
+.returned-img{width:1000px;text-align:center; margin:0 auto;}
+.returned-img img{ margin-top:-5%;}
+
+/*列表页样式*/
+.satnav2{width:1000px; margin:0 auto; text-align:center; margin-top:30px; margin-bottom:30px;}
+.stp2{background:url(../images/cnList.png) no-repeat center center;font-size:36px; color:#000; font-family:"微软雅黑";
+ width:690px; height:270px; margin:0 auto; line-height:270px;}
+ /*二级目录*/
+/*二级类目-搜索*/
+.categories2{clear:both; width:1000px; margin:0 auto; border:#a80000 solid 1px; margin-bottom:70px;clear:both;}
+.brands{width:90%; margin:0 auto; padding-top:10px; clear:both;}
+.brands li{float:left; font-size:16px; color:#333333; padding:5px 0; padding-left:15px; cursor:pointer;}
+.price{clear:both;width:90%; margin:0 auto;padding-top:10px;}
+.price li{float:left;font-size:16px; color:#333333; padding:5px 0; padding-left:15px;cursor:pointer;}
+.ranking{clear:both;width:90%; margin:0 auto; border-top:#a80000 solid 1px;padding-top:10px; height:40px; line-height:40px;}
+.ranking li{float:left;font-size:16px; color:#333333; padding:5px 0; padding-left:15px;cursor:pointer;}
+.rk{font-size:16px; color:#666666; background:#ececec; padding:3px 8px;border:#CCC solid 1px; border-radius:5px; margin-left:5px;}
+.pricput input{width:90px; height:25px; vertical-align:middle; border:#CCC solid 1px;}
+.userput input{width:200px; height:25px; vertical-align:middle; border:#CCC solid 1px;}
+.userput a{font-size:16px; color:#666666; background:#ececec; padding:3px 8px;border:#CCC solid 1px; border-radius:5px; margin-left:10px;}
+.price li.active{color:#c7241d;}
+/*分页*/
+.pagination{width:1000px; margin:0 auto; text-align:center; margin-top:10px;}
+.pagination ul{display:inline-block;}
+.pagination ul li{float:left; margin:0 5px;}
+.pagination ul li a{background:#3c8dbc; font-size:14px; color:#FFF; padding:3px 10px; border-radius:15px;}
+.pagination ul li a:hover{background:#dd4b39;}

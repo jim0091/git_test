@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:0;}
+input{
+    -webkit-appearance: none;
+}
+body{font-family:"微软雅黑"; overflow-x:hidden; background:#f9f4f5;}
+/*input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+ -webkit-appearance: none;
+}*/
+
+.oddsdesdiv{margin-top:5%; margin-left:6%; clear:both;}
+.oddsdesdiv img{float:left; width:30%; padding-right:3%;}
+.oddsdesdiv li:nth-child(2){font-size:1rem;color:#333333; line-height:2rem; padding-bottom:3%;}
+.odes{font-size:0.8rem;color:#acacac; line-height:1.4rem;}
+
+.Mycards{clear:both;margin-top:5%; margin-left:6%;}
+.Mycards ul li{float:left; font-size:1rem; color:#757575; height:6rem; line-height:6rem;}
+.shk{width:20%;padding-right:5%;}
+.shk img{width:85%; vertical-align:middle; }
+.bj img{width:28%;vertical-align:middle; margin:0 3%;}
+
+.Speech{clear:both;margin-top:5%; margin-left:7%;}
+.Speech ul li{float:left; font-size:1rem; color:#757575; height:3rem; line-height:3rem;}
+.yu img{width:50%; vertical-align:middle;}
+
+.benediction{clear:both;margin-left:3%; width:100%;}
+.benediction ul li{float:left; height:3.2rem; line-height:3.2rem;color:#757575;}
+.benediction ul li span{display:block; float:left;width:6rem; text-align:right;font-size:1rem; }
+.bentxt{width:16rem;height:2rem; border:#d0d0d0 solid 1px; border-radius:5px; vertical-align:middle; font-size:1rem;}
+.bentxt2{width:16rem;height:2.8rem; border:#d0d0d0 solid 1px; border-radius:5px; vertical-align:middle;font-size:1rem;}
+.bentxt3{width:8rem;height:2rem; border:#d0d0d0 solid 1px; border-radius:5px; vertical-align:middle; margin-right:0.8rem;font-size:1rem;}
+
+.give{clear:both;}
+.give a{display:block;width:20rem;height:2.8rem;margin:0 auto;text-align:center;margin-top:5%;font-size:1.1rem; color:#FFF; background:#f32b5a;
+line-height:2.8rem; border-radius:8px;}
+
+/*复选框美化样式*/
+.chk_1{display:none;}
+.chk_1 + label {
+	background-color: #FFF;
+	border: 1px solid #C1CACA;
+	padding:0.5rem;
+	vertical-align:middle;
+	border-radius: 5px;
+	display: inline-block;
+	position: relative;
+	margin-right: 0.3rem;
+	margin-top:-0.1rem;
+}
+
+
+.chk_1:checked + label {
+	background-color:#FFF;
+	border: 1px solid #d0d0d0;
+	color: #f32b5a;
+}
+
+.chk_1:checked + label:after {
+	content:url(../images/gougou.png);
+	position: absolute;
+	top: -1rem;
+	left: -0.2rem;
+	color: #f32b5a !important; 
+	width: 100%;
+	text-align: center;
+	font-size: 1.6em;
+	vertical-align: text-top;
+	z-index:10;
+}

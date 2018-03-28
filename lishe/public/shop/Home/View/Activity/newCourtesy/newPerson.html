@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<link rel="shortcut icon" href="/shop/Home/View/Activity/newCourtesy/images/icon/bitbug_favicon.ico">
+	<title>新人礼遇-夏日</title>
+	<link rel="stylesheet" type="text/css" href="/shop/Home/View/Activity/newCourtesy/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/shop/Home/View/Activity/newCourtesy/css/newPerson.css">
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>	
+</head>
+<body>
+	<div class="header"><img src="/shop/Home/View/Activity/newCourtesy/images/banner.png" alt=""></div>
+	<div class="TitText"><img src="/shop/Home/View/Activity/newCourtesy/images/TitText1.png" alt=""></div>
+	<!--套餐商品内容-->
+	<div class="main_con1 mauto">
+		<ul class="main_list_con">
+			<volist name="catetorys" id="aConfId">
+				<li class="parentMarket">
+					<div class="product1_wrap">
+						<img src="{$activityCats[$aConfId]['cat_banner']}" alt="">
+					</div>
+					<p class="list_name">{$activityCats[$aConfId]['cat_name']}</p>
+					<!--小个商品列表-->
+					<div class="product_list">
+						<ul>
+							<foreach name="aitemInfos[$aConfId]" item="aitem"  key="k">
+								<li data-price="{$aitem['price']}" data-lastPrice="{$aitem['lastPrice']}" data-title="{$aitem['item_name']}" data-aitemId="{$aitem['aitem_id']}" data-store="{$skuStore[$aitem['lastSkuId']]}" >
+									<div class="list_product"><img src="{$itemInfos[$aitemIds[$aitem['lastSkuId']]]['image_default_id']}_m.{:end(explode('.', $itemInfos[$aitemIds[$aitem['lastSkuId']]]['image_default_id']))}" alt="" class="lp_img" >
+										<span class="lp_price">¥{$aitem['lastPrice']}</span></div>
+									<img src="/shop/Home/View/Activity/newCourtesy/images/icon/active.png" alt="" class="lp_market">
+								</li>
+							</foreach>
+						</ul>
+					</div>
+					<!--****-->
+					<div class="product_text">
+						<div class="price fl">¥<em class="price_em">{:reset($aitemInfos[$aConfId])['price']}</em></div>
+						<div class="pro_name fl">已选择：+¥{:reset($aitemInfos[$aConfId])['lastPrice']} 换购 {:reset($aitemInfos[$aConfId])['item_name']}</div>
+						<div class="group_btn fr">
+							<span class="add_cart">加入购物车</span>
+							<span class="buy_btn">立即购买</span>
+						</div>
+					</div>
+				</li>				
+			</volist>
+		</ul>
+	</div>
+	<!--满额返现-->
+	<div class="TitText" style="margin-top: 20px;"><img src="/shop/Home/View/Activity/newCourtesy/images/TitText2.png" alt=""></div>
+	<div class="main_con2 mauto">
+		<ul class="mc2_list">
+			<volist name="itemIds" id="vo">
+				<li>
+					<div class="mc_pro_img">
+						<a href="/shop.php/Info/index/itemId/{$vo}" target="_blank"><img src="{$itemInfos[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfos[$vo]['image_default_id']))}" /></a>
+						<p class="pro_name2">{$itemInfos[$vo]['title']}</p>
+					</div>
+					<div class="pro_text2">
+						<span class="p2_price fl">¥<em class="p2_em">{:sprintf("%.2f",$itemInfos[$vo]['price'])}</em></span>
+						<span class="integer fr">{:sprintf("%.2f",$itemInfos[$vo]['price'])*100}积分</span>
+					</div>
+					<div class="pro_btn mauto">
+						<span class="pro_btn1" data-itemId="{$vo}" data-shopId="{$itemInfos[$vo]['shop_id']}" >加入购物车</span>
+						<a href="/shop.php/Info/index/itemId/{$vo}" target="_blank">
+							<span class="pro_btn2">立即购买</span>
+						</a>
+					</div>
+				</li>
+			</volist>
+		</ul>
+	</div>
+	<div class="footer_btn mauto">
+		<img src="/shop/Home/View/Activity/newCourtesy/images/footer_btn.png" alt="">
+		<span id="goTop"></span>
+		<a href="/shop.php" class="shoping" target="_blank"></a>
+	</div>
+	<!--悬浮-->
+	<div class="floor">
+		<a href="/shop.php" class="shoping" target="_blank">心意商城</a>
+		<a href="/shop.php/Order/Cart" target="_blank" class="shopCart"><b class="cartNumber">0</b></a>
+	</div>
+</body>
+<script type="text/javascript" src="/shop/Home/View/Activity/newCourtesy/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+	var yzFn = {};
+
+	yzFn.clearMargin = function(){
+		$('.main_list_con > li').each(function(){
+			if(($(this).index()+1) /2 == parseInt(($(this).index()+1) /2) && $(this).index() != 0){
+				$(this).css('margin-right',0);
+			}
+			
+		});
+	}
+	yzFn.clearMargin2 = function(){
+		$('.mc2_list > li').each(function(){
+			if(($(this).index()+1) /5 == parseInt(($(this).index()+1) /5) && $(this).index() != 0){
+				$(this).css('margin-right',0);
+			}
+			
+		});
+	}
+	//回到顶部
+	yzFn.goTop = function(){
+		$('#goTop').click(function(){
+			$('html,body').animate({
+				scrollTop : 0
+			});
+		});
+	}
+	yzFn.floor = function(){
+		if($(window).width() < 1388){
+				$('.floor').css('right',0);
+		}
+		$(window).resize(function(){
+			if($(window).width() < 1388){
+				$('.floor').css('right',0);
+			}
+		});
+	}
+	yzFn.floor();
+
+	yzFn.clearMargin();
+	yzFn.clearMargin2();
+	yzFn.goTop();
+
+	$(function(){
+		updateCartNum();
+	});
+	//商品选择
+	$('.product_list>ul>li').click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		var price = $(this).attr("data-price");
+		var lastPrice = $(this).attr("data-lastPrice");
+		var title = $(this).attr("data-title");
+		var store = $(this).attr("data-store");
+		if(store <=  0){
+			$(this).parents('.parentMarket').find('.group_btn').addClass('changeColor');
+		}else{
+			$(this).parents('.parentMarket').find('.group_btn').removeClass('changeColor');
+		}
+		$(this).parents('.parentMarket').find('.price_em').text(price);
+		$(this).parents('.parentMarket').find('.pro_name').text('已选择：+¥'+lastPrice+' 换购'+title);
+	});
+	//默认选择有货
+	/*$('.product_list>ul>li').each(function(i){
+		var store = $(this).attr("data-store");
+		if(store <= 0){
+			return;
+		}else{
+			$(this).addClass('active');
+			break;
+		}
+	});*/
+	var proList1 = $('.product_list>ul').length;
+
+	for(var i=0;i<proList1;i++){
+
+		for(var j=0;j<$('.product_list').eq(i).find('li').length;j++){
+			
+			var store = $('.product_list').eq(i).find('li').eq(j).attr("data-store");
+			var seleObj = $('.product_list').eq(i).find('li').eq(j);
+			if(store <= 0){
+				continue;
+			}else{
+				$('.product_list').eq(i).find('li').eq(j).addClass('active');
+				var price = seleObj.attr("data-price");
+				var lastPrice = seleObj.attr("data-lastPrice");
+				var title = seleObj.attr("data-title");
+				seleObj.parents('.parentMarket').find('.price_em').text(price);
+				seleObj.parents('.parentMarket').find('.pro_name').text('已选择：+¥'+lastPrice+' 换购'+title);
+				break;
+			}
+			
+		}
+	}
+	
+
+	//限制字符个数
+	repleceText('.mc2_list > li .mc_pro_img .pro_name2',18);
+	function repleceText(obj,max){
+		$(obj).each(function(){
+			if($(this).text().length>max){
+				$(this).text($(this).text().substring(0,max));
+				$(this).html($(this).html()+'...');
+			}
+		});
+	}
+	
+	$('.add_cart').click(function(){
+		var dataAiemId = $(this).parents('.parentMarket').find('.active').attr('data-aitemId');
+		var store = $(this).parents('.parentMarket').find('.active').attr('data-store');
+		if(store <= 0){
+			return false;
+		}
+		addCarts(dataAiemId,'add');
+	});
+	$('.buy_btn').click(function(){
+		var dataAiemId = $(this).parents('.parentMarket').find('.active').attr('data-aitemId');
+		var store = $(this).parents('.parentMarket').find('.active').attr('data-store');
+		if(store <= 0){
+			return false;
+		}		
+		addCarts(dataAiemId,'buy');
+	});
+	function addCarts(aitemId,type){
+    	$.get('__APP__/Activity/aitemAddCart',{aitemId:aitemId},function(data){
+    		if(data['code'] == 0){
+    			alert(data['msg']);
+    		}else if(data['code'] == 1){
+    			updateCartNum();
+    			if(type == 'add'){
+    				alert("成功加入购物车!");
+    			}else if(type == 'buy'){
+    				window.location.href = "/shop.php/Order/Cart";
+    			}
+    		}else if(data['code'] == 3){
+    			alert(data['msg']);
+    			window.location.href = '/shop.php/Sign/index';
+    		}
+    	});		
+	}
+ 	//加入购物车
+    $(".pro_btn1").click(function(){
+        //商品id
+        var itemId = $(this).attr('data-itemId');//商品id
+        //购买数量
+        var shopId = $(this).attr('data-shopId');//商品id
+        //库存id
+        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+			if(data['code'] == 0){
+				window.open('http://www.lishe.cn/shop.php/Info/index/itemId/'+itemId);
+				return false;
+			}else if(data['code'] == 1){
+				addCart(itemId,data['skuId'],shopId);
+			}
+        	
+        });
+
+    });	
+    function addCart(itemId,skuId,shopId){
+    	var quantity = 1;
+    	var jd_ids = '19_1607_3155_0';
+         $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+            dataType:'text',
+            success:function(data){
+            	var res = eval(data);
+                if (res[0] == 1) {
+    				alert("成功加入购物车!");
+                    updateCartNum();               
+                }else{
+                	alert(res[1]);
+                	if(res[2]){
+    					window.location.href = '/shop.php/Sign/index';
+                	}
+                }
+            }
+        });   	
+    }
+	function updateCartNum(){
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Info/updateCartNum",
+            dataType:'text',
+            success:function(data){
+                $(".cartNumber").text(data);
+            }
+        });
+	}  	
+</script>
+</html>

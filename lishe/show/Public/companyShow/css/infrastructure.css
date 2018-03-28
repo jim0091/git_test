@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#f6f4f4; font-family:"微软雅黑"; font-size:12px;}
+
+/*头部*/
+.header{background:#a12124; width:100%; height:100px; line-height:100px;}
+.heade-ct{width:1200px; margin:0 auto;}
+.he-p{float:left;}
+.he-p img{vertical-align:middle; margin-right:10px;}
+/*横向二级菜单*/
+.navLeft .mainlevel{float:left;text-align:center;display:block;}
+.navLeft .mainlevel a {color:#fff;font-size:16px;padding:0 20px;display:block;}
+.navLeft .mainlevel a:hover {background:#FFF;color:#991332;}
+.navLeft .mainlevel ul{position:absolute;display:none;}
+.navLeft .mainlevel li {float:left;}
+.navLeft .mainlevel li a {color:#4d4d4d;display:block; line-height:25px; height:25px;padding:0 12px;}
+.navLeft .mainlevel li a:hover {color:#991332;}
+/*end*/
+.navRight{float:right;}
+.navRight li{float:left;padding:0 15px;}
+.ur a{font-size:16px; color:#FFF;}
+.ur a img{padding-left:12px;}
+.ur2 a{color:#991332; background:#FFF; padding:5px 8px; border-radius:10px; font-size:16px;}
+.ur2 a img{vertical-align:middle; padding-right:5px;}
+
+
+
+/*企业架构*/
+.inse{width:1200px; margin:0 auto; margin-top:50px;}
+.inse-left{border:#CCC solid 1px;width:300px; float:left; background:#FFF; padding-bottom:30px;}
+.inf-p{background:#c7241d; font-size:16px; color:#FFF; padding-left:15px; height:35px; line-height:35px;}
+.inf-p span{float:right; padding-right:12px; cursor:pointer;font-size:33px;}
+.inf-p2{font-size:14px; color:#333333;padding-left:30px; padding-top:15px;}
+/*JQ三级联动菜单}*/
+.list{width: 210px;margin:10px auto 0 auto;}
+.list ul li a{color: #4d4d4d; font-size:14px; display: block; height:36px;line-height: 36px;position: relative;}
+.list ul li a:hover{background:#f2f2f2;}
+.list ul li ul li a{ padding-left:20px;}
+.list ul li ul li ul li a{ color:#4d4d4d; padding-left:30px;}
+/*end*/
+.inse-right{float:right; background:#FFF; width:875px; border:#CCC solid 1px; padding-bottom:30px; text-align:center;}
+.inse-right p img{vertical-align:middle; height:475px; width:780px;}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Modifyname.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+
+<title>修改昵称-心意商城</title>
+</head>
+
+<body>
+	<div class="MnameHd">
+    	<div class="Mnhdiv">
+           	<p onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></p>
+           	<p>修改昵称</p>
+           	<p class="confirm">确定</p>
+        </div>
+    </div>
+    <div class="Nname">
+       	<p>
+       		<input type="text" name="nickName" value="{$Name}" maxlength="20">
+       		<span><img src="__VIEW__Public/images/namept.png" class="cleanName"></span>
+       	</p>
+    </div>
+    <div class="brief">
+       	<p>4-20个字符，可由中文、数字、”、;组成</p>
+    </div>
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>   
+    <script>
+    $(".cleanName").click(function(){
+    	$(".nickName").val("");
+    });
+	//提交设置密码
+	$(".confirm").click(function(){		
+		$(".topLoading").show();	
+		var nickName = $("input[name='nickName']").val();	
+		if (nickName == '') {
+			$(".topLoading").hide();
+			opLayer('open',"请输入昵称！");
+            return;				
+		};
+		$.ajax({
+	        type:"POST",
+	        url:"__APP__/User/updateUserInfo",
+	        data:{nickName:nickName},
+	        dataType:'text',
+	        success:function(data){
+	        	var res = eval(data);
+            	if (res[0] == 1 ) {
+					$(".topLoading").hide();
+					opLayer('open',res[1]);
+            	}else{
+					$(".topLoading").hide();
+					opLayer('open',"修改失败，请重试！");
+            	}
+	       	},
+	       	error:function(){
+				$(".topLoading").hide();
+				opLayer('open',"系统繁忙，请重试！");
+	            return;
+		    }
+    	});
+	});
+</script> 
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>礼舍-购物车</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<meta content="IE=11.0000" http-equiv="X-UA-Compatible" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<meta name="MobileOptimized" content="320">
+<link href="__PUBLIC__/wshop/css/base.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/wshop/css/confirm.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="head" style="border:0px solid red;background:#1e1d22;height:35px;">
+
+	<div style="border:0px solid red;width:30px;float:left;height:33px;line-height:33px;"><img class="mp-image" width="24" height="24" src="/business/Public/wshop/images/housekeeper_icon.png" style="border:0px solid red;margin:5px 0px 0px 11px;"></div>
+
+	 <div class="topL l" style="border:0px solid red;height:33px;width:28px;">
+		<a href="javascript:window.history.go(-1);" class="topL3" style="border:0px solid red;margin-top:5px;color:#999999;font-size:14px;padding-left:20px;width:50px;line-height:20px;">&nbsp;&nbsp;返回</a>
+	</div>
+	<!-- <div class="topLine l" style="background:#1e1d22;"></div> -->
+	<div class="topR r"><a href="{:U('Index/index')}" class="topLRLoginReg" style="color:#999999;font-weight:normal;border:0px solid red;margin-top:8px;font-size:14px;">首页</a> </div>
+	<!-- <div class="topLine r" style="background:#1e1d22;"></div> -->
+	<div class="listTitle" style="color:#999999;font-size:14px;font-weight:normal;border:0px solid red;height:33px;line-height:33px;">购物车</div>
+
+</div>
+
+<div class="content" style="margin:30px auto; padding:5% 0%">
+<div style="margin: 30px auto; text-align: center;"><img src="__PUBLIC__/wshop/images/cart_empty.png"></div>
+	<div class="noAddr borderRadius">购物车没有任何商品，请<a href="{:U('Itemlist/classifyList')}">先添加商品</a></div>
+    <div class="c"></div>
+</div>
+<include file="Common:footer"/>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/gwc.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="addressAdmin">	
+			<!-- 右侧订单 -->
+			<div class="order_info" style="height:700px; text-align:center;font-size:26px;">
+				<!--收货信息-->
+				<input type="hidden" name="refer" id="refer" value="{$refer}">
+		   		<div class="receiving">
+			  		<p class="rec">收货信息</p>
+			  		<ul id="typeFree-two">
+						<foreach name="addrList" item="getAddrInfo">
+					  	<li data="{$getAddrInfo['addr_id']}" class="<if condition='$getAddrInfo.def_addr eq 1'>active</if> address">
+						  	<p class="user" style="line-height:20px;">{$getAddrInfo['area']}<span>{$getAddrInfo['name']}</span></p>
+						  	<p class="dres">{$getAddrInfo['addr']}</p>
+						  	<p class="phone">{$getAddrInfo['mobile']}</p>
+						  	<p class="alter" style="border:0px solid red;">
+								<a href="javascript:void(0);" style="border:0px solid red;" data-id="{$getAddrInfo['addr_id']}" class="chgAddrInfo">修改</a>
+								<if condition='$getAddrInfo.def_addr neq 1'>
+								<a href="javascript:if(confirm('确认要删除该收货地址吗？')){location.href='__APP__/Address/deleteAddr/addressId/{$getAddrInfo['addr_id']}';}" style="border:0px solid red;" >删除</a>								
+								<a href="javascript:void(0);" class="defaultAddress" data-id="{$getAddrInfo['addr_id']}">设为默认</a>
+								</if>
+						  	</p>
+				  		</li>
+						</foreach>
+						<a href="__APP__/Address/addAddress">
+							<li style="line-height:110px;font-size:18px;"><div style="margin-left:48px;">添加新地址</div></li>
+				  		</a>
+
+			  		</ul>
+		   		</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+	// 修改收货地址
+  	$(".chgAddrInfo").click(function(){
+	  	var addrId=$(this).attr("data-id");
+	  	window.location.href="__APP__/Address/chgAddressInfo/addrId/"+addrId;
+	  	return false;
+  	});
+
+	$('.defaultAddress').click(function(){
+		var addrId=$(this).attr("data-id");
+		var refer = $("#refer").val();
+		$.post("{:U('Address/modifyDefAddr')}",{addr_id:addrId},function(msg){
+			if(msg=='defAddrSuccess'){
+				if (refer !='') {
+					window.location.href=refer;
+				}else{
+					window.location.reload();					
+				}
+			}
+			if(msg==''){
+				divPrompt('默认地址修改失败');
+				return false;
+			}
+		});		
+	});
+</script>
+</body>
+</html>

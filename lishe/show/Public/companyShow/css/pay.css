@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#f5f5f5; font-family:"微软雅黑"; font-size:12px;}
+
+
+
+.platform{background:url(../images/bodbg.png) no-repeat center center;width:1000px; height:610px; margin:0 auto;margin-top:50px;}
+.payTit{width:110px; font-size:14px; color:#666666; text-align:center; padding-top:20px;}
+.payTit2{font-size:12px; color:#666666; padding-left:26px; padding-top:35px;}
+.payul{padding-left:26px; margin-top:15px; clear:both;}
+.payul li{float:left;}
+.payli{width:215px; height:70px; line-height:70px; border:#CCC solid 1px; text-align:center; margin-right:20px;}
+.payli input,img{vertical-align:middle; margin:0 5px;}
+.payjf{font-size:16px; color:#c7241d; font-weight:800;height:70px; line-height:70px;}
+.payjf2{font-size:16px; color:#c7241d; height:70px; line-height:70px;}
+.paypwd{clear:both;padding-left:26px; padding-top:35px;}
+.paypwd li{float:left;font-size:12px; color:#666666;height:25px; line-height:25px;}
+.paypwd li a{font-size:12px; color:#666666; padding-left:8px;}
+.paypwd li input{width:160px; height:25px; border:#CCC solid 1px;}
+.rechargep{padding-left:26px; color:#de1c14; font-size:12px; font-weight:bold; padding-top:30px;}
+.recharge{border:#c7241d solid 1px; width:945px; margin:0 auto;  margin-top:30px; height:170px;}
+.recharge div{float:left;}
+.reOne{width:350px; text-align:center; padding-top:30px;}
+.reOne p{border-bottom:#CCC solid 1px; width:100px; margin:0 auto; font-size:12px; color:#333333; font-weight:bold; padding-bottom:2px;}
+.reOne ul{width:240px; margin:0 auto; margin-top:10px;}
+.reOne ul li{float:left; font-size:14px; color:#333333; height:30px;line-height:30px;text-align:left; width:80px;}
+.reOne ul li input{vertical-align:middle; margin-right:3px;}
+.reTwo{width:350px;padding-top:20px;}
+.reTwo ul li{float:left; width:130px; height:45px; line-height:45px; text-align:left; border:#CCC solid 1px; margin:10px 10px; padding-left:5px;
+font-size:10px; color:#333333;}
+.reTwo ul li input{vertical-align:middle;}
+.reTwo ul li img{width:29px; height:29px; vertical-align:middle;}
+.reThree{width:220px; margin:0 auto; padding-top:82px; text-align:center;}
+.reThree li{font-size:14px; color:#c7241d; height:30px; line-height:30px;}
+.reThree li a{font-size:14px; color:#FFF; background:#c7241d; padding:5px 20px; font-weight:bold;}
+.paybtn{ padding-left:26px; padding-top:50px;}
+.paybtn a{font-size:18px; color:#FFF;background:#c7241d; padding:15px 30px;}
+
+
+/*充值状态样式*/
+.anarchy{width:800px; margin:0 auto; margin-top:80px; text-align:center;}
+.resucc{font-size:34px; color:#c6241d;}
+.resucc img{height:85px; vertical-align:middle; margin-top:-30px;}
+.resucc span{vertical-align:middle; padding-left:5px;}
+.anarchy ul{display:inline-block;}
+.anarchy ul li{float:left; height:30px; line-height:30px; margin:0 10px;}
+.rech{font-size:24px; color:#333333;}
+.rech2{font-size:14px; color:#c6241d;}
+
+.anarchy2{width:800px; margin:0 auto; margin-top:80px; text-align:center;}
+.resucc{font-size:34px; color:#c6241d;}
+.resucc img{height:85px; vertical-align:middle; margin-top:-30px;}
+.resucc span{vertical-align:middle; padding-left:5px;}
+.anarchy2 ul{display:inline-block;}
+.anarchy2 ul li{height:30px; line-height:30px; margin:0 10px;}
+.rech{font-size:24px; color:#333333;}
+.rech3{font-size:14px; color:#c6241d;}
+.rech3 a{font-size:14px; color:#333333;}
+.rech3 span{padding-left:8px;}

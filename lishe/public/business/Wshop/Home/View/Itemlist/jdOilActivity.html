@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/wshop/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/wshop/css/phone.css">
+<script src="__PUBLIC__/wshop/js/jquery-1.8.2.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wshop/css/index.css">  
+<title>国庆节食用油专场活动</title>
+</head>
+
+<body style="margin-bottom:100px;background-color:#eed8af;">
+
+
+
+ <foreach name="list" item="row1" key='i'>
+  <div class="ListPhone">
+  	
+     <!--  <p class="lip"><span>{$cat_name}</span><br/>
+      </p> -->
+      <div>
+        <img src="__PUBLIC__/wshop/images/oil.jpg" style="width:100%;" />
+      </div>
+      <div class="listul">
+
+      	<foreach name="row1" item="row">
+          <ul>
+            <li style="height: 177px;overflow: hidden;">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$row['item_id']))}?from={:md5($row.item_id)}">
+            		<img src="{$row['image_default_id']}">
+            	</a>
+            </li>
+            <li class="puser" style="height: 34px;overflow: hidden;text-align: center;">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$row['item_id']))}?from={:md5($row.item_id)}">{$row['title']}</a>
+            </li>
+            <li class="pric">￥{$row['price']|number_format=###, 2, '.', ''}
+            	<a class="js-goods-buy" data-id="{$row['item_id']}" href="javascript:void(0)">加入购物车</a>
+            </li>
+		                     
+          </ul>
+ 				</foreach>
+       </div>   
+      <div style="clear:both;"></div>
+  </div>
+</foreach>
+
+
+<!--遮罩层start-->
+<div id="maskLayer" style="display:none; height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 1000; transition: none 0.2s ease; opacity: 1; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!--遮罩层end-->
+
+<!--提示框-->
+<div class="motify" style="display: none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+
+<!--下拉start-->
+<div id="selectItem" class="sku-layout sku-box-shadow popup" style="display:none;overflow: hidden; position: fixed; z-index: 1000; bottom: 0px; left: 0px; right: 0px; visibility: visible; transform: translate3d(0px, 0px, 0px); transition: all 300ms ease; opacity: 1; background: white;">
+    <div class="sku-layout-title name-card sku-name-card">
+
+
+</div>
+
+</div>
+<include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>
+
+  <script type="text/javascript">
+  $(function(){
+     $('.swiper-wrapper div').click(function(){
+				if(!$(this).hasClass('active')){ 
+					$(this).addClass('active').siblings().removeClass('active');
+				
+				}
+			})
+	 		
+		
+		var navH = $(".swiper-wrapper").offset().top;
+				//滚动条事件
+		$(window).scroll(function(){
+			//获取滚动条的滑动距离
+			var scroH = $(this).scrollTop();
+		})
+	
+		  var mySwiper1 = new Swiper('#header',{
+			  freeMode : true,
+			  slidesPerView : 'auto'
+		  });
+	
+  });
+
+	
+</script>
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js"></script>
+<script type="text/javascript">
+        $(function(){
+            $(".js-goods-buy").click(function(){
+                 $("#selectItem").html("");
+                var urls="{:U('Home/Itemlist/jionShow')}";
+                var itemid=$(this).attr("data-id");
+                $.ajax({
+                    type:"get",
+                    url:urls,
+                    dataType:'text',
+                    data:'itemId='+itemid,
+                    success:function(data){
+                         $("#selectItem").html(data);
+                    }
+                });
+                $("#selectItem").show();
+                $("#maskLayer").show();
+                $("body").css({overflow:"hidden"}); 
+            });
+            $("#cancel-img").click(function(){       
+                $("#selectItem").hide();
+                $("#maskLayer").hide();
+                $("body").css({overflow:"visible"}); 
+            });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/details.css">
+<link rel="stylesheet" href="__CSS__/swiper.min.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<title>{$item.title}</title>
+</head>
+<body>
+ <div class="detailsTop">
+   <div class="detailsToppt">
+     <span><img src="__IMG__/prereturn.png" onclick="history.go(-1);"></span><span>商品详情</span>
+     <!-- <span><a href="#"><img src="__IMG__/phoneshopp.png"></a></span>  -->
+    </div>  
+ </div>
+ <div class="detailsdes">
+    <ul>
+      <li><img src="{$item.image_default_id}_t.{:end(explode('.',$item['image_default_id']))}"></li>
+      <li>{$item.title}</li>
+      <li>
+      	<span class="deajq">￥{$item['price'] | number_format=###,2}</span>
+      	<!-- 
+      	<span class="deafx">分享<a href="#"><img src="__IMG__/partook.png" class="deafxpt"></a></span>
+      	 -->
+      </li>
+    </ul>
+ </div>
+ 
+ <!--tab切换-->
+ <div id="outer">
+    <ul id="tab">
+        <li class="current">商品参数</li>
+        <li id="itemDesc" status="unload">商品详情</li>
+        <li>TA们说</li>
+    </ul>
+    <div id="content">
+       <!--tab1-->
+          <div class="tabListOne" style="display:block;">
+               <ul>
+               	 <volist name="itmeSpecArr" id="spec">
+               	 	<li>{$key}：{$spec}</li>
+               	 </volist>
+               </ul>
+           </div>   
+        <!--tab2-->
+           <div class="tabListTwo">
+              <div class="despt" id="itemDescHtml"></div>       
+            </div>
+        <!--tab3-->
+           <div class="tabListThree">
+               <p style="font-size: 14px;">暂无评论</p>
+           </div>     
+    </div>
+</div> 
+<!--end-->
+<!--猜你喜欢-->
+<div id="recomBox" style="display: none;">
+<div class="clike"><p>猜你喜欢</p></div>
+<div class="swiper-container">
+    <div class="swiper-wrapper" id="recomItemList">
+ 	</div>
+ </div>
+</div>
+      <!--弹出层-->
+  <div class="am-share">
+      <div class="am-details">
+          <div class="amsharediv">
+              <div class="amshareLeft">
+                  <img src="{$item['image_default_id']}">
+              </div>
+              <div class="amshareRight">
+                  <p><span class="fixedName">{$item.title}</span><span class="fixedClose"><img src="__IMG__/fixedClose.png"></span></p>
+                  <p>￥{$item['price'] | number_format=###,2}</p>
+                  <p><del>原价￥{$item['price'] | number_format=###,2}</del></p>
+              </div>
+              <div style="clear:both;"></div>
+          </div>
+          <div class="am-content">
+              <div class="fixedColor">
+                  <p class="fic">请选择</p>
+                  <ul class="fixedUl" id="skuList">
+                  	  <volist name="skuList" id="sku">
+                  	  	<li skuid="{$sku['sku_id']}" <eq name="key" value="0">class="fixedactive"</eq>>{$sku['spec_info']|default='默认'}</li>
+                  	  </volist>
+                  </ul>
+                  <div style="clear:both;"></div>
+              </div>
+              <div class="fixedbod">
+                  <p>数量：</p>
+                  <p class="gw_num">
+                  <em class="jian" id="reduceNum" style="color:#c8c8c8;">-</em>
+                  <input type="text" id="inputNum" value="1" class="num" readonly="readonly"/>
+                  <em class="add" id="addNum">+</em>
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="fixedbtn">
+         <a href="javascript:void(0)" id="submitBut">确定</a>
+      </div>
+ </div>
+   <div class="giveta"><a href="javascript:void(0);" id="selectSku">送给TA</a></div>
+   <input type="hidden" id="itemId" name="item_id" value="{$item['item_id']}"/>
+   <form id="submitForm" action="{:U('Order/buy')}" method="get" style="display: none;">
+   		<input type="hidden" id="quantity" name="quantity" value="1"/>
+   		<input type="hidden" id="skuId" name="sku_id" value="-1"/>
+	</form>
+</body>
+<!-- Swiper JS -->
+<script src="__JS__/swiper.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var $li = $('#tab li');
+	var $ul = $('#content>div');
+				
+	$li.click(function(){
+		var $this = $(this);
+		var $t = $this.index();
+		$li.removeClass();
+		$this.addClass('current');
+		$ul.css('display','none');
+		$ul.eq($t).css('display','block');
+	})
+}
+$(document).ready(function(){
+	
+	$("#addNum").click(function(){
+		var val = $(this).prev().val();
+		$(this).prev().val(++val);
+	})
+	
+	$("#reduceNum").click(function(){
+		var val = $(this).next().val();
+		if(val > 1){
+			$(this).next().val(--val);
+		}
+	})
+	
+ 	$("#itemDesc").click(function(){
+ 		var itemId = $("#itemId").val();
+ 		var status = $(this).attr("status");
+ 		if(status == "unload"){
+ 			$(this).attr("status",'loaded');
+ 			$(this).attr("flag",1);
+ 	 		$.get("{:U('Gift/itemDesc')}",{item_id:itemId},function(result){
+ 	 			if(result.code == 1){
+ 	 				$("#itemDescHtml").html(result.data);
+ 	 			}else{
+ 	 				$("#itemDescHtml").html('<p style="font-size: 14px;">暂无商品详情 </p>');
+ 	 			}
+ 	 		});
+ 		}
+ 	});
+ 	
+ 	$("#selectSku").click(function(){
+ 		$(".am-share").addClass("am-modal-active");	
+ 		if($(".sharebg").length>0){
+ 			$(".sharebg").addClass("sharebg-active");
+ 		}else{
+ 			$("body").append('<div class="sharebg"></div>');
+ 			$(".sharebg").addClass("sharebg-active");
+ 		}
+ 		$(".sharebg-active,.fixedClose").click(function(){
+ 			$(".am-share").removeClass("am-modal-active");	
+ 			setTimeout(function(){
+ 				$(".sharebg-active").removeClass("sharebg-active");	
+ 				$(".sharebg").remove();	
+ 			},300);
+ 		})
+ 	});
+ 	//sku选择高亮
+ 	$('.fixedUl li').click(function(){
+		if(!$(this).hasClass('fixedactive')){
+			$(this).addClass('fixedactive').siblings().removeClass('fixedactive');
+		}
+	})
+	
+	$("#submitBut").click(function(){
+		var skuId = $("#skuList li.fixedactive").eq(0).attr("skuid");
+		if(skuId == ''){
+ 			return;
+ 		}
+ 		$("#skuId").val(skuId);
+ 		$("#quantity").val($("#inputNum").val());
+ 		$("#submitForm").submit();
+	})
+	
+	//推荐
+	$.get("{:U('Gift/recom')}",function(result){
+		if(result.code == 1){
+			var html = "";
+			var len = result.data.length;
+			if(len == 0) return;
+			$.each(result.data,function(key,val){
+				//alert(val.forkey_item_id)
+				if(key % 2 == 0){
+					html += '<div class="swiper-slide">';
+				}
+				//获取缩略图
+				var imgUrl = val.img_default_id;
+				imgUrl = imgUrl+'_t'+imgUrl.substr(imgUrl.lastIndexOf("."));
+				
+				html += '<ul class="swiperul">';
+				html += '<li style="text-align:center;"><a href="{:U("Gift/item")}?item_id='+val.forkey_item_id+'"><img src="'+imgUrl+'"></a></li>';
+				html += '<li class="swli"><a href="javascript:void(0)">给你最贴心的关怀</a></li>';
+				html += '<li class="spname"><a href="{:U("Gift/item")}?item_id='+val.forkey_item_id+'">'+val.title.substr(0,11)+'...</a></li>';
+				html += '<li class="swprc"><a href="javascript:void(0)">￥'+val.price+'</a></li></ul>';
+				
+				if(key % 2 == 1 || key == (len - 1)){
+					html += '</div>';
+				}
+			})
+			if(html != ""){
+				$("#recomItemList").html(html);
+				$("#recomBox").show();
+				var swiper = new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+				    autoplay : 2000,
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			        spaceBetween: 30,
+				});
+			}
+		}
+	})
+});
+</script>
+</html>

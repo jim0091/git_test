@@ -1,0 +1,466 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+<link rel="stylesheet" href="__VIEW__Public/css/IndustryGather.css">
+<link rel="stylesheet" href="__VIEW__Public/css/gwc.css">
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript" src="__VIEW__Public/layer/layer.js"></script>
+<title>购物车-深圳礼舍科技有限公司</title>
+
+</head>
+
+<body>
+  <!-- 顶部导航 -->
+    <include file="Public/header"/> 
+    <div style="clear:both;"></div>
+    <!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+
+    <div class="layout" style="border:0px solid red;margin-top:50px;">
+      	<div class="tb-shop">
+         	<table class="user-tb">
+              	<tr>
+	                <td class="put">
+	                  	<input type="checkbox" style="vertical-align:middle;"  class="CheckedAll" data-story-writer="1"/>
+	                  	<span>全选</span>
+	                </td>
+	                <td class="new-list">商品信息</td>
+	                <td class="dj">单价（元）</td>
+	                <td class="num">数量</td>
+	                <td class="je">金额</td>
+	                <td class="cz">操作</td>
+              	</tr>
+          	</table>         
+          	<!-- 店铺遍历开始 -->
+          	<foreach name="shopInfo" item="shopID">
+           	<table class="list-tb tableShopId{$shopID['shop_id']}" cellspacing="0">
+              	<tr>
+	                <td class="put2" colspan="7">
+	                  	<input type="checkbox" class="shopItemSelect currShopItem_{$shopID['shop_id']} cheShopId{$shopID['shop_id']}" value="{$shopID['shop_id']}"  style="vertical-align:middle;"  name="items" data-story-writer="1"/>
+	                   	<a href="__LISHE_URL__/shopcenter.html?shop_id={$shopID['shop_id']}">
+	                   		<span>{$shopID.shop_name}</span>
+	                   	</a>
+	                  	<a href="__LISHE_URL__/shopcenter.html?shop_id={$shopID['shop_id']}">
+	                  		<img src="{$shopID['shop_logo']}" width="25px" height="25px;">
+	                  	</a>
+	                  	<a class="kefu" href="tencent://message/?uin={$shopID['qq']}&Site=网站&Menu=yes">
+							{$shopID['shopuser_name']}
+						</a>
+	                </td>
+              	</tr>
+                <!-- 商品遍历开始 -->
+                <foreach name="cartInfo" item="cart">
+                <if condition="$shopID['shop_id'] eq $cart['shop_id']">
+                <tr class="bd">
+                    <td class="put3">
+                        <input type="checkbox"  class="ItemSelect_{$cart['shop_id']} cartId{$cart.cart_id}" data="common" data-id="{$cart['shop_id']}"  name="items" value="{$cart.cart_id}" <if condition="$cart['isFreez'] neq 0">data-story-writer="1"<else/>data-story-writer='0'</if> />
+                    </td>
+                    <td class="pt">
+                      	<a style="border:0px solid red;" href="__APP__/Info/index/itemId/{$cart['item_id']}" target="_back">
+                        	<img src="{$cart.image_default_id}" style="width:70px;height:70px;"  />
+                      	</a>
+                    </td>
+                    <td class="btn"><!--<a href="#">团购</a>--></td>
+                    <td class="dis">
+                    	<a href="__APP__/Info/index/itemId/{$cart['item_id']}" target="_back">
+                    		<p style="color:#0aa6f0;">{$cart.title}</p>
+                        <p>{$cart.spec_info}</p>
+                    	</a>
+                    </td>
+                    <td class="pir">￥{$cart.price}</td>
+                    <td class="sl">
+                      	<!-- <input class="sdddq" id="inp"  value="1" /> -->
+                      	<div style="overflow:hidden;width:78px;height:20px;border: 1px solid #CCC;">
+                      		<div id="left_{$cart.cart_id}" class="descNum" data="{$cart.cart_id}" style="" title="{$cart['shop_id']}"> - </div>
+                      		<input type="text" id="num_{$cart.cart_id}" class="currCartQuantity" data="{$cart.cart_id}" value="{$cart.quantity}" disabled="disabled">
+							<input type="hidden" id="sku_{$cart.cart_id}" value="{$cart.sku_id}" />
+                    		<div id="right_{$cart.cart_id}" class="ascNum " data="{$cart.cart_id}">+</div>
+                      	</div>
+                        <div class="noFreezShow{$cart.cart_id}" style="border: 0px;text-align:center;margin-top:3px;<if condition="$cart['isFreez'] neq 0">display:none;</if>">
+                            <span style="color:red;">库存不足</span>
+                        </div>
+                    </td>
+                    <td class="totl">￥<span id="totl_{$cart.cart_id}">{$cart.goodsTotalPrice}</span></td>
+                    <td class="delt">
+	                    <a  href="javascript:void(0);" class="delte_cartId" data-id="{$cart.cart_id}" >                        
+	                        <img src="__VIEW__Public/images/del.png" width="20px" height="20px" />删除
+	                    </a>
+                    </td>
+                </tr> 
+                </if>
+              	</foreach>
+          	</table>
+          	</foreach>
+          <!-- 店铺遍历结束 -->
+          	<table class="js-tb">
+              	<tr>
+                	<td class="put4">
+                  		<input type="checkbox" style="vertical-align:middle;" class="CheckedAll" data-story-writer="1" />
+                  		<span>全选</span>
+                	</td>
+                	<td class="de"><a href="javascript:void(0);" class="deleteMoreCartIds">删除选中的商品</a></td>
+                	<td class="totl2">
+                		<p class="to-p">总价不含运费：
+	                		<span><font class="currTotalNum">0</font>积分</span>
+	                		<span>（￥<font class="currTotalMoney">0.00</font>）</span>
+                		</p>
+                  		<!-- <p>活动优惠：<span>0</span>优惠：<span>0</span></p> -->
+                	</td>
+                	<td class="to-js">
+                        <a href="javascript:void(0);" class="getOrderResult" style="">去结算</a>
+                	</td>
+              	</tr>
+          	</table>
+      	</div>       
+   	</div>
+
+    <div style="clear: both;"></div>
+
+    <div style="border:0px solid red;;">   
+    	<include file="Public/footer"/>
+    </div>
+
+    <script type="text/javascript"> 
+    function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+    //得到被选中的购物车的商品cart_id
+    function getCartId(cartIdStr){
+        $.get("{:U('Order/getSelectPrice')}",{cartIdStr:cartIdStr},function(msg){
+            if(msg != '-1'){
+                var data=eval('('+msg+')');
+                $('.currTotalNum').text(data.curr_num);
+                $('.currTotalMoney').text(data.curr_money);
+            }else if(msg=='-1'){
+                $('.currTotalNum').text('0');
+                $('.currTotalMoney').text('0.00');
+            }
+
+        });
+    }
+    $(".CheckedAll").click(function(){
+        var selectStr='';
+        if($(this).prop('checked')==true){
+            $("[type=checkbox]").prop('checked',true);          
+            $("input[data='common']").each(function(a1,b1){
+                selectStr += $(this).val() + ',';
+            }); 
+            getCartId(selectStr);
+        }else{
+            $("[type=checkbox]").prop('checked',false);
+            getCartId(selectStr);
+        }
+    });
+
+    $("input[name='items']").click(function(){
+        $("input[name='items']").each(function(m,n){
+            if($(this).prop('checked')==false){
+                $(".CheckedAll").prop('checked',false);
+                return false;
+            }
+        });    
+    });
+
+    count = $("input[data='common']").size();
+
+    $("input[data='common']").click(function(){
+        var ItemSelectVal=$(this).attr('data-id');
+        var ItemSelectNum=$('.ItemSelect_'+ItemSelectVal).size();
+        var kl = 0;
+        $('.ItemSelect_'+ItemSelectVal).each(function(kk,ll){
+            if($(this).prop('checked')==true){
+                kl = parseInt(kl) + 1;
+            }
+            if(parseInt(ItemSelectNum)==kl){
+                $('.currShopItem_'+ItemSelectVal).prop('checked',true);
+            }
+        });
+        if(parseInt(kl)==0){
+            $('.currShopItem_'+ItemSelectVal).prop('checked',false);
+        }
+        var xy = 0;
+        var selectStr='';
+        $("input[data='common']").each(function(x,y){       
+            if($(this).prop('checked')==true){
+                selectStr += $(this).val() + ',';
+                xy = parseInt(xy) + 1;
+            }
+            if(xy==parseInt(count)){
+                $(".CheckedAll").prop('checked',true);
+            } 
+        });
+        getCartId(selectStr);
+    });
+
+    var shopItemCount=0;
+    shopItemCount=$('.shopItemSelect').size();
+    $('.shopItemSelect').click(function(){
+        var curr_shopId = $(this).val();      
+        if($(this).prop('checked')==true){     
+            $('.ItemSelect_'+curr_shopId).prop('checked',true);                    
+        }else{
+            $('.ItemSelect_'+curr_shopId).prop('checked',false);            
+        }
+        var xyz = 0;
+        var selectStr='';
+        $(".shopItemSelect").each(function(xxx,yyy){       
+            if($(this).prop('checked')==true){
+              xyz = parseInt(xyz) + 1;   
+            }
+            if(xyz==parseInt(shopItemCount)){
+                $(".CheckedAll").prop('checked',true);
+            }
+            var getShopId=$(this).val();
+            $(".ItemSelect_"+getShopId).each(function(xx1,yy2){
+                if($(this).prop('checked')==true){
+                    selectStr += $(this).val() + ',';
+                }
+            });
+        }); 
+        getCartId(selectStr);
+    });
+        var addNum=function(){
+            $(".topLoading").show();
+            var curr_cartId=$(this).attr('data');
+            var curr_cartNum=$('#num_'+curr_cartId).val();
+            var sku_id=$('#sku_'+curr_cartId).val();
+            $.get("__APP__/Order/opCart/op/inc/gid/"+curr_cartId+"/num/"+curr_cartNum+"/sku_id/"+sku_id, function(result){
+                var res = eval(result);
+                if(res[0] == 0){
+                    divPrompt(res[1]);
+                    $(".topLoading").hide();
+                    return false;
+                }
+                var newNum=parseInt(curr_cartNum)+1;
+                $('#num_'+curr_cartId).val(newNum);
+                $("#totl_"+curr_cartId).text(res[1]);
+
+                var selectStr='';
+                $("input[data='common']").each(function(a1,b1){
+                    if($(this).prop('checked')==true){
+                        selectStr += $(this).val() + ',';
+                    }         
+                });           
+                $(".topLoading").hide();
+                getCartId(selectStr);     
+            });
+        }
+
+    //减少数量
+    var decNum=function (){
+        $(".topLoading").show();
+        var athis = $(this);
+        var curr_cartId=$(this).attr('data');
+        var curr_cartNum=$('#num_'+curr_cartId).val();
+        num=parseInt(curr_cartNum);
+        var shopId = $(this).attr('title');
+        if(num<=1){
+            divPrompt("至少一件产品，如果不需要请删除！");
+            $(this).attr("disabled","disabled");
+            $(".topLoading").hide(); 
+            return false;
+        }else{
+            $(this).removeAttr("disabled"); 
+        }
+
+        $.get("__APP__/Order/opCart/op/dec/gid/"+curr_cartId+"/num/"+num, function(result){
+            var res = eval(result);       
+            var newNum=parseInt(num)-1;
+            $('#num_'+curr_cartId).val(newNum);
+            $("#totl_"+curr_cartId).text(res[1]);
+
+            var selectStr='';
+            $("input[data='common']").each(function(a1,b1){
+              if($(this).prop('checked')==true){
+                selectStr += $(this).val() + ',';
+              }         
+            });
+            if (res[3] == 1) {
+                $('.noFreezShow'+curr_cartId).hide();
+                $(".cartId"+curr_cartId).attr("data-story-writer","1");
+                $(".cheShopId"+shopId).attr("data-story-writer","1");
+                $(".CheckedAll").attr("data-story-writer","1");
+                $(".tableShopId"+shopId).find("input[type='checkbox']").each(function(){
+                    if ($(this).attr("data-story-writer") == 0) {
+                        $(".cheShopId"+shopId).attr("data-story-writer","0");
+                    };
+                });
+                $(".list-tb").find("input[type='checkbox']").each(function(){
+                    if ($(this).attr("data-story-writer") == 0) {
+                        $(".CheckedAll").attr("data-story-writer","0");                        
+                    };
+                });
+            };
+            $(".topLoading").hide();
+            getCartId(selectStr);
+        });
+    }
+
+
+    $(function(){
+        //检查是否有缺货商品
+        $(".list-tb").each(function(){
+            var athis = $(this);
+            $(this).find("input[type='checkbox']").each(function(){
+                if($(this).attr("data-story-writer") == 0){
+                    athis.find('.put2 input').attr("data-story-writer","0");
+                    $(".CheckedAll").attr("data-story-writer","0");
+                }
+            });
+        });
+
+        $(".ascNum").bind("click", addNum);
+        $(".descNum").bind("click", decNum);
+
+        $(".currCartQuantity").blur(function(){
+            var currCartId=$(this).attr('data');
+            var currCartQuantity=$(this).val();
+            currCartQuantity=$.trim(currCartQuantity);
+            var preg = /^[1-9]\d*$/;
+            if(parseInt(currCartQuantity) <= 0 || currCartQuantity=='' || !preg.test(currCartQuantity)){
+                divPrompt('当前购物车商品数量不能小于零或者为空！');
+                $(this).val('1');
+                currCartQuantity=1;
+                $.get("{:U('Order/chgCartNum')}",{currCartId:currCartId,currCartQuantity:currCartQuantity},function(msg){
+                    if(msg=='-1'){
+                        divPrompt('当前购物车商品数量不能小于零！');
+                        $(this).focus();
+                        return false;
+                    }
+                    if(parseInt(msg) > 0){
+                        $(this).val(msg);
+                    }
+
+                });
+                $(this).focus();
+            }else{
+                $.get("{:U('Order/chgCartNum')}",{currCartId:currCartId,currCartQuantity:currCartQuantity},function(msg){
+                    if(msg=='-1'){
+                        divPrompt('当前购物车商品数量不能小于零！');
+                        $(this).focus();
+                        return false;
+                    }
+                    if(parseInt(msg) > 0){
+                        $(this).val(msg);
+                    }
+                });
+            }
+        var currCartQuantityEnd=$(this).val();
+        if(parseInt(currCartQuantityEnd) > 0){
+            $.get("__APP__/Order/opCart/op/both/gid/"+currCartId+"/num/"+currCartQuantityEnd,function(data){
+                var dataRes = eval('('+data+')');
+                $("#totl_"+currCartId).text(dataRes.goodsTotalPrice);
+                var selectBothStr='';
+                $("input[data='common']").each(function(a4,b4){
+                    if($(this).prop('checked')==true){
+                        selectBothStr += $(this).val() + ',';
+                    }         
+                });
+                getCartId(selectBothStr);
+            });
+        }
+          
+    });
+
+     //自动加载事件
+    var autoSelectStr='';
+    var autoItemNum=0;
+    $("input[data='common']").each(function(c1,d1){
+        if($(this).prop('checked')==true){
+            autoSelectStr += $(this).val() + ',';
+            autoItemNum = parseInt(autoItemNum) + 1;
+        }
+        if(autoItemNum==parseInt(count)){
+            $(".CheckedAll").prop('checked',true);
+        }
+    });
+    getCartId(autoSelectStr);
+    //删除购物车信息
+    $('.delte_cartId').click(function(){
+        if(window.confirm('您确认删除购物车中商品吗')){
+            var deleCartId=$(this).attr("data-id");
+            $.get("{:U('Order/deleteCartId')}",{cartId:deleCartId},function(msg){
+                if(msg=='1'){
+                    // alert('购物车商品删除成功！');
+                    window.location.reload();
+                    // 对已选，未删除处理
+                }else{
+                    divPrompt('购物车商品删除失败！');
+                }
+            });
+        }
+    });
+
+    //批量删除购物车信息
+    $('.deleteMoreCartIds').click(function(){
+        var selectCartMoreStr='';
+        $("input[data='common']").each(function(x1,y1){
+            if($(this).prop('checked')==true){
+                selectCartMoreStr += $(this).val() + ',';
+            }
+        });
+        if(selectCartMoreStr==''){
+          divPrompt('请选择要删除的商品');
+          return false;
+        }
+
+        if(window.confirm('您确认删除购物车中商品吗')){
+            $.get("{:U('Order/deleteMoreCartIds')}",{selectCartMoreStr:selectCartMoreStr},function(msg){
+                if(msg=='delMoreSucc'){
+                    window.location.reload();
+                    $("input[data='common']").each(function(x2,y2){
+                        $(this).prop('checked',false);
+                    });
+                }
+                if(msg=='delMoreFail'){
+                    divPrompt('删除失败，请检查原因');
+                    return false;
+                }
+            });
+        }
+    });
+
+    // 结算
+    $('.getOrderResult').click(function(){
+        $(".topLoading").show();
+        var selectCartStr='';
+        $("input[data='common']").each(function(a1,b1){
+            if($(this).prop('checked')==true){
+                selectCartStr += $(this).val() + ',';                                              
+            }
+        }); 
+
+        $(".tb-shop").find("input[type='checkbox']").each(function(){
+            if ($(this).attr("data-story-writer") == 0) {
+                divPrompt('选中的商品库存不足！');
+                $(".topLoading").hide();
+                return false;                       
+            };
+            if(selectCartStr==''){
+                divPrompt('请先勾选需要购买的商品！');
+                $(".topLoading").hide();
+                return false;
+            }else{
+                window.location.href="__APP__/Order/order/itemList/"+selectCartStr;
+            } 
+        });
+
+           
+    });
+
+});
+    </script>
+</body>
+</html>

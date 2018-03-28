@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/page.css">
+<!--活动回顾列表页-->
+<volist name="list" id="vo">
+	<a href="{:U('Home/Index/coverageDetail',array('newsId'=>$vo['news_id'],'type'=>-1))}"> 
+	    <ul>
+	      <li><img src="{$img}{$vo.pic}"></li>
+	      <li class="rg-titl">{$vo.title}</li>
+	      <li class="rg-des">{$vo.abstract}</li>
+	      <li class="rg-time">发布时间：{$vo.creat_time}</li>
+	    </ul>
+   </a>
+</volist>
+<div class="pager" style="cursor: pointer;text-align: center;border: 0px;margin-top: 20px;">{$pagestr}</div>

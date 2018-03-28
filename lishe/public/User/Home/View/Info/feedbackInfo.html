@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/securitycenter.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content" >
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="feedBack">
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title"><if condition="$feedbackInfo['prom_type'] eq 1">意见反馈<else/>商品登记</if></p>
+					</div>
+					<div class="order_box">
+						<p class="box_title"><if condition="$feedbackInfo['prom_type'] eq 1">意见反馈<else/>商品登记</if></p>
+						<div class="box_details">
+							时间：<span>{$feedbackInfo['add_time']|date="Y-m-d H:i:s",###}</span><br>
+							<if condition="$feedbackInfo['prom_type'] neq 1">
+							商品分类：<span>{$feedbackInfo['catNameStr']}</span><br>
+							商品名称：<span>{$feedbackInfo['item_name']}</span><br>
+							外站链接：<span>{$feedbackInfo['item_link']}</span><br>
+							</if>
+							内容： <span>{$feedbackInfo['content']}</span>
+						</div>
+					</div>
+					<div class="order_box">
+						<p class="box_title">回复</p>
+						<div class="box_details">
+							回复时间：<span>{$feedbackInfo['reply_time']|date="Y-m-d H:i:s",###}</span><br>
+							回复图片：<span><img src="{$feedbackInfo['reply_pic']}" style="max-width:700px;"/></span><br>
+							回复内容：<span>{$feedbackInfo['reply_content']}</span>
+						</div>
+					</div>
+					<!-- <div class="order_box">
+						<p class="box_title">物流信息</p>
+						<volist name="logisticsList" id="vo">
+							<div class="box_details">
+								物流公司：<span>{$vo['corp_name']}</span><br>
+								运单号码：<span>{$vo['logi_no']}</span><br>
+								物流信息：<span>
+									<if condition="$vo['corp_id'] eq 3 ">
+										<div class="logistics">
+										<volist name="orderInfo['jdlogisList']" id="jdvo">
+											{$jdvo.content}&nbsp;&nbsp;{$jdvo.msgTime}<br>
+										</volist>
+										</div>
+									<else/>
+										{$vo['website']}
+									</if>
+									</span>
+							</div>
+						</volist>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+</body>
+</html>

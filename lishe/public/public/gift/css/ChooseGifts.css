@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:0;}
+body{font-family:"微软雅黑"; overflow-x:hidden; background:#f9f4f5;}
+
+.ChgiTop{width:100%;height:3.5rem; background:#f32b5a;clear:both; line-height:3.5rem;position: fixed;z-index: 1; top:0;}
+.ChgiTopct{width:92%; margin:0 auto;}
+.ChgiTopct ul{float:left; cursor:pointer;}
+.ChgiTopct ul:nth-child(1){width:7%;}
+.ChgiTopct ul:nth-child(1) img{width:90%; vertical-align:middle;}
+.ChgiTopct ul:nth-child(3){width:7%;}
+.ChgiTopct ul:nth-child(3) img{width:70%; vertical-align:middle;}
+.Chgmenu{width:85%;}
+.Chgmenu li{float:left; font-size:1rem; color:#000000; margin:0 0.7rem}
+.Chgmenu li.active{font-weight:700;color:#FFF;border-bottom:#FFF solid 2px; height:2.8rem; font-size:1rem;}
+/*商品列表*/
+.ChgList{width:98%; margin:0 auto; top:4rem;position: relative; padding-bottom:2rem;}
+.ChgList ul{margin:0.3rem 0.3rem; width:46%; float:left; background:#FFF; border:#d0d0d0 solid 1px; border-radius:5px;height:18rem;}
+.ChgList ul img{width:100%; padding-bottom:0.5rem;}
+.generali{line-height:1.5rem;}
+.generali a{font-size:0.9rem; color:#000000;padding-left:0.8rem;}
+.chgname a{font-size:0.8rem; color:#acacac;padding-left:0.8rem;}
+.chgpric{padding-top:0.4rem;}
+.chgpric a{font-size:1.2rem; color:#f32b5a; padding-left:0.6rem;}
+/*下拉层*/
+.dropdown{width:100%; position:fixed; z-index:1; top:3.5rem; clear:both; height:100%; padding-bottom:100%; display:none;}
+.dropdownTop{width:100%; clear:both;}
+.dropdownTop ul li{float:left; text-align:center; font-size:1rem; color:#000000;width:24.7%;
+background:#FFF;  border-right:#d0d0d0 solid 1px;height:3.5rem; line-height:3.5rem;}
+.dropdownTop ul li:nth-child(4n){border-right:0;}
+
+.dropdownbot{width:100%;  margin-top:0.5rem;clear:both;} 
+.dropdownbot ul li{float:left;text-align:center;font-size:1rem; color:#000000;background:#FFF;width:33.1%;
+border-bottom:#d0d0d0 solid 1px;border-right:#d0d0d0 solid 1px;height:3.5rem; line-height:3.5rem;}
+.dropdownbot ul li:nth-child(3n){border-right:0;}
+.dropdown .dialog{
+    position:relative;
+    z-index: 9999;
+}
+.dropdown .mark{
+    background:rgba(124,122,122,0.5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 3.5rem;
+    width: 100%;
+    z-index: 999;
+}
+
+/*针对iPhone 4, 5c,5s, 所有iPhone6的放大模式，个别iPhone6的标准模式*/
+@media only screen and (min-device-width: 290px) and (-webkit-min-device-pixel-ratio: 2.5){
+	 	.Chgmenu li{float:left; font-size:0.9rem; color:#000000; margin:0 0.3rem}
+	}
+
+@media only screen and (max-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+	 	.Chgmenu li{float:left; font-size:0.9rem; color:#000000; margin:0 0.4rem}
+	}
+	

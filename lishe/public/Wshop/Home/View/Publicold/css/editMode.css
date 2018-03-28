@@ -1,0 +1,26 @@
+@charset "utf-8";
+.content { margin-bottom:40px; margin-top:40px;width:100%; background:#FFF}
+.backlast{z-index:999; position:fixed; top:50px; left:10px; width:35px; height:35px; background-color:#F00; background:url(../images/listICO.png) 0px -142px;}
+.mode{ width:90%; margin:0px auto;border:1px #ccc solid;}
+.modeTit{ padding:0px 5%; font:normal 12px/50px Tahoma,Verdana, Geneva, "宋体"; border-bottom:1px #ccc solid;}
+ul.editMode{width:80%; padding:0px 5%;}
+ul.editMode li { clear:both; margin:10px auto;}
+ul.editMode li a,ul.editMode li span{ float:left;}
+ul.editMode li a{width:24px; height:24px; background:url(../images/listICO.png) no-repeat;}
+ul.editMode li a.modeCkd{ background-position:-66px -146px;}
+ul.editMode li a.modeDef{ background-position:-38px -146px;}
+ul.editMode li span{ margin-left:5px;}
+ul.editMode li p{ clear:both; color:#999;}
+
+.date{ width:90%; margin:10px auto;border:1px #ccc solid;}
+.dateTit{ padding:0px 5%; font:normal 12px/50px Tahoma,Verdana, Geneva, "宋体"; border-bottom:1px #ccc solid;}
+ul.editDate{width:80%; padding:0px 5%;}
+ul.editDate li { clear:both; margin:10px auto;}
+ul.editDate li a,ul.editDate li span{ float:left;}
+ul.editDate li a{width:24px; height:24px; background:url(../images/listICO.png) no-repeat;}
+ul.editDate li a.dateCkd{ background-position:-66px -146px;}
+ul.editDate li a.dateDef{ background-position:-38px -146px;}
+ul.editDate li span{ margin-left:5px;}
+ul.editDate li p{ clear:both; color:#999;}
+
+

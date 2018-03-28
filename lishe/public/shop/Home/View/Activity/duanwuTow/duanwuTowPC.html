@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <title>燃情端午惠不可挡</title>
+    <link rel="stylesheet" href="/shop/Home/View/Activity/duanwuTow/css/duanwuTowPC.css"/>
+</head>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>	
+<body>
+<div class="floatBag">
+    <img src="/shop/Home/View/Activity/duanwuTow/images/floatBag.png" alt=""/>
+    <p class="floatBagOne"></p>
+    <p class="floatBagTow"></p>
+    <p class="floatBagThree"></p>
+    <p class="floatBagFour"></p>
+    <p class="floatBagFive"></p>
+    <p class="btn-top floatBtn"></p>
+</div>
+    <div class="parent">
+        <img class="children-img" src="/shop/Home/View/Activity/duanwuTow/images/banner.png" alt=""/>
+    </div>
+    <div class="content">
+        <img class="content-img" src="/shop/Home/View/Activity/duanwuTow/images/logoOne.png" alt=""/>
+    </div>
+    <div class="date-parent">
+        <div class="content-img-date black left-border-radius">
+            <p class="date-one "><span class="yearOne">{:date('m月-d日',$activityCats[$catetorys[$actiAids['seckill']][0]]['start_time'])}</span>-<span class="yearOne-close">{:date('m月-d日',$activityCats[$catetorys[$actiAids['seckill']][0]]['end_time'])}</span></p>
+            <p class="date-tow">
+            	<if condition="time() lt $activityCats[$catetorys[$actiAids['seckill']][0]]['start_time']" >
+            		敬请期待
+            	<elseif condition="time() egt $activityCats[$catetorys[$actiAids['seckill']][0]]['start_time'] and time() elt $activityCats[$catetorys[$actiAids['seckill']][0]]['end_time'] "  />	
+            		别错过
+            	<elseif condition="time() gt $activityCats[$catetorys[$actiAids['seckill']][0]]['end_time']"  />	
+            		已结束
+            	</if>
+            </p>
+            <p class="date-three threeONE"><span class="dayTextOne">00</span>天<span class="hourEOne">00</span>小时<span class="minuteOne">00</span>分<span class="secondOne">00</span>秒<span>后结束</span></p>
+        </div>
+        <div class="content-img-date orange">
+			<p class="date-one color"><span class="kaishiTow" date-hh="{$activityCats[$catetorys[$actiAids['seckill']][1]]['start_time']}">
+				{:date('m月-d日',$activityCats[$catetorys[$actiAids['seckill']][1]]['start_time'])}
+			</span>-<span class="jieshuTow"date-hh="{$activityCats[$catetorys[$actiAids['seckill']][1]]['end_time']}">
+				{:date('m月-d日',$activityCats[$catetorys[$actiAids['seckill']][1]]['end_time'])}
+			</span>            
+            <p class="date-tow color">
+            	<if condition="time() lt $activityCats[$catetorys[$actiAids['seckill']][1]]['start_time']" >
+            		敬请期待
+            	<elseif condition="time() egt $activityCats[$catetorys[$actiAids['seckill']][1]]['start_time'] and time() elt $activityCats[$catetorys[$actiAids['seckill']][1]]['end_time'] "  />	
+            		别错过
+            	<elseif condition="time() gt $activityCats[$catetorys[$actiAids['seckill']][1]]['end_time']"  />	
+            		已结束
+            	</if>
+            </p>
+            <p class="date-three threeTOW"><span class="dayTextTow">00</span>天<span class="hourETow">00</span>小时<span class="minuteTow">00</span>分<span class="secondTow">00</span>秒<span>后结束</span></p>
+        </div>
+        <div class="content-img-date aterrimus right-border-radius">
+			<p class="date-one"><span class="kaishi" date-hh="{$activityCats[$catetorys[$actiAids['seckill']][2]]['start_time']}">
+				{:date('m月-d日',$activityCats[$catetorys[$actiAids['seckill']][2]]['start_time'])}
+			</span>-<span class="jieshu"date-hh="{$activityCats[$catetorys[$actiAids['seckill']][2]]['end_time']}">
+				{:date('m月-d日',$activityCats[$catetorys[$actiAids['seckill']][2]]['end_time'])}
+			</span>
+			</p>           
+           <p class="date-tow">
+            	<if condition="time() lt $activityCats[$catetorys[$actiAids['seckill']][2]]['start_time']" >
+            		敬请期待
+            	<elseif condition="time() egt $activityCats[$catetorys[$actiAids['seckill']][2]]['start_time'] and time() elt $activityCats[$catetorys[$actiAids['seckill']][2]]['end_time'] "  />	
+            		别错过
+            	<elseif condition="time() gt $activityCats[$catetorys[$actiAids['seckill']][2]]['end_time']"  />	
+            		已结束
+            	</if>
+            </p>
+            <p class="date-three threeTHREE"><span class="dayTextThree">00</span>天<span class="hourEThree">00</span>小时<span class="minuteThree">00</span>分<span class="secondThree">00</span>秒<span>后结束</span></p>
+        </div>
+    </div>
+    <div class="date-parent-top-children">
+        	<foreach name="catetorys[$actiAids['seckill']]" item="seckill" key='key'>
+		        <div class="date-parent top-none <eq name='key' value='2'>block</eq>">
+			        <ul class="date-children">
+			        	<volist name="aitemInfos[$seckill]" id="vo">
+				            <li>
+				                <div class="children-img-title">
+				                    <img src="{$vo['item_img']}" alt="" title="{$vo['item_name']}"/>
+				                    <p class="content-title-p">{$vo['item_name']}</p>
+				                </div>
+				                <div class="children-text">
+				                    <p class="children-text-one">原价：<s>￥{$vo['shop_price']}</s></p>
+				                    <p class="children-text-tow">秒杀价：<em>￥{$vo['price']}</em></p>				             
+				                    <p class="children-text-Progress"><span class="Progress-bar" style="width:<?php echo (($vo['store']-$store[$vo['sku_id']])/$vo['store'])*100; ?>%;"></span><span class="bar-text">剩余<php>echo ceil(($store[$vo['sku_id']]/$vo['store'])*100); </php>%</span></p>
+					            	<if condition="time() egt $activityCats[$seckill]['start_time'] and time() elt $activityCats[$seckill]['end_time'] " >	
+										<gt name="store[$vo['sku_id']]" value="0">
+											<a href="/shop.php/Info/index/itemId/{$vo['item_id']}/skuId/{$vo['sku_id']}" target="_blank">	            	
+							            		<p class="children-text-btn">立即抢购</p>
+							            	</a>	
+										<else/>
+						            		<p class="children-text-btn ccc">立即抢购</p>
+										</gt>
+						            <else/>	
+						            	<p class="children-text-btn ccc">立即抢购</p>
+									</if>                   
+				                </div>
+				            </li>
+		        		</volist>
+			        </ul>
+		  	  </div>
+	        </foreach>		
+
+    </div>
+    <div class="content">
+        <img class="content-img" src="/shop/Home/View/Activity/duanwuTow/images/logoTow.png" alt=""/>
+    </div>
+    <div class="date-parent">
+        <ul class="date-children">
+        	<volist name="catetorys[$actiAids['group']]" id="group" >
+	        	<volist name="aitemInfos[$group]" id="vo">
+		            <li>
+		                <div class="children-img-title">
+		                    <img src="{$vo['item_img']}" alt="" title="{$vo['item_name']}"/>
+		                    <p class="content-title-p">{$vo['item_name']}</p>
+		                </div>
+		                <div class="children-text">
+		                    <p class="children-text-one">原价：<s>￥{$vo['shop_price']}</s></p>
+		                    <p class="children-text-together-tow"><em>￥{:sprintf("%.2f",$vo['price'])}</em><span>（{$activityCats[$group]['achieve_num']}人团）</span></p>
+		                    <div class="children-text-together-btn">
+		                        <div class="fl together-btn">
+		                            <p class="together-btn-one">
+		                            	还差
+		                            	<?php 
+		             						echo $activityCats[$group]['achieve_num'] - (count($groupTrade[$vo['sku_id']])%$activityCats[$group]['achieve_num']);
+		                            		?>
+		                            	人成团</p>
+		                            <p class="together-btn-tow" 
+		                            	<if condition="time() lt $activityCats[$group]['end_time']">
+		                            		date-hh="{$activityCats[$group]['end_time']}"
+		                            	<else/>
+		                            		date-hh="0"
+		                            	</if>
+		                            	
+		                            	>剩余<span class="hour-children">00</span>：<span class="minute-children">00</span>:<span class="second-children">00</span>结束</p>
+		                        </div>
+								<a href="/shop.php/Info/index/itemId/{$vo['item_id']}/skuId/{$vo['parent_sku_id']}" target="_blank">	            	
+		                      	  <p class="fl together-btn-three">立即团</p>
+		                       </a>
+		                    </div>
+		
+		                </div>
+		            </li>
+	        	</volist>
+        	</volist>
+
+        </ul>
+    </div>
+    <div class="content">
+        <img class="content-img" src="/shop/Home/View/Activity/duanwuTow/images/logoThree.png" alt=""/>
+    </div>
+    <div class="date-parent">
+        <ul class="date-children">
+        	<volist name="catetorys[$actiAids['combinat']]" id="combinat" >
+        		<volist name="aitemInfos[$combinat]" id="vo">        	
+	            <li>
+	                <div class="children-img-title">
+	                    <img src="{$vo['item_img']}" alt="" title="{$vo['item_name']}"/>
+	                    <p class="content-title-p">{$vo['item_name']}</p>
+	                </div>
+	                <div class="children-text">
+	                    <p class="children-text-one">原价：<s>￥{$vo['shop_price']}</s></p>
+	                    <p class="children-text-tow">组合价：<em>￥{$vo['price']}</em></p>
+	                    <p class="children-text-btn" onclick="addCart({$vo['aitem_id']})">立即抢购</p>
+	                </div>
+	            </li>
+	        	</volist>
+        	</volist>
+    </div>
+    <div class="content">
+        <img class="content-img" src="/shop/Home/View/Activity/duanwuTow/images/logoFour.png" alt=""/>
+    </div>
+    <foreach name="catetorys[$actiAids['brand']]" item="brand">
+	    <div class="date-parent">
+	        <div class="fl children-title">
+	            <img src="{$activityCats[$brand]['cat_banner']}" alt=""/>
+	        </div>
+	        <div class="children-ul">
+	            <ul class="date-children">
+					<foreach name="activityCats[$brand]['recommend']" item="vo">
+						<a href="/shop.php/Info/index/itemId/{$vo}" target="_blank">
+			                <li>
+			                    <div class="children-img-title">
+			                        <img src="{$itemInfos[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfos[$vo]['image_default_id']))}" alt="" title="{$itemInfos[$vo]['title']}"/>
+			                        <p class="content-title-p">{$itemInfos[$vo]['title']}</p>
+			                    </div>
+			                    <div class="children-text paddingB">
+			                        <p class="children-text-tow"><em>￥{:sprintf("%.2f",$itemInfos[$vo]['price'])}</em></p>
+			                        <p class="children-text-btn">立即抢购</p>
+			                    </div>
+			                </li>
+						</a>
+					</foreach>
+	            </ul>
+	        </div>
+	    </div>			
+    </foreach>	
+
+    <div class="content">
+        <img class="content-img" src="/shop/Home/View/Activity/duanwuTow/images/logoFive.png" alt=""/>
+    </div>
+    
+    <foreach name="catetorys[$actiAids['more']]" item="more">
+	    <div class="date-parent">
+	        <div class="fl children-title-tow">
+	            <img src="{$activityCats[$more]['cat_banner']}" alt=""/>
+	        </div>
+	        <div class="children-ul">
+	            <ul class="date-children">
+					<foreach name="activityCats[$more]['recommend']" item="vo">
+						<a href="/shop.php/Info/index/itemId/{$vo}" target="_blank">	            	
+			                <li>
+			                    <div class="children-img-title">
+			                        <img src="{$itemInfos[$vo]['image_default_id']}_m.{:end(explode('.', $itemInfos[$vo]['image_default_id']))}" alt="" title="{$itemInfos[$vo]['title']}"/>
+			                        <p class="content-title-p">{$itemInfos[$vo]['title']}</p>
+			                    </div>
+			                    <div class="children-text paddingB">
+			                        <p class="children-text-tow"><em>￥{:sprintf("%.2f",$itemInfos[$vo]['price'])}</em></p>
+			                        <p class="children-text-btn">立即抢购</p>
+			                    </div>
+			                </li>
+						</a>
+					</foreach>	
+	            </ul>
+	        </div>
+	    </div>
+    </foreach>	
+    <div class="bottom-btn">
+        <img class="content-img" src="/shop/Home/View/Activity/duanwuTow/images/back.png" alt=""/>
+        <p class="btn-top"></p>
+    </div>
+</body>
+<script src="/shop/Home/View/Activity/duanwuTow/js/jQuery.v1.8.3.min.js"></script>
+<script>
+  $(document).scroll(function() {
+        if ($(document).scrollTop() >= 500) {
+            $('.floatBag').fadeIn(300);
+            $('.elevator p:nth-child(1)').addClass('elevator-active').siblings().removeClass('elevator-active');
+        } else {
+            $('.floatBag').fadeOut(300);
+        }
+    });
+
+ var kaishiTow = {}
+    kaishiTow.ShowCountDown = function(){
+        var now = new Date();
+        var kaishi=parseInt($('.kaishiTow').attr('date-hh'))*1000;
+        var jieshu=parseInt($('.jieshuTow').attr('date-hh'))*1000;
+        var endDate = new Date(kaishi);
+        var JIESHU = new Date(jieshu);
+        if(endDate.getTime()>now.getTime()){
+            var leftTime=endDate.getTime()-now.getTime();
+            var leftsecond = parseInt(leftTime/1000);
+            var day1=parseInt(Math.floor(leftsecond/(60*60*24)));
+            var hour=parseInt(Math.floor((leftsecond-day1*24*60*60)/3600));
+            var minute=parseInt(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60));
+            var second=parseInt(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60));
+            $('.threeTOW').html(`<span class="dayTextTow">${day1}</span>天<span class="hourETow">${hour}</span>小时<span class="minuteTow">${minute}</span>分<span class="secondTow">${second}</span>秒后开始`)
+
+        }else if(endDate.getTime()<now.getTime()&&now.getTime()<JIESHU.getTime()){
+            var leftTime=JIESHU.getTime()-now.getTime();
+            var leftsecond = parseInt(leftTime/1000);
+            var day1=parseInt(Math.floor(leftsecond/(60*60*24)));
+            var hour=parseInt(Math.floor((leftsecond-day1*24*60*60)/3600));
+            var minute=parseInt(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60));
+            var second=parseInt(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60));
+            $('.threeTOW').html(`<span class="dayTextTow">${day1}</span>天<span class="hourETow">${hour}</span>小时<span class="minuteTow">${minute}</span>分<span class="secondTow">${second}</span>秒<span>后结束</span>`)
+
+        }else{
+            $('.threeTOW').html(`<span class="dayTextThree">00</span>天<span class="hourEThree">00</span>小时<span class="minuteThree">00</span>分<span class="secondThree">00</span>秒<span>后结束</span>`)
+
+        }
+    }
+    window.setInterval(function(){kaishiTow.ShowCountDown()}, 1000);
+
+//还有多久开始
+    var kaishi = {}
+    kaishi.ShowCountDown = function(){
+        var now = new Date();
+        var kaishi=parseInt($('.kaishi').attr('date-hh'))*1000;
+        var jieshu=parseInt($('.jieshu').attr('date-hh'))*1000;
+        var endDate= new Date(kaishi);
+        var end= new Date(jieshu);
+        if(endDate.getTime()>now.getTime()){
+            var leftTime=endDate.getTime()-now.getTime();
+            var leftsecond = parseInt(leftTime/1000);
+            var day1=parseInt(Math.floor(leftsecond/(60*60*24)));
+            var hour=parseInt(Math.floor((leftsecond-day1*24*60*60)/3600));
+            var minute=parseInt(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60));
+            var second=parseInt(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60));
+            $('.threeTHREE').html(`<span class="dayTextThree">${day1}</span>天<span class="hourEThree">${hour}</span>小时<span class="minuteThree">${minute}</span>分<span class="secondThree">${second}</span>秒后开始`)
+
+        }else if(endDate.getTime()<now.getTime()&&now.getTime()<end.getTime()){
+            var leftTime=end.getTime()-now.getTime();
+            var leftsecond = parseInt(leftTime/1000);
+            var day1=parseInt(Math.floor(leftsecond/(60*60*24)));
+            var hour=parseInt(Math.floor((leftsecond-day1*24*60*60)/3600));
+            var minute=parseInt(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60));
+            var second=parseInt(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60));
+            $('.threeTHREE').html(`<span class="dayTextThree">${day1}</span>天<span class="hourEThree">${hour}</span>小时<span class="minuteThree">${minute}</span>分<span class="secondThree">${second}</span>秒<span>后结束</span>`)
+
+        }else{
+            $('.threeTHREE').html(`<span class="dayTextThree">00</span>天<span class="hourEThree">00</span>小时<span class="minuteThree">00</span>分<span class="secondThree">00</span>秒<span>后结束</span>`)
+
+        }
+    }
+    window.setInterval(function(){kaishi.ShowCountDown()}, 1000);
+    
+    $('.btn-top').click(function(e){
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop : 0 + 'px'
+        });
+    })
+
+    function floorTop(){
+        var floor_arr = [];
+        $('.content').each(function(i){
+            floor_arr[i+1] = $('.content').eq(i).offset().top;
+        });
+        $('.floatBag p').click(function(){
+            var floorA = $(this).index();
+            $('html,body').animate({
+                scrollTop : floor_arr[floorA] + 'px'
+            });
+        });
+    }
+    floorTop();
+
+
+    var groupBuy = {}
+    //头部倒计时
+    groupBuy.ShowCountDown = function(year,month,day,dayText,hourText,minuteText,secondText,three){
+        var now = new Date();
+        var endDate = new Date(year, month-1, day);
+        if(endDate.getTime()>now.getTime()){
+        var leftTime=endDate.getTime()-now.getTime();
+        }else{
+            $(three).html("00天00小时00分00秒后结束");
+        }
+        var leftsecond = parseInt(leftTime/1000);
+        //var day1=parseInt(leftsecond/(24*60*60*6));
+        var day1=parseInt(Math.floor(leftsecond/(60*60*24)));
+        var hour=parseInt(Math.floor((leftsecond-day1*24*60*60)/3600));
+        var minute=parseInt(Math.floor((leftsecond-day1*24*60*60-hour*3600)/60));
+        var second=parseInt(Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60));
+        //var cc = document.getElementById(divname);
+        //cc.innerHTML = "提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒";
+        $(dayText).text(day1);
+        $(hourText).text(hour);
+        $(minuteText).text(minute);
+        $(secondText).text(second);
+    }
+window.setInterval(function(){groupBuy.ShowCountDown({:date('Y',$activityCats[$catetorys[$actiAids['seckill']][0]]['end_time'])},{:date('m',$activityCats[$catetorys[$actiAids['seckill']][0]]['end_time'])},{:date('d',$activityCats[$catetorys[$actiAids['seckill']][0]]['end_time'])},'.dayTextOne','.hourEOne','.minuteOne','.secondOne','.threeONE');}, 1000);
+//时分秒倒计时\
+
+    var hourChildren={};
+    var html='';
+    hourChildren.ShowCountDown = function(date,dateElement){
+        var now = new Date();
+        var date=date*1000;
+        var endDate = new Date(date);
+        var leftTime=endDate.getTime()-now.getTime();
+        var leftsecond = parseInt(leftTime/1000);
+        //var day1=parseInt(leftsecond/(24*60*60*6));
+        var day1=Math.floor(leftsecond/(60*60*24));
+        var day=day1*24;
+        var hour=Math.floor((leftsecond-day1*24*60*60)/3600);
+        var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60);
+        var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60);
+        if(hour<10){hour=hour}
+        if(minute<10){minute='0'+minute}
+        if(second<10){second='0'+second}
+        //var cc = document.getElementById(divname);
+        //cc.innerHTML = "提示距离"+year+"年"+month+"月"+day+"日还有："+day1+"天"+hour+"小时"+minute+"分"+second+"秒";
+         html=`剩余<span class="hour-children">${0+hour+day}</span>：<span class="minute-children">${minute}</span>：<span class="second-children">${second}</span>结束</p>`
+        dateElement.html(html)
+    }
+    $('.together-btn-tow').each(function(){
+        var da=$(this);
+        var attr= parseInt(($(this).attr('date-hh')));
+        window.setInterval(function(){hourChildren.ShowCountDown(attr,da);}, 1000);
+    })
+    $('.date-parent').on('hover','.content-img-date',function(){
+        var i=$(this).index();
+        $('.date-parent-top-children>div').eq(i).addClass('block').siblings().removeClass('block');
+    });
+    //加入购物车
+    function addCart(aitemId){
+    	$.get('__APP__/Activity/aitemAddCart',{aitemId:aitemId},function(data){
+    		if(data['code'] == 0){
+    			alert(data['msg']);
+    		}else if(data['code'] == 1){
+    			window.location.href = "/shop.php/Order/Cart";
+//  			window.open("{:C('LISHE_URL')}/shop.php/Order/Cart");
+    		}else if(data['code'] == 3){
+    			alert(data['msg']);
+    			window.location.href = '/shop.php/Sign/index';
+    		}
+    	});
+    }
+</script>
+</html>

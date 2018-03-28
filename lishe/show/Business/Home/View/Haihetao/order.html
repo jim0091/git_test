@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__PUBLIC__/activity/nuclear/css/orders.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/card.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<title>海核淘500元购-提交订单</title>
+</head>
+
+<body>
+  <include file="Public/haihetao/commonHeader" />
+  <input type="hidden" value="{$itemInfo['aitem']}" class="currAid">
+   <div class="layout" style="margin-top:10px; height:1000px;">
+      <!--收货信息-->
+       <div class="receiving">
+          <p class="rec">收货信息</p>
+
+           <ul id="typeFree-two">
+            <foreach name="addrInfo" item="getAddrInfo">
+              <li data="{$getAddrInfo['addr_id']}" class="<if condition='$getAddrInfo.def_addr eq 1'>active</if>">
+                      <p class="user" style="line-height:20px;">{$getAddrInfo['area']}<span>{$getAddrInfo['name']}</span></p>
+                      <p class="dres">{$getAddrInfo['addr']}</p>
+                      <p class="phone">{$getAddrInfo['mobile']}</p>
+                      <p class="alter" style="border:0px solid red;">
+                        <a href="javascript:void(0);" style="border:0px solid red;" data-id="{$getAddrInfo['addr_id']}" class="chgAddrInfo">修改</a>
+                      </p>
+              </li>
+            </foreach>
+          </ul>
+
+          <p style="clear:both;"><span class="rec-l"><!--<a href="#">显示全部地址</a>--></span><span class="rec-r">
+            <a href="/member-address.html?refer=/business/index.php/Haihetao/order/aitem_id/{$aitem_id}.html">添加新地址</a></span></p>
+            <input type="hidden" value="{$addrNum}" class="currAddrNum"/>
+       </div>
+       <!--支付以配送方式-->
+       <div class="pay">
+          <p class="rec">支付及配送方式</p>
+          <ul id="typeFree">
+             <li class="active">在线支付</li>
+             <!-- <li>货到付款</li> -->
+          </ul>
+       </div>
+       <form id="orderconfirm" method="post" action="__APP__/Haihetao/addUserOrder">
+       <!--确认商品清单-->
+       <div class="inventory">
+          <p class="rec2">确认商品清单</p>
+          <div class="inv-left">
+             <p class="inv-p">配送类型：</p>
+             <!--tab切换-->
+                 <ul class="inv-tab">
+                     <li class="current">快递配送</li>
+                 </ul>
+                 <div class="inv-cont">
+                    <ul style="display:block;">
+                       <li><span class="inv-pay">配送方式:</span>
+                           <select class="inv-sel">
+                              <option value="0" selected>快递(￥{$itemInfo['post_fee']})</option>
+                           </select></li>
+                    </ul>
+                 </div>
+             
+             <!--切换END-->
+          </div>
+          <div class="inv-right">
+             <p class="inv-sp">{$itemInfo['activity_name']}</p>
+             <table class="inv-tb"> 
+                <tr>
+                  <td class="inv-pt"><a href="#"><img src="/business/Upload/activity{$itemInfo['item_img']}"></a></td>
+                  <td class="inv-td">
+                    <!-- <a href="#">团购</a> -->
+                  </td>
+                  <td class="inv-td2"><a href="#"><p>{$itemInfo['item_name']}</p></a></td>
+                  <td class="inv-td3">￥{$itemInfo['price']}</td>
+                  <td class="inv-td4">x1</td>
+                  <td class="inv-td4">有货</td>
+                </tr>
+             </table>
+             <input type="hidden" name="aitem_id" value="{$itemInfo['aitem_id']}">
+             <input type="hidden" name="num" value="1">
+             <!-- <p class="inv-pt2"><a href="#"><img src="__PUBLIC__/activity/nuclear/img/quan.png"></a></p> -->
+             <P class="inv-note"><span>订单备注</span><span> 选填：</span><input name="remark" type="text" maxlength="85" placeholder=" 本次交易的补充说明（所填内容建议已经和商家达成一致意见，85字以内）" class="txt" value=""><span>0/85</span></P>
+             <P class="inv-note2">总重量：<span>{$itemInfo['weight']}kg</span>;  店铺总计：<span>￥{$itemInfo['postFee'] + $itemInfo['price']}</span>(含运费：￥{$itemInfo['post_fee']}）</P>
+          </div>
+       </div>
+       <!--商品信息-->
+       <div class="shop-list">
+          <!-- <p class="sp-ch"><input type="checkbox" checked style="vertical-align:middle;"><span>使用会员积分</span></p> -->
+          <div class="list-s">
+             <p>商品总件数：<span>1</span></p>
+             <p>总数量：<span>{$itemInfo['weight']}kg</span></p>
+             <p>商品总金额：<span>￥{$itemInfo['price']}</span></p>
+             <p>总运费：<span>￥{$itemInfo['post_fee']}</span></p>
+             <p>减免：<span>-￥0.00</span></p>
+             <p>应付总额：<span>￥{$itemInfo['price'] + $itemInfo['post_fee']}</span></p>
+             <p class="list-btn"><a href="javascript:void(0);" id="hhtSubmit" onclick="document.getElementById('orderconfirm').submit();return false" >提交订单</a></p>
+          </div>
+       </div>
+   </form>
+   </div>
+
+  <include file="Public/haihetao/commonFooter" />
+</body>
+</html>
+<script>
+  //提交订单开始
+  $('#hhtSubmit').click(function(){
+    var currArrNum=$('.currAddrNum').val();
+     if(parseInt(currArrNum)==0){
+      alert('请添加收货地址');
+      return false;
+     }
+
+
+  });
+
+  // 修改收货地址
+  $(".chgAddrInfo").click(function(){
+      var addrId=$(this).attr("data-id");
+      window.location.href="/business/index.php/Activity/chgAddressInfo/addrId/"+addrId;
+      return false;
+  });
+   <!--收货信息-->
+	$('#typeFree-two li').not(".chgAddrInfo").click(function(){
+		if(!$(this).hasClass('active')){
+			$(this).addClass('active').siblings().removeClass('active');
+        var addrId=$(this).attr("data");
+         $.post("{:U('Activity/modifyDefAddr')}",{addr_id:addrId},function(msg){
+          // if(msg=='defAddrSuccess'){
+          //   window.location.reload();
+          // }
+          if(msg==''){
+            alert('默认地址修改失败');
+            return false;
+          }
+        });
+		}
+	})
+    <!--支付配送-->
+	$('#typeFree li').click(function(){
+					if(!$(this).hasClass('active')){
+						$(this).addClass('active').siblings().removeClass('active');
+
+					}
+				})
+    <!--清单-->
+	$(function(){
+		window.onload = function()
+		{
+			var $li = $('.inv-tab li');
+			var $ul = $('.inv-cont ul');
+						
+			$li.click(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			})
+		}
+	});	
+	<!--单选控制DIV层-->
+	$(":radio[name='is-s']").click(function(){
+    var index = $(":radio[name='is-s']").index($(this));
+    if(index == 0) 
+	  {
+        $("#ra-div").show();}
+    else {
+         $("#ra-div").hide();}
+  });
+</script>

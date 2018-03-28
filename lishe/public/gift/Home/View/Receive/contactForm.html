@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/dole.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<title>填写地址</title>
+</head>
+
+<body>
+<div class="messtop">
+	<span class="imgtop" onclick="history.back();"><img src="__IMG__/prereturn.png"></span>
+	<span class="medword">填写地址</span>
+</div>
+<form action="{:U('Receive/saveContact')}" method="post" id="saveContact">
+<div class="mesaddress2">
+   <ul>
+     <li class="mesa">礼物主人：<input type="text" name="receiver_name" id="receiver_name"></li>
+     <li class="mesa">主人电话：<input type="text" name="receiver_phone" id="receiver_phone"></li>
+     <li class="mesa2">
+     	选择地区：<select id="proBox" name="receiver_state">
+     		<option value="-1">请选择</option>
+     		<volist name="areaList" id="area">
+     			<option value="{$area['jd_id']}">{$area['name']}</option>
+     		</volist>
+     	</select>
+     	<select id="cityBox" name="receiver_city" style="display: none;"></select>
+     	<select id="areaBox" name="receiver_district" style="display: none;"></select>
+     <li class="mesa">详细地址：<input type="text" name="receiver_addr" id="receiver_addr"></li>
+   </ul>
+</div>
+</form>
+<div class="dolebtn"><a href="javascript:void(0)" id="submitBut">确定</a></div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	//省份
+	$("#proBox").change(function(){
+		var areaid = $(this).val();
+		if(areaid == -1){
+			return;
+		}
+		getArea("#cityBox",areaid);
+		$("#areaBox").hide();
+	})
+	//省份
+	$("#cityBox").change(function(){
+		var areaid = $(this).val();
+		if(areaid == -1){
+			return;
+		}
+		getArea("#areaBox",areaid);
+	})
+	
+	function getArea(boxId,areaid){
+		$.get("{:U('Receive/areaChild')}",{area_id:areaid},function(result){
+			if(result.code == 1){
+				var html='<option value="-1">请选择</option>';
+				$.each(result.data,function(key,val){
+					html += '<option id="'+val.jd_id+'" value="'+val.jd_id+'">'+val.name+'</option>';
+				});
+				if(html != ""){
+					var box = $(boxId);
+					box.html(html);
+					if(box.is(":hidden")){
+						box.show();
+					}
+				}
+			}
+		});
+	}
+	
+	$("#submitBut").click(function(){
+		var receiverName = $("#receiver_name").val();
+		receiverName = $.trim(receiverName);
+		
+		var receiverPhone = $("#receiver_phone").val();
+		receiverPhone = $.trim(receiverPhone);
+		
+		var receiverAddr = $("#receiver_addr").val();
+		receiverAddr = $.trim(receiverAddr);
+		//验证姓名
+		if(receiverName == '' || receiverName < 2){
+			alert("请填写正确的姓名");
+			return false;
+		}
+		//验证手机号
+		var reg = /^1\d{10}$/;
+		if(!reg.test(receiverPhone)){
+			alert("手机号有误");
+			return false;
+		}
+		//验证详细地址
+		reg = /([^\x00-\xff]|[A-Za-z0-9_]){6,32}/;
+		if(!reg.test(receiverAddr)){
+			alert("请填写正确的收货地址");
+			return false;
+		}
+		//验证地区
+		var proBox = $('#proBox option:selected').val();
+		if(proBox == -1){
+			alert('请选择地区');
+			return false;
+		}
+		var cityBox = $('#cityBox option:selected').val();
+		if(cityBox == undefined || cityBox == -1){
+			alert('请选择地区');
+			return false;
+		}
+		var areaBox = $('#areaBox option:selected').val();
+		if(areaBox == undefined || areaBox == -1){
+			alert('请选择地区');
+			return false;
+		}
+		
+		$("#saveContact").submit();
+	});
+})
+</script>
+</html>

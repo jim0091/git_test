@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>贺卡列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>微商城管理<span class="c-gray en">&gt;</span>分类管理 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+    <table class="table table-border table-bordered" style="width: 30%;">
+    	<thead>
+    	<tr>
+       		<th colspan="4">
+       			<input type="text" placeholder="输入标签名" class="input-text radius size-M" id="tagName" style="width: 68%">
+       			<span class="btn btn-secondary size-S radius" title="链接" style="width: 25%;" id="addTagBut">添加标签</span>
+       		</th>
+       	</tr>
+        <tr>
+        	<th style="width: 40%;">标签</th>
+        	<th style="width: 20%;">序号</th>
+        	<th style="width: 13%;">高亮</th>
+        	<th style="width: 22%;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        	
+        	<volist name="tagList" id="tag">
+        		<tr>
+        			<td><i class="Hui-iconfont">&#xe64b;</i>&nbsp;<input id="tagName_{$tag['tag_id']}" type="text" value="{$tag['tag_name']}" placeholder="输入标签名" class="input-text radius size-M" style="width: 80%"></td>
+        			<td><input id="tagSort_{$tag['tag_id']}" type="text" value="{$tag['sort']}" placeholder="输入标签名" class="input-text radius size-M" style="width: 90%"></td>
+        			<td>
+					    <input type="checkbox" id="light_{$tag['tag_id']}" <egt name="tag['priority']" value="1"> checked="checked"</egt>>
+        			</td>
+        			<td>
+        				<span class="btn btn-primary size-MINI radius" tagid="{$tag['tag_id']}" title="保存" name="saveBut"><i class="Hui-iconfont">&#xe632;</i></span>
+        				<span class="btn btn-danger size-MINI radius" tagid="{$tag['tag_id']}"  title="删除" name="delBut"><i class="Hui-iconfont">&#xe6e2;</i></span>
+        			</td>
+        		</tr>
+        	</volist>
+        </tbody>
+	</table>
+	<!-- 
+	<input id="maxSort" value="{$maxSort|default=2000}" type="hidden"/>
+	 -->
+ </div>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/Validform/5.3.2/Validform.min.js"></script>
+  <!-- 
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+ -->
+ <script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+	$("#addTagBut").click(function(){
+		var tagName = $("#tagName").val();
+		tagName = $.trim(tagName);
+		if(tagName == ''){
+			return false;
+		}
+		//var sort = $("#maxSort").val();
+		//sort++;
+		//$("#maxSort").val(sort);
+		$.post("{:U('Gift/addTag')}",{tagName:tagName},function(result){
+			if(result.code == 1){
+				layer.msg('添加成功!',{icon: 1,time:1000},function(){
+					window.location.reload();
+				});
+			}else{
+				layer.msg('添加失败!',{icon: 2,time:1000});
+			}
+		});
+	});
+	
+	$("span[name='saveBut']").click(function(result){
+		var tagId = $(this).attr('tagid');
+		var tagName = $("#tagName_"+tagId).val();
+		tagName = $.trim(tagName);
+		var tagSort = $("#tagSort_"+tagId).val();
+		tagSort = parseInt(tagSort);
+		var isLight = $("#light_"+tagId).is(":checked");
+		var priority = 0;
+		if(isLight){
+			priority = 1;
+		}
+		if(tagName==""){
+			layer.msg('标签名错误!',{icon: 2,time:1000});
+			return;
+		}
+		if(tagSort == "" || tagSort < 1){
+			layer.msg('排序错误!',{icon: 2,time:1000});
+			return;
+		}
+		$.post("{:U('Gift/updateTag')}",{tagId:tagId, tagName:tagName, priority:priority, tagSort:tagSort},function(result){
+			if(result.code == 1){
+				window.location.reload();
+			}else{
+				layer.msg('上移失败!',{icon: 2,time:1000});
+			}
+		})
+	});
+	
+	$("span[name='delBut']").click(function(result){
+		var tagId = $(this).attr('tagid');
+		if(tagId == "" || tagId < 1){
+			return;
+		}
+		$.post("{:U('Gift/delTag')}",{tagId:tagId},function(result){
+			if(result.code == 1){
+				layer.msg('删除成功!',{icon: 1,time:800},function(){
+					window.location.reload();
+				});
+			}else{
+				layer.msg('删除失败!',{icon: 2,time:1000});
+			}
+		})
+	});
+ })
+ </script>
+ </body>
+ </html>

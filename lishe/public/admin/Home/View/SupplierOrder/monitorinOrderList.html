@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+	.overbtn:hover{
+		background-color: #5a98de;
+	}
+	.sigleOrder{
+		background-color: white;
+		position: relative;
+		left: 135px;
+		top: -40px;
+		z-index:1;
+	}
+	.hide{
+		display: none;
+	}
+	.seeRemark{
+		float: right;
+		color: #5a98de;
+	}
+	.coloryellow{
+		color: #f37b1d;
+	}
+	.colorred{
+		color:#dd514c;
+	}
+</style>
+<title> 供应商订单数据监控列表</title>
+</head>
+<body>
+<nav class="breadcrumb" style="position :fixed; width: 100%;">
+	<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 供应商订单管理 <span class="c-gray en">&gt;</span> <span>供应商订单数据监控列表</span> 
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;刷新本页</i></a>
+</nav>
+<div style="padding-top: 35px;">
+	<div class="pd-20" >
+		<form action="__SELF__" method="get" id="serach">
+			<input  type="hidden" class="tools-input" id="execlType" name="execlType" value="" >							
+			<div class="product-tools">
+				<div class="search">
+					<label>订单推送时间：</label>
+					<label>
+					<input type="text" onfocus="WdatePicker()" name="pStart" value="{$search['pStart']}" id="datemin" class="input-text Wdate" style="width:100px;">-
+					<input type="text" onfocus="WdatePicker()" name="pEnd" value="{$search['pEnd']}" id="datemax" class="input-text Wdate" style="width:100px;">
+					</label>
+					<label>发货时间：</label>
+					<label>
+						<input type="text" onfocus="WdatePicker()"  name="sendStart" value="{$search['sendStart']}" id="datemin" class="input-text Wdate" style="width:100px;">
+						-
+						<input type="text" onfocus="WdatePicker()" name="sendEnd" value="{$search['sendEnd']}" id="datemax" class="input-text Wdate" style="width:100px;">					
+					</label>
+					<!--//全部订单才显示该条件-->
+					<eq name="Think.ACTION_NAME" value="all">
+						<label>订单状态：</label>
+						<label><select class="select-box" name="orderStatus" style="width:100px;">
+						<option value="0">全部</option>
+						<option value="WAIT_SELLER_SEND_GOODS" <eq name="search['orderStatus']" value="WAIT_SELLER_SEND_GOODS">selected="selected"</eq> >待发货</option>						
+						<option value="WAIT_BUYER_CONFIRM_GOODS" <eq name="search['orderStatus']" value="WAIT_BUYER_CONFIRM_GOODS">selected="selected"</eq> >待收货</option>						
+						<option value="WAIT_COMMENT" <eq name="search['orderStatus']" value="WAIT_COMMENT">selected="selected"</eq> >待评价</option>						
+						<option value="TRADE_FINISHED" <eq name="search['orderStatus']" value="TRADE_FINISHED">selected="selected"</eq> >已完成</option>
+						</select>
+						</label>
+					</eq>
+					<!--//全部订单才显示该条件-->
+					
+					<label>供应商：</label>
+					<label>
+					<input type="text"  value="" id="supKeyword"  placeholder="供应商关键字再选择" style="width:140px" class="input-text"  >						
+					<select name="supplierId" class="select-box" style="width:180px;" id="suppliers" >
+						<option value="0">全部</option>
+						<volist name="supplierAll" id="supplier">
+							<option value="{$supplier.supplier_id}"  <eq name="search.supplierId" value="$supplier.supplier_id">selected="selected"</eq> >{$supplier.company_name}</option>
+						</volist>
+					</select>						
+				</div>
+				<div class="search" style="padding-top: 20px;">
+					<label>商品名称：</label>
+					<label>
+					<input type="text" name="title" value="{$search['title']}"  placeholder="商品名称" style="width:150px" class="input-text"  >						
+					</label>
+					<label>关&nbsp;&nbsp;键&nbsp;&nbsp;字：</label>
+					<label>
+					<input type="text" name="keyword"  placeholder="订单号/收件人手机号、姓名/支付单号" style="width:160px" class="input-text" value="{$search['keyword']}" >
+					</label>							
+					<button onclick="serach()" class="btn btn-success radius" ><i  class="Hui-iconfont">&#xe665;</i> 搜索</button>						
+					</label>					
+				</div>
+			</div>
+		
+		    <div id="tab_demo" class="HuiTab" style="margin-top: 20px;">
+		      <div class="tabBar clearfix tab_head">
+				<label class="">
+			      	<span <eq name="search['warningType']" value="redWaring">class="current"</eq> >
+						<input class="hide" value="redWaring" name="warningType" id="user-Character-0-0-0"  type="radio" <eq name="search['warningType']" value="redWaring">checked="checked"</eq> >
+						红色预警订单
+		      			({:count($moreWaringTids['redTids'])})
+						
+			      	</span>
+				</label>  		      	
+				<label class="">
+			      	<span <eq name="search['warningType']" value="yellowWaring">class="current"</eq> >
+						<input class="hide"  value="yellowWaring" name="warningType" id="user-Character-0-0-0"  type="radio" <eq name="search['warningType']" value="yellowWaring">checked="checked"</eq>	>	      		
+		      			黄色预警订单
+		      			({:count($moreWaringTids['yellowTids'])})
+		      		</span>
+				</label>  		      	
+				<label class="">
+		      		<span <eq name="search['warningType']" value="normal">class="current"</eq> >
+						<input class="hide"  value="normal" name="warningType" id="user-Character-0-0-0"  type="radio" <eq name="search['warningType']" value="normal">checked="checked"</eq>	>	      		
+		      			正常订单
+		      			({:count($moreWaringTids['normalTids'])})
+		      		
+		      		</span>
+				</label>  		      	
+				<label class="">
+			      	<span <eq name="search['warningType']" value="sended">class="current"</eq> >
+						<input class="hide"  value="sended" name="warningType" id="user-Character-0-0-0"  type="radio" <eq name="search['warningType']" value="sended">checked="checked"</eq>	>	      		
+			      		已发货订单
+			      	</span>
+				</label>  
+				<label class="">
+			      	<span <eq name="search['warningType']" value="waitsend">class="current"</eq> >
+						<input class="hide"  value="waitsend" name="warningType" id="user-Character-0-0-0"  type="radio" <eq name="search['warningType']" value="waitsend">checked="checked"</eq>	>	      		
+		      		待发货订单
+			      	</span>
+				</label>  				
+				<label class="">
+			      	<span <eq name="search['warningType']" value="all">class="current"</eq> >
+						<input class="hide"  value="all" name="warningType" id="user-Character-0-0-0"  type="radio" <eq name="search['warningType']" value="all">checked="checked"</eq>	>	      		
+		      		全部订单
+			      	</span>
+				</label>  		      	
+		      		
+		      </div>
+		    </div>
+			
+			</form>			
+	</div>
+	<div class="cl pd-5 bg-1 bk-gray"> 
+			<span class="r">共有数据：<strong class="label label-success radius">{$count}</strong> 条</span> 
+	</div>
+	<div class="mt-10">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+		<thead>
+	            <tr>
+					<td align="center" width="10%">订单号</td>
+					<td align="center">商品名称/价格/数量</td>
+					<td align="center" width="12%">供应商名称</td>
+					<td align="center" width="5%">状态</td>
+					<td align="center" width="12%">订单下单/支付时间</td>
+					<td align="center" width="10%">等待时间</td>
+					<td align="center" width="12%">发货时间</td>
+					<td align="center" width="12%">催单结果</td>
+					<td align="center" width="4%">操作</td>	                
+				</tr>
+			</thead>
+			<tbody>
+	       	<volist name="trade" id="trade" >
+					<tr>
+	                    <td>
+	                    	<span title="供应商订单号"
+	                   			<in name="trade.stid" value="$moreWaringTids['redTids']">
+	                   				class="colorred"
+								</in>	
+	                   			<in name="trade.stid" value="$moreWaringTids['yellowTids']">
+	                   				class="coloryellow"
+								</in>	
+	                    		> {$trade.stid}
+	                    	</span>
+	                    	<br/>
+							<span class="label label-success radius" title="支付单号">{$trade.payment_id}</span>
+	                    	
+	                    </td>
+	                    <td>
+	                    	<volist name="oidInTid[$trade['stid']]" id="oid">
+								<if condition="$i neq 1">
+									<div style="border-bottom: 1px #ddd solid;">&nbsp;</div>
+								</if>
+								<div class="col-sm-12" style="padding-top: 5px;">
+									<div class="col-sm-3" style="float: left;padding-right: 10px;">
+										<img src="{$order[$oid]['pic_path']}" width="50px" style="max-height: 50px;overflow: hidden;"  />
+									</div>
+									<div class="col-sm-9" data-tid="{$order[$oid]['tid']}">
+										<gt name="order[$oid]['sendnum']" value="0">
+											<img src="__ADMIN__images/img/fahuo.png"  width="20px" title="该商品已发货"/>
+										</gt>
+										<neq name="order[$oid]['aftersales_status']" value="NO_APPLY">
+											<img src="__ADMIN__images/img/shouhou.png"  width="20px" title="有售后"/>
+										</neq>
+											{$order[$oid]['title']}
+										<br />
+									      <notempty name="order[$oid]['spec_nature_info']">
+											<small>规格：</small><span class="text-navy">{$order[$oid]['spec_nature_info']}</span><br />
+								     	 </notempty>
+										<small>价格：</small><span class="text-navy">￥{$order[$oid]['price']}</span>
+										<small>数量：</small><span class="text-navy">{$order[$oid]['num']}件</span>
+									</div>
+								</div>
+	                    	</volist>
+	                    </td>
+	                    <td>
+	                    	{$supplierInfo[$trade['supplier_id']]}
+	                    </td>
+	                    <td class="center">
+	                    	<eq name="action" value="waitSend">
+	                    		待发货
+	                    	<else/>	
+	                    	{:orderSuppStatus($trade['status'])}
+	                    	</eq>
+	                    </td>	                    
+	                    <td>
+							{$trade['created_time']|date="Y-m-d H:i:s",###}
+							<br />
+							<notempty name="trade.payed_time">
+								{$trade['payed_time']|date="Y-m-d H:i:s",###}
+							<else/>
+								--	   
+							</notempty>
+	                    </td>
+	                    <td>
+	                    	<volist name="oidInTid[$trade['stid']]" id="oid">
+								<if condition="$i neq 1">
+									<div style="border-bottom: 1px #ddd solid;" >&nbsp;</div>
+								</if>
+								<div class="col-sm-12" style="padding-top: 5px;">
+									<notempty name="trade.payed_time">
+										<notempty name="order[$oid]['consign_time']">
+											{:timediff($trade['payed_time'],$order[$oid]['consign_time'])}									
+										<else/>
+											{:timediff($trade['payed_time'],time())}
+										</notempty>									
+									<else/>
+										--	   
+									</notempty>									
+								</div>
+	                    	</volist>		                    	
+	                    </td>
+						<td>
+	                    	<volist name="oidInTid[$trade['stid']]" id="oid">
+								<if condition="$i neq 1">
+									<div style="border-bottom: 1px #ddd solid;" >&nbsp;</div>
+								</if>
+								<div class="col-sm-12" style="padding-top: 5px;">
+									<notempty name="order[$oid]['consign_time']">
+										{$order[$oid]['consign_time']|date="Y-m-d H:i:s",###}
+									<else/>
+										--	   
+									</notempty>									
+								</div>
+	                    	</volist>							
+	                    </td>	                    
+	                    <td>
+	                    	<notempty name="reminderRecord[$trade['stid']]">
+								最新催单时间:
+								<br/>
+	                    		{$reminderRecord[$trade['stid']]}
+	                    	<else/>	
+	                    		暂无催单
+	                    	</notempty>
+							<notempty name="revReminders[$trade['stid']]">
+								<br />
+								<a onclick="reminderShow('{$trade.stid}催单备注','{:U('SupplierOrder/reminderShow',array('tid'=>$trade['stid']))}')">
+									<span class="seeRemark">查看催单备注</span>
+								</a>
+							</notempty>
+	                    </td>
+	                    <td class="center">
+	                   		<in name="trade.stid" value="$canReminder">
+	                   			<in name="trade.stid" value="$moreWaringTids['redTids']">
+									<a onclick="layerOpen('{$trade.stid}订单催单','{:U('SupplierOrder/reminderOrder',array('tid'=>$trade['stid'],'supplierId'=>$trade['supplier_id'],'type'=>1))}','60%')">
+	                   			<else/>
+									<a onclick="layerOpen('{$trade.stid}订单催单','{:U('SupplierOrder/reminderOrder',array('tid'=>$trade['stid'],'supplierId'=>$trade['supplier_id'],'type'=>2))}','60%')">
+								</in>		                   			
+									<span class="label label-success radius overbtn">催单</span>
+								</a>
+								<br />
+	                   			<in name="trade.stid" value="$moreWaringTids['redTids']">
+									<a onclick="layerOpen('催单备注,订单号{$trade.stid}','{:U('SupplierOrder/reminderRemark',array('tid'=>$trade['stid'],'type'=>1))}','60%')">
+	                   			<else/>
+									<a onclick="layerOpen('催单备注,订单号{$trade.stid}','{:U('SupplierOrder/reminderRemark',array('tid'=>$trade['stid'],'type'=>2))}','60%')">
+								</in>		  
+									<span class="label label-success radius overbtn" title="添加催单备注" style="margin-top: 10px;">添加备注</span>
+								</a>
+							<else/>
+								--
+	                   		</in>
+	                    </td>
+	            	</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div class="page" style="text-align: center; padding: 20px 0px 50px 0px;">{$pageStr}</div>
+		
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script>
+	//搜索
+	function serach(){
+		$("#execlType").val("");
+		$("#serach").submit();
+		
+	}
+	 $(":radio").click(function(){
+		$("#serach").submit();
+	 });
+	
+	$('.tab_head span').on('click',function(){
+		$(this).addClass('current').siblings().removeClass('current');
+	});
+	
+	
+	function layerOpen(title,urls,height='85%'){
+		layer.open({
+		  type: 2,
+		  title: title,
+		  shadeClose: false,
+		  shade: 0.8,
+		  area: ['420px', height],
+		  content: urls //iframe的url
+		}); 
+	
+	}
+	function reminderShow(title,urls){
+		layer.open({
+		  type: 2,
+		  title: title,
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['420px', '50%'],
+		  content: urls //iframe的url
+		}); 		
+	}
+//供应商关键字选择供应商
+	$("#supKeyword").on('blur',function(){
+	    $( '#suppliers' ).empty();
+	    $( '#suppliers' ).append('<option value="0">全部</option>');
+	    var urls = "{:U('Home/SupplierOrder/getSupplierOption')}" ;
+		var keywords=$("#supKeyword").val().trim();
+		$.post(urls,{keyword:keywords},function(data){
+			$("#suppliers").append(data);
+		});
+	});	
+</script>
+</body>
+</html>

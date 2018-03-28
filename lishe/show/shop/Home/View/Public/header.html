@@ -1,0 +1,26 @@
+
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="/shop.php" class="logo1"></a>
+			<ul>
+				<li class="nav_link index_page"><a href="__LISHE_URL__/" target="_bank">礼舍首页</a></li>
+				<li class="nav_link current"><a href="__LISHE_URL__/shop.php">心意商城</a></li>
+				<li class="nav_link"><a href="__LISHE_URL__/site/help.html" target="_bank">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<li>
+					<if condition="empty($uid)">
+						<a href="__APP__/Sign/index">会员登录</a>
+					<else />
+						<a href="__LISHE_URL____USER__/Info/index">{$userName}</a>						
+					</if>
+				</li>
+				<if condition="!empty($uid)">
+					<li><a href="{:U('Sign/logout')}">退出</a></li>						
+				</if>
+				<li><a href="__LISHE_URL__/shop/passport/signin.html" target="_bank">商家中心</a></li>
+				<li><a href="http://v.lishe.cn/company/login.html" target="_bank">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+	

@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+/**{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+body{background:#f1f5f6;overflow-x:hidden;font-family:"微软雅黑";}
+
+.clasearch{width:100%;height:3rem; background:#f0f0f0; border-bottom:#cfcfcf solid 1px; clear:both;line-height:3rem;}
+.return{padding-left:4%;float:left;}
+.return img{width:50%; vertical-align:middle;}
+.findtxt{float:left;margin-left:2%;}
+.findtxt input{height:1.8rem;border:#c1c1c1 solid 1px;border-radius:5px;
+padding-left:2%;width:75vw;background:#FFF;font-size:0.8rem;color:#a1a1a1;vertical-align:middle;}
+
+
+.classifyLeft{float:left;width:30%; overflow:auto; border-right:#e9e9e9 solid 1px; text-align:center; background:#FFF;}
+#typeFree li{font-size:0.8rem; color:#000000; height:3.5rem; line-height:3.5rem; border-top:#e9e9e9 solid 1px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+#typeFree li.active{font-size:0.8rem; color:#c7241d;}
+.classifyRight{float:right; width:68%;}
+
+.classifyBanner{width:94%; margin-top:1rem;}
+.classifyBanner img{width:100%;}
+
+.classifyList{width:94%; background:#FFF; clear:both; padding:1rem 0;}
+.classifyList img{width:100%; padding-bottom:0.5rem;}
+.classifyList ul{float:left; padding: 0 0.4rem 0 0.4rem; text-align:center; margin:0.6rem 0;}
+.classifyList li a{font-size:0.8rem; color:#717171;}*/
+
+html{min-height:100%; position: relative;}
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+ul li{list-style:none;}
+body{background:#f1f5f6;overflow-x:hidden;font-family:"微软雅黑";}
+
+.clasearch{width:100%; background:#f0f0f0; border-bottom:#cfcfcf solid 1px; clear:both;line-height:3rem; height:3rem;}
+.return{padding-left:3%;float:left;}
+.return img{width:50%; vertical-align:middle;}
+.findtxt{float:left;margin-left:3%;}
+.findtxt input{line-height:1.8rem;border:#c1c1c1 solid 1px;border-radius:5px;
+padding-left:3%;width:75vw;background:#FFF;font-size:0.8rem;color:#a1a1a1;vertical-align:middle;}
+
+
+.classifyLeft{position: absolute;;width:25vw; height:700px; overflow:auto; border-right:#e9e9e9 solid 1px; text-align:center; background:#FFF; padding-bottom:3rem;}
+#typeFree li{font-size:0.8rem; color:#000000; height:3.5rem; line-height:3.5rem; border-top:#e9e9e9 solid 1px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+#typeFree li.active{font-size:0.8rem; color:#FF4138; font-weight: bold;}
+.classifyRight{float:right; width:72vw; padding-bottom:3.5rem;}
+
+.classifyBanner{width:96%; margin-top:.5rem;}
+.classifyBanner img{width:100%;}
+
+.classifyList{margin-right:4%; margin-top:.5rem; background:#FFF; clear:both;}
+.classifyList img{width:14vw; height:14vw;}
+.classifyList ul{display: inline-block; vertical-align: top; width:32%; text-align:center; margin:0.6rem 0; font-size:.7rem;}
+.classifyList a{font-size:0.8rem; color:#717171;}

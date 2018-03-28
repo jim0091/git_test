@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/newsCt.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<style>
+	.onthis{
+		background-color: #c7241d;
+		border-radius: 20px;
+		padding-left: 50px;
+	}
+	.changecolor{
+		color: white;
+	}
+	.tab-right table{
+		width: 100%;
+	}
+	.chNews{
+		height: 800px;
+	}
+	.thispage{
+		color: white;
+		background-color: #C7241D;
+	}
+</style>
+<script type="text/javascript">
+//	$(function(){
+//		$("#{$show}").click();
+//		$("#{$show}").addClass('onthis');
+//		$(".{$show}").addClass('changecolor');
+//		$("#changes").children("li").on('click',function(){
+//			$("#changes").children("li").removeClass('onthis');
+//			$("#changes").children("li").children("span").removeClass('changecolor');
+//			$(this).addClass('onthis');
+//			$(this).children("span").addClass('changecolor');
+//			
+//		});
+//	})
+</script>
+
+  
+          <!--选择新闻-->
+          <div class="chNews" id="ajax_lists">
+  				
+  				
+  				
+          </div>
+<script>
+window.type="{$type}";
+window.keyword="";
+window.nowPage=1;
+ $(function() {
+   	 var url_ajax = "{:U('Home/Show/newsList')}";
+	    $("#ajax_lists").delegate(".pager a", "click", function() {
+	        var page = $(this).attr("data-page");
+	        	nowPage=page;
+	      	  getPage(page,keyword);
+	        
+	    });
+        getPage(1,"");
+
+    })	
+    function getPage(page,keyword) {
+   	var url_ajax ="{:U('Home/Show/newsList')}";
+		 $.ajax({
+			type:"post",
+			url:url_ajax,
+			data:"p="+page+"&keyword="+keyword+"&type="+type,
+			success:function(data){
+		            $('#ajax_lists').html(data);
+				
+			},
+			error:function(e){
+				
+			}
+		});       
+        
+    }	
+	function search(){
+		keyword=$("#keyword").val();
+		if(keyword==""){
+			alert("请输入关键词!");
+			return false;
+		}
+		getPage(1,keyword);
+	}
+	function del(newsId){
+		if(window.confirm('你确定删除该条新闻吗？')){
+		   	var delUrl ="{:U('Home/Show/delNews')}";
+				 $.ajax({
+					type:"post",
+					url:delUrl,
+					data:"newsId="+newsId,
+					success:function(data){
+				         if(data){
+				         	alert(data);
+				         	getPage(nowPage,keyword);
+				         }
+					},
+					error:function(e){
+						
+					}
+				});  			
+	      }else{
+	      	
+	     }		
+	}
+    </script>

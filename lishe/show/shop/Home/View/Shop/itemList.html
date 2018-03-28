@@ -1,0 +1,62 @@
+<!-- 搜索商品列表 -->
+<ul class="goodslist">
+	<volist name="itemList" id='item'>
+		<li style="height: 316px;">
+			<div class="pics">
+				<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id'],'from'=>md5($item['item_id'])))}" target="_blank">
+					<img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}" >
+				</a>
+			</div>
+			<div class="price">
+				<div class="points">
+					{$item['price']*100|sprintf="%.0f",###} <span>积分</span>
+				</div>
+				<div class="cash">
+					￥{$item['price']|sprintf="%.2f",###}
+				</div>
+			</div>
+			<div class="name">
+				<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id'],'from'=>md5($item['item_id'])))}" target="_blank">
+					<p>{$item['title']}</p>
+				</a>
+			</div>
+		</li>
+	</volist>
+</ul>
+
+<!--分页-->
+<div class="pages" id="pages">
+	{$pagestr}
+</div>
+
+<script>
+$("#pages").delegate('a.num','click',function(){ 
+  	//当前页
+  	var nowpage = $(this).text();      
+    $("#curPage").val(nowpage);    
+    itemFind();
+});
+//首页
+$("#pages").delegate('a.first','click',function(){
+  	$("#curPage").val(1);
+  	itemFind();
+});
+//尾页
+$("#pages").delegate('a.end','click',function(){
+	var totalPage = {$totalPages};    	
+  	$("#curPage").val(totalPage);
+  	itemFind();
+});
+//下一页
+$("#pages").delegate('a.next','click',function(){
+  	var nowpage = $("#curPage").val();
+  	$("#curPage").val(nowpage*1+1);
+  	itemFind();
+});
+//上一页
+$("#pages").delegate('a.prev','click',function(){
+  	var nowpage = $("#curPage").val();
+  	$("#curPage").val(nowpage*1-1);
+  	itemFind();
+});
+</script>

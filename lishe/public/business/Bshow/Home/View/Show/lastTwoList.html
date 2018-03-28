@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/ptDynamics.css">
+ 
+               	<volist name="list" id="vo">
+					<ul style="margin-bottom: 15px;">
+	                	 <li><img src="{$vo.pic}" width="300px"height="300px"></li>
+	                	 <if condition="$vo.category eq 1">
+	                 	
+		                 <!--超级新人王-->
+			                 <li class="sr-li4">{$vo.position}</li>
+			                 <li class="sr-li5">{$vo.name}</li>
+			                 <li class="sr-li6">{$vo.content}</li>
+		                 <!--超级新人王-->
+	                 		<elseif condition="$vo.category eq 2"/>
+			                 <!--月度寿星-->
+			           		   <li class="sr-li">{$vo.name}</li>
+			                   <li class="sr-li4">{$vo.position}</li>
+			                   <li class="sr-li4">{$vo.birthday}</li>
+			                 <!--月度寿星-->
+	                 	
+	                 	</if>
+	                 
+	                 
+	                 	<li class="sr-li3 s7">
+	                 		
+		                	 <if condition="$vo.category eq 1">
+		                 	
+			                 <!--超级新人王-->
+	                 		<a href="{:U('Home/Show/lastTwo',array('type' => 1,'aPid'=>$vo['id']))}">修   改</a>
+			                 <!--超级新人王-->
+		                 		<elseif condition="$vo.category eq 2"/>
+				                 <!--月度寿星-->
+		                 		<a href="{:U('Home/Show/lastTwo',array('type' => 2,'aPid'=>$vo['id']))}">修   改</a>
+				                 <!--月度寿星-->
+		                 	
+		                 	</if>	                 		
+	                 		
+	                 		
+	                 		<a href="javascript:void(0)" onclick="del({$vo.id})">删   除</a></li>
+	               </ul>
+              	</volist>
+
+               
+               
+               
+			<div class="pager local" style="cursor: pointer;text-align: center;border: 0px;">{$pagestr}</div>

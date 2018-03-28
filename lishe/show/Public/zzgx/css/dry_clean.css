@@ -1,0 +1,70 @@
+*{padding:0;  margin:0;}
+ul, li{list-style:none;}
+a{text-decoration:none; color: #666;}
+img{border:none;}
+body{font-size:12px; font-family:"Microsoft Yahei";}
+table, tr, td{margin: 0; padding: 0; border: 0; border-collapse:collapse; border-spacing: 0;}
+input{outline: none; font-family: "Microsoft Yahei"; background-color: #FFF;}
+html, body{margin: 0; height: 100%;}
+
+.dry_main{width: 980px;height: 712px;margin: 20px auto 0;background-color: #fff;overflow: hidden;}
+.main_con{width: 452px;margin: 40px auto 0;height: auto;position: relative;}
+.main_con .tab_ul{height: 24px;width: 100%;padding-left: 15px;box-sizing: border-box;}
+.main_con .tab_ul li{ font-size: 14px;float: left;margin-right: 42px; width: 70px;height: 24px;color: #666666;font-family: "思源黑体 CN";cursor: pointer;}
+.main_con .tab_ul .active{border-bottom: 2px solid #ff4138;color: #ff4138;}
+.main_con .tab_a{position: absolute;left: 235px;top: 0;color:  #999999;font-family: "思源黑体 CN";font-size: 14px;}
+.main_con .phone_wrap{position: relative;margin-top:43px; overflow: hidden; text-align: left; width: 120%;height: 40px;font-family: "思源黑体 CN";font-size: 14px;}
+.main_con .phone_wrap .pho_span1,.phone_number{vertical-align: middle;}
+.main_con .phone_wrap .pho_span1{color: #666666;margin-right: 10px;}
+.main_con .phone_wrap .phone_number{width: 218px;border:1px solid #dadada;height: 38px;text-indent: 12px;}
+.btn_and_error{position: absolute;left: 350px;top: 0;font-family: "思源黑体 CN";font-size: 14px;}
+.btn_and_error .click_btn{ height: 40px;display: inline-block;width: 100px;border-radius: 5px;text-align: center;line-height: 40px;color: #fff;background-color: #00ccf9;cursor: pointer;}
+.btn_and_error .phone_error{color: #ff4138;line-height: 40px;display: none;}
+.pho_yz{height: 40px;text-indent:42px;margin-top: 20px;}
+.pho_yz span{vertical-align: middle;font-family: "思源黑体 CN";font-size: 14px;color: #666666;margin-right: 24px;}
+.pho_yz input{height: 38px;width: 108px;text-indent: 12px;border:1px solid #dadada;}
+.update_wrap{margin-top: 38px;display: none;}
+.update_wrap .up_icon_p{overflow: hidden;}
+.update_wrap .up_icon{float: right;cursor: pointer;}
+.update_wrap .up_icon img{width: 14px;height: 14px;vertical-align: middle;}
+.update_wrap .up_table{width: 100%;text-align: center;margin-top: 10px;}
+.update_wrap .up_table tr td{height: 38px;border:1px solid #dadada;line-height: 38px;color: #666666;}
+.update_wrap p{color:  #999999;font-family: "思源黑体 CN";font-size: 14px;}
+.update_wrap .total_wrap{width: 100%;margin-top: 5px;height: auto;min-height: 71px;line-height: 24px;}
+.update_wrap .total_wrap .total_text{float: right;text-align: left;}
+.update_wrap .total_wrap .total_tit{float: right;text-align: right;}
+.update_wrap .total_wrap p{color: #666666;height: 24px;}
+.main_con .recharge,.user .login_btn{width: 187px;height: 40px;background-color: #ff4138;border-radius: 5px;margin:40px auto 0;line-height: 40px;text-align: center;color: #fff;cursor: pointer;}
+.update_wrap .up_table thead{background: #f5f5f5;font-size: 14px;}
+/*弹窗*/
+.popup_shade{display: none;position: fixed;z-index: 100; width: 100%;height: 100%;top: 0px; background-color: #000;opacity: .5;filter: alpha(opacity = 50);}
+.popup1{display: none; position: fixed;z-index: 200;left: 0;right: 0;top: 30%;width: 430px;height: 384px;background-color: #fff;margin:0 auto;border-radius: 10px;}
+.popup1 h2{text-align: center;line-height: 60px;width: 410px;margin:0 auto;border-bottom: 1px solid #dadada;}
+.popup_main{position: relative; height: 230px;padding-top: 10px;}
+.popup_main .prom{display: none; position: absolute;top: 100px; width: 100%;height: 20px;color: #ff4138;text-align: center;}
+.popup_main p{text-align: center;font-size: 13px;font-family: "思源黑体 CN";color: #333333;margin:36px 0;}
+.popup_main p input{width: 98px;height: 40px;margin:0 20px;text-indent: 5px;}
+.popup_btn{width: 100%;height: 90px;border-top: 1px solid #dadada;text-align: center;}
+.popup_btn a{display: inline-block;color: #999999;font-size: 12px;margin-top: 18px; text-align: center;height: 40px;line-height: 40px; width: 130px;border:1px solid #999999;border-radius: 5px;}
+.popup_btn .sure_btn{margin-right: 20px;background-color: #ff4138;color: #fff;border-color: #ff4138;}
+.popup2_main{height: 160px;}
+.popup2_con{height: 310px;}
+
+
+.update_wrap .recharge_number p,.recharge_sum{height: 40px;overflow: hidden;}
+.recharge_number,.recharge_sum{height: 40px;text-indent: 29px;font-family: "思源黑体 CN";font-size: 14px;}
+.recharge_number span,.recharge_sum span{vertical-align: middle;margin-right: 16px;color: #666666;}
+.recharge_number input,.recharge_sum input{border:1px solid #dadada;height: 38px;text-indent: 12px;}
+.recharge_sum{margin-top: 20px;color: #666666 !important;}
+.recharge_sum input{margin-right: 10px;}
+.total_wrap2{padding-right: 80px;box-sizing: border-box;margin-top: 14px !important;}
+
+
+.user{width: 335px;height: 335px;margin-left: 16px;text-align: center;}
+.user input{margin-left: 5px; height: 38px;border: 1px solid #dadada;line-height: 38px;width: 230px;text-indent: 5px;}
+.user .login_btn{background-color: #00ccf9;margin:10px auto 0;}
+.user .mt20{margin-top: 20px;color:#666666;font-size: 14px;}
+.user .error_d{height: 25px;line-height: 25px;color: red;text-indent: 72px;text-align: left;}
+.popup1 h2{font-size: 15px;font-weight: bold;}
+.popup_p p{margin: 0 8px 0 10px;line-height: 23px;text-align: left;text-indent: 20px;}
+.update_wrap .up_icon{float: right;cursor: pointer;display: inline-block; width: 98px; height: 28px; line-height: 28px; text-align: center; border: 1px solid #ff4138; border-radius: 10px;color: #ff4138;}

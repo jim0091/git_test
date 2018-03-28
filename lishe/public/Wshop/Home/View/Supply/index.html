@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="email=no" name="format-detection" />
+    <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="__VIEW__Public/supply/selectBag.css"/>
+</head>
+<body>
+<div class="content">
+        <img class="fl" src="__VIEW__Public/supply/images/back_icon.png" alt=""/>
+        <span>选择{$price|intval}元礼包</span>
+</div>
+<div class="content-body">
+    <volist name="activeItemList" id="activeItem" >
+		<div class="body-ul swiper-container" packageid="{$activeItem['aitem_id']}">
+	        <ul class="ul-children swiper-wrapper">
+	        	<volist name="activeItem['items']" id="item" >
+	            <li class="swiper-slide"><img src="{$itemInfoArr[$item['item_id']]['image_default_id']}" alt=""/><p>{$itemInfoArr[$item['item_id']]['title']}</p></li>
+	        	</volist>
+	        </ul>
+	        <img class="ul-bottom" src="__VIEW__Public/supply/images/bottom-ion.png" alt=""/>
+	        <div class="swiper-pagination"></div>
+	    </div>
+	</volist>
+</div>
+    <img class="footer-img" id="receiveBut" src="__VIEW__Public/supply/images/btn.png" alt=""/>
+    <form action="{:U('Supply/receive')}" id="receiveForm" style="display:none;">
+    	<input type="hidden" id="packageid" name="packageid">
+    	<input type="hidden" name="m" value="{$mobile}">
+    	<input type="hidden" name="pid" value="{$poolId}">
+    	<input type="hidden" name="code" value="{$code}">
+    </form>
+</body>
+
+<script src="__VIEW__Public/supply/swiper.min.js"></script>
+<script src="__VIEW__Public/supply/jQuery.v1.8.3.min.js"></script>
+<script>
+	var swiper = new Swiper('.swiper-container', {
+	    pagination: '.swiper-pagination',
+	    slidesPerView: 2,
+	    paginationClickable: true,
+	    spaceBetween: -120
+	});
+	var html = document.documentElement;
+	var whtml = html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /7.5 + "px";
+	
+	$('.swiper-slide').css({marginRight:0});
+	$('.swiper-slide').css({marginLeft:'0.2rem'});
+	$('.swiper-slide').css({width:'2.3rem'});
+	$('.body-ul').on('click',function(){
+	    $(this).toggleClass('body-ul-border').siblings('.body-ul').removeClass('body-ul-border');
+	    $(this).children('.ul-bottom').toggleClass('block').parent().siblings('.body-ul').children('.ul-bottom').removeClass('block');
+	    $("#packageid").val($(this).attr('packageid'));
+	})
+	
+	$("#receiveBut").click(function(){
+		var selectPaks = $(".body-ul-border");
+		if (selectPaks.length == 0){
+			alert("请选择礼包");
+			return false;
+		}
+		$.post($("#receiveForm").attr("action"),$("#receiveForm").serialize(), success);
+		return false;
+		function success(result){
+			if(result.code == 1){
+				alert('恭喜，领取成功');
+				window.location.href = result.url;
+			}else{
+				alert(result.msg);
+				window.location.href = "http://www.lishe.cn/wshop.php";
+			}
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,9 @@
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:0;}
+body{overflow-x:hidden; background:#f8f8f8; font-family:"微软雅黑";}
+
+.stretch{background:url(../images/Nationalbg.png) no-repeat center center; width:100%;background-size: 100% 100%; position:relative;}
+.Nationaldes{width:100%;margin-top:31vh;}
+.Nationalbtn{width:55%; margin:0 auto; margin-top:0vh; margin-left:22%;}

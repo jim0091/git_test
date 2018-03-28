@@ -1,0 +1,383 @@
+    <div class="sku-layout-title name-card sku-name-card">
+        <div class="thumb">
+            <img class="js-goods-thumb goods-thumb" src="{$itemInfo.image_default_id}" alt="">
+        </div>
+        <div class="detail goods-base-info clearfix">
+            <p class="title c-black ellipsis">{$itemInfo.title}</p>
+            <div class="goods-price clearfix">    
+                <div class="current-price c-black activity-price">
+                    <span class="price-name pull-left font-size-14 c-orange"></span><i class="js-goods-price price font-size-16 vertical-middle c-orange">￥<?php echo sprintf("%.2f",$itemInfo['price']); ?></i>
+                    <!--<span class="price-tag vertical-middle">新品折扣</span>-->
+                </div>
+                <div class="old-price line-through">原价：￥<?php echo sprintf("%.2f",$itemInfo['mkt_price']*1.2);?></div>
+            </div>
+        </div>
+        <div class="js-cancel sku-cancel">
+            <div class="cancel-img"></div>
+        </div>
+    </div>
+
+    <div class="adv-opts layout-content" style="max-height: 442px;">
+        <div class="goods-models js-sku-views block block-list border-top-0" id="prop-list">
+<!--             <volist name="newPropsValuesList" id="vo">
+                <dl class="clearfix block-item sku-list-container prop">
+                    <dt class="model-title sku-sel-title">
+                        <label>{$vo.prop_name}：</label>
+                    </dt>
+                    <dd>
+                        <ul class="model-list sku-sel-list">
+                            <volist name="vo['item']" id="v">
+                                <li class="tag sku-tag pull-left ellipsis " id="{$v.prop_value_id}">
+                                    <input type="hidden" name="prop_value_id" value="{$v.prop_value_id}" id="{$v.prop_value_id}">
+                                    {$v.prop_value}
+                                </li>
+                            </volist>
+                        </ul>
+                    </dd>
+                </dl>
+            </volist> -->
+                <dl class="clearfix block-item sku-list-container prop">
+                    <dt class="model-title sku-sel-title">
+                        <label>请选择</label>
+                    </dt>
+                    <dd>
+                        <ul class="model-list sku-sel-list" id="item-sku">
+                            <volist name="sKuList" id="vo">
+                                <li class="tag sku-tag pull-left ellipsis " style="max-width:260px;">
+                                    <input type="hidden" name="sku_id" value="{$vo['sku_id']}" >
+                                    <input type="hidden" name="store" value="{$vo['store']}">
+                                    {$vo['spec_info']}
+                                    <empty name="vo['spec_info']" >默认规格</empty>
+                                </li>
+                            </volist>
+                        </ul>
+                    </dd>
+                </dl> 
+
+                <dl>
+                    <dt class="model-title sku-sel-title">配送至：
+                        <a href="__APP__/Order/listAddr?refer=/business/wshop.php/Welfare/index.html">增添收货地址</a>
+                    </dt>
+                    <dd>
+                        <!-- <input type="hidden" name="province" class="input-address-province" value=""/>
+                        <select class="js-province address-province">
+                                <option value="0">-请选择-</option>
+                            <volist name="area" id = "vo">
+                                <option value="{$vo.jd_id}">{$vo.name}</option>
+                            </volist>
+                        </select>
+                        <input type="hidden" name="province" class="input-address-city" value="">
+                        <select class="js-city address-city">
+                            <option value="0">-选择市-</option>
+                        </select>
+                        <input type="hidden" name="province" class="input-address-county" value="">
+                        <select class="js-county address-county">
+                            <option value="0">-选择区/县-</option>
+                        </select> -->
+                        <ul class="model-list sku-sel-list" id="item-address">
+                            <?php if(!empty($newUserAddressList)){ ?>
+                                <volist name="newUserAddressList" id="vo">
+                                    <li class="tag sku-tag pull-left ellipsis li-user-address" style="max-width:280px;">
+                                        <input type="hidden" name="" class="input-user-addressid" value="{$vo['newaddid']}">
+                                        {$vo['newadd']}
+                                    </li>
+                                </volist>
+                            <?php }else{?>
+                                <a href="__APP__/Order/listAddr?refer=/business/wshop.php/Welfare/index.html"><li class="tag sku-tag pull-left ellipsis ">增添收货地址</li></a>
+                            <?php } ?>
+                        </ul>
+
+                    </dd>
+                </dl>           
+
+            <dl class="clearfix block-item">
+                <dt class="sku-num pull-left">
+                    <label>购买数量：</label>
+                </dt>
+                <dd class="sku-quantity-contaienr">
+                    <dl class="clearfix">
+                        <div class="quantity">            
+                            <button class="minus disabled" type="button" disabled="true"></button>            
+                            <input type="text" class="txt" value="1">            
+                            <button class="plus" type="button"></button>            
+                            <div class="response-area response-area-minus"></div>            
+                            <div class="response-area response-area-plus"></div>        
+                        </div>
+                    </dl>
+                </dd>
+                <dt class="other-info">
+                    <div class="stock " id="sku_store">剩余<span>1000</span>件</div>
+                </dt>
+            </dl>
+            <div class="block-item block-item-messages" style="display: none;"></div>
+        </div>
+        <div class="confirm-action content-foot clearfix">
+            <input type="hidden" name="sku" class="input-opt-sku-id" value="">
+            <input type="hidden" name="store" class="input-opt-store" value="">
+            <div class="half-button">
+                <a href="javascript:;" class="js-mutiBtn-confirm confirm btn btn-block btn-orange-dark btn-buy">立即购买</a>
+            </div>
+            <div class="half-button">
+                <a href="javascript:;" class="js-mutiBtn-confirm cart btn btn-block btn-white btn-cart">加入购物车</a>
+            </div>
+        </div>
+        <div class="confirm-action content-foot clearfix" id="loading" style="display:none">
+           <a href="javascript:;" class="js-mutiBtn-confirm cart btn btn-white btn-cart" style="width:100%">加载中。。。</a>
+        </div>
+    </div>
+
+<script type="text/javascript">
+        $(function(){
+
+	        $(".cancel-img").click(function(){       
+	            $("#AFPZzmS0QM").hide();
+	            $("#qZCwekTbYF").hide();
+                $("#shop-nav").show();
+	            $("body").css({overflow:"visible"}); 
+	        });
+    });
+
+</script>
+
+
+<!--下拉end-->
+
+<script type="text/javascript">
+        $(function(){
+            //根据屏幕大小加载图片
+            var windWidth = $(window).width();
+            var imgWidth = windWidth*1 - 10;
+            $("div.components-container").find("img").css('max-width',imgWidth+'px');
+        //显示下来选择
+        $("dd.norms").click(function(){
+            $("#maskLayer").show();
+            $("#selectItem").show();
+            $("body").css({overflow:"hidden"}); 
+        });
+
+        //关闭下拉选择
+        $("div.cancel-img").click(function(){            
+            $("#maskLayer").hide();
+            $("#selectItem").hide();
+            $("body").css({overflow:"visible"}); 
+        });
+
+        //选择事件
+        $("#item-sku li").click(function(){
+            var athis = $(this);
+            //有就删除
+            if (athis.hasClass('active')) {
+                athis.removeClass('active');
+                $(".input-opt-sku-id").val();
+                $("#item-norms dd.default").show();
+                $("#item-norms dd.havevalue").hide();
+            }else{
+                //选中效果
+                athis.parent().children("li").removeClass("active");
+                athis.addClass("active");
+                $(".input-opt-sku-id").val(athis.children("input[name='sku_id']").val());
+                $("#item-norms dd.havevalue").html(athis.text());
+                $("#item-norms dd.default").hide();
+                $("#item-norms dd.havevalue").show();
+            }
+            $("#sku_store span").html(athis.children("input[name='store']").val());
+            
+        });
+        //购买数量增加
+        $("div.response-area-plus").bind("click",function(){
+            var athis = $(this);
+            if ($("#item-sku li").hasClass('active')) {
+                //获取数量
+                var skuStore = $("#sku_store span").text();
+                //获取当前购买输入数量
+                var mNum = athis.parent().children('input').val();
+                if (eval(mNum) == eval(skuStore*1-1)) {
+                    athis.parent().children('button.plus').addClass("disabled");
+                };
+                if(eval(skuStore) > eval(mNum)){
+                    var newNum = mNum*1+1;
+                    athis.parent().children('input').val(newNum);
+                    athis.parent().children('button.minus').removeClass("disabled");
+                }else{
+                    $(".motify").show();
+                    $(".motify-inner").text("库存不足！");
+                    $('.motify').delay(1000).hide(0);
+                    return;
+                    //alert("库存不足！");
+                }
+            }else{
+                $(".motify").show();
+                $(".motify-inner").text("请先选择商品类型！");
+                $('.motify').delay(1000).hide(0);
+                return;
+                //alert("请先选择商品类型！");
+            } 
+        });
+        //购买数量减少
+        $("div.response-area-minus").bind("click",function(){
+            var athis = $(this);
+            if ($("#item-sku li").hasClass('active')) {
+                //获取当前购买输入数量
+                var mNum = athis.parent().children('input').val();
+                if (eval(mNum) < eval(3)) {
+                    athis.parent().children('button.minus').addClass("disabled"); 
+                };
+                if(eval(mNum) > eval(1)){
+                    var newNum = mNum*1-1;
+                    athis.parent().children('input').val(newNum);
+                    athis.parent().children('button.plus').removeClass("disabled");
+                }else{  
+                    $(".motify").show();
+                    $(".motify-inner").text("超过最低购买数量！");
+                    $('.motify').delay(1000).hide(0);
+                    return;
+                    //alert("超过最低购买数量！");
+                }
+            }else{
+                $(".motify").show();
+                $(".motify-inner").text("请先选择商品类型！");
+                $('.motify').delay(1000).hide(0);
+                return;
+                //alert("请先选择商品类型！");
+            } 
+        });        
+
+   
+    //点击地址之后判断是否有货
+    $(".li-user-address").click(function(){
+        $(".confirm-action").hide();
+        $("#loading").show();
+        var athis = $(this);  
+        //有就删除
+        if (athis.hasClass('active')) {
+            athis.removeClass('active');
+            $("#disp-address dd.default").show();
+            $("#disp-address dd.havevalue").hide();
+
+        }else{
+            //选中效果
+            athis.parent().children("li").removeClass("active");
+            athis.addClass("active");
+            $("#disp-address dd.havevalue").html(athis.text());
+            $("#disp-address dd.default").hide();
+            $("#disp-address dd.havevalue").show();
+        }
+        var addressId = athis.children('.input-user-addressid').val();//地址
+        var itemId = {$itemInfo.item_id};//商品id
+        $.ajax({
+            type:"POST",
+            url:"__APP__/Info/checkJdStock",
+            data:{item_id:itemId,jd_ids:addressId},
+            dataType:'text',
+            success:function(data){
+                if (data == 33) {
+                    $(".confirm-action").show();
+                    $("#loading").hide();
+                    $(".input-opt-store").val(1);
+                }else{
+                    $("#loading").html("该商品无货！");
+                    $(".input-opt-store").val(0);
+                }
+            }
+        });
+
+    });
+
+    //加入购物车
+    $("div.half-button a.btn-block").click(function(){
+        var type = $(this).parent().children('a').hasClass('btn-buy');
+        //判断配送地区有没有货
+        var addressStore = $(".input-opt-store").val();
+
+        var isActive =  $(".input-opt-sku-id").val();
+
+        //判断是否选择了规格类型
+        if ($("#item-sku li").hasClass("active") == false) {
+            $(".motify").show();
+            $(".motify-inner").text("请选择规格类型！");
+            $('.motify').delay(1000).hide(0);
+            //setTimout(function(){alert(0);$(".motify").hide();},6000); 
+            //alert("请选择规格类型！");
+            return;            
+        };
+        //判断该规格是否有货
+        if (isActive == '') {
+            $(".motify").show();
+            $(".motify-inner").text("您选择的规格无货！");
+            $('.motify').delay(1000).hide(0);
+            //alert("您选择的规格无货！");
+            return;
+        };
+        //判断是否选择了规格
+        if ($("#item-address li").hasClass("active") == false) {
+            $(".motify").show();
+            $(".motify-inner").text("请选择配货地址！");
+            $('.motify').delay(1000).hide(0);
+            //alert("请选择配货地址！");
+            return;            
+        };
+        //判断该地址是否有货
+        if (addressStore == '') {
+            $(".motify").show();
+            $(".motify-inner").text("您选择的地区不配送哦！");
+            $('.motify').delay(1000).hide(0);
+            //alert("您选择的地区不配送哦！");
+            return;
+        };
+
+        //商品id
+        var itemId = {$itemInfo.item_id};//商品id
+        //库存id
+        var skuId = $(".input-opt-sku-id").val();
+        //购买数量
+        var quantity = $(".quantity input.txt").val();
+        $.ajax({
+            type:"POST",
+            url:"__APP__/Info/addItemCart",
+            data:{itemId:itemId,skuId:skuId,quantity:quantity},
+            dataType:'text',
+            success:function(data){
+                if (data == 1) {
+                    if (type == true) {
+                        window.location.href="__APP__/Order/cart";
+                    }else{
+                        $(".motify").show();
+                        $(".motify-inner").text("成功加入购物车！");
+                        $('.motify').delay(1000).hide(0);
+                        //alert("成功加入购物车！");
+                        $("#maskLayer").hide();
+                        $("#selectItem").hide();
+                        $("body").css({overflow:"visible"}); 
+                        return;
+                    }
+                    
+                }else{
+                    $(".motify").show();
+                    $(".motify-inner").text("加入购物车失败！");
+                    $('.motify').delay(1000).hide(0);
+                    return;
+                    //alert('加入购物车失败！');
+                }
+            }
+        });
+
+
+
+    });
+   
+
+    });
+        $(function(){
+        $("div.btn-2-1 a.js-buy-it").click(function(){
+            $("#maskLayer").show();
+            $("#selectItem").show();
+            $("#shop-nav").hide();
+            $("body").css({overflow:"hidden"}); 
+        });
+        $("div.btn-2-1 a.js-add-cart").click(function(){
+            $("#maskLayer").show();
+            $("#selectItem").show();
+            $("body").css({overflow:"hidden"}); 
+        });
+    });
+</script>

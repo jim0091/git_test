@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+</style>
+<title>资讯列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 平台活动管理 <span class="c-gray en">&gt;</span> 活动列表 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20" style="margin-bottom: 50px;">
+	<in name="info.type" value="$allowType" >
+		<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+			<span class="l"> 
+				<a  class="btn btn-primary radius" style="text-decoration:none"   onclick="member_edit('{$vo.cat_name}-添加活动商品','{:U('Home/Activity/updateAItem',array('activityId'=>$info['activity_config_id'],'aid'=>$info['aid']))}','4','','510')" title="添加活动商品">
+					<i class="Hui-iconfont">&#xe600;</i>添加活动商品
+				</a>	
+			</span>		
+		</div>					
+	</in>		
+	</div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover">
+			<thead>
+				<tr class="text-c">
+					<th width="4%">ID</th>
+					<in name="info.type" value="$allowType" >
+						<th width="4%">skuId</th>
+						<th width="5%">原skuId</th>
+						<th width="4%">商品Id</th>
+					</in>	
+					<th width="10%">商品图片</th>
+					<th>商品名称</th>
+					<th width="8%">活动价格</th>
+					<th width="8%">商城价格</th>
+					<th width="7%">预备库存</th>
+					<th width="5%">重量</th>
+					<!--<th width="5%">邮费</th>-->
+					<!--<th width="5%">套餐商品信息</th>-->
+					<th width="5%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+				<tr class="text-c">
+					<td>{$vo.aitem_id}</td>
+					<in name="info.type" value="$allowType" >
+						<td>{$vo.sku_id}</td>
+						<td>{$vo.parent_sku_id}</td>
+						<td>{$vo.item_id}</td>
+					</in>						
+					<td>
+						<notempty name="vo.item_img">
+							<a href="{$vo.item_img}" target="_blank">
+								<div style="max-height: 85px;overflow: hidden;">
+									<img  src="{$vo.item_img}" width="65px"/>
+								</div>
+							</a>
+							
+						</notempty>
+					
+					</td>
+					<td>{$vo.item_name}</td>
+					<td>￥{$vo.price}</td>
+					<td>￥{$vo.shop_price}</td>
+					<td>{$vo.store}</td>
+					<td>{$vo.weight}</td>
+					<!--<td>￥{$vo.post_fee}</td>-->
+					<!--<td>
+						<a  onClick="article_edit('{$vo.cat_name}','{:U('Home/Activity/aitemList',array('activityConfId'=>$vo['activity_config_id']))}','10001')">
+							<span class="label label-success radius" >查看</span>
+						</a>	
+					</td>					-->
+					<td class="f-14 td-manage">
+						<in name="info.type" value="$allowType" >
+							<!--<a style="text-decoration:none" class="ml-5"  onclick="member_edit('{$vo.item_name}-编辑活动商品','{:U('Home/Activity/updateAItem',array('aitemId'=>$vo['aitem_id']))}','4','','510')" title="编辑活动商品"><i class="Hui-iconfont">&#xe6df;</i></a>--> 
+						</in>
+						<in name="info.type" value="3,6" >
+							<a style="text-decoration:none" class="ml-5"  onclick="member_edit('{$vo.item_name}编辑','{:U('Home/Activity/ActivityItemEdit',array('aitemId'=>$vo['aitem_id'],'aid'=>$vo['aid']))}','4','','510')" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> 
+						</in>
+						<eq name="info.type" value="7" >
+							<a style="text-decoration:none" class="ml-5"  onclick="member_edit('{$vo.item_name}编辑','{:U('Home/Activity/combinateEdit',array('aitemId'=>$vo['aitem_id'],'aid'=>$vo['aid']))}','4','','510')" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> 
+						</eq>
+						<a href="javascript:void(0)" onclick="delAaitem('{$vo.aitem_id}','{$vo.item_name}')" title="删除{$vo.item_name}">
+							<i class="Hui-iconfont">&#xe6e2;</i>
+						</a>						
+					</td>
+				</tr>
+				</volist>
+			</tbody>
+		</table>
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$('.table-sort').dataTable({
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"aoColumnDefs": [
+	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+	  {"orderable":false,"aTargets":[0,8]}// 制定列不参与排序
+	]
+});
+
+/*资讯-添加*/
+function article_add(title,url,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*资讯-编辑*/
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*删除*/
+function delAaitem(aitemId,name){
+	layer.confirm('确认要删除<br/>'+name+'<br/>？',function(index){
+		$(".layui-layer-close1").click();
+		$.post('__APP__/Activity/delaitem',{aitemId:aitemId},function(data){
+			if(data['code'] == 1){
+				layer.msg(data['msg']);
+				location.reload();
+			}else{
+				layer.msg(data['msg']);
+				
+			}			
+		});
+		
+	});
+}
+
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}	
+
+</script> 
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+  <link rel="stylesheet" href="__ADMIN__lib/layui/css/layui.css">
+	<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+	<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />  
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style>
+	.cl{
+		padding: 10px;
+	}
+</style>
+<title>新增图片</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb">选择广告位
+	&nbsp;&nbsp;
+	<a href="{:U('Home/Mallconfigure/choicePosition',array('groupId'=>$groupId))}">
+		<button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-small">所有广告位</button>
+	</a>
+	<a href="{:U('Home/Mallconfigure/choicePosition',array('groupId'=>$groupId,'type'=>'has'))}">
+		<button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-small">已关联广告位</button>
+	</a>
+</nav>
+	<form action="{:U('Home/Mallconfigure/choicePosition')}" method="get" style="float: right;">
+	    <div class="layui-input-inline">
+	      <input name="posname" value="{$posname}" placeholder="广告位名称或描述" lay-verify="email" autocomplete="off" class="layui-input" type="text" style="border: 1px solid #1E9FFF;">
+	    </div>
+	    <input name="groupId" value="{$groupId}" type="hidden" />
+	    <input name="isSercah" value="sercah" type="hidden" />
+		<button class="layui-btn layui-btn-normal layui-btn-radius layui-btn-small">搜索</button>
+	</form>
+<form class="layui-form" action="{:U('Mallconfigure/choicePositionDeal')}" id="submitFrom" method="post"  style="padding:28px 20px 5px 5px;">
+	<div class="row cl">
+	    <input name="groupId" value="{$groupId}" type="hidden" />
+	    <input name="isSercah" value="{$isSercah}" type="hidden" />
+    	<volist name="allPostion" id="postion">
+    		<span onmouseover="giveTips('{$postion.position_desc}',this)">
+	      		<input id="pos"  name="checkedPostion[]" title="{$postion.position_name}" value="{$postion.position_id}" <in name="postion.position_id" value="$relationPos">checked="checked"</in> type="checkbox"  >
+    		</span>
+    	</volist>
+	  </div>
+		<div class="row cl" style="position: absolute;bottom: 0px;left: 80px;">
+			<div class="col-8 col-offset-4">
+				<button  class="btn btn-success radius" type="submit"  style="width: 400px;">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layui/layui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+  layui.use(['layer', 'form'], function(){
+		  var layer = layui.layer,form = layui.form();
+	});
+function giveTips(title,obj){
+	layer.tips(title, obj, {
+	  tips: [3, '#5FB878']
+	});	
+}
+
+</script>
+</body>
+</html>

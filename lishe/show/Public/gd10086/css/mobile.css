@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*加载更多页面*/
+
+
+
+/*END*/
+
+a{text-decoration:none;}
+
+ul li{list-style:none;}
+
+img{border:none;}
+
+.ul-btn{ width:670px; margin-left:auto; margin-right:auto; text-align:center; }
+
+.ul-btn li{float:left;  padding-left:10px;}
+
+.layout{background:#d2f5fd; margin-top:-25px;}
+
+.pt{ text-align:center; padding-top:30px;}
+
+.eat-pt{width:1000px; margin:0 auto; text-align:center; padding-top:50px;}
+
+.eat-pt p{color:#0a0909; font-size:12px; padding-top:20px; line-height:25px;}
+
+.eat-ul{width:1000px;margin:0 auto;}
+
+.eat-ul ul{float:left; border:#CCC solid 1px; margin:10px 10px;background:#FFF; padding:10px 0;}
+
+.eat-ul img{width:175px; height:175px;}
+
+
+
+.eat-p{clear:both; background:#bbdae1; width:980px; margin:0 auto; text-align:center; height:30px; line-height:30px;}
+
+.eat-p  a{ color:#262c2e; font-size:12px;}
+
+
+
+
+
+.eat-li a{font-size:12px; color:#000000; padding-left:5px;}
+
+.eat-li2 {font-size:11px; color:#999999; padding-left:5px; text-decoration:line-through;}
+
+.eat-li2 span{font-weight:bold; font-size:11px; padding-right:5px;}
+
+.eat-sp{font-size:12px; color:#c7241d;font-weight:bold; padding-left:5px; float:left}
+
+.eat-sp span{font-size:15px;}
+
+.eat-sp2{ float:right; padding-right:5px;}
+
+
+
+.eat-sp2 a{color:#FFF; background:#c7241d; padding:3px 8px;border-radius:5px;}
+
+.eat-lib{margin-top:-18px; padding-left:5px;}
+
+.eat-lib a{font-size:12px; color:#000000;}
+
+.bed-pt{width:1000px; margin:0 auto; text-align:center; padding-top:90px;}
+
+.bed-pt p{color:#0a0909; font-size:12px; padding-top:20px; line-height:25px;}
+
+.bed-ul{width:1000px;margin:0 auto;}
+
+.bed-ul ul{float:left; border:#CCC solid 1px; margin:10px 10px;background:#FFF;}
+
+.bed-ul2{ height:245px;}
+
+.bed-ul3{ height:260px;}
+
+.bed-ul img{width:175px; height:175px;} 
+
+.eat-lir{margin-top:16px; padding-left:5px;}
+
+.eat-lir a{font-size:12px; color:#000000;}
+
+.appliance-pt{width:1000px; margin:0 auto; text-align:center; padding-top:90px;}
+
+.appliance-pt p{color:#0a0909; font-size:12px; padding-top:20px; line-height:25px;}
+
+.appliance-ul{width:1000px;margin:0 auto;}
+
+.appliance-ul ul{float:left; border:#CCC solid 1px; margin:10px 10px;background:#FFF;height:255px;}
+
+.appliance-ul img{width:175px; height:175px;}
+
+.kitchen-pt{width:1000px; margin:0 auto; text-align:center; padding-top:90px;}
+
+.kitchen-pt p{color:#0a0909; font-size:12px; padding-top:20px; line-height:25px;}
+
+.JD-pt{width:1000px; margin:0 auto; text-align:center; padding-top:90px;}
+
+.JD-pt p{color:#ef1414; font-size:14px; line-height:25px;}
+
+.eat-lib2{margin-top:5px; padding-left:5px;}
+
+.eat-lib2 a{font-size:12px; color:#000000;}
+
+.eat-li3{margin-top:21px;}
+
+.eat-li3 a{font-size:12px; color:#000000; padding-left:5px;}
+
+
+
+
+
+/*导航*/
+
+.wec{font-size:16px; background:url(../images/cp.png) no-repeat; width:120px; height:50px;}
+
+.yu{font-size:16px;background:#4bbaf0; width:120px; height:50px;box-shadow:0px 0px 10px 0px #307698; margin-top:-2px;}
+
+
+
+.yu3{font-size:22px;}
+
+.yu4 img{border:none;}
+
+.yu5{background-color:#1a96d3; margin-top:-5px; padding:3px 0;}
+
+.side-bar{width:120px;position:fixed;right:200px;top:200px;text-align:center;color:#FFFFFF;font-size:14px;border-radius:6px; z-index:10;}
+
+.sb-cell span{display:block;margin-bottom:2px;}
+
+.side-sprite{background:url(../images/cpLogo.png) no-repeat; width:149px; height:120px; position:absolute; top:-26%; z-index:-1;}
+
+@media (max-width: 1366px){.side-bar{width:120px;position:fixed;right:5%;top:200px;background-color:#1a96d3;text-align:center;color:#FFFFFF;font-size:14px;border-radius:6px;}
+
+}

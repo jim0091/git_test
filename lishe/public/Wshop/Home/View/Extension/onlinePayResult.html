@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="email=no" name="format-detection" /> 
+	<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+	<meta name="apple-mobile-web-app-title" content="">
+	<title><if condition="$paymentInfo['status'] eq 'succ'">支付成功<else/>支付失败</if></title>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Extension/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__VIEW__Extension/css/pullNew2.css">
+	<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+	<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+</head>
+<body class="OverBg">
+	<div class="regOverCon">
+		<div class="rocImg1">
+			<if condition="$paymentInfo['status'] eq 'succ'">
+				<img src="__VIEW__Extension/images/overImg2.png" style="height: auto;" />
+			<else/>
+				<img src="__VIEW__Extension/images/error.png" style="height: auto;" />
+			</if>
+		</div>
+		<if condition="$paymentInfo['status'] eq 'succ'">
+			<p class="success success2">支付成功</p>
+		<else/>
+			<p class="success success2">支付失败</p>
+		</if>
+		<div class="product mauto">
+			<div class="productImg"><img src="{$orderInfo['pic_path']}" /></div>
+			<p class="proName">{$orderInfo['title']}</p>
+		</div>
+
+	</div>
+	<if condition="$paymentInfo['status'] eq 'succ'">
+		<if condition="$orderInfo['status'] eq 'WAIT_COMMENT'">
+			<div class="goBuyBtn mauto" >已领取</div>
+			<div style="font-size:14px; width:100%;text-align:center;color:#9c9a9a; margin-top:5px;">
+				<a href="{:U('Index/index')}">去商城</a>
+			</div>
+		<else/>
+			<div class="goBuyBtn mauto" data-paymentId="{$paymentInfo['payment_id']}" data-tid="{$orderInfo['tid']}">去领取</div>
+		</if>
+		
+	<else/>
+		<div class="goBuyBtn mauto">未支付，无法领取</div>
+		<div style="font-size:14px; width:100%;text-align:center;color:#9c9a9a; margin-top:5px;">接口返回失败，请联系现场工作人员</div>
+	</if>
+</body>
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>  
+<style type="text/css">
+.Wtankdiv {height: 5rem;}
+.Tankclose {margin-top: 0;}
+.Tankpt {margin-top: -2%;}
+.Tanksentences {font-size: 0.3rem;}
+.Tanksurebtn a {width: 2rem; height: 0.75rem; line-height: 0.8rem; margin-top: 4%; font-size: 0.35rem; }
+.Tankclose img{margin-bottom: 5%;}
+@media screen and (min-width: 410px){
+	.Tanksurebtn a{margin-top: 5% !important; }
+}
+</style>
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript">
+	(function(){
+		var html = document.documentElement;
+		var whtml = html.getBoundingClientRect().width;
+		html.style.fontSize = whtml/7.5 + 'px';
+
+		document.ontouchmove = function(ev){
+			ev.preventDefault();
+		}
+	})()
+
+	//限制字符个数
+	$('.proName').each(function(){
+		var maxwidth=24;
+		if($(this).text().length>maxwidth){
+			$(this).text($(this).text().substring(0,maxwidth));
+			$(this).html($(this).html()+'...');
+		}
+	});
+	//领取
+	$(".goBuyBtn").click(function(){
+		$(".topLoading").show();
+		$(this).hide();
+		$(".conpayHide").show();
+		var paymentId = $(this).attr('data-paymentId');
+		var tid = $(this).attr('data-tid');
+		$.ajax({
+			type:"POST",
+			url:"__APP__/Extension/confirmReceive",
+			data:{paymentId:paymentId,tid:tid},
+			dataType:'text',
+			success:function(result){
+				var data=eval(result);
+				if (data[0] == 1) {
+					window.location.href="__APP__/Extension/receiveed/mobile/{$mobile}/sign/{$sign}";	
+				}
+				if (data[0] == 0) {
+					$(".topLoading").hide();
+					$(".conpay").show();
+					$(".conpayHide").hide();
+					opLayer('open',data[1]);
+					return;
+				}
+			}
+		});
+	});
+
+</script>
+</html>

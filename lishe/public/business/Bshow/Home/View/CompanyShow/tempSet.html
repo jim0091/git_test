@@ -1,0 +1,33 @@
+     <div class="mod-main" style="min-height: 550px;">
+     	<volist name="list" id="vo">
+	        <ul>
+	          <li style="overflow: hidden;height: 150px"><img src="{$vo.temp_pic}" with="370"></li>
+	          <li class="mod-user" style="height:45px;"><p>{$vo.temp_name_zh}</p>
+	          	<if condition="$vo.temp_price eq 0">
+	          		免费
+	          		<else/>
+	          		￥{$vo.temp_price}
+	          	</if>
+	          </li>
+	          <li class="mod-btn"><a href="#" class="preview2">预   览</a>
+	          	<if condition="$vo.temp_name eq $isuse">
+		          	<a  class="used">已使用</a>
+	          		<else/>
+        			<a href="javascript:void(0);" class="used2" onclick="tempUse({$vo.temp_id})">使   用</a>
+	          		
+	          	</if>
+	          	
+	          </li>
+	        </ul>
+     		
+     	</volist>
+ 
+     </div>
+       <ul class="mod-fy">
+       	<input type="hidden" id="nowpage" value="{$pageinfo.current}" />
+			<li class="pager" style="cursor: pointer;">{$pagestr}</li>
+            <li>第<span>{$pageinfo.current}/{$pageinfo.totalpage}</span>页</li>
+            <li>共<span>{$pageinfo.count}</span>记录</li>
+            <li><input type="number" id="pageval" min="0">页</li>
+            <li style="cursor: pointer;"><a onclick="topage()">确定</a></li>
+          </ul>

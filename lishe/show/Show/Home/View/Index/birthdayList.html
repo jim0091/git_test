@@ -1,0 +1,16 @@
+      
+      
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/page.css">
+      
+     <volist name="list" id="vo">
+      <a href="{:U('Home/Index/birthdayDetail',array('personId'=>$vo['id']))}">
+              <ul>
+                <li><img src="{$img}{$vo.pic}"></li>
+                <li class="bith-user">{$vo.name}</li>
+                <li class="birth-zz">{$vo.position}</li>
+                <li class="birth-zz">***年{$vo.birthday}</li>
+              </ul>
+           </a>
+    </volist>
+    
+<div class="pager" style="cursor: pointer;text-align: center;border: 0px;margin-top: 20px;">{$pagestr}</div>

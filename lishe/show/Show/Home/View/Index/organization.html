@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/IndustryGather.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/GSbriefing.css">
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<title>企业架构-{$cname}</title>
+</head>
+
+<body>
+<!--头部-->
+<include file="Public/header"/>
+ <div style="clear:both;"></div>
+ 
+  <div class="Industry">
+      <div class="sumLeft">
+        <div class="left-top">
+           <p class="let-p">关于我们</p>
+           <ul>
+              <li  class="left-li"><a href="{:U('Home/Index/about')}">公司简介</a></li>
+              <li class="slect"><a href="{:U('Home/Index/organization')}">企业架构</a></li>
+           </ul>
+        </div>
+        <div class="left-bom">
+			<!--推荐阅读-->
+			<include file="Index/rememberRead"/>
+			<!--推荐阅读-->
+        </div>
+     </div>
+     <!--右边-->
+     <div class="gsRight">
+       <p class="gs-title">{$cname}</p>
+       <p><img <notempty name="pic">src="{$img}{$pic}"</notempty>></p>
+    </div>
+  </div>
+  
+  
+  
+  <div style="clear: both;"></div>   
+ <include  file="Public/footer"/>
+</body>
+</html>

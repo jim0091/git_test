@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>礼舍-订单中心</title>
+<meta name="keywords" content="礼舍,订单中心" />
+<meta name="description" content="礼舍,订单中心" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__PUBLIC__/wshop/css/base.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var opOrder=function (){
+		var op=$(this).attr('data');
+		var orderId=$(this).attr('data-id');
+		orderId=$.trim(orderId);
+		if(op=='refund'){
+			window.location.href="__APP__/Order/orderRefund/tid/"+orderId+"/currStautsNum/"+{$statusNum};
+		}
+		
+		if(op=='pay'){
+			$.get("{:U('Order/orderChgStatus')}",{orderId:orderId,statusNum:1},function(result){
+				var data=eval(result);
+				if(data[0]==1){
+					window.location.href="__APP__/Pay/pay/paymentid/"+data[1];
+				}else{
+					if(data[1]!=''){
+						alert(data[1]);
+					}else{
+						alert("支付失败！");
+					}
+					
+				}
+				
+			});
+		}
+		
+		//取消订单
+		if(op=='cancel'){
+			if(window.confirm('确定要取消订单吗？')){
+			$.get("{:U('Order/orderChgStatus')}",{orderId:orderId,statusNum:-1}, function(result){
+				if(result=='-1-succ'){
+					window.location.reload();
+				}else{
+					alert('订单取消失败，请重新尝试！');
+				}		
+			});
+		 }
+		}
+
+		//查看物流
+		if(op=='flow'){
+			 $.get("{:U('Order/orderChgStatus')}",{orderId:orderId,statusNum:4},function(result){
+			 	if(result != ''){
+			 		window.location="__APP__/Order/flow/orderId/"+orderId;
+			 	}else{
+			 		alert('配送信息异常');
+			 		return false;
+			 	}
+			 });
+		}
+		
+		//确认收货
+		if(op=='confirm'){
+			$.get("{:U('Order/orderChgStatus')}",{orderId:orderId,statusNum:3}, function(result){				 
+				if(result=='3-succ'){
+					alert('确认成功！');
+					window.location.reload();
+				}else{
+					alert('确认失败，请重新尝试！');
+				}		
+			});
+		}
+		
+		// if(op=='comment'){
+		// 	window.location.href='/index.php/User/comment/orderId/'+orderId;
+		// }
+		
+	}
+	$(function () {
+		$(".orderBtn a").bind("click", opOrder);
+	})
+</script>
+</head>   
+<body>
+
+<div class="head" style="border:0px solid red;background:#1e1d22;height:35px;">
+
+
+
+  <ul class="tool25" style="border:0px solid red;margin-top:4px;display:block; width:100%;">
+    <li style="width:20%; float:left;<if condition="$statusNum eq 0">border-bottom:3px solid #cc0000;</if>" class="orderCur">
+    	<a style="border:0px solid red;display:block; width:100%;" href="{:U('Order/orderList',array('status'=>0))}" >全部</a>
+    </li>
+    <li class="orderCur" style="width:20%; float:left;<if condition="$statusNum eq 1">border-bottom:3px solid #cc0000;</if>">
+    	<a style="border:0px solid red;display:block; width:100%;" href="{:U('Order/orderList',array('status'=>1))}">待付款</a>
+    </li>
+    <li class="orderCur" style="width:20%; float:left;<if condition="$statusNum eq 2">border-bottom:3px solid #cc0000;</if>">
+    	<a style="border:0px solid red;display:block; width:100%;" href="{:U('Order/orderList',array('status'=>2))}">待发货</a>
+    </li>
+    <li class="orderCur" style="width:20%; float:left;<if condition="$statusNum eq 3">border-bottom:3px solid #cc0000;</if>">
+    	<a style="border:0px solid red;display:block; width:100%;" href="{:U('Order/orderList',array('status'=>3))}">待收货</a>
+    </li>
+    <li class="orderCur" style="width:20%; float:left;<if condition="$statusNum eq 4">border-bottom:3px solid #cc0000;</if>">
+    	<a style="border:0px solid red;display:block; width:100%;" href="{:U('Order/orderList',array('status'=>4))}">待评价</a>
+    </li>
+  </ul> 
+</div>
+
+<div class="content c" style="border:0px solid red;margin-top:50px;font-size:12px;margin-bottom:38px;" >
+	<ul class="wareListLiShe" >
+	  <foreach name="sysTradeInfo" item="row1">
+		<li class="fs">
+			<!-- <div class="orderName" style="font-size:12px;border:1px solid red;margin-top:">
+				<font style="border:1px solid red;margin-left:-16px;">订单号：{$row1.tid}</font>
+				<b style="border:1px solid red;margin-top:0px;margin-right:5px;">{$row1.shop_name}</b>
+			</div> -->
+			<div style="border:0px solid red;padding:2px;font-size:12px;font-family:微软雅黑;background:#efefef;">
+				&nbsp;订单号：{$row1.tid}&nbsp;&nbsp;{$shop[$row1['shop_id']]}
+			</div>
+			<!-- <div class="" style="width:100%;font-size:12px;border:0px solid red;padding-left:8px;">(礼舍食品自营店自营店铺)</div> -->
+		</li>
+
+		 <foreach name="order[$row1['tid']]" item="row2">
+           
+			<li class="og">
+				<div class="listL l" style="height:80px;width:80px;border:0px solid red;">
+					<a href="{:U('Info/index',array('itemId'=>$row2['item_id']))}">
+						<img src="{$row2.pic_path}" style="width:80px;height:80px;"/>
+					</a>
+				</div>
+				<ul class="listR">
+					<dl class="listRT" style="border:0px solid red;word-wrap: break-word;word-break:break-all;"><a href="{:U('Info/index',array('itemId'=>$row2['item_id']))}">{$row2.title}</a></dl>
+					<dl class="listPrice">￥{$row2.price}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;×{$row2.num}
+						<!-- <font style="text-decoration:line-through;">￥21</font> -->
+					</dl>
+					<!-- <dl class="listPrice" style="margin-top:-1px;">&nbsp;×{$row1.num}</dl> -->
+					<div class="c"></div>
+				</ul>
+				<div class="c"></div>
+			</li>
+          
+	  </foreach>
+
+		<div class="c"></div>
+		<div class="orderNum">
+			 总价：<font style="color:red;">￥{$row1.payment}</font>(含运费：<font style="color:red;">￥{$row1.post_fee}</font>) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		</div>
+
+		<div class="orderBtn">
+		<if condition="$row1['status'] eq 'WAIT_BUYER_PAY'">
+			 <a data="pay" data-id="{$row1.tid}" style="background:#b51c16;">立即支付</a><a data="cancel" data-id="{$row1.tid}" class="del">取消订单</a>
+		</if>
+		<if condition="$row1['status'] eq 'TRADE_CLOSED_BY_USER'">
+			 <a data="" data-id="{$row1.tid}" class="del">订单已取消</a>
+		</if>
+		<if condition="$row1['status'] eq 'TRADE_CLOSED_BY_SYSTEM'">
+			 <a data="" data-id="{$row1.tid}" class="del">订单已取消</a>
+		</if>
+		<if condition="$row1['status'] eq 'TRADE_CLOSED_BY_ADMIN'">
+			 <a data="" data-id="{$row1.tid}" class="del">订单已取消</a>
+		</if>
+
+		<if condition="$row1['status'] eq 'WAIT_SELLER_SEND_GOODS'">
+			<if condition="$row1['order_status'] eq 'REFUND'">
+				<a data="" data-id="{$row1.tid}" class='del'>退款待审核</a>
+				<else />
+				 <a data="refund" data-id="{$row1.tid}" class='del'>申请退款</a>
+			</if>
+		</if>
+		
+		<if condition="$row1['status'] eq 'IN_STOCK'">
+			<a data="" data-id="{$row1.tid}" style="background:#5648FD;">备货中</a>
+		</if>
+		
+		<if condition="$row1['status'] eq 'WAIT_BUYER_CONFIRM_GOODS'">
+			<a data="confirm" data-id="{$row1.tid}" style="background:#b51c16;">确认收货</a>
+			<a href="{:U('Home/Order/flow',array('orderId' => $row1['tid']))}" class="del">查看物流</a>
+			<!-- <if condition="$row1['order_status'] eq 'REFUND'">
+				<a data="" data-id="{$row1.tid}" class='del'>退款待审核</a>
+			<else />
+				 <a data="refund" data-id="{$row1.tid}" class='del'>申请退款</a>
+			</if> -->
+		</if>		
+		<if condition="$row1['status'] eq 'TRADE_FINISHED'">
+			 <a data="" data-id="{$row1.tid}" class="del">已完成</a>
+		</if>
+		<if condition="$row1['order_status'] eq 'REFUND'">
+			<a data="" data-id="{$row1.tid}" class='del'>有退款<if condition="$row1['refund_fee'] gt 0">(退款金额:￥{$row1.refund_fee})</if></a>
+		</if>
+		<input type="hidden" id="orderId" value="">
+		</div>
+		<div class="c"></div>
+	 </foreach>
+	</ul>
+
+</div>
+<style type="text/css">
+   span{padding-left: 10px; font-family: '微软雅黑';font-size: 13px; font-weight: normal; color: red;}
+	.mainmenu-txt{
+		color:#333333;
+	}
+	.content { margin-top:80px;margin-bottom:40px; }
+	.wareListLiShe{ clear:both; margin:10px auto; width:100%;background-color: #EFEFEF}
+	.wareListLiShe a{text-decoration: none;}
+	.wareListLiShe a:hover{text-decoration: none;}
+	.wareListLiShe li{width:100%;background-color:#fff;float: left;border-top:#F0F0F0 1px solid}
+	.wareListLiShe li.fs{margin-top:5px;}
+	.wareListLiShe li.og{background-color:#f7f7f7;margin-bottom:3px;}
+	.wareListLiShe li .orderName{width:100%;line-height:35px;font-family:微软雅黑;text-indent:20px;}
+	.wareListLiShe li .orderName b{display:block;float:right;text-align: right;margin-right:20px}
+	.wareListLiShe .orderNum{width:100%;line-height:35px;text-align:right;float: left;border-top:#F0F0F0 1px solid;background-color:#fff;}
+	.wareListLiShe .orderBtn{width:100%;height:50px;text-align:right;float: left;border-top:#F0F0F0 1px solid;background-color:#fff;border-bottom:#F0F0F0 1px solid;}
+	.wareListLiShe .orderBtn a{line-height:30px;text-align: center;background-color:#FF9300;display: block;padding:0 10px;float: right;color:#fff;border-radius:3px;margin:10px 20px 0 0;}
+	.wareListLiShe .orderBtn a.del{border:#d6d6d6 1px solid;color:#333;background-color:#fff;margin-right:10px}
+
+	.listL{ float:left;width:120px;height:75px;overflow: hidden;margin:5px 0 5px 5px;border:#d6d6d6 1px solid}
+	.listR{ float:right;width:200px;}
+	.listRT{font-family:微软雅黑;height:30px;line-height:20px;}
+	.listPrice {height:18px;line-height:18px;color:#999;margin-top:35px; }
+
+	/*.listRFoot{ text-indent:0.5em; color:#a00;font:normal bold 12px/25px Tahoma,Verdana, Geneva,"宋体"; position:absolute; bottom:0px; width:100%; }
+	.listRFoot span{ width:25px; height:25px; display:block; float:right; background:url(../images/listICO.png) 0px -65px no-repeat;}*/
+	/*.distance{ color:#999}*/
+	
+</style>
+
+<div style="width:100%;height:15px"></div>
+<include file="Public/bottom"/>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="email=no" name="format-detection" /> 
+	<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+	<meta name="apple-mobile-web-app-title" content="">
+	<title>领取成功！</title>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Extension/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="__VIEW__Extension/css/pullNew2.css">
+</head>
+<body class="OverBg" style="background-image: url(__VIEW__Extension/images/sueccss2.png);">
+	
+</body>
+	<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript">
+	(function(){
+		var html = document.documentElement;
+		var whtml = html.getBoundingClientRect().width;
+		html.style.fontSize = whtml/7.5 + 'px';
+
+		document.ontouchmove = function(ev){
+			ev.preventDefault();
+		}
+	})();
+
+	$(document).ready(function() {    
+        function jump(count) {    
+            window.setTimeout(function(){    
+                count--;    
+                if(count > 0) {    
+                    $('.num').html(count);    
+                    jump(count);    
+                } else {    
+                    location.href="{:U('Extension/share')}";
+                }    
+            }, 1000);    
+        }    
+        jump(3);    
+    }); 	
+</script>
+</html>

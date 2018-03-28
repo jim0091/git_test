@@ -1,0 +1,14 @@
+		<empty name="baseInfo">
+			<volist name="expressInfo" id="vo">
+				<div style="margin-top: 20px;">
+					<span class="zihui">{$vo.content}</span>
+				</div>
+				<div style="margin-top: 5px;">
+					<small class="zihui">{$vo.msgTime}</small>
+				</div>	
+			</volist>
+		<else/>
+			<div style="margin-top: 20px;">
+				<span class="zihui">暂无物流信息</span>
+			</div>			
+		</empty>

@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0px;}
+ul li{list-style:none;}
+a{text-decoration:none;}
+img{ border:0px;}
+body{font-family:"微软雅黑"; background:#FFF;}
+
+.heder{background:#fcfcfc;height:30px;}
+.heder ul{width:800px; margin:0 auto; font-size:14px;}
+.heder ul li{float:left; line-height:30px; padding-left:15px;}
+.heder ul li a{color:#666;}
+.nva-u{padding-left:10px;color:#F00;} 
+
+.mohhtBan{background:url(../images/MohhtBanner.png) no-repeat center center; width:100%; height:600px;}
+.mohhtBanLogo{width:1200px; margin:0 auto; padding-top:50px;}
+/*主内容*/
+.mohhtCt{background:url(../images/Mohhtbg.png); width:100%; height:auto; text-align:center; clear:both;}
+.hdflakes{width:1200px; margin:0 auto;padding-top:60px;}
+.flakes{width:1200px; margin:0 auto;margin-top:50px; clear:both;}
+.flak2{float:left;}
+.flak{float:right; margin-right:125px; margin-top:-200px;}
+.crab{width:1200px; margin:0 auto;margin-top:50px; clear:both;}
+.crabpt{float:left;}
+.crabbtn{float:right; display:block; margin-right:85px; margin-top:-200px;}
+
+.Mooparts{width:1200px; margin:0 auto;margin-top:50px; clear:both;}
+.Mooparts a img{width:20%; margin-top:30px; margin-right:50px;}
+.hairyCrab{width:1200px; margin:0 auto;margin-top:60px; clear:both;}
+.harcr{float:left;}
+.partsOne{width:1200px; margin:0 auto;margin-top:50px; clear:both; border:#ce3c5a dashed 2px; height:1000px;}
+.ptone{vertical-align:middle; padding-top:20px; float:left; padding-left:50px;}
+.ptone2{float:right; margin-right:110px; margin-top:-285px;}
+.ptone5{float:right; margin-right:105px; margin-top:-525px;}
+.ptone3{float:right; margin-right:75px; margin-top:-515px;}
+.ptone4{float:right; margin-right:45px; margin-top:-490px;}
+.footwords{width:1200px; margin:0 auto;margin-top:60px; clear:both; padding-bottom:60px;}

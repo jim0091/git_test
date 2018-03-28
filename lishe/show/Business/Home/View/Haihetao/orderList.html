@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__PUBLIC__/activity/nuclear/css/orders.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/card.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<title>海核淘500元购-活动订单</title>
+</head>
+<style type="text/css">
+    .orderul{height:180px;border-radius:3px;border: 1px solid #CAC5C5; margin-top:8px; margin-bottom:8px;}
+    .orderul{width: 100%}
+    .orderul li{float:left; font-size:16px; line-height:30px; margin-left:10px;}
+    .orderul li.ordertid{width: 100%; text-align: left; font-size: 12px;}
+    .orderul li.img{width: 15%}
+    .orderul li.title{width: 80%;text-align: right;font-size: 14px;}
+    .orderul li.price{width: 80%;text-align: right;font-size: 14px;}
+    .orderul li.address{width: 80%;text-align: right;font-size: 14px;}
+    .orderul li.remark{width: 80%;text-align: right;font-size:14px;}
+    .orderul li.status{width: 80%;text-align: right;font-size:14px;}
+</style>
+<body>
+    <include file="Public/haihetao/commonHeader" />
+  
+    <div class="layout" style="margin:0 auto; width:100%">
+        <div style="margin:0 auto; width:70%;text-align:center;">
+            <volist name="orderList" id="vo" >
+            <ul class="orderul" >
+                <li class="ordertid">订单号：{$vo['atid']}</li>
+                <li class="img"><img src="{$vo['item_img']}" width="120px" height="120px" ></li>
+                <li class="title">商品名称：{$vo['title']}</li>
+                <li class="price">价格：￥{$vo['total_fee']}</li>
+                <li class="address">配送地址：{$vo['receiver_state']}&nbsp;{$vo['receiver_city']}&nbsp;{$vo['receiver_district']}&nbsp;{$vo['receiver_address']}</li>
+                <li class="remark">备注：{$vo['buyer_message']}</li>
+                <li class="status">
+                    状态：<if condition="$vo['status'] eq 'WAIT_BUYER_PAY'">待支付
+                        <elseif condition="$vo['status'] eq 'WAIT_SELLER_SEND_GOODS'"/>待发货
+                        <elseif condition="$vo['status'] eq 'WAIT_BUYER_CONFIRM_GOODS'"/>确认收货
+                        待支付
+                        </if>
+                </li>
+            </ul>
+            </volist>
+        </div>
+    </div>
+
+    <include file="Public/haihetao/commonFooter" />
+</body>
+</html>
+
+
+

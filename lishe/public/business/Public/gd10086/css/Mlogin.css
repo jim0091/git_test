@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0; margin:0;}
+img{border:none;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+body{font-family:"微软雅黑"; font-size:12px;}
+
+.Mlogin{background:url(../images/loginbg.png) center center; width:100%; height:960px;}
+.loginframe{width:370px; padding-top:70px; float:right; margin-right:10%;}
+.balloons{text-align:right;}
+.loginf{width:300px; height:330px; background:#FFF; margin-top:-3px; text-align:center; border-radius:5px;}
+.Mtitle{font-size:25px; color:#0eacda; height:65px; line-height:65px; border-bottom:#0eacda dashed 1px;}
+.txt{width:230px; height:40px; border:none; color:#666; font-size:14px;margin-top:20px; padding-left:35px;}
+.user{background:#eeeeee url(../images/Muser.png) no-repeat 10px center;}
+.pwd{background:#eeeeee url(../images/Mpwd.png) no-repeat 10px center;}
+.afind{height:40px; line-height:40px; padding-top:10px;}
+.aLeft{float:left; font-size:14px; color:#0eacda; margin-left:20px;}
+.aRight{float:right;font-size:14px; color:#0eacda; margin-right:15px;}
+.Mbtn{margin-top:20px;}
+.Mbtn a{font-size:20px; color:#FFF; background:#0eacda; display:block;width:260px; margin:0 auto; height:35px; line-height:35px;}

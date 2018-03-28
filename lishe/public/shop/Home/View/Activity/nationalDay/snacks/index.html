@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{$cat_name}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="/shop/Home/View/Activity/nationalDay/snacks/css/snack.css">
+	<script src="/shop/Home/View/Activity/nationalDay/snacks/js/jquery-1.9.1.min.js"></script>
+	<script src="/shop/Home/View/Activity/nationalDay/snacks/js/snack.js"></script>
+	<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+<body>
+	<div class="wrap">
+		<!-- 横幅 -->
+		<div class="banner">
+			<ul class="imgList">
+				<li class="current"><a href="#event3"><img src="/shop/Home/View/Activity/nationalDay/snacks/images/banner1.jpg"></a></li>
+				<li><a href="#event2"><img src="/shop/Home/View/Activity/nationalDay/snacks/images/banner2.jpg"></a></li>
+				<li><a href="#event1"><img src="/shop/Home/View/Activity/nationalDay/snacks/images/banner3.jpg"></a></li>
+			</ul>
+		</div>
+
+		<!-- 活动规则 -->
+		<div class="rules">
+		</div>
+
+		<!-- 商品列表 -->
+		<div class="content_wrap">
+			<div class="content">
+				<foreach name="actCateInfo" item="row1" key="i">
+
+					<div id="event{$i + 1}"></div>
+					<ul>
+
+						 <foreach name="info" item="row">
+						 	<if condition="$row1['activity_config_id'] eq $row['cate_id']">
+							<li>
+								<a target="_blank" class="pics" href="/shop.php/Info/index/itemId/{$row['item_id']}/from/{:md5($row['item_id'])}">
+									<img src="{$row['image_default_id']}"></a>
+								<div class="info">
+									<p>{$row['title']}</p>
+									<div class="price">￥{$row['price']|number_format=###, 2, '.', ''}</div>
+									<a target="_blank" class="buybtn" href="/shop.php/Info/index/itemId/{$row['item_id']}/from/{:md5($row['item_id'])}">立即购买</a>
+								</div>
+							</li>
+						</if>
+				     </foreach>
+						 
+					</ul>
+			</foreach>
+
+				<!-- <div id="event2"></div>
+				<ul>
+					<li></a></li>
+					<li></a></li>
+					<li></a></li>
+					<li></a></li>
+				</ul>
+				<div id="event3"></div>
+					<ul>
+					<li></a></li>
+					<li></a></li>
+					<li></a></li>
+					<li></a></li>
+				</ul> -->
+
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

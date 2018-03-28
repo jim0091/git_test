@@ -1,0 +1,221 @@
+
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/corporateBf.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/font-awesome.min.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/jquery.orgchart.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/style.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+<style type="text/css">
+.orgchart .second-menu-icon {
+	transition: opacity .5s;
+	opacity: 0;
+	right: -5px;
+	top: -5px;
+	z-index: 2;
+	color: rgba(68, 157, 68, 0.5);
+	font-size: 18px;
+	position: absolute;
+}
+.orgchart .second-menu-icon:hover {
+	color: #449d44;
+}
+.orgchart .node:hover .second-menu-icon {
+	opacity: 1;
+}
+.orgchart .node .second-menu {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: -70px;
+	border-radius: 35px;
+	box-shadow: 0 0 10px 1px #999;
+	background-color: #fff;
+	z-index: 1;
+}
+.orgchart .node .second-menu .avatar {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+}
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		$(".{$show}").show();
+	})
+</script>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+
+          <!--企业简介管理-->
+          <div class="qybriefing" style="display: none;">
+             <p class="qy-tit">企业简介管理</p>
+              <ul class="qy-ul">
+                  <li class="cs-des"><span style="color:#F00;">*</span>
+                  	标题：<input type="text" id="title" class="text" value="{$comProfile.com_profile_title}"/><span class="ts">不超过20字</span></li>
+                  <li class="cs-des"><span style="color:#F00">*</span>
+                  	正文：<input type="textarea" id="content" value="{$comProfile.com_profile_content}" class="text2"/><span class="ts">不超过100字</span></li>
+               </ul>
+               <div class="CP-one">
+                 <ul class="cpo-left">
+                 <li class="cpo-btn"><a href="javascript:void(0)" onclick="companypicFile.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>注意图片尺寸</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">预览</li>
+                    <li class="cpo-pt"><img id="acompanypic" 
+                    	<notempty name="comProfile.com_profile_pic">
+                    		src="{$comProfile.com_profile_pic}"
+                    	</notempty>                    
+                   width="300px"
+                  ></li>
+                    <li class="cpo-pt">1000PX*750PX</li>
+                 </ul>
+      			<input type="file" id="companypicFile" style="display: none;" name="companypicFile" onchange="uploadPic('companypic');"/>
+				<input type="hidden" id="companypic" value="{$comProfile.com_profile_pic}">    
+				<input type="hidden" id="modify" value="0">                  
+                 <p class="cpo-btn2"><a href="javascript:void(0)" onclick="sure('companypic')" class="sure">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></p>
+              </div>
+          </div>
+ 
+ 
+ <script>
+ 		function uploadPic(types){
+		var inputName = types+'File';
+		var img=$('#'+types).val();
+		var delurl="__APP__/CompanyShow/delImg/channel/brand/file/"+img;
+		if(img!=''){
+			$.get(delurl, function(result){
+			});
+		}
+		urls="__APP__/CompanyShow/uploadImg/channel/brand/inputName/"+inputName+"/types/"+types;
+		$.ajaxFileUpload ({
+			url :urls,
+			secureuri :false,
+			fileElementId :inputName,
+			dataType : 'text',
+			success : function (data,status){
+				if(data!='undefined'){
+					var dataArr=eval("("+data+")");
+					if(dataArr[0]<=0){
+						if(dataArr[0]==-4){
+							alert(dataArr[1]);
+						}else{
+							alert('Error：'+dataArr[1]);
+						}
+					}else{
+						$("#a"+types).attr("src","/business/"+dataArr[1]);
+						$('#modify').val(1);
+						$('#'+types).val(dataArr[1]);
+					} 
+				} 
+			}, 
+			error: function (data, status, e){
+				alert('Faild！');
+			}
+		});
+	}
+	function sure(types){
+		var fileload=$("#"+types).val();
+		var title=$("#title").val().trim();
+		var content=$("#content").val().trim();
+		if(title.length>20){
+			alert("标题不能超过20字!");
+			return false;			
+		}else if(title==""){
+			alert("标题不能为空!");
+			return false;			
+		}
+		if(content.length>100){
+			alert("正文内容不能超过100字!");
+			return false;			
+		}else if(content==""){
+			alert("正文内容不能为空!");
+			return false;			
+		}		
+		
+		if(!fileload){
+			alert("还未上传海报图片!");
+			return false;
+		}else{
+		urls="__APP__/Show/modifyProfile";
+		var modify=$('#modify').val();
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'file='+fileload+'&title='+title+'&content='+content+'&modify='+modify,
+				success:function(data){
+					if(data){
+						
+						alert(data);
+					}
+				}
+			});
+		}
+	}
+ 	
+ </script>        
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <!--企业架构管理-->
+          <div class="qyinfrastructure" style="display: none;">
+            <p class="qy-tit">企业架构管理</p>
+               <!--组织架构-->
+               <div class="CP-one">
+                 <ul class="cpo-left">
+                 <li class="cpo-btn"><a href="javascript:void(0)" onclick="frameworkFile.click()"><img src="__PUBLIC__/companyShow/images/logoAdd.png">选择图片</a></li>
+                 <li class="cpo-des"><p>只支持JPG、PNG、GIF</p><p>注意图片尺寸</p></li>
+                 </ul>
+                 <ul class="cpo-right">
+                    <li class="cpo-ti">                	
+                    	<empty name="comProfile.framework_pic">
+                    		示例
+                    		<else/>
+	              			      预览
+                    	</empty></li>
+                    <li class="cpo-pt"><img id="aframework" 
+                    	<notempty name="comProfile.framework_pic">
+                    		src="{$comProfile.framework_pic}"
+                    		<else/>
+            				src="__PUBLIC__/companyShow/images/jiagoupic.png"
+                    	</notempty>                       	
+                    	  width="300px"></li>
+                    <li class="cpo-pt">1000PX*750PX</li>
+                 </ul>
+      			<input type="file" id="frameworkFile" style="display: none;" name="frameworkFile" onchange="uploadPic('framework');"/>
+				<input type="hidden" id="framework">                  
+                 <p class="cpo-btn2"><a href="javascript:void(0)" onclick="sublic('framework')" class="sure">确   定</a><a href="javascript:void(0)" class="preview">预   览</a></p>
+             </div>
+          </div>
+<script>
+		function sublic(types){
+		var fileload=$("#"+types).val();
+		if(!fileload){
+			alert("还未上传海报图片!");
+			return false;
+		}else{
+		urls="__APP__/Show/modifyProfile";
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'frameworkPic='+fileload,
+				success:function(data){
+					if(data){
+						
+						alert(data);
+					}
+				}
+			});
+		}
+	}
+	
+	
+</script>    
+    

@@ -1,0 +1,160 @@
+[ 2017-07-25T10:19:33+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:20:09+08:00 ] ::1 /show/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:23:00+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:26:38+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:13+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:13+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:14+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:14+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:14+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:14+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:15+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:15+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:15+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+
+[ 2017-07-25T10:29:38+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [8] Undefined index: id E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 48 行.
+NOTIC: [8] Undefined index: userName E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 49 行.
+NOTIC: [8] Undefined index: id E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 51 行.
+NOTIC: [8] Undefined index: id E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 59 行.
+NOTIC: [8] Undefined index: comId E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 60 行.
+NOTIC: [8] Undefined index: userName E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 61 行.
+NOTIC: [8] Undefined index: index E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 62 行.
+NOTIC: [8] Undefined index: refer E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 63 行.
+NOTIC: [8] Undefined variable: action E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 65 行.
+ERR: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+
+[ 2017-07-25T10:30:01+08:00 ] ::1 /show/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [2] include_once(E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php): failed to open stream: No such file or directory E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+NOTIC: [2] include_once(): Failed opening 'E:\WorkSpace\php\show\Show\Home\Controller/plugin/mobile/checkMobile.php' for inclusion (include_path='.;C:\php\pear') E:\WorkSpace\php\show\Show\Home\Controller\CommonController.class.php 第 27 行.
+

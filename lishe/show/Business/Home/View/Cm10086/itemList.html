@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/cm10086/css/Mobilemalls.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<title>商品列表-中国移动在线服务公司</title>
+</head>
+
+<body>
+    <!--头部-->
+  <include file="Public/cm10086/header" />
+  <!--banner-->
+	  <div class="Mbanner2" style="background: url({$tempContent['banner']}) no-repeat center "></div>
+	  <p style="text-align: center;">{$tempContent['content']}</p>
+  <!--分类搜索-->
+  <div class="siftings">
+     <input type="hidden" id='newcfgId' value="{$cfgId}">
+    <input type="hidden" id='newcatId' value="{$catId}">
+    <input type="hidden" id='ajaxpost' value="1">
+    <input type="hidden" id="findPrice" value="">
+    <input type="hidden" id="sortPrice" value=""> 
+	 <input type="hidden" id="sortProfit" value="">
+	 <input type="hidden" id="newpage" value=""> 	
+     <ul class="lopic">
+       <li style="font-size:14px; color:#666;">价格：</li>
+	    <li class="active findPrice"><input type="hidden" value="0">不限</li>
+	    <li class="findPrice"><input type="hidden" value="1-99">￥100以下</li>
+	    <li class="findPrice"><input type="hidden" value="100-199">￥100-199</li>
+	    <li class="findPrice"><input type="hidden" value="200-299">￥200-299</li>
+	    <li class="findPrice"><input type="hidden" value="300-399">￥300-399</li>
+	    <li class="findPrice"><input type="hidden" value="400-499">￥400-499</li>
+	    <li class="findPrice"><input type="hidden" value="500-599">￥500-599</li>
+	    <li class="findPrice"><input type="hidden" value="600-699">￥600-699</li>
+	    <li class="findPrice"><input type="hidden" value="700-0">￥700以上</li>
+     </ul>
+     <ul class="siftingsul">
+       <li style="font-size:14px; color:#666;">筛选条件：</li>
+        <li ><a href="javascript:void(0)" class="rk sortProfit" style="border: 0px none;color: #ff2a2a;font-size: 14px;"><input type="hidden" value="desc">默认</a></li>
+        <li >
+        	<a href="javascript:void(0)" class="rk sortPrice"  style="border: 0px none;color: #333333;">
+	        	<input type="hidden" value="asc">
+	    		  <span id="pricedesc" style="font-size: 14px;"> 价格&darr;</span> 
+	    		  <span  id="priceasc" style="display: none;font-size: 14px;"> 价格&uarr;</span> 
+       	 </a>
+        </li>    
+		<li class="pricput" style="padding-left:35px;">
+		￥<input type="text"  class="findPriceLeft findPriceInp txt2" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="7" value="">
+		-
+		￥<input type="text" class="findPriceRight findPriceInp txt2"  onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="7" value="">
+		</li>
+		<li>        
+		<input type="text" placeholder="请输入商品名称" value="{$keyword}" class="itemName txt3">
+		</li>
+		<li>
+		<a href="javascript:void(0)" class="subFind" onclick="itemFind(1)">搜索</a>
+		</li>
+     </ul>
+     <div style="clear:both;"></div>
+  </div>
+  <script type="text/javascript">
+    $('.lopic li').click(function(){
+			if(!$(this).hasClass('active')){
+				$(this).addClass('active').siblings().removeClass('active');
+			}
+		})
+  </script>
+  <!--列表-->
+     <div class="loornva2">
+          <ul style="width: 100%;">
+          <notempty name="tempContent.category">
+          	<volist name="tempContent.category" id="category">
+	            <li
+	            	<if condition="$category.cat_config_id eq $catId">
+	            		style="border-top:#33acfb solid 2px; border-bottom:none;"
+	            	</if>
+	            	>
+	            	<a href="__APP__/Cm10086/itemList/cfgId/{$category.item_config_id}/catId/{$category.cat_config_id}">
+	            		{$category.cat_name}
+	            	</a>
+	            </li>
+          	</volist>
+          <else/>
+         		 <li style="border-top:#33acfb solid 2px; border-bottom:none;">
+         		 	<a href="javascript:void(0)">{$tempContent.name}</a>
+         		 </li>
+          </notempty>
+          </ul>
+       </div>
+        <div id="itemList">  
+       <div class="loorList2">
+	        <volist name="list" id="vo">
+	           <ul>
+	              <li class="lorpt"><a href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}" target="_blank">
+	              	<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}">
+	              	</a></li>
+	              <li class="lorUser liheight">
+	              	<a href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}" title="{$vo.title}" target="_blank">
+	              		<span class="shopIcon">
+		              		<if condition="$vo.shop_id eq 10">
+		              			旗舰
+		              			<else/>
+		              			自营
+		              		</if>
+	              		</span>	              		
+	              		{$vo.title}
+	              	</a></li>
+	              <li class="lorpic">￥{:round($vo['price'],2)}
+	              	<a href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}" target="_blank">兑换</a></li>
+				        <if condition="$vo.flag eq 1">
+				     		<li style="padding-top: 10px;background-color:rgba(51,172,251,0.6);min-height:40px;color: white;text-align: center;position:relative;top: -80px;">
+				     			<small style="color: white; font-size: larger;font-weight: bold;">广东无货</small>
+				     		</li>
+				  		</if> 		              	
+	           </ul>
+ 					</volist>
+           <div style="clear:both;"></div>
+       </div>
+       <!--分页-->
+       <div class="lorfy">
+           <ul>
+           	<li>
+	        		<div class="pager">{$pagestr}</div>
+           	</li>
+           </ul>
+       </div>
+		</div>      
+       <!--返回-->
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/cm10086/images/Mtop.png"></a></div>
+    </div>
+</body>
+    <script type="text/javascript"> 
+		$('.satnavUl li').click(function(){
+			if(!$(this).hasClass('cnactive')){
+				$(this).addClass('cnactive').siblings().removeClass('cnactive');
+			}
+		})
+		
+
+		$('.price li').click(function(){
+			if(!$(this).hasClass('active')){
+				$(this).addClass('active').siblings().removeClass('active');
+			}
+		})
+     $(".findPrice").click(function(){
+        var price = $(this).children("input").val();
+        $("#findPrice").val(price);
+        $(".findPriceInp").val('');
+      	$("#newpage").val(1);
+        itemFind();
+    });   
+    $('.findPriceInp').bind('input propertychange', function() {
+        var priceLeft = $(".findPriceLeft").val()
+        if (priceLeft == '') {
+            priceLeft = 0;
+        };
+        var priceRight = $(".findPriceRight").val()
+        if (priceRight == '') {
+            priceRight = 0;
+        };
+        var price = priceLeft+'-'+priceRight;
+        $("#findPrice").val(price);
+    });    
+    $(".sortPrice").click(function(){
+        var sortPrice = $(this).children("input").val();
+        $(this).css('color','#ff2a2a');
+        $(".sortProfit").css('color','#333333');
+        
+        
+        if (sortPrice == 'desc') {
+            $(this).children("input").val("asc");
+            $("#pricedesc").show();
+            $("#priceasc").hide();
+        }
+        if(sortPrice == 'asc'){
+            $(this).children("input").val("desc");
+            $("#priceasc").show();
+            $("#pricedesc").hide();
+        }
+        $("#sortProfit").val('');
+        $("#sortPrice").val(sortPrice);
+      	$("#newpage").val(1);
+        itemFind();
+    });
+
+    $(".sortProfit").click(function(){
+      	$("#newpage").val(1);
+        $(this).css('color','#ff2a2a');
+        $(".sortPrice").css('color','#333333');
+        $("#sortPrice").val('');
+        $("#pricedesc").show();
+        $("#priceasc").hide();
+        $("#sortProfit").val(sortProfit);
+        itemFind();
+    });
+     $(function(){
+      $(".pager a").removeAttr('href');
+      $(".pager a").css('cursor','pointer');
+  		$("#newpage").val(1);
+    });
+    $("#itemList").delegate('.pager a.num','click',function(){ 
+      //当前页
+      var nowpage = $(this).text();      
+        $("#newpage").val(nowpage);    
+        itemFind();
+    });
+    //下一页
+    $("#itemList").delegate('.pager a.next','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1+1);
+      itemFind();
+    });
+    //上一页
+    $("#itemList").delegate('.pager .prev','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1-1);
+      itemFind();
+    });   
+    function itemFind(search){
+    	if(search){
+      		$("#newpage").val(1);
+    	}
+        var itemName = $(".itemName").val();
+        var cfgId = $("#newcfgId").val();
+        var catId = $("#newcatId").val();
+        var ajaxpost = $("#ajaxpost").val();
+        var findPrice = $("#findPrice").val();
+
+        var sortPrice = $("#sortPrice").val();
+        var newPage = $("#newpage").val();
+        $.ajax({ 
+            type:"get",
+            url:"{:U('Cm10086/itemList')}",
+            data: {itemName:itemName,cfgId:cfgId,catId:catId,ajaxpost:ajaxpost,findPrice:findPrice,sortPrice:sortPrice,p:newPage},
+            success: function(data){
+                $("#itemList div").remove();
+                $("#itemList").html(data);
+                $(".pager a").attr('href','javascript:;');
+            }
+        }); 
+    }  
+    </script>  
+
+
+</html>

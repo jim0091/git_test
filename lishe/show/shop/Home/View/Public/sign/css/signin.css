@@ -1,0 +1,88 @@
+/* 通用 */
+*{padding:0;  margin:0;}
+ul, li{list-style:none;}
+a{text-decoration:none; color: #666;}
+img{border:none;}
+body{font-size:12px; font-family:"Microsoft Yahei";}
+table, tr, td{margin: 0; padding: 0; border: 0; border-collapse:collapse; border-spacing: 0;}
+input{outline: none; font-family: "Microsoft Yahei"; background-color: #FFF;font-size:14px;}
+html, body{margin: 0; height: 100%;}
+
+
+/* 导航 */
+body{background-color: #F3F3F3; height: 100%; position: relative; overflow: auto; min-height: 800px;}
+.wrap{width: 1200px; height: 100%; margin: 0 auto; overflow: hidden;}
+.top_nav{height: 68px; border-bottom: 1px solid #DADADA; font-size: 16px; background-color: #FFF;}
+.top_nav a:hover{color: #FC3737;}
+.top_nav ul{height: 60px; float: left; margin-left: 40px;}
+.top_nav li{float: left; line-height: 60px; padding-right: 16px; padding-left: 16px; padding-bottom: 4px; border: 1px solid #FFF; border-top: 4px solid #FFF; border-bottom: none;}
+.top_nav .logo1{float: left; display: block; background: url("../images/logo1.png") no-repeat; height: 60px; width: 129px; margin-left: 48px; overflow: hidden;}
+.top_nav .login{float: right; margin-right: 50px;}
+.top_nav .current{border: 1px solid #EDEDED; border-top: 4px solid #FF4138; background-color: #FCFCFC;}
+
+
+/* 框 */
+.signin{width: 498px; border: 1px solid #DADADA; background-color: #FFF; border-radius: 10px; margin: 50px auto; font-size: 14px; overflow: hidden;}
+.signin > div{display: none;}
+#signin{display: block;}
+.signin .title{font-size: 24px; color: #666; font-weight: bold; text-align: center; border-bottom: 1px solid #DADADA; height: 80px;  line-height: 80px; margin-bottom: 45px; background-color: #FFF;}
+.form > div{width: 350px; margin: 0 auto 15px;}
+.signin input[type=text], .signin input[type=password]{width: 333px; height: 44px; line-height: 44px; padding-left: 15px; border: 1px solid #DADADA;}
+.agrees{color: #666;}
+.agrees input{display: inline-block; margin-right: 10px; vertical-align: top; width: 15px; height: 15px; border: 1px solid #DADADA;}
+.agrees a{color: #000;}
+.agrees label{cursor: pointer;}
+.form input[type=submit]{display: block; width: 350px; height: 46px; margin: 0 auto; background-color: #FF4138; border: none; line-height: 46px; text-align: center; color: #FFF; font-size: 18px; font-weight: bold; margin-top: 10px; cursor: pointer;}
+.form .haveid{width: 350px; margin: 15px auto 0; text-align: center; color: #666;}
+.haveid a{color: #000;}
+.form .wronghint{margin-bottom: 10px; margin-top: 25px; color: #FF4138;}
+.form .wrong input{border-color: #FF4138;}
+.form > div:first-child{position: relative;}
+.form .close{position: absolute; background: url("../images/wrong.jpg") no-repeat; height: 19px; width: 19px; top: 13px; right: 12px; cursor: pointer;}
+.form .quicklink{width: 350px; margin: 40px auto 0; text-align: center;}
+.quicklink div{display: inline-block; width: 1px; height: 13px; background-color: #DADADA; vertical-align: top; margin: 0 5px;}
+.quicklink a:first-child{color: #FF4138;}
+a:hover{color: #FF4138;}
+.copyright{color: #999; width: 550px; text-align: center; position: absolute; bottom: 0px; left: 50%; margin-left: -275px; padding-bottom: 60px;}
+.copyright p{margin-top: 10px;}
+
+.larger{animation:hei 0.3s forwards; -webkit-animation:hei 0.3s forwards; -moz-animation:hei 0.3s forwards; -ms-animation:hei 0.3s forwards; -o-animation:hei 0.3s forwards;}
+@keyframes hei{
+	0%{height: 498px;}
+	100%{height: 548px;}
+}
+.shorter{animation:sho 0.3s forwards; -webkit-animation:sho 0.3s forwards; -moz-animation:sho 0.3s forwards; -ms-animation:sho 0.3s forwards; -o-animation:sho 0.3s forwards;}
+@keyframes sho{
+	0%{height: 548px;}
+	100%{height: 498px;}
+}
+
+/* 激活 */
+#activation{height: 548px;}
+#activation .quicklink{margin-top: 15px;}
+#identify input{display: inline-block; width: 233px; vertical-align: top;}
+#identify input[type=button]{display: inline-block; width: 95px; height: 46px; background-color: #FF4138; text-align: center; color: #FFF; line-height: 46px; cursor: pointer; border: none;}
+#identify input[disabled=disabled]{background-color: #999; cursor: default;}
+/* 登录 */
+#signin{height: 498px;}
+#signin .agrees a{float: right; color: #666;}
+#signin .agrees a:hover{color: #FF4138;}
+/* 注册 */
+#register{height: 548px;}
+#register #identify div{border: 1px solid #DADADA; width: 93px; height: 44px; background-color: #FFF; display: inline-block;}
+#identify div img{width: 93px; height: 44px; border: none;}
+
+/* 提示成功 */
+#reg_success, #act_success, #reset_success{height: 548px;}
+.success_icon{width: 83px; height: 83px; margin: 125px auto 30px auto; background: url("../images/success.png") no-repeat;}
+.success_mes{width:100%; margin: 0 auto; font-size: 18px; font-weight: bold; text-align: center; color: #666;}
+
+/* 找回密码 */
+#find_password{height: 548px;}
+#find_password .quicklink{margin-top: 15px;}
+#identify2 input{display: inline-block; width: 233px; vertical-align: top;}
+#identify2 input[type=button]{display: inline-block; width: 95px; height: 46px; background-color: #FF4138; text-align: center; color: #FFF; line-height: 46px; cursor: pointer; border: none; margin-right: 0;}
+#identify2 input[disabled=disabled]{background-color: #999; cursor: default;}
+
+
+

@@ -1,0 +1,69 @@
+	<div class="head">
+		<div class="wrap">
+			<a href="__LISHE_URL__/shop.php" class="logo2"></a>
+			<div class="search_bar">
+				<form action="__LISHE_URL__/shop.php/Items/itemList" method="get" id="goods_search">
+					<input type="text" name="keyword" class="search_text" placeholder="综合搜索" onfocus="this.placeholder=''" onblur="this.placeholder='综合搜索'" value="{$keyword}">
+					<a class="search_button" href="javascript:void(0);"></a>
+				</form>
+				<ul class="search_commend">
+					<li><a href="/activity/foolsday/?guanjss0406" target="_blank">幸运大抽奖</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/662" target="_blank">坚果炒货</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=饼干" target="_blank">办公室下午茶</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/650" target="_blank">天长地酒</a></li>
+					<li><a href="/shop.php/Items/itemList/catId/100" target="_blank">智能厨电</a></li>
+					<li><a href="/shop.php/Items/itemList?keyword=锅" target="_blank">厨房锅具</a></li>
+				</ul>
+			</div>
+			<div class="my_cart">
+				<a class="cart" href="__APP__/Order/Cart" target="_blank">我的购物车</a>
+				<div class="left_arrow"></div>
+				<if condition="empty($uid)">
+					<div id="cart_number">0</div>
+				<else/>
+					<div id="cart_number">{$uid|getCartCount}</div>
+				</if>
+				
+			</div>
+			<script type="text/javascript">
+				$(".search_button").click(function(){
+					$("#goods_search").submit();
+				});
+			</script>
+			
+		<!-- 商品大分类 -->
+			<div class="goods_nav">
+				<!-- 导航侧边栏 -->
+				<div class="leftbar">
+					<div class="all_goods">全部商品分类</div>
+					<ul id="channels">
+  						<include file="Public/cat" />
+					</ul>
+				</div>
+				
+				<ul id="gift">
+					<li class="current"><a href="__LISHE_URL__/shop.php">首页</a></li>
+					<li class="send">
+						<a href="" class="send_title">赠送对象<div class="arrow"></div></a>
+						<ul class="sidebar_hide"> 
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/1/flag/0.html" target="_blank">女朋友</a></li>
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/2/flag/0.html" target="_blank">男朋友</a></li>
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/3/flag/0.html" target="_blank">单身狗</a></li>
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/4/flag/0.html" target="_blank">闺蜜</a></li>
+						</ul>
+					</li>
+					<li class="send">
+						<a href="" class="send_title">赠送情景<div class="arrow"></div></a>
+						<ul class="sidebar_hide">
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/5/flag/1.html" target="_blank">中秋节</a></li>
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/6/flag/1.html" target="_blank">国庆节</a></li>
+							<li><a href="__LISHE_URL__/shop.php/Gaway/search/id/8/flag/1.html" target="_blank">七夕节</a></li>
+						</ul>
+					</li>
+					<li><a href="__LISHE_URL__/activity/appliances/" target="_blank">家电换新季</a></li>
+					<li><a href="__LISHE_URL__/shop.php/activity/BenefitLife/" target="_blank">新人礼遇</a></li>
+					<li><a href="__LISHE_URL__/shop.php/activity/midAutumnFestival" target="_blank">精选福利</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>

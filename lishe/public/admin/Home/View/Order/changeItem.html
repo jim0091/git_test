@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>退款</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb">  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+  <div class="form form-horizontal">
+  <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>换货/维修单号：</label>
+      <div class="formControls col-5">
+		<!--订单详情-->
+		<a onclick="member_edit('{$tid}订单详情','{:U('Home/Order/detail',array('tid'=>$tid))}','4','','350')">
+	        <strong style="color: #5a98de;">{$tid}</strong>
+		</a>
+        <input type="hidden" value="{$tid}" id="tid">
+		<!--订单详情-->	        
+      </div>  
+      <div class="col-5"></div>
+    </div>
+	<div style="border-bottom: 1px solid #e5e5e5;padding-top: 10px;"></div>
+    <div class="row cl">
+        <p><span style="color: #5a98de;">提示：不申请换货或维修的商品把商品前输入框数字删了就行</span></p>
+      <label class="form-label col-2"><span class="c-red">*</span>可换/修商品：</label>
+      <div class="formControls col-10">
+      	<volist name="items" id="item">
+	      		<if condition="($item['num'] egt $item['aftersales_num']) AND ($item['sendnum'] gt 0) AND ($item['aftersales_num'] eq 0)">
+		        	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;" data="{$item['oid']}"  data-num="{$item['num']}"  title="{$item['title']}"  class="itemList">
+		        		<empty name="item.aftersales_num">
+		        			<input type="text" class="input-text text-c" style="width:80px" name="num[]"  value="{$item['num']}"  placeholder="最多{$item['num']}件" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+		        		<else/>
+		        		<small style="color: #5a98de;">已申请售后{$item.aftersales_num}件</small>
+		        		</empty>
+		        		&nbsp;
+			      		<if condition="$item.disabled eq 1">
+			        		<span class="label radius">已取消(退所有)</span>
+			      		</if>	      		
+		        		<span title="{规格：$item['spec_nature_info']}">{$item['title']}</span>
+		        	</p>
+	      		<else/>
+		        	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;" >
+	        			<if condition="$item['aftersales_num'] gt 0">
+			        		<span class="c-red">已申请售后({$item['aftersales_num']}件)&nbsp;&nbsp;</span>
+		        		<elseif condition="$item['sendnum'] eq 0"/>	
+			        		<span class="c-red">未发货&nbsp;&nbsp;</span>
+		        		</if>		        		
+		        		<span title="{规格：$item['spec_nature_info']}">{$item['title']}</span></p>
+	      		</if>
+        </volist>
+      </div>
+    </div>
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>售后类型：</label>
+      <div class="formControls col-5">
+		<label class="">
+			<input value="1" name="applyType" id="user-Character-0-0-0"  type="radio">申请换货
+		</label>
+		&nbsp;&nbsp;
+		<label class="">
+			<input value="2" name="applyType" id="user-Character-0-0-0"  type="radio">申请维修
+		</label>			
+      </div>
+      <div class="col-5"></div>
+    </div>      
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>售后原因：</label>
+      <div class="formControls col-5">
+		<select id="reason"  class="select-box" style="width:180px;">
+			<option value="0">请选择申请售后的原因</option>
+			<option value="现在不想买了">现在不想买了</option>
+			<option value="下单后,商品无货">下单后,商品无货</option>
+			<option value="商品拍错,不买了">商品拍错,不买了</option>
+			<option value="与京东价格存在差异不想购买">与京东价格存在差异不想购买</option>
+			<option value="商品质量问题">商品质量问题</option>
+			<option value="配送地址选择错误">配送地址选择错误</option>
+			<option value="实物与商品详情不符">实物与商品详情不符</option>
+			<option value="其他原因">其他原因</option>
+		</select>			
+      </div>
+      <div class="col-5"></div>
+    </div>       
+	<div style="border-bottom: 1px solid #e5e5e5;padding-top: 10px;"></div>
+	<strong style="color: #5a98de;">回寄信息：</strong>
+     <div class="row cl">
+      <label class="form-label col-2">快递名称：</label>
+      <div class="formControls col-5">
+      	<input type="text" name="logi" id="logi" class="input-text " placeholder="输入发货快递的名称" width="100%"/>
+      </div>
+      <div class="col-5"> </div>
+    </div>  
+    <div class="row cl">
+      <label class="form-label col-2">快递单号：</label>
+      <div class="formControls col-5">
+      	<input type="text" name="logi_no" id="logiNo" class="input-text " placeholder="输入发货快递单号" width="100%"/>
+      </div>
+      <div class="col-5"> </div>
+    </div>   
+	<div style="border-bottom: 1px solid #e5e5e5;padding-top: 10px;"></div>    
+    <div class="row cl">
+      <label class="form-label col-2"><span class="c-red">*</span>申请描述：</label>
+      <div class="formControls col-5">
+        <textarea id="mark" class="textarea"  placeholder="请输入退款备注" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)">{$mark}</textarea>
+        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-9 col-offset-2">
+        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="saveRefund">
+      </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+	var saveRefund = function(){
+		var tid = $('#tid').val();
+		var mark = $('#mark').val();
+		var reason=$("#reason").val();
+		var logi=$("#logi").val();
+		var logiNo=$("#logiNo").val();		
+		var applyType= $("input[name='applyType']:checked").val();
+		if(!applyType){
+			alert("请选择申请的售后类型！");
+			return false;
+		}
+		if(reason==0){
+			alert("请选择申请售后的原因");
+			return false;
+		}		
+		if(!logi || !logiNo){
+			alert("回寄信息请填写完整！");
+			return false;				
+		}		
+		if(mark==''){
+			alert("请输入备注信息！");
+			$('#mark').focus();
+			return false;
+		}
+		var order = '';
+		var a=0;
+		$(".itemList").each(function(){
+			var num=$(this).find("input[name='num[]']").val();
+			if(num>0){
+				var oid=$(this).attr('data');
+				var title=$(this).attr('title');
+				var maxNum=$(this).attr('data-num');
+				if(num>maxNum){
+					alert("申请售后的个数不能大于实际购买数量！");
+					return false;
+				}else if(num<0){
+					alert("数量请输入正确！");
+					return false;				
+			}
+				order += oid+"-"+num+"-"+title+"-#";
+			}
+		})
+		if(a==1){
+			return false;		
+		}		
+		if(order==''){
+			alert("请输入申请售后商品的数量！");
+			$(".itemList").find("input[name='num[]']").first().focus();
+			return false;
+		}
+		
+		urls="__APP__/Order/savechangeItem";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				tid:tid,
+				mark:mark,
+				order:order,
+				applyType:applyType,
+				reason:reason,
+				logi:logi,
+				logiNo:logiNo				
+			},
+			success: function(data){
+				if(data){
+					window.location.href="{:U('Home/Index/resultShow')}";
+				}else{
+					alert('申请失败,请重试!');
+				}
+			},
+			error: function () {
+			}
+		});
+		
+	}
+	
+	$(function(){
+		$("#saveRefund").bind("click", saveRefund);
+	})
+	
+	/*用户-编辑*/
+	function member_edit(title,url,id,w,h){
+		layer_show(title,url,w,h);
+	}	
+</script>
+</body>
+</html>

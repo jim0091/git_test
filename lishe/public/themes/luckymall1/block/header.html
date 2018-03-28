@@ -1,0 +1,163 @@
+<!-- 顶部导航 -->
+<style>
+.advertisement {display: none;}
+.menu{margin:40px auto 0 -400px;text-align:center;height:36px;line-height:36px;width:1000px;position:relative; padding-left:330px;}
+.menu-ul li span{padding-left:5px;}
+.menu-ul>li a{width: 110px;height: 100%; display: block; float: left; background:#FFF; color: #88888b;cursor: pointer;font-size:14px;}
+.menu-ul>li a:hover{ color:#c7241d;}
+.hidden-box{width:80px;position: absolute;display:none;background:#FFF;top:30px;}
+/*.hidden-box>ul li{border-top:dashed #CCCCCC 1px;}*/
+.hidden-box>ul li a{list-style-type: none;color: #88888b;cursor: pointer;font-size:14px;padding-left:-10px;border:0px solid red;}
+.hidden-box li a:hover{color:#c7241d;}
+.hidden-loc-index{left:500px;}
+.hidden-loc-us{left:600px;}
+.nav .menu a{width:100px;}
+</style>
+<div id="topbar" class="topbar">
+  <div class="wrap-lg">
+    <div class="topbar-left">
+      <div class="small-signin">
+        <div class="line"></div>
+        <a href="/" target="_blank">礼舍首页</a>
+        <div class="line"></div>
+        <a href="/shop.html" target="_blank">心意商城</a>
+        <div class="line"></div>
+        <a href="/site/help.html" target="_blank" id="compnayIndex">礼舍帮帮</a>
+      </div>
+    </div>
+    <div class="topbar-right">
+		<div class="subnav">
+			<a href="/shop.php/Sign" id="loginBox">会员登录</a>
+			<div id="memberBox" class="small-member" style="display:none; float: left; color: #c7241d;">
+			<a href="/member-index.html" style="margin: 0px; padding: 0px; color: #a12124;" ><span id="userName"></span></a>
+			<a href="/passport-logout.html" style="margin: 0px; color: #a12124;">退出</a>
+			</div>
+			<div class="line"></div>
+			<a href="/shop/" target="_blank">商家中心</a>
+			<div class="line"></div>
+			<a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a>
+		</div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 头部信息栏 -->
+<div id="header" class="header">
+  <div class="wrap-lg">
+    <div class="row">
+      <div class="col-4">
+        <{widgets id="hl"}>
+      </div>
+      <div class="col-lg-10">
+        <{widgets id="hm"}>
+      </div>
+      <div class="col-3">
+        <{widgets id="hr"}>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 页面导航栏 -->
+<div id="nav" class="nav" style="border-bottom: 2px solid #a12124;">
+  <div class="wrap-lg">
+    <div class="row">
+      <div class="col-lg-3 nav-left"><{widgets id="navl"}></div>
+      <div class="offset-lg-3 nav-main" >
+        <!-- 20160615 修改开始 -->
+        <!-- <{widgets id="navm"}> -->
+        <div class="menu">
+          
+            <!--   <a class="on" href="/shop.html">首页</a>
+              <a href="/given-object.html">赠送对象</a>
+              <a href="/given-scene.html">赠送情景</a>            
+              <a href="/business/index.php/Activity/moon">礼舍推荐</a> -->
+              <ul class="menu-ul" style="border:0px solid red;">
+
+                 <li><a class="on" href="/shop.html">首页</a></li>
+
+                 <li id="li-1">
+                  <a href="/business/index.php/Gaway/index/flag/0">赠送对象<span><img src="/business/Public/gaway/images/jt.png"></span></a>
+                </li>
+
+                 <li id="li-2">
+                  <a href="/business/index.php/Gaway/index/flag/1">赠送情景<span><img src="/business/Public/gaway/images/jt.png"></span></a>
+                </li>
+
+                 <li><a href="/shop.php/Best/index">礼舍推荐</a></li>
+
+             </ul>
+
+              <div id="box-1" class="hidden-box hidden-loc-index" style="border:0px solid red;z-index:10000;">
+                  <ul>
+
+                      <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/1/flag/0.html">女朋友</a></li>
+                      <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/2/flag/0.html">男朋友</a></li>
+                      <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/3/flag/0.html">单身狗</a></li>
+                      <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/4/flag/0.html">闺蜜</a></li>
+
+                  </ul>
+            </div>
+
+            <div id="box-2" class="hidden-box hidden-loc-us"  style="border:0px solid red;z-index:10000;">
+                <ul>
+
+                   
+                    <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/5/flag/1">中秋节</a></li>
+                    <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/6/flag/1">国庆节</a></li>
+                    <!-- <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/7/flag/1">春节</a></li> -->
+                    <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/8/flag/1">七夕节</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- 20160615 修改结束 -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	var num;
+	$('.menu-ul>li[id]').hover(function(){
+		/*下拉框出现*/
+		var Obj = $(this).attr('id');
+		num = Obj.substring(3, Obj.length);
+		$('#box-'+num).slideDown(300);
+	},function(){
+
+		/*下拉框消失*/
+		$('#box-'+num).hide();
+	});
+
+	$('.hidden-box').hover(function(){
+		/*保持图标向上*/
+		$(this).show();
+	},function(){
+		$(this).slideUp(200);
+	});
+	
+	$.get("/api.php/Api/getLoginInfo", function(result){
+		var account=eval(result);
+		if(account[0]>0){
+			$('#loginBox').hide();
+			$('#memberBox').show();
+			$('#userName').text(account[3]);
+			if(account[4]!=''){
+				$('li a.on').attr('href',account[4]);
+				$('#shopIndex').attr('href',account[4]);
+				$('#compnayIndex').attr('href',account[4]);
+				$('#compnayIndex').text('我的企业');
+			}
+			if(account[5]!=''){
+				$('#compnayIndex').attr('href',account[5]);
+				$('#compnayIndex').text('我的企业');
+			}
+		}
+	});	
+}); 
+</script>
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/securitycenter.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>	
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="feedBack">
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">意见反馈</p>
+					</div>
+					<div class="feedback-wrap">
+						<table>
+							<tr>
+								<th>反馈类型</th>
+								<th>反馈内容</th>
+								<th>反馈时间</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+							<volist name="feedbackList" id="vo">
+							<tr>
+								<if condition="$vo['prom_type'] eq 1">
+									<td>意见反馈</td>
+									<td style="text-align:left; width:500px;">{$vo['content']|msubstr=0,20,'utf-8',false}</td>
+									<td style="width:150px;">{$vo['add_time']|date="Y-m-d H:i:s",###}</td>
+									<td><if condition="$vo['status'] eq 1">已处理<else/>未处理</if></td>
+									<td><a href="__APP__/Info/feedbackInfo/feedbackId/{$vo['feedback_id']}">查看</a></td>
+								<else/>								
+									<td>商品登记</td>	
+									<td style="text-align:left;">商品名称：{$vo['item_name']|msubstr=0,20,'utf-8',false}<br>
+										外站链接：{$vo['item_link']}<br>
+										{$vo['content']|msubstr=0,20,'utf-8',false}
+									</td>
+									<td>{$vo['add_time']|date="Y-m-d H:i:s",###}</td>
+									<td><if condition="$vo['status'] eq 1">已处理<else/>未处理</if></td>
+									<td><a href="__APP__/Info/feedbackInfo/feedbackId/{$vo['feedback_id']}">查看</a></td>
+								</if>
+							</tr>
+							</volist>
+						</table>
+					</div>
+
+					<div class="pages">
+						{$pagestr}
+					</div>
+					<style type="text/css">
+						.pages a.prev{width: 68px;}
+						.pages div a{margin-left: 5px;}
+						.pages a.next{width:68px;}
+						.pages .current {
+						    color: #FFF;
+						    background-color: #FF3737;
+						    display: inline-block;
+						    width: 38px;
+						    height: 38px;
+						    line-height: 38px;
+						    text-align: center;
+						    margin-left: 5px;
+						    cursor: default;
+						}
+					</style>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+</body>
+</html>

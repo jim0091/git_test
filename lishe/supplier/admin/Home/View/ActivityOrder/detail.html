@@ -1,0 +1,160 @@
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/bootstrap.css"/>
+    <!--/sidebar-->
+	<style>
+		.zihui{
+			color:#666;
+			font-size: 14px;
+		}
+		body{
+			font-size: 14px;
+		}
+		.radius{
+			border-radius: 5px;
+			padding: 5px 10px;
+		}
+	</style>
+</head>
+<div class="main-wrap" style="padding: 20px 100px;">
+	<div style="width: 100%;">
+		<h4>订单基本信息</h4>
+		<table class="table table-bordered"style="font-size:12px;margin-left: -1px;">
+			<tr >
+				<td class="col-xs-3">订单号：</td><td>{$info.atid}</td>
+			</tr>
+			<tr >
+				<td >订单状态：</td><td>{$info.OrderStatus}</td>
+			</tr>
+			<tr >
+				<td >订单支付时间：</td><td>
+					<gt name="info['pay_time']" value="1077552460">
+						{$info['pay_time']}
+						<else />
+						未支付
+					</gt>
+
+
+
+			</td>
+			</tr>
+			<tr >
+				<td >下单时间：</td><td>{$info['creat_time']|date="Y-m-d H:i:s",###}</td>
+			</tr>
+
+		</table>
+	</div>
+
+	<div style="width: 100%;margin-top: -1px;">
+		<h4>售后信息：</h4>
+		<table class="table table-bordered"style="font-size:12px;margin-left: -1px;margin-right:-1px;">
+			<tr >
+				<td class="col-xs-3">售后：</td><td>{$info.serviceStatus}</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div style="width: calc(100% + 0px);margin-top: -1px;">
+		<h4>收货信息：</h4>
+		<table class="table table-bordered"style="font-size:12px;margin-left: -1px;">
+			<tr style="">
+				<td class="col-xs-3">收货人姓名：</td><td>{$info.receiver_name}</td>
+			</tr>
+			<tr >
+				<td >收货人手机号：</td><td>{$info.receiver_mobile}</td>
+			</tr>
+			<tr >
+				<td >收货地址：</td><td>{$info.receiver_state} {$info.receiver_city} {$info.receiver_district} {$info.receiver_address}</td>
+			</tr>
+			<tr >
+				<td >买家留言：</td><td>{$info.buyer_message}</td>
+			</tr>
+		</table>
+	</div>
+
+	 </div>	
+	<div style="border-bottom: 1px #ccc solid;">&nbsp;</div>
+	<div style="padding: 20px 20px;">
+		<h4>订单商品信息</h4>
+		<table class="table table-bordered"style="font-size:12px;">
+		      <tr style="border: 1px solid #ccc ;">
+		      	<th width="8%">商品图片</th>
+		      	<th>商品名称</th>
+		      	<th width="25%">商品属性</th>
+		      	<th width="8%">购买量</th>
+		      	<th width="8%">已发量</th>
+		      </tr>
+		      <volist name="info.more" id="vo">
+			      <tr style="border: 1px solid #ccc ;">
+			        <td>
+					<img src="{$vo.item_img}_t.{:end(explode('.',$vo['item_img']))}" width="60px" style="max-height: 60px;overflow: hidden;"  />
+			        </td>
+			        <td>
+	        		<span style="color: #333;">{$vo.item_name}</span>
+	        		<br />
+				      <if condition="$info.order_status neq 'NO_APPLY'">
+				      	<if condition="$vo.aftersales_status neq 'NO_APPLY'">
+							<div style="border-bottom: 1px #ccc solid;">&nbsp;</div>
+							<div style="color: #666;">
+					      		售后信息：{$info.serviceStatus}<br />
+					      		售后状态：{$vo.serviceLastStatus}<br />
+					      		申请售后成功商品的数量：{$vo.aftersales_num}<br />
+							</div>
+				      	</if>
+				      </if>	        		
+			        </td>
+			        <td>{$vo.spec_nature_info}</td>
+			        <td align="center">{$vo.num}</td>
+			        <td align="center">{$vo.sendnum}</td>
+			      </tr>
+      			</volist>
+		  </table>					
+			</div>	
+	<div style="border-bottom: 1px #ccc solid;">&nbsp;</div>
+	<div style="padding: 20px 20px;margin-bottom: 100px;">
+		<h4>物流信息：</h4>
+	 <table class="table table-bordered" width="600px">
+	      <tr style="font-size: 12px;">
+	        <th align="center">发货单号</th>
+	        <th align="center">物流单号</th>
+	        <th align="center">配送方式</th>
+	        <th align="center">建立日期</th>
+	      </tr>
+	      <notempty name="info.express">
+		      <volist name="info.express" id="express">
+			      <tr style="font-size: 12px;" align="center">
+			        <td>{$express.delivery_id}</td>
+			        <td>
+			        	<notempty name="express.logi_no">
+			        		<?php 
+			        			$logNOs=explode(',',$express['logi_no']);
+			        			 ?>
+				        	<volist name="logNOs" id="no">
+				        		<a href="javascript:void(0)" onclick="member_edit('物流进度信息','{:U('Home/Order/expressProgress',array('logiNo'=>$no,'shop_id'=>$info['shop_id']))}','4','500','400')">
+									<span class="label label-success radius" style="margin-top: 10px;">{$no}</span>
+								</a>
+								<br />
+				        	</volist>
+			        	</notempty>
+			        </td>
+			        <td>{$express.logi_name}</td>
+			        <td>
+			        	<notempty name="express.t_begin">
+			        		{$express['t_begin']|date="Y-m-d H:i:s",###}
+			        	</notempty>
+			        </td>
+			      </tr>			      
+		      </volist>	      	
+	      	<else/>
+	      	<tr align="center">
+	      		<td colspan="4">暂无</td>
+	      	</tr>
+	      </notempty>
+
+	  </table>  			  			
+<!--/main-->
+</div>
+</body>
+</html>

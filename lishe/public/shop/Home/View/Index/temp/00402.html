@@ -1,0 +1,31 @@
+<div class="best best2">
+	<h2 class="product_head">
+		<div class="h2_left">{$groupInfo['group_title']}</div>
+		<div class="h2_right"><span>{$groupInfo['group_vice_title']}</span><img src="__VIEW__Public/images/index/images/icon/sk_arror.png"></div>
+	</h2>
+	<ul class="best_find2">
+		<li>
+			<a href="{$info[0]['refer_link']}" target="_blank">
+				<h2 class="find2_tit">{$info[0]['position_title']}</h2>
+				<p>{$info[0]['position_vice_title']}</p>
+				<div class="find2_img">
+					<div class="solid"></div>
+					<img src="{$info[0]['position_pic']}" alt="" />
+				</div>
+			</a>
+		</li>
+		<li style="margin-left: 20px;">
+			<a href="{$info[1]['refer_link']}" target="_blank">
+				<h2 class="find2_tit">{$info[1]['position_title']}</h2>
+				<p>{$info[1]['position_vice_title']}</p>
+				<div class="find2_img">
+					<div class="solid"></div>
+					<img src="{$info[1]['position_pic']}" alt="" />
+				</div>
+			</a>
+		</li>
+	</ul>
+	<a href="{$info[2]['refer_link']}" target="_blank" class="barbecue mauto" style="background-image: url({$info[2]['position_pic']});">
+		<h2>{$info[2]['position_title']}</h2>
+	</a>
+</div>

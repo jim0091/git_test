@@ -1,0 +1,899 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/html5.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript">DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>基本设置</title>
+</head>
+<body>
+<style>
+	.tabBar span.current{
+		background-color: #5EB95E;	
+	}
+	.tabBar {
+    	border-bottom: 2px solid #5EB95E;
+	}
+	.table-bg thead th {
+		background-color: #5EB95E;	
+		color: white;
+	}
+</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 供应商管理 <span class="c-gray en">&gt;</span> 商品详情  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl"><span>基本信息</span><span>商品详情</span><span>sku</span></div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="3" scope="col">商品基本信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">商品号</td>
+			        <td><span >{$item['sitem_id']}</span></td>
+					  <td><span ></span></td>
+			      </tr>
+				  <tr>
+					  <td>商品标题</td>
+					  <td>{$item['title']}</td>
+					  <td><a href="javascript::" onclick="edit_field('{$item['sitem_id']}','title')">修改</a></td>
+				  </tr>
+				  <tr>
+			        <td>所属供应商</td>
+			        <td>{$supplier_user['company_name']}</td>
+					<td><a href="javascript::" onclick="editSelect('{$item['sitem_id']}','supplier_id','open_div_supplier')">修改</a></td>
+			      </tr>
+			      <tr>
+			        <td>所属店铺</td>
+			        <td>{$shop['shop_name']}</td>
+					<td><a href="javascript::" onclick="editSelect('{$item['sitem_id']}','shop_id','open_div_shop')">修改</a></td>
+			      </tr>			      
+			      <tr>
+			        <td>品类</td>
+			        <td>{$cat['cat_name']}</td>
+					  <td><!--a href="javascript::" onclick="editSelect('{$item['sitem_id']}','cat_id')">修改</a--></td>
+			      </tr>
+				  <tr>
+					  <td>品牌</td>
+					  <td>{$brand['brand_name']}</td>
+					  <td><!--a href="javascript::" onclick="editSelect('{$item['sitem_id']}','brand_id')">修改</a--></td>
+				  </tr>
+			      <tr>			      
+			      <tr>
+			        <td>商品价格(￥)</td>
+			        <td>{$item['price']}</td>
+					<td><!-- <a href="javascript::" onclick="edit_field('{$item['sitem_id']}','mkt_price')">修改</a> --></td>
+			      </tr>
+				  <tr>
+					  <td>进货价(￥)</td>
+					  <td>{$item['cost_price']}</td>
+					  <td><!-- <a href="javascript::" onclick="edit_field('{$item['sitem_id']}','cost_price')">修改</a> --></td>
+				  </tr>
+				  <tr>
+					  <td>毛利率(%)</td>
+					  <td>{$item['profit_rate']}</td>
+					  <td><a href="javascript::" onclick="edit_field('{$item['sitem_id']}','profit_rate')">修改</a></td>
+				  </tr>
+				  <tr>
+					  <td>商品重量(kg)</td>
+					  <td>{$item['weight']}</td>
+					  <td><a href="javascript::" onclick="edit_field('{$item['sitem_id']}','weight')">修改</a></td>
+				  </tr>
+				  <tr>
+					  <td>商品长度(mm)</td>
+					  <td>{$item['length']}</td>
+					  <td><a href="javascript::" onclick="edit_field('{$item['sitem_id']}','length')">修改</a></td>
+				  </tr>
+				  <tr>
+					  <td>商品宽度(mm)</td>
+					  <td>{$item['width']}</td>
+					  <td><a href="javascript::" onclick="edit_field('{$item['sitem_id']}','width')">修改</a></td>
+				  </tr>
+				  <tr>
+					  <td>商品高度(mm)</td>
+					  <td>{$item['height']}</td>
+					  <td><a href="javascript::" onclick="edit_field('{$item['sitem_id']}','height')">修改</a></td>
+				  </tr>
+				  <tr>
+					  <td>商品最后修改时间</td>
+					  <td>{$item['modified_time']}</td>
+					  <td><!--a href="javascript::" onclick="edit_field('{$item['sitem_id']}','modified_time')">修改</a--></td>
+				  </tr>
+				  <!--tr>
+					  <td>是否违规</td>
+					  <td> <if condition="$item['violation'] eq 1 ">
+						  是
+						  <else />
+						  否
+						  </if>
+					  </td>
+				  </tr-->
+				  	<tr>
+					  	<td>默认图片</td>
+					  	<td>
+					  		<a href="{$item['image_default_id']}" target="_black"><img src="{$item['image_default_id']}_s.{:end(explode('.',$item['image_default_id']))}" style="width:150px;height:auto;" /></a>
+					  	</td>
+					  	<td></td>
+				  	</tr>
+				  	<tr>
+					  	<td>图片组</td>
+					  	<td>
+					  		<volist name="item['new_list_images']" id="vo">
+							<a href="{$vo}" target="_black">
+								<img src="{$vo}_s.{:end(explode('.',$vo))}" style="width:150px;height:auto;" />
+							</a>
+							</volist>
+					  	</td>
+					  <td></td>
+				  	</tr>
+				</tbody>
+		      </table>
+		      
+
+
+			 <table class="table table-border table-bordered table-bg mt-20" style="display: none;">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">售后信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">售后</td>
+			        <td>
+						<in name="info.order_status" value="REFUND,RETURN,EXCHANGE,REPAIR">
+								<span class="label label-danger radius">
+						<else/>
+							<in name="info.order_status" value="CANCEL_REFUND,CANCEL_RETURN,CANCEL_EXCHANGE,CANCEL_REPAIR">
+								<span class="label radius">
+								<else/>
+								<span>
+							</in>
+						</in>
+						{$info.serviceStatus}
+						</span>
+			        </td>
+			      </tr>
+			      <tr>
+			      	<td>退款金额：</td>
+			      	<td>￥{$info.refund_fee}</td>
+			      </tr>
+			      <tr>
+			      	<td>操作退款备注：</td>
+			      	<td>{$info.refund_mark}</td>
+			      </tr>
+			      <tr>
+			      	<td>退款时间：</td>
+			      	<td>
+			      		<notempty name="info.refund_time">
+				      		{$info['refund_time']|date="Y-m-d H:i:s",###}
+			      		</notempty>
+			      	</td>
+			      </tr>
+			    </tbody>
+		    </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20" style="display: none;">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">收货人信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">收货人</td>
+			        <td><span>{$info.receiver_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td>收货人手机号</td>
+			        <td><span>{$info.receiver_mobile}</span></td>
+			      </tr>
+			      <tr>
+			        <td>收货地区</td>
+			        <td><span>{$info.receiver_state}{$info.receiver_city}{$info.receiver_district}</span></td>
+			      </tr>
+			      <tr>
+			        <td>收货地址</td>
+			        <td><span>{$info.receiver_address}</span></td>
+			      </tr>
+			      <tr>
+			      	<td>自提备注</td>
+			      	<td><span>{$info.ziti_memo}</span></td>
+			      </tr>
+			    </tbody>
+			  </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20" style="display: none;">
+			    <thead>
+			      <tr>
+			        <th colspan="5" scope="col">物流</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <th>发货单号</th>
+			        <th align="center">物流单号</th>
+			        <th>配送方式</th>
+			        <th>建立日期</th>
+			        <th>状态</th>
+			      </tr>
+			      <volist name="info.express" id="express">
+				      <tr>
+				        <td>{$express.delivery_id}</td>
+				        <td>
+				        	<notempty name="express.logi_no">
+				        		<?php
+				        			$logNOs=explode(',',$express['logi_no']);
+				        			 ?>
+					        	<volist name="logNOs" id="no">
+					        		<a href="javascript:void(0)" onclick="member_edit('物流进度信息','{:U('Home/Order/expressProgress',array('logiNo'=>$no,'shop_id'=>$info['shop_id']))}','4','500','400')">
+										<span class="label label-success radius" style="margin-top: 10px;">{$no}</span>
+									</a>
+									<br />
+					        	</volist>
+				        	</notempty>
+				        </td>
+				        <td>{$express.logi_name}</td>
+				        <td>
+				        	<notempty name="express.t_begin">
+				        		{$express['t_begin']|date="Y-m-d H:i:s",###}
+				        	</notempty>
+				        </td>
+				        <td>{$express.status}</td>
+				      </tr>
+			      </volist>
+			    </tbody>
+			  </table>
+
+			 <table class="table table-border table-bordered table-bg mt-20" style="display: none;">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">订单发票信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">是否需要发票</td>
+			        <td><span>{$info.need_invoice}</span></td>
+			      </tr>
+			      <tr
+			        <td width="200">发票抬头</td>
+			        <td><span>{$info.invoice_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td width="200">发票类型</td>
+			        <td><span>{$info.invoice_type}</span></td>
+			      </tr>
+			      <tr>
+			        <td width="200">发票内容</td>
+			        <td><span>{$info.invoice_main}</span></td>
+			      </tr>
+			    </tbody>
+			  </table>
+
+
+			</div>
+			
+			<div class="tabCon">
+				<div class="row cl">
+					<script id="editor" type="text/plain" style="width:100%;height:400px;">{$item['itemDesc']['pc_desc']|htmlspecialchars_decode}</script> 
+				</div>
+				<br/>
+				<button type="button" class="btn btn-success" id="saveDescBut">提交保存</button>		
+			</div>
+
+			<div class="tabCon">
+				<volist name="sku" id="list">
+				<table class="table table-border table-bordered table-bg mt-20">
+					<thead>
+					<tr>
+						<th colspan="3" scope="col">{$list['title']}</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<tr>
+						<td width="200">skuID</td>
+						<td><span>{$list['ssku_id']}</span></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td width="200">商品名称</td>
+						<td><span>{$list['title']}</span></td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','title')">修改</a></td>
+					</tr>
+					<tr>
+						<td>主编码</td>
+						<td>{$list['bn']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','bn')">修改</a></td>
+					</tr>
+					<tr>
+						<td>价格(￥)</td>
+						<td>{$list['price']}</td>
+						<td><!-- <a href="javascript::" onclick="editSKU('{$list['ssku_id']}','price')">修改</a> --></td>
+					</tr>
+					<tr>
+						<td>进货价(￥)</td>
+						<td>{$list['cost_price']}</td>
+						<td><!-- <a href="javascript::" onclick="editSKU('{$list['ssku_id']}','cost_price')">修改</a> --></td>
+					</tr>
+					<tr>
+						<td>建议零售价(￥)</td>
+						<td>{$list['mkt_price']}</td>
+						<td><!-- <a href="javascript::" onclick="editSKU('{$list['ssku_id']}','mkt_price')">修改</a> --></td>
+					</tr>
+					<tr>
+						<td>条形码</td>
+						<td>{$list['barcode']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','barcode')">修改</a></td>
+					</tr>
+					<tr>
+						<td>尺寸(mm)</td>
+						<td>{$list['size']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','size')">修改</a></td>
+					</tr>
+					<tr>
+						<td>重量(kg)</td>
+						<td>{$list['weight']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','weight')">修改</a></td>
+					</tr>
+
+					<!--tr>
+						<td>sku销售属性</td>
+						<td>{$list['properties']}</td>
+					</tr-->
+					<tr>
+						<td>物品描述</td>
+						<td>{$list['spec_info']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','spec_info')">修改</a></td>
+					</tr>
+					<!--tr>
+						<td>物品详情</td>
+						<td>{$list['spec_desc']}</td>
+					</tr-->
+					<tr>
+						<td>状态</td>
+						<td>{$list['status']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','status')">修改</a></td>
+					</tr>
+					<tr>
+						<td>商家设置外部ID</td>
+						<td>{$list['outer_id']}</td>
+						<td><a href="javascript::" onclick="editSKU('{$list['ssku_id']}','outer_id')">修改</a></td>
+					</tr>
+					<tr>
+						<td>创建时间</td>
+						<td>{$list['created_time']}</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>商品审核状态</td>
+						<td>
+							<if condition="$list['is_reviewed'] eq '-1'">
+								未提交审核
+							<elseif condition="$list['is_reviewed'] eq 0"/>
+								审核中
+							<elseif condition="$list['is_reviewed'] eq 1"/>
+								通过
+							<elseif condition="$list['is_reviewed'] eq 2"/>
+								不通过
+							<else/>
+								未提交审核
+							</if>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>报价单状态</td>
+						<td>
+
+							<if condition="$list['quote_status'] eq 0">
+								未报价
+							<elseif condition="$list['quote_status'] eq 1"/>
+								写入报价单但未提交审核
+							<elseif condition="$list['quote_status'] eq 2"/>
+								报价审核中
+							<elseif condition="$list['quote_status'] eq 4"/>
+								报价更新成功
+							<else/>
+								未报价
+							</if>
+						</td>
+						<td></td>
+					</tr>
+
+					<!-- <tr>
+						<td>操作</td>
+						<td></td>
+						<td><a href="javascript::" onclick="delSKU('{$list['ssku_id']}')" >删除此SKU</a></td>
+					</tr> -->
+
+					</tbody>
+				</table>
+				</volist>
+			</div>				
+
+			
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">会员信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td>用户ID</td>
+			        <td>{$info.user_id}</td>
+			      </tr>			    	
+			      <tr>
+			        <td>用户姓名</td>
+			        <td>{$info.userInfo.name}</td>
+			      </tr>
+			      <tr>
+			        <td>企业名称/ID</td>
+			        <td>{$info.companyName}/{$info.com_id}</td>
+			      </tr>			     
+			      <tr>
+			        <td>出生日期</td>
+			        <td>{$info.userInfo.birthday}</td>
+			      </tr>			     
+			      <tr>
+			        <td>手机</td>
+			        <td>{$info.userInfo.mobile}</td>
+			      </tr>			     
+			      <tr>
+			        <td>性别</td>
+			        <td>{$info.userInfo.sex}</td>
+			      </tr>		
+			      <tr>
+			        <td>注册日期</td>
+			        <td>{$info.userInfo.regtime}</td>
+			      </tr>	
+			      <tr>
+			        <td>注册IP</td>
+			        <td>{$info.userInfo.reg_ip}</td>
+			      </tr>				      
+			    </tbody>
+		      </table>
+			</div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">{$info.shopinfo.shop_name}</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="200">店铺名称</td>
+			        <td><span >{$info.shopinfo.shop_name}</span></td>
+			      </tr>
+			      <tr>
+			        <td>店铺描述</td>
+			        <td>{$info.shopinfo.shop_descript}</td>
+			      </tr>
+			      <tr>
+			        <td>店铺类型</td>
+			        <td>{$info.shopinfo.shop_type}</td>
+			      </tr>
+			      <tr>
+			        <td>店主姓名</td>
+			        <td>{$info.shopinfo.shopuser_name}</td>
+			      </tr>				      
+			      <tr>
+			        <td>开店时间</td>
+			        <td>{$info.shopinfo.open_time}</td>
+			      </tr>			      
+			      <tr>
+			        <td>店铺所在地区</td>
+			        <td>{$info.shopinfo.shop_area}{$info.shopinfo.shop_addr}</td>
+			      </tr>				      
+			    </tbody>
+			  </table>
+			</div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">其他信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			        <td  width="200">商品重量</td>
+			        <td>{$info.total_weight}</td>
+			      </tr>			      
+			      <tr>
+			        <td>买家返点积分</td>
+			        <td>{$info.obtain_point_fee}</td>
+			      </tr>	
+			      <tr>
+			        <td>卖家手工调整金额</td>
+			        <td>￥{$info.adjust_fee}</td>
+			      </tr>				      
+			      <tr>
+			        <td>来源平台</td>
+			        <td>{$info.trade_from}</td>
+			      </tr>	
+			      <tr>
+			        <td>ip地址</td>
+			        <td>{$info.ip}</td>
+			      </tr>	
+			      <tr>
+			        <td>最后更新时间</td>
+			        <td>{$info.modified_time}</td>
+			      </tr>				      
+			    </tbody>
+			  </table>				
+			</div>
+			<div class="tabCon">
+				<form action="{:U('Home/Order/addMemo')}" method="post" >
+				<div style="background-color: #5EB95E;color: white;margin-top: 20px;padding: 8px;margin-bottom: 30px;">
+					备注信息
+				</div>	
+					<input type="hidden" value="{$info.tid}" name="tid"/>
+				    <div class="row cl">
+				      <label class="form-label col-2">备注：</label>
+				      <div class="formControls col-8">
+				        <textarea name="shopMemo" cols="" rows="" class="textarea" placeholder="添加备注" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！">{$info.shop_memo}</textarea>
+				      </div>
+				    </div>
+					<?php 	
+						 	$applFundId=array_search('addmemo', $nodeAction);
+							 if($applFundId){
+							 	if($nodeController[$applFundId]=="order"  || $roleId==0){
+						 ?>						    
+				    <div class="row cl" style="margin-top: 10px;">
+				      <div class="col-9 col-offset-2">
+				        <input class="btn btn-primary radius" value="&nbsp;&nbsp;保存&nbsp;&nbsp;" type="submit">
+				      </div>
+				    </div>
+					<?php }
+							  } ?>					    
+				    
+				  </form>
+			</div>			
+			
+		</div>
+		<!--<div class="row cl">
+			<div class="col-10 col-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>-->
+	<div id="open_div" style="background: #fff;width: 350px;height:150px;border-top:#eee;display: none;">
+		<div class="row cl" style="margin:30px auto;margin-left: 30px;">
+			<label class="form-label col-3">修改的值：</label>
+			<div class="formControls col-8">
+				<input type="text" id="input_box" class="input-text" value="" placeholder="" id="weight" name="weight">
+			</div>
+		</div>
+		<div class="row cl" style="margin:30px auto;margin-left: 130px;">
+			<input class="btn btn-primary radius" id="update_btn" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+	<div id="sku_div" style="background: #fff;width: 350px;height:150px;border-top:#eee;display: none;">
+		<div class="row cl" style="margin:30px auto;margin-left: 30px;">
+			<label class="form-label col-3">修改的值：</label>
+			<div class="formControls col-8">
+				<input type="text" id="input_sku" class="input-text" value="" placeholder="" >
+			</div>
+		</div>
+		<div class="row cl" style="margin:30px auto;margin-left: 130px;">
+			<input class="btn btn-primary radius" id="update_sku" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+	<div id="open_div_supplier" style="background: #fff;width: 350px;height:150px;border-top:#eee;display: none;">
+		<div class="row cl" style="margin:30px auto;margin-left: 10px;">
+			<label class="form-label col-3">修改的值：</label>
+			<div class="formControls col-4">
+				<select name="supplier_id"  id="supplier_id">
+					<volist name="users" id="user">
+						<option value="{$user['supplier_id']}" <eq name="supplier_user['supplier_id']" value="$user['supplier_id']"> selected="selected" </eq>
+								>{$user['company_name']}</option>
+					</volist>
+				</select>
+			</div>
+		</div>
+		<div class="row cl" style="margin:30px auto;margin-left: 130px;">
+			<input class="btn btn-primary radius" id="update_btn_supplier" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+	<div id="open_div_shop" style="background: #fff;width: 350px;height:150px;border-top:#eee;display: none;">
+		<div class="row cl" style="margin:30px auto;margin-left: 10px;">
+			<label class="form-label col-3">修改的值：
+			</if></label>
+			<div class="formControls col-4">
+				<select name="supplier_id"  id="shop_id">
+					<volist name="shopList" id="shops">
+						<option value="{$shops['shop_id']}" <eq name="shop['shop_id']" value="$shops['shop_id']"> selected="selected" </eq>
+						>{$shops['shop_name']}</option>
+					</volist>
+				</select>
+			</div>
+		</div>
+		<div class="row cl" style="margin:30px auto;margin-left: 130px;">
+			<input class="btn btn-primary radius" id="update_btn_shop" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+	<div id="open_div_cat" style="background: #fff;width: 350px;height:150px;border-top:#eee;display: none;">
+		<div class="row cl" style="margin:30px auto;margin-left: 10px;">
+			<label class="form-label col-3">修改的值：</label>
+			<div class="formControls col-4">
+				<select name="supplier_id"  id="cat_select_1">
+					<volist name="users" id="user">
+						<option value="{$user['supplier_id']}">{$user['company_name']}</option>
+					</volist>
+				</select>
+			</div>
+		</div>
+		<div class="row cl" style="margin:30px auto;margin-left: 130px;">
+			<input class="btn btn-primary radius" id="update_btn_cat" type="button" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.config.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.all.min.js"> </script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript">
+	layer.config({
+		extend: 'extend/layer.ext.js'
+	});
+	
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+	
+	$list = $("#fileList"),
+	$btn = $("#btn-star"),
+	state = "pending",
+	uploader;
+
+	var uploader = WebUploader.create({
+		auto: true,
+		swf: 'lib/webuploader/0.1.5/Uploader.swf',
+	
+		// 文件接收服务端。
+		server: 'http://lib.h-ui.net/webuploader/0.1.5/server/fileupload.php',
+	
+		// 选择文件的按钮。可选。
+		// 内部根据当前运行是创建，可能是input元素，也可能是flash.
+		pick: '#filePicker',
+	
+		// 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+		resize: false,
+		// 只允许选择图片文件。
+		accept: {
+			title: 'Images',
+			extensions: 'gif,jpg,jpeg,bmp,png',
+			mimeTypes: 'image/*'
+		}
+	});
+	
+	UE.Editor.prototype._bkGetActionUrl = UE.Editor.prototype.getActionUrl;
+	UE.Editor.prototype.getActionUrl = function(action) {
+	    if (action == 'uploadimage' || action == 'uploadscrawl') {
+	        return "{:U('Supplier/uploadDescPic')}";
+	    }else {
+	        return this._bkGetActionUrl.call(this, action);
+	    }
+	}
+	var ue = UE.getEditor("editor");
+	
+	/******编辑商品详情部分 start*****/
+	$("#saveDescBut").click(function(){
+		var desc = ue.getContent();
+		var sitemid = "{$item['sitem_id']}";
+		$.post("{:U('Supplier/saveItemDesc')}", {sitemid:sitemid,desc:desc}, success);
+		function success(result){
+			if(result.code == 1){
+				alert("保存成功");
+			}else{
+				alert("错误，保存失败");
+			}
+		}
+	});
+	
+	/******编辑商品详情部分 end*****/
+});
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}	
+//同步京东订单前取消同步指定商品
+$(".cancel").on('click',function(){
+	var oid=$(this).attr('data');
+	var tid="{$info.tid}";
+	$(this).before("<span class='label radius'  title='同步京东订单时将不会同步该商品'>已取消</span>");
+	$(this).hide();
+	$.ajax({
+		type:"get",
+		url:"{:U('Home/Order/cancelSyncGoods')}",
+		data:'oid='+oid+'&tid='+tid,
+		success:function(data){
+			if(data){
+			//取消成功
+				alert("取消成功,该商品将会进行申请退款！");
+			}else{
+			//取消失败
+				alert("取消该条商品不用于同步失败!");
+			}
+		}
+	});	
+});
+
+	var fields_name = "";
+	var goods_id = 0;
+//修改字段
+function edit_field(id,field_name){
+	layer.open({
+		type: 1,
+		//skin: 'layui-layer-demo', //样式类名
+		closeBtn: 1, //不显示关闭按钮
+		shift: 2,
+		shadeClose: true, //开启遮罩关闭
+		content: $('#open_div')
+	});
+	var input_box=$('#input_box');
+	var data={"sitem_id":id,"fields_name":field_name};
+	$.post("{:U('Supplier/getGoodsInfo','','')}",data,function(text){
+		input_box.val(text);
+	});
+	fields_name=field_name;
+	goods_id=id;
+}
+	//修改
+function editSelect(id,field_name,div_name){
+	layer.open({
+		type: 1,
+		//skin: 'layui-layer-demo', //样式类名
+		closeBtn: 1, //不显示关闭按钮
+		shift: 2,
+		shadeClose: true, //开启遮罩关闭
+		content: $('#'+div_name)
+	});
+	var input_box=$('#input_box');
+	var data={"sitem_id":id,"fields_name":field_name};
+	$.post("{:U('Supplier/getGoodsInfo','','')}",data,function(text){
+		input_box.val(text);
+	});
+	fields_name=field_name;
+	goods_id=id;
+}
+var skuId="";
+var skuFieldName="";
+function editSKU(id,field_name){
+	layer.open({
+		type: 1,
+		//skin: 'layui-layer-demo', //样式类名
+		closeBtn: 1, //不显示关闭按钮
+		shift: 2,
+		shadeClose: true, //开启遮罩关闭
+		content: $('#sku_div')
+	});
+	var input_box=$('#input_sku');
+	var data={"ssku_id":id,"fields_name":field_name};
+	$.post("{:U('Supplier/getSkuInfo','','')}",data,function(text){
+		input_box.val(text);
+	});
+
+	skuId=id;
+	skuFieldName=field_name;
+}
+	$('#update_sku').click(function(){
+		var input_sku=$('#input_sku').val();
+
+		var data={"ssku_id":skuId,"fields_name":skuFieldName,"content":input_sku};
+		$.post("{:U('Supplier/editSku','','')}",data, function (text) {
+			switch (text){
+				case "1":
+					layer.msg("修改成功");
+					break;
+				default :
+					layer.msg("修改失败");
+			}
+		});
+		//layer.closeAll(	);
+		window.location.reload();
+	});
+
+
+
+
+
+
+$('#update_btn').click(function(){
+	var input_box=$('#input_box').val();
+	var data={"sitem_id":goods_id,"fields_name":fields_name,"content":input_box};
+	$.post("{:U('Supplier/modifyGoods','','')}",data, function (text) {
+		switch (text){
+			case "1":
+				layer.msg("修改成功");
+				break;
+			default :
+				layer.msg("修改失败");
+		}
+	});
+	//layer.closeAll(	);
+	window.location.reload();
+});
+$('#update_btn_supplier').click(function(){
+	var input_box=$('#supplier_id').val();
+	var data={"sitem_id":goods_id,"fields_name":fields_name,"content":input_box};
+	$.post("{:U('Supplier/modifyGoods','','')}",data, function (text) {
+		switch (text){
+			case "1":
+				layer.msg("修改成功");
+				break;
+			default :
+				layer.msg("修改失败");
+		}
+	});
+	//layer.closeAll(	);
+	window.location.reload();
+});
+	$('#update_btn_shop').click(function(){
+		var input_box=$('#shop_id').val();
+		var data={"sitem_id":goods_id,"fields_name":fields_name,"content":input_box};
+		$.post("{:U('Supplier/modifyGoods','','')}",data, function (text) {
+			switch (text){
+				case "1":
+					layer.msg("修改成功");
+					break;
+				default :
+					layer.msg("修改失败");
+			}
+		});
+		//layer.closeAll(	);
+		window.location.reload();
+	});
+function delSKU(id){
+
+	var data={"ssku_id":id};
+	$.post("{:U('Supplier/delSku','','')}",data, function (text) {
+		//alert(text);
+		switch (text){
+			case "1":
+				layer.msg("修改成功");
+				break;
+			default :
+				layer.msg("修改失败");
+		}
+	});
+	//layer.closeAll(	);
+	window.location.reload();
+}
+
+</script>
+</body>
+</html>

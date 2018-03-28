@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/html5.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>基本设置</title>
+</head>
+<body>
+<style>
+	.tabBar span.current{
+		background-color: #5EB95E;
+	}
+	.tabBar {
+    	border-bottom: 2px solid #5EB95E;
+	}
+	.table-bg thead th {
+		background-color: #5EB95E;
+		color: white;
+	}
+</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商品管理 <span class="c-gray en">&gt;</span> 商品详情  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl"><span>基本信息</span></div>
+			<div class="tabCon">
+				<volist name="list" id="val">
+
+					 <table class="table table-border table-bordered table-bg mt-20">
+						<thead>
+						  <tr>
+							<th colspan="3" scope="col">详情</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td width="200">订单ID</td>
+							<td><span >{$val['storage_id']}</span></td>
+						  </tr>
+						  <tr>
+							  <td width="200">sku编号</td>
+							  <td><span >{$val['skuNo']}</span></td>
+						  </tr>
+						  <tr>
+							  <td>实收数量</td>
+							  <td>{$val['actualQty']}</td>
+						  </tr>
+						  <tr>
+							  <td>批号</td>
+							  <td>{$val['lot']}</td>
+						  </tr>
+						  <tr>
+							<td>库存状态</td>
+							<td>
+
+								<if condition="$val['inventoryStatus'] eq 10 ">
+									正品
+									<else />
+									次品
+								</if>
+
+							</td>
+						  </tr>
+
+						</tbody>
+					  </table>
+
+				</volist>
+			</div>
+
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+	layer.config({
+		extend: 'extend/layer.ext.js'
+	});
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+//同步京东订单前取消同步指定商品
+$(".cancel").on('click',function(){
+	var oid=$(this).attr('data');
+	var tid="{$info.tid}";
+	$(this).before("<span class='label radius'  title='同步京东订单时将不会同步该商品'>已取消</span>");
+	$(this).hide();
+	$.ajax({
+		type:"get",
+		url:"{:U('Home/Order/cancelSyncGoods')}",
+		data:'oid='+oid+'&tid='+tid,
+		success:function(data){
+			if(data){
+			//取消成功
+				alert("取消成功,该商品将会进行申请退款！");
+			}else{
+			//取消失败
+				alert("取消该条商品不用于同步失败!");
+			}
+		}
+	});
+});
+//重新同步订单到京东
+$(".getSyncOrder").click(function(){
+	var tid=$(this).attr("data");
+	$.get("/business/api.php/Interface/syncOrder/tid/"+tid,function(data){
+		var msg=eval("("+data+")");
+		if(parseInt(msg['code']) > 0){
+			$('#syncOrder').text(msg['code']);
+			$(".getSyncOrder").remove();
+		}else{
+			alert(msg['msg']);
+		}
+	});
+});
+	var fields_name = "";
+	var goods_id = 0;
+//修改字段
+function edit_field(id,field_name){
+	layer.open({
+		type: 1,
+		//skin: 'layui-layer-demo', //样式类名
+		closeBtn: 1, //不显示关闭按钮
+		shift: 2,
+		shadeClose: true, //开启遮罩关闭
+		content: $('#open_div')
+	});
+	var input_box=$('#input_box');
+	var data={"sitem_id":id,"fields_name":field_name};
+	$.post("{:U('Supplier/getGoodsInfo','','')}",data,function(text){
+		input_box.val(text);
+	});
+	fields_name=field_name;
+	goods_id=id;
+}
+	//修改
+function editSelect(id,field_name,div_name){
+	layer.open({
+		type: 1,
+		//skin: 'layui-layer-demo', //样式类名
+		closeBtn: 1, //不显示关闭按钮
+		shift: 2,
+		shadeClose: true, //开启遮罩关闭
+		content: $('#'+div_name)
+	});
+	var input_box=$('#input_box');
+	var data={"sitem_id":id,"fields_name":field_name};
+	$.post("{:U('Supplier/getGoodsInfo','','')}",data,function(text){
+		input_box.val(text);
+	});
+	fields_name=field_name;
+	goods_id=id;
+}
+var skuId="";
+var skuFieldName="";
+function editSKU(id,field_name){
+	layer.open({
+		type: 1,
+		//skin: 'layui-layer-demo', //样式类名
+		closeBtn: 1, //不显示关闭按钮
+		shift: 2,
+		shadeClose: true, //开启遮罩关闭
+		content: $('#sku_div')
+	});
+	var input_box=$('#input_sku');
+	var data={"ssku_id":id,"fields_name":field_name};
+	$.post("{:U('Supplier/getSkuInfo','','')}",data,function(text){
+		input_box.val(text);
+	});
+
+	skuId=id;
+	skuFieldName=field_name;
+}
+	$('#update_sku').click(function(){
+		var input_sku=$('#input_sku').val();
+
+		var data={"ssku_id":skuId,"fields_name":skuFieldName,"content":input_sku};
+		$.post("{:U('Supplier/editSku','','')}",data, function (text) {
+			switch (text){
+				case "1":
+					layer.msg("修改成功");
+					break;
+				default :
+					layer.msg("修改失败");
+			}
+		});
+		//layer.closeAll(	);
+		window.location.reload();
+	});
+
+
+
+
+
+
+$('#update_btn').click(function(){
+	var input_box=$('#input_box').val();
+	var data={"sitem_id":goods_id,"fields_name":fields_name,"content":input_box};
+	$.post("{:U('Supplier/modifyGoods','','')}",data, function (text) {
+		switch (text){
+			case "1":
+				layer.msg("修改成功");
+				break;
+			default :
+				layer.msg("修改失败");
+		}
+	});
+	//layer.closeAll(	);
+	window.location.reload();
+});
+$('#update_btn_supplier').click(function(){
+	var input_box=$('#supplier_id').val();
+	var data={"sitem_id":goods_id,"fields_name":fields_name,"content":input_box};
+	$.post("{:U('Supplier/modifyGoods','','')}",data, function (text) {
+		switch (text){
+			case "1":
+				layer.msg("修改成功");
+				break;
+			default :
+				layer.msg("修改失败");
+		}
+	});
+	//layer.closeAll(	);
+	window.location.reload();
+});
+	$('#update_btn_shop').click(function(){
+		var input_box=$('#shop_id').val();
+		var data={"sitem_id":goods_id,"fields_name":fields_name,"content":input_box};
+		$.post("{:U('Supplier/modifyGoods','','')}",data, function (text) {
+			switch (text){
+				case "1":
+					layer.msg("修改成功");
+					break;
+				default :
+					layer.msg("修改失败");
+			}
+		});
+		//layer.closeAll(	);
+		window.location.reload();
+	});
+function delSKU(id){
+
+	var data={"ssku_id":id};
+	$.post("{:U('Supplier/delSku','','')}",data, function (text) {
+		alert(text);
+		switch (text){
+			case "1":
+				layer.msg("修改成功");
+				break;
+			default :
+				layer.msg("修改失败");
+		}
+	});
+	//layer.closeAll(	);
+	window.location.reload();
+}
+
+</script>
+</body>
+</html>

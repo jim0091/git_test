@@ -1,0 +1,290 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/02/banner2.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">59</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >125</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>398</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">妈妈说：“只要你好好吃饭，比什么都重要”！厨房，这个传承爱的味道并传播爱的天地，只有熟悉的味道在牵引你踏上回家的路，好味道由好厨具创，好厨具才能真正释放你的味蕾，感受家的味道。
+</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">舌尖上跳跃的色彩
+</span></strong></p>
+                <p>由手工精心绘制的花面，色彩绚丽，这独居创意的餐具，为餐桌上增添不少色彩，更具浪漫气息，你舍得不回家吃饭吗？</p>
+
+                <a href="http://www.lishe.cn/item.html?item_id=1056
+" target="_blank">
+                  <img style="width:100%; " src="./images/topic/02/1.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">9,790</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>                	
+                    <a href="http://www.lishe.cn/item.html?item_id=1056
+" target="_blank" title="亿嘉IJARL 陶瓷创意餐具套装饭碗盘子筷子套装 彩虹霓裳 12件套"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">每一口锅都满载一份心意
+</span></strong></p>
+                <p>一次拥有三口炫彩时尚的锅，煎、炸、焖、炖、煮统统拿下，你就是百变小能手！而且不易粘锅易清洗，还你靓丽的厨房和轻松的心情，从此爱上厨房不是梦。</p>
+                <a href="http://www.lishe.cn/item.html?item_id=3343
+" target="_blank">
+                  <img style="width:100%; " src="./images/topic/02/2.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">27,342</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>                	
+                    <a href="http://www.lishe.cn/item.html?item_id=3343
+" target="_blank" title="苏泊尔炫彩三件套锅 炒锅具套装组合三件套平底锅汤锅不粘锅套装T1127T"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">美味就是如此简单
+</span></strong></p>
+                <p>大口径，能聚集更多‘锅气’，料理出色香味俱全的美食；加厚三层重品质，减少油烟更节省时间，不让做菜成为负担，而是享受生活的过程。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=1083" target="_blank">
+                  <img style="width:100%; " src="./images/topic/02/3.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">29,302</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=1083
+" target="_blank" title="佳佰 炒锅304不锈钢三层钢30CM炒锅(电磁炉明火通用)"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">厨房必备小能手
+</span></strong></p>
+                <p>拥有全能七件套刀具等于顺手牵羊十八般厨艺，好刀自与巧手配，好刀助你造就好料理，连自己都情不自禁爱上自己，胃，已牢牢被你吸引。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=1046" target="_blank">
+                  <img style="width:100%; " src="./images/topic/02/4.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                     <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">35,084</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>               	
+                    <a href="http://www.lishe.cn/item.html?item_id=1046" target="_blank" title="十八子作橡木座系列银鹏不锈钢七件套刀S2507 "><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">不只是一把剪刀
+</span></strong></p>
+                <p>剪切鱼肉瓜果、夹小核桃、开酒瓶子等等，反正就不是一把普通的剪刀，放鞭剪裁不伤手，只要你需要，巧媳妇就在你身边助你一臂之力。
+~
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=3359" target="_blank">
+                  <img style="width:100%; " src="./images/topic/02/5.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">1,950</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=3359
+" target="_blank" title="巧媳妇全钢柄厨房剪K-006"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">传递家的味道
+</span></strong></p>
+                <p>注重选用材质的安全，保存食物最真实的味道，让你更好的储存家的味道，随身携带美味，这大概就是最简单的幸福了吧。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=2561" target="_blank">
+                  <img style="width:100%; " src="./images/topic/02/6.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">4,802</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>                	
+                    <a href="http://www.lishe.cn/item.html?item_id=2561
+" target="_blank" title="佳佰塑料保鲜盒3件套(微波炉 冰箱适用）"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _main_content_detail_lst = $('.main-content-div ul li');
+
+    var _count = _main_content_detail_lst.length;
+    console.log('_count -- : ' + _count);
+
+    for (var i =0; i < _count; i++) {
+
+      var _num = i + 1;
+
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

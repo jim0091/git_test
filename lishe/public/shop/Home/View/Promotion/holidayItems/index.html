@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>抢年货</title>
+	<link rel="stylesheet" href="__HOLIDAYITEMS__css/nianhuo.css">
+</head>
+<body>
+	<div class="wrap">
+		<!-- banner活动时间 -->
+		<p class="time">活动时间：2016年12月01日——12月
+			<eq name="comId" value="1467166836740">
+				10
+			<else/>
+				30
+			</eq>
+			
+			日</p>
+		
+		<!-- 100 -->
+		<volist name="list" id="vo" key="k">
+		<div class="section" id="<if condition="$k eq 1">p100<elseif condition="$k eq 2"/>p200<elseif condition="$k eq 3"/>p300<elseif condition="$k eq 4"/>p500<elseif condition="$k eq 5"/>p1000</if>">
+			<ul class="combine">
+				<volist name="vo.items" id="item" offset="0" length="3">
+					<li class="combinegoods">
+						<a href="{:U('Home/promotion/orderPage',array('aitemId'=>$item['aitem_id']))}" target="_blank">
+							<img src="{$item.item_img}">
+						</a>
+						<div class="tjcorner"></div>
+						<p class="goodsname" title="{$item.item_name}">{$item.item_name}</p>
+						<div class="fullprice">&nbsp;<span>￥{$item.shop_price}</span>&nbsp;</div>
+						<div class="onsale"><span>￥</span>{$item.price}</div>
+						<a class="buybtn" href="{:U('Home/promotion/orderPage',array('aitemId'=>$item['aitem_id']))}" target="_blank">购买</a>
+					</li>
+				</volist>
+
+			</ul>
+			<ul class="single">
+				<volist name="vo.items" id="item" offset="3" >
+				<li class="singlegoods">
+					<eq name="item['item_id']" value="0">
+						<a href="{:U('Home/promotion/orderPage',array('aitemId'=>$item['aitem_id']))}" target="_blank">
+					<else/>		
+						<a  href="__APP__/Info/index/itemId/{$item.item_id}/from/{:md5($item['item_id'])}.html" target="_blank">
+					</eq>					
+					<img src="{$item.item_img}">
+					</a>
+					<div class="tjcorner"></div>
+					<p class="goodsname" title="{$item.item_name}">{$item.item_name}</p>
+					<div class="fullprice">&nbsp;<span>￥{$item.shop_price}</span>&nbsp;</div>
+					<div class="onsale"><span>￥</span>{$item.price}</div>
+					<eq name="item['item_id']" value="0">
+						<a class="buybtn" href="{:U('Home/promotion/orderPage',array('aitemId'=>$item['aitem_id']))}" target="_blank">购买</a>
+					<else/>
+						<a class="buybtn" href="__APP__/Info/index/itemId/{$item.item_id}/from/{:md5($item['item_id'])}.html" target="_blank">购买</a>
+					</eq>
+				</li>
+				</volist>
+			</ul>
+		</div>
+		</volist>
+
+<!-- 活动规则 -->
+		<div class="rules">
+			<span class="start-month">12</span>
+			<span class="start-date">01</span>
+			<span class="end-month">12</span>
+			<span class="end-date">
+				<eq name="comId" value="1467166836740">
+					10
+				<else/>
+					30
+				</eq>				
+			</span>
+		</div>
+
+		<!-- 返回顶部 -->
+		<a class="backtop" href="javascript:scroll(0,0);"></a>
+	</div>
+
+	<!-- 悬浮楼梯 -->
+	<div class="quickfloor">
+		<a class="tosection" href="#p100"></a>
+		<a class="tosection" href="#p200"></a>
+		<a class="tosection" href="#p300"></a>
+		<a class="tosection" href="#p500"></a>
+		<a class="tosection" href="#p1000"></a>
+		<a class="tosection totop" href="javascript:scroll(0,0);"></a>
+	</div>
+</body>
+</html>

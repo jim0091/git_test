@@ -1,0 +1,38 @@
+﻿body{border:0px; padding:0px; margin:0px; background:#FFF; font:normal 12px/25px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; color:#000}
+p,ul,li,dl,dt,dd,oi{list-style-type:none;border:0px; padding:0px; margin:0px;}
+div,h1,h2,h3,h4,h5,h6,img,form{border:0px; padding:0px; margin:0px;}
+table{border-collapse:collapse;border-spacing:0;}
+
+.l{float:left;}
+.fl{float:left;display:inline}
+.r{float:right;}
+.fr{float:right;display:inline}
+.c{clear:both;}
+.cc{clear:both; visibility:hidden; height:0; display:none;}
+.cl{clear:both;height:0px;font:0px Arial;overflow:hidden}
+.cf{zoom:1;}
+.cf:after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
+.fs12{font-size:12px;}
+.fs14{font-size:14px;}
+.fs16{font-size:16px;}
+.fb{font-weight:bold;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+input,textarea{outline:none;}
+textarea{resize:none;}
+@-webkit-keyframes fadeIn {
+	0% {opacity:0;}
+	50% {opacity:0.5;}
+	100% {opacity:1;}
+	/*
+	animation:fadeIn 0.5s;
+	-webkit-animation:fadeIn 0.5s;
+	*/
+}
+.ellipsis{white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden; }/*溢出省略号*/
+.opacity{-o-opacity:0.5; -ms-opacity:0.5; -webkit-opacity:0.5; -moz-opacity:0.5; opacity:0.5; filter:Alpha(opacity=50);}
+.borderRadius { -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; }/*5px圆角*/
+.borderRadius50A { -moz-border-radius:50%; -webkit-border-radius:50%; border-radius:50%; }/*50%圆角*/
+.rotate45{transform:rotate(45deg); -ms-transform:rotate(45deg); -webkit-transform:rotate(45deg); -o-transform:rotate(45deg); -moz-transform:rotate(45deg);}	/*旋转元素45°*/
+.rotate-45{transform:rotate(-45deg); -ms-transform:rotate(-45deg); -webkit-transform:rotate(-45deg); -o-transform:rotate(-45deg); -moz-transform:rotate(-45deg);}	/*旋转元素-45°*/
+/*****全局默认CSS结束*****/

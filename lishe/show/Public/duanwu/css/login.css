@@ -1,0 +1,43 @@
+﻿html,body{width: 100%;height: 100%;overflow: hidden;}
+body{background: #f1ffdf url(../images/loginBg.png) no-repeat;background-size: 100%;}
+.main{position: relative;margin-top: -240px;top: 50%; width: 980px;}
+.main .banner{padding-top: 8px;}
+.main .banner img{width: 566px;height: 385px;}
+.content{margin-top: -16px; padding:0 17px; width: 350px;height: 454px;background: url(../images/content.png) no-repeat;border-radius: 10px;}
+.logo{padding-top: 47px; text-align: center;}
+.logo img{vertical-align: top;}
+.inp_con{margin-top: 30px; width: 260px;height: 46px; border:1px solid #cccccc;border-radius: 4px;background: url(../images/user.png) 10px center no-repeat; box-sizing: border-box;-ms-box-sizing: border-box;}
+.inp_con input{float: right;width: 219px;height: 100%;line-height: 100%; border:none;outline: none;border-radius: 4px;}
+.inp_con2{margin-top: 20px;background: url(../images/password.png) 10px center no-repeat;}
+.textCon1,.wraing{padding-top: 10px; width: 260px;height: 14px;line-height: 14px;font-size: 14px;color: #999999;}
+.textCon1 span input{position: relative;top: 2px;margin-right: 5px;}
+.textCon1 a{color: #999999;}
+.textCon1 a:hover{color: #67ae06;}
+.wraing{padding-top: 20px; color: #c7241d;}
+.wraing span{display: none;}
+.loginBtn{margin-top: 12px; width: 260px;height: 46px;line-height: 46px;color: #fff;font-size: 18px; border-radius: 4px;background:#67ae06;text-align: center;cursor: pointer;transition: .5s background;}
+.loginBtn:hover{background:#60a206;}
+.link{padding-top: 20px; line-height: 16px;font-size: 14px;text-align: center;}
+.link a{padding:0 20px; color: #999999;transition: .5s;-moz-user-select: none;-webkit-user-select: none; -ms-user-select: none;-khtml-user-select: none; user-select: none;}
+.link .link_a1{border-right: 1px solid #cfcfcf;}
+.link a:hover{color: #67ae06;}
+.focusColor{border-color: #67ae06;}
+/*错误C提示*/
+.erroeColor{border-color: #f01a2e;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,557 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>添加供应商</title>
+</head>
+<body>
+<form action="{:U('Supplier/addSupplier')}" method="post" enctype="multipart/form-data" class="form form-horizontal" id="form-member-add">
+<div id="tab_demo" class="HuiTab">
+  <div class="tabBar cl">
+  	<span>基本信息</span>
+  	<span>公司信息</span>
+  	<span>合作方式</span>
+  	<span>资质资料</span>
+  	<span>发货人设置</span>
+  	
+  </div>
+  <!-- 基本信息 start-->
+  <div class="tabCon">
+  	<div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>用户名：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="username" name="username" datatype="*2-16"  nullmsg="用户名不能为空">
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>密码：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="password" name="password" datatype="*2-32"  nullmsg="密码不能为空">
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>性别：</label>
+      <div class="formControls col-3 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" id="sex-1" value="1" name="sex" datatype="*" nullmsg="请选择性别！">
+          <label for="sex-1">男</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" id="sex-2" value="0" name="sex">
+          <label for="sex-2">女</label>
+        </div>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+       <div class="col-1"></div>
+       <label class="form-label col-2"><span class="c-red">*</span>联系人：</label>
+       <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="请输入联系人" id="contact_name" name="contact_name" datatype="*2-255">
+       </div>
+       <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+    	<div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>联系人电话：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="contact_tel" name="contact_tel" datatype="*2-16"   nullmsg="手机不能为空">
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>公司名称：</label>
+      <div class="formControls col-4">
+        <input type="text" class="input-text" value="" placeholder="" id="company_name" name="company_name" datatype="*2-255" nullmsg="请输入公司名称">
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">备注：</label>
+      <div class="formControls col-4">
+        <textarea name="remarks" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符"  dragonfly="true"  onKeyUp="textarealength(this,100)"></textarea>
+        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+  </div>
+  <!-- 基本信息 end-->
+   <!-- 公司信息 start-->
+  <div class="tabCon">
+  	 <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司法人：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="artificial_person" name="artificial_person">
+      </div>
+      <div class="col-6"> </div>
+     </div>
+     <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">公司联系方式：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="company_contact" name="company_contact">
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">公司传真：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="company_fax" name="company_fax">
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司类别：</label>
+      <div class="formControls col-3">
+          <span class="select-box">
+				<select name="company_type" class="select">
+                  <option value="0">请选择</option>
+                  <option value="1">国营</option>
+                  <option value="2">私营</option>
+                  <option value="3">股份</option>
+                  <option value="4">合伙</option>
+                  <option value="5">外商独资</option>
+                </select>
+          </span>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司性质：</label>
+      <div class="formControls col-3">
+          <span class="select-box">
+				<select name="company_nature" class="select">
+                  <option value="0">请选择</option>
+                  <option value="1">工厂</option>
+                  <option value="2">总代理</option>
+                  <option value="3">分销商</option>
+                  <option value="4">贸易</option>
+                </select>
+          </span>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">经营范围：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="" placeholder="" id="type" name="type">
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司地址：</label>
+      <div class="formControls col-4">
+        <input type="text" class="input-text" value="" placeholder="" id="company_address" name="company_address">
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>		
+      <label class="form-label col-2">公司网址：</label>
+      <div class="formControls col-4">
+        <input type="text" class="input-text" value="" placeholder="" id="company_site" name="company_site">
+      </div>
+      <div class="col-5"> </div>
+    </div>
+  </div>
+  <!-- 公司信息 end-->
+  <!-- 合作方式start-->
+  <div class="tabCon">
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">合作方式：</label>
+      <div class="formControls col-4 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" id="cooperation_method-1" value="1" name="cooperation_method">
+          <label for="sex-1">自营</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" id="cooperation_method-2" value="2" name="cooperation_method">
+          <label for="sex-2">店铺入驻</label>
+        </div>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">送货周期：</label>
+      <div class="formControls col-2">
+        <input type="text" class="input-text" value="" placeholder="" id="cycle" name="cycle">
+      </div>
+      <div class="col-7"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">入驻金：</label>
+      <div class="formControls col-2">
+        <input type="text" value="0" class="input-text" placeholder="" id="join_amount" name="join_amount" datatype="/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/" ignore="ignore">
+      </div>
+      <div class="formControls col-5 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" value="1" name="join_amount_type">
+          <label for="sex-1">现金</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="2" name="join_amount_type">
+          <label for="sex-2">货款抵扣</label>
+        </div>
+      </div>
+      <div class="col-2"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">保证金：</label>
+      <div class="formControls col-2">
+        <input type="text" class="input-text" value="0"  placeholder="" id="deposit_amount" name="deposit_amount"  datatype="/(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/" ignore="ignore">
+      </div>
+      <div class="formControls col-5 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" value="1" name="deposit_amount_type" >
+          <label for="sex-1">现金</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio"  value="2" name="deposit_amount_type">
+          <label for="sex-2">货款抵扣</label>
+        </div>
+      </div>
+      <div class="col-2"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">交货方式：</label>
+      <div class="formControls col-8 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" value="1" name="delivery_mode" nullmsg="请选择配送方式">
+          <label for="sex-1">免费配送</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="2" name="delivery_mode">
+          <label for="sex-2">免费代发</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="3" name="delivery_mode">
+          <label for="sex-2">快递费月结</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="-1" name="delivery_mode">
+          <label for="sex-2">其他</label>
+        </div>
+      </div>
+      <div class="col-1"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">结算方式：</label>
+      <div class="formControls col-8 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" value="1" name="settle_type">
+          <label for="sex-1">月结</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio"  value="2" name="settle_type">
+          <label for="sex-2">货到付款</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="3" name="settle_type">
+          <label for="sex-2">预付款</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="-1" name="settle_type">
+          <label for="sex-2">其他</label>
+        </div>
+      </div>
+      <div class="col-1"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">结算条件：</label>
+      <div class="formControls col-8 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" value="1" name="settle_mode">
+          <label for="sex-1">8号前对账</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio"value="2" name="settle_mode">
+          <label for="sex-1">对账后见票付款</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="3" name="settle_mode">
+          <label for="sex-1">15号统一付款</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" value="-1" name="settle_mode">
+          <label for="sex-1">其他</label>
+        </div>
+      </div>
+      <div class="col-1"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">发票类型：</label>
+      <div class="formControls col-3">
+        <span class="select-box">
+      	<select name="invoice_type" class="select" id="invoice_type">
+      		 <option value="普通发票">普通发票</option>
+             <option value="增值税专用发票">增值税专用发票</option>
+             <!-- 
+             <option value="普通发票">普通发票</option>
+             <option value="机动车专用发票">机动车专用发票</option>
+             <option value="机打发票">机打发票</option>
+             <option value="定额发票">定额发票</option> -->
+         </select>
+         </span>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">结算银行：</label>
+      <div class="formControls col-3">
+          <span class="select-box">
+				<select id="bankcard_select" class="select">
+                  <option value="">请选择</option>
+                  <option value="中国工商银行 ">中国工商银行 </option>
+                  <option value="中国农业银行">中国农业银行 </option>
+                  <option value="中国建设银行 ">中国建设银行 </option>
+                  <option value="中国银行 ">中国银行 </option>
+                  <option value="中国民生银行 ">中国民生银行 </option>
+                  <option value="中国光大银行 ">中国光大银行 </option>
+                  <option value="中信银行 ">中信银行 </option>
+                  <option value="招商银行">招商银行 </option>
+                  <option value="交通银行 ">交通银行 </option>
+                  <option value="兴业银行 ">兴业银行 </option>
+                  <option value="中国邮政储蓄银行">中国邮政储蓄银行</option>
+                  <option value="-1">其他</option>
+                </select>
+          </span>
+      </div>
+      <div class="formControls col-4">
+        <input type="text" class="input-text" value="{$data['bankcard_name']}" placeholder="请输入银行名称" id="bankcard_name" name="bankcard_name" style="display: none;">
+      </div>
+      <div class="col-2"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">银行卡号：</label>
+      <div class="formControls col-4">
+        <input type="text" class="input-text" placeholder="" id="bankcard_num" name="bankcard_num">
+      </div>
+      <div class="col-5"></div>
+    </div>
+  </div>
+  <!-- 合作方式end-->
+  <!-- 资料上传 start-->
+  <div class="tabCon">
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">营业执照：</label>
+      <div class="formControls col-5"> <span class="btn-upload form-group">
+        <input class="input-text upload-url" type="text" name="uploadfile-1" id="uploadfile-1" readonly   nullmsg="请添加附件！" style="width:200px">
+        <a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+        <input type="file" multiple name="license_file" class="input-file">
+        </span> </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">税务登记：</label>
+      <div class="formControls col-5"> <span class="btn-upload form-group">
+        <input class="input-text upload-url" type="text" name="uploadfile-2" id="uploadfile-2" readonly   nullmsg="请添加附件！" style="width:200px">
+        <a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+        <input type="file" multiple name="tax_file" class="input-file">
+        </span> </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">开户许可证：</label>
+      <div class="formControls col-5"> <span class="btn-upload form-group">
+        <input class="input-text upload-url" type="text" name="uploadfile-3" id="uploadfile-3" readonly   nullmsg="请添加附件！" style="width:200px">
+        <a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+        <input type="file" multiple name="account_file" class="input-file">
+        </span> </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">合同附件：</label>
+      <div class="formControls col-5"> <span class="btn-upload form-group">
+        <input class="input-text upload-url" type="text" name="uploadfile-4" id="uploadfile-4" readonly   nullmsg="请添加附件！" style="width:200px">
+        <a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+        <input type="file" multiple name="contract_file" class="input-file">
+        </span> </div>
+      <div class="col-4"> </div>
+    </div>
+  </div>
+  <!-- 资料上传 end-->
+  <!--设置发货人-->
+  <div class="tabCon">
+    <div class="row cl">
+    	<div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>跟单员账户：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" id="lisheAccount" value="{$sender['lishe_account']}"  placeholder="请输入跟单员账户(手机号)"  name="sender[lishe_account]" datatype="*2-16"   nullmsg="手机不能为空">
+				<input type="hidden" name="sendSupplierId" value="{$sender['supplier_id']}">
+      </div>
+      <div class="col-6"><small>输入跟单员账户后离开输入框自动检测跟单员信息</small></div>
+    </div>
+    <div class="row cl">
+       <div class="col-1"></div>
+       <label class="form-label col-2"><span class="c-red">*</span>礼舍跟单员：</label>
+       <div class="formControls col-3">
+        <input type="hidden" class="input-text" id="merchandiser" value="{$sender['lishe_merchandiser']}"  id="contact_name" name="sender[lishe_merchandiser]" datatype="*2-255">
+       	<span  id="merchandisert">{$sender['lishe_merchandiser']}</span>
+       </div>
+       <div class="col-6"></div>
+    </div>  	
+  	
+
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>状态：</label>
+      <div class="formControls col-4 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" id="status-1"  value="1" name="status" datatype="*" nullmsg="请选择状态！" <eq name="sender['sender_status']" value="1">checked</eq>>
+          <label for="status-1">启用</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" id="status-2" value="0" name="status" <eq name="sender['sender_status']" value="0">checked</eq>>
+          <label for="status-2">禁用</label>
+        </div>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+  	<div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>发货联系人：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="{$sender['sender']}" placeholder="请输入发货联系人" id="username" name="sender[sender]" datatype="*2-16"  nullmsg="用户名不能为空">
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">手机号码：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="{$sender['sender_phone']}" placeholder="请输入发货联系人的手机号" id="password" name="sender[sender_phone]" datatype="*2-16"   nullmsg="手机不能为空">
+      </div>
+      <div class="col-6"></div>
+    </div>      
+  
+</div>
+<!-- 提交表单按钮-->
+<div class="row cl">
+	<div class="col-1"></div>	
+	<div class="col-4 col-offset-3">
+		<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+	</div>
+	<div class="col-7"></div>	
+</div>
+</form>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+		var $tab_menu=$(tabBar);
+		  // 初始化操作
+		  $tab_menu.removeClass(class_name);
+		  $(tabBar).eq(i).addClass(class_name);
+		  $(tabCon).hide();
+		  $(tabCon).eq(i).show();
+		  
+		  $tab_menu.bind(tabEvent,function(){
+		  	$tab_menu.removeClass(class_name);
+		      $(this).addClass(class_name);
+		      var index=$tab_menu.index(this);
+		      $(tabCon).hide();
+		      $(tabCon).eq(index).show();
+		  });
+		}
+	$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","0");
+	
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").Validform({
+		tiptype:2
+	});
+	
+	$("#bankcard_select").change(function(){
+		var bankName = $(this).val();
+		bankName = $.trim(bankName);
+		if(bankName == -1){
+			$("#bankcard_name").val('');
+			$("#bankcard_name").show();
+		}else{
+			$("#bankcard_name").hide();
+			$("#bankcard_name").val(bankName);
+		}
+	});
+});
+	$("#lisheAccount").blur(function(){
+		var account = $("#lisheAccount").val().trim();
+		if(account == ''){
+				layer.msg("请输入跟单员账户！");
+				return false;
+		}
+		$.post('__APP__/Supplier/checkAdminAcount',{account:account},
+			function(data){
+				if(data['code'] == 1){
+					$("#merchandisert").text(data['msg']);
+					$("#merchandiser").val(data['msg']);
+				}else{
+					layer.msg(data['msg']);
+				}
+			}
+		);
+	}); 
+</script>
+</body>
+</html>

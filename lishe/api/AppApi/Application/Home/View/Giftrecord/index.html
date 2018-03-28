@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html style="font-size: 160px;background: #F9F6F6;">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>礼物记主页</title>
+		<link rel="stylesheet" href="__PUBLIC__/Home/Giftrecord/css/giftstory.css">
+		<script src="__PUBLIC__/Home/Giftrecord/js/jquery-3.1.1.min.js"></script>
+		<script>
+			/*font-size*/
+			document.addEventListener("DOMContentLoaded", function(event) {
+				document.documentElement.style.fontSize = window.innerWidth / 10 + "px";
+			});
+		</script>
+	</head>
+
+	<body>
+		<!-- <div>
+		<div class="top_bar"></div>
+		<div class="top_search">
+			<input type="text" class="index_search" placeholder="搜索礼物记，商品和用户">
+		</div>
+	</div> -->
+		<div id="index_main">
+			<div style="height: 2941px;" class="outer_wrap">
+				<volist name="arrData" id="val">
+					<div class="index_box">
+						<div class="box_inner" style="background: white;">
+							<a href="__APP__/Home/Giftrecord/detail?token={$token}&id={$val['id']}"><img src="__ADMIN__IMG__{$val['images']}" class="content_pic"></a>
+							<div class="content_wrap">
+								<a href="__APP__/Home/Giftrecord/detail?token={$token}&id={$val['id']}">
+									<p class="content_title fb">{$val['title']}</p>
+									<div class="content_text">
+										{$val['content']}
+									</div>
+								</a>
+								<div class="content_bottom">
+									<div class="users">
+										<img src="__PUBLIC__/Home/Giftrecord/images/user_head.png" class="user_head">
+										<span class="user_name">{$val['username']}</span>
+									</div>
+									<div class="like" id='{$val['id']}'>
+										<if condition="$val['is_favour'] eq '1'">
+											<span class="heart" style="background-image: url(__PUBLIC__/Home/Giftrecord/images/heart_red.png);"></span>
+											<else/>
+											<span class="heart" style="background-image: url(__PUBLIC__/Home/Giftrecord/images/heart_gray.png);"></span>
+										</if>
+										
+										<!--<input type="hidden" name="Giftrecord" class="Giftrecord" value="{$val['id']}" />-->
+										<span class="like_num">{$val['favour']}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</volist>
+				<input type="hidden" name="uid" id="uid" value="{$uid}" />
+				<input type="hidden" name="token" id="token" value="{$token}" />
+			</div>
+		</div>
+		<script type="text/javascript">
+			$('.like').on('click', function() {
+				var id = $(this).attr('id');
+				var token = $('#token').val();
+				var uid = $('#uid').val();
+				$.ajax({
+					type: "post",
+					url: "__APP__/Home/Giftrecord/favour",
+					async: true,
+					timeout: 7000,
+					dataType: "json",
+					data: {
+						giftrecord_id: id,
+						token: token,
+						uid: uid
+					},
+					success: function(msg) {
+						if(msg['status'] != 0) {
+							window.location.reload()
+							//成功
+							alert(msg['message']);
+							//$(this).children('span.heart').css('background-image',"url('__PUBLIC__/Home/Giftrecord/images/heart_red.png')");
+							//This.querySelectorAll(".heart")[0].style.backgroundImage = "url(__PUBLIC__/Home/Giftrecord/images/heart_red.png)";
+							//This.querySelectorAll(".like_num")[0].innerHTML = new_liked_num + 1;
+							//$(this).children('.like_num').html(msg['status']);
+						} else {
+							window.location.reload()
+							alert(msg['message']);
+							return false;
+							//This.querySelectorAll(".heart")[0].style.backgroundImage = "url(__PUBLIC__/Home/Giftrecord/images/heart_gray.png)";
+							//This.querySelectorAll(".like_num")[0].innerHTML = new_liked_num - 1;
+						}
+					},
+					error: function() {
+						alert(msg);
+						return false;
+					}
+				});
+			});
+		</script>
+		<script src="__PUBLIC__/Home/Giftrecord/js/giftstory.js"></script>
+		<!-- 模态框（Modal） -->
+
+	</body>
+
+</html>

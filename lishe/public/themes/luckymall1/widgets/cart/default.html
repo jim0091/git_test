@@ -1,0 +1,15 @@
+<div class="minicart" id="minicart_<{$widget_id}>">
+  <a href="/cart.html" class="btn btn-simple btn-lg">
+    <span>
+    	<img src="./images/shopping_icon.png" alt="" style="margin: 0px 8px; position: relative; top: 3px;">我的购物车<i style="display: inline-block; position: relative; margin-right: 10px; padding-left: 20px; font-size: 20px; line-height: 1; vertical-align: text-top;"><b data-type="<{$setting.cart_show_type}>" class="up-cat-number">0</b>></i>
+    	<!--
+      <i class="icon-cart-a"><b data-type="<{$setting.cart_show_type}>" class="up-cat-number">0</b></i>去购物车结算<i class="icon-arrow-right-b"></i>
+      	-->
+    </span>
+  </a>
+</div>
+
+<script>
+//获取cookie，读取购物车现有商品数量
+updateCartNumber('#minicart_<{$widget_id}> .up-cat-number');
+</script>

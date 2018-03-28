@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="__PUBLIC__/wGasStation1/css/Login.css" />
+		<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+		<script src="__PUBLIC__/js/enter.js"></script>
+		<title>登录-{$cname}</title>
+	</head>
+	<body>
+		<div class="bannerLayout">
+			<div class="Loginlayout">
+				<div class="giftdiv"><img src="__PUBLIC__/wGasStation1/images/gift.png"></div>
+			 	<div class="LoginContent">
+			 		 <div class="LOGO"><img src="<notempty name='logo'>{$logo}<else/>__PUBLIC__/wGasStation1/images/LOGO.png</notempty>" style="max-width:200px;max-height: 92px;vertical-align: middle;"></div>
+			 		 <div class="inputdiv">
+			 		 	<input type="text" id="userName" placeholder="请输入用户名" class="inputuser" maxlength="11" onKeyPress="if(event.keyCode==13) {return false;}" >
+			 		 </div>
+			 		 <div class="inputdiv"><input type="password" id="password" placeholder="请输入密码" class="inputuser"></div>
+           			<input type="hidden" id="refer" value="{$refer}">
+			 		 <div class="revisePwd">
+			 		 	<span class="loLeft">
+			 		 	<img src="__PUBLIC__/wGasStation1/images/nor.png" class="nor"/><img src="__PUBLIC__/wGasStation1/images/nel.png" class="nel"/>
+						自动登录</span>
+			 		 	<span class="PdRight"><a href="{:C('LISHE')}/shop.php/sign/index/refer/findPasswd" target="_blank" >忘记密码?</a></span>
+			 		 </div>
+			 		 <div class="errorts"><span></span></div>
+			 		 <div class="loginbtn"><a href="javascript:void(0);" id="loginBtn" >登录</a></div>
+			 		 <div class="activation">
+			 		 	<span><a href="{:C('LISHE')}/shop.php/sign/index/refer/activation" target="_blank">快速激活</a></span>
+			 		 	<span class="line">|</span>
+			 		 	<span><a href="{:U('Home/Cactive/index')}" target="_blank">礼品卡激活</a></span>
+			 		 </div>
+			 	</div>
+			</div> 
+		</div>
+		
+		<script type="text/javascript">
+			$(".nor").click(function(){
+			  $(".nor").hide();
+			  $(".nel").show();
+			});
+			
+			$(".nel").click(function(){
+			  $(".nel").hide();
+			  $(".nor").show();
+			});
+			
+		</script>
+	</body>
+		<script type="text/javascript">
+			$(document).ready(function (){
+				$("#userName").focus();
+				$("#loginBtn").click(function(){
+					$(".errorts span").text('').hide();		
+				  	var userName=$("#userName").val();
+				  	var password=$("#password").val();
+				    if(userName==""){
+				      $(".errorts span").text('*请输入您的用户名！').show();
+				      $("#userName").focus();
+				      return false;
+				    }
+				    if(password==""){
+				      $(".errorts span").text('*请输入您的登录密码！').show();
+				      $("#password").focus();
+				      return false;
+				    } 
+			
+					urls="__APP__?c=Login&a=login";
+					$.ajax({
+						type: "POST",
+						url:urls,
+						dataType:"text",
+						cache:false,
+						data: {
+							userName:userName,
+							password:password,
+							mark:'{$control}'
+						},
+						success: function(data){
+							var msg=eval(data);
+							if(msg[0]>0){
+			//					var refer=msg[2];
+								var refer=$("#refer").val();
+								if(refer!=''){
+									window.location.href=refer;
+								}else{
+									window.location.href="__APP__/Index/index";	
+								}				
+							}else{
+				     			$(".errorts span").text('*'+msg[1]).show();
+								$("#userName").focus();
+							}
+						},
+						error: function () {
+			     			$(".errorts span").text('*error：'+msg[1]).show();
+							$("#userName").focus();
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

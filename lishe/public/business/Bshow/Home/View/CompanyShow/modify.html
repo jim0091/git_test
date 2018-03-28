@@ -1,0 +1,393 @@
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/ShowPtlogo.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/Shownva.css">
+<style>
+	.thispage{
+		color: white;
+		background-color: #C7241D;
+	}
+</style> 
+ <!--上传logo-->
+  <div class="upload" id="lg" style="display: none;">
+     <p class="uptitle">上传LOGO</p>
+     <ul class="logo-left">
+        <li class="up-btn"><a href="javascript:void(0);"  onclick="logoFile.click()">
+        	
+        	<img src="__PUBLIC__/companyShow/images/logoAdd.png">
+        	
+        	选择图片</a></li>
+        <li class="up-des"><p>只支持JPG、PNG、GIF</p><p>大小不超过300X90像素</p><p>最佳尺寸180PX*90PX</p></li>
+        
+     </ul>
+     <ul class="logo-right">
+        <li class="up-ti">预览</li>
+        <li class="up-pt"><p><img id="yl300"
+     	<notempty name="comCon.com_logo">
+    		src="{$comCon.com_logo}"
+    	</notempty>          	
+        	 
+        	 ></p>
+        	<!--<p>300PX*90PX</p>-->
+        </li>
+        <!--<li class="up-pt"><p><img id="yl160" src="__PUBLIC__/companyShow/images/smallLo.png"></p><p>160PX*80PX</p></li>-->
+     </ul>
+		<input type="file" style="display: none;" id="logoFile" name="logoFile" onchange="uploadPic('logo');"/>
+		<input type="hidden" id="logo">
+     <p class="up-btn2"><a href="javascript:void(0);" class="sure" onclick="upload()">确   定</a><a href="#" class="preview">预   览</a></p>
+  </div>
+ <!--底部版权信息管理-->
+  <div class="copyrights" id="bq" style="display: none;">
+     <p class="uptitle">底部版权信息管理</p>
+     <ul>
+     <if condition="($comCon['com_domain'] eq '') or ($comCon['is_check'] eq 0)">
+      <li class="cs-des">域名设置：<input type="text" class="text" id="comdomain" maxlength="20" value="{$comCon['com_domain']}" style="width:150px;"/>&nbsp;.lishe.cn&nbsp;<b style="color: #ff0000">(不能少于4个字符)</b></li>
+    <else/>
+    	<li class="cs-des">域名设置：<input type="text" class="text" id="comdomain" maxlength="20" value="{$comCon['com_domain']}" style="width:150px;" disabled="disabled"/>&nbsp;.lishe.cn&nbsp;<b style="color: #bcbcbc">(审核通过)</b></li>
+    </if>
+    
+      <li class="cs-des">联系地址：<input type="text" class="text" id="comadd" maxlength="50" value="{$comConInfo->comadd}"/></li>
+      <li class="cs-des">联系电话：<input type="text" class="text" id="comphone" maxlength="20" value="{$comConInfo->comphone}" /></li>
+      <li class="cs-des" style="margin-top:20px;">
+        <div style=" float:left;">版权信息：</div>
+        <div><textarea id="comcop" maxlength="80" style="min-width:330px; min-height:90px; font-size: 12px">{$comConInfo->comcop}</textarea></div>
+      </li>
+      <li class="up-btn2"><a href="javascript:void(0);" class="sure" id="copsure">确   定</a><a href="#" class="preview">预   览</a></li>
+     </ul>
+  </div>
+  <script type="text/javascript">
+    $(function(){
+		$(".{$show}").show();
+      $('#copsure').click(function(){ 
+        var comdomain = $("#comdomain").val();
+        if (comdomain == "") {
+          alert("请填写域名！");
+          $("#comdomain").focus();
+          exit();          
+        };
+        
+		if(comdomain.length<4){
+          alert("域名不能少于4个字符！");
+          $("#comdomain").focus();
+          exit();          
+        };
+        
+        var comadd =  $("#comadd").val();
+        if (comadd == "") {
+          alert("请填写联系地址！");
+          $("#comadd").focus();
+          exit();
+        };
+        var comphone =  $("#comphone").val();
+        if (comphone == "" && !isPhone.test(comphone)) {
+          alert("请填写联系电话！");
+          $("#comphone").focus();
+          exit();
+        };
+        var comcop =  $("#comcop").val();
+        if (comphone == "") {
+          alert("请填写版权信息！");
+          $("#comcop").focus();
+          exit();
+        };
+
+        urls="__APP__/CompanyShow/copyright";
+        $.ajax({
+          type: "POST",
+          url:urls,
+          dataType:"text",
+          cache:false,
+          data: {
+            comdomain:comdomain,
+            comadd:comadd,
+            comphone:comphone,
+            comcop:comcop
+          },
+          success : function (result){
+            if (result == 'success') {
+              alert("修改成功！");
+            }else{
+              alert("修改失败！");
+            }
+          }
+        });
+      });
+
+      $("#comphone").keyup(function(){ 
+        //keyup事件处理 
+        $(this).val($(this).val().replace(/\D|^0/g,''));
+
+      }).bind("paste",function(){ 
+        //CTR+V事件处理 
+        $(this).val($(this).val().replace(/\D|^0/g,''));
+
+      }).css("ime-mode", "disabled"); 
+      //CSS设置输入法不可用 
+      
+  })
+  </script>
+
+  <!--模板设置-->
+  <div class="mod" id="mb" style="display: none;">
+   <p class="uptitle">模板设置</p>
+   <!--二级菜单-->
+   <div class="menu">
+       <ul class="menu-ul">
+         <li id="li-1" ><span id="cn1"> 类型</span><span>&or;</span></li>
+         <li id="li-2"><span id="cn2"> 主题</span><span>&or;</span></li>
+         <li id="li-3" ><span id="cn3"> 价格</span><span>&or;</span></li>
+         <li id="li-4"><span id="cn4"> 颜色</span><span>&or;</span></li>
+       </ul>
+        <!--隐藏盒子-->
+        <div id="box-1" class="hidden-box hidden-loc-index">
+            <ul>
+                <li onclick="condition('type',0,'不限')">不限</li>
+                <li onclick="condition('type',1,'静态')">静态</li>
+                <li onclick="condition('type',2,'动态')">动态</li> 
+            </ul>
+        </div>
+        <div id="box-2" class="hidden-box hidden-loc-us">
+            
+        </div>
+        <div id="box-3" class="hidden-box hidden-loc-prc">
+            <ul>
+                <li onclick="condition('price',0,'不限')">不限</li>
+                <li onclick="condition('price',1,'免费')">免费</li>
+                <li onclick="condition('price',2,'会员')">会员</li> 
+            </ul>
+        </div>
+        <div id="box-4" class="hidden-box hidden-loc-color">
+            <ul>
+                <li onclick="condition('color',0,'不限')">不限</li>
+                <li onclick="condition('color',1,'黑')">黑</li>
+                <li onclick="condition('color',2,'白')">白</li> 
+                <li onclick="condition('color',3,'红')">红</li>
+                <li onclick="condition('color',4,'蓝')">蓝</li>
+                <li onclick="condition('color',5,'绿')">绿</li>
+                <li onclick="condition('color',6,'紫')">紫</li>
+                <li onclick="condition('color',7,'金')">金</li>
+                <li onclick="condition('color',8,'银')">银</li>
+            </ul>
+        </div>
+     </div>   
+   <!--END-->
+ <!--模版-->
+ <div id="ajax_lists">
+ 	
+ </div>
+     <!--<div class="mod-main" id="ajax_lists">
+        <ul>
+          <li><img src="__PUBLIC__/companyShow/images/logo.png"></li>
+          <li class="mod-user"><p>蓝天</p>你可以免费使用</li>
+          <li class="mod-btn"><a href="#" class="preview2">预   览</a><a href="#" class="used">已使用</a></li>
+        </ul>
+        <ul>
+          <li><img src="__PUBLIC__/companyShow/images/logo2.png"></li>
+          <li class="mod-user"><p>中国结</p>你可以免费使用</li>
+          <li class="mod-btn">
+            <a href="#" class="preview2">预   览</a>
+            <a href="javascript:void(0);" class="used2" onclick="tempUse(1)">使   用</a>
+          </li>
+        </ul>
+        <ul>
+          <li><img src="__PUBLIC__/companyShow/images/logo3.png"></li>
+          <li class="mod-user"><p>高山</p>你可以免费使用</li>
+          <li class="mod-btn"><a href="#" class="preview2">预   览</a><a href="#" class="used2">使   用</a></li>
+        </ul>
+         <ul>
+          <li><img src="__PUBLIC__/companyShow/images/logo.png"></li>
+          <li class="mod-user"><p>蓝天</p>你可以免费使用</li>
+          <li class="mod-btn"><a href="#" class="preview2">预   览</a><a href="#" class="used">已使用</a></li>
+        </ul>
+        <ul>
+          <li><img src="__PUBLIC__/companyShow/images/logo2.png"></li>
+          <li class="mod-user"><p>中国结</p>你可以免费使用</li>
+          <li class="mod-btn"><a href="#" class="preview2">预   览</a><a href="#" class="used2">使   用</a></li>
+        </ul>
+        <ul>
+          <li><img src="__PUBLIC__/companyShow/images/logo3.png"></li>
+          <li class="mod-user"><p>高山</p>你可以免费使用</li>
+          <li class="mod-btn"><a href="#" class="preview2">预   览</a><a href="#" class="used2">使   用</a></li>
+        </ul>
+     </div>-->
+<script type="text/javascript">
+  function tempUse(tempId){
+		var nowpage=$("#nowpage").val();
+		if(!nowpage){
+			nowpage=1;
+		}
+        urls="__APP__/CompanyShow/updateTemp";
+        $.ajax({
+          type: "POST",
+          url:urls,
+          dataType:"text",
+          cache:false,
+          data: {
+            tempId:tempId
+          },
+          success : function (result){
+            if (result != 0) {
+              alert("修改成功！");
+   			  getPage(nowpage,type,theme,price,color);
+              
+            }else{
+              alert("修改失败！");
+            }
+          }
+        });
+  }
+</script>
+
+     <!--分页--> 
+  <!--<ul class="mod-fy">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>...</li>
+            <li><a href="#">下一页</a></li>
+            <li>第<span>1/24</span>页</li>
+            <li>共<span>424</span>记录</li>
+            <li><input type="text">页</li>
+            <li><a href="#">确定</a></li>
+          </ul>-->
+  </div>
+
+  
+   <script type="text/javascript">
+      $(document).ready(function(){
+		var num;
+		$('.menu-ul>li[id]').hover(function(){
+		   
+			/*下拉框出现*/
+			var Obj = $(this).attr('id');
+			num = Obj.substring(3, Obj.length);
+			$('#box-'+num).slideDown(300);
+		},function(){
+			
+			/*下拉框消失*/
+			$('#box-'+num).hide();
+		});
+
+		$('.hidden-box').hover(function(){
+			/*保持图标向上*/
+			$(this).show();
+		},function(){
+			$(this).slideUp(200);
+		});
+    });
+
+	function uploadPic(types){
+		var inputName = types+'File';
+		var img=$('#'+types).val();
+		var delurl="__APP__/CompanyShow/delImg/channel/brand/file/"+img;
+		if(img!=''){
+			$.get(delurl, function(result){
+			});
+		}
+		urls="__APP__/CompanyShow/uploadImg/channel/brand/inputName/"+inputName+"/types/"+types;
+		$.ajaxFileUpload ({
+			url :urls,
+			secureuri :false,
+			fileElementId :inputName,
+			dataType : 'text',
+			success : function (data,status){
+				if(data!='undefined'){
+					var dataArr=eval("("+data+")");
+					if(dataArr[0]<=0){
+						if(dataArr[0]==-4){
+							alert(dataArr[1]);
+						}else{
+							alert('Error：'+dataArr[1]);
+						}
+					}else{
+						$("#yl300").attr("src","/business/"+dataArr[1]);
+						$('#'+types).val(dataArr[1]);
+					} 
+				} 
+			}, 
+			error: function (data, status, e){
+				alert('Faild！');
+			}
+		});
+	}
+	function upload(){
+		var fileload=$("#logo").val();
+		if(!fileload){
+			alert("还未上传LOGO!");
+			return false;
+		}else{
+		urls="__APP__/CompanyShow/uploadres";
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'file='+fileload,
+				success:function(data){
+					alert(data);
+				}
+			});
+		}
+	}
+	//模板设置
+	window.type=0;
+	window.theme=0;
+	window.price=0;
+	window.color=0;
+ $(function() {
+   	 var url_ajax = "{:U('Home/CompanyShow/tempSet')}";
+	    $("#ajax_lists").delegate(".pager a", "click", function() {
+	        var page = $(this).attr("data-page");
+//	        getPage(页码，类型,主题,价格,颜色,默认);
+//	        getPage(page,type,theme,price,color);
+				
+      	  getPage(page,type,theme,price,color);
+	        
+	        
+	    });
+        getPage(1,"","","","");
+
+    })	
+    function getPage(page,type,theme,price,color) {
+//       $("#ajax_lists").html("<div class='col-md-12 toppadding'><div class='text-center'><img src='__ZIMGI__loading.gif' alt='loading'></div></div>");
+   	var url_ajax = "{:U('Home/CompanyShow/tempSet')}";
+		 $.ajax({
+			type:"post",
+			url:url_ajax,
+			data:"p="+page+"&type="+type+"&theme="+theme+"&price="+price+"&color="+color,
+			success:function(data){
+		            $('#ajax_lists').html(data);
+				
+			},
+			error:function(e){
+				
+			}
+		});       
+        
+    }	
+	function condition(where,value,text){
+		if(where=="type"){
+			$("#cn1").text(text);
+			type=value;
+		}
+		if(where=="price"){
+			$("#cn3").text(text);
+			price=value;
+			
+		}
+		if(where=="color"){
+			$("#cn4").text(text);
+			color=value;
+		}
+        getPage(1,type,theme,price,color);
+	}
+	//跳页数
+	function topage(){
+		var pageval=$("#pageval").val();
+        getPage(pageval,type,theme,price,color);
+		
+	}
+	
+	//模板设置
+	
+    </script>

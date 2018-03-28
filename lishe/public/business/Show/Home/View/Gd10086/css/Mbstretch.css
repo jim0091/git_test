@@ -1,0 +1,193 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#ff6161; font-family:"微软雅黑"; font-size:12px; padding-bottom:30px;}
+
+.header{background:#FFF; height:35px; width:100%;}
+.hea-top{width:1000px; margin:0 auto;}
+.hed-left{float:left; font-size:15px; padding:7px 0;}
+.hed-left li{float:left;}
+.hed-left li a{color:#333; padding-left:5px;}
+.hed-left li span{padding:0 8px; color:#CCC;}
+.hed-right{float:right;font-size:15px; padding:7px 0;}
+.hed-right li{float:left;}
+.hed-right li a{color:#333; padding-left:5px;}
+.hed-right li span{padding:0 8px; color:#CCC;}
+
+.nva{background:url(../images/nvabg.png) center center; width:100%; height:860px;}
+.nva ul{width:1000px; margin:0 auto; padding-top:670px;}
+.nva ul li{float:left; margin-left:25px;}
+.shList{width:1197px; margin:0 auto; clear:both;}
+.shList ul{float:left; background:#ffffff; width:285px; margin:10px 7px; height:340px;}
+.pt{text-align:center;}
+.shList ul img{width:270px; height:235px; vertical-align:middle;}
+.spname{height:50px; line-height:20px; padding-top:20px;}
+.spname a{font-size:14px; color:#494949; padding-left:10px;}
+.pric a{padding-left:10px; font-size:14px; color:#ff2121; font-weight:bold;}
+.gmbtn{float:right; margin-right:12px;}
+.gmbtn a{font-size:14px;color:#FFF;font-weight:bold; background:#db1c1c; padding:5px 10px; border-radius:5px;}
+/*右侧悬浮框*/
+.tip-absolute {
+	position: fixed;
+	width: 88px;
+	top: 200px;
+    right: 6%;
+    background: #a12124;
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    z-index: 9999;
+	cursor:pointer;
+}
+
+.tip-on-bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+.tip-absolute .tip-fixed-nav {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.tip-absolute p {
+    margin: 0px;
+}
+.tip-absolute a {
+    color: #fff;
+}
+
+.tip-absolute .tip-fixed-username {
+    background: #c7241d;
+    padding: 6px 0px;
+    border-radius: 6px;
+}
+.tip-absolute .tip-fixed-username p {
+	font-size: 16px;
+}
+.tip-absolute .tip-fixed-username span {
+	font-size: 14px;
+}
+
+.tip-absolute .tip-fixed-bottom {
+	padding: 8px;
+}
+ 
+.tip-absolute .tip-fixed-bottom .sb-cell{width:70px;border-bottom:1px solid #C26278;padding:10px 0;margin: 0 auto; font-size:14px; color:#FFF;}
+.tip-absolute .tip-fixed-bottom .sb-cell span{display:block;margin-bottom:2px;}
+.tip-absolute .tip-fixed-bottom .sb-cell .yu{font-size:24px; color:#FFF;}
+.tip-absolute .tip-fixed-bottom .sb-cell .yu2{font-size:20px; color:#FFF;}
+
+	
+.tip-absolute .tip-fixed-bottom a{
+	text-decoration:none;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance {
+	border-bottom: 1px solid #D78C97;
+	padding-bottom: 6px;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance p {
+	font-size: 14px;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance span {
+	font-size: 30px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-shopping-cart {
+    padding: 6px 0px;
+	border-bottom: 1px solid #D78C97;
+	font-size: 14px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-shopping-cart tt {
+	font-size: 24px;
+	font-weight: bold;
+	padding-right: 3px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up, .tip-absolute .tip-fixed-bottom .tip-fixed-help {
+	position: relative;
+    padding: 6px 0px;
+    border-bottom: 1px solid #D78C97;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up, .tip-absolute .tip-fixed-bottom .tip-fixed-help:hover {
+    padding: 6px 0px;
+    border-bottom: 1px solid #D78C97;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up p, .tip-absolute .tip-fixed-bottom .tip-fixed-help p {
+    margin: 5px 0px;
+    padding: 3px 8px;
+    background: #c7241d;
+    border-radius: 5px;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: width,height .5s linear;
+	-moz-transition: width,height .5s linear;
+	-o-transition: width,height .5s linear;
+	-ms-transition: width,height .5s linear;
+	transition: width,height .5s linear;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up p:hover, .tip-absolute .tip-fixed-bottom .tip-fixed-help p:hover {
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-o-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transform: scale(1.05);
+	-webkit-transition: width,height .5s linear;
+	-moz-transition: width,height .5s linear;
+	-o-transition: width,height .5s linear;
+	-ms-transition: width,height .5s linear;
+	transition: width,height .5s linear
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-help img {
+    position: absolute;
+    bottom: 28px;
+	left: 55px;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: all .5s eas;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-help img:hover {
+    bottom: 31px;
+	left: 58px;
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-top {
+	cursor: pointer;
+	padding: 10px 0px 5px 0px;
+}
+
+@media screen and (max-width: 1366px) {
+    .tip-absolute {
+        right:0%;
+    }
+}
+

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="activityOrder">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="order_status">
+						<div>
+							<ul class="all_orders">
+								<a href="{:U('Order/activityOrderList',array('status'=>''))}">
+									<li id="all" class="statusCheck">全部订单</li>
+								</a>	
+								<a href="{:U('Order/activityOrderList',array('status'=>'WAIT_BUYER_PAY'))}">						
+									<li id="topay" class="statusCheckWAIT_BUYER_PAY">待付款</li>
+								</a>
+								<a href="{:U('Order/activityOrderList',array('status'=>'WAIT_SELLER_SEND_GOODS'))}">
+									<li id="waitsend" class="statusCheckWAIT_SELLER_SEND_GOODS">待发货</li>
+								</a>
+								<a href="{:U('Order/activityOrderList',array('status'=>'WAIT_BUYER_CONFIRM_GOODS'))}">
+									<li id="tosign" class="statusCheckWAIT_BUYER_CONFIRM_GOODS">待收货</li>
+								</a>
+								<a href="{:U('Order/activityOrderList',array('status'=>'WAIT_COMMENT'))}">
+									<li id="write_review" class="statusCheckWAIT_COMMENT">待评价</li>
+								</a>
+								<a href="{:U('Order/activityOrderList',array('status'=>'NO_APPLY'))}">
+									<li id="write_review" class="statusCheckNO_APPLY">退换货</li>
+								</a>
+							</ul>
+						</div>
+						<div class="order_search">
+							<div class="order_num">共<span>{$count}</span>条订单</div>
+							<input type="text" placeholder="请输入商品名称">
+							<a href="" class="order_search_btn">搜索订单</a>
+						</div>
+					</div>
+					<input type="hidden" name="status" id="status" value="{$status}">
+					<div class="order_details">
+						<div class="order_details_title">
+							<div class="name">商品详情</div>
+							<div class="price">单价</div>
+							<div class="number">数量</div>
+							<div class="aftersale">商品操作</div>
+							<div class="totalmoney">订单总金额</div>
+							<div class="status">订单状态</div>
+							<div class="operation">订单操作</div>
+						</div>
+
+						<!-- 订单1 -->
+						<volist name="orderList" id="vo">
+						<div class="orders closed">
+							<!-- 订单号 -->							
+							<div class="orderid">
+								<div><input type="checkbox"></div>
+								<div class="time">{$vo['creat_time']|date="Y-m-d H:i:s",###}</div>
+								<div>订单编号：{$vo['atid']}</div>
+								<div class="delete"><a href="__APP__/Order/emptyHint"></a></div>
+							</div>							
+							<!-- 订单详情 -->							
+							<div class="order_list">
+								<empty name="vo['orderList']">
+									<div class="order_preview" ></div>
+								<else/>
+								<volist name="vo['orderList']" id="item">								
+								<div class="order_preview" >
+									<div class="pics">
+										<img src="{$item['item_img']}" width="78px" height="78px">
+									</div>
+									<div class="goods_name">
+										<p>{$item['item_name']}</p>
+										<p class="category">{$item['spec_nature_info']}</p>
+									</div>
+									<div class="perprice">￥{$item['price']}</div>
+									<div class="ammount">&times;{$item[num]}</div>
+									<!-- <div class="return">
+										<if condition="$item['status'] eq 'TRADE_FINISHED'">
+										<p><a href="">退货/换货</a></p>
+										<p><a href="">申请售后</a></p>
+										</if>
+
+										<if condition="$item['status'] eq 'WAIT_SELLER_SEND_GOODS'">
+										<p><a href="">退货/换货</a></p>
+										</if>
+
+										<if condition="$item['status'] eq 'WAIT_BUYER_CONFIRM_GOODS'">
+										<p><a href="">退货/换货</a></p>
+										</if>
+									</div> -->
+								</div>
+								</volist>
+								</empty>
+								<div class="paid_money">
+									<span>￥{$vo['payment']}</span><br>
+									(含运费:&nbsp;￥{$vo['post_fee']})
+								</div>
+
+								<if condition="$vo['status'] eq 'WAIT_BUYER_PAY'">
+								<div class="order_progress">
+									待付款<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>
+								<div class="order_operation">
+									<a href="__SHOP__/Pay/activityPay/paymentid/{$vo['paymentId']}" class="paynow" data-type="pay" data-orderId="{$vo['paymentId']}"  data-status ="PAY">立即付款</a>
+									<a href="javascript:void(0);" class="userOp" data-type="cancel" data-orderId="{$vo['atid']}" data-status ="CANCEL">取消订单</a>
+								</div>
+								</if>
+
+								<if condition="$vo['status'] eq 'TRADE_CLOSED_BY_USER'">	
+								<div class="order_progress">
+									用户取消<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>				 				
+								<div class="order_operation">
+									取消成功
+								</div>
+								</if>
+
+								<if condition="$vo['status'] eq 'TRADE_CLOSED_BY_SYSTEM'">
+								<div class="order_progress">
+									订单超时<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>	
+					 			<div class="order_operation">
+									取消成功
+								</div>
+								</if>
+
+								<if condition="$vo['status'] eq 'TRADE_CLOSED_BY_ADMIN'">
+								<div class="order_progress">
+									管理员取消<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>
+								<div class="order_operation">
+									取消成功
+								</div>
+								</if>
+
+								<if condition="$vo['status'] eq 'WAIT_SELLER_SEND_GOODS'">
+								<div class="order_progress">
+									已付款待发货<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>
+								<div class="order_operation">
+									<a href="__APP__/Order/emptyHint" class="remind">提醒卖家发货</a>
+									<if condition="$vo['order_status'] eq 'REFUND'">
+									<a href="#" class="awaybtn">有退款<if condition="$vo['refund_fee'] gt 0">(退款￥:{$vo['refund_fee']})</if></a>
+								</if>
+								</div>
+								</if>	
+
+								<if condition="$vo['status'] eq 'IN_STOCK'">
+								<div class="order_progress">
+									订单备货中<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>
+								<div class="order_operation">
+									备货中
+								</div>
+								</if>
+
+								<if condition="$vo['status'] eq 'WAIT_BUYER_CONFIRM_GOODS'">
+								<div class="order_progress">
+									已发货待签收<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a><br/>
+									<a href="__APP__/Order/emptyHint" class="express">查看物流</a>
+								</div>
+								<div class="order_operation">									
+								<if condition="$vo['order_status'] eq 'REFUND'">
+									<a href="#" class="awaybtn">有退款<if condition="$vo['refund_fee'] gt 0">(退款￥:{$vo['refund_fee']})</if></a>
+								</else>	
+									<a href="javascript:void(0);" class="remind userOp" data-type="confirm" data-orderId="{$vo['tid']}" data-status ="CONFIRM">确认收货</a>
+								</if>
+								</div>
+								</if>	
+
+								<if condition="$vo['status'] eq 'TRADE_FINISHED'">
+								<div class="order_progress">
+									订单已完成<br>
+									<a href="__APP__/Order/emptyHint">订单详情</a>
+								</div>								
+								<div class="order_operation">
+									<a href="__APP__/Order/emptyHint" class="comment">去评价</a>
+									<if condition="$vo['order_status'] eq 'REFUND'">
+									<a href="#" class="awaybtn">有退款<if condition="$vo['refund_fee'] gt 0">(退款￥:{$vo['refund_fee']})</if></a>
+									</if>
+								</div>
+								</if>
+							</div>
+						</div>
+						</volist>  
+
+						<!-- 批量操作 -->
+						<div class="operation_all">
+							<div><input type="checkbox"></div>
+							<div>全选</div>
+							<div><a href="__APP__/Order/emptyHint" class="payall">合并付款</a></div>
+							<div><a href="__APP__/Order/emptyHint" class="deliveryall">批量确认收货</a></div>
+						</div>
+
+						<!-- 翻页 -->
+						<div class="pages">
+							{$pagestr}
+						</div>
+						<style type="text/css">
+							.pages a.prev{width: 68px;}
+							.pages div a{margin-left: 5px;}
+							.pages a.next{width:68px;}
+							.pages .current {
+							    color: #FFF;
+							    background-color: #FF3737;
+							    display: inline-block;
+							    width: 38px;
+							    height: 38px;
+							    line-height: 38px;
+							    text-align: center;
+							    margin-left: 5px;
+							    cursor: default;
+							}
+						</style>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- 底部导航 -->
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    };
+	$(function(){
+		var status = $("#status").val();
+		$(".statusCheck"+status).addClass("current");
+		if (status != "NO_APPLY") {
+			if (status != "TRADE_CLOSED_BY_USER") {
+				$(".statusLeft").addClass("current");
+			};			
+		}
+	});
+	$(".userOp").click(function(){		
+        $(".topLoading").show();    
+		var op = $(this).attr("data-type");
+		var orderId = $.trim($(this).attr("data-orderId"));
+		var status = $.trim($(this).attr("data-status"));
+
+		if (op == '' || orderId == '') {
+			$(".topLoading").hide();			
+            divPrompt("系统繁忙，请重试！");
+            return;
+		};
+		$.ajax({
+            type:"GET",
+            url:"__APP__/Order/activityOrderChgStatus",
+            data:{tid:orderId,status:status},
+            dataType:'text',
+            success:function(data){
+                var res = eval(data);
+                if (res[0] == 1 ) {
+                    $(".topLoading").hide();
+                    divPrompt(res[1]);
+                    window.location.reload();
+                    return;
+                }else{
+                    $(".topLoading").hide();
+                    divPrompt(res[1]);
+                    window.location.reload();
+                    return;
+                }
+            },
+            error:function(){
+                $(".topLoading").hide();
+             	divPrompt("系统繁忙，请重试！");
+                return;
+            }
+    	});
+
+	});
+</script>
+	
+</body>
+</html>

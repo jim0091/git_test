@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<title>礼物记详情页面</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/Giftrecord/css/giftstory.css">
+	<script src="__PUBLIC__/Home/Giftrecord/js/jquery-3.1.1.min.js"></script>
+	<script>
+		/*font-size*/
+		document.addEventListener("DOMContentLoaded", function(event) {
+		    document.documentElement.style.fontSize = window.innerWidth/10 + "px";
+		});
+	</script>
+</head>
+<body>
+	<div class="gift_info">
+		<a href="javascript:history.go(-1)" class="back"></a>
+		礼物记详情
+	</div>
+	<!-- 推荐内容 -->
+	<div class="rec_details">
+		<div class="user-top">
+			<div class="users">
+				<img src="__PUBLIC__/Home/Giftrecord/images/user_head.png" class="user_head">
+				<span class="user_name">{$findData['username']}</span>
+			</div>
+			<if condition="$findData['is_att'] eq '1'">
+				<div id="follow" style="background-image: url('__PUBLIC__/Home/Giftrecord/images/followed.png');"></div>
+				<else/>
+				<div id="follow" style="background-image: url('__PUBLIC__/Home/Giftrecord/images/follow.png');"></div>
+			</if>
+			
+		</div>
+		<!--<div id="" class="" style="width:100%;height:30px;line-height:30px;border-top:1px solid #C3C3C3;float:left;">
+			<div id="" style="font-weight:bold;font-size:12px; float: left;display:block;padding-left: 10px;">
+				{$cateData1}>{$cateData2}
+			</div>
+		</div>-->
+		<div class="imgPreview">
+			<div id="swipe-wrapper">
+				<img class="swipe-slide active" src="__ADMIN__IMG__{$findData['images']}">
+				<img class="swipe-slide" src="__PUBLIC__/Home/Giftrecord/images/pic4.png">
+				<img class="swipe-slide" src="__PUBLIC__/Home/Giftrecord/images/pic3.png">
+			</div>
+		</div>
+		<div class="rec_text">
+			<p class="rec_title">{$findData['title']}</p>
+			<div class="rec_content">
+				{$findData['content']|htmlspecialchars_decode}
+			</div>
+			<div class="rec_bottom">
+				<div class="time"><span>3</span>天前</div>
+				<div class="up_num"><span>{$findData['favour']}</span>次赞</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 猜你喜欢 -->
+	<!--<div class="guesslike">
+		<div class="guesslike_t">
+			<p class="guesstitle"><span class="line"></span>你可能会喜欢</p>
+			<a href="" class="guessmore">更多心意&nbsp;&gt;</a>
+		</div>
+		<div class="goods_list">
+			<ul>
+				<li class="goods">
+					<img src="__PUBLIC__/Home/Giftrecord/images/goods.png">
+					<div class="goods_name">商品名称商品名称商品名称</div>
+					<div class="goods_price"><span>10080</span>积分</div>
+				</li>
+				<li class="goods">
+					<img src="__PUBLIC__/Home/Giftrecord/images/goods.png">
+					<div class="goods_name">商品名称商品名称</div>
+					<div class="goods_price"><span>10080</span>积分</div>
+				</li>
+				<li class="goods">
+					<img src="__PUBLIC__/Home/Giftrecord/images/goods.png">
+					<div class="goods_name">商品名称商品名称</div>
+					<div class="goods_price"><span>10080</span>积分</div>
+				</li>
+				<li class="goods">
+					<img src="__PUBLIC__/Home/Giftrecord/images/goods.png">
+					<div class="goods_name">商品名称商品名称</div>
+					<div class="goods_price"><span>10080</span>积分</div>
+				</li>
+			</ul>
+		</div>
+	</div>-->
+	
+	
+	<if condition="$correlation neq null">
+	<div style="height: 0.27rem;background: #F9F6F6;"></div>
+	<!-- 相关推荐 -->
+	<div class="relatedwrap">
+		<p class="related"><span class="line"></span>相关礼物记</p>
+		<div id="info_main">
+			<div class="outer_wrap">
+				<volist name="correlation" id="val">
+				<div class="index_box">
+					<div class="box_inner">
+						<a href="__APP__/Home/Giftrecord/detail?token={$token}&id={$val['id']}"><img src="__ADMIN__IMG__{$val['images']}" class="content_pic"></a>
+						<div class="content_wrap">
+						<a href="__APP__/Home/Giftrecord/detail?token={$token}&id={$val['id']}">
+							<p class="content_title fb">{$val['title']}</p>
+							<div class="content_text">
+								{$val['content']}
+							</div>
+						</a>
+						<div class="content_bottom">
+							<div class="users">
+								<img src="__PUBLIC__/Home/Giftrecord/images/user_head.png" class="user_head">
+								<span class="user_name">{$val['username']}</span>
+							</div>
+							<div class="like" id='{$val['id']}'>
+								<if condition="$val['is_favour'] eq '1'">
+											<span class="heart" style="background-image: url(__PUBLIC__/Home/Giftrecord/images/heart_red.png);"></span>
+											<else/>
+											<span class="heart" style="background-image: url(__PUBLIC__/Home/Giftrecord/images/heart_gray.png);"></span>
+										</if>
+								<!--<span class="heart"></span>-->
+								<span class="like_num">{$val['favour']}</span>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</volist>
+			</div>
+		</div>
+	</div>
+	</if>
+	<script src="__PUBLIC__/Home/Giftrecord/js/giftstory.js"></script>
+	<input type="hidden" name="attention" id="attention" value="{$findData['uid']}" />
+	<input type="hidden" name="token" id="token" value="{$token}" />
+	<input type="hidden" name="user_id" id="user_id" value="{$uid}" />
+	<script type="text/javascript">
+		$(function(){
+			$("#follow").click(function(){
+				var attention = $('#attention').val();
+				var token = $('#token').val();
+				var uid = $('#uid').val();
+				$.ajax({
+					type: "post",
+					url: "__APP__/Home/Giftrecord/attention",
+					async: true,
+					timeout: 7000,
+					dataType: "json",
+					data: {
+						attention: attention,
+						token: token,
+						uid: uid
+					},
+					success: function(msg) {
+						if(msg['status'] != 0) {
+							window.location.reload()
+							alert(msg['message']);
+						} else {
+							window.location.reload()
+							alert(msg['message']);
+							return false;
+						}
+					},
+					error: function() {
+						alert(msg);
+						return false;
+					}
+				});
+			});
+		})
+	</script>
+	<script type="text/javascript">
+			$('.like').on('click', function() {
+				var id = $(this).attr('id');
+				var token = $('#token').val();
+				var uid = $('#uid').val();
+				$.ajax({
+					type: "post",
+					url: "__APP__/Home/Giftrecord/favour",
+					async: true,
+					timeout: 7000,
+					dataType: "json",
+					data: {
+						giftrecord_id: id,
+						token: token,
+						uid: uid
+					},
+					success: function(msg) {
+						if(msg['status'] != 0) {
+							window.location.reload()
+							//成功
+							alert(msg['message']);
+							//$(this).children('span.heart').css('background-image',"url('__PUBLIC__/Home/Giftrecord/images/heart_red.png')");
+							//This.querySelectorAll(".heart")[0].style.backgroundImage = "url(__PUBLIC__/Home/Giftrecord/images/heart_red.png)";
+							//This.querySelectorAll(".like_num")[0].innerHTML = new_liked_num + 1;
+							//$(this).children('.like_num').html(msg['status']);
+						} else {
+							window.location.reload()
+							alert(msg['message']);
+							return false;
+							//This.querySelectorAll(".heart")[0].style.backgroundImage = "url(__PUBLIC__/Home/Giftrecord/images/heart_gray.png)";
+							//This.querySelectorAll(".like_num")[0].innerHTML = new_liked_num - 1;
+						}
+					},
+					error: function() {
+						alert(msg);
+						return false;
+					}
+				});
+			});
+		</script>
+</body>
+</html>

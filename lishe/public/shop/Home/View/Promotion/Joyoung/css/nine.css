@@ -1,0 +1,156 @@
+body,div,img,a{margin: 0;padding: 0;border: 0;}
+a{display: block;text-decoration: none;position: absolute;background:#fff; opacity:0;filter:alpha(opacity=0);}
+div{width: 100%;overflow: hidden;text-align: center;height: auto;}
+img{
+	width: 100%;height: auto%;
+	vertical-align: top;
+}
+.nien2,.nien3,.nien4,.nien5,.nien6,.nien7,.nien8,.nien9,.nien10,.nien11,.nien12,.nien14,.nien15{position: relative;}
+.nien2 a{width: 52%;height: 6%;left: 0;right: 0;margin: 0 auto;}
+.nien2 .top_a1{top: 27%;}
+.nien2 .top_a2{top: 60.8%;}
+.nien2 .top_a3{top: 93%;}
+
+.n4_a1,
+.n6_a1,
+.n8_a1,
+.n10_a1,
+.n12_a1
+{width: 63%; height:30%;top: 0; left: 0;right: 0;margin: 0 auto;}
+
+.n4_a2,
+.n6_a2,
+.n8_a2,
+.n10_a2,
+.n4_a3,
+.n6_a3,
+.n8_a3,
+.n10_a2,
+.n10_a3,
+.n12_a2,
+.n12_a3
+{width: 31.5%; height:34%;top: 31%;}
+
+.n4_a2,
+.n6_a2,
+.n8_a2,
+.n10_a2,
+.n12_a2
+{ left: 18%;}
+
+.n4_a3,
+.n6_a3,
+.n8_a3,
+.n10_a3,
+.n12_a3
+{ left: 50%;}
+
+.n4_a4,
+.n4_a5,
+.n4_a6,
+.n6_a4,
+.n6_a5,
+.n6_a6,
+.n8_a4,
+.n8_a5,
+.n8_a6,
+.n10_a4,
+.n10_a5,
+.n10_a6,
+.n12_a4,
+.n12_a5,
+.n12_a6
+{top: 66%;width: 20%; height:34%;}
+
+.n4_a4,
+.n6_a4,
+.n8_a4,
+.n10_a4,
+.n12_a4
+{left: 18.8%;}
+
+.n4_a5,
+.n6_a5,
+.n8_a5,
+.n10_a5,
+.n12_a5
+{left: 40%;}
+
+.n4_a6,
+.n6_a6,
+.n8_a6,
+.n10_a6,
+.n12_a6
+{left: 61%;}
+
+.n14_1,
+.n14_2,
+.n14_3,
+.n14_4,
+.n14_5,
+.n14_6,
+.n14_7,
+.n14_8,
+.n14_9{
+	width: 20.2%;
+	height: 32.3%;
+}
+.n14_1,
+.n14_2,
+.n14_3{
+	top: 0;
+}
+.n14_1,.n14_4,.n14_7{
+	left: 18.7%;
+}
+.n14_2,.n14_5{
+	left: 39.8%;
+}
+.n14_3,.n14_6,.n14_9{
+	left: 61%;
+}
+
+.n14_4,
+.n14_5,
+.n14_6{
+	top: 34%;
+}
+
+.n14_7,
+.n14_8,
+.n14_9{
+	top: 67.4%;
+}
+
+.nien15 .more{
+	top: 8.6%;
+	left: 71.4%;
+	width: 10%;
+	height: 13%;
+}
+.nien15 .go_top{
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 111;
+	width: 15.7%;
+	height: 14.5%;
+	top: 63.3%;
+	margin-left: auto;
+	margin-right: auto;
+	background: #fdfa03;
+	line-height: 188%;
+	text-align: center;
+	font-size: 30px;
+	font-family: "微软雅黑";
+	color: #f62947;
+	opacity: 1 !important;
+	filter:alpha(opacity=100);
+}
+
+
+
+
+
+
+

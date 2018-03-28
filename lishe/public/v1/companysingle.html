@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<title>For企业For个人-礼舍,情感的交流</title>
+	<meta name="keywords" content="礼舍,礼舍网,福利,企业福利,礼品">
+	<meta name="description" content="礼舍网，一站式高端礼品采购、定制电子商务平台，致力于为客户提供创新的顾问式、定制化融合礼品解决方案的服务。">
+	<link rel="stylesheet" href="/v1/css/reset_css.css">
+	<link rel="stylesheet" href="/v1/css/head_bottom.css">
+	<link rel="stylesheet" href="/v1/css/companysingle.css">
+	<script src="/v1/js/companysingle.js"></script>
+	<script src="/v1/js/jQuery.v1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){	
+		$.get("/api.php/Api/getLoginInfo", function(result){
+			var account=eval(result);
+			if(account[0]>0){
+				$('#loginBox').hide();
+				$('#memberBox').show();
+				$('#userName').text(account[3]);
+			}
+		});	
+	}); 
+	</script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="/" class="logo1"></a>
+			<ul>
+				<li class="nav_link current"><a href="/">礼舍首页</a></li>
+				<li class="nav_link"><a href="/shop.html" target="_blank">心意商城</a></li>
+				<li class="nav_link"><a href="/v1/help.html">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<li id="loginBox"><a href="/shop.php/Sign">会员登录</a></li>
+           		<li id="memberBox" style="display: none"><a href="/member-index.html" id="userName"></a></li>
+				<li><a href="http://zs.lishe.cn" target="_blank">商家中心</a></li>
+				<li><a href="http://v.lishe.cn/company/login.html"  target="_blank">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 背景图 -->
+	<div class="banner"></div>
+
+	<!-- 文字 -->
+	<div class="position">
+		<div class="title">礼舍，是一种情感交流</div>
+		<p>为企业与个人量身定制情商管理平台</p>
+	</div>
+
+	<!-- 信息框 -->
+	<div class="introduction">
+		<div class="tables">
+			<div class="category">
+				<!-- 企业选项卡 -->
+				<ul class="companys">
+					<li><span></span><div class="company1"></div><p>就让员工爽</p></li>
+					<li><span></span><div class="company2"></div><p>攻略秘籍库</p></li>
+					<li><span></span><div class="company3"></div><p>百变心意礼</p></li>
+					<li><span></span><div class="company4"></div><p>给老板汇报</p></li>
+				</ul>
+				<!-- 个人选项卡 -->
+				<ul class="customers">
+					<li><span></span><div class="customer1"></div><p>福利自个挑</p></li>
+					<li><span></span><div class="customer2"></div><p>选择困难症</p></li>
+					<li><span></span><div class="customer3"></div><p>社交赚人品</p></li>
+					<li><span></span><div class="customer4"></div><p>我都买了啥</p></li>
+				</ul>
+			</div>
+			<ul class="user_type">
+				<li id="companys">For企业</li>
+				<span id="line"></span>
+				<li id="customers">For个人</li>
+			</ul>
+		</div>
+		<div class="content">
+			<!-- 企业内容 -->
+			<div class="companys">
+				<div class="pages">
+					<p class="title">就让员工爽的福利管理</p>
+					<p class="info">入职，节日，生日，结婚，生娃，荣休&hellip;上礼舍，全搞定，一键发福利，so easy!</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>作为一个HR，我工作好忙的，我们就直奔重点吧，礼舍可以帮我做什么？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>礼舍专属心意商城提供过万礼品，任由员工选择，解决最让HR头疼的福<br>利采购困难症。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>操作很简单呦：注册成为礼舍企业成员，登录一企一舍，充值积分，<br>使用 [ 福利管理 ] - [ 一键发放 ] ，选择发放对象和积分分额，<br>一键确认，轻松完成</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+				<div class="pages">
+					<p class="title">俘获员工心的HR攻略秘籍</p>
+					<p class="info">情商管理秘籍，福利激励攻略，重大节日送礼指南，分分钟套牢员工心。</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>个性化的福利确实很有趣，但是方案制定还是很费时费力的一件事啊，<br>有配套的解决方案吗？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>礼舍一企一舍的 [ 智慧社区 ] ， [ 定制大师 ] 有为企业量身定制员工情商<br>管理秘籍，员工福利激励攻略，重大节日送礼指南，让你头痛的福利问题<br>和员工及时激励，客户维护管理我们都替你想好了。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+				<div class="pages">
+					<p class="title">助你花样送心意的礼舍新意商城</p>
+					<p class="info">积分兑换商品，做任务赢积分，别人福利发啥</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>我想员工和客户都开心满意，但是怎么兼顾每个员工或客户的选择？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>员工可在提供过万礼品的 [ 心意商城 ] ，兑换涵盖国内外知名品牌，<br>京东商城的礼品，还有如滴滴打车，电影票，洗衣等的各种便民服务，<br>上礼舍，一次性满足你生活中所有的任性需求。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p> [ 心意商城 ] 定期更新各种各样的送礼攻略专题或精选礼品，用户可根<br>据送礼对象，场合与主题，选择合适的礼品，充分满足每个人层出不穷<br>的情商管理需求，还有很多好玩有趣的积分游戏，积分好礼享不停。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p> [ 迷礼圈 ] 是礼舍独有的社交模式，迷礼圈不仅有替送礼人传情达意<br>的包装推荐，还有晒单晒福利，灌水吐槽的社交属性，增进友谊的同<br>时，满足社交达人‘爱现’本性。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+				<div class="pages">
+					<p class="title">给老板汇报，大数据更清晰</p>
+					<p class="info">员工满意反馈，周期积分发放，年度福利账单，自定义报表生成，福利生效，工作总结一目了然</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>一年下来，效果如何还是要给老板汇报的，大小福利统计也是一台大戏，<br>数据有现成的就好了，最好还附上分析</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>您的这点小心思，礼舍早就猜到了！礼舍超强大数据库，确保会员数<br>据齐备无误。HR只需进入 [ 数据中心 ] 简单完成选项，福利清单，<br>业绩对比，员工满意度等，即可一目了然。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>礼舍资讯如此丰富，想随时查看怎么做呢？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>礼舍所有功能将逐步同步到公众号和手机app，多端同步随时随地发福<br>利，pc端手机端功能互通，移动办公无压力，立刻关注礼舍公众号，<br>还能获得500专属积分。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 个人内容 -->
+			<div class="customers">
+				<div class="pages">
+					<p class="title">福利自个挑，翻滚吧！福利君</p>
+					<p class="info">向领导讨福利，福利积分任换，老板买单，心意商城过万礼品，喜欢什么选什么！</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>公司说给我们发了礼舍积分，听说积分可以当钱花，具体怎么操作？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>欢迎加入礼舍大家庭。如需兑换积分，只要通过礼舍官网或公司官网<br>入口，完成注册与登录，按指示填入兑换码，即可获得积分。凭积分<br>可在 [ 心意商城 ] 随意购买价值相应积分的礼品。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>除了HR发福利，还有别的方法获得积分吗？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>在 [ 心意商城 ] 玩赚积分专区完成新手任务或参与礼舍游戏活动都可<br>以获得积分或相应折扣，积分奖励无上限，多种游戏等你来战！当然，<br>您也可以直接充值，把心意商城变成您的购物主场。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+				<div class="pages">
+					<p class="title">拯救你的送礼困难症</p>
+					<p class="info">个人情商管理秘籍，领导上司攻心攻略，亲友节日送礼指南</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>送礼这事不简单，一提送礼脑袋大，礼舍有啥好主意？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>送礼不能只讲心意，还要讲究方法哦。礼舍 [ 心意商城 ] 独创‘情景化’<br>选礼模式，看对象，选场景，看攻略，提交订单，只需四步，让您走进<br>ta的心。还有传情达意的礼舍歌词包装盒，词穷的你再也不怕了。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>迷礼圈是什么？晒福利有好处吗？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p> [ 迷礼圈 ] 是礼舍为会员打造的交流平台，您可以在那分享‘好礼’<br>‘好福利’，让小伙伴羡慕嫉妒恨。晒福利或发表评论，都可以获得<br>相应积分奖励哦，更多积分等待爱分享的你。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+				<div class="pages">
+					<p class="title">社交赚人品，公开社交达人的养成秘密</p>
+					<p class="info">给亲友发红包，给领导送祝福，送个暖心好礼，小傲娇晒福利，好人员的速成秘籍，礼舍教你攒人气</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>社交白痴，零人缘，礼舍可以救我吗？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p> [ 心意商城 ] 各种礼舍送礼指南，人际管理秘籍，给亲友发红包，给领<br>导送祝福，送个暖心好礼，小傲娇晒福利每天轮番推动，教您如何成为<br>社交king/queen！</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+				<div class="pages">
+					<p class="title">我都买了啥，礼舍钱包有话说</p>
+					<p class="info">My福利收藏夹，月度积分账单，年度福利收支，收支一目了然</p>
+					<div class="ask">
+						<div class="ask_icon"></div>
+						<div class="content_text">
+							<div class="left_triangle1"></div>
+							<div class="left_triangle2"></div>
+							<p>自从知道礼舍，收藏夹的宝贝越来越多，每个月买买买，根本停不下来，<br>不想成为剁手党，月光族的我要肿么办？</p>
+						</div>
+					</div>
+					<div class="answer">
+						<div class="content_text">
+							<p>小伙伴们莫着急，来来来！礼舍超强大数据库，你只需进入 [ 我的礼舍<br> ] - [ 收藏夹 ] 就能查阅自己收藏的宝贝，在 [ 礼舍钱包 ] 就能查阅月<br>度账单/年度福利收支，记账分明，避免失足称为剁手党，月光族。</p>
+							<div class="right_triangle1"></div>
+							<div class="right_triangle2"></div>
+						</div>
+						<div class="answer_icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tags">
+			<p class="companys">企业</p>
+			<p class="customers">个人</p>
+		</div>
+	</div>
+
+    <!--底部-->
+    <div id="footer">
+       <div class="footerdimension">
+           <div class="footertop">
+               <div class="footertopLeft">
+                   <ul>
+                      <li class="footerUser">导航</li>
+                      <li class="footerMenu"><a href="/v1/help.html#2" target="_blank">礼舍简介</a></li>
+                      <li class="footerMenu"><a href="/v2/companysingle.html#companys0" target="_blank">礼舍做什么</a></li>
+                      <li class="footerMenu"><a href="http://www.lishe.cn/theme/evaluate/index.html" target="_blank">伙伴说什么</a></li>
+                      <li class="footerMenu"><a href="/shop.html" target="_blank">心意商城</a></li>
+                   </ul>
+                   <ul>
+                      <li class="footerUser">咨询</li>
+                      <li class="footerMenu"><a href="/v1/help.html#0" target="_blank">服务条款</a></li>
+                      <li class="footerMenu"><a href="http://vip.lishe.cn" target="_blank">礼舍动态</a></li>
+                      <li class="footerMenu"><a href="/v1/help.html#4" target="_blank">人员招聘</a></li>
+                   </ul>
+                   <ul>
+                      <li class="footerUser">礼舍帮帮</li>
+                      <li class="footerMenu"><a href="/v1/help.html#1" target="_blank">礼舍教学操作指南</a></li>
+                      <li class="footerMenu"><a href="/v1/help.html" target="_blank">礼舍使用全攻略</a></li>
+                      <li class="footerMenu"><a href="/v1/help.html#3" target="_blank">常见问题</a></li>
+                      <li class="footerMenu"><a href="/v1/help.html#6" target="_blank">联系我们</a></li>
+                   </ul>
+                   <ul>
+                      <li class="footerUser">加入我们</li>
+                      <li class="footerMenu"><a href="http://zs.lishe.cn/" target="_blank">供应商入驻</a></li>
+                      <li class="footerMenu"><a href="http://v.lishe.cn/company/login.html" target="_blank">企业入驻</a></li>
+                      <li class="footerMenu"><a href="/v1/help.html#5" target="_blank">合作伙伴</a></li>
+                   </ul>
+               </div>
+               <div class="footertopRight">
+                   <ul>
+                     <li class="footerPhone"><img src="/v1/images/indexPhone.png">400-1188-234</li>
+                     <li class="footerConnection">联系我们</li>
+                   </ul>
+                   <ul>
+                     <li><img src="/v1/images/IndexWx.png"></li>
+                   </ul> 
+               </div>   
+           </div>
+           <div style="clear:both;"></div>
+           <div class="footerbottom">
+              <ul class="footerbottomLeft">
+                <li>© 2005-2016 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1</li>
+                <li>All rights Reserved.</li>
+              </ul>
+              <ul class="footerbottomRight">
+                <li class="footerbottomRightPhone">全国客服热线：400-1188-234 </li>
+                <li class="footerbottomRightTime">周一至周五 9:00-18:00</li>
+              </ul>
+           </div>
+           <div style="clear:both;"></div>
+       </div>    
+    </div>
+</body>
+</html>

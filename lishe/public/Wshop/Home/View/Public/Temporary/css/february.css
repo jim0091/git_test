@@ -1,0 +1,358 @@
+@keyframes kitchen {
+  100% {
+    bottom: 0rem;
+  }
+}
+@-webkit-keyframes kitchen {
+  100% {
+    bottom: 0rem;
+  }
+}
+/*left cloud*/
+@keyframes left_cloud {
+  100% {
+    left: 0;
+  }
+}
+@-webkit-keyframes left_cloud {
+  100% {
+    left: 0;
+  }
+}
+/*right cloud*/
+@keyframes right_cloud {
+  100% {
+    right: -0.11rem;
+  }
+}
+@-webkit-keyframes right_cloud {
+  100% {
+    right: -0.3rem;
+  }
+}
+/*little*/
+@keyframes little {
+  100% {
+    left: 0.3rem;
+  }
+}
+@-webkit-keyframes little {
+  100% {
+    left: 0.3rem;
+  }
+}
+/*think*/
+@keyframes think {
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes think {
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes think2 {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+    -webkit-transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+  }
+}
+@-webkit-keyframes think2 {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+    -webkit-transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(1deg);
+    -webkit-transform: rotate(1deg);
+  }
+}
+@keyframes hello {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  30% {
+    transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-webkit-keyframes hello {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  30% {
+    transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+/*arrow*/
+@keyframes arrow {
+  100% {
+    transform: translateY(-0.1rem);
+    -webkit-transform: translateY(-0.1rem);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes arrow {
+  100% {
+    transform: translateY(-0.1rem);
+    -webkit-transform: translateY(-0.1rem);
+    opacity: 1;
+  }
+}
+/*calendar*/
+@keyframes calendar {
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes calendar {
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes click {
+  0% {
+    transform: translateX(-1.9rem) translateY(0.25rem);
+    opacity: .2;
+  }
+  100% {
+    transform: translateX(-0.9rem) translateY(0.25rem);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes click {
+  0% {
+    transform: translateX(-1.9rem);
+    opacity: .2;
+  }
+  100% {
+    transform: translateX(-0.9rem);
+    opacity: 1;
+  }
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.section1,
+.section2 {
+  position: relative;
+  overflow: hidden;
+  overflow-y: scroll;
+  transition: 1.5s;
+  width: 100%;
+  height: 100%;
+  background: url(../img/index_bg.png) no-repeat;
+  background-size: 100% 100%;
+}
+.kitchen {
+  position: absolute;
+  bottom: -8.56rem;
+  width: 100%;
+  animation: .8s kitchen linear forwards;
+  -webkit-animation: .8s kitchen linear forwards;
+}
+.kitchen img {
+  width: 100%;
+  vertical-align: top;
+}
+.left_cloud {
+  position: absolute;
+  top: 1.29rem;
+  left: -1.25rem;
+  width: 1.25rem;
+  height: 9.34rem;
+  animation: .5s left_cloud linear forwards .5s;
+  -webkit-animation: .5s left_cloud linear forwards 1s;
+}
+.left_cloud img {
+  width: 1.25rem;
+  height: 9.34rem;
+}
+.right_cloud {
+  position: absolute;
+  top: 0.29rem;
+  right: -1.85rem;
+  width: 1.85rem;
+  height: 10.32rem;
+  animation: .5s right_cloud linear forwards .5s;
+  -webkit-animation: .5s right_cloud linear forwards 1s;
+}
+.right_cloud img {
+  width: 1.85rem;
+  height: 10.32rem;
+}
+.little {
+  z-index: 100;
+  position: absolute;
+  width: 4.17rem;
+  height: 7.31rem;
+  bottom: 4.2rem;
+  left: -4.17rem;
+  animation: .8s little linear forwards 1.2s;
+  -webkit-animation: .8s little linear forwards 1.3s;
+}
+.little img {
+  width: 4.17rem;
+  height: 7.31rem;
+}
+.think {
+  position: absolute;
+  left: 1.35rem;
+  bottom: 10.1rem;
+  width: 8.1rem;
+  height: 4.07rem;
+  z-index: 105;
+  opacity: 0;
+  animation: .5s think linear forwards 2.1s;
+  -webkit-animation: .5s think linear forwards 2.1s;
+}
+.think img {
+  width: 8.1rem;
+  height: 6.07rem;
+  transform-origin: left bottom;
+  -webkit-transform-origin: left bottom;
+  animation: 1.5s think2 alternate linear infinite 2.6s;
+  -webkit-animation: 1.5s think2 alternate linear infinite 2.6s;
+}
+.hello {
+  position: absolute;
+  bottom: 6.5rem;
+  right: 1.67rem;
+  width: 1.95rem;
+  height: 2.48rem;
+  transform: scale(0);
+  -webkit-transform: scale(0);
+  animation: 1s hello alternate linear forwards 2.8s;
+  -webkit-animation: 1s hello alternate linear forwards 2.8s;
+}
+.hello img {
+  width: 1.95rem;
+  height: 2.48rem;
+}
+.arrow {
+  position: absolute;
+  bottom: 0.56rem;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 3.71rem;
+  height: 2.81rem;
+}
+.arrow img {
+  width: 0.91rem;
+  height: 0.61rem;
+  vertical-align: bottom;
+  transform: translateY(1.3rem);
+  -webkit-transform: translateY(1.3rem);
+  opacity: 0;
+  animation: 1.5s arrow linear infinite;
+  -webkit-animation: 1.5s arrow linear infinite;
+}
+/*日历*/
+.calendar {
+  width: 8.82rem;
+  height: 13.43rem;
+  position: absolute;
+  top: 1.01rem;
+  left: 0.61rem;
+  transform: scale(0);
+ -webkit-transform: scale(0);
+ opacity: 0; 
+  animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+}
+.calendar2 {
+  animation: 1.5s calendar linear forwards;
+  -webkit-animation: 1.5s calendar linear forwards;
+}
+.calendar img {
+  width: 8.82rem;
+  height: 13.43rem;
+}
+.calendar span {
+  position: absolute;
+  top: 0;
+  z-index: 111;
+  display: inline-block;
+  width: 1.33rem;
+  height: 1.28rem;
+}
+.calendar span:nth-of-type(1) {
+  left: 4.95rem;
+  top: 6.62rem;
+}
+.calendar span:nth-of-type(2) {
+  left: 6.15rem;
+  top: 7.89rem;
+}
+.calendar span:nth-of-type(3) {
+  left: 1.5rem;
+  top: 9.05rem;
+}
+.calendar span:nth-of-type(4) {
+  left: 1.5rem;
+  top: 11.45rem;
+}
+
+.calendar span img {
+  width: 1rem;
+  height: 1rem;
+  transform: translate(-0.8rem,0.15rem);
+  -webkit-transform: translate(-0.8rem,0.15rem);
+  opacity: .2;
+  animation: .8s click linear infinite alternate;
+  -webkit-animation: .8s click linear infinite alternate;
+}
+.calendar .time_item {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0.89rem;
+  width: 8.75rem;
+  height: 12.29rem;
+}
+.calendar .time_item img {
+  width: 8.75rem;
+  height: 12.29rem;
+  z-index: 9999;
+}
+.calendar .time_item #delete {
+  position: absolute;
+  left: 7.81rem;
+  top: -0.4rem;
+  z-index: 333;
+  width: 1.15rem;
+  height: 1.15rem;
+}

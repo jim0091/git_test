@@ -1,0 +1,310 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/banner5.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">153</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >88</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>823</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">老祖宗留下一句话：“感情深，一口闷”。可见自古以来，酒都是情感的无声表达，在美酒中，情怀无需言说，悲喜无需表达，推杯换盏间，懂了你所有想说的，酒不醉人人自醉。今天要上的就是这份醉人的礼物，一瓶好酒，一段心情，一种意境，送给TA细细的品，慢慢的赏。
+
+
+</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">清新淡雅的首彩苏维翁白葡萄酒
+
+</span></strong></p>
+                <p>明亮的浅柠檬黄色液体，闪烁着翠绿色的光泽，倒入杯中，雨后的青草气息夹杂着甜美的果香扑鼻而来。炎热的夏季傍晚，与自己对饮一杯，空气都变得清凉和愉悦起来。
+
+
+                <a href="http://www.lishe.cn/item.html?item_id=483" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img26.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">53,100</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=483
+" target="_blank" title="勃尼辣味薄脆薯片160g"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>      
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">老字号特曲.泸州老窖
+
+</span></strong></p>
+                <p>酒，越老越香；友，越老越真。当烈酒聚上老友，尽情释放你们的男人情怀。
+英雄气概、儿女情长、书生意气、侠肝义胆，通通在推杯换盏间，一一得以诉说。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=484" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img31.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">28,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=484
+" target="_blank" title="泸州老窖 52度 泸州老窖特曲酒
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">君叶.西拉子干红经典
+</span></strong></p>
+                <p>清新的草莓果香，混合李子和胡椒的芬芳，辅以柔和的像木气息，味蕾触碰之间，香醇润滑，回味无穷。而当它遇上烤肉和牛排，真爱就在那一刻发生了。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=485" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img27.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">29,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=485
+" target="_blank" title="浦瑞曼100%君叶 RL112 750ML干红葡萄酒 西拉子 红酒
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">澳洲原瓶进口红酒
+
+</span></strong></p>
+                <p>红酒是烛光晚餐的标配，唯有红酒，才能把浪漫和诗意发挥到极至。这款来自澳洲的红酒，酒体呈红宝石色泽，迷人的果香与胡椒奶油的香气完美结合，优雅细腻，余味悠长，不仅留存舌尖，更沁入心底。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=486" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img28.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">19,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=486
+" target="_blank" title="浦瑞曼100%澳大利亚 君叶 RL321西拉子 澳洲进口红酒"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">源自法国的美酒佳酿
+</span></strong></p>
+                <p>丝绒般的柔滑呈献出上等干邑的刚柔并济，调和而生的天然平衡感让它可以轻松融入各种品酒组合，旨在为平淡的时刻激起一股力量。在一顿丰盛的晚餐之后，拿起一杯干邑白兰地细细品味是一种极致的享受。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=487" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img29.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">46,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=487
+" target="_blank" title="轩尼诗VSOP 进口洋酒 700ML 干邑白兰地
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">干邑新时代.轩尼诗XO
+</span></strong></p>
+                <p>专为亲朋好友原创的全新干邑，强劲的口感与浓烈的琥珀色映衬出这款干邑的阳刚气质，干果和烘烤的气息在味蕾上回荡。真正懂它的人，会怀着沉静之心，独自细斟浅饮或与一二同好慢慢欣赏它。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=488" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img30.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">208,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=488
+" target="_blank" title="轩尼诗XO 进口洋酒 700ML 干邑白兰地
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _main_content_detail_lst = $('.main-content-div ul li');
+
+    var _count = _main_content_detail_lst.length;
+    console.log('_count -- : ' + _count);
+
+    for (var i =0; i < _count; i++) {
+
+      var _num = i + 1;
+
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

@@ -1,0 +1,54 @@
+<style type="text/css">
+*{margin:0; padding:0;}
+.layout{position:relative;}
+.laybannerdiv{overflow:hidden;}
+.laybanner{width:100%;}
+.img0{position:absolute; top:0;width:43.75%;left:0; right:0; margin:0 auto;}
+.bannerline{display:none;}
+.Close{cursor:pointer; position:absolute; top:8px; right:18.75%;}
+</style>
+<div class="layout">
+    <div class="laybannerdiv"><img src="__VIEW__Public/images/index/images/Nyspecially/Nybanner.jpg" class="laybanner"></div>
+    <div class="imgdiv0"></div>  
+    <div class="bannerline">
+   		<img src="__VIEW__Public/images/index/images/Nyspecially/bannerline.png" style="width:100%;">
+        <img src="__VIEW__Public/images/index/images/Nyspecially/Close.png" class="Close">
+    </div>     
+</div>
+  	<script type="text/javascript">
+		$(document).ready(function(){			
+			var Nybanner = "__VIEW__Public/images/index/images/Nyspecially/Nybanner.jpg";
+			var img = new Image();
+			img.src = Nybanner;
+			 
+			if(img.complete){
+			   	loadAnimation();
+			}else{
+			    img.onload = function() {
+			       	loadAnimation();
+			    }
+			}
+			
+			function loadAnimation(){
+					$('.imgdiv0').append('<img class="img0"/>');
+					//$('.img0').attr('src','__VIEW__Public/images/index/images/Nyspecially/marroon.gif');
+				
+					$('.img0').attr('src','__VIEW__Public/images/index/images/Nyspecially/marroon.gif?temp=' + Math.random());
+
+					setTimeout(function(){
+						$('.laybannerdiv').animate({height:"0px"},2000);
+						$('.imgdiv0').fadeOut(1200);
+
+					},5000);
+
+					setTimeout(function(){
+						$('.bannerline').fadeIn();
+				},6500);
+			}			
+		});
+		
+		
+		$(".Close").click(function(){
+			$(".bannerline").hide();
+		});
+  </script>

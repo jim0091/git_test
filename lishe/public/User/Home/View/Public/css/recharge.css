@@ -1,0 +1,18 @@
+.Urecharge{margin: 20px; font-size: 14px;}
+.Urecharge td{padding: 20px 20px 20px 0;}
+.Urecharge input{padding: 0; height: 60px; margin-right: 16px; padding: 0 10px 0 55px; background: transparent; border: 1px solid #DADADA; cursor: pointer; font-size: 16px; font-family: "Microsoft Yahei", sans-serif; text-align: right; outline: none; border-radius: 5px;}
+.Urecharge span{display: inline-block; height: 60px; background-color: #FFF;}
+.rechargemethod .wechat{background: url("../images/paymethod.png") no-repeat; background-position: 13px 12px;}
+.rechargemethod .alipay{background: url("../images/paymethod.png") no-repeat; background-position: 13px -40px;}
+.rechargemethod .unionpay{background: url("../images/paymethod.png") no-repeat; background-position: 13px -90px;}
+.rechargemethod .selected input{border-color: #00C0EF;}
+.rechargemoney{border-top: 1px solid #DADADA; border-bottom: 1px solid #DADADA; }
+.rechargemoney input{padding: 0; width: 120px; height: 60px; border: 1px solid #DADADA; line-height: 60px; text-align: center; background-color: #FFF; cursor: pointer; margin: 0 10px 20px 0; font-size: 14px; color: #333; font-family: "Microsoft Yahei", sans-serif; outline: none;}
+.rechargemoney span{display: inline-block; padding: 12px 0; width: 200px; border: 1px solid #DADADA; border-radius: 5px; text-align: center; background-color: #FFF; cursor: pointer; margin: 0 10px 20px 0; font-size: 16px; color: #FF4138; font-family: "Microsoft Yahei", sans-serif; outline: none; box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box;}
+.rechargemoney span i{font-size: 14px; color: #666;}
+.rechargemoney input[type="text"]{cursor: text; font-size: 14px; font-family: "Microsoft Yahei", sans-serif; width: 198px; height: 58px; margin-right: 24px; vertical-align: top; border-radius: 5px;}
+.rechargemoney .f18{color: #C7241D; margin: 0 8px;}
+.rechargemoney span.selected{border: 1px solid #00C0EF;}
+.rechargemoney input.selected{border: 1px solid #00C0EF;}
+.rechargebtn{width: 150px; height: 50px; line-height: 50px; border-radius: 5px; background-color: #FF4138; color: #FFF; font-weight: bold; cursor: pointer; text-align: center;}
+.pricelevel{width: 700px;}

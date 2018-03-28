@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style>
+	.cl{
+		padding-top: 20px;
+	}
+	.cpoint{
+		color: #cf0606;
+	}
+	.cmoney{
+		color: #cf0606;
+	}	
+</style>
+</head>
+<body>
+<div class="pd-20">
+	
+		<div class="row cl">
+			<label class="form-label col-4">充值账户：</label>
+			<div class="formControls col-8">
+				{$info.mobile}
+			</div>
+		</div>
+	    <div class="row cl">
+	      <label class="form-label col-4">是否收到礼品卡：</label>
+	      <div class="formControls col-8"> 
+			<label class="">
+				<input value="1" name="receive" id="user-Character-0-0-0"  type="radio" checked="checked">是
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="0" name="receive" id="user-Character-0-0-0"  type="radio">否
+			</label>      	
+		 </div>
+	    </div>			
+	    <div class="row cl">
+	      <label class="form-label col-4">申请信息正确：</label>
+	      <div class="formControls col-8"> 
+			<label class="">
+				<input value="1" name="match" class="match" id="user-Character-0-0-0"  type="radio" checked="checked">一致
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="0" name="match" class="match" id="user-Character-0-0-0"  type="radio">不一致
+			</label>      	
+		 </div>
+	    </div>	
+	    <div class="row cl"  style="display: none;" id="matchOp">
+	      <label class="form-label col-4">处理方案：</label>
+	      <div class="formControls col-8"> 
+			<label class="">
+				<input value="用户同意充值" name="matchOp"  id="user-Character-0-0-0"  type="radio" checked="checked">用户同意充值
+			</label>
+			&nbsp;&nbsp;
+			<label class="">
+				<input value="用户不同意充值" name="matchOp" id="user-Character-0-0-0"  type="radio">用户不同意充值
+			</label>      	
+		 </div>
+	    </div>	
+		<div class="row cl">
+			<label class="form-label col-4">申请总面值：</label>
+			<div class="formControls col-8">
+				<p style="color: #3bb4f2;">{$info.coupon_amount}&nbsp;&nbsp;元</p>
+			</div>
+		</div>		
+		<div class="row cl">
+			<label class="form-label col-4">有效总面值：</label>
+			<div class="formControls col-8">
+				<input type="text" class="input-text" id="canAmount" onkeyup="clearNoNum(this)" style="width:80px;"/>&nbsp;&nbsp;元
+			</div>
+		</div>	
+		<div class="row cl">
+			<label class="form-label col-4">充值积分：</label>
+			<div class="formControls col-8">
+				<span class="cpoint">0</span>&nbsp;&nbsp;积分&nbsp;&nbsp;(<small class="cmoney">0.00</small>元)
+			</div>
+		</div>
+	    <div class="row cl">
+	      <label class="form-label col-4">备注：</label>
+	      <div class="formControls col-8">
+	        <textarea id="mark" class="textarea" name="content"  placeholder="备注(限制50字)" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
+	      </div>
+	    </div>		
+		<div class="row cl" style="padding-top: 50px;">
+			<div class="col-10 col-offset-2">
+				<div class="col-6">
+					<button  class="btn btn-success radius" type="button" onclick="sureRecharge()">&nbsp;&nbsp;确认充值&nbsp;&nbsp;</button>
+				</div>
+				<div class="col-6">
+					<button class="btn btn-default radius" type="button" onclick="refuseRecharge()">&nbsp;&nbsp;拒绝充值&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(".match").on('click',function(){
+	var match=$("input[name='match']:checked").val();
+	if(match==1){
+		$("#matchOp").hide();
+	}else if(match==0){
+		$("#matchOp").show();
+	}
+});
+//计算积分
+$("#canAmount").blur(function(){
+	var canAmount=$("#canAmount").val().trim();//有效面值
+ 	if(canAmount>0){
+		var couponAmount="{$info.coupon_amount}";  //总面值
+ 		var exchRate ="{$info.exch_rate}";//计算比例
+ 		var point=canAmount*exchRate*100;
+ 		var money=canAmount*exchRate;
+		if(parseInt(canAmount)>parseInt(couponAmount)){
+			layer.msg("有效总面值不能大于总面值!");
+			point=0;
+			money=0.00;
+			$("#canAmount").val('');
+		} 		
+ 		$(".cmoney").text(money);
+ 		$(".cpoint").text(point);
+ 	}
+});
+//确认充值
+function sureRecharge(){
+	var couponAmount="{$info.coupon_amount}";  //总面值
+	var match=$("input[name='match']:checked").val();//信息是否一致
+	if(match==0){
+		var matchOp=$("input[name='matchOp']:checked").val();//处理方案
+		if(matchOp=='用户不同意充值'){
+			layer.msg("选择用户不同意充值,请单击拒绝充值拒绝!");
+			return false;
+		}
+	}
+	var receive=$("input[name='receive']:checked").val();//是否收到卡片
+	var canAmount=$("#canAmount").val().trim();//有效面值
+	var mark=$("#mark").val().trim();//备注
+	var exchRate ="{$info.exch_rate}";//计算比例
+	var money=canAmount*exchRate;
+	var applyId="{$info.apply_id}";
+	if(canAmount==""){
+		layer.msg("请输入有效总面值!");
+		return false;
+	}
+	if(parseInt(canAmount)>parseInt(couponAmount)){
+		layer.msg("有效总面值不能大于总面值!");
+		return false;		
+	}
+	if(mark.length>50){
+		layer.msg("备注字数限制为50字!");
+		return false;		
+	}
+//询问框
+	layer.confirm('充值账户:{$info.mobile} <br/>金额:'+money+'元？', {
+	  btn: ['确认充值','取消'] //按钮
+	}, function(){
+	  $.post('__APP__/Recharge/zzgxToRecharge',
+	  {
+	  	applyId:applyId,
+	  	match:match,
+	  	receive:receive,
+	  	matchOp:matchOp,
+	  	canAmount:canAmount,
+	  	mark:mark,
+	  },
+	  function(msg){
+	  	var data=eval(msg);
+	  	layer.msg(data['msg']);
+		if(data['code']==1){
+	  		parent.location.reload();
+	  	}
+	  	
+	  });
+	});	
+}
+//拒绝充值
+function refuseRecharge(){
+	var match=$("input[name='match']:checked").val();//信息是否一致
+	if(match==0){
+		var matchOp=$("input[name='matchOp']:checked").val();//处理方案
+	}
+	var receive=$("input[name='receive']:checked").val();//是否收到卡片
+	var mark=$("#mark").val().trim();//备注
+	var applyId="{$info.apply_id}";	
+//询问框
+	layer.confirm('确定拒绝充值,确认后将无法再将该记录充值,请谨慎选择！', {
+	  btn: ['确认','取消'] //按钮
+	}, function(){
+	  $.post('__APP__/Recharge/zzgxRefuseRecharge',
+	  {
+	  	applyId:applyId,
+	  	match:match,
+	  	receive:receive,
+	  	matchOp:matchOp,
+	  	mark:mark,
+	  },
+	  function(msg){
+	  	var data=eval(msg);
+	  	layer.msg(data['msg']);
+		if(data['code']==1){
+	  		parent.location.reload();
+	  	}
+	  	
+	  });
+	});		
+}
+</script>
+</body>
+</html>

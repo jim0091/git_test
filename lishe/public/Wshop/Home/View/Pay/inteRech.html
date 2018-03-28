@@ -1,0 +1,193 @@
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>积分充值-心意商城</title>
+<link href="__VIEW__Public/css/inteRech.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript">
+<?php if ($jsApiParameters) { ?>
+	//调用微信JS api 支付
+		function jsApiCall(){
+			WeixinJSBridge.invoke(
+				'getBrandWCPayRequest',
+				<?php echo $jsApiParameters; ?>,
+				function(res){
+					var errMsg = res['err_msg'].split(":");
+					WeixinJSBridge.log(res.err_msg);
+					var headerType = errMsg[1] == 'ok' ? 'success' : 'error';
+					location.href = "http://<?php echo $_SERVER['HTTP_HOST'].'/wshop.php?c=Pay&a=payResult&recode=';?>"+headerType;
+				
+				}
+			);
+		}
+
+		function callpay(){
+			if (typeof(WeixinJSBridge) == "undefined"){
+				if( document.addEventListener ){
+					document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+				}else if (document.attachEvent){
+					document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+					document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+				}
+			}else{
+				jsApiCall();
+			}
+		}
+		$(function(){ 
+			callpay();
+		});	
+<?php }?>
+	
+</script>
+</head>
+<body>
+<div class="head">
+	<div id="tabDiv">
+		<ul id="tab">
+			<li><a href="{:U('Pay/inteRechCenter')}" >订单中心</a></li>
+			<li class="current" ><a href="{:U('Pay/inteRech')}">充值中心</a></li>
+		</ul>
+	</div>  
+	<!-- <ul class="nav" style="">
+	    <li style="width:50%; float:left;" class="inteRechAll">
+	    	<a href="{:U('Pay/inteRechCenter')}" >订单</a>
+	    </li>
+	    <li class="inteRechInte inteRecBottom" >
+	    	<a href="{:U('Pay/inteRech')}">充值</a>
+	    </li>
+	</ul>  -->
+</div>
+<div class="c"></div>
+<div class="checkCard">
+	<ul class="checkCardUl" >
+		<div class="c"></div>
+		<input type="hidden" id="inteMoney" name="money" value="{$rules[$count-1]['rechargeAmount']}" >
+		<volist name="rules" key="key" id="vo">
+			<li class="checkCardLi <if condition="$key eq $count">checkCardBorder</if>" value="{$vo['rechargeAmount']}">
+				<div class="t" >充{$vo['rechargeAmount']}元</div>
+				<div class="s">送{$vo['presentIntegral']}积分</div>
+			</li>
+		</volist>
+		<li class="checkCardLi licus lia"><div class="cus">自定义</div></li>
+		<li class="checkCardLi licus liinput" style="display:none;">
+			<input class="moneyInput" type="tel" name="" onkeyup='this.value=this.value.replace(/\D/gi,"")' maxlength="6" placeholder="单位：元">
+		</li>
+	</ul>
+</div>
+<div class="inteRechDiv wxpayClass">	
+	<div  class="buttonInteRech">微信充值</div>
+</div>
+
+<div class="inteRechDiv alipayClass">
+	<div  class="buttonInteRech">支付宝充值</div>
+</div>
+
+<!--提示框-->
+<div class="motify" style="display:none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+<div style="width:100%;height:15px"></div>
+<include file="Public/bottom"/>
+<script type="text/javascript">
+	$(document).ready(function(){
+		is_weixin();
+	});
+	function is_weixin(){ 
+	    var ua = navigator.userAgent.toLowerCase(); 
+	    if(ua.match(/MicroMessenger/i) !="micromessenger") { 
+	        $(".wxpayClass").hide();
+	    }else{
+	    	$(".alipayClass").hide();
+	    } 
+	}; 
+	
+	$(".checkCardLi").bind("click",function(){
+		var athis = $(this);
+		$("#inteMoney").val(athis.val());
+		$('.checkCardLi').removeClass('checkCardBorder');
+		athis.addClass('checkCardBorder');
+		if (!athis.hasClass('liinput')) {
+			$('.liinput').hide();
+			$('.lia').show();
+		};
+		if (athis.hasClass('lia')) {
+			athis.hide();
+			$('.liinput').addClass('checkCardBorder');
+			$('.liinput').show();
+			$('.liinput').children('input').focus();
+			$("#inteMoney").val($('.moneyInput').val());
+		};
+	});
+
+	//积分输入框改变事件
+    $(".moneyInput").keyup(function(){
+        $("#inteMoney").val($(this).val());
+    });
+
+    //微信支付
+	$('.wxpayClass').bind("click",function(){
+		var money = $('#inteMoney').val();
+		if (money == '') {
+			$(".motify").show();
+	        $(".motify-inner").text("请选择充值金额！");
+	        $('.motify').delay(1000).hide(0);
+	        return;	
+		};
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Pay/inteRechDo",
+            data:{money:money},
+            dataType:'text',
+            success:function(result){
+            	var data=eval(result);
+            	//成功
+                if (data[0] == 1) {
+                    window.location.href="__APP__?c=Pay&a=wxpay&paymentId="+data[1];
+                };
+                //失败
+                if (data[0] == 0) {                	
+					$(".motify").show();
+			        $(".motify-inner").text(data[1]);
+			        $('.motify').delay(1000).hide(0);
+			        return;	
+                };
+            }
+        });  
+	});
+
+	//支付宝支付
+	$('.alipayClass').bind("click",function(){
+		var money = $('#inteMoney').val();
+		if (money == '') {
+			$(".motify").show();
+	        $(".motify-inner").text("请选择充值金额！");
+	        $('.motify').delay(1000).hide(0);
+	        return;	
+		};
+		$.ajax({
+            type:"POST",
+            url:"__APP__/Pay/inteRechDo",
+            data:{money:money},
+            dataType:'text',
+            success:function(result){
+            	var data=eval(result);
+            	//成功
+                if (data[0] == 1) {
+                    window.location.href="__APP__?c=Pay&a=alipay&paymentId="+data[1];
+                };
+                //失败
+                if (data[0] == 0) {                	
+					$(".motify").show();
+			        $(".motify-inner").text(data[1]);
+			        $('.motify').delay(1000).hide(0);
+			        return;	
+                };
+            }
+        });  
+	});
+</script>
+</body>
+</html>

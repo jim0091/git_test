@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>贺卡列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>微商城管理<span class="c-gray en">&gt;</span>分类管理 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+	<div  class="cl pd-5 bg-1 bk-gray mt-20"> 
+		<span class="l">
+			<a href="javascript:void(0);" id="addCard" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>添加贺卡</a>
+		</span>
+	</div>
+    <table class="table table-border table-bg table-hover">
+    	<thead>
+        <tr>
+            <th scope="col" colspan="6">分类列表</th>
+        </tr>
+        <tr class="text-c">
+            <th width="10%">序号</th>
+            <th width="10%">贺卡主题</th>
+            <th width="20%">贺卡图片</th>
+            <th width="20%">祝福语</th>
+            <th width="20%">状态</th>
+            <th width="20%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        	<volist name="cardList" id="card">
+        	<tr class="text-c">
+        		<td>{$key+1}</td>
+        		<td>{$card['bless_title']}</td>
+        		<td>
+        			<img src="http://{$_SERVER['HTTP_HOST']}/{$card['card_pic_thumb']}" style="width: 50px;" alt="贺卡">
+        		</td>
+        		<td>
+        			{$card['bless_word']}
+        		</td>
+        		<td>
+        			<eq name="card['status']" value="1"><p class="c-success">正常</p></eq>
+        			<eq name="card['status']" value="0"><p class="c-999">禁用</p></eq>
+        		</td>
+        		<td>
+        			<eq name="card['status']" value="1"><input onclick="setStatus({$card['card_id']}, 0);" class="btn btn-danger size-MINI radius" type="button" value="禁用"></eq>
+        			<eq name="card['status']" value="0"><input onclick="setStatus({$card['card_id']},1);" class="btn btn-success size-MINI radius" type="button" value="启用"></eq>
+        		</td>
+        	</tr>
+        	</volist>
+        </tbody>
+	</table>
+ </div>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/Validform/5.3.2/Validform.min.js"></script>
+  <!-- 
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+ -->
+ <script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+ <script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+ <script type="text/javascript">
+//点击添加分类
+$("#addCard").click(function(){
+	layer.open({
+  	  type: 2,
+  	  title :"添加",
+  	  content: "{:U('Gift/addCard')}",
+  	  area: ['780px', '400px']
+  	});
+});
+//设置状态
+function setStatus(cardId, status){
+	var reg = /^[1-9]\d*$/;
+	if(!reg.test(cardId)){
+		return;
+	}
+	if(status != 1 && status != 0){
+		return;
+	}
+	$.post("{:U('Gift/setCardStatus')}", {card_id:cardId,status:status}, function(result){
+		if(result.code == 1){
+			layer.msg("操作成功",{icon:1,time:800},function(){
+				window.location.reload();
+			});
+			
+		}else{
+			layer.msg("操作失败",{icon:2});
+		}
+	});
+}
+ </script>
+ </body>
+ </html>

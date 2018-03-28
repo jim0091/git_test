@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="/business/Show/Home/View/Activity/moon/css/mooncakes.css">
+<title>中秋推荐</title>
+</head>
+<style type="text/css">
+	ul{
+		border-radius: 4px;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		color: white;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+</style>
+<body>
+   <div class="Moocashing" style="padding-bottom: 100px;">
+       <div class="Mooheader"></div>
+       <!--list1-->
+       <div class="MooOne">
+           <p class="moop"><img src="{$first.activity.banner}"></p>
+           <p class="moop2">{$first.activity.content}</p>
+           <div class="mooList">
+           	<volist name="first.list" id="vo">
+               <ul>
+                 <li class="moopt"><a href="/item.html?item_id={$vo.item_id}"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a></li>
+                 <li class="mooUser"><a href="/item.html?item_id={$vo.item_id}" title="{$vo.title}">{$vo.title}</a></li>
+                 <li><a href="/item.html?item_id={$vo.item_id}" class="moopri"><span><?php echo $vo['price']*100 ?></span>积分</a>
+                 <span class="moobtn"><a href="/item.html?item_id={$vo.item_id}">兑换</a></span></li>
+               </ul>
+			 </volist>
+           </div> 
+           <div style="clear:both;"></div>
+           <div style="text-align: center;margin-top: 50px;"> 
+				{$pagestr}
+           </div>
+       </div>       
+   </div>  
+   <include file="Public/nvaFloated"/>
+   
+</body>
+</html>

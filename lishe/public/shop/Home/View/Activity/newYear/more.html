@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼舍推荐-更多</title>
+	<link rel="stylesheet" href="__NEWYEAR__css/tjdetails.css">
+	<style>
+		.topbanner{width: 100%; height: 600px;}		
+	</style>
+</head>
+<body>
+	<div class="topbanner" style="background: url(
+		<if condition="$activityConfId eq 26">
+				'__NEWYEAR__images/xc.jpg'
+		<elseif condition="$activityConfId eq 27"/>
+				'__NEWYEAR__images/xy.jpg'
+		<elseif condition="$activityConfId eq 28"/>
+				'__NEWYEAR__images/nd.jpg'	
+		<elseif condition="$activityConfId eq 29"/>
+				'__NEWYEAR__images/nz.jpg'	
+		<elseif condition="$activityConfId eq 30"/>
+				'__NEWYEAR__images/lx.jpg'				
+		</if>
+				) no-repeat center center;">
+	</div>
+	<div class="content">
+		<div class="wrap">
+			<!-- 商品 -->
+			<ul>
+				<volist name="list" id="vo">
+					<li>
+						<div class="picpreview"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></div>
+						<p class="goodsname">{$vo.title}</p>
+						<p class="fullprice"></p>
+						<div class="goodsbot">
+							<p class="discount"><span>{:round($vo['price'],2)*100}</span>积分</p>
+							<a href="__LISHE_URL__/shop.php/Info/index/itemId/{$vo.item_id}.html" class="buybtn" target="_blank">点击购买</a>
+						</div>
+					</li>
+				</volist>
+			</ul>
+
+			<!-- 翻页 -->
+			<div class="pages f12">
+				{$pagestr}
+			</div>
+
+			<!-- 返回顶部 -->
+			<a class="backtop" href="javascript:scroll(0,0)"></a>
+		</div>
+	</div>
+</body>
+</html>

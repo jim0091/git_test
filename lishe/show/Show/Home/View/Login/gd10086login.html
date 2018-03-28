@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录-移动—VIP商城</title>
+<meta name="keywords" content="礼品,送礼,礼物,贺礼,礼品册,生日礼物,节日,庆典,福利">
+<meta name="description" content="礼舍网">
+<link rel="stylesheet" href="__PUBLIC__/gd10086/css/dg_mobile.css">
+<style>
+html{height: 100%;}
+</style>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/enter.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#userName").focus();
+	$("#loginBtn").click(function(){
+		$(".wraing_lg span").text('');
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	    if(userName==""){
+	      $(".wraing_lg span").text('*请输入您的手机号码！');
+	      $("#userName").focus();
+	      return false;
+	    }
+	    if(password==""){
+	      $(".wraing_lg span").text('*请输入您的登录密码！');
+	      $("#password").focus();
+	      return false;
+	    } 
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password,
+				mark:'{$control}'
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(msg[0]>0){
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="__APP__/Gd10086";	
+					}				
+				}else{
+					if(msg[2]==3005){
+	      				$(".wraing_lg span").text('*第一次登录请先激活！');
+						window.location.href="__APP__/Gd10086/activate/mobile/"+userName;
+					}else{
+	      				$(".wraing_lg span").text('*'+msg[1]);
+						$("#userName").focus();
+					}
+				}
+			},
+			error: function () {
+  				$(".wraing_lg span").text('*error'+msg[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</head>
+<body class="lg_bg">
+	<div class="login_main">
+		<div class="left_img"><img src="__PUBLIC__/gd10086/images/lg_lefttext.png" /></div>
+		<div class="right_input_wrap">
+			<div class="rig_inp_con"><input type="text" id="userName" maxlength="11"  placeholder="请输入账号" onKeyPress="if(event.keyCode==13) {return false;}"></div>
+			<div class="rig_inp_con user_password_con"><input type="password" placeholder="请输入密码" id="password" autocomplete="off"></div>
+			<div class="number_one"><a href="http://gd10086.lishe.cn/b.php/Gd10086/activate" target="_blank" class="no_sp1">第一次登录，请激活</a>
+				<a href="http://www.lishe.cn/shop.php/sign/index/refer/findPasswd" target="_blank"  class="forget">忘记密码?</a></div>
+			<div class="wraing_lg"><span></span></div>
+			<input type="hidden" id="refer" value="{$refer}">
+			<div class="login_btn" id='loginBtn' >登录</div>
+		</div>
+	</div>
+</body>
+</html>

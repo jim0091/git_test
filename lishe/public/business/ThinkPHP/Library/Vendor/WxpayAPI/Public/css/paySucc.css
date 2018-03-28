@@ -1,0 +1,16 @@
+/************************************************
+ * 我订网[微信支付]_首页CSS文件
+ * author:LiuTaowei 46134256@QQ.com
+ * create date:2015-03-12
+ ************************************************/
+body{ background-color:#f1f1f1; color: #555;}
+.tip{width: 95%; margin:0px auto; font:normal 18px/60px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; text-align: center;}
+.tip img{ height: 26px; width: 26px; margin-right: 10px; }
+.tip *{ display: inline; display:inline-block; zoom: 1; vertical-align: middle; }
+ul{ width: 95%; margin:0px auto; font:normal 16px/46px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; background-color:#FFF; overflow:hidden;-o-border-radius:10px; -ms-border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; }
+ul li{ border-top:1px solid #dcdcdc; margin:0px 5px; padding:0px 10px; color: #555; }
+ul li div{white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow: hidden;}
+ul li:first-child{border-top:none;}
+a{font:normal 16px/46px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; background-color: #df6d5a;margin:0px 2.5%; color:#FFF; display: block; -o-border-radius:10px; -ms-border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; margin-top: 30px; text-align: center; }
+a:hover{ text-decoration: none;}
+dl dd div:after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden; }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>温暖</title>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Public/css/orderRecReset.css"/>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Public/css/orderRec.css"/>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<div class="header_img">
+		<img src="__VIEW__Public/images/header_img_01.png"/>
+	</div>
+	<div class="header2">
+		<div class="activ_text">
+			<h2>企业集采活企业集采活动专区，专享你的惊喜和优惠</h2>
+			<p>1、更多优惠福利选择，HR轻松搞定员工福利满意度</p>
+			<p>2、了解礼包购买流程或更多企业员工专属福利管理，</p>
+			<p class="mst_wu">请联系商务合作吴先生：</p>
+			<p class="pho_number">手机号：18038066699   邮箱：wu_sj@lishe.cn</p>
+		</div>
+		<!--专区-->
+		<div class="district mauto">{$catName}</div>
+		<div class="product_wrap mauto">
+			<ul class="product">
+				<volist name="itemList" id="item">
+				<li>
+					<div class="img_wrap">
+						<img src="{$item['item_img']}"/>
+					</div>
+					
+					<div class="product_text">
+						<p class="product_number">{$item['item_name']}</p>
+						<p class="price"> 
+							<span class="price_sp1">原价</span>
+							<span class="price_sp2">¥{$item['price']|default=0}</span>
+							<span class="price_sp3 fr" aitemid="{$item['aitem_id']}">立即兑换</span>
+						 </p>
+						<p class="priceed">¥{$item['shop_price']|default=0}</p>
+					</div>
+					<img src="__VIEW__Public/images/pro_icon.png" alt="" class="pro_icon">
+				</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+	<input type="hidden" id="orderId" value="{$orderId}"/>
+	<div class="footter_back">
+		<img src="__VIEW__Public/images/bottom_bg.png" alt="" class="footter_bg">
+		<img src="__VIEW__Public/images/back_top.png" alt="" class="footter_back" id="footter_back">
+	</div>
+</body>
+<script type="text/javascript">
+	var footter_back = document.getElementById('footter_back');
+
+	footter_back.onclick = function(){
+		document.body.scrollTop = document.documentElement.scrollTop = 0;
+	}
+	
+	$(".price_sp3").click(function(){
+		var orderId = $("#orderId").val();
+		var aitemId = $(this).attr('aitemid');
+		$.post('{:U("gift/rececer")}', {orderId:orderId,aitemId:aitemId}, function(result){
+			if(result.code == 1){
+				alert('领取成功');
+				location.href = '/user.php/Order/comOrder.html';
+			}else{
+				alert(result.msg);
+			}
+		});
+	});
+</script>
+</html>

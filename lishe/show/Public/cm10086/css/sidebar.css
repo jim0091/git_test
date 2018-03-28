@@ -1,0 +1,109 @@
+/*侧边栏图标*/
+.sidebar-wrap{position: fixed;right:-230px;top: 0;z-index: 999;height: 100%;}
+.sidebar{width: 40px;height: 100%;background-color: #000000;position: relative;}
+.s-icon-wrap img{width: 18px;height: 18px;}
+.s-icon-wrap{ width: 40px;}
+.s-icon-wrap .s-icon1{position: absolute;top: 50%;margin-top: -152px; width: 100%;height:304px;text-align: center;cursor:pointer;}
+.s-icon-wrap .s-icon1 .me{height: 40px;line-height: 40px;}
+.s-icon-wrap .s-icon1 .me img,.icon_tre div img,.s-icon2 img{margin-top: 11px;}
+.s-icon-wrap .s-icon1 .car_wrap{width: 100%;margin-top: 9px;height: 121px;cursor:pointer;}
+.s-icon1 .car_wrap:hover .buy_car,.car_wrap:hover,.s-icon1 .me:hover,.tre_icon1:hover,.tre_icon2:hover,.tre_icon3:hover,.s-icon2 div:hover{border-color: rgb(196,0,0) !important;background-color: rgb(196,0,0) !important;}
+.s-icon-wrap .s-icon1 .car_wrap .buy_car{padding-top: 10px;color: #fff; font-family: 宋体;font-size: 12px; display: inline-block;width: 20px;height: 109px;border-top: 1px solid #666666;border-bottom: 1px solid #666666;}
+.s-icon-wrap .s-icon1 .car_wrap .buy_car .buy_text{margin-top: 10px;line-height: 14px;}
+.s-icon-wrap .s-icon1 .car_wrap .buy_car .buy_number{margin-left: 2px;margin-top: 10px; width: 16px;height: 16px;background: url(../img/icon/buy_num.png) center center;line-height: 16px;}
+.s-icon-wrap .s-icon1 .icon_tre{height: 115px;width: 100%;padding-top: 10px;}
+.s-icon-wrap .s-icon1 .icon_tre div{width: 100%;height: 40px;}
+.s-icon2{margin-top: 152px;position: absolute;bottom: 41px;}
+.s-icon2 div{text-align: center;width: 100%;height: 40px;cursor:pointer;width: 40px;}
+
+/*侧边栏内容*/
+.s-content{position: relative; width:230px;height: 100%;background-color: #414141;overflow: auto;}
+.user-con{width: 80px;height: 110px;margin-top: 50px;}
+.user-con .data-img{width: 80px;height: 80px;overflow: hidden;}
+.user-con .data-name{height: 32px;text-align: center;line-height: 32px;color: #ffffff;font-size: 12px;}
+/*我的资产*/
+.asset{width: 200px;margin-top: 26px;}
+.asset-title{width: 190px;height: 5px;border-top: 1px solid #666666;}
+.asset-title .h2{margin-top: -7px;width: 70px;text-align: center;color: #999999; height: 12px;font-size: 12px;line-height: 12px;background-color: #414141;}
+.asset .asset-con{margin-top: 10px;text-align: center;overflow: hidden;}
+.asset .asset-con .welfare,.asset .asset-con .volume,.asset .asset-con .money{margin-right: 2px; float: left;width: 65px;height: 110px;background-color: #5c5c5c;}
+.asset .asset-con .a-icon{width: 49px;height: 49px;border-bottom: 1px solid #666666;}
+.asset .asset-con .a-icon img{width: 34px;height: 34px;margin-top: 8px;}
+.asset .asset-con .asset-con1,.asset-con .asset-con2{color: #999999;font-size: 12px;}
+.asset .asset-con .asset-con1{height: 12px;line-height: 12px;margin-top: 10px;}
+.asset-con .asset-con2{color: #fff;margin-top: 13px;width: 65px;}
+.asset .asset-con .money{margin-right: 0 !important;}
+.volume-item{margin-top: 20px;}
+.volume-item .volume-i{width: 200px;height: 84px;margin-bottom: 10px;background: url(../img/text-bg.png) no-repeat center center;}
+.volume-i .sum,.volume-i .volume-text{height: 84px;}
+.volume-item .volume-i .sum{width: 135px; padding-top:27px;height: 57px;text-align: center;color: #fc4340;font-size: 28px;}
+.volume-item .volume-i .sum em{font-style: normal;font-size: 12px;}
+.volume-item .volume-i .volume-text{width: 54px;padding-right: 10px;}
+.volume-item .volume-i .volume-text .v-p1{margin-top: 15px; text-align: right;font-size: 14px;color: #333333;}
+.volume-item .volume-i .volume-text .v-p2,.volume-item .volume-i .volume-text .v-p3{color: #999999;font-size: 12px;text-align: right;height: 12px;line-height: 12px;}
+.volume-item .volume-i .volume-text .v-p2{margin-top: 21px;}
+/*购物车*/
+.buyCar{margin-top: 26px;}
+.buyCar .asset-title .h2{color: #fff;}
+.buyCar .product-wrap{width: 210px;height: auto;margin-top: 20px;}
+.buyCar .product-wrap li{opacity: 1; margin-bottom: 10px;overflow: hidden; width: 200px;height: 90px;padding: 10px 0 0 10px; background-color: #fff;border-radius: 5px;}
+.buyCar .product-wrap li .pro-i{border: 1px solid #dadada;width: 78px;height: 78px;overflow: hidden;}
+.buyCar .product-wrap li .pro-i img{width: 78px;height: 78px;}
+.buyCar .product-wrap li .pro-text{margin-left: 10px; width: 102px;font-size: 12px;}
+.pro-text .leaderboard{line-height: 18px;width: 100px;}
+.pro-text .leaderboard{height: 18px;line-height: 19px;}
+.buyCar .product-wrap li .pro-text .pro-name{width: 96px;letter-spacing: 0.5px;}
+.pro-text .leaderboard .fl{color: #ff4138;}
+.pro-text .leaderboard .fr{color: #666666;}
+.pro-text .leaderboard .fl em{font-style: normal;}
+.pro-text .product-num{margin-top: 5px;width: 100px;height: 20px;line-height: 20px;}
+.pro-text .product-num .reckod{box-sizing: border-box;overflow: hidden; width: 68px;height: 18px;border: 1px solid #cccccc;border-radius: 10px;text-align: center;}
+.pro-text .product-num .reckod  a{width: 22px;height: 18px;text-decoration: none;box-sizing: border-box;overflow: hidden;}
+.pro-text .product-num .reckod  a img{vertical-align: middle;}
+.pro-text .product-num .reckod  a:hover{background-color: #CCCCCC;}
+.pro-text .product-num .reckod  a:hover img{margin-left: 6px;}
+.pro-text .product-num .reckod .add{border-left: 1px solid #ededed;}
+.pro-text .product-num .reckod .subtract{border-right: 1px solid #ededed;}
+.pro-text .product-num .reckod .subtract img,.reckod .add img{margin-top: -5px;margin-left: -16px;}
+.pro-text .product-num .remove-product{width: 20px;height: 20px;}
+/*我的收藏*/
+.me-collet,.me-seeed,.message{margin-top: 26px;}
+.me-collet .collet-con,.me-seeed .collet-con{width: 100%; height: auto;padding-top: 50px;overflow: hidden;}
+.me-collet .collet-con li,.me-seeed .collet-con li{float: left;text-align: left; width: 100px;height: 120px;margin-left: 10px;margin-bottom: 20px;font-size: 12px;color: #fff;}
+.me-collet .collet-con li .collet-img img,.me-seeed .collet-con li .collet-img img,.collet-con li .collet-img{width: 100px;height: 100px;}
+.collet-con li .collet-name{height: 12px;line-height: 12px;margin-top: 10px;}
+/*我看过的*/
+.me-seeed{text-align: center;font-size: 12px;}
+.me-seeed .collet-con{padding-top: 10px;}
+.me-seeed .today{display: inline-block;margin-top: 10px; padding: 0 9px;height: 20px;background-color: #ffffff;color: #666666;text-align: center;line-height: 20px;border-radius: 9px;}
+.h20{height: 20px;}
+.me-seeed .save-text{margin: 100px 0 50px 0;color: #999999;}
+.see-con{overflow: auto;width: 230px;}
+/*反馈意见*/
+.waring{margin-top: 26px;}
+.waring-sele{position: relative; margin-top: 50px; width: 140px;height: 30px;border-radius: 6px;background-color: #fff;cursor: pointer;font-size: 12px;}
+.waring-sele .fr{border-top-right-radius: 5px;border-bottom-right-radius: 5px; width: 26px;height: 30px;background:#66b5ff url(../img/icon/icon_s.png) no-repeat center center;}
+textarea{resize:none;border: 0;}
+.waring .war-text{z-index: -3; margin-top: 10px;padding: 10px 5px 0; overflow: auto;font-size: 12px;line-height: 20px; display: block;width: 190px;height: 210px;text-indent: 15px; border-radius: 5px;}
+.waring .submit{cursor: pointer; width: 200px;height: 36px;text-align: center;line-height: 36px;background-color: #ff4138;font-size: 14px;color: #fff;border-radius: 18px;margin-top: 50px;}
+.waring-sele .fl{line-height: 30px;width: 90px;text-indent: 18px;}
+.waring-sele .opation{z-index: 9;display: none; position: absolute;top: 30px;background: #fff;left: 0;text-indent: 18px; width: 139px;height: 30px;line-height: 30px;border:1px solid #cccccc;border-radius: 5px;}
+.waring-sele .opation:hover{text-decoration: underline;}
+.s-icon2 .ewm-p{position: relative;transition: 1s;}
+.s-icon2 .ewm{position: absolute;right: 34px;width: 135px;height: 189px;bottom: -41px;display: none;opacity: 0;}
+.s-icon2 .ewm-p:hover .ewm{display: block;opacity: 1;}
+.user-asset,.buyCar,.me-collet,.me-seeed,.waring,.message{display: none;}
+
+/*结算按钮*/
+.balance{width: 191px;font-size: 12px;margin-top: 100px;}
+.balance em{color: #ff4138;font-style: normal;margin: 0 3px;}
+.balance_btn{margin-top: 10px;cursor: pointer; width: 210px;height: 36px;line-height: 36px;text-align: center;font-size: 14px;color: #fff;background-color: #ff4138;border-radius: 18px;}
+
+/*购物车为空*/
+.empty_wrap{position: absolute;top: 50%;margin-top: -102px; width: 100%;text-align: center;color: #999999;font-size: 12px;}
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="__PUBLIC__/activity/nuclear/css/haihetao.css">
+<title>海核淘0元购活动</title>
+</head>
+<body>
+<!-- 	导航 -->
+	<div id="nav">
+		<div class="wrap">
+			<div id="logo"><a href=""></a></div>
+			<ul class="nav">
+				<li>
+					<if condition="$uid eq 0">
+					欢迎您，<span><a href="http://hht.lishe.cn/b.php/Haihetao/login">登录</a></span> 
+					<else/>
+					欢迎您，{$userName}&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="http://hht.lishe.cn/b.php/Haihetao/logout">退出</a></span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.lishe.cn/member-index.html" target="_blank">用户中心</a> 
+					</if>
+				</li>
+				<li><a href="http://hht.lishe.cn/" target="_blank">首页</a></li>
+				<li><a href="http://www.lishe.cn/shop.html" target="_blank">心意商城</a></li>
+				<li><a>客服热线：400-1188-261</a></li>
+			</ul>
+		</div>
+	</div>
+
+<!-- 	横幅 -->
+	<div id="banner">
+	</div>
+
+<!-- 文字 -->
+	<div id="info" >
+	</div>
+	<div id="info2">
+	</div>
+
+<!-- 商品 -->
+	<foreach name="list" item="row">		
+		<ul class="goods odd">
+			<foreach name="row" item="row1">
+				<li><a class="goods_pic" href="{:U('Activity/order',array('item_id'=>$row1['item_id']))}"><img src="{$row1['image_default_id']}" style="border:0px solid red;width:232px;height:230px;" alt=""></a>
+					<p class="goods_name">{$row1['title']}</p>
+					<p class="price">￥{$row1['price']|number_format=###, 2, '.', ''}</p>
+					<a class="buy_button" href="{:U('Activity/order',array('item_id'=>$row1['item_id']))}">0元购</a>
+				</li>
+			</foreach>
+		</ul>
+	</foreach>
+<!-- 活动规则 -->
+	<div id="rules">
+		<p>活动规则:</p>
+		<ul>
+			<!--<li><span>1</span>账号积分满4500元的用户可参与此活动；</li>-->
+			<li><span>1</span>每个用户ID仅限参与一次0元好礼活动；</li>
+			<li><span>2</span>若单笔订单中包含购买商品及赠品，则按支付系统提示包邮金额结算；</li>
+			<li><span>3</span>若单独选购赠品，则需另加8元快递费；</li>
+			<li><span>4</span>本次活动的订单会统一在10月15日-30日发货；</li>
+			<li><span>5</span>本次活动解释权归海核淘所有。</li>
+		</ul> 
+	</div>
+
+	<div id="back_top">
+		<a href="javascript:scroll(0,0)">回到顶部</a>
+	</div>
+</body>
+</html>

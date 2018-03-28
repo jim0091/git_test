@@ -1,0 +1,70 @@
+			<ul class="product_ul block">
+				<volist name="list" id="aitem" offset="0" length="9" >
+					<li>
+						<span class="product_img"><a href="{:U('Activity/pkg',array('acid'=>$aConfId))}" target="_blank" ><img src="{$aitem['item_img']}" class="imgsiz" alt=""></a><b class="gift_icon"></b></span>
+						<div class="product_text">
+							<p class="product_name">{$aitem['item_name']}</p>
+							<p class="product_price1">{$aitem['price']*100}积分</p>
+							<div class="buy_product">
+								<div class="buy_bumber"><span class="subtract fl">-</span><input type="text" value="1" class="number_inp" data-aitemId="{$aitem['aitem_id']}" maxlength="5" data-type="page" ><span class="add fr">+</span></div>
+								<span class="buy_cart_icon"><img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/buy_cart_icon.png" alt=""></span>
+							</div>
+						</div>
+					</li>					
+				</volist>				
+			</ul>
+			<div class="query_m fl">
+				<a href="{:U('Activity/pkg',array('acid'=>$aConfId))}" target="_blank"  class="query_m2">
+					<p class="query_m_text">查看更多</p>
+					<p class="big_arrow"><img src="/shop/Home/View/Activity/midAutumnFestival/images/icon/big_arrow.png" alt=""></p>
+				</a>
+			</div>
+<script>
+	$('.buy_cart_icon').on('click',function(){
+		$(".topLoading").show();
+		var sort = $(this).siblings('.buy_bumber').find('.number_inp');
+		var num = parseInt(sort.val());
+		var type = sort.attr('data-type');
+		if(type == 'page'){
+			var aitemId = sort.attr('data-aitemId');
+			addCarts(aitemId);
+		}else{
+			var itemId = sort.attr('data-item');
+	        var shopId = sort.attr('data-shopId');//商品id			
+	        $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+				if(data['code'] == 0){
+					divPrompt('选择商品属性!');
+					window.open('/shop.php/Info/index/itemId/'+itemId);
+				}else if(data['code'] == 1){
+					addCart(itemId,data['skuId'],shopId,num,sort);
+				}
+	        	
+	        });		
+		}
+	});	
+	//直接输入购物车数字
+	 $('.number_inp').on('keyup',function(){
+	 	$(this).val($(this).val().replace(/\D/g,''));
+	 	var num = $(this).val();
+	 	if(num == 0){
+	 		num = 1;
+	 		$(this).val(num);
+	 	}
+	 	var old = $(this).attr('data-num');
+	 	if(num == old){
+	 		return false;
+	 	}
+	 	if(num == ''){
+	 		num = 1;
+	 		$(this).val(num);
+	 	}
+		var type = $(this).attr('data-type');
+		if(type == 'page'){
+        	$(".topLoading").show();
+			var aitemId = $(this).attr('data-aitemId');
+			checkPageStore(aitemId,num,$(this));
+		}else{ 
+			getSkuStore(num,$(this));
+		}
+	 });	
+</script>		

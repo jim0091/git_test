@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/refund.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<input type="hidden" name="comId" id="comId" value="{$comId}">
+	<div>
+		<div class="wrap content" >
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="myOrder">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">退货申请表</p>
+					</div>
+					<form id="refundDo" action="__APP__/Order/refundDo" class="return_refund"  enctype="multipart/form-data" method="post" >
+						<input type="hidden" name="tid" value="{$orderInfo['tid']}">
+						<div class="refundtype">
+							<span class="c333"><i class="redstar">*&nbsp;</i>操作类型</span>
+							<label for="returngoods"><input type="radio" id="returngoods" name="refundtype" checked value="return">我要退货</label>
+							<label for="refundgoods"><input type="radio" id="refundgoods" name="refundtype" value="change">我要换货</label>
+						</div>
+						<div class="Rorder_details">
+							<p class="Rtitle f14">订单信息</p>
+							<table>
+								<tr>
+									<td>订单编号</td>
+									<td>{$orderInfo['tid']}</td>
+									<td>商家名称</td>
+									<td>{$shopInfo[0]['shop_name']}</td>
+								</tr>
+								<tr>
+									<td>订单状态</td>
+									<td>{$orderStatus[$orderInfo['status']]}</td>
+									<td>下单时间</td>
+									<td>{$orderInfo['created_time']|date="Y-m-d H:i:s",###}</td>
+								</tr>
+								<tr>
+									<td>收货信息</td>
+									<td class="c999">{$orderInfo['receiver_name']} {$orderInfo['receiver_mobile']} {$orderInfo['areaNames']}{$orderInfo['receiver_address']}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="box_details">
+							<table style="border: 1px solid #DADADA;width:100%;margin-top:5px;text-align:left;">
+								<tr>
+									<th>商品</th>
+									<th>名称</th>
+									<th>单价(元)</th>
+									<th>数量</th>
+									<th>总金额</th>
+									<th>退换货</th>
+								</tr>
+								<input type="hidden" id="oids" value="" style="width:500px;">
+								<volist name="orderItemList" id="vo">
+								<tr>
+									<td class="ordered_goods" style="width:100px;">
+										<img src="{$vo['pic_path']}_m.{:end(explode('.',$vo['pic_path']))}">
+									</td>
+									<td>
+										<a href="/shop.php/Info/index/itemId/{$vo['item_id']}" target="_bank" class="ordered_link">{$vo['title']}</a><br>
+										<a>{$vo['spec_info']}</a>
+									</td>
+									<td>￥{$vo['price']}</td>
+									<td>{$vo['num']}</td>
+									<td>￥{$vo['price'] * $vo['num']}</td>
+									<td><input type="checkbox" name="oid[]" class="checkoid" value="{$vo['oid']}"></td>
+								</tr>
+								</volist>
+							</table>
+						</div>
+						<div class="Rreason">
+							<table>
+								<tr>
+									<td><i class="redstar">*&nbsp;</i>请选择理由</td>
+									<td>
+										<select class="reason" name="reason">
+											<option value="0" data="default">--请选择--</option>
+											<option value="七天无理由退换货" data="noreason">七天无理由退换货</option>
+											<option value="在售物品与实物不符" data="articlematch">在售物品与实物不符</option>
+											<option value="收货物品破损严重" data="damagearticles">收货物品破损严重</option>
+											<option value="收货信息填写有误" data="addresserror">收货信息填写有误</option>
+											<option value="订单商品选择有误" data="orderchoiceerror">订单商品选择有误</option>
+											<option value="质量问题退换货" data="qualityreasons">质量问题退换货</option>
+
+
+											<!-- <option value="质量原因" data="qualityreasons">质量原因</option>
+											<option value="现在不想购买" data="nowantbuy">现在不想购买</option>
+											<option value="价格波动" data="pricewave">价格波动</option>
+											<option value="商品缺货" data="itemstock">商品缺货</option>
+											<option value="重复下单" data="repeatorder">重复下单</option>
+											<option value="支付方式选择有误" data="paychoiceerror">支付方式选择有误</option>
+											<option value="发票信息填写有误" data="invoiceerror">发票信息填写有误</option>
+											<option value="其他原因" data="otherreasons">其他原因</option> -->
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td class="vat">问题描述</td>
+									<td>
+										<textarea class="mark" name="mark" placeholder="请详细描述退/换货缘由"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td class="vat">多图</td>
+									<td>
+										<div class="item" id="goodsBox" style="display:table;">
+											<a href="javascript:;" onclick="goodsFile.click()" class="addPic" style="display:inline-block;width:80px;height:80px; margin:auto auto;border:1px solid #DADADA;">
+												<img src="__VIEW__Public/images/upload_add.png" style="margin-top: 25px;margin:25px;">
+											</a>
+										</div>
+										<div style="display:none">
+										<input type="file" id="goodsFile" name="goodsFile" >
+										</div>
+										<div style="margin-top:10px;">注：点击图片可删除已上传的图片！</div>
+									</td>
+								</tr>
+							</table>
+							<div class="explain">
+								<!--默认提示-->
+								<div class="default">
+									1.礼舍不接受任何由于价格原因的退换货；<br>
+									2.非质量问题退换货将由买家承担邮费，实际邮费有可能为双向（寄出和退回）收取；<br>
+									3.部分商品品类将不享受7天无理由退换货，请关注申请页面；<br>
+									4.任何退换货申请请在规定时间内申请，逾期将不再受理；<br>
+									5.买家申请退换货需严格按要求上传图片，以便审核；<br>
+									6.特价商品非严重质量问题，将不接受任何形式的退换货；<br>
+									<font style="color:red;">7.售后申请通过审核后请务必填写正确的物流信息，否则可能造成退款延迟或无法退款；</font>
+								</div>
+								<!--七天无理由退换货-->
+								<div class="noreason">
+									申请条件：
+									1.退换货要求具备商品收到时完整的外包装、配件、吊牌等，并不影响二次销售；<br>
+									2.买家需在签收商品之日起7天内（以物流签收时间为准）申请，逾期将不受理；<br>
+									3.退换货商品需支持“七天无理由退货”的商品品类范围内，部分品类将无法享受此服务；<br>
+									4.申请七天无理由退换货的商品，均需由相关人员鉴定符合条件后方可审核通过；<br>
+									5.非质量问题，买家以无理由形式退货或拒签的，来回（双向）运费均由买家承担；<br>
+									图片要求：<br>
+									1.请至少上传4张外观图<br><br>
+
+									如下品类将不享受“7天无理由退货”政策<br>
+									（1）消费者定作商品；<br>
+									（2）生鲜鲜活易腐商品；<br>
+									（3）在线下载或消费者拆封的音像制品、计算机软件等数字化商品；<br>
+									（5）食用类商品非食品本身问题，不接受退换；<br>
+									（6）奢侈品等贵重类商品；<br>
+									（7）个人护理、贴身类商品；<br>
+									（8）礼品卡等虚拟类商品；<br>
+								</div>
+								<!--质量问题退换货-->
+								<div class="qualityreasons">
+									1.买家在收到商品后，24小时内发现存在严重的质量问题，影响商品正常使用；<br>
+									2.买家收到商品并在24小时内初次使用时，经鉴定商品存在性能故障；<br>
+									3.商品质量问题退换货将享受7天内退货，15天内换货服务；<br>
+									4.商品质量问题需由相关人员鉴定符合条件后方可受理；<br>
+									5.收到商品外包装破损严重以至于可能影响商品品质（请在第一时间内反馈）；<br><br>
+
+									图片要求：<br>
+									1.请至少上传5张商品图片<br>
+									2.需上传出现质量问题的细节图<br>
+									3.需上传各个角度的商品图片<br>
+									4.必要时请上传质量鉴定书<br>
+								</div>
+								<!--在售物品与实物不符-->
+								<div class="articlematch">
+									1.买家收到商品后，发现实物与在售商品严重不符合；<br>
+									2.商品描述与实际严重不符合，具有夸大虚假宣传等；<br>
+									3.保持商品收到时完整的外包装、配件、吊牌等，并不影响二次销售；<br>
+									4.买家需在规定时间24小时内申请；<br><br>
+
+									图片要求：<br>
+									1.需上传至少4张图片<br>
+									2.需上传包含快递单号的快递面单；<br>
+									3.需上传实物各角度图片；<br>
+								</div>
+								<!--收货物品破损严重-->
+								<div class="damagearticles">
+									1.买家需在12小时内拍照申请反馈，或直接拒收快递；<br>
+									2.买家收到商品外包装破损严重以至于可能影响商品品质；<br>
+									3.买家收到商品破损严重影响正常使用；<br>
+									4.买家需要求快递公司开具破损证明；<br><br>
+
+									图片要求：<br>
+									1.需上传至少5张图片<br>
+									2.需上传外包装整体图片<br>
+									3.需上传破损细节图，以及物品各角度图片<br>
+									4.需上传快递破损证明书<br>
+								</div>
+								<!--收货信息填写错误-->
+								<div class="addresserror">
+									1.买家填错收货信息，并愿意承担双向（寄出以及退回）邮费；<br>
+									2.买家需确保商品保持收到时完整的外包装、配件、吊牌等，并不影响二次销售；<br>
+									3.买家需在规定时间24小时内（7天无理由退换货）申请；<br><br>
+
+									图片要求：<br>
+									1.需上传商品整体图片<br>
+									2.需上传至少5张图片<br>
+								</div>
+								<!--商品选择有误-->
+								<div class="orderchoiceerror">
+									1.退换货要求具备商品收到时完整的外包装、配件、吊牌等，并不影响二次销售；<br>
+									2.买家主观原因，需承担双向（寄出以及退回）邮费；<br>
+									3.买家需在规定时间24小时内申请；<br>
+								</div>
+							</div>
+						</div>
+						<input type="hidden" id="fileNum" value="0">
+						<input type="hidden" id="paramBoxNum" value="0">
+						<a href="javascript:;" class="Rsave rsaveSubmit">提交申请</a>
+						<a href="javascript:;" class="Rsave rsaveLoading" style="display:none">申请提交中...</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<include file="Public/footer"/>
+<script src="__VIEW__Public/js/ajaxfileupload.js"></script>	
+<script type="text/javascript">		
+	$(function(){
+		$(".default").show();
+	});
+	$(".reason").on("change",function(){
+		var clas = $(".reason option:selected").attr("data");
+		$(".explain").children("div").hide();
+		$("."+clas).show();
+	});
+	$("body").on("change","#goodsFile",function(){
+		var types = 'goods';
+		var inputName = types+'File';
+		var fileId = $('#fileNum').val();
+		var fileBox='<input type="hidden" id="file_'+fileId+'" name="'+types+'file[]" value=""><a id="picBox_'+fileId+'" class="addPic deltp" onclick="delFile('+fileId+');" href="javascript:;" title="点击删除" style="display:inline-block;"><img border=0 src="__VIEW__Public/images/loading.gif" style="display:block;margin:25px;"></a>';
+		if(types=='thumb'){
+			$('#'+types+'Box').html(fileBox);
+			$('#'+types+'Box').show();
+		}else{
+			$(fileBox).appendTo($('#'+types+'Box'));
+		}
+		$.ajaxFileUpload ({
+			url :"__APP__/System/uploadImg/channel/goods/inputName/"+inputName+"/types/"+types,
+			secureuri :false,
+			fileElementId :inputName,
+			dataType : 'text',
+			success : function (data,status){
+				if(data!='undefined'){
+					var dataArr=eval("("+data+")");
+					if(dataArr[0]<=0){
+						if(dataArr[0]==-4){
+							alert('图片尺寸不合要求！');
+						}else{
+							alert('图片上传失败，错误代码'+dataArr[1]);
+						}
+						$('#file_'+fileId).remove();
+						$('#picBox_'+fileId).remove();
+					}else{
+						$('#picBox_'+fileId).html('<img id="photo_'+fileId+'" border=0 src="'+dataArr[1]+'" class="pics" data="'+dataArr[1]+'">');
+						if(types=='thumb'){
+							$('#thumb').val(dataArr[1]);
+						}else{
+							$('#file_'+fileId).val(dataArr[1]);
+						}					
+						$('#fileNum').val(parseInt(parseInt(fileId)+1));
+					} 
+				} 
+			}, 
+			error: function (data, status, e){
+				alert('图片上传失败，请检查系统设置！');
+			}
+		});
+	});
+	var delFile = function(fileId){
+		if(confirm('确定要删除此图片吗？')){
+			var file=$('#photo_'+fileId).attr('data');
+			$.get("__APP__/System/delImg?channel=goods&file="+file, function(result){
+				$('#file_'+fileId).remove();
+				$('#picBox_'+fileId).remove();
+				
+			});
+		}
+	}
+
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    };
+
+	//选择商品
+	$(".checkoid").click(function(){
+		var oids = $("#oids").val();
+		var oid = $(this).val()+',';
+		if ($(this).prop('checked') == true) {	
+			$("#oids").val(oids+oid);
+		}else{
+			if(oids.indexOf(oid) >= 0){
+				$("#oids").val(oids.replace(oid, ""));
+			}
+		}
+	});
+	//提交申请
+	$(".rsaveSubmit").click(function(){	
+        $(".topLoading").show();    
+		var tid = "{$orderInfo['tid']}";
+		var type = $("input[name='refundtype']:checked").val();
+		var oids = $("#oids").val();
+		var reason = $("select.reason option:selected").text();
+		var mark = $("textarea.mark").val();
+		if (tid == '') {
+			$(".topLoading").hide();
+            divPrompt('系统繁忙，请刷新重试！');
+            return;
+		};
+		if (type == '') {
+			$(".topLoading").hide();
+            divPrompt('请选择申请类型！');
+            return;			
+		};
+		if (oids == '') {
+			$(".topLoading").hide();
+            divPrompt('请选择商品！');
+            return;			
+		};
+		if (reason == '--请选择--') {
+			$(".topLoading").hide();
+            divPrompt('请选择原因！');
+            return;			
+		};
+		if (mark == '') {
+			$(".topLoading").hide();
+            divPrompt('请填写说明！');
+            return;			
+		};
+		if ($("#picBox_3").length < 1 ) { 
+			$(".topLoading").hide();
+            divPrompt('请至少上传4张图片！');
+            return;					
+		}
+		$(".rsaveSubmit").hide();
+		$(".rsaveLoading").show();
+		$("#refundDo").submit();
+	});
+</script>
+
+</body>
+</html>

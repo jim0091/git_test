@@ -1,0 +1,171 @@
+<html class="" lang="zh-cmn-Hans" debug="true"><div id="FirebugChannel" style="display: none;">FB_deactivate</div>
+
+<head>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">    <meta http-equiv="cleartype" content="on">
+    <meta name="referrer" content="always">
+    <title>{$catName}- 礼舍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="__PUBLIC__/wshop/css/itemlist.css">    
+    <link rel="stylesheet" href="__PUBLIC__/wshop/css/showcase_e872cc66b7.css" onerror="_cdnFallback(this)" media="screen">      
+    <link rel="stylesheet" href="__PUBLIC__/wshop/css/shopnav_custom_0ff1f6a625.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/wshop/css/index.css">
+</head>
+    
+<body class="body-fixed-bottom">
+    <div class="custom-richtext">
+    <p style="white-space: normal; font-size: 15.5556px; text-align: center;">
+        <span style="color: rgb(255, 255, 255); background-color: rgb(221, 217, 195);">
+            <strong>
+                <span style="color: rgb(255, 255, 255); font-size: 22px; background-color: rgb(221, 217, 195);">
+                    &nbsp;{$catName}&nbsp;
+                </span>
+            </strong>
+        </span>
+    </p>
+<p style="white-space: normal; font-size: 15.5556px; text-align: center;">
+    <span style="color: rgb(165, 165, 165);">———————————————</span></p>
+    <p style="white-space: normal; font-size: 15.5556px; text-align: center;">
+        <span style="color: rgb(147, 137, 83);">
+        </span>
+    </p></div>
+    <div class="container " style="min-height: 495px;">
+        <div class="header"></div>        
+        <div class="content ">
+        <div class="content-body js-page-content" >
+    <input type="hidden" id="catId" name="catId" value="{$catId}">
+    <input type='hidden' name="ajaxget" id="ajaxget" value="ajaxget">
+    <input type="hidden" id="newpage" value="1"> 
+  <div id="itemList">
+    <div>
+    <ul class="js-goods-list sc-goods-list pic clearfix size-2" data-size="2" data-showtype="card" style="visibility: visible;" >
+        <volist name="list" id="vo">
+	    <li class="js-goods-card goods-card small-pic card ">
+            <a href="{:U('Home/Info/index',array('itemId'=>$vo['item_id']))}" class="js-goods link clearfix"   data-goods-id="{$vo.item_id}" title="{$vo.title}">
+            <div class="photo-block" data-width="750" data-height="750" style="background-color: rgb(255, 255, 255);">
+                <img class="goods-photo js-goods-lazy"  src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" style="display: block;">
+            </div>
+            <div class="info clearfix info-no-title info-price btn1">
+                <p class="" style="height:27px;overflow:hidden;color:#000">{$vo.title}</p>
+                <p class="goods-sub-title c-black hide"></p>
+                <p class="goods-price">
+                    <em>￥<?php echo round($vo['price'],1); ?></em>
+                </p>
+            </div>
+            <div class="goods-buy btn1 info-no-title"></div>
+            </a>
+            <!--<div class="js-goods-buy buy-response" data-alias="36dx8vhw8kysq" data-postage="0" data-buyway="1" data-id="{$vo.item_id}" data-title="{$vo.title}" data-price="{$vo.price}" data-isvirtual="0"></div>-->
+        </li>
+        </volist>    
+    </ul>
+    <div>
+  
+
+ <style>
+    .custom-paginations-prev{
+        padding: 60px;
+        color: #09F;
+    }
+    .wborder{
+        border:1px solid #DDD;
+        padding: 5px;
+    }
+ </style> 
+  <div class="custom-paginations-container" style="margin-top: 10px;">  
+   <div class="wborder" style="text-align: center;"> 
+    {$pagestr}
+   </div> 
+  </div>    
+
+  </div>
+  
+  <div class="footer"> 
+   <div class="copyright"> 
+    <div class="ft-copyright"> 
+    </div> 
+   </div> 
+  </div>
+
+<!--遮罩层start-->
+<div id="maskLayer" style="display:none; height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 1000; transition: none 0.2s ease; opacity: 1; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!--遮罩层end-->
+
+<!--提示框-->
+<div class="motify" style="display: none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+
+<!--下拉start-->
+<div id="selectItem" class="sku-layout sku-box-shadow popup" style="display:none;overflow: hidden; position: fixed; z-index: 1000; bottom: 0px; left: 0px; right: 0px; visibility: visible; transform: translate3d(0px, 0px, 0px); transition: all 300ms ease; opacity: 1; background: white;">
+    <div class="sku-layout-title name-card sku-name-card"></div>
+
+</div>
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js"></script>
+<script type="text/javascript">
+        $(function(){
+            $(".js-goods-buy").click(function(){
+                 $("#selectItem").html("");
+                var urls="{:U('Home/Itemlist/jionShow')}";
+                var itemid=$(this).attr("data-id");
+                $.ajax({
+                    type:"get",
+                    url:urls,
+                    dataType:'text',
+                    data:'itemId='+itemid,
+                    success:function(data){
+                         $("#selectItem").html(data);
+                    }
+                });
+                $("#selectItem").show();
+                $("#maskLayer").show();
+                $("body").css({overflow:"hidden"}); 
+            });
+            $("#cancel-img").click(function(){       
+                $("#selectItem").hide();
+                $("#maskLayer").hide();
+                $("body").css({overflow:"visible"}); 
+            });
+    });
+
+    //下一页
+    $("#itemList").delegate('a.next','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1+1);
+      itemFind();
+    });
+    //上一页
+    $("#itemList").delegate('.prev','click',function(){
+      var nowpage = $("#newpage").val();
+      $("#newpage").val(nowpage*1-1);
+      itemFind();
+    });
+    function itemFind(search){
+        if(search){
+            $("#newpage").val(1);
+        }
+        var catId = $("#catId").val();
+        var ajaxget = $("#ajaxget").val();
+        var newPage = $("#newpage").val();
+        $.ajax({ 
+            type:"get",
+            url:"{:U('Itemlist/itemList')}",
+            data: {p:newPage,ajaxget:ajaxget,catId:catId},
+            success: function(data){
+                $("#itemList div").remove();
+                $("#itemList").html(data);
+                $('body,html').animate({scrollTop:0},1);  
+                return false; 
+            }
+        }); 
+    }  
+
+</script>
+
+
+
+<include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$catinfo.cat_name}-正章干洗VIP商城</title>
+<link rel="stylesheet" href="__PUBLIC__/gd10086/css/delicacy.css" />
+    <link rel="stylesheet" href="__PUBLIC__/gd10086/css/mobile.css">
+    <link href="/app/topc/statics/stylesheets/layout.css?1463813935" rel="stylesheet" media="screen, projection" />
+    <link href="/app/topc/statics/stylesheets/theme.css?1463813935" rel="stylesheet" media="screen, projection" />
+	<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+    <style>
+    .naviaty{
+		color: white;
+		margin: 5px;
+		padding: 5px;
+	}
+    .kuai{
+		position:relative;
+		top: -80px;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+<div id="topbar" class="topbar">
+  <div class="wrap-lg">
+    <div class="topbar-left">
+    <!-- 顶部导航 -->
+          <div class="small-signin" style="width:360px">
+            <a href="__APP__/Zzgx">欢迎光临，点击这里返回首页</a>
+          </div>
+          </div>
+    <div class="topbar-right">
+      <div class="subnav">
+            <div id="member_514" class="small-member" style="float: left; color: rgb(199, 36, 29);">
+              <if condition="!empty($userName)">            
+              <a href="/member-index.html" style="margin: 0px; padding: 0px; color: #a12124;">{$userName}</a>
+              <a href="__APP__/Zzgx/logout" style="margin: 0px; color: #a12124;">退出</a>
+        <else/>
+            <a href="__APP__/Zzgx/login" style="color:#c7241d;">登录</a><a href="__APP__/User/signup" style="color:#c7241d;">注册</a>
+        </if>
+            </div>
+          </div>
+
+
+  </div>
+  </div>
+</div> 	
+ <div class="layout" style="margin-top:0px;">
+         <div class="eat-pt">
+           <img src="{$catinfo.cat_banner}" />
+           <p>{$catinfo.cat_content}</p>
+         </div>
+         <div class="kuai" style="top:15px;margin-bottom:25px;">
+		<volist  name="category" id="cat"> 
+			<a href="__APP__/Zzgx/goodsList/cfgId/{$cfgId}/catId/{$cat['cat_id']}" target="_blank">
+			<span class="sb-cell yu naviaty">{$cat['cat_name']}</span>
+			</a>
+		</volist>
+		</div>
+        <div class="more-ul">
+		 	<volist name="list" id="vo">
+            <ul>
+
+              <li><a target="_blank" href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"  width="310" height="311" /></a></li>
+
+              <li class="eat-li" style="width:150px;height:38px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;"><a target="_blank" href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}">{$vo.title}</a></li>
+              <li><a href="#" class="eat-sp"><span>￥{:round($vo['price'],2)}</span></a><span class="eat-sp2"><a target="_blank" href="/shop.php/Info/index/itemId/{$vo.item_id}/from/{:md5($vo['item_id'])}">购买</a></span></li>
+            </ul>
+			</volist>
+         </div>
+         <div style="clear:both; padding-bottom:20px;"></div>
+		 <!--<div class="pager"><ul><?php echo $pagerHtml;?><li style="width:65px; background:#FFFFFF">共 <?php echo $total;?> 条</li></ul></div>-->
+
+		 <div class="pager">{$pagestr}</div>
+    </div>
+</body>
+</html>
+
+<style>
+.pager { text-align:center; margin-top:0px; margin-bottom:0px; padding:10px; clear:both; padding-bottom:20px;}
+.pager ul{margin:0; width:auto; height:20px;display:inline-block; }
+.pager ul li{list-style:none;border:#999999 1px solid;text-align:center; margin:3px; background:#999999;float:left;}
+
+.pager ul li a{display:block;background:#FFF;color:#000000;text-align: center;}
+
+.pager ul li a:hover{text-decoration:none;	background:#FF0033;}
+.bg-light-blue{background-color: #3c8dbc !important;}
+.bg-light-blue:hover{background-color: #dd4b39 !important;}
+.bg-red{background-color: #dd4b39 !important;}
+.badge{
+	border-radius: 15px;
+	padding:3px 13px 3px 10px;
+	color: white;
+	margin-right:8px;
+	text-align: center;
+}
+</style>	

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+table th,td
+{
+    text-align:center !important;
+}
+/*thinkphp åˆ†é¡µæ ·å¼*/
+div.page1 {
+    margin-top: 20px;
+    margin-right: 10px;
+    float: right;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+div.page1 span.current , div.page1 a{
+    border: 1px solid #dcdcdc;
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin-right: 5px;
+    padding: 3px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+div.page1 span.current{
+    background: #ff5c5c none repeat scroll 0 0 !important;
+    border-color: #ff5c5c;
+    color: #ffffff !important;
+    display: block;
+    float: left;
+    font-size: 12px;
+    cursor: pointer;
+}
+div.page1 a.prev,div.page1 a.next{
+    padding: 3px 4px;
+}
+.select-box
+{
+    width: auto;
+}
+
+</style>
+<title>统计</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统统计 <span class="c-gray en">&gt;</span> 企业销售统计 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<form method="get" action="">
+<span class="select-box">
+<select id="setCompany" class="select">
+<option value="0">选择企业</option>
+<!--输出公司-->
+<foreach name="comid" item="v">
+    <option value="{$v.com_id}">{$v.com_name}</option>
+</foreach>
+</select>
+</span>
+</form >
+<table id="stat" class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer">
+    <foreach name="sum" item="v" >
+    <tr>
+        <th></th><th>总订单数</th><th>支付订单数</th><th>退款订单数</th><th>订单总额</th><th>支付总额</th><th>退款总额</th><th>商品成本</th><th>商品利润</th>
+    </tr>
+    <tr><td>合计</td>
+        <td>{$v.count}</td>
+        <td>{$v.paycount}</td>
+        <td>{$v.aftersale}</td>
+        <td>{$v.total}</td>
+        <td>{$v.payed}</td>
+        <td>{$v.refund}</td>
+        <td><?php echo isset($v['cost'])? $v['cost'] : '0.000'; ?></td>
+        <td><?php echo isset($v['profit'])? $v['profit'] : '0.000'; ?></td>
+    </foreach>
+    </tr>
+    </table>
+<div class="cl pd-5 bg-1 bk-gray mt-20">
+<span>当前企业：{$cname[0]['com_name']}</span>
+<span class="r">共有数据：<strong>{$count}</strong> 条</span>
+</div>
+<div>
+<table id="stat" class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer">
+    <tr>
+        <th>日期</th><th>总订单数</th><th>支付订单数</th><th>退款订单数</th><th>订单总额</th><th>支付总额</th><th>退款总额</th><th>商品成本</th><th>商品利润</th>
+    </tr>
+    <foreach name="data" item="v" >
+    <tr>
+        <td>{$v.stat_date}</td>
+        <td>{$v.stat_count}</td>
+        <td>{$v.stat_paycount}</td>
+        <td>{$v.stat_refundcount}</td>
+        <td>{$v.stat_total_fee}</td>
+        <td>{$v.stat_payed_fee}</td>
+        <td>{$v.stat_refund_fee}</td>
+        <td>{$v.stat_cost}</td>
+        <td>{$v.stat_profit}</td>
+    </tr>
+    </foreach>
+</table>
+</div>
+<div class="page1">
+　　{$page}
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function () {
+    $(function () {
+        $("#setCompany").change(function(){
+            //完整链接
+            window.location.href = "/admin.php/Statistics/companyStat/cid/"+$(this).val();
+        });
+    });
+});
+</script>
+</body>
+</html>

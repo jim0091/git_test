@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/cardlist_base.css">
+<link rel="stylesheet" href="__CSS__/cardlist_style.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<title>选择贺卡</title>
+<style>
+	.title{width: 100%;background: #f32b5a;height: 4.3rem;line-height: 4.3rem; text-align: center;}
+	.title span{float: left;  color: #fff;}
+	.title .first{width: 20%; font-size: 1.4rem;}
+	.title .text{width: 60%; font-size: 1.5rem; margin: 0 auto;}
+	.title .calcel{width: 20%; font-size: 1.4rem;}
+</style>
+</head>
+<body>
+  <div class="title">
+  	<span class="first" onclick="history.back();">&lt;返回</span>
+  	<span class="text">选择贺卡</span>
+  	<span class="calcel">&nbsp;&nbsp;</span>
+  </div>
+  <!-- 贺卡 -->
+  <div id="cardBox" style="margin-top: 0.3rem;">
+  	<div class="wrapper">
+		<ul class="wall">
+			<volist name="cardList" id="card">
+				<li class="article">
+					<img src="http://{$_SERVER['HTTP_HOST']}/{$card['card_pic_thumb']}" />
+					<p>{$card['bless_word']}</p>
+					<small>{$card['bless_word']}</small>
+					<input type="button" value="选择" cardid="{$card['card_id']}"/>
+				</li>
+			</volist>
+		</ul>
+	</div>
+  </div>
+</body>
+<script src="__JS__/cardlist.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+	//初始化贺卡列表
+	$(".wall").jaliswall({ item: ".article" });
+	//选择贺卡
+	$(".article input[type='button']").click(function(){
+		var cardid = $(this).attr('cardid');
+		var reg = /^[0-9]*$/;
+		if(!reg.test(cardid)){
+			alert('此贺卡不能选择');
+			return;
+		}
+		$.post("{:U('Post/chooseCard')}",{cardid:cardid},function(result){
+			if(result.code == 1){
+				alert('已成功选择');
+				history.back();
+			}else{
+				alert('选择贺卡失败，请重试');
+			}
+		})
+	});
+});
+</script>
+</html>

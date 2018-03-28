@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/mooncakess.css">
+<title>中秋兑换页</title>
+</head>
+<style type="text/css">
+	ul{
+		border-radius: 4px;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		color: white;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}
+</style>
+<body>
+   <div class="Moocashing">
+       <div class="Mooheader"></div>
+       <!--list1-->
+       <div class="MooOne2">
+           <p class="moopbg">
+           	
+           	{$catName.thisName}
+           
+           </p>
+         <div class="issues-div">  
+		  	<notempty name="catNames">
+	           <ul class="issues">
+		  			<volist name="catNames" id="cat">
+			              <li><a href="{:U('Home/Item/itemList',array('catId'=>$cat['cat_config_id'],'configId'=>$catName['item_config_id']))}">
+			              	{$cat.cat_name}
+			              </a></li>
+		  			</volist>	              
+	           </ul>		  		
+		 </notempty>         	
+         </div>
+           
+           <div class="mooList">
+				<volist name="list" id="item">
+	               <ul>
+	                 <li class="moopt"><a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank">
+	                 	<img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}"></a></li>
+	                 <li class="mooUser" style="height: 35px;overflow: hidden;text-align: center;"><a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank">{$item.title}</a></li>
+	                 <li class="moojf"><a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank"><span><?php echo $item['price']*100; ?></span>积分</a></li>
+	                 <li><a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" class="moopri">￥<span><?php echo sprintf("%.2f", $item['price']);  ?></span></a>
+	                 	<span class="moobtn"><a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank">兑换</a></span>
+	                 </li>
+       		        <if condition="$item.flag eq 1">
+			     		<li style="background-color:rgba(200,51,47,0.7);min-height:20px;color: white;text-align: center;position:relative; top:-65px;">
+			     			广东无货
+			     		</li>
+			        </if>
+	               </ul>
+				</volist>
+           </div> 
+           <div style="clear:both;"></div>
+			<div class="shoptitle mod-bottom" style="text-align: center;margin-top: 80px;">
+			{$pagestr}
+			</div>
+       </div>
+       
+       
+   </div>
+   
+   
+   <include file="Public/nvaFloated"/>
+   
+</body>
+</html>

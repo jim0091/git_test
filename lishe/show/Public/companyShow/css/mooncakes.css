@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#ffffff; font-family:"微软雅黑"; font-size:12px;}
+
+/*登录界面修改*/
+.MoonLogin{background:url(../images/Mobilebg.png) center center; width:100%; height:900px;}
+.loginCt{float:right;width:370px;text-align:center; margin-top:155px; height:535px; margin-right:10%;}
+.loginCt img{width:220px; height:185px;}
+.loginCt ul{background:#e7e6e8; width:370px; height:350px; border-radius:5px;box-shadow: #ffd1dd 0px 0px 15px; margin-top:-6px;}
+.Titl{font-size:18px; color:#c7241d; height:60px; line-height:60px; border-bottom:#c7241d solid 3px; margin-bottom:10px;}
+.text{width:280px;margin-top:20px;font-size:14px;color:#7d7a7a;padding:10px 0;padding-left:40px; height:17px;border-radius:5px; border:#FFF solid 1px;}
+.user{background:#fff url(../images/phone.png) no-repeat 10px center;}
+.pwd{background:#fff url(../images/pwd.png) no-repeat 10px center;}
+.Loginbtn{padding-top:25px;}
+.Loginbtn a{font-size:18px; color:#FFF; background:#c7241d; padding:5px 140px;border-radius:5px;}
+.Titl2{text-align:right; padding-top:20px; margin-right:25px;}
+.Titl2 a{font-size:14px; color:#6b6b6b;}
+/*登录界面*/
+.Monlogin{background:url(../images/Moo.png) center center;width:100%; height:900px; clear:both;}
+.Monlogin2{background:url(../images/loginbg.png) center center; width:100%; height:900px; clear:both;}
+.loginCt2{float:right;width:370px;text-align:center; margin-top:260px; height:535px; margin-right:10%;}
+.loginCt2 img{width:220px; height:185px;}
+.loginCt2 ul{background:#e7e6e8; width:370px; height:350px; border-radius:5px;box-shadow: #ffd1dd 0px 0px 15px; margin-top:-6px;}
+
+
+/*兑换页面*/
+.Moocashing{background:url(../images/moobg.png) repeat-y center center; width:100%; height:100%; padding-bottom:35px;}
+.Mooheader{background:url(../images/hdbg.png) no-repeat center center; width:100%; height:672px;}
+
+.MooOne{width:100%;  margin:0 auto; margin-top:-530px; clear:both;}
+.moop{text-align:center; padding-top:440px;}
+.moop img{width:600px; height:237px;}
+.MooOne2{width:100%;  margin:0 auto; margin-top:-80px; clear:both; padding:60px 0;}
+.moopbg{font-size:30px;color:#d82b2b;text-align:center; background:url(../images/Mo.png) no-repeat center center;
+width:600px; height:238px; margin:0 auto; line-height:252px;}
+.moop2{text-align:center; font-size:14px; color:#FFF; line-height:20px;}
+.mooList{width:1000px; margin:0 auto; margin-top:10px; padding-left:20px;}
+.mooList ul{float:left; background:#FFF; width:190px; margin:7px 5px; height:275px;}
+.moopt{text-align:center;}
+.mooList ul img{width:180px; height:180px;}
+
+.mooUser{height:35px;}
+.mooUser a{font-size:12px; padding-left:10px; padding-top:5px; color:#000;}
+.moojf a{font-size:14px; color:#c7241d;padding-left:10px;}
+.moojf a span{font-weight:800; font-size:16px;}
+.moopri{font-weight:800; font-size:16px;color:#c7241d;padding-left:10px;}
+.moobtn{float:right; margin-right:10px;}
+.moobtn a{font-size:16px; color:#FFF; padding:3px 10px; background:#c7241d; border-radius:5px;}
+.moobtn2{text-align:center; padding-top:15px;}
+.moobtn2 a{font-size:24px; color:#FFF; border:#FFF solid 2px; padding:3px 35px; border-radius:10px;}
+
+.MooTwo{width:100%; margin:0 auto; margin-top:-140px;}
+.mootp{text-align:center; padding-top:180px;}
+.mootp img{width:600px; height:237px;}
+
+.issues-div{width:1000px; margin:20px auto; text-align:center; clear:both;}
+.issues{display:inline-block;}
+.issues li{float:left;border-top:#FFF solid 1px;}
+.issues li a{color:#d82b2b; font-size:16px; background:#FFF; display:block; width:100px; height:40px; text-align:center; line-height:40px; font-weight:800; margin:0 15px;}

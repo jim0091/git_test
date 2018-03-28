@@ -1,0 +1,28 @@
+
+    <div class="satnav2">
+       <p class="stp2">{$comCategory.cat_name}</p>
+
+       <div class="eat-ul">
+	        <volist name="list" id="vo">
+	            <ul>
+	              <li class="pt-mid"><a href="/item.html?item_id={$vo.item_id}" target="_blank">
+	              	<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a></li>
+	              <li class="eat-li" style="width:155px;height:42px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;">
+	              	<a href="/item.html?item_id={$vo.item_id}" target="_blank">{$vo.title}
+	              	</a>
+	              </li>
+	              <li><a href="/item.html?item_id={$vo.item_id}" target="_blank" class="eat-sp">￥<span>{:round($vo['price'],2)}</span>
+	              	
+	              </a><span class="eat-sp2"><a href="/item.html?item_id={$vo.item_id}" target="_blank">兑换</a></span></li>
+       		        <if condition="$vo.flag eq 1">
+			     		<li style="background-color:rgba(231,100,64,0.6);min-height:20px;color: white;text-align: center;position:relative;top: -50px;">
+			     			<small>广东无货</small>
+			     		</li>
+			  		</if>         
+	            </ul>
+			</volist>
+         </div>
+       <div style="clear:both;"></div>
+        <div class="pager">{$pagestr}</div>
+    </div>
+     <!--分页-->

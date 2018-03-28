@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+	<title>看到天生美丽的自己</title>
+	<style>
+	*{padding: 0;margin: 0;}
+	img{vertical-align: top;border: 0;width: 100%;}
+	header img{width: 100%;height: 5.1733333333rem;}
+	section:nth-of-type(1) img{width: 100%; height: 6.587rem;}
+	a{-webkit-tap-highlight-color: rgba(0,0,255,0);}
+	.rem4-53 img{height: 4.53rem;}
+	.rem1-107,.rem1-107 img{height: 1.107rem;}
+	.rem1-27 img{height: 1.27rem;}
+	.rem6-853 img{height: 6.853rem;}
+	.rem4-87 img{height: 4.87rem;}
+	.rem08 img,.rem08{height: 0.8rem;}
+	footer img{height: 4.4rem;}
+	.rem4-53,.rem4-87{position: relative;}
+	.rem4-53 a,.rem4-87 a{position: absolute;top: 0; width: 3.4rem;height: 100%;}
+	.rem4-53 a:nth-of-type(1),.rem4-87 a:nth-of-type(1){left: 0.71rem;}
+	.rem4-53 a:nth-of-type(2),.rem4-87 a:nth-of-type(2){right: 0.94rem;}
+	footer{position: relative;}
+	footer a{position: absolute;}
+	footer a:nth-of-type(1){width: 3.16rem;height: 3.16rem;top: 0.706rem;left: 2.093rem;}
+	footer a:nth-of-type(2){width: 3rem;height: 3rem;top: 0.74rem;right: 1.5333333rem;}
+	</style>
+	<script>
+		(function(){
+			var html = document.documentElement;
+			var whtml = html.getBoundingClientRect().width;
+			html.style.fontSize = whtml / 10 + "px";
+		})()
+	</script>
+</head>
+<body>
+	<header><img src="images/tonic_01.png"/></header>
+	<section><img src="images/tonic_02.png"/></section>
+	<section class="rem4-53">
+		<img src="images/tonic_03.png"/>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/46420.html"></a>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48520.html"></a>
+	</section>
+	<section class="rem1-107"><img src="images/tonic_04.png"/></section>
+	<section class="rem4-53">
+		<img src="images/tonic_05.png"/>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48514.html"></a>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48521.html"></a>
+	</section>
+	<section class="rem1-27"><img src="images/tonic_06.png"/></section>
+	<section class="rem4-53">
+		<img src="images/tonic_07.png"/>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48515.html"></a>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/46375.html"></a>
+	</section>
+	<section class="rem6-853"><img src="images/tonic_08.png"/></section>
+	<section class="rem4-87">
+		<img src="images/tonic_09.png"/>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48263.html"></a>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48264.html"></a>
+	</section>
+	<section class="rem08"><img src="images/tonic_10.png"/></section>
+	<section class="rem4-87">
+		<img src="images/tonic_11.png"/>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48265.html"></a>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48275.html"></a>
+	</section>
+	<section class="rem08"><img src="images/tonic_12.png"/></section>
+	<section class="rem4-87">
+		<img src="images/tonic_13.png"/>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48274.html"></a>
+		<a href="http://www.lishe.cn/wshop.php/Info/index/itemId/48278.html"></a>
+	</section>
+	<footer>
+		<img src="images/tonic_14.png"/>
+		<a href="http://www.lishe.cn/activity/daiyihai_mobile/index.html"></a>
+		<a href="javascript:void(0);" id="back"></a>
+	</footer>
+	<script>
+	var timer = null;
+	var back = document.getElementById('back');
+	var scroll = null;
+	
+	back.addEventListener('touchend',gotop);
+	
+	function gotop(){
+		timer = setInterval(function(){
+
+			scroll = document.body.scrollTop || document.documentElement.scrollTop;
+			document.body.scrollTop = document.documentElement.scrollTop -= Math.ceil(scroll * 0.1) + "px";
+			
+			if(scroll < 10){
+				clearInterval(timer);
+				scroll = 0;
+			}
+			
+			/*document.body.scrollTop = document.documentElement.scrollTop = scroll + "px";*/
+		},100);
+	}
+	</script>
+</body>
+</html>

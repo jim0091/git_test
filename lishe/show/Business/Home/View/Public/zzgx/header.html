@@ -1,0 +1,156 @@
+<!--顶部-->
+<style type="text/css">
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#f5f5f5; font-family:"微软雅黑"; font-size:12px;}
+
+/*导航栏*/
+.menu{width:1200px;margin:20px auto 0 auto;text-align:center; position:relative;}
+.menu ul li{float:left;}
+.menu ul li a{display:block; color: #666666;font-size:14px;height: 35px; line-height:35px;padding: 0px 15px;}
+.menu ul li a:hover{border-top:#33acfb solid 2px; border-bottom:none;height: 33px;font-size:14px;}
+.menu ul li ul{position:absolute;  background:#FFF; display:none; z-index:10000; }
+.menu ul li ul li{float:none; border-bottom:dashed 1px #CCCCCC;}
+.menu ul li ul li a{display:block; width:100px;color: #666666;font-size:12px;height: 35px; line-height:35px;}
+.menu ul li ul li a:hover{border-top:none; border-bottom:#33acfb solid 2px;color:#33acfb;}
+.menu ul li:hover ul{display:block;}
+.pageon{
+	font-size: 12px;
+	color: white;
+	border: #33ACFB solid 1px;
+	padding: 5px 10px;
+	background-color: #33ACFB ;
+}
+.subFind{
+	display: block;
+	color: #FFF;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 14px;
+	width: 60px;
+	line-height: 32px;
+	background: #33acfb;
+	margin-top:17px;
+}
+.indexStyle{
+	background:#33acfb;width:120px; height:35px; line-height:35px;
+}
+.selectStyle{
+	border: #33acfb solid 1px;
+	height:33px;
+	color: #666666;
+	font-size: 12px;
+	margin-top: 3px;
+}
+.shopIcon{
+	background:#33acfb;
+	color: white;
+	border-radius: 5px;
+	padding: 1px 5px 1px 5px;
+	margin-right: 3px;
+}
+.liheight{
+	width:200px;height:38px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;
+}
+</style>
+<div class="mnva">
+   <div class="mnvac">
+      <ul class="mnvaLeft">
+        <li><a href="__APP__/Zzgx">欢迎光临，点击这里返回首页</a></li>
+      </ul>
+      <ul class="mnvaRight">
+	      <if condition="empty($userName)">
+	      <else/>
+	     	 <li>
+	        <a href="{:C('LISHE_URL')}/user.php/Info/index.html" style="color:#b52124;padding-right:10px;" target="_blank">{$userName}</a>
+	        <a href="__ITEM_URL____USER__/Order/orderList" style="color:#b52124;padding-right:10px;" target="_blank">我的订单</a>
+	        <a href="__ZZGX__/index.php/Cactive/zzgxCoupon" style="color:#b52124;padding-right:10px;" target="_blank">干洗券充值</a>
+	        <a href="__APP__/Zzgx/logout"  style="color:#b52124;">退出&nbsp;&nbsp;</a>
+	         </li> 
+	      </if>
+      </ul>
+   </div>
+   <div style="clear:both;"></div>
+</div>
+<!--搜索层-->
+<div class="fLogo">
+   <div class="logopt" style="margin-top:20px"><img src="__PUBLIC__/zzgx/images/logo.png" height="60"></div>
+   <div class="findput">
+   	<form action="{:U('Home/Zzgx/itemList')}">
+	   	<input type="text" class="txt" name="itemName"  placeholder="综合搜索">
+	   	<span>
+		<select id="cfgId" name="cfgId" class="selectStyle" onchange="javascript:getCategory(this.options[this.selectedIndex].value);">
+      	  <volist name="menus" id="vo">
+				<option value="{$vo.cfid}">{$vo.name}</option>
+		  </volist>
+		</select>	
+		<select id="catId" name="catId" class="selectStyle"  style="display: none;">
+			
+		</select>			
+	   	<input type="Submit"  value="搜索"  class="txtbtn">
+	   	</span>
+	 </form>
+   </div>
+   <div class="shopbtn"><a href="/shop.php/Order/Cart" target="_blank"><img src="__PUBLIC__/gd10086/images/Mshop.png">我的购物车&gt;</a></div>
+   <div style="clear:both;"></div>
+</div>
+<!--导航栏-->
+<div class="menu">
+       <ul>
+         <li><a href="__APP__/Zzgx" class="indexStyle" style="color: #FFF;">商城首页</a></li>
+        <volist name="menus" id="vo">
+	        <li>
+	        <notempty name="vo.category">
+	        	<a href="__APP__/Zzgx/category/cfgId/{$vo.cfid}" ><span >{$vo.name}</span>
+		        	<span>
+			        	<img src="__PUBLIC__/gd10086/images/jt.png">
+			        </span>
+	        	</a>
+        	<else/>
+	        	<a  href="__APP__/Zzgx/itemList/cfgId/{$vo.cfid}" ><span >{$vo.name}</span></a>
+	        </notempty>	
+	        <notempty name="vo.category">
+             <ul>
+             	<volist name="vo.category" id="cat">
+	                <li><a href="__APP__/Zzgx/itemList/cfgId/{$cat.item_config_id}/catId/{$cat.cat_config_id}">{$cat.cat_name}</a></li>
+             	</volist>             	
+             </ul>
+            </notempty>
+         </li>
+		</volist>
+       </ul>  
+  </div> 
+  
+  
+  <script>
+  	function getCategory(cfgId){
+			$("#catId").hide();
+            $( '#catId' ).empty() ;
+            var urls = "{:U('Home/Zzgx/nextCategory')}" ;
+			$.ajax({
+				type:"get",
+				url:urls,
+				data:'cfgId='+cfgId,
+				dataType:'json',
+				success:function(data){
+					if(data){
+  						$("#catId").show();
+						$.each(data, function(k,v) {
+	                  	  	var options = '<option value="' +v.cat_config_id+ '">' +v.cat_name+ '</option>' ;
+	                   	 	$( '#catId' ).append(options);
+						});
+					}
+				},
+				error:function(data){
+					
+				}
+			});	
+  	}
+  </script>
+  
+  
+  
+  
+<include file="Public/nvafloat"/>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>订单中心-礼品商城</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="" class="logo1"></a>
+			<ul>
+				<li class="nav_link"><a href="">礼舍首页</a></li>
+				<li class="nav_link current"><a href="">心意商城</a></li>
+				<li class="nav_link"><a href="">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<li><a href="">会员登录</a></li>
+				<li><a href="">商家中心</a></li>
+				<li><a href="">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 头部搜索 -->
+	<div class="head">
+		<div class="wrap">
+			<a href="" class="logo2"></a>
+			<div class="search_bar">
+				<input type="text" class="search_text" placeholder="综合搜索" onfocus="this.placeholder=''" onblur="this.placeholder='综合搜索'">
+				<a class="search_button" href=""></a>
+				<ul class="search_commend">
+					<li><a href="">礼舍自营</a></li>
+					<li><a href="">关键词1</a></li>
+					<li><a href="">关键词2</a></li>
+					<li><a href="">关键词3</a></li>
+					<li><a href="">关键词4</a></li>
+					<li><a href="">关键词5</a></li>
+					<li><a href="">关键词6</a></li>
+					<li><a href="">关键词7</a></li>
+				</ul>
+			</div>
+			<div class="my_cart">
+				<a class="cart" href="">我的购物车</a>
+				<div class="right_arrow"></div>
+				<div id="cart_number">2</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap">
+			<!-- 中间左侧导航 -->
+			<div class="user_center">
+				<div class="user_center_head">会员中心</div>
+				<div class="left_nav">
+					<ul>
+						<li class="left_nav_title"><span>我的交易</span></li>
+						<li><a href="javascript:;" class="current">我的订单</a></li>
+						<li><a href="javascript:;">活动订单</a></li>
+						<li><a href="javascript:;">取消订单记录</a></li>
+					</ul>
+					<ul>
+						<li class="left_nav_title"><span>我的服务</span></li>
+						<li><a href="javascript:;">退换货记录</a></li>
+					</ul>
+					<ul>
+						<li class="left_nav_title"><span>我的收藏</span></li>
+						<li><a href="javascript:;">收藏的店铺</a></li>
+						<li><a href="javascript:;">收藏的商品</a></li>
+					</ul>
+					<ul>
+						<li class="left_nav_title"><span>我的信息</span></li>
+						<li><a href="javascript:;">我的礼舍币</a></li>
+						<li><a href="javascript:;">个人资料</a></li>
+						<li><a href="javascript:;">用户名相关设置</a></li>
+						<li><a href="javascript:;">收货地址管理</a></li>
+						<li><a href="javascript:;">安全中心设置</a></li>
+						<li><a href="javascript:;">我的评价管理</a></li>
+						<li><a href="javascript:;">我的咨询管理</a></li>
+					</ul>
+					<ul>
+						<li class="left_nav_title"><span>我的优惠</span></li>
+						<li><a href="javascript:;">我的优惠券</a></li>
+						<li><a href="javascript:;">我的福利积分</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="order_status">
+						<div>
+							<ul class="all_orders">
+								<li id="all">全部订单</li>
+								<li id="topay">待付款</li>
+								<li id="waitsend">待发货</li>
+								<li id="tosign">待收货</li>
+								<li id="write_review">待评价</li>
+							</ul>
+						</div>
+						<div class="order_search">
+							<div class="order_num">共<span>5</span>条订单</div>
+							<input type="text" placeholder="请输入商品名称">
+							<a href="" class="order_search_btn">搜索订单</a>
+						</div>
+					</div>
+					<div class="order_details">
+						<div class="order_details_title">
+							<div class="name">商品详情</div>
+							<div class="price">单价</div>
+							<div class="number">数量</div>
+							<div class="aftersale">商品操作</div>
+							<div class="totalmoney">订单总金额</div>
+							<div class="status">订单状态</div>
+							<div class="operation">订单操作</div>
+						</div>
+
+						<!-- 订单1 -->
+						<div class="orders closed">
+							<!-- 订单号 -->
+							<div class="orderid">
+								<div><input type="checkbox"></div>
+								<div class="time">2016-09-03 12:18:11</div>
+								<div>订单编号：60903121811077</div>
+								<div class="store_name"><a href="">礼舍旗舰店自营店</a><span><a href=""></a></span></div>
+								<div class="delete"><a href=""></a></div>
+							</div>
+							<!-- 订单详情 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥36.16</div>
+									<div class="ammount">&times;1</div>
+									<div class="return">
+									</div>
+								</div>
+								<div class="paid_money">
+									<span>￥44.16</span><br>
+									(含运费:&nbsp;￥8.00)
+								</div>
+								<div class="order_progress">
+									订单已关闭<br>
+									<a href="">订单详情</a>
+								</div>
+								<div class="order_operation">
+									取消成功
+								</div>
+							</div>
+						</div>
+
+						<!-- 订单2 -->
+						<div class="orders write_review">
+							<!-- 订单号 -->
+							<div class="orderid">
+								<div><input type="checkbox"></div>
+								<div class="time">2016-09-03 12:18:11</div>
+								<div>订单编号：60903121811077</div>
+								<div class="store_name"><a href="">礼舍旗舰店自营店礼舍旗舰店自营店礼舍旗舰店自营店</a><span><a href=""></a></span></div>
+							</div>
+							<!-- 订单商品1 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥36.16</div>
+									<div class="ammount">&times;1</div>
+									<div class="return">
+										<p><a href="">退货/换货</a></p>
+										<p><a href="">申请售后</a></p>
+									</div>
+								</div>
+								<div class="paid_money">
+									<span>￥136.00</span><br>
+									(含运费:&nbsp;￥0.00)
+								</div>
+								<div class="order_progress">
+									订单已完成<br>
+									<a href="">订单详情</a>
+								</div>
+								<div class="order_operation">
+									<a href="" class="comment">去评价</a>
+								</div>
+							</div>
+							<!-- 订单商品2 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥80.19</div>
+									<div class="ammount">&times;2</div>
+									<div class="return">
+										<p><a href="">退货/换货</a></p>
+										<p><a href="">申请售后</a></p>
+									</div>
+								</div>
+								<div class="paid_money">
+								</div>
+								<div class="order_progress">
+								</div>
+								<div class="order_operation">
+								</div>
+							</div>
+						</div>
+
+						<!-- 订单3 -->
+						<div class="orders topay">
+							<!-- 订单号 -->
+							<div class="orderid">
+								<div><input type="checkbox"></div>
+								<div class="time">2016-09-03 12:18:11</div>
+								<div>订单编号：60903121811077</div>
+								<div class="store_name"><a href="">礼舍旗舰店自营店</a><span><a href=""></a></span></div>
+							</div>
+							<!-- 订单商品1 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥36.16</div>
+									<div class="ammount">&times;1</div>
+									<div class="return">
+									</div>
+								</div>
+								<div class="paid_money">
+									<span>￥284.00</span><br>
+									(含运费:&nbsp;￥0.00)
+								</div>
+								<div class="order_progress">
+									待付款<br>
+									<a href="">订单详情</a>
+								</div>
+								<div class="order_operation">
+									<a href="" class="paynow">立即付款</a>
+									<a href="">取消订单</a>
+								</div>
+							</div>
+							<!-- 订单商品2 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥20103.21</div>
+									<div class="ammount">&times;2</div>
+									<div class="return">
+									</div>
+								</div>
+								<div class="paid_money">
+								</div>
+								<div class="order_progress">
+								</div>
+								<div class="order_operation">
+								</div>
+							</div>
+							<!-- 订单商品3 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥122.12</div>
+									<div class="ammount">&times;3</div>
+									<div class="return">
+									</div>
+								</div>
+								<div class="paid_money">
+								</div>
+								<div class="order_progress">
+								</div>
+								<div class="order_operation">
+								</div>
+							</div>
+						</div>
+
+						<!-- 订单4 -->
+						<div class="orders waitsend">
+							<!-- 订单号 -->
+							<div class="orderid">
+								<div><input type="checkbox"></div>
+								<div class="time">2016-09-03 12:18:11</div>
+								<div>订单编号：60903121811077</div>
+								<div class="store_name"><a href="">礼舍旗舰店自营店</a><span><a href=""></a></span></div>
+							</div>
+							<!-- 订单详情 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥36.16</div>
+									<div class="ammount">&times;1</div>
+									<div class="return">
+										<p><a href="">退货/换货</a></p>
+									</div>
+								</div>
+								<div class="paid_money">
+									<span>￥44.16</span><br>
+									(含运费:&nbsp;￥8.00)
+								</div>
+								<div class="order_progress">
+									已付款待发货<br>
+									<a href="">订单详情</a>
+								</div>
+								<div class="order_operation">
+									<a href="" class="remind">提醒卖家发货</a>
+								</div>
+							</div>
+						</div>
+
+						<!-- 订单5 -->
+						<div class="orders tosign">
+							<!-- 订单号 -->
+							<div class="orderid">
+								<div><input type="checkbox"></div>
+								<div class="time">2016-09-03 12:18:11</div>
+								<div>订单编号：60903121811077</div>
+								<div class="store_name"><a href="">礼舍旗舰店自营店</a><span><a href=""></a></span></div>
+							</div>
+							<!-- 订单详情 -->
+							<div class="order_list">
+								<div class="order_preview">
+									<div class="pics"><img src=""></div>
+									<div class="goods_name">
+										<p>edei宜阁家用榨汁干磨多功能快速料理机 NH-218B</p>
+										<p class="category">颜色分类：颜色分类3</p>
+									</div>
+									<div class="perprice">￥36.16</div>
+									<div class="ammount">&times;1</div>
+									<div class="return">
+										<p><a href="">退货/换货</a></p>
+									</div>
+								</div>
+								<div class="paid_money">
+									<span>￥44.16</span><br>
+									(含运费:&nbsp;￥8.00)
+								</div>
+								<div class="order_progress">
+									已发货待签收<br>
+									<a href="">订单详情</a><br>
+									<a href="" class="express">查看物流</a>
+								</div>
+								<div class="order_operation">
+									<a href="" class="delivery">确认收货</a>
+									<p>还剩<span class="day">4</span>天<span class="hour">4</span>时</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- 批量操作 -->
+						<div class="operation_all">
+							<div><input type="checkbox"></div>
+							<div>全选</div>
+							<div><a href="" class="payall">合并付款</a></div>
+							<div><a href="" class="deliveryall">批量确认收货</a></div>
+						</div>
+
+						<!-- 翻页 -->
+						<div class="pages">
+							<a class="change font" href="">上一页</a>
+							<a class="current" href="">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+							<a href="">4</a>
+							<a href="">5</a>
+							<a href="">6</a>
+							<a href="">7</a>
+							<img src="images/dots.png" width="38" height="38">
+							<a class="change next" href="">下一页</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	
+</body>
+</html>

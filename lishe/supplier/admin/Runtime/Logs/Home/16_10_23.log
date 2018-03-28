@@ -1,0 +1,744 @@
+[ 2016-10-23T04:40:03+08:00 ] 85.248.227.164 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000576s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000705s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000752s ]
+
+[ 2016-10-23T04:40:10+08:00 ] 85.248.227.163 /index.php/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000117s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000060s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000105s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000122s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000179s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008707s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008764s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000246s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000308s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000798s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000848s ]
+
+[ 2016-10-23T11:22:14+08:00 ] 54.167.152.64 /robots.txt
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000112s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000062s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000102s ]
+ERR: 无法加载控制器:Robots.txt
+
+[ 2016-10-23T11:22:14+08:00 ] 54.167.152.64 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000075s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000100s ]
+
+[ 2016-10-23T11:22:15+08:00 ] 54.167.152.64 /index.php/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000161s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000053s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000091s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000056s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004977s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005020s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000053s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000082s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000079s ]
+
+[ 2016-10-23T16:03:08+08:00 ] 112.90.82.218 /index.php/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000091s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000080s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000090s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001874s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001915s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000044s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000071s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000045s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000074s ]
+
+[ 2016-10-23T19:30:22+08:00 ] 119.123.166.228 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000103s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000245s ]
+
+[ 2016-10-23T19:30:22+08:00 ] 119.123.166.228 /index.php/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000091s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000074s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000050s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000091s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001870s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.001915s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000063s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000092s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000037s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000065s ]
+
+[ 2016-10-23T19:30:22+08:00 ] 119.123.166.228 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000157s ]
+
+[ 2016-10-23T19:30:35+08:00 ] 119.123.166.228 /index.php/Login/check_user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000094s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000076s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000117s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0131s ]
+SQL: SHOW COLUMNS FROM `system_admin_powers` [ RunTime:0.0126s ]
+SQL: SHOW COLUMNS FROM `system_admin_role` [ RunTime:0.0125s ]
+SQL: SHOW COLUMNS FROM `system_admin_powers_node` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `supplier_user` WHERE `username` = 'wangzi' LIMIT 1   [ RunTime:0.0129s ]
+
+[ 2016-10-23T19:30:35+08:00 ] 119.123.166.228 /index.php/home
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000104s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000065s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000102s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0132s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0133s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0128s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0126s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0127s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0127s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0134s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0131s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0128s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0128s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000121s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000163s ]
+
+[ 2016-10-23T19:30:36+08:00 ] 119.123.166.228 /index.php/Home/goodsList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000087s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000088s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0111s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0110s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0111s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0111s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0112s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_item` WHERE ( supplier_id=111 ) LIMIT 1   [ RunTime:0.2297s ]
+SQL: SELECT * FROM `supplier_item` WHERE ( supplier_id=111 ) LIMIT 0,20   [ RunTime:0.6448s ]
+SQL: SELECT `cat_name`,`cat_id` FROM `syscategory_cat` WHERE `level` = 1  [ RunTime:0.0123s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000106s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000186s ]
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: like /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 86 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010040s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000068s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000106s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000054s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000106s ]
+
+[ 2016-10-23T19:30:38+08:00 ] 119.123.166.228 /index.php/Home/orderList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000088s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000079s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0111s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0106s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0108s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0106s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0105s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0109s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0109s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 111 LIMIT 0,20   [ RunTime:0.0105s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 111 LIMIT 1   [ RunTime:0.0102s ]
+NOTIC: [2] Illegal string offset 'warehouse_id' /supplier/admin/Home/Model/HomeModel.class.php 第 349 行.
+SQL: SELECT * FROM `supplier_warehouse` WHERE ( warehouse_id in (0) )  [ RunTime:0.0102s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000096s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000155s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006105s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006163s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000058s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000093s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000056s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000092s ]
+
+[ 2016-10-23T19:30:39+08:00 ] 119.123.166.228 /index.php/Home/waitSend.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000103s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0114s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 3 AND `supplier_id` = 111 LIMIT 0,20   [ RunTime:0.0112s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 3 AND `supplier_id` = 111 LIMIT 1   [ RunTime:0.0109s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000108s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006602s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006649s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000046s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000074s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000038s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000070s ]
+
+[ 2016-10-23T19:30:40+08:00 ] 119.123.166.228 /index.php/Home/sended.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000122s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000074s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.2250s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0139s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.2260s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0137s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0135s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0135s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0135s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0136s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0136s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 4 AND `supplier_id` = 111 LIMIT 0,20   [ RunTime:0.0131s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 4 AND `supplier_id` = 111 LIMIT 1   [ RunTime:0.0129s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000075s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000121s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005666s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005708s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000063s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000033s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000061s ]
+
+[ 2016-10-23T19:30:41+08:00 ] 119.123.166.228 /index.php/Home/orderList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000098s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000041s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000080s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0111s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0113s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 111 LIMIT 0,20   [ RunTime:0.0115s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 111 LIMIT 1   [ RunTime:0.0107s ]
+NOTIC: [2] Illegal string offset 'warehouse_id' /supplier/admin/Home/Model/HomeModel.class.php 第 349 行.
+SQL: SELECT * FROM `supplier_warehouse` WHERE ( warehouse_id in (0) )  [ RunTime:0.0106s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000066s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000107s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006140s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006201s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000047s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000087s ]
+
+[ 2016-10-23T19:30:44+08:00 ] 119.123.166.228 /index.php/Login/logout.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000127s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000051s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000092s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000055s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000097s ]
+
+[ 2016-10-23T19:30:44+08:00 ] 119.123.166.228 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000089s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000071s ]
+
+[ 2016-10-23T19:30:44+08:00 ] 119.123.166.228 /index.php/Login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000074s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000041s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000083s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000051s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000091s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.001999s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002041s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000048s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000074s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000032s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000059s ]
+
+[ 2016-10-23T19:32:02+08:00 ] 119.123.166.228 /index.php/Login/check_user
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000105s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000068s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.1053s ]
+SQL: SHOW COLUMNS FROM `system_admin_powers` [ RunTime:0.1136s ]
+SQL: SHOW COLUMNS FROM `system_admin_role` [ RunTime:0.1138s ]
+SQL: SHOW COLUMNS FROM `system_admin_powers_node` [ RunTime:0.1134s ]
+SQL: SELECT * FROM `supplier_user` WHERE `username` = '13922834588' LIMIT 1   [ RunTime:0.1127s ]
+
+[ 2016-10-23T19:32:04+08:00 ] 119.123.166.228 /index.php/home
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000086s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000071s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.1161s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.1172s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.1157s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.1157s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.1162s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.1163s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.1153s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.1155s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.1164s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.1161s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.1164s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000107s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000148s ]
+
+[ 2016-10-23T19:32:09+08:00 ] 119.123.166.228 /index.php/Home/goodsList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000095s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000041s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000079s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.1160s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.1155s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.1155s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.1155s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.1156s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.1159s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.1153s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.1156s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.1156s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.1099s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0940s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_item` WHERE ( supplier_id=40 ) LIMIT 1   [ RunTime:0.0804s ]
+SQL: SELECT * FROM `supplier_item` WHERE ( supplier_id=40 ) LIMIT 0,20   [ RunTime:0.4749s ]
+SQL: SELECT `cat_name`,`cat_id` FROM `syscategory_cat` WHERE `level` = 1  [ RunTime:0.0138s ]
+SQL: SHOW COLUMNS FROM `syscategory_brand` [ RunTime:0.2713s ]
+SQL: SELECT * FROM `syscategory_brand` WHERE `brand_id` IN ('2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134','2134')  [ RunTime:0.0146s ]
+SQL: SELECT * FROM `syscategory_cat` WHERE `cat_id` IN ('1221','1221','1221','1221','1221','1220','1220','1220','1220','1220','1220','1220','1221','1221','1221','1220','1220','1220','1220','1220')  [ RunTime:0.0144s ]
+SQL: SHOW COLUMNS FROM `sysshop_shop` [ RunTime:0.0169s ]
+SQL: SELECT * FROM `sysshop_shop` WHERE `shop_id` IN ('5','5','5','5','5','5','5','5','5','5','5','5','5','5','5','5','5','5','5','5')  [ RunTime:0.0169s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000093s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000157s ]
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: cat_id_1 /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 81 行.
+NOTIC: [8] Undefined variable: like /supplier/admin/Runtime/Cache/Home/83e4f785bbc25d1af2e3379fc40556f5.php 第 86 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008893s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008936s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000067s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000106s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000109s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000191s ]
+
+[ 2016-10-23T19:32:17+08:00 ] 119.123.166.228 /index.php/Home/orderList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000095s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000045s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000083s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.1065s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0894s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0726s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0594s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0462s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.3099s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0132s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0128s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0129s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0127s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0128s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 40 LIMIT 0,20   [ RunTime:0.0128s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 40 LIMIT 1   [ RunTime:0.0123s ]
+NOTIC: [2] Illegal string offset 'warehouse_id' /supplier/admin/Home/Model/HomeModel.class.php 第 349 行.
+SQL: SELECT * FROM `supplier_warehouse` WHERE ( warehouse_id in (1,1) )  [ RunTime:0.0123s ]
+SQL: SELECT * FROM `supplier_order_goods` WHERE (  order_id in (7) ) AND `supplier_id` = 40  [ RunTime:0.0128s ]
+NOTIC: [8] Undefined index: prices /supplier/admin/Home/Model/HomeModel.class.php 第 86 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005835s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005878s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000048s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000075s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000044s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000079s ]
+
+[ 2016-10-23T19:32:18+08:00 ] 119.123.166.228 /index.php/Home/waitSend.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000076s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.2232s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0124s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0119s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0116s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 3 AND `supplier_id` = 40 LIMIT 0,20   [ RunTime:0.0114s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 3 AND `supplier_id` = 40 LIMIT 1   [ RunTime:0.0111s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000069s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000108s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005960s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006013s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000040s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000077s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000042s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000076s ]
+
+[ 2016-10-23T19:32:19+08:00 ] 119.123.166.228 /index.php/Home/orderList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000110s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000045s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000081s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0112s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0115s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 40 LIMIT 0,20   [ RunTime:0.0112s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 40 LIMIT 1   [ RunTime:0.0110s ]
+NOTIC: [2] Illegal string offset 'warehouse_id' /supplier/admin/Home/Model/HomeModel.class.php 第 349 行.
+SQL: SELECT * FROM `supplier_warehouse` WHERE ( warehouse_id in (1,1) )  [ RunTime:0.0112s ]
+SQL: SELECT * FROM `supplier_order_goods` WHERE (  order_id in (7) ) AND `supplier_id` = 40  [ RunTime:0.0114s ]
+NOTIC: [8] Undefined index: prices /supplier/admin/Home/Model/HomeModel.class.php 第 86 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000091s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000139s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006391s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006451s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000055s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000086s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000074s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000116s ]
+
+[ 2016-10-23T19:32:23+08:00 ] 119.123.166.228 /index.php/Home/editOrder/order_id/7.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000105s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000040s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0113s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0115s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0114s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0115s ]
+NOTIC: [2] Invalid argument supplied for foreach() /supplier/admin/Home/Model/HomeModel.class.php 第 65 行.
+SQL: SELECT * FROM `supplier_order_goods` WHERE (  order_id in (7) ) AND `supplier_id` = 40  [ RunTime:0.0113s ]
+NOTIC: [8] Undefined offset: 7 /supplier/admin/Home/Model/HomeModel.class.php 第 86 行.
+NOTIC: [8] Undefined index: prices /supplier/admin/Home/Model/HomeModel.class.php 第 86 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000075s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000134s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004180s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004224s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000053s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000085s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000060s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000094s ]
+
+[ 2016-10-23T19:32:33+08:00 ] 119.123.166.228 /index.php/Home/editOrder/order_id/7.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000128s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000038s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000074s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0129s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0126s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.2230s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0127s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0129s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0125s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0123s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0124s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0123s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0122s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0125s ]
+NOTIC: [2] Invalid argument supplied for foreach() /supplier/admin/Home/Model/HomeModel.class.php 第 65 行.
+SQL: SELECT * FROM `supplier_order_goods` WHERE (  order_id in (7) ) AND `supplier_id` = 40  [ RunTime:0.0124s ]
+NOTIC: [8] Undefined offset: 7 /supplier/admin/Home/Model/HomeModel.class.php 第 86 行.
+NOTIC: [8] Undefined index: prices /supplier/admin/Home/Model/HomeModel.class.php 第 86 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000064s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000108s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004420s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004470s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000044s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000071s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000037s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000066s ]
+
+[ 2016-10-23T19:32:40+08:00 ] 119.123.166.228 /index.php/Home/checkOrder.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000132s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000075s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0122s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0116s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0117s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:1.4886s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0124s ]
+SQL: UPDATE `supplier_order` SET `status`='1',`supplier_check_remarks`='dafafa',`supplier_check_time`='2016-10-23 19:32:40' WHERE ( order_id=7 and supplier_id=40 ) [ RunTime:0.0162s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000081s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000121s ]
+
+[ 2016-10-23T19:32:40+08:00 ] 119.123.166.228 /index.php/Home/orderList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000080s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000034s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000070s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0124s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0122s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0124s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0119s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0119s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.2225s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0127s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 40 LIMIT 0,20   [ RunTime:0.0118s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 0 AND `supplier_id` = 40 LIMIT 1   [ RunTime:0.0115s ]
+NOTIC: [2] Illegal string offset 'warehouse_id' /supplier/admin/Home/Model/HomeModel.class.php 第 349 行.
+SQL: SELECT * FROM `supplier_warehouse` WHERE ( warehouse_id in (0) )  [ RunTime:0.0115s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000108s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005564s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005624s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000044s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000071s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000035s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000070s ]
+
+[ 2016-10-23T19:32:42+08:00 ] 119.123.166.228 /index.php/Home/waitSend.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000091s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000043s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000081s ]
+SQL: SHOW COLUMNS FROM `supplier_user` [ RunTime:0.0127s ]
+SQL: SHOW COLUMNS FROM `supplier_item` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_order` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_warehouse` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `supplier_item_sku` [ RunTime:0.0121s ]
+SQL: SHOW COLUMNS FROM `supplier_push_goods` [ RunTime:0.2236s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_order` [ RunTime:0.0125s ]
+SQL: SHOW COLUMNS FROM `supplier_storage_items` [ RunTime:0.0124s ]
+SQL: SHOW COLUMNS FROM `supplier_purchase` [ RunTime:0.0123s ]
+SQL: SHOW COLUMNS FROM `supplier_order_goods` [ RunTime:0.0123s ]
+SQL: SHOW COLUMNS FROM `syscategory_cat` [ RunTime:0.0123s ]
+SQL: SELECT * FROM `supplier_order` WHERE `status` = 3 AND `supplier_id` = 40 LIMIT 0,20   [ RunTime:0.0119s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `supplier_order` WHERE `status` = 3 AND `supplier_id` = 40 LIMIT 1   [ RunTime:0.0115s ]
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 67 行.
+NOTIC: [2] Illegal string offset 'order_id' /supplier/admin/Home/Model/HomeModel.class.php 第 68 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000069s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000110s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006336s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006379s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000037s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000081s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000051s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000087s ]
+

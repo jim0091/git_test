@@ -1,0 +1,59 @@
+/* 通用 */
+*{font-family: "Microsoft Yahei", "宋体", Arial, sans-serif; margin: 0;  padding: 0; border: none;}
+html, body{width: 100%; background-color: #F9F6F6;}
+a{text-decoration: none; color: #333;}
+img{border: none;}
+
+/* 主页 */
+.top_bar{width: 100%; height: .53rem; background-color: #E82727;}
+.top_search{width: 100%; height: 1.17rem; line-height: 1.17rem; background: url("../images/logo.png") no-repeat; background-size: 1.17rem .53rem; background-position: .4rem .32rem; background-color: #E82727;}
+.index_search{width: 5.57rem; height: .77rem; border-radius: .13rem; vertical-align: top; margin-top: .2rem; margin-left: 1.93rem; font-size: .4rem; line-height: .77rem; padding-left: 1rem; background: url("../images/search_icon.png") no-repeat; background-size: .51rem .51rem; background-position: .27rem .13rem; background-color: #FFF;}
+#index_main{position: relative; width: 9.47rem; margin: .2rem auto; font-size: .32rem;}
+.outer_wrap{margin-left: -.135rem;}
+.index_box{padding: .27rem 0 0 .27rem; float: left; width: 4.44rem;}
+.box_inner{border: 1px solid #DADADA; background-color: #FFF;}
+.content_pic{width: 100%; height: auto;}
+.fb{font-weight: bold;}
+.content_wrap{padding: .2rem; line-height: .4rem; overflow: hidden;}
+.content_title{overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.content_text{line-height: .48rem; margin: .15rem 0 .4rem; color: #666; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+.users{float: left;}
+.user_head{width: .8rem; height: .8rem; border-radius: 50%; border: 1px solid #F9F6F6; vertical-align: middle;}
+.user_name{margin-left: .08rem; display: inline-block; vertical-align: middle; width: 1.6rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+.like{float: right; height: .8rem; color: #999; margin-right: .1rem;}
+.heart{display: inline-block; width: .4rem; height: 100%; vertical-align: middle; background-image: url("../images/heart_gray.png"); background-size: 100% auto; background-repeat: no-repeat; background-position: center center;}
+.like_num{vertical-align: middle;}
+
+/* 礼物详情页 */
+.gift_info{text-align: center; width: 100%; height: 1.19rem; line-height: 1.19rem; font-size: .48rem; font-weight: bold; border-bottom: 1px solid #CCC; background: url("../images/back_icon.png") no-repeat; background-position: .4rem .36rem; background-size: .27rem auto; background-color: #F5F5F5; position: relative;}
+.back{display: block; height: 1.19rem; width: 1.19rem; position: absolute; top: 0; left: 0;}
+.relatedwrap{width: 100%; background-color: #FFF; padding-top: .5rem; border-top: 1px solid #DADADA; position: relative;}
+#info_main{position: relative; width: 9.47rem; margin: .2rem auto; font-size: .32rem;}
+.relatedwrap #info_main{margin-bottom: 0;}
+.related{font-size: .4rem; color: #666; position: absolute; top: .25rem; left: .4rem;}
+.line{display: inline-block; height: .4rem; width: .1rem; background-color: #FF4138; border-radius: 4px; vertical-align: -.04rem; margin-right: .13rem;}
+.rec_details{background-color: #FFF; margin-bottom: .27rem; border-bottom: 1px solid #DADADA;}
+.user-top{height: 1.2rem; width: 100%; font-size: .32rem; color: #333; line-height: 1.2rem;}
+.user-top .users{margin-left: .4rem;}
+#follow{width: 1.6rem; height: .67rem; background-image: url("../images/follow.png"); background-repeat: no-repeat; background-position: center center; background-size: 100% auto; float: right; margin: .26rem .4rem 0 0;}
+.imgPreview{width: 100%; overflow: hidden;}
+#swipe-wrapper{position: relative; white-space: nowrap;}
+.swipe-slide{width: 100%; vertical-align: top;}
+.rec_text{width: 100%; color: #333; padding: .3rem .4rem; box-sizing: border-box; -webkit-box-sizing: border-box; -o-box-sizing: border-box; -ms-box-sizing: border-box; -moz-box-sizing: border-box;}
+.rec_title{margin-bottom: .1rem; overflow: hidden; text-overflow: ellipsis; font-size: .43rem; font-weight: bold; white-space: nowrap;}
+.rec_content{line-height: .64rem; font-size: .37rem;}
+.rec_bottom{font-size: .35rem; color: #999; margin: .2rem 0; overflow: hidden;}
+.rec_bottom .time{float: left;}
+.up_num{float: right;}
+.guesslike{background-color: #FFF; font-size: .4rem; color: #666; border-top: 1px solid #DADADA; border-bottom: 1px solid #DADADA; margin-bottom: .27rem; overflow: hidden; padding: .2rem 0;}
+.guesslike_t{overflow: hidden;}
+.guesstitle{float: left; margin-left: .4rem;}
+.guessmore{font-size: .32rem; color: #666; float: right; margin-right: .4rem;}
+.goods_list{height: 4.27rem; overflow-y: hidden;}
+.goods_list ul{width: 100%; height: 108%; display: inline; white-space: nowrap; overflow-x: auto; overflow-y: hidden; float: left;}
+li.goods{width: 2.67rem; overflow: hidden; font-size: .32rem; margin: .4rem .27rem 0 0; display: inline-block; vertical-align: top;}
+li.goods:first-child{margin-left: .3rem;}
+.goods img{width: 97%; height: 2.67rem; border: 1px solid #DADADA;}
+.goods_name{width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #333;}
+.goods_price{margin-top: .13rem; color: #FF4138; font-size: .27rem;}
+.goods_price span{font-size: .32rem; margin-right: .13rem;}

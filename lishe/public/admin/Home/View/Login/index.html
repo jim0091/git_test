@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>登录-{$site['title']}</title>
+<link href="__PUBLIC__/admin/css/passport.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<script src="__PUBLIC__/js/enter.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+  $(document).ready(function (){
+      $("#userName").focus();
+      $("#loginBtn").click(function(){
+      	var userName=$("#userName").val();
+      	var passwd=$("#passwd").val();
+        if(userName==""){
+          alert('请输入您的用户名！');
+          $("#userName").focus();
+          return false;
+        }
+        if(passwd==""){
+          alert('请输入您的登录密码！'); 
+          $("#passwd").focus();
+          return false;
+        } 
+        
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:passwd
+			},
+			success: function(result){
+				var msg=eval(result);
+				if(msg[0]>0){
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="__APP__/Index/index";	
+					}				
+				}else{
+					alert(msg[1]);
+					$("#userName").focus();
+				}
+			},
+			error: function () {
+				alert('error：'+msg);
+				$("#userName").focus();
+			}
+		});
+      });
+  });
+</script>
+ <div class="header">
+    <div class="top">
+        <div class="wrapper">
+            <div class="favorite">{$site['title']}</div>
+            <div class="info">
+                <div class="tel">{$site['telphone']}</div>
+                <div class="login"><span>&nbsp;</span>
+<!--<a href="__ROOT__/index.php/Login/index">商家登录</a> <span>&nbsp;</span> <a href="__ROOT__/index.php/Login/register">免费注册</a>-->
+                 </div>
+            </div>
+        </div>
+    </div>
+<div class="passport-login yahei">
+    <div class="wrapper">
+        <div class="form">
+            <div class="logo"><a href="/"><img src="__PUBLIC__/images/logo.png"></a><strong>{$site['title']}</strong></div>
+            <div class="label">平台管理员登录</div>
+            <div class="input">
+                <p><input type="text" id="userName" name="userName" placeholder="请输入您的用户名"></p>
+                <p><input type="password" id="passwd" name="passwd" placeholder="请输入登录密码"></p>
+            </div>
+            <div class="button">
+                <a id="loginBtn" href="javascript:;" class="loginBtn">登录</a>
+                <input id="refer" type="hidden" value="{$Think.get.refer}" >
+            </div>
+            <div class="forget"><label><input type="checkbox" checked>记住密码</label><a href="__APP__/member/getPassword">忘记密码？</a></div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    2015&nbsp;{$site['company']}&nbsp;版权所有&nbsp;&nbsp;{$site['icp']}&nbsp;&nbsp;{$site['telphone']}<br />{$site['address']} 
+</div>
+</body>
+</html>

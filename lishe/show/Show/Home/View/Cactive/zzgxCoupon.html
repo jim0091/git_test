@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>正章干洗券兑换</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__PUBLIC__/zzgx/css/reset_css.css">
+	<link rel="stylesheet" href="__PUBLIC__/zzgx/css/dry_clean.css">
+	<link rel="stylesheet" href="__PUBLIC__/zzgx/css/head_bottom.css">
+	<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="" class="logo1"></a>
+			<ul>
+				<li class="nav_link"><a href="{:C('LISHE')}">礼舍首页</a></li>
+				<li class="nav_link current"><a href="{:C('LISHE')}/shop.php">心意商城</a></li>
+				<li class="nav_link"><a href="{:C('LISHE')}/help_index.html">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<empty name="userId">
+					<li><a href="{:C('LISHE')}/shop.php/Sign?refer={$curURL}">会员登录</a></li>
+				<else />
+					<li><a href="{:C('LISHE')}/user.php/Order/orderList">{$userName}</a></li>
+				</empty>
+				<li><a href="{:C('LISHE')}/shop/">商家中心</a></li>
+				<li><a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<!--主体-->
+	<div class="dry_main">
+		<div class="main_con">
+			<ul class="tab_ul">
+				<li class="active" type="1">干洗券充值</li>
+				<li type="2">洗衣卡充值</li>
+			</ul>
+			<input type="hidden" id="chargeType" value="1"/>
+			<a href="{:C('LISHE')}/site/v1/help.html#7" target="_blank" class="tab_a">干洗券充值流程>></a>
+			
+			<empty name="userId">
+				<div style="clear: both;"></div>
+				<div class="user">
+					<div class="mt20">
+						<span>账号</span> <input type="text" placeholder="请输入账号" id="username"/>
+					</div>
+					<div class="mt20">
+						<span>密码</span> <input type="password" placeholder="请输入密码" id="password"/>
+					</div>
+					<p class="error_d" id="loginMsg" style="display: none;">温馨提示</p>
+					<div class="login_btn" id="loginBut">登录</div>
+				</div>
+			<else />
+				<div> 
+				<div class="phone_wrap">
+					<span class="pho_span1">充值手机号码：</span>
+					<input type="text" placeholder="请输入手机号码" class="phone_number" id="phoneNumber" value="{$mobile}">
+					<!-- 
+					<div class="btn_and_error">
+						<span class="click_btn" id="codeBut">获取验证码</span>
+						<span class="phone_error" id="errMsg">*该手机未注册，请立即注册</span>
+					</div>
+					 -->
+				</div>
+				<div class="pho_yz">
+					<span>验证码:</span><input type="text" placeholder="验证码" id="vercode">
+					<img src="{:U('Zzgx/vercode')}" id="code" onclick="javascript:this.src='{:U('Zzgx/vercode')}?time='+Math.random()" style="cursor:pointer;vertical-align: middle;"/>
+				</div>
+				<div class="tab_content">
+					<!--干洗卷充值-->
+					<div class="update_wrap" style="display: block;">
+						<p class="up_icon_p">
+							<span class="up_icon" id="up_icon">添加干洗券</span>
+						</p>
+						<input type="hidden" id="pcListSn" value="0">
+						<input type="hidden" id="cpListTotalPrice" value="0">
+						<input type="hidden" id="cpListForm" value="">
+						<input type="hidden" id="cpListTotalNum" value="0">
+						<table class="up_table" style="margin-top: 12px;">
+							<thead>
+								<tr>
+									<td>序号</td>
+									<td>券价值</td>
+									<td>券数量</td>
+								</tr>
+							</thead>
+							<tbody id="cpList"></tbody>
+						</table>
+						<div class="total_wrap">
+							<div class="total_text">
+								<p id="cpListNum">0张</p>
+								<p id="cpListPrice">0元</p>
+								<p id="estPoints">0</p>
+							</div>
+							<div class="total_tit">
+								<p>总数量：</p>
+								<p>总面值：</p>
+								<p>预计充值积分：</p>
+							</div>
+						</div>
+					</div>
+					<!--洗衣卡充值-->
+					<div class="update_wrap" style="margin-top: 20px;">
+						<p class="recharge_number"><span>充值卡号：</span><input type="text" id="cpCard" style="width: 218px;"></p>
+						<p class="recharge_sum"><span>充值金额：</span><input type="text" id="cpCardPrice" style="width: 108px;">元</p>
+						<div class="total_wrap total_wrap2">
+							<div class="total_text">
+								<p id="cpCardPriceCount">0元</p>
+								<p id="cpCardPoints">0</p>
+							</div>
+							<div class="total_tit">
+								<p>充值金额：</p>
+								<p>预计充值积分：</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--充值-->
+				<div class="recharge" id="rechargeBut">
+					充值
+				</div>
+				</div>
+			</empty> 
+		</div>
+	</div>
+	<!--*弹窗*******************-->
+	<div class="popup_shade"></div>
+	<div class="popup1" id="up_dry">
+		<h2>添加干洗券</h2>
+		<div class="popup_main">
+			<p><span>兑换商品价值：</span><input type="text" id="cpPrice" />元</p>
+			<div class="prom">*请参考使用说明中券的换购商品价</div>
+			<p style="margin-left: 52px;"><span>数量：</span><input type="text" id="cpNum"/>张</p>
+		</div>
+		<div class="popup_btn">
+			<a href="javascript:;" class="sure_btn" id="addBut">确定</a><a href="javascript:;" class="del_btn" id="del_btn">取消</a>
+		</div>
+	</div>
+	<!--*弹窗2*-->
+	<div class="popup1 popup2_con">
+		<h2>充值提示</h2>
+		<div class="popup_main popup2_main popup_p">
+			<p>充值的手机号：<span id="chargeMobile"></span></p>
+			<p>您的充值申请已经成功提交，请及时邮寄洗衣券/卡</p>
+			<p style="margin-top: 13px;">请使用快递（不接受挂号信）邮寄至以下地址：</p>
+			<p style="margin-left: 40px;">广东省深圳市南山区高新中路科研九号比克科技大厦2001B</p>
+			<p style="margin-left: 40px;">收件人：礼舍科技有限公司 电话：0755-66632321</p>
+			<p style="margin-left: 40px;">请务必在快递单号上注明充值的手机号！</p>
+		</div>
+		<div class="popup_btn">
+			<a href="javascript:;" class="sure_btn" id="succCloseBut">关闭</a>
+			<a href="{:C('LISHE')}/shop.php" class="sure_btn">去商城逛逛</a>
+		</div>
+	</div>
+	<!--****************************-->
+
+	<!--底部-->
+	<include file="Public/commonFooter"/>
+	<script type="text/javascript">
+	var exchRate = {$exchRate};
+	var multiple = {$multiple};
+	
+	$('.tab_ul li').click(function(){
+		$(this).addClass('active').siblings().removeClass('active');
+		$("#chargeType").val($(this).attr("type"));
+		$('.tab_content .update_wrap').eq($(this).index()).show().siblings().hide();
+	});
+
+	$('#cpPrice').bind({
+		focus:function(){
+			$('.prom').show();
+		},
+		blur:function(){
+			$('.prom').hide();
+		}
+	});
+
+	/*添加干洗卷弹窗*/
+	$('#up_icon').click(function(){
+		$('.popup_shade').show();
+		$('#up_dry').show();
+	});
+	$('#del_btn').click(function(){
+		$('#up_dry').hide();
+		$('.popup_shade').hide();
+	});
+	/*充值弹窗*/
+	//$('#rechargeBut').click(function(){
+	//	$('.popup_shade').show();
+	//	$('.popup2_con').show();
+	//});
+	//$('.sure_btn').click(function(){
+	//	$('#up_dry').hide();
+	//	$('.popup_shade').hide();
+	//});
+	
+	/*获取手机验证码*/
+/* 	$("#codeBut").click(function(){
+		var phone = $("#phoneNumber").val();
+		var mobile = $.trim(phone);
+		//校验手机号
+		var reg = /^1\d{10}$/;
+		if(!reg.test(mobile)){
+			alert('手机号有误');
+			return false;
+		}
+		$.post("{:U('Zzgx/getCode')}",{mobile:mobile},function(result){
+			if(result.code == 1){
+				alert('验证发已发送');
+			}else if(result.code == 1101){
+				alert('未注册');
+				$("#codeBut").hide();
+				$("#errMsg").show();
+			}else{
+				alert('验证码发送失败');
+			}
+		});
+	}); */
+	
+	/* $('#code').bind('input propertychange', function() {
+		var code = $(this).val();
+		var code = $.trim(code);
+		var phone = $("#phoneNumber").val();
+		var mobile = $.trim(phone);
+		//alert(code);
+		if(code.length != 4){
+			return false;
+		}
+		var reg = /^\d+$/
+		if(!reg.test(code)){
+			return false;
+		}
+		//校验手机号
+		var reg = /^1\d{10}$/;
+		if(!reg.test(mobile)){
+			return false;
+		}
+		$.post("{:U('Zzgx/checkCode')}", {mobile:mobile,code:code}, function(result){
+			if(result.code == 1){
+				alert('验证码正确');
+				//激活添加干洗券按钮
+				$('#up_icon').attr("flag",1);
+				$("#cpCard").attr("disabled",false);
+				$("#cpCardPrice").attr("disabled",false);
+				
+				$("#phoneNumber").attr("disabled",true);
+				$("#code").attr("disabled",true);
+				$("#codeBut").attr("disabled",true).css("background-color","#ccc").text('已验证');
+			}
+		});		
+	}); */
+	$("#addBut").click(function(){
+		//校验数据
+		var cpPrice = $("#cpPrice").val();
+		var cpNum = $("#cpNum").val();
+		var cpPrice = $.trim(cpPrice);
+		var cpNum = $.trim(cpNum);
+		if(cpPrice == ""){
+			alert('面值有误');
+			return false;
+		}
+		var reg = /(^[0-9]+$)|(^[0-9]+.{1}[0-9]{1,2}$)/;
+		if(!reg.test(cpPrice)){
+			alert('面值有误');
+			return false;
+		}
+		if(cpPrice < 1 || cpPrice > 10000){
+			alert('面值范围在1~10000');
+			return false;
+		}
+		if(cpNum == ""){
+			alert('数量有误');
+			return false;
+		}
+		var reg = /^[1-9]+[0-9]*$/;
+		if(!reg.test(cpNum)){
+			alert('数量有误');
+			return false;
+		}
+		//添加数据
+		var sn = $("#pcListSn").val();
+		sn++;		
+		var html = "<tr><td>"+sn+"</td><td>"+cpPrice+"</td><td>"+cpNum+"</td></tr>";
+		var listData = $("#cpListForm").val();
+		listData += cpPrice+"_"+cpNum+"|";
+		$("#cpListForm").val(listData);
+		//统计数据
+		//数量
+		var totalPrice = $("#cpListTotalPrice").val();
+		totalPrice = parseFloat(totalPrice);
+		cpPrice = parseFloat(cpPrice);
+		cpNum = parseInt(cpNum);
+		totalPrice += (cpPrice * cpNum); //总金额
+		var totalPoints = (totalPrice*multiple*exchRate);//计算积分
+		
+		var totalNum = $("#cpListTotalNum").val();
+		totalNum = parseInt(totalNum);
+		totalNum += cpNum;
+		//更新数据
+		$("#cpListNum").text(totalNum+'张');
+		$("#cpListPrice").text(totalPrice+'元');
+		$("#estPoints").text(totalPoints);
+		$("#cpListTotalNum").val(totalNum);
+		
+		$("#pcListSn").val(sn)
+		$("#cpListTotalPrice").val(totalPrice);
+		$("#estTotalPoints").val(totalPoints);
+		
+		$("#cpList").append(html);
+		$('#up_dry').hide();
+		$('.popup_shade').hide();
+	});
+	
+	$("#rechargeBut").click(function(){
+		var chargeType = $("#chargeType").val();
+		if(chargeType != 1 && chargeType != 2){
+			return false;
+		}
+		//获取手机号
+		var phone = $("#phoneNumber").val();
+		var phone = $.trim(phone);
+		var reg = /^1\d{10}$/;
+		if(!reg.test(phone)){
+			alert("手机号有误");
+			return false;
+		}
+		//获取验证码
+		var vercode = $("#vercode").val();
+		var vercode = $.trim(vercode);
+		var reg = /^\w{4}$/;
+		if(!reg.test(vercode)){
+			alert("验证码有误");
+			return false;
+		}
+		
+		if(chargeType == 1){
+			var cpListForm = $("#cpListForm").val();
+			if(cpListForm == ""){
+				alert("请添加干洗券");
+				return false;
+			}
+			$.post("{:U('Zzgx/exchCoupon')}",{chargeType:chargeType,mobile:phone,vercode:vercode,cpList:cpListForm},function(result){
+				if(result.code == 1){
+					$("#chargeMobile").text(phone);
+					showSuccDialog();
+				}else{
+					$('#code').trigger('click');
+					alert(result.msg);
+				}
+			});
+		}else if(chargeType == 2){
+			var cpCard = $("#cpCard").val();
+			var cpCard = $.trim(cpCard);
+			var cpCardPrice = $("#cpCardPrice").val();
+			var cpCardPrice = $.trim(cpCardPrice);
+			if(cpCard == ""){
+				alert('请输入充值卡号');
+				return false;
+			}
+			if(cpCardPrice == ""){
+				alert('请输入充值面值');
+				return false;
+			}
+			var reg = /^\w{6,32}$/;
+			if(!reg.test(cpCard)){
+				alert('充值卡号有误');
+				return false;
+			}
+			var reg = /(^[0-9]+$)|(^[0-9]+.{1}[0-9]{1,2}$)/;
+			if(!reg.test(cpCardPrice)){
+				alert('充值面值有误');
+				return false;
+			}
+			if(cpCardPrice < 1 || cpCardPrice > 9999){
+				alert('充值面额范围 1~9999元');
+				return false;
+			}
+			
+			$.post("{:U('Zzgx/exchCoupon')}",{chargeType:chargeType,mobile:phone,vercode:vercode,cpCard:cpCard,cpCardPrice:cpCardPrice},function(result){
+				if(result.code == 1){
+					$("#chargeMobile").text(phone);
+					showSuccDialog();
+				}else{
+					$('#code').trigger('click');
+					alert(result.msg);
+				}
+			});
+		}
+	});
+	
+	$("#loginBut").click(function(){
+		var username = $("#username").val();
+		username = $.trim(username);
+		if(username == ""){
+			alert("请输入用户名");
+			return false;
+		}
+		var password = $("#password").val();
+		password = $.trim(password);
+		if(password == ""){
+			alert("请输入用户名");
+			return false;
+		}
+		$(this).attr("disabled",true);//禁用登陆按钮
+		//检测账号是否存在
+		$.ajax({  
+			type : "post",  
+			url : "{:U('User/checkMobile')}",  
+			data : {mobile:username},  
+			async : false, //同步执行
+			success : function(result){  
+				if(result.code != 1 && result.code != 1005){
+					//不存在
+					var html = '账号不存在 <a href="{:C('LISHE')}/shop.php/sign/index?refer={$curURL}">请注册</a>';
+					$("#loginMsg").html(html).show();
+					$("#loginBut").attr("disabled",false);//释放登陆按钮
+					return false;
+				}
+				$.post("{:U('Login/login')}",{userName:username,password:password},function(data){
+					var msg=eval(data);
+					if(msg[0] > 0){
+						$("#loginMsg").text('登录成功，正在跳转...').show();
+						setTimeout(function(){
+							location.reload();
+						},2000);
+					}else{
+						$("#loginBut").attr("disabled",false);//释放登陆按钮
+						$("#loginMsg").text(msg[1]).show();
+						$("#username").focus();
+					}
+				});  
+			}  
+		});
+	});
+	
+	$('#cpCardPrice').bind('input propertychange', function(event){
+		var price = $(this).val();
+		var reg = /(^[0-9]+$)|(^[0-9]+.{1}[0-9]+$)/;
+		if(reg.test(price)){
+			//price = price.toFixed(2);
+			var price = (Math.round(price * 100)) / 100;
+			$("#cpCardPriceCount").text(price+"元");
+			$("#cpCardPoints").text(price*multiple*exchRate);
+		}else{
+			$("#cpCardPriceCount").text("0元");
+			$("#cpCardPoints").text(0);
+		}
+		
+	});
+	
+	$("#succCloseBut").click(function(){
+		$('.popup_shade').hide();
+		$('.popup2_con').hide();
+		location.reload();
+	});
+	
+	function showSuccDialog(){
+		$('.popup_shade').show();
+		$('.popup2_con').show();
+	}
+	
+	</script>
+</body>
+</html>

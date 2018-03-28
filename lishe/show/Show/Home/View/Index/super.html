@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/Supercouple.css">
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<title>超级新人王-{$cname}</title>
+</head>
+
+<body>
+<!--头部-->
+<include file="Public/header"/>
+  <div style="clear:both;"></div>
+  <div class="suMain">
+     <!--左-->
+     <div class="sumLeft">
+        <div class="left-top">
+           <p class="let-p">伙伴动态</p>
+           <ul>
+              <li  class="left-li"><a href="{:U('Home/Index/activity')}">活动回顾</a></li>
+              <li class="left-li"><a href="{:U('Home/Index/important')}">头号人物</a></li>
+              <li   class="slect"  ><a href="{:U('Home/Index/super')}">超级新人王</a></li>
+              <li class="left-li" ><a href="{:U('Home/Index/birthday')}">月度寿星</a></li> 
+           </ul>
+        </div>
+        <div class="left-bom">
+			<!--推荐阅读-->
+			<include file="Index/rememberRead"/>
+			<!--推荐阅读-->
+        </div>
+     </div>
+     <!--右边-->
+     <div class="sumRight">
+        <p class="rt-title">年度新人王候选人</p>
+        <p class="rt-pt"><img src="{$img}{$personInfo.pic}"></p>
+        <ul class="rt-ul">
+           <li class="rt-user">{$personInfo.name}<span>{$personInfo.position}</span></li>
+           <li class="rt-des">{$personInfo.content}</li>
+        </ul>
+        <ul class="rt-ul2">
+           <li class="rt-btn"><a href="javascript:void(0);" onclick="vode({$personInfo.id})" >投票</a></li>
+           <li class="rt-zan"><p><img src="__PUBLIC__/companyShow/images/cpStrart.png"></p><p id="number" style="text-align: center;">{$personInfo.love}</p></li>
+        </ul>
+        <!--图片轮播-->
+              <div class="sliderbox">
+                <div id="btn-left" class="arrow-btn"><img src="__PUBLIC__/companyShow/images/arrowLeft-btn.png"></div>
+                 <div class="slider">
+                    <ul>
+                    	<volist name="imgList" id="vo">
+                        <li><a href="__ACTION__/personId/{$vo.id}" ><img src="{$img}{$vo.pic}"/></a></li>
+                     </volist>
+                    </ul>
+                  </div>
+                <div id="btn-right" class="arrow-btn2"><img src="__PUBLIC__/companyShow/images/arrowRight-btn.png"></div>
+              </div>
+      </div>
+  </div>
+   <!--图片轮播-->
+          <script type="text/javascript">
+            $(function(){
+                var $slider = $('.slider ul');
+                var $slider_child_l = $('.slider ul li').length;
+                var $slider_width = $('.slider ul li').width();
+                $slider.width($slider_child_l * $slider_width);
+            
+                var slider_count = 0;
+            
+                if ($slider_child_l < 6) {
+                    $('#btn-right').css({cursor: 'auto'});
+                    $('#btn-right').removeClass("dasabled");
+                }
+            
+                $('#btn-right').click(function() {
+                    if ($slider_child_l < 6 || slider_count >= $slider_child_l - 6) {
+                        return false;
+                    }
+                    slider_count++;
+                    $slider.animate({left: '-=' + $slider_width + 'px'}, 'slow');
+                    slider_pic();
+                });
+            
+                $('#btn-left').click(function() {
+                    if (slider_count <= 0) {
+                        return false;
+                    }
+                    slider_count--;
+                    $slider.animate({left: '+=' + $slider_width + 'px'}, 'slow');
+                    slider_pic();
+                });
+                function slider_pic() {
+                    if (slider_count >= $slider_child_l - 6) {
+                        $('#btn-right').css({cursor: 'auto'});
+                        $('#btn-right').addClass("dasabled");
+                    }
+                    else if (slider_count > 0 && slider_count <= $slider_child_l - 6) {
+                        $('#btn-left').css({cursor: 'pointer'});
+                        $('#btn-left').removeClass("dasabled");
+                        $('#btn-right').css({cursor: 'pointer'});
+                        $('#btn-right').removeClass("dasabled");
+                    }
+                    else if (slider_count <= 0) {
+                        $('#btn-left').css({cursor: 'auto'});
+                        $('#btn-left').addClass("dasabled");
+                    }
+                }
+                $('.slider a').hover(function() {
+                    if ($(this).find('img:animated').length) return;
+                    $(this).animate({marginTop: '0px'}, 300);
+                    $(this).find('img').animate({width: '150px'}, 300);
+                }, function() {
+                    $(this).animate({marginTop: '24px'}, 200);
+                    $(this).find('img').animate({width: '90px'}, 200);
+                });
+
+            })	
+							function vode(personId){
+		            	var urls="{:U('Home/Index/vote')}";
+										$.ajax({
+											type:"get",
+											url:urls,
+											dataType:'text',
+											data:'personId='+personId,
+											success:function(data){
+												if(data==1){
+													var num=$('#number').text();
+													num =parseInt(num)+1;
+													$('#number').text(num);
+													alert("投票成功!")
+												}else{
+													alert(data);
+												}
+											}
+										}); 						
+							
+								}
+        </script>
+        
+        
+        
+ <div style="clear: both;"></div>       
+ <include file="Public/footer"/>
+</body>
+</html>

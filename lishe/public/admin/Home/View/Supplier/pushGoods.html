@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>添加用户</title>
+</head>
+<body>
+<div class="pd-20">
+    <form action="{:U('Supplier/pushGoods')}" method="post"  class="form form-horizontal" id="form-member-add">
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>选择商铺：</label>
+        <div class="formControls col-5">
+            <span class="select-box">
+                <select name="shop_id" id="shopId" class="select">
+                    <option value="0">--请选择--</option>
+                    <volist name="list" id="val">
+                        <option value="{$val['shop_id']}">{$val['shop_name']}</option>
+                    </volist>
+                </select>
+            </span>
+        </div>
+        <input type="hidden" value="{$sitem_id}" name="sitem_id">
+        <input type="hidden" value="{$item_id}" name="item_id">
+        <input type="hidden" value="{$sendType}" name="sendType">
+        <div class="col-4"> </div>
+    </div>
+    <div class="row cl" id="divShopCat" style="display:none">
+        <label class="form-label col-3"><span class="c-red">*</span>店铺分类：</label>
+        <div class="formControls col-5">
+            <span class="select-box">
+                <select name="shopCat" id="shopCat" class="select">
+                    <volist name="list" id="val">
+                        <option value="{$val['shop_id']}">{$val['shop_name']}</option>
+                    </volist>
+                </select>
+            </span>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row cl" id="divRelatedCat" style="display:none">
+        <label class="form-label col-3"><span class="c-red">*</span>相关分类：</label>
+        <div class="formControls col-5">
+            <span class="select-box">
+                <select name="shop_cat" id="relatedCat" class="select">
+                    <volist name="list" id="val">
+                        <option value="{$val['']}">{$val['shop_name']}</option>
+                    </volist>
+                </select>
+            </span>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>上架状态：</label>
+        <div class="formControls col-5 skin-minimal">          
+            <div class="radio-box">
+                <input type="radio" name="approve_status" value="onsale" checked="checked">
+                <label for="onsale">上架</label>
+            </div>
+            <div class="radio-box">
+                <input name="approve_status" type="radio" value="instock">
+                <label for="instock">下架</label>
+            </div>
+        </div>
+    </div>
+    <div class="row cl" <eq name="sendType" value="2">style="display:none"</eq>>
+        <label class="form-label col-3"><span class="c-red">*</span>推送到顺丰：</label>
+        <div class="formControls col-3 skin-minimal">          
+            <div class="radio-box">
+                <input type="radio" name="push_sf" value="1" class="iCheck-helper" <eq name="sendType" value="2">disabled<else/>checked="checked"</eq> >
+                <label for="yes">是</label>
+            </div>
+            <div class="radio-box">
+                <input name="push_sf" type="radio" value="0" class="iCheck-helper" <eq name="sendType" value="2">disabled checked="checked"</eq>>
+                <label for="no">否</label>
+            </div>
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3">关键字：</label>
+        <div class="formControls col-8">
+            <input type="input" name="keywords" value="" class="input-text" style="width:280px;" maxlength="50">
+        </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3">温馨提醒：</label>
+        <div class="formControls col-8">
+            <textarea style="width:280px;height:80px;" class="textarea" name="warm_reminder" maxlength="200"></textarea>
+        </div>
+    </div>
+
+
+    <div class="row cl">
+        <div class="col-9 col-offset-3">
+            <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+        </div>
+    </div>
+    </form>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").Validform({
+		tiptype:2,
+		callback:function(form){
+			form[0].submit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+		}
+	});
+    //店铺分类
+    $("#shopId").bind('change','option',function(){
+        $("#divShopCat").show();
+        $("#shopCat").empty();
+        $("#relatedCat").empty();
+        var shopId = $(this).val();
+        $(this).attr("selected",true);
+        if(shopId > 0){
+            $.post("{:U('Supplier/getShopCatList')}",{shopId:shopId},function(msg){
+                if(msg != 0){
+                    $("#shopCat").append(msg);
+                }
+            });
+        }  
+    });
+    //相关分类
+    $("#shopCat").bind('change','option',function(){
+        $("#divRelatedCat").show();
+        $("#relatedCat").empty();
+        var shopCatId = $(this).val();
+        $(this).attr("selected",true);
+        if(shopCatId > 0){
+            $.post("{:U('Supplier/getShopCatList')}",{shopCatId:shopCatId},function(msg){
+                if(msg != 0){
+                    $("#relatedCat").append(msg);
+                }
+                if (msg == 2) {
+                    $("#divRelatedCat").hide();
+                };
+            });
+        }  
+    });
+});
+</script>
+</body>
+</html>

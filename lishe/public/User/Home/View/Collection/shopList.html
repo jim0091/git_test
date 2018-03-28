@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<div>
+		<div class="wrap content">
+			<!-- 中间左侧导航 -->
+			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="collectionShop">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">我的店铺收藏</p>
+						<!-- <span class="favoriteManage">批量管理</span> -->
+					</div>
+					<ul class="collected-stores">
+						<volist name="shopList" id="vo">
+						<li class="favorite-store">
+							<a class="store-link" href="__SHOP__/Shop/showList/shopId/{$vo['shop_id']}" target="_black">
+								<img class="store-logo" src="{$vo['shop_logo']}">
+								<p class="fs-name">{$vo['shop_name']}</p>
+							</a>
+							<a class="deletefs" href="javascript:;" data-id="{$vo['snotify_id']}"></a>
+						</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">
+	$(".deletefs").click(function(){
+		var sid = $(this).attr('data-id');
+		$.post("{:U('Collection/shopDel')}",{sid:sid},function(msg){
+			if(msg==1){
+				window.location.reload();
+			}else{
+				divPrompt('删除失败！');
+				return false;
+			}
+		});	
+	});
+</script>	
+	
+</body>
+</html>

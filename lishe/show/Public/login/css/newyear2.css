@@ -1,0 +1,26 @@
+html, body{height: 100%; width: 100%; min-height: 720px;}
+body{font-family: "Microsoft Yahei", Arial, sans-serif; background: url("../images/ny2_bg.jpg") no-repeat center; background-origin: 0 0; background-size: cover; position: relative;}
+.f14{font-size: 14px;}
+.f18{font-size: 18px;}
+.fwb{font-weight: bold;}
+.ny-login{width: 490px; height: 570px; background: url("../images/ny2_login.png") no-repeat; position: absolute; top: 113px; left: 50%;}
+.login{width: 450px; height: 500px; color: #666; margin: 100px auto 0;}
+.logo{width: 126px; height: 52px; margin: 48px auto; background: url("../images/ny_logo.png") no-repeat;}
+.login input{font-family: "Microsoft Yahei", Arial, sans-serif; border-radius: 5px; }
+.login input[type=text]{display: block; width: 318px; height: 44px; color: #333; border: 1px solid #BC2821; margin: 0 auto 15px; padding: 0 15px; outline: none;}
+.login input[type=submit]{display: block; width: 350px; line-height: 46px; text-align: center; color: #FFF; border: none; margin: 0 auto; cursor: pointer; background: -moz-linear-gradient( 90deg, rgb(188,40,33) 0%, rgb(239,68,60) 100%); background: -webkit-linear-gradient( 90deg, rgb(188,40,33) 0%, rgb(239,68,60) 100%); background: -ms-linear-gradient( 90deg, rgb(188,40,33) 0%, rgb(239,68,60) 100%);}
+.pas-opt{width: 350px; margin: 0 auto 30px;}
+#autologin{opacity: 0; margin-left: -15px; margin-right: 10px; cursor: pointer;}
+#radio-round{float: left; width: 14px; height: 14px; background-color: #FFF; border-radius: 50%; border: 1px solid #DADADA;}
+#auto-active{width: 8px; height: 8px; background-color: #BC2821; border-radius: 50%; margin: 3px; display: none;}
+.forgetpass{text-decoration: none; color: #666; float: right;}
+.forgetpass:hover{color: #BC2821;}
+.wronghint{width: 350px; margin: 0 auto 10px; color: #BC2821; display: none;}
+.act-opt{margin: 40px auto 0; line-height: 13px; height: 13px; text-align: center;}
+.active{display: inline-block; text-decoration: none; color: #666;}
+.active:hover{color: #BC2821;}
+.line{display: inline-block; margin: 0 16px; height: 100%; width: 1px; background-color: #DADADA; vertical-align: bottom;}
+
+@media screen and (max-height: 800px){
+	.ny-login{top: 2%;}
+}

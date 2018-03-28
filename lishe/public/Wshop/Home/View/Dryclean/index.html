@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta content="email=no" name="format-detection" />
+		<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+		<meta name="apple-mobile-web-app-title" content="">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="__VIEW__Public/css/eug_2.css" />
+		<title>正章干洗兑换</title>
+	</head>
+
+	<body>
+		<div class="modal">
+		</div>
+		<div class="content">
+			<div class="content-center">
+				<img class="content-center-img" src="__VIEW__Public/images/logo.png" alt="" />
+				<p class="content-center-parent" id="scanQRCodeImg">
+					<img class="parent_one" src="__VIEW__Public/images/parent.png" alt="" alt="" />
+					<img class="parent_two" src="__VIEW__Public/images/children.png" alt="" />
+				</p>
+				<p class="content-center-btn" id="scanQRCodeBtn">
+					<img class="content_top_img" src="__VIEW__Public/images/eug_text.png" alt="" />
+				</p>
+			</div>
+			<div class="content-text">
+				<p class="content-text-title">正章干洗券说明：</p>
+				<p>（1）扫一扫输入正章16位的干洗券条码，即查询干洗券的面额和是否有效。</p>
+				<p>（2）有效的干洗券可以进行等值兑换礼舍商城积分，需要支付10%的手续费，手续费只能微信支付。</p>
+				<p>（3）进行兑换后干洗券失效，不可继续在门店使用和在礼舍兑换礼舍积分。</p>
+			</div>
+		</div>
+	</body>
+	<script src="__VIEW__Public/js/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		var html = document.documentElement;
+		var whtml = html.getBoundingClientRect().width;
+		html.style.fontSize = whtml / 7.5 + "px";
+	</script>
+	<script type="text/javascript">
+		wx.config({
+			debug: false, // 调试模式开关
+			appId: '{$WxjsSdkConfigData.AppId}', // 公众号的唯一标识
+			timestamp: '{$WxjsSdkConfigData.timestamp}', // 生成签名的时间戳
+			nonceStr: '{$WxjsSdkConfigData.nonceStr}', // 生成签名的随机串
+			signature: '{$WxjsSdkConfigData.signature}', // 签名
+			jsApiList: ['scanQRCode','hideMenuItems','hideOptionMenu'] // JS接口列表
+		});
+
+		wx.ready(function() {
+			//config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+			//wx.scanQRCode();//扫码后微信处理结果
+			//返回结果
+//			wx.scanQRCode({
+//				needResult: 1,
+//				desc: 'scanQRCode desc',
+//				success: function(res) {
+//					//res：obj对象
+//					//alert(JSON.stringify(res));//把对象转成json字符串
+//					//alert(JSON.stringify(res.resultStr));
+//					window.location = res.resultStr;
+//				}
+//			});
+			////wx.hideOptionMenu();
+//			wx.hideMenuItems({
+//  			menuList: [
+//	    			'menuItem:share:appMessage',//发送给朋友
+//	    			'menuItem:share:timeline',
+//	    			'menuItem:share:qq',
+//	    			'menuItem:share:facebook',
+//	    			'menuItem:share:QZone',
+//	    			'menuItem:share:weiboApp',
+//			        'menuItem:copyUrl',//
+//			        'menuItem:openWithQQBrowser',
+//			        'menuItem:openWithSafari',
+//  			], // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+//  			 success: function (res) {
+//			        //alert(1);
+//			      },
+//			      fail: function (res) {
+//			        //alert(JSON.stringify(res));
+//			      }
+//			});
+		});
+
+		wx.error(function(res) {
+			// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+			alert("服务繁忙，请稍后再试");
+		});
+
+				//1.扫码后微信处理结果
+				//document.querySelector('#scanQRCode').onclick = function () {
+			   	//	wx.scanQRCode();
+			  	//};
+
+			  	//2.扫码后直接返回结果
+				document.querySelector('#scanQRCodeBtn').onclick = function () {
+				    wx.scanQRCode({
+				      needResult: 1,
+				      scanType: ["barCode"],
+				      desc: 'scanQRCode desc',
+				      success: function (res) {
+				        //alert(JSON.stringify(res.resultStr));//把对象转成json字符串
+				        selectbarCode(res.resultStr);
+//				        alert(res.resultStr);
+				      }
+				    });
+				};
+	</script>
+	<script type="text/javascript">
+		function selectbarCode(stringCode){
+			$.ajax({
+				type:"post",
+				url:"__APP__/Dryclean/selectBarCode",
+				async:true,
+				timeout:7000,
+				dataType:"json",
+				data: {
+					stringCode: stringCode,
+				},
+				success:function(msg){
+					if(msg.status==1000){
+						window.location = '__APP__/Dryclean/convert/'+Math.random();
+					}else{
+						alert(msg.message);
+						return false;
+					}
+				},
+				error:function(){
+					alert('服务繁忙，稍后再试');
+				}
+			});
+		}
+	</script>
+</html>

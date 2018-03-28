@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:0;}
+input{-webkit-appearance: none;outline: none;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+body{font-family:"微软雅黑";overflow-x:hidden;background:#f1f5f6; padding-bottom:18%;}
+
+/*banner*/
+.swiper-container.swiper-container-horizontal{height: 34vh;}
+.swiper-container { width: 100%;height: 100%; }
+.swiper-slide {text-align: center;}
+.swiper-slide img{width: 100%; height:100%;}
+body .swiper-container-horizontal>.swiper-pagination-bullets{bottom: 4px;}
+/*头*/
+.pindexNvaul{height:100%;}
+.pindexheader{width:100vw; position:absolute; z-index:5; top:.5rem;}
+.pindexheader span{display:block; float:left;}
+.pindexheader span:nth-child(1){width:20vw; padding-right:1rem; margin-top:0.2rem; margin-left:1.5%;}
+.pindexheader span:nth-child(1) img{width:100%; vertical-align:middle;}
+.pindexheader span:nth-child(2){width:70vw;position:relative;} 
+.pindexheader span:nth-child(2) input{width: 100%; border-radius:50px; background:#FFF; line-height:2rem; height:2rem; border:#FFF solid 1px;
+font-size:0.8rem; color:#c9c9c9; padding-left:2rem; padding-right:.8rem; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -ms-box-sizing:border-box;}
+.pindexheader span:nth-child(2) a img{position:absolute;width:8%;z-index:10;top:0.3rem;left:0.5rem;}
+/*导航*/
+.pindexNva{width:100%;height:3.5rem; line-height:3.5rem; background:#FFF; clear:both; margin-top:-0.1rem;}
+.pindexNva ul li{float:left; width:15%; margin:0 0.5rem; text-align:center; height:100%; box-sizing:border-box;}
+.pindexNva ul li a{font-size:1rem;color:#757575;}
+
+.pindexNvaul li.active{border-bottom:#ff4138 solid 2px;}
+.pindexNvaul li.active a{color:#ff4138; font-weight:700;}
+.objItem{display: none}
+/*列表内容*/
+.toiletries img{width:100%;}
+.toiletriesListObj{width:98%; margin:0 auto; clear:both;}
+.toiletriesListObj ul{margin:0.4rem 0.3rem; width:46%; float:left; background:#FFF; border:#d0d0d0 solid 1px; border-radius:5px; padding-bottom: .5rem; overflow: hidden;}
+.toiletriesListObj ul img{width:100%; height: 100%;}
+.toiletriesListObj .toiname a{color:#acacac;}
+
+.toiletriesList{width:98%; margin:0 auto; clear:both;}
+.toiletriesList ul{margin:0.4rem 0.3rem; width:46%; float:left; background:#FFF; border:#d0d0d0 solid 1px; border-radius:5px; padding-bottom: .5rem; overflow: hidden;}
+.toiletriesList ul img{width:100%; height: 100%;}
+.toileli{line-height:1.5rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.toileli a{font-size:0.9rem; color:#000000;padding-left:0.5rem;}
+.toiname{height:1.2rem; line-height:1.2rem;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;color:#acacac;}
+.toiname a{font-size:0.8rem; color:#000; padding-left:0.5rem;}
+.toipric{padding-top:0.4rem;}
+.toipric a{font-size:1.1rem; color:#ff4138; padding-left:0.5rem; font-weight:700;}
+.makeover{margin-top:0.4rem;}
+.makeover img{width:100%;}
+
+.toiImg{display: block; padding-bottom:0.2rem;}

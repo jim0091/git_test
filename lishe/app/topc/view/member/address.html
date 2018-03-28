@@ -1,0 +1,229 @@
+<script type="text/javascript">
+$('#nav').hide();
+</script>
+<style>
+#saveAddr {
+  display: block;width:75px;height:35px;line-height:35px;color:#fff;text-align: center;background-color:#c7241d;font-size: 14px;float:left;margin-right:30px;
+}
+#cancelAddr {
+  display: block;width:75px;height:35px;line-height:35px;color:#999;text-align: center;background-color:#ddd;font-size: 14px;float:left;margin-right:30px;
+}
+</style>
+<div class="membercenter-box">
+  <div class="membercenter-box-hd">
+    收货地址管理
+  </div>
+  <div class="membercenter-box-bd">
+    <div class="membercenter-address">
+        <input type="hidden" name="addr_id" id="addr_id" value="<{$addrInfo.addr_id}>">
+        <div class="membercenter-address-title">
+          新增收货地址&nbsp;您已创建<{$userAddrCount.nowcount}> 个收货地址，最多可创建20个<{$addrInfo.area}>
+        </div>
+        <ul>
+          <li class="form-row">
+            <label for="" class="form-label">*所在地区</label>
+            <span class="form-act">
+              <span id="area" data-validate="area"></span>
+            </span>
+          </li>
+          <li class="form-row">
+            <label for="" class="form-label">*详细地址</label>
+            <span class="form-act">
+              <input class="input-ln" type="text" name="addr"  maxlength="100" value="<{$addrInfo.addr}>" id="addr" required>
+            </span>
+          </li>
+          <li class="form-row">
+            <label for="" class="form-label">邮政编码</label>
+            <span class="form-act">
+              <input class="input-ln" type="text" name="zip" data-validate="zip" maxlength="6" value="<{$addrInfo.zip}>" id="zip">
+            </span>
+          </li>
+          <li class="form-row">
+            <label for="" class="form-label">*收货人姓名</label>
+            <span class="form-act">
+              <input class="input-ln" type="text" name="name" value="<{$addrInfo.name}>" maxlength="25" id="name" required>
+            </span>
+          </li>
+          <li class="form-row">
+            <label for="" class="form-label">*收货人手机号</label>
+            <span class="form-act">
+              <input class="input-ln" type="text" name="mobile" data-validate="mobile" data-caution="手机格式不正确" value="<{$addrInfo.mobile}>" id="mobile" required>
+            </span>
+          </li>
+          <!-- <li class="form-row">
+            <label for="" class="form-label col-2">收货人固定电话</label>
+            <span class="form-act col-5">
+              <input class="input-ln" type="tel" name="tel" value="<{$addrInfo.tel}>" id="tel" data-oneoftwo="mobile" data-caution="固定电话格式不正确&&请填写手机或固定电话">
+            </span>
+          </li> -->
+          <li class="form-row">
+            <label for="" class="form-label">设为默认地址</label>
+            <span class="form-act">
+              <input type="checkbox" name="def_addr" value="1" id="def_addr"><!-- <label for="def_addr">是</label>
+              <input type="radio" name="def_addr" value="0" id="no_def_addr"><label for="no_def_addr">否</label> -->
+            </span>
+          </li>
+          <li class="form-row">
+            <span class="form-label"></span>
+            <span class="form-act">
+            <input type="hidden" id="refer" value="<{$refer}>">
+            <input type="hidden" id="userId" value="<{$user_id}>">
+            	<a href="javascript:;" id="saveAddr">保存</a>
+              	<a href="javascript:;" id="cancelAddr">返回</a>
+            </span>
+          </li>
+        </ul>
+        
+      <div class="membercenter-address-title">已保存的有效地址</div>
+      <table class="item-table table-address">
+        <colgroup>
+          <col class="table-col-1">
+          <col class="table-col-2">
+          <col class="table-col-3">
+          <col class="table-col-4">
+          <col class="table-col-5">
+        </colgroup>
+        <thead>
+          <tr>
+            <td>收货人</td>
+            <td>地址</td>
+            <td>邮编</td>
+            <td>手机</td>
+            <td>操作</td>
+          </tr>
+        </thead>
+        <tbody>
+          <{foreach from=$userAddrList item=addr}>
+          <tr>
+            <td>
+              <{$addr.name}>
+            </td>
+            <td>
+              <{$addr.area}>/<{$addr.addr}>
+            </td>
+            <td>
+               <{$addr.zip}>
+            </td>
+            <td>
+               <{$addr.mobile}>
+            </td>
+            <td class="col-operate">
+              <!--<a href="<{url action=topc_ctl_member@ajaxAddrUpdate}>" class="action-edit" data-ajax-type="post" data-ajax-data="addr_id=<{$addr.addr_id}>" rel="_request">编辑</a>-->
+              <span class="op-default text-danger" <{if !$addr.def_addr}>style="display:none;"<{/if}>>默认地址</span>
+              <a href="<{url action=topc_ctl_member@ajaxAddrDef}>" class="action-default" data-ajax-type="post" data-ajax-data="addr_id=<{$addr.addr_id}>" rel="_request" <{if $addr.def_addr}>style="display:none;"<{/if}>>设为默认</a>
+              <a href="<{url action=topc_ctl_member@ajaxDelAddr}>" class="action-delete" data-ajax-type="post" data-ajax-data="addr_id=<{$addr.addr_id}>" rel="_request">删除</a>
+            </td>
+          </tr>
+        <{/foreach}>
+        </div>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="/app/topc/statics/scripts/jquery.json.js"></script>
+
+<script>
+$('#saveAddr').click(function(){
+	var areasArr=[];  
+	var areaArr = {};
+	var check=0;
+	$('#area').find('select').each(function(){
+		if($(this).val()>0){
+			var areaId=$(this).val();
+			areaArr[areaId]=$(this).find('option[value='+areaId+']').attr('data');
+		}else{
+			alert('请选择所在地区！');
+			check=1;
+			return false;
+		}
+	})
+	if(check==1){
+		return false;
+	}
+	areasArr.push(areaArr);
+	var areaJson = $.toJSON(areasArr);
+	var userId = $("#userId").val();
+	var addr = $("input[name='addr']").val();
+	var zip = $("input[name='zip']").val();
+	var name = $("input[name='name']").val();
+	var mobile = $("input[name='mobile']").val();
+	var def_addr=$(":checkbox[name='def_addr']:checked").val();
+	if(addr==''){
+		alert('请输入详细地址！');
+		$("input[name='addr']").focus();
+		return false;
+	}
+	if(name==''){
+		alert('请输入收货人姓名！');
+		$("input[name='name']").focus();
+		return false;
+	}
+	if(mobile==''){
+		alert('请输入收货人手机号！');
+		$("input[name='mobile']").focus();
+		return false;
+	}
+	urls="/business/index.php/Area/saveAddr";
+	$.ajax({
+		type: "POST",
+		url:urls,
+		dataType:"text",
+		cache:false,
+		data: {
+			userId:userId,
+			areaJson:areaJson,
+			addr:addr,
+			zip:zip,
+			name:name,
+			mobile:mobile,
+			def_addr:def_addr
+		},
+		success: function(msg){
+			if(msg>0){
+				alert('地址添加成功！');
+				window.location.href=$('#refer').val();					
+			}else{
+				alert('地址添加失败！');
+			}
+		},
+		error: function () {
+			alert('error：'+msg);
+		}
+	});
+})
+
+$('.action-delete').on('click', function(e) {
+    return confirm('是否确认删除此地址？');
+});
+
+$('.action-default').data('ajaxConfig', {
+    showMessage: false,
+    callback: function(rs, sponsor) {
+        sponsor
+            .hide()
+            .prev('.op-default').show()
+        .parents('tr').siblings()
+            .find('.action-default').show()
+            .prev('.op-default').hide();
+    }
+});
+
+var selectArea = function(level){
+	if(level==1){
+		var parentId=0;
+	}else{
+		var parentId=$('#areaLevel_'+level).val();
+	}
+	$('#areaLevel_'+level).nextAll('select').remove();
+	$.get("/business/index.php/Area/getSubArea/level/"+level+"/parentId/"+parentId, function(result){
+		if(result!=''){
+			$(result).appendTo($('#area'));					
+		}
+	});
+}
+
+
+$(document).ready(function (){
+	selectArea('1');
+});
+</script>

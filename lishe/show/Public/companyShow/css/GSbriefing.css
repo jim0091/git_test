@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#f6f4f4; font-family:"微软雅黑"; font-size:12px;}
+
+/*头部*/
+.header{background:#a12124; width:100%; height:100px; line-height:100px;}
+.heade-ct{width:1200px; margin:0 auto;}
+.he-p{float:left;}
+.he-p img{vertical-align:middle; margin-right:10px;}
+/*横向二级菜单*/
+.navLeft .mainlevel{float:left;text-align:center;display:block;}
+.navLeft .mainlevel a {color:#fff;font-size:16px;padding:0 20px;display:block;}
+.navLeft .mainlevel a:hover {background:#FFF;color:#991332;}
+.navLeft .mainlevel ul{position:absolute;display:none;}
+.navLeft .mainlevel li {float:left;}
+.navLeft .mainlevel li a {color:#4d4d4d;display:block; line-height:25px; height:25px;padding:0 12px;}
+.navLeft .mainlevel li a:hover {color:#991332;}
+/*end*/
+.navRight{float:right;}
+.navRight li{float:left;padding:0 15px;}
+.ur a{font-size:16px; color:#FFF;}
+.ur a img{padding-left:12px;}
+.ur2 a{color:#991332; background:#FFF; padding:5px 8px; border-radius:10px; font-size:16px;}
+.ur2 a img{vertical-align:middle; padding-right:5px;}
+
+/*公司简介*/
+.Gsbrie{width:1200px; margin:0 auto; margin-top:50px;}
+.gsLeft{float:left;width:300px; float:left;border:#CCC solid 1px; background:#FFF;height:500px;}
+.let-p{font-size:18px; color:#991332;padding-left:15px; padding-top:15px;}
+.gsLeft ul{padding-top:10px;}
+.left-li{line-height:30px;}
+.left-li a{font-size:14px; color:#4d4d4d; padding-left:20px;}
+.slect{border-left:#991332 solid 5px;line-height:30px;}
+.slect a{font-size:14px; color:#991332; padding-left:15px;}
+
+.gsRight{float:right;width:880px; float:left;border:#CCC solid 1px; background:#FFF;height:800px; margin-left:15px;}
+.gs-title{text-align:center; font-size:30px; color:#000000; padding-top:35px;}
+.gs-title2{text-align:center; font-size:20px; color:#000000; padding-bottom:10px;}
+.gs-des{font-size:16px; color:#4c4c4c; padding:0 60px; text-align:left; margin:8px 0; text-indent:25px;}
+.gs-pt{text-align:center;}
+.gs-pt img{max-width:755px;  padding:10px 0;}

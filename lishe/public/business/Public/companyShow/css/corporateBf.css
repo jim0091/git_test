@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#FFF; font-family:"微软雅黑"; font-size:12px;}
+
+/*主内容*/
+.main-ct{width:1000px; margin:0 auto;}
+.manva-left{width:190px; float:left;}
+.mact-right{width:810px; float:right;padding-bottom:100px;}
+/*左侧导航*//
+.subNavBox{width:200px;border:solid 1px #ccc;}
+.subNav{border-bottom:solid 1px #ccc;cursor:pointer;font-size:14px;color:#666666;line-height:50px;padding-left:10px;background:url(../images/showjt.png) no-repeat;background-position:90% 50%;
+width:190px;}
+.navContent{border-bottom:solid 1px #ccc;}
+.navContent li a{display:block;width:200px;heighr:45px;font-size:14px;line-height:45px; color:#666666; padding-left:10px; margin:5px 0;}
+.navContent li a img{vertical-align:middle; padding-right:15px;}
+.navContent .active a{color:#FFF;}
+.currentDt{color:#c7241d;}
+.active{color:#FFF; background:#c7241d;}
+.img-hove{display:none;}
+
+
+/*企业简介管理*/
+.qybriefing{width:800px; margin:0 auto; border:#CCC solid 1px; height:600px; margin-left:30px;}
+.qy-tit{color:#FFF; font-size:14px; background:#c7241d; height:40px; padding-left:15px; line-height:40px;}
+.qy-ul{width:800px; margin:0 auto;margin-top:10px;} 
+.cs-des{font-size:14px; color:#333333;}
+.text{width:330px;margin-top:30px;border:solid 1px #CCC;height:28px;}
+.ts{color:808080; padding-left:7px; font-size:14px;}
+.text2{width:330px;margin-top:30px;border:solid 1px #CCC;height:70px;}
+.CP-one{padding-top:35px;}
+.cpo-left{float:left; background:#f2f2f2; width:360px; height:300px; margin-top:-15px; text-align:center;}
+.cpo-btn{padding-top:110px;}
+.cpo-btn a{color:#333232; font-size:20px; background:#FFF;display:block; width:160px; height:50px; line-height:50px; margin:0 auto;}
+.cpo-btn a img{vertical-align:middle; padding-right:10px;}
+.cpo-des{font-size:14px; color:#808080;}
+.cpo-right{float:right; background:#f2f2f2; width:350px; height:300px;margin-top:-15px;text-align:center;}
+.cpo-ti{font-size:20px; color:#333232;line-height:60px;}
+.cpo-pt{font-size:14px; color:#808080; line-height:55px;height: 200px;overflow: hidden;}
+.cpo-pt img{padding-top:20px;}
+.cpo-btn2{clear:both; text-align:center; padding-top:25px;margin-right: 50px;}
+.cpo-btn2 a{margin:0 20px;}
+.sure{color:#FFF;font-size:14px;background:#c7241d; border-radius:5px; padding:5px 40px;}
+.preview{color:#808080;font-size:14px;border-radius:5px;border:#808080 solid 1px; padding:4px 40px;}
+/*企业架构管理*/
+.qyinfrastructure{width:800px; margin:0 auto; margin-top:30px; border:#CCC solid 1px; height:600px;margin-left:30px; padding-bottom:30px;}
+.os-btn{padding-left:280px;}

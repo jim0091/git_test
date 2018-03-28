@@ -1,0 +1,93 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;cursor:pointer;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#ededed; font-family:"微软雅黑"; font-size:12px;}
+
+.Ctitle{font-size:24px;color:#ff5151;text-align:center; background:url(../images/red.png) no-repeat center center; width:900p; height:5px; line-height:5px; margin:0 auto; margin-top:50px;
+font-weight:bold;}
+/*tab切换*/
+#outer {width:900px;margin:50px auto;border:1px solid #dadada; padding-bottom:120px; background: #FFF;}
+
+#tab li{float:left;cursor:pointer;font-size:20px; width:449px; text-align:center; background:#e5e5e5;color:#666666; 
+border:1px solid #dadada; height:60px; line-height:60px;}
+#tab li.current {color:#ff5151;background:none; border:none; border-top:3px solid #ff5151;}
+#tab li img{vertical-align:middle; padding-right:10px;}
+#content{margin-top:110px;}
+#content ul {display:none;width:600px; margin:0 auto;}
+.img-hove{display:none;}
+
+/*表单*/
+.ctFrom{width:600px; margin:0 auto; clear:both;}
+.ctFrom div{float:left; margin:15px 0;}
+.ctUser{font-size:16px; color:#616161; text-align:right; width:130px; padding-right:5px; height:32px; line-height:32px;}
+.ctput{width:300px; text-align:left;}
+.ctput input{width:300px; height:32px; border:#CCC solid 1px;}
+.ctErro{font-size:14px; color:#ff5151; text-align:left;height:32px; line-height:32px; padding-left:5px;}
+
+.ctLayou{width:600px; margin:0 auto; clear:both; margin-top:30px; } 
+.ctp{font-size:16px; color:#616161; text-align:center; background:url(../images/grey%20.png) no-repeat center center;height:5px; line-height:5px; margin-bottom:30px;}
+
+.ctBtn{text-align:center; margin-top:50px; clear:both;}
+/*.ctBtn a{font-size:18px; color:#FFF; background:#ff5151; padding:6px 20px; border-radius:8px;text-shadow: 0 1px 1px rgba(0,0,0,.3);box-shadow:0 3px 0 #DB1F05,0 3px 6px rgba(0,0,0,0.9);}*/
+
+/*弹出层*/
+#tankCard{width:532px; height:380px; border-radius:5px;background:url(../images/succTank.png) no-repeat center center;margin:0 auto; }
+.points{text-align:center; font-size:24px; color:#000000; padding-top:200px;}
+.ctBtn2{text-align:center; margin-top:30px;}
+
+#tankCard2{width:532px; height:380px; border-radius:5px;background:url(../images/lostTank.png) no-repeat center center;margin:0 auto; }
+.points{text-align:center; font-size:24px; color:#000000; padding-top:200px;}
+.ctBtn2{text-align:center; margin-top:30px;}
+
+/*头部*/
+.headerlayout{background: #FFF;}
+.header{width:1100px; margin:0 auto; height:60px; line-height:58px; clear:both;}
+.heapt{float:left; width:150px;}
+.heapt img{width:124px;height:51px; vertical-align:middle;}
+.heaLeft{float:left;}
+.heaLeft ul li{float:left; width:100px; text-align:center;}
+.heaLeft ul li a{font-size:16px; color:#666666;}
+.heaLeft ul li:hover{border-left:#CCC solid 1px; border-right:#CCC solid 1px; border-top:#ff4138 solid 2px;height:58px; line-height:58px;}
+.heaRight{float:right;}
+.heaRight ul li{float:left;width:100px; text-align:center;}
+.heaRight ul li a{font-size:16px; color:#666666;}
+.heaRight ul li:hover{border-left:#CCC solid 1px; border-right:#CCC solid 1px; border-top:#ff4138 solid 2px;height:58px; line-height:58px;}
+
+.headerbottom{background:#ff5151; width:100%; height:150px;}
+.headerbottomCt{width:1100px; margin:0 auto;}
+.headerbottomLeft{float:left;height:150px;}
+.headerbottomLeft ul li{float:left;}
+.hederbom{line-height:150px;}
+.hederbom img{width:103px; height:60px;vertical-align:middle; border-right:#FFF solid 1px; padding:0 18px;}
+.hederbom2{font-size:24px; color:#FFF; padding-top:40px; padding-left:18px;}
+.hederbom2 span{font-size:14px; color:#ff5151; background:#FFF; padding:3px 8px; border-radius:50px;}
+
+.headerbottomRight{float:right; text-align:center;}
+.hederbomRt{font-size:14px; color:#FFF; padding-top:35px; padding-bottom:5px;}
+.hederbomRt2{font-size:18px; color:#FFF; border:#FFF solid 1px; border-radius:50px; padding:5px 15px;}
+.hederbomRt2 img{vertical-align:middle; padding-right:6px;}
+
+/*头部完*/
+
+/*底部*/
+#footer{background:#262626; padding:50px 0; clear:both;}
+.footerdimension{width:1000px; margin:0 auto; clear:both;}
+.footertopLeft{float:left;}
+.footertopLeft ul{float:left; text-align:left; margin-right:60px;}
+.footerUser{font-size:24px; color:#999999; margin-bottom:15px;}
+.footerMenu{line-height:20px;}
+.footerMenu a{font-size:14px; color:#999999;}
+.footertopRight{float:right;}
+.footertopRight ul{float:left; margin-left:12px; text-align:right;}
+.footerPhone{font-size:16px; color:#FFF; border:#f9450a solid 1px; border-radius:50px; width:180px; height:40px; line-height:40px; text-align:center;}
+.footerPhone img{vertical-align:middle; margin-right:10px;}
+.footerConnection{font-size:16px; color:#999999; margin-right:20px; margin-top:10px;}
+.footerbottom{clear:both; border-top:#515151 solid 1px; margin-top:30px; padding-top:15px;}
+.footerbottomLeft{float:left;}
+.footerbottomLeft li{font-size:12px; color:#999999; line-height:18px;}
+.footerbottomRight{float:right;}
+.footerbottomRightPhone{font-size:16px; color:#999999;}
+.footerbottomRightTime{font-size:12px; color:#999999; line-height:18px; text-align:right;}

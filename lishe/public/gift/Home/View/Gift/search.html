@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/historicrecords.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<title>搜索</title>
+</head>
+
+<body>
+   <div class="historyTop">
+      <div class="historyTopct">
+          <ul>
+            <li id="searchBut"><img src="__IMG__/xregularity.png"></li>
+            <li><input type="text" id="keyword" name="keyword" value="{$key}"></li>
+            <li onclick="history.back();">取消</li>
+          </ul>
+      </div>
+   </div>
+   <!--热门搜索-->
+   <div class="hitsearch">
+     <div class="hitsearchct">
+        <p><img src="__IMG__/start.png"><span>大家都在搜</span></p>
+        <ul id="tagBox">
+          <volist name="tagList" id="tag">
+          	<li kw="{$tag['tag_name']}" <egt name="tag['priority']" value="1">class="hitli"</egt>>{$tag['tag_name']}</li>
+          </volist>
+        </ul>
+        <div style="clear:both;"></div>
+     </div>
+   </div>
+   <div style="clear:both;"></div>
+   <!--我搜过的-->
+   <div class="Mysearchct">
+       <ul id="searchHisBox">
+         <li class="Mysli"><span><img src="__IMG__/hregularity.png">我搜过的</span><span id="clearAllSearch"><img src="__IMG__/detl.png"></span></li>
+         <volist name="searchHistory" id="val">
+         	<li class="Mysli2">
+         		<span class="searchTag" kw="{$val}"><img src="__IMG__/time.png">{$val}</span>
+         		<span name="delSearchItem" kw="{$val}"><img src="__IMG__/fork.png"></span>
+         	</li>
+       	 </volist>
+       </ul>
+   </div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	var timestamp = new Date().getTime()
+	//加载搜索历史
+	$.getJSON("{:U('Gift/pullSearchHis')}?timestamp="+timestamp,function(result){
+		if(result.code == 1){
+			var html = "";
+			$.each(result.data, function(key, val){
+				html += '<li class="Mysli2">';
+				html += '<span class="searchTag" kw="'+val+'"><img src="__IMG__/time.png">'+val+'</span>';
+				html += '<span name="delSearchItem" kw="'+val+'"><img src="__IMG__/fork.png"></span>';
+				html += '</li>';
+			});
+			$("#searchHisBox").append(html);
+		}
+	});
+	
+	$("#searchBut").click(function(){
+		var keyword = $("#keyword").val();
+		keyword = $.trim(keyword);
+		if(keyword == ''){
+			return false;
+		}
+		location.href = "{:U('Gift/search')}?keyword="+keyword;
+	});
+	
+	$(".searchTag, #tagBox li").click(function(){
+		$("#keyword").val($(this).attr('kw'));
+		setTimeout(function(){
+			$("#searchBut").click();
+		},200)
+	});
+	
+	//删除所有搜索历史
+	$("#clearAllSearch").click(function(){
+		var length = $("#searchHisBox").find(".Mysli2").length;
+		if(length > 1){
+			$(".searchTag").remove();
+			$.post("{:U('Gift/delAllSearchHis')}");
+		}
+	})
+	
+	$("#searchHisBox").on("click","li span[name='delSearchItem']",function(){
+		var obj = $(this);
+		var kw = obj.attr('kw');
+		$.post("{:U('Gift/delSearchItem')}?",{kw:kw},function(){
+			obj.parent().remove();
+		});
+	})
+})
+
+</script>
+</html>

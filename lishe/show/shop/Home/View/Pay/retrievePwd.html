@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+<link rel="stylesheet" href="__VIEW__Public/css/address_css.css">
+<link rel="stylesheet" href="__VIEW__Public/css/pay.css">
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript" src="__VIEW__Public/layer/layer.js"></script>
+<title>修改支付密码-礼品商城</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//发送短信验证码
+		$("input[name='sendCode']").click(function(){
+			var athis = $(this);
+			var phoneNum = $("input[name='phoneNum']").val();
+			if (!phoneNum.match(/^1[3|4|5|8][0-9]\d{4,8}$/)) {
+				$(".motify").show();
+                $(".motify-inner").text("手机号码信息错误！");
+                $('.motify').delay(1000).hide(0);
+                return false;
+			};
+			athis.attr('disabled',true).val('60秒后重发');
+			var time = 60;
+    		var interval = null;
+			$.ajax({
+    			url:"__APP__/Pay/sendPhoneCode",
+    			type:'post',
+    			data:{phone:phoneNum},
+    			dataType:'text',
+    			success:function(date){
+    				if (date != 1) {
+    					$(".motify").show();
+		                $(".motify-inner").text("验证码发送失败！");
+		                $('.motify').delay(1000).hide(0);
+		                return false;
+    				};
+    				
+    			}
+    		});
+		    interval = setInterval(function(){
+				if(time <= 0){
+					athis.removeAttr('disabled').val('发送验证码');
+					athis.removeAttr('disabled',true);
+					clearInterval(interval);
+					return false;
+				}
+				time -- ;
+				athis.attr('disabled',true).val(time+'秒后重发');
+			},1000);
+		});
+		//提交短信验证码
+		$(".validateId").click(function(){
+			var phoneNum = $("input[name='phoneNum']").val();
+			var code = $("input[name='code']").val();
+			if (phoneNum == '') {
+				$(".motify").show();
+                $(".motify-inner").text("手机号码信息错误！");
+                $('.motify').delay(1000).hide(0);
+                exit();				
+			};
+			if (code == '') {
+				$(".motify").show();
+                $(".motify-inner").text("请输入手机验证码！");
+                $('.motify').delay(1000).hide(0);
+                exit();
+			}else{
+				$.ajax({
+	            type:"POST",
+	            url:"__APP__/Pay/retrievePwdDo",
+	            data:{code:code},
+	            dataType:'text',
+	            success:function(data){
+		            	if (data == 1 ) {
+							$(".motify").show();
+			                $(".motify-inner").text("验证成功，请修改您的支付密码！");
+			                $('.motify').delay(2000).hide(0);
+		            		setTimeout(window.location.href="__APP__/Pay/setPayPwd/paymentid/{$paymentid}",60000);
+		            	}else{
+							$(".motify").show();
+			                $(".motify-inner").text("验证码错误，请重试！");
+			                $('.motify').delay(1000).hide(0);
+		            	}
+		            }
+	        	});
+	        }
+
+		});
+	});
+	
+
+
+</script>
+</head>
+<body>
+<include file="Public/header"/>
+<div class="content" >
+   	<input type="hidden" name="paymentid" value="{$paymentid}">
+   	<div class="sku-group select-sku" >找回支付密码</div> 
+	<div class="payment borderRadius" >
+		<div class="phone-div">
+			<div class="phone">手机号码：</div>
+			<div class="phone-input"><input type="phone" name="phoneNum" value="{$accountInfo['mobile']}" disabled="true" ></div>
+		</div>
+		<div class="code-div">
+			<div class="code">验证码：</div>
+			<div class="code-input"><input type="text" name="code" >
+			<input type="submit" name="sendCode" value="发送验证码" ></div>
+		</div>	
+
+		<div class="submit">
+			<input type="submit" value="提交" class="orderSbt validateId" />
+		</div>	
+	</div>
+		
+</div> 
+<div style="border:0px solid red;">   
+    <include file="Public/footer"/>
+</div>
+</body>
+</html>

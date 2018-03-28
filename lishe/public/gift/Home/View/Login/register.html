@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>礼舍-用户注册</title>
+<meta name="keywords" content="礼舍，用户注册" />
+<meta name="description" content="礼舍，用户注册" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__CSS__/base.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<div class="content c">
+  <div class="loginBox">
+    <ul class="borderRadius">
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>手机号码：</label>
+			<input type="text" placeholder="请输入手机号码" id="mobile" name="mobile" maxlength="11" autocomplete="off">
+			<span></span>
+			<div class="c"></div>
+		</li>
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>登录密码：</label>
+			<input type="password" placeholder="请输入密码" id="password" name="password" maxlength="18" autocomplete="off">
+			<div class="c"></div>
+		</li>
+		<li>
+			<label>确认密码：</label>
+			<input type="password" placeholder="请输入确认密码" id="rePassword" name="rePassword" maxlength="18" autocomplete="off">
+			<div class="c"></div>
+		</li>
+	</ul>
+    <a href="javascript:;" class="button borderRadius" id="regSubmit" style="border:0px solid red;background:#c7241d;">注册</a>
+  </div>
+   <div class="apiLogin">
+    <div class="apiLoginTitle"><a style="color:#cc0000;" href="{:U('Login/login')}">已有账号？去登录 »</a></div>
+  </div>
+ <!--  <div class="apiLogin">
+    <div class="apiLoginTitle"><input type="checkbox" id="read"/>我已阅读<b id="statement">《免责声明》</b>和<b id="agreement">《注册协议》</b></div>
+  </div> -->
+  <div class="c"></div>
+</div>
+ <input type="hidden" id="refer" value="{$refer}">
+<input type="hidden" id="source" value="{$from}" />
+
+<script>
+$(document).ready(function (){
+	$('#regSubmit').click(function(){
+		var mobile=$("#mobile").val();
+		var password=$("#password").val();
+		var rePassword=$("#rePassword").val();
+		var reg=/^0?1[3|4|5|7|8][0-9]\d{8}$/;
+		if (!reg.test(mobile)) {
+			alert("手机号码格式不正确！");
+			$("#mobile").focus();
+			return false;
+		}
+		if(password.length<6){
+			alert("登录密码不能少于6个字符！");
+			$("#password").focus();
+			return false;
+		}
+		if(password!=rePassword){
+			alert("登录密码和确认密码不相符！");
+			$("#rePassword").focus();
+			return false;
+		}
+		urls="__APP__/User/signupMember";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				mobile:mobile,
+				password:password,
+			},
+			success : function (result,status){
+				var data=eval(result);
+				if(data[0]==100){
+					alert('注册成功，礼舍欢迎您！');
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="{:U('Home/Index/index')}";
+					}					
+				}else{
+					alert(data[1]);
+				}
+			},
+			error: function () {
+				alert('error：'+result);
+			}
+		});
+	});	
+});
+</script>
+<include file="Public/bottom"/>  
+</body>
+</html>

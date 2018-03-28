@@ -1,0 +1,32 @@
+<!--活动回顾、头号人物列表页-->
+
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/ptDynamics.css">
+ 
+               	<volist name="list" id="vo">
+					<ul style="margin-bottom: 15px;">
+	                	 <li><img src="{$vo.pic}" width="300px"height="300px"></li>
+            			  <li class="sr-li">{$vo.title}</li>
+         				  <li class="sr-li2">
+         				  	<if condition="$vo.activity_type eq 1">
+         				  			{$vo.abstract}
+         				  		<elseif condition="$vo.activity_type eq 2"/>
+         				  			{$vo.author}
+         				  		
+         				  	</if>
+         				  	
+         				  </li>
+	                 	<li class="sr-li3 s7">
+	                 		
+	                 		<a href="{:U('Home/Show/activityEdit',array('newsid'=>$vo['news_id']))}">修   改</a>
+		                 	
+		                 	</if>	                 		
+	                 		
+	                 		
+	                 		<a href="javascript:void(0)" onclick="del({$vo.news_id})">删   除</a></li>
+	               </ul>
+              	</volist>
+
+               
+               
+               
+			<div class="pager local" style="cursor: pointer;text-align: center;border: 0px;">{$pagestr}</div>

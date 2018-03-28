@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0px;}
+ul li{list-style:none;}
+a{text-decoration:none;}
+img{ border:0px;}
+body{font-family:"微软雅黑";}
+/*头部*/
+.header{background:#fcfcfc;height:30px; width:100%;}
+.header ul{width:58%; margin:0 auto; font-size:14px;}
+.header ul li{float:left; line-height:30px;}
+.header ul li a{color:#666;}
+.nva-u{padding-left:10px;color:#F00;} 
+/*banner*/
+.ban{background:url(../images/banner.png) center center; width:100%; height:830px; text-align:center;}
+.ban ul{padding-top:592px; display:inline-block; text-align:center;}
+.ban ul li{float:left; padding-left:20px;}
+/*内容*/
+.layout{background:url(../images/bg.png); width:100%; height:5536px;}
+.one{width:1000px; margin:0 auto; position:relative; margin-bottom:100px;}
+/*二级类目*/
+.categories{width:1000px; margin:0 auto; text-align:center; margin-bottom:10px;}
+.categories ul{background:url(../images/01.png) no-repeat center center; width:548px; height:79px; display:inline-block; line-height:115px;}
+.categories ul li{float:left;}
+.categories ul li a{color:#c83430; font-size:16px; padding-left:53px;}
+/*模块一*/
+.one-p{ background:url(../images/titiebg.png) no-repeat center center; width:890px; height:140px; line-height:120px; margin:0 auto; 
+ text-align:center; font-size:36px; color:#1c8ca7; font-family:"黑体";}
+
+.eat-ul{width:1000px;margin:0 auto; clear:both;}
+.eat-ul ul{float:left; border:#00add6 solid 1px; margin:10px 10px;background:#FFF;height:240px; width:175px;}
+.pt-mid{text-align:center;}
+.eat-ul img{width:150px; height:150px;} 
+.eat-li{height:50px;}
+.eat-li a{font-size:12px; color:#000000; padding-left:5px;}
+.eat-sp{font-size:12px; color:#c7241d;font-weight:bold; padding-left:5px;}
+.eat-sp span{font-size:15px;}
+.eat-sp2{float:right; margin-right:10px;}
+.eat-sp2 a{color:#FFF; background:#c7241d; padding:3px 8px;border-radius:5px;}
+.one-pos img{ width:160px; height:188px;position:absolute; top:100px; right:-95px;}
+.morebtn{ clear:both;text-align:center; padding-top:20px;}
+.morebtn img{width:1000px;}
+
+.fh{width:100%; text-align:center; margin-top:150px; overflow:hidden; position:relative;}
+
+/*海核桃列表页样式*/
+/*二级类目-搜索*/
+.categories2{clear:both; width:1000px; margin:0 auto; border:#a80000 solid 2px; margin-bottom:70px;clear:both;}
+.brands{width:90%; margin:0 auto; padding-top:10px; clear:both;}
+.brands li{float:left; font-size:16px; color:#333333; padding:5px 0; padding-left:15px; cursor:pointer;}
+.price{clear:both;width:90%; margin:0 auto; border-top:#a80000 solid 2px;padding-top:10px;}
+.price li{float:left;font-size:16px; color:#333333; padding:5px 0; padding-left:15px;cursor:pointer;}
+.price li input{width:100px; height:25px; vertical-align:middle; border:#CCC solid 1px;}
+.price li a{font-size:16px; color:#666666; background:#ececec; padding:3px 8px;border:#CCC solid 1px; border-radius:5px; margin-left:10px;}
+.ranking{clear:both;width:90%; margin:0 auto; border-top:#a80000 solid 2px;padding-top:10px; height:40px; line-height:40px;}
+.ranking li{float:left;font-size:16px; color:#333333; padding:5px 0; padding-left:15px;cursor:pointer;}
+.rk{font-size:16px; color:#666666; background:#ececec; padding:3px 8px;border:#CCC solid 1px; border-radius:5px; margin-left:5px;}
+.ranking input{vertical-align:middle; width:235px; height:35px; padding-left:5px; border:#CCC solid 1px;}
+.find a{margin-left:-50px;line-height:60px;}
+.typeFree li.active{color:#c7241d;}
+/*分页*/
+.pagination{width:1000px; margin:0 auto; text-align:center; margin-top:-50px;}
+.pagination ul{display:inline-block;}
+.pagination ul li{float:left; margin:0 5px;}
+.pagination ul li a{background:#3c8dbc; font-size:14px; color:#FFF; padding:3px 10px; border-radius:15px;}
+.pagination ul li a:hover{background:#dd4b39;}
+
+
+/*右侧悬浮导航栏*/
+#nvafloat {position:fixed;top:0px;right:0px;z-index:900000000;height:100%;}
+.nvaLeft{background:#000; width:30px; height:100%; float:left; position:relative;}
+.active{background:#c83430;}
+.Leftul{text-align:center; position:absolute; top:25%;}
+.Leftul li{margin:20px 0; cursor:pointer;}
+.leftShop{border-bottom:#FFF solid 1px; border-top:#FFF solid 1px; padding:20px 0; color:#FFF;}
+.shopNum{color:#FFF; background:#eb3d3d; display:block; border-radius:100px; width:20px; height:20px; margin:0 auto;}
+.nvaRight{background:#414141; width:300px; height:100%;}
+.nvaRight div{display:none;}
+/*会员中心*/
+.boxp{font-size:16px; color:#FFF; font-weight:bold; padding-top:20px; padding-left:50px;}
+.user{font-size:14px; color:#999999;padding-left:50px; padding-top:20px;}
+.user span{padding-left:10px;}
+.boxp2{font-size:20px; font-weight:bold; text-align:center;padding-top:30px; color:#FFF; padding-bottom:15px;}
+.box1 ul{float:left; background:#5c5c5c; width:75px; margin:0 3px;text-align:center;height:115px;}
+.pt{border-bottom:#999 solid 1px; padding-bottom:5px; width:90%; margin:0 auto; padding-top:10px; }
+.box1 ul img{width:32px; height:30px;}
+.user2{font-size:12px; color:#999999; padding:10px 0;}
+.num{font-size:14px; color:#ffffff;}

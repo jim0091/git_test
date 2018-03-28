@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px; padding:0px;}
+ul li{list-style:none;}
+a{text-decoration:none;}
+img{ border:0px;}
+body{font-family:"微软雅黑";}
+
+.layout{width:100%;}
+.heder{background:#fcfcfc;height:30px;}
+.heder ul{width:800px; margin:0 auto; font-size:14px;}
+.heder ul li{float:left; line-height:30px; padding-left:15px;}
+.heder ul li a{color:#666;}
+.nva-u{padding-left:10px;color:#F00;} 
+
+.con{background:#eaf3fc; padding:30px 30px; padding-bottom:70px; position:relative; height:400px;}
+.con-p{width:750px; margin:0 auto; padding:20px 0;}
+.pos{position:absolute; top:58%; right:17%;}
+.pos img{width:70%;}
+.left{position:absolute; left:13%; top:72%;}
+.login{background:rgba(114,170,216,0.8); width:500px; padding:10px 10px;border-radius:5px; position:absolute; z-index:1; left:35%;}
+.login ul{font-size:15px;border:#FFF solid 2px; text-align:center; padding:15px 10px;border-radius:5px;}
+.line{width:450px; margin-left:20px;}
+.title{text-align:left; width:450px; margin-left:20px; padding-top:10px; border-bottom:#FFF solid 1px; padding-bottom:5px;}
+.title a{color:#004a87;}
+.title img{vertical-align:middle;}
+.title span{padding-top:10px; padding-left:15px;vertical-align:middle;}
+.text{width:280px;margin-top:20px;font-size:16px;color:#7d7a7a;border:solid 1px #FFF;border-radius:10px;background:rgba(114,170,216,0.8);padding:6px;}
+.user{color:#004a87;}
+.pwd{margin-top:20px;}
+.pwd a{color:#004a87; padding-left:5px;}
+.pwd-left{float:left; margin-left:145px;}
+.pwd-left input{background:#72aad8;border:solid 1px #FFF; vertical-align:middle;}
+.btn{margin-top:25px;}
+.btn a{color:#004a87; font-size:18px; background:#c7ddef; padding:8px 125px; border-radius:50px;}
+.jh{text-align:right; margin-right:10px;margin-top:20px;}
+.jh a{color:#004a87;}
+.pt{background:#cbd1d6; height:180px; position:relative; z-index:-3;}
+@media (max-width: 1366px){
+	.login{background:rgba(114,170,216,0.8); width:500px; padding:10px 10px;border-radius:5px; position:absolute; z-index:1; left:30%;}
+	.pos{position:absolute; top:58%; right:3%;}
+	.left{position:absolute; left:3%; top:72%;}
+}

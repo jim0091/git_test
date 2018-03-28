@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<link rel="shortcut icon" href="{$STATIC}/images/icon/bitbug_favicon.ico">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/welfare_gift.css">
+	<title>选择商品</title>
+</head>
+<body>
+	<include file="Activity/midAutumn/header" />
+	<div id="div1"></div>
+	<div class="content_wrap mauto">
+		<div class="content ">
+			<div class="banner">
+				<div class="banner_main">
+					<div class="banner_cont mauto">
+						<div class="banner_cont_text"><em>￥</em>{$catContent}</div>
+						<div class="banner_cont_info mauto">超值优惠礼包专区</div>
+
+					</div>
+				</div>
+			</div>
+			<!--礼包列表-->
+			<volist name="aitems" id="aitem">
+			<div class="packs fl">
+				<div class="packs_tit ">
+					<div class="tit_cont mauto"><img src="{$STATIC}/images/icon/s_icon.png">{$aitem['item_name']}</div>		
+				</div>
+				<ul class="packs_list fl">
+					<volist name="skuArr[$aitem['aitem_id']]" id="sku">
+					<php>$itemId = $skuItemMap[$sku['sku_id']];</php>
+					<li class="img_list fl"><img src="{$itemPicMap[$itemId]}" alt="" onclick="window.open('{:U('Info/index',array('itemId'=>$itemId))}')"></li>
+					</volist>
+				</ul>
+				<div class="buy_info fl">
+					<div class="price fl">
+						<em>￥</em>
+						<span class="price_big  fl">{$aitem['price']|intval}</span>
+						<span class="price_sma fl">.00</span>
+						<span class="price_mon price_com fl ">￥{$aitem['shop_price']|default=0}</span>
+						<span class="price_goods price_com  fl">合计{$aitem['itemCount']|default=0}件商品</span>
+					</div>
+					<div class="buy_car fr">
+						<a class="add_car active fl addCart"  href="javascript:void(0)" daitemId="{$aitem['aitem_id']}">加入购物车</a>
+						<a class="at_car fl buyBtn"  href="" daitemId="{$aitem['aitem_id']}">立即购买</a>
+					</div>
+				</div>
+			</div>
+			</volist>
+		</div>
+	</div>	
+	<div id="div1"></div>
+</body>
+<script src="{$STATIC}/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+	var html = document.documentElement;
+	var whtml  =html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /7.5 + "px";
+
+    $('.content_wrap').on('touchend','.shoping_cart_ls',function(){
+        clearTimeout(time);
+        $('.shop_cart p').addClass('click');
+        var time = setTimeout(function(){
+            $('.shop_cart p').removeClass('click');
+       },500)
+    })
+    
+    $('.addCart').click(function(){
+		var dataAiemId = $(this).attr('daitemId');
+		addCarts(dataAiemId, 'add');
+	});
+	$('.buyBtn').click(function(){
+		var dataAiemId = $(this).attr('daitemId');
+		addCarts(dataAiemId,'buy');
+	});
+	function addCarts(aitemId,type){
+		$.get('__APP__/Activity/aitemAddCart',{aitemId:aitemId},function(data){
+			if(data['code'] == 0){
+				alert(data['msg']);
+			}else if(data['code'] == 1){
+				updateCartNum();
+				if(type == 'add'){
+					alert("成功加入购物车!");
+				}else if(type == 'buy'){
+					window.location.href = "/wshop.php/Cart/cart";
+				}
+			}else if(data['code'] == 3){
+				alert(data['msg']);
+				window.location.href = '/wshop.php/Login/login.html?entry=no&refer=http://www.lishe.cn/wshop.php/activity/newCourtesy';
+			}
+		});
+	} 
+</script>
+</html>

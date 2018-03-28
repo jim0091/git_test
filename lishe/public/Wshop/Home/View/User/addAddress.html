@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Addaddress.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>新增地址-心意商城</title>
+</head>
+
+<body>
+    <div class="Waddress">
+        <span><a href="{:U('User/userCenter')}" onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+        <span>添加收货地址</span>
+    </div>
+    <input type="hidden" name="refer" value="{$refer}">
+    <div class="Address">
+        <p>收货人：<input type="text" class="adrsPut" name="userName"></p>
+        <p>联系方式：<input type="text" class="adrsPut" name="mobile"></p>
+        <p style="height:auto;padding: 0.6rem 0;line-height:1.8rem;">
+            <span style="display:block; line-height:1rem;">选择地区：</span>
+            <select class="province" name="province" style="padding:0.2rem; border-radius:5px; width:18vw">
+                <option value="0">--请选择--</option>
+            </select>
+            <select class="city" name="city" style="padding:0.2rem; border-radius:5px; width:24vw">
+                <option value="0">--请选择--</option>
+            </select>
+            <select class="county" name="county" style="padding:0.2rem; border-radius:5px; width:24vw">
+                <option value="0">--请选择--</option>
+            </select>
+            <select class="town" name="town" style="padding:0.2rem; border-radius:5px; width:24vw">
+                <option value="0">--请选择--</option>
+            </select>
+        </p>
+        <p>详细地址：<input type="text" class="adrsPut" name="address"></p>
+        <p>邮编：<input type="text" class="adrsPut" name="zipcode"></p>
+        <p>设为默认地址：<input type="checkbox" id="checkbox_c2" class="chk_3" name="defaultAddress" checked /><label for="checkbox_c2"></label> </p>
+    </div>
+    <div class="Addressbtn"><a href="javascript:void(0);" class="addAddress">保存</a></div>
+
+    <include file="Public/popuLoading"/>
+    <include file="Public/popuLayer"/>   
+<script type="text/javascript">
+    $(function(){   
+        $(".topLoading").show();    
+        var pid = 0;
+        var level = 1;
+        getSiteList(pid,level,"province");
+        
+    });
+    $(".province").change(function(){
+        $(".topLoading").show();  
+        $('.city').empty();
+        $('.city').append("<option value='0'>--请选择--</option> ");
+        $('.county').empty();
+        $('.county').append("<option value='0'>--请选择--</option> ");
+        $('.town').empty();
+        $('.town').append("<option value='0'>--请选择--</option> ");
+        var pid = $(this).val();
+        var level = 2;
+        getSiteList(pid,level,"city");
+    });
+    $(".city").change(function(){
+        $(".topLoading").show();  
+        $('.county').empty();
+        $('.county').append("<option value='0'>--请选择--</option> ");
+        $('.town').empty();
+        $('.town').append("<option value='0'>--请选择--</option> ");
+        var pid = $(this).val();
+        var level = 3;
+        getSiteList(pid,level,"county");
+
+    });
+    $(".county").change(function(){
+        $(".topLoading").show();  
+        $('.town').empty();
+        $('.town').append("<option value='0'>--请选择--</option> ");
+        var pid = $(this).val();
+        var level = 4;
+        getSiteList(pid,level,"town");
+
+    });
+    function getSiteList(pid,level,className){
+        $.ajax({
+            type: "GET",
+            url: "__APP__/User/getSiteList",
+            data: {pId:pid,level:level},
+            dataType:'json',
+            success: function(data){ 
+                var res = eval(data);
+                if(res[0] == 0){ 
+                    $(".topLoading").hide(); 
+                    $(".town").hide();             
+                    return;
+                }else{
+                    var htmlstr = "";
+                    $.each( res[1], function(index,item){ 
+                        htmlstr += '<option value="'+item['jd_id']+'">'+item['name']+'</option>';
+                    })
+                    $('.'+className).append(htmlstr);
+                    $(".town").show(); 
+                    $(".topLoading").hide(); 
+                }        
+            }
+        })
+    };
+    $(".addAddress").click(function(){
+        $(".topLoading").show();    
+        var userName = $.trim($("input[name='userName']").val()); 
+        var province = $("select[name='province'] option:selected").text(); 
+        var provinceId = $("select[name='province'] option:selected").val(); 
+        var city = $("select[name='city'] option:selected").text(); 
+        var cityId = $("select[name='city'] option:selected").val(); 
+        var county = $("select[name='county'] option:selected").text();   
+        var countyId = $("select[name='county'] option:selected").val();   
+        var town = $("select[name='town'] option:selected").text();   
+        var townId = $("select[name='town'] option:selected").val();   
+        var address = $.trim($("input[name='address']").val()); 
+        var zipcode = $("input[name='zipcode']").val(); 
+        var mobile = $.trim($("input[name='mobile']").val()); 
+        var refer = $("input[name='refer']").val();
+        if ($("input[name='defaultAddress']").prop('checked')==true) {
+            var isDefault = 1;
+        }else{
+            isDefault = 0;
+        }
+        if (userName == '') {
+            $(".topLoading").hide();
+            opLayer('open',"请填写收件人姓名！");
+            return;             
+        };
+        
+        if (province == '' || provinceId == 0) {
+            $(".topLoading").hide();
+            opLayer('open',"请选择省！");
+            return;             
+        };
+        if (city == '' || cityId == 0) {
+            $(".topLoading").hide();
+            opLayer('open',"请选择市！");
+            return;             
+        };
+        if (county == '' || countyId == 0) {
+            $(".topLoading").hide();
+            opLayer('open',"请选择县！");
+            return;             
+        };
+        if ($("select[name='town']").is(":hidden") == false) {            
+            if (town == '' || townId == 0) {
+                $(".topLoading").hide();
+                opLayer('open',"请选择镇！");
+                return;             
+            };
+        };
+        if (address == '') {
+            $(".topLoading").hide();
+            opLayer('open',"请填写详细地址！");
+            return;             
+        };
+
+        if (mobile == '') {
+            $(".topLoading").hide();
+            opLayer('open',"请填写收件人手机号码！");
+            return;             
+        }else{     
+            myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/;      
+            if(!myreg.test(mobile)){
+                $(".topLoading").hide();
+                opLayer('open',"请填写正确的手机号码！");
+                return; 
+            }
+        }
+
+        $.ajax({
+            type:"POST",
+            url:"__APP__/User/opAddress",
+            data:{userName:userName,province:province,provinceId:provinceId,city:city,cityId:cityId,county:county,countyId:countyId,town:town,townId:townId,address:address,zipcode:zipcode,mobile:mobile,isDefault:isDefault},
+            dataType:'text',
+            success:function(data){
+                var res = eval(data);
+                if (res[0] == 1 ) {
+                    $(".topLoading").hide();
+                    opLayer('open',res[1],refer);
+                    return;
+                }else{
+                    $(".topLoading").hide();
+                    opLayer('open',"操作失败，请重试！");
+                    return;
+                }
+            },
+            error:function(){
+                $(".topLoading").hide();
+                opLayer('open',"系统繁忙，请重试！");
+                return;
+            }
+        });
+    });
+</script>
+</body>
+</html>
+

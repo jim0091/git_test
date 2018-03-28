@@ -1,0 +1,320 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/banner6.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">132</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >36</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>283</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">如何在忙碌中将生活过得从容有趣些？思来想去，只有一个答案，真正的生活，充满了烟火气，做饭会开心，做家务会开心，看到体重秤上的数字越来越少就更开心了。生活的乐趣体现在居家的每一处细节，体现在每一件生活小物。今天推荐的这几款居家神器，堪称为了轻简生活而生。
+
+
+</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">高颜值的磨刀神器
+
+</span></strong></p>
+                <p>用刀切菜时突然觉得不那么好使了，是切菜工夫不到家？还是刀太重了？或骨头太硬了？NO,NO,NO, 它不过是想要告诉你它钝了，需要磨一磨了。试试这款磨刀石，快速搞定，轻松下厨。
+
+
+
+                <a href="http://www.lishe.cn/item.html?item_id=500" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img32.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">6,000</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=500
+" target="_blank" title="FORUOR 妙厨宝厨房工具磨刀器"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">新鲜营养在身边
+
+
+</span></strong></p>
+                <p>在公司忙碌了一上午，吃上一盒自己或是家人亲手制作的美食该是一件多么幸福的事情，那整盒的新鲜营养与热气腾腾，满载着你对自己的用心和家人的鼓励，温馨的填满辛苦的一天。
+
+
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=501" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img33.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">25,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=501
+" target="_blank" title="乐扣乐扣耐热玻璃保鲜盒 享乐提袋套装
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">纳都不是事
+
+</span></strong></p>
+                <p>抱怨家里的衣柜不够大，地方不够多，总是乱糟糟的？其实，你只差这款多功能的收纳箱就能轻松解决了，堆叠式的组合设计，可随意DIY，实用美观，还省空间，如此美好的收纳神器，您怎么能错过。
+
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=502" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img34.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">25,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=502
+" target="_blank" title="乐扣乐扣百纳箱（雨点）置物箱收纳箱储物箱 （66L)
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">收纳的创意
+
+</span></strong></p>
+                <p>收纳不仅仅是对于家居里杂乱的一切，也可以是对回忆的收藏，无论是一件饰品、一件去年冬天穿过的毛衣，亦或是一张照片，一条印花围巾，送给你身边有故事的 Ta~回忆将让美好更加美好。
+
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=503" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img35.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">19,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=503
+" target="_blank" title="乐扣乐扣百纳箱（雨点）置物箱收纳箱储物箱 （44L)
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">收纳的态度
+
+</span></strong></p>
+                <p>有人喜欢繁复奢华，有人却喜欢简简单单，如果你总是选不好那一款比较合适，那就选这个百搭款没错。多功能归类收纳，省时又轻松，充分利用室内空间，爱整理的你赶紧下手吧，也许你和收纳达人只差了一个收纳箱的距离哦~
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=504" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img36.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">21,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=504
+" target="_blank" title="乐扣乐扣百纳箱（雨点）置物箱收纳箱储物箱 （55L)
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">秤出你的完美曲线
+
+</span></strong></p>
+                <p>是的是的，你没有看错，你是瘦了，真的瘦了。全智能多功能的电子人体秤，数据解读，直观了解，比你更了解你。不是只是你的居家健康顾问，更是你最私密最贴心的小伙伴。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=505" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img37.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">28,600</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=505
+" target="_blank" title="乐扣乐扣•健康酷镜多功能电子人体秤
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _main_content_detail_lst = $('.main-content-div ul li');
+
+    var _count = _main_content_detail_lst.length;
+    console.log('_count -- : ' + _count);
+
+    for (var i =0; i < _count; i++) {
+
+      var _num = i + 1;
+
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

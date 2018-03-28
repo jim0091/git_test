@@ -1,0 +1,83 @@
+﻿@charset "utf-8";
+html{overflow-x: hidden;}
+body{font-size: 14px;background: #fff3e7;}
+.banner_wrap{position: relative;z-index: 1;}
+.index_banner_head{position: relative;}
+.repeat_bg{width: 100%;height: 534px;background: url(../images/jianbian.png) repeat-x;}
+/*时令节日*/
+.floor_tit{text-align: center;}
+.index_con1,.index_con2,.index_con3{position: relative;z-index: 10; width: 1200px;margin-left: auto;margin-right: auto;}
+.index_con1{margin-top: -678px;} 
+.product_list{ margin-top: 40px;overflow: hidden;padding-bottom: 20px;}
+.product_list .product_ul li{float: left;margin:0 10px 10px 0; width: 232px;height: 300px;background: #fff;overflow: hidden;}
+.product_list .product_ul li .product_img{position: relative;box-sizing: border-box;-ms-box-sizing: border-box;display: block;width: 232px;height: 240px;overflow: hidden;}
+.product_list .product_ul li .product_text{position: relative; width: 100%;height: 60px;overflow:hidden;margin-top: 10px;}
+.product_list .product_ul li .product_text .product_name{padding: 0 20px;text-align: center;color: #666666;line-height: 18px;height: 18px;word-break:keep-all;  white-space:nowrap;text-overflow:ellipsis;overflow: hidden;}
+.product_list .product_ul li .product_text .product_price1{padding-top: 8px; line-height: 1; text-align: center;color: #ff2a2a;}
+.product_text .buy_product{position: absolute;left: 0;width: 100%;height: 60px;background: #ffe2c3;bottom: -60px;transition: .3s;-webkit-transition: .3s;-ms-transition: .3s; text-align: center;padding-top: 15px;box-sizing: border-box;-ms-box-sizing: border-box;}
+.product_text .buy_product .buy_bumber{display: inline-block;width: 106px;height: 30px;text-align: center;}
+.product_text .buy_product .buy_bumber .add,.buy_bumber .subtract{width: 34px;height: 28px;line-height: 27px; border:1px solid #dadada;background: #fff;cursor: pointer;color: #aca9a9;font-size: 24px;}
+.product_text .buy_product .buy_bumber .subtract{border-radius: 15px 0 0 15px;line-height: 26px;}
+.product_text .buy_product .buy_bumber .add{border-radius: 0 15px 15px 0;}
+.product_text .buy_product .buy_bumber .subtract:hover,.product_text .buy_product .buy_bumber .add:hover{background: #ff6363;color: #fff;border-color: #ff6363;}
+.product_text .buy_product .buy_bumber .number_inp{width: 34px;height: 28px;color: #333333; border:none;border-top: 1px solid #dadada;border-bottom: 1px solid #dadada;text-align: center;}
+.buy_cart_icon{margin-left: 4px; line-height: 1;cursor: pointer;}
+.buy_cart_icon img{width: 31px;height: 30px;}
+.product_list .product_ul li:hover .buy_product{bottom: 0;}
+.query_m{padding:10px; width: 212px;height: 280px;background: #fff;}
+.query_m .query_m2{display: block; width: 212px;height: 280px;border:1px solid #dadada;text-align: center;}
+.query_m .query_m2 .query_m_text{margin-top: 75px; line-height: 1;color: #666666;}
+.query_m .query_m2 .big_arrow{margin-top: 20px;}
+.big_arrow img{transition: .3s;-webkit-transition: .3s;-ms-transition: .3s; }
+.query_m2:hover .big_arrow img{transform:scale(1.1);-webkit-transform:scale(1.1);-ms-transform:scale(1.1);}
+.index_con2,.index_con3{margin-top: 40px;}
+.left_arrow,.right_arrow{position: absolute;opacity: .5;filter: alpha(opacity=50); cursor: pointer;}
+.left_arrow:hover,.right_arrow:hover{opacity: .7;filter: alpha(opacity=70);}
+.left_arrow{top: 230px;left: -70px;}
+.right_arrow{top: 230px;right: -70px;}
+.pro_mark1,.pro_mark2,.pro_mark3{position: absolute;width: 36px;height: 18px;border-radius: 5px;text-align: center;line-height: 17px;top: 10px;left: 10px;font-weight: 500;}
+.pro_mark1{border:1px solid #ff4138;background: #fff1f1;color: #ff4138;}
+.pro_mark2{border:1px solid #33b3ee;background: #effaff;color: #33b3ee;}
+.pro_mark3{border:1px solid #ff9f38;background: #fff5eb;color: #ff9f38;}
+/*超值套餐*/
+.index_con3 .product_list{margin-top: 20px;}
+.index_con3 .product_list ul{display: none;}
+.index_con3 .product_list3_coudan ul{display: none;}
+.index_con3 .product_list3_coudan ul.block{display: block;}
+.index_con3 .product_list ul.block{display: block;}
+.gift_con{margin-top: 52px; width: 1200px;height: 132px;padding-top: 10px; background: url(../images/tehui_border.png) no-repeat;overflow: hidden;}
+.gift_con > ul > li{float: left;padding-top: 10px; width: 240px;padding-top: 30px; height: 102px;background: url(../images/tehui_bg.png) no-repeat;cursor: pointer;}
+.gift_con > ul > li .sum_item{height: 60px;border-right:1px solid #dec1a1;text-align: center;color: #333333;}
+.gift_con > ul > li .sum_item .sum_con{padding-top: 1px;font-size: 40px;line-height: 30px;height: 30px;}
+.gift_con > ul > li .sum_item .sum_con em{position: relative;top: -16px;right: 2px; font-size: 18px;}
+.gift_con > ul > li .sum_item .gift_text{padding-top: 10px; line-height: 1;color: #666666;}
+.gift_con > ul > li.active{background: url(../images/tehui_active.png) no-repeat;}
+.gift_con > ul > li.active .sum_item .sum_con{color: #fff !important;}
+.gift_con > ul > li.active .sum_item .gift_text{color: #fff !important;}
+.gift_con > ul > li:last-child .sum_item{border:none;}
+.index_con3 .left_arrow,.index_con3 .right_arrow{top: 150px;}
+.product_list2 .product_ul li{height: 300px;}
+.product_list2 .product_ul li .product_img{height: 232px;padding-top: 0 !important;}
+.gift_icon{position: absolute;top: -1px;left: 0;width: 50px;height: 52px;background: url(../images/icon/gift_icon.png) no-repeat;}
+.page_footer{background: #fff;}
+.page_footer .mauto{padding-top: 60px; width: 1200px;height: 140px;border-bottom:1px solid #cccccc; background: #fff;}
+/*楼层*/
+.floor_fx{position: fixed;z-index: 999; top: 40%;right: 240px;width: 110px;height: 265px;text-align: center;color: #666666;}
+.floor_fx span{display: block;width: 110px;height: 40px;line-height: 40px;cursor: pointer; background:#fff url(../images/fl_bg1.png) center center no-repeat;margin-top: 1px;}
+.floor_fx span:hover,.floor_fx span.active{background:#ff6363 url(../images/fl_bg2.png) center center no-repeat;color: #fff;}
+.gift_con2 > ul > li{width: 300px;height: 120px;background: url(../images/tehui_bg2.png) no-repeat;}
+.gift_con2 > ul > li.active{background: url(../images/tehui_active2.png) no-repeat;}
+#boom,#superList{position: relative;}
+
+/*底部*/
+.footer_text{padding-top: 25px; background: #fff;height: 75px;line-height: 75px; text-align: center;font-size: 12px;color: #999999;line-height: 22px;}
+.product_ul{padding-top: 5px;}
+.product_ul li{transition: 0.3s;z-index: 100;}
+.product_ul li:hover{transform: translateY(-5px);box-shadow: 0px 15px 30px rgba(0,0,0,0.1);z-index: 10}
+.product_img a b{font-size: 12px;}
+
+
+
+
+
+

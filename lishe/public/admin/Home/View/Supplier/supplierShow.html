@@ -1,0 +1,444 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>修改供应商信息</title>
+</head>
+<body>
+<form class="form form-horizontal" id="form-member-edit">
+<div id="tab_demo" class="HuiTab">
+  <div class="tabBar cl">
+  	<span>基本信息</span>
+  	<span>公司信息</span>
+  	<span>合作方式</span>
+  	<span>资质资料</span>
+  	<span>发货人设置</span>
+  </div>
+  <!-- 基本信息 start-->
+  <div class="tabCon">
+  	<div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>用户名：</label>
+      <div class="formControls col-3">{$supplier['username']}</div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>性别：</label>
+      <div class="formControls col-3 skin-minimal">
+      	<eq name="supplier['sex']" value="1"><label for="sex-1">男</label></eq>
+      	<eq name="supplier['sex']" value="0"><label for="sex-2">女</label></eq>
+        <eq name="supplier['sex']" value="-1"><label for="sex-3">未知</label></eq>
+        </div>
+        <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+       <div class="col-1"></div>
+       <label class="form-label col-2"><span class="c-red">*</span>联系人：</label>
+       <div class="formControls col-3">{$supplier['contact_name']}</div>
+       <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+    	<div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>联系人电话：</label>
+      <div class="formControls col-3">{$supplier['contact_tel']}</div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>公司名称：</label>
+      <div class="formControls col-4">{$supplier['company_name']}</div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">备注：</label>
+      <div class="formControls col-4">
+      	<empty name="supplier['remarks']">
+      		--
+		<else />
+			 <textarea name="remarks" cols="" rows="" class="textarea" dragonfly="true" style="border: none;" readonly="readonly"  onKeyUp="textarealength(this,100)">{$supplier['remarks']}</textarea> 
+		</empty>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+  </div>
+  <!-- 基本信息 end-->
+   <!-- 公司信息 start-->
+  <div class="tabCon">
+  	 <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司法人：</label>
+      <div class="formControls col-3">
+      	<empty name="supplier['artificial_person']">
+      		--
+      	<else />
+      		{$supplier['artificial_person']}
+      	</empty>
+      </div>
+      <div class="col-6"> </div>
+     </div>
+     <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">公司联系方式：</label>
+      <div class="formControls col-3">
+      	<empty name="supplier['company_contact']">
+      		--
+      	<else />
+      		{$supplier['company_contact']}
+      	</empty>
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">公司传真：</label>
+      <div class="formControls col-3">
+      <empty name="supplier['company_fax']">
+      		--
+      <else />
+      		{$supplier['company_fax']}
+      </empty>
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司类别：</label>
+      <div class="formControls col-3">
+     	<eq name="supplier['company_type']" value="0">--</eq>
+      	<eq name="supplier['company_type']" value="1"> 国营</eq>
+      	<eq name="supplier['company_type']" value="2"> 私营</eq>
+		<eq name="supplier['company_type']" value="3"> 股份</eq>
+		<eq name="supplier['company_type']" value="4"> 合伙</eq>
+		<eq name="supplier['company_type']" value="5"> 外商独资</eq>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司性质：</label>
+      <div class="formControls col-3">
+			<eq name="supplier['company_nature']" value="0">--</eq>
+			<eq name="supplier['company_nature']" value="1"> 工厂</eq>
+			<eq name="supplier['company_nature']" value="2"> 总代理</eq>
+			<eq name="supplier['company_nature']" value="3"> 分销商</eq>
+			<eq name="supplier['company_nature']" value="4"> 贸易</eq>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">经营范围：</label>
+      <div class="formControls col-3">
+      <empty name="supplier['type']">
+      		--
+      <else />
+      		{$supplier['type']}
+      </empty>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">公司地址：</label>
+      <div class="formControls col-4">
+      <empty name="supplier['company_address']">
+      		--
+      <else />
+      		{$supplier['company_address']}
+      </empty>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>		
+      <label class="form-label col-2">公司网址：</label>
+      <div class="formControls col-4">
+      <empty name="supplier['company_site']">
+      		--
+      <else />
+      		{$supplier['company_site']}
+      </empty>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+  </div>
+  <!-- 公司信息 end-->
+  <!-- 合作方式start-->
+  <div class="tabCon">
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">合作方式：</label>
+      <div class="formControls col-4 skin-minimal">
+      	<if condition="$supplier['cooperation_method'] eq 1">自营
+		<elseif condition="$supplier['cooperation_method'] eq 2"/>店铺入驻
+		<else />--
+		</if>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">送货周期：</label>
+      <div class="formControls col-2">
+      <empty name="supplier['cycle']">
+      		--
+      <else />
+      		{$supplier['cycle']}
+      </empty>
+      </div>
+      <div class="col-7"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">入驻金：</label>
+      <div class="formControls col-3">
+      	￥{$supplier['join_amount'] | default=0}
+      	<eq name="supplier.join_amount_type" value="1">现金</eq>
+      	<eq name="supplier.join_amount_type" value="2">货款抵扣</eq>
+       </div>
+      <div class="col-6"></div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">保证金：</label>
+      <div class="formControls col-3">
+      	￥{$supplier['deposit_amount'] | default=0}
+      	<eq name="supplier.deposit_amount_type" value="1">现金</eq>
+      	<eq name="supplier.deposit_amount_type" value="2">货款抵扣</eq>
+      </div>
+      <div class="col-6"></div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">交货方式：</label>
+      <div class="formControls col-8 skin-minimal">
+      	<if condition="$supplier['delivery_mode'] eq 1">免费配送
+		<elseif condition="$supplier['delivery_mode'] eq 2"/>免费代发
+		<elseif condition="$supplier['delivery_mode'] eq 3"/>快递费月结
+		<elseif condition="$supplier['delivery_mode'] eq -1"/>其他
+		<else />--
+		</if>
+      </div>
+      <div class="col-1"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">结算方式：</label>
+      <div class="formControls col-8 skin-minimal">
+      	<if condition="$supplier['settle_type'] eq 1">月结
+		<elseif condition="$supplier['settle_type'] eq 2"/>货到付款
+		<elseif condition="$supplier['settle_type'] eq 3"/>预付款
+		<elseif condition="$supplier['settle_type'] eq -1"/>其他
+		<else />--
+		</if>
+      </div>
+      <div class="col-1"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">结算条件：</label>
+      <div class="formControls col-8 skin-minimal">
+      	<if condition="$supplier['settle_mode'] eq 1">8号前对账
+		<elseif condition="$supplier['settle_mode'] eq 2"/>对账后见票付款
+		<elseif condition="$supplier['settle_mode'] eq 3"/>15号统一付款
+		<elseif condition="$supplier['settle_mode'] eq -1"/>其他
+		<else />--
+		</if>
+      </div>
+      <div class="col-1"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">发票类型：</label>
+      <div class="formControls col-3">
+      <empty name="supplier['invoice_type']">
+      		--
+      <else />
+      		{$supplier['invoice_type']}
+      </empty>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">结算银行：</label>
+      <div class="formControls col-3">
+      <empty name="supplier['bankcard_name']">
+      		--
+      <else />
+      		{$supplier['bankcard_name']}
+      </empty>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">银行卡号：</label>
+      <div class="formControls col-3">
+      <empty name="supplier['bankcard_num']">
+      		--
+      <else />
+      		{$supplier['bankcard_num']}
+      </empty>
+      </div>
+      <div class="col-6"> </div>
+    </div>
+  </div>
+  <!-- 合作方式end-->
+  <!-- 资料上传 start-->
+  <div class="tabCon">
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">营业执照：</label>
+      <div class="formControls col-5">
+      <empty name="supplier['license_file']">
+      		--
+      <else />
+      		已上传 <a href="{:U('Supplier/download',array('supplier_id' =>$supplier['supplier_id'],'ftype'=>1))}" target="_blank">下载</a>
+      </empty>
+      </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>	
+      <label class="form-label col-2">税务登记：</label>
+      <div class="formControls col-5">
+      <empty name="supplier['tax_file']">
+      		--
+      <else />
+      		已上传 <a href="{:U('Supplier/download',array('supplier_id' =>$supplier['supplier_id'],'ftype'=>2))}" target="_blank">下载</a>
+      </empty>
+      </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">开户许可证：</label>
+      <div class="formControls col-5">
+      <empty name="supplier['account_file']">
+      		--
+      <else />
+      		已上传 <a href="{:U('Supplier/download',array('supplier_id' =>$supplier['supplier_id'],'ftype'=>3))}" target="_blank">下载</a>
+      </empty>
+      </div>
+      <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">合同附件：</label>
+      <div class="formControls col-5">
+      <empty name="supplier['contract_file_id']">
+      		--
+      <else />
+      		已上传 <a href="{:U('Supplier/download',array('contract_id' =>$supplier['contract_file_id']))}" target="_blank">下载</a>
+      </empty>
+      </div>
+      <div class="col-4"> </div>
+    </div>
+  </div>
+  <!-- 资料上传 end-->
+  <!--设置发货人-->
+  <div class="tabCon">
+    <div class="row cl">
+    	<div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>跟单员账户：</label>
+      <div class="formControls col-3">
+					{$sender['lishe_account']}
+      </div>
+      <div class="col-6"></div>
+    </div>
+    <div class="row cl">
+       <div class="col-1"></div>
+       <label class="form-label col-2"><span class="c-red">*</span>礼舍跟单员：</label>
+       <div class="formControls col-3">
+					{$sender['lishe_merchandiser']}
+       </div>
+       <div class="col-6"></div>
+    </div>  	
+  	
+
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>状态：</label>
+      <div class="formControls col-4 skin-minimal">
+      	<present name="sender['sender_status']">
+	      	{$sender['sender_status']==1?"启用":禁用}
+      	</present>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+  	<div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>发货联系人：</label>
+      <div class="formControls col-3">
+      	{$sender['sender']}
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2">手机号码：</label>
+      <div class="formControls col-3">
+      	{$sender['sender_phone']}
+      </div>
+      <div class="col-6"></div>
+    </div>      
+  
+</div>
+</form>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+		var $tab_menu=$(tabBar);
+		  // 初始化操作
+		  $tab_menu.removeClass(class_name);
+		  $(tabBar).eq(i).addClass(class_name);
+		  $(tabCon).hide();
+		  $(tabCon).eq(i).show();
+		  
+		  $tab_menu.bind(tabEvent,function(){
+		  	$tab_menu.removeClass(class_name);
+		      $(this).addClass(class_name);
+		      var index=$tab_menu.index(this);
+		      $(tabCon).hide();
+		      $(tabCon).eq(index).show();
+		  });
+		}
+	$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","0");
+});
+</script>
+</body>
+</html>

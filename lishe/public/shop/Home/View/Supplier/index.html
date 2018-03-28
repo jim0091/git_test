@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商家入驻系统</title>
+	<link rel="stylesheet" href="__VIEW__Public/css/supplier_index.css" />
+	<script type="text/javascript" src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+	<script type="text/javascript" src="__VIEW__Public/layer/layer.js"></script>
+</head>
+<style type="text/css">
+	/*提示加载弹出框*/
+.topLoading{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:1000;opacity:0.3; filter: alpha(opacity=30); background-color:#F6F4F4; display:none;  margin:auto auto;}
+.topLoading img{position:absolute;left:50%;top:49%}
+
+.divPrompt{height:100%; width:100%; position:fixed; _position:absolute; top:0; z-index:1000;opacity:0; filter: alpha(opacity=0); background-color:#F6F4F4; display:none;  margin:auto auto;}
+.divPromptContent{position:fixed; _position:absolute;left:45%;top:40%;color:#000000;z-index:1001; display:none;border:1px solid #c7241d;padding:10px;background-color:#f6f4f4;}
+
+</style>
+<body>
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+
+	<div class="header_wrap">
+		<div id="header" class="mauto">
+			<div class="left_link">
+				<div class="logo1"><img src="__VIEW__Public/images/supplier/icon/logo1.png" /></div>
+				<ul class="nav_link">
+					<li><a href="/" target="_blank">首页</a></li>
+					<li><a href="/shop.php" target="_blank">心意商城</a></li>
+					<li><a href="/site/help.html" target="_blank">礼舍帮帮</a></li>
+					<li><a href="http://vip.lishe.cn/index.php/Cactive/customerIndex.html" target="_blank">积分卡激活</a></li>
+				</ul>
+			</div>
+			<div class="right_btn">
+				<a href="http://sp.lishe.cn/Public/login.html">登录</a><a href="http://sp.lishe.cn/Home/Index/apply.html">注册</a>
+			</div>
+		</div>
+	</div>
+	<!--banner-->
+	<div class="banner1_wrap">
+		<div class="h2">加入礼舍&nbsp;订单翻倍</div>
+		<div class="banner1_con mauto">
+			<ul>
+				<li>
+					<span class="bl_sp">20<em>万</em></span>
+					<p class="bl_p">海量商品</p>
+				</li>
+				<li class="bli_border">
+					<span class="bl_sp">4000<em>万</em></span>
+					<p class="bl_p">A轮融资</p>
+				</li>
+				<li>		
+					<span class="bl_sp">86<em>类</em></span>
+					<p class="bl_p">品类齐全</p>
+				</li>
+			</ul>
+		</div>
+		<div style="clear: both;zoom:1;"></div>
+		<!--申请入驻-->
+		<a href="http://sp.lishe.cn/Home/Index/apply.html" class="apply mauto">申请入驻</a>
+	</div>
+	<!--我们的优势-->
+	<div class="strengths">
+		<h2 class="strengths_tit">我们的优势</h2>
+		<div class="strengths_con mauto">
+			<ul>
+				<li>
+					<div class="strz_icon"><img src="__VIEW__Public/images/supplier/icon/10j.png" /></div>
+					<p style="line-height: 24px;">10+</p>
+					<div class="str_btn1 mauto">国企客户</div>
+				</li>
+				<li>
+					<div class="strz_icon"><img src="__VIEW__Public/images/supplier/icon/30j.png" /></div>
+					<p style="line-height: 24px;">30+</p>
+					<div class="str_btn1 str_btn2 mauto">上市公司客户</div>
+				</li>
+				<li>
+					<div class="strz_icon"><img src="__VIEW__Public/images/supplier/icon/20wj.png" /></div>
+					<p>20<em class="em">万</em>+</p>
+					<div class="str_btn1 mauto">SKU</div>
+				</li>
+				<li>
+					<div class="strz_icon"><img src="__VIEW__Public/images/supplier/icon/2yj.png" /></div>
+					<p>2<em class="em2">亿</em>+</p>
+					<div class="str_btn1 mauto">年交易额</div>
+				</li>
+				<li class="mr0">
+					<div class="strz_icon strz_icon2"><img src="__VIEW__Public/images/supplier/icon/wanggang.png" /></div>
+					<p class="str_p">投资人</p>
+					<div class="str_btn1 str_btn3 mauto">王刚</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--合作资质-->
+	<div class="aptitude">
+		<h2 class="apt_tit">合作企业资质</h2>
+		<div class="apt_con mauto">
+			<ul>
+				<li>
+					<img src="__VIEW__Public/images/supplier/apt_img1.png" class="apt_img" />
+					<p class="apt_p">如果你是国内外著名品牌的生产制造商</p>
+				</li>
+				<li>
+					<img src="__VIEW__Public/images/supplier/apt_img2.png" class="apt_img" />
+					<p class="apt_p">有ISO管理体系、CE等国际认证</p>
+				</li>
+				<li class="mr0">
+					<img src="__VIEW__Public/images/supplier/apt_img3.png" class="apt_img" />
+					<p class="apt_p">能提供优质专业的OEM、ODM等服务</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--招商类目-->
+	<div class="banner2_group">
+		<h2 class="b2_tit1">招商类目</h2>
+		<div class="b2_group1 mauto">
+			<ul>
+				<li><img src="__VIEW__Public/images/supplier/banner2_img1.png" /></li>
+				<li><img src="__VIEW__Public/images/supplier/banner2_img2.png" /></li>
+			</ul>
+		</div>
+		<div class="b2_btn"><span class="active"></span><span></span></div>
+		<!--入驻商家-->
+		<h2 class="b2_tit1" style="margin-top: 90px;">入驻商家</h2>
+		<div class="b2_group2 mauto">
+			<div class="b2_group1_con mauto">
+				<ul>
+					<li>
+						<div class="gr_img"><img src="__VIEW__Public/images/supplier/icon/zhongliang.png" /></div>
+						<p class="gr_text">中粮集团是中国最大的粮油食品进出口公司和实力.雄厚的食品生产商</p>
+						<a class="link_btn mauto">点击进入</a>
+					</li>
+					<li>
+						<div class="gr_img"><img src="__VIEW__Public/images/supplier/icon/jiuyang.png" /></div>
+						<p class="gr_text">九阳(Joyoung)致力于健康饮食电器领域拓展,提供智能便捷的厨房生活解决方案</p>
+						<a class="link_btn mauto">点击进入</a>
+					</li>
+					<li>
+						<div class="gr_img"><img src="__VIEW__Public/images/supplier/icon/fuanna.png" /></div>
+						<p class="gr_text">一家集先进的研发设计中心、现代化的生产基地、健全的营销服务体系和高效的物流配送体系于一体的具有强大综合实力的知名家纺企业</p>
+						<a class="link_btn mauto">点击进入</a>
+					</li>
+					<li>
+						<div class="gr_img"><img src="__VIEW__Public/images/supplier/icon/aimashi.png" /></div>
+						<p class="gr_text">爱华仕 依靠良好的品质，新颖的款式，优秀的服务使得爱华仕“OIWAS”迅速在国内拥有超过 3000多家终端门店</p>
+						<a class="link_btn mauto">点击进入</a>
+					</li>
+		
+				</ul>
+			</div>
+			<div class="prev"></div>
+			<div class="next"></div>
+		</div>
+	</div>
+	<!--极速入驻-->
+	<div class="speed_ad">
+		<h2 class="b2_tit1">极速入驻</h2>
+		<div class="step_con mauto">
+			<img src="__VIEW__Public/images/supplier/step.png" />
+		</div>
+		<ul class="step_text mauto">
+			<li>入驻须知</li>
+			<li>联系人信息</li>
+			<li>公司信息</li>
+			<li class="mr0">等待审核</li>
+		</ul>
+	</div>
+	<!--邮件申请-->
+	<div class="email_ap">
+		<h2 class="b2_tit1">邮件申请:</h2>
+		<div class="email_con mauto">
+			<div class="email_inp fl">
+				<input type="text" value="邮件标题:" class="email_tit" name="title">
+				<textarea value="" class="email_content" name="content">邮件内容:</textarea>
+				<div class="email_btn">提交</div>
+			</div>
+			<div class="email_text fr">
+				<div class="email_text_con1">
+					<p>供应商合作--代理品牌--公司名称--品类，</p>
+					<p>例如：“供应商合作-三星-xx有限公司—手机” </p>
+				</div>
+				<div class="email_text_con2">
+					<p>① 公司名称，如xx有限公司</p>
+					<p>② 主营商品，如休闲裤、牛仔裤</p>
+					<p>③ 代理品牌，如蔻驰、李维斯</p>
+					<p>④ 附件：营业执照扫描件 </p>
+					<p>⑤ 公司地址</p>
+					<p>⑥ 公司联系人、岗位、联系电话</p>
+					<div class="email_lishe">请联系我们！  邮箱：zhaoshang@lishe.cn </div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<div style="clear: both;"></div>
+	<!--底部-->
+    <include file="Public/footer"/>
+	
+	<script type="text/javascript">
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+	//招商类目
+	var timer = null;
+	var imgWidth = $('.b2_group1 ul li img').width();
+	var number = 0;
+	var number2 = 0;
+	changeImg();
+	function changeImg(){
+		
+		$('.b2_group1 ul').css('width',imgWidth * $('.b2_group1 ul li').length);
+		
+		timer = setInterval(function(){
+			number++;
+			toImgLeft();
+		},4000);
+	}
+
+	function toImgLeft(){
+		//number2++;
+			
+		if(number > $('.b2_group1 ul li').length - 1){
+			number=0;
+		}
+
+		$('.b2_group1 ul').animate({
+			'left':-number * imgWidth
+		},500);
+
+		$('.b2_btn span').eq(number).addClass('active').siblings().removeClass('active');
+	}
+	$('.b2_btn span').click(function(){
+		number = $(this).index();
+		toImgLeft();
+	});
+
+	//入驻商家
+	var groupNum = 0;
+	$('.b2_group1_con ul').css('width',$('.b2_group1_con li').length * 261);
+	$('.next').on('click',function(){
+		groupNum++;
+
+		if(groupNum > $('.b2_group1_con li').length-4){
+			groupNum = $('.b2_group1_con li').length-4;
+			return false;
+		}
+
+		$('.b2_group1_con ul').animate({
+			'left': -groupNum * 261 + 'px'
+		});
+
+	});
+	$('.prev').on('click',function(){
+		groupNum--;
+
+		if(groupNum < 0){
+			groupNum = 0;
+			return false;
+		}
+
+		$('.b2_group1_con ul').animate({
+			'left': -groupNum * 261 + 'px'
+		});
+
+	});
+
+	//邮件申请
+	$('.email_tit').focus(function(){
+		if($(this).val() == '邮件标题:'){
+			$(this).val('');
+		}
+	});
+	$('.email_tit').blur(function(){
+		if($(this).val() == ''){
+			$(this).val('邮件标题:');
+		}
+	});
+	$('.email_content').focus(function(){
+		if($(this).val() == '邮件内容:'){
+			$(this).val('');
+		}
+	});
+	$('.email_content').blur(function(){
+		if($(this).val() == ''){
+			$(this).val('邮件内容:');
+		}
+	});
+	$(".email_btn").bind("click",function(){
+        $(".topLoading").show();
+		var title = $(".email_tit").val();
+		var content = $(".email_content").val();
+		if (title == "" || title == '邮件标题:') {			
+            divPrompt('请填写标题！');
+            $(".topLoading").hide();
+            return false;      
+		};
+		if (content == "" || content == '邮件内容:') {			
+            divPrompt('请填写内容！');
+            $(".topLoading").hide();
+            return false;      
+		};
+		$.ajax({
+	        type:"POST",
+	        url:"__APP__/Supplier/addMessage",
+	        data:{title:title,content:content},
+	        dataType:'text',
+	        success:function(result){
+	            var data=eval(result);
+	            if (data[0] == 0) {	                		
+		            divPrompt(data[1]);
+		            $(".topLoading").hide();
+		            return false;   
+	            };
+	            if (data[0] == 1) {
+	                divPrompt(data[1]);
+		            $(".email_tit").val('');
+		            $(".email_content").val('');
+		            $(".topLoading").hide();
+	                return; 
+	            };
+	        }
+	    });
+	});
+	</script>
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/01/banner1.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">168</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >596</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>2590</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        console.log(_share);
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">用智慧堆砌的生活远比用金钱砸出的生活来的更有意义，生活的态度决定一切，别让乱糟糟的生活环境影响你的心情，更不要用任何借口掩饰自己的懒惰。居家必备小帮手，打造优质的生活，给你爱上回家的理由！
+</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">创造属于你的一片净土</span></strong></p>
+                <p>净化空气的同时还能消除有害菌，清新的空气让你回家仿佛置身一片绿林中，感受那份松弛、美好！立马忘却所有疲惫，洗涤你的心灵。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=1491
+" target="_blank">
+                  <img style="width:100%; " src="./images/topic/01/1.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">146,902</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=1491
+" target="_blank" title="夏普（SHARP） 加湿型空气净化器 KC-WE20-W (备案型号：KJFWE190A/W)"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">人群也掩盖不住你的光芒
+</span></strong></p>
+                <p>每天都能给人感觉焕然一新、眼前一亮？秘密在于多档调节挂烫机，针对不同材质的衣物都可以使用，保护衣物，更塑造耀眼的你！</p>
+                <a href="http://www.lishe.cn/item.html?item_id=2536
+" target="_blank">
+                  <img style="width:100%; " src="./images/topic/01/2.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                     <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">25,382</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>               	
+                    <a href="http://www.lishe.cn/item.html?item_id=2536
+" target="_blank" title="美的（Midea）挂烫机 YGD15C4遥控旋钮调节单杆挂烫机（薰衣草色）"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">打赤脚就是这酸爽</span></strong></p>
+					<p>完胜传统扫把怎么扫也扫不干净的尴尬！旋转轴接头，灵活的打扫每一个小角落，并伴有高温蒸汽清洁，为有点小洁癖的你创造无尘的居家环境，任意打赤脚也不用担心。</p>
+					<a href="http://www.lishe.cn/item.html?item_id=1461" target="_blank">
+                  <img style="width:100%; " src="./images/topic/01/3.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">68,502</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>           
+                    <a href="http://www.lishe.cn/item.html?item_id=1461" target="_blank" title="小田（Xiotin）蒸汽拖把 7628CH 智能直立待机功能 双档蒸汽 高温去污杀菌"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">好体质，喝出来
+</span></strong></p>
+                <p>一颗好‘芯’造就身体所需的水，让你随时随地都可以喝上健康纯净的水。别忘了，漂亮的人都是水做的，记得每天八杯水哦~
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=3462
+" target="_blank">
+                  <img style="width:100%; " src="./images/topic/01/4.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">23,422</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>                	
+                    <a href="http://www.lishe.cn/item.html?item_id=3462
+" target="_blank" title="飞利浦（PHILIPS） WP2801 净水壶"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">天然无添加的保湿品
+</span></strong></p>
+                <p> 在夏季你有冷气陪伴，冷气长时间的侵袭皮肤和眼睛，反而更干呢，别忘了还有加湿器哦，让我们回归最原始的保养，让肌肤肆意喝饱水，才是最天然的保养品。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=921
+" target="_blank">
+                  <img style="width:100%; " src="./images/topic/01/5.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                     <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">19,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>               	
+                    <a href="http://www.lishe.cn/item.html?item_id=921
+" target="_blank" title="康佳爱琴海（升级版）加湿器ME-729Y "><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">不要蚊子陪我睡！
+</span></strong></p>
+                <p>灭蚊小卫士在无声无息中就能帮你击退家里各种蚊子，再也不要听见讨厌的嗡嗡声了，安心看电视，安心睡觉，给自己和家人一个舒心的生活环境。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=8078" target="_blank">
+                  <img style="width:100%; " src="./images/topic/01/6.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">7,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                    </div>                	
+                    <a href="http://www.lishe.cn/item.html?item_id=8078" target="_blank" title="edei宜阁家用电击LED灭蚊灯孕妇婴儿居家捕蚊器HD-MWD01"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _main_content_detail_lst = $('.main-content-div ul li');
+
+    var _count = _main_content_detail_lst.length;
+    console.log('_count -- : ' + _count);
+
+    for (var i =0; i < _count; i++) {
+
+      var _num = i + 1;
+
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

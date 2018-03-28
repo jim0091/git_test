@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>采购商品列表</title>
+</head>
+<body>
+<div class="pd-20">
+	<form action="{:U('Purchase/addPlanGoods',array('plan_id'=>$planId))}" method="get">
+    <div class="text-l">
+    	供应商：<input type="text" class="input-text" style="width:160px" placeholder="供应商名称"  name="cname" value="{$cname}">
+    	商品名称：<input type="text" class="input-text" style="width:160px" placeholder="商品名称"  name="gname" value="{$gname}">
+  		条码：<input type="text" class="input-text" style="width:160px" placeholder="商品条码、税率条码"  name="barcode" value="{$barcode}">
+  		商品类别：
+        <span class="select-box" style="width: 160px;">
+			<select class="select" id="item_category" name="category_id">
+				<option value="-99">全部</option>
+				<volist name="sysCatList" id="sysCat">
+					<eq name="sysCat.cat_id" value="$categoryId">
+						<option value="{$sysCat['cat_id']}" selected="selected">{$sysCat['cat_name']}</option>
+					<else/>
+						<option value="{$sysCat['cat_id']}">{$sysCat['cat_name']}</option>
+					</eq>
+				</volist>
+			</select>
+		</span>
+		商品品牌：
+        <span class="select-box" style="width: 160px;">
+			<select id="item_brand" class="select" name="brand_id">
+				<option value="-99">全部</option>
+				<volist name="sysBrandList" id="sysBrand">
+					<eq name="key" value="$brandId">
+						<option value="{$key}" selected="selected">{$sysBrand}</option>
+					<else/>
+						<option value="{$key}">{$sysBrand}</option>
+					</eq>
+				</volist>
+			</select>
+		</span>
+		<!-- 
+		商品状态：
+        <span class="select-box" style="width: 160px;">
+			<select id="item_status" class="select" name="status">
+				<option value="-99" <eq name="status" value="-99">selected="selected"</eq>>全部</option>
+				<option value="-2"  <eq name="status" value="-2">selected="selected"</eq>>报价失败</option>
+				<option value="-1"  <eq name="status" value="-1">selected="selected"</eq>>审核失败</option>
+				<option value="0"   <eq name="status" value="0">selected="selected"</eq>>审核中</option>
+				<option value="1"   <eq name="status" value="1">selected="selected"</eq>>审核通过未报价</option>
+				<option value="2"   <eq name="status" value="2">selected="selected"</eq>>已报价</option>
+			</select>
+		</span>
+    	 -->
+        <button type="submit" id="searchGoods" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+    </div>
+    </form>
+    <form action="{:U('Purchase/submitOrder')}" method="post" id="orderForm">
+    <input type="hidden" name="plan_id" id="plan_id" value="{$planId}">
+    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="r">共有数据：<strong>{$count|default="0"}</strong> 条</span> </div>
+    <table class="table table-border table-bordered table-bg table-hover" style="margin-top: 25px;">
+        <thead>
+        <tr><th scope="col" colspan="11">商品列表</th></tr>
+        <tr class="text-c">
+        	<th width="5%">编号</th>
+            <th width="15%">商品名称</th>
+            <th width="14%">供应商/品牌/商品类别 </th>
+            <th width="66%" style="padding-top: 0;padding-bottom: 0;">
+            	<table rules="none" cellspacing="0" align="center" >
+            		<thead>
+            			<tr>
+            				<td width="30%" class="text-l">
+            					<input type="checkbox" id="checkAll">商品规格
+            				</td>
+				            <td width="15%">商品编码/税率条码</td>
+				            <td width="23%">商城价/结算价/建议零售价(元)</td>
+				            <td width="8%">利润率</td>
+				            <td width="8%">库存</td>
+				            <td width="8%">销量</td>
+				            <td width="8%">货期</td>
+            			</tr>
+            		</thead>
+            	</table>
+			</th>
+        </tr>
+        </thead>
+        <tbody>
+            <volist name="itemList" id="item">
+            	<notempty name="skuList[$item['sitem_id']]">
+                <tr class="text-c">
+                	<td width="5%">{$item['sitem_id']}</td>
+                    <td width="15%" class="text-l">
+                    	{$item['title']}
+                    </td>
+                    <td width="14%" class="text-l">
+                    	<i class="Hui-iconfont">&#xe643;</i> {$supplierList[$item['supplier_id']]['company_name'] | default="--"}</span><br/>
+                    	<i class="Hui-iconfont">&#xe681;</i> {$brandList[$item['brand_id']] | default="--"}</span><br/>
+                    	<i class="Hui-iconfont">&#xe64b;</i> {$catList[$item['cat_id']] | default="--"}</span>
+                    </td>
+                    <td width="66%">
+                    	<table rules="none" cellspacing="0" align="center">
+						    <tbody>
+					    		<volist name="skuList[$item['sitem_id']]" id="sku">
+						    	<tr>
+						        	<td width="30%" class="text-l">
+						        		<input type="checkbox" value="{$sku['ssku_id']}" name="orders[]">{$sku['spec_info'] | default='--'}
+						        		<!-- <if condition="$sku['status'] eq 2">
+						        			<input type="checkbox" value="{$sku['ssku_id']}" name="orders[]">{$sku['spec_info'] | default='--'}
+										<elseif condition="$sku['status'] eq 1"/>
+											<input type="checkbox" disabled="disabled">{$sku['spec_info'] | default='--'}
+											</span><span class="label label-danger radius">未报价</span>
+										<else />
+											<input type="checkbox" >{$sku['spec_info'] | default='--'}
+											</span><span class="label label-default radius">未知状态</span>
+										</if> -->
+						        	</td>
+						        	<td width="15%">{$sku['bn']|urldecode} <br/> {$sku['barcode'] | default="--"}</td>
+						        	<td width="23%">{$sku['price'] | number_format=###,2} / {$sku['cost_price'] | number_format=###,2} / {$sku['mkt_price'] | number_format=###,2}</td>
+						        	<td width="8%">
+						        		<?php 
+						        			$skucount = (($sku['price'] - $sku['cost_price']) / $sku['price'])*100;
+												echo number_format($skucount,1).'%'; 
+										?>
+						        	</td>
+						        	<td width="8%">
+						        		{$storeList[$sku['item_id']][$sku['sku_id']] | default=0}
+						        	</td>
+						        	<td width="8%">
+						        		{$soldList[$sku['sku_id']] | default=0}
+						        	</td>
+						        	<td width="8%">
+						        		{$soldList[$sku['delivery_period']] | default='--'}
+						        	</td>
+						    	</tr>
+						    </volist>
+						    </tbody>
+						</table>
+                    </td>
+                </tr>
+                </notempty>
+            </volist>
+        </tbody>
+    </table>
+    </form>
+    {$page}
+</div>
+<div class="text-c" style="padding-top: 25px; padding-bottom: 30px;">
+	<button id="selectOrder" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i>添加商品</button>
+	<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+</div>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+ 
+<script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+<!--
+<script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+ -->
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//分类-品牌联动
+	$('#item_category').change(function(){
+		var categoryId = $("#item_category").val(); 
+		$.get("{:U('Purchase/getBrandList')}", {category_id:categoryId}, function(result,status){
+			//alert(result.msg);
+			var html = '<option value="-99" selected="selected">全部</option>';
+			$.each(result.data, function(id, name){
+				html += '<option value="'+id+'">'+name+'</option>';
+			});
+			$('#item_brand').html(html);
+		});
+	})
+	//全选
+	$("#checkAll").click(function(){ 
+		$("input[name='orders[]']").each(function(){ 
+			if($(this).prop("checked") == true) { 
+				$(this).prop("checked",false);
+			}else{ 
+				$(this).prop("checked",true); 
+			} 
+		}) 
+	})
+
+	//提交订单
+	$("#selectOrder").click(function(){
+		var planId = $("#plan_id").val();
+		var orderIdStr = "";
+		$("input[name='orders[]']").each(function(){ 
+			if($(this).is(':checked')) {
+				orderIdStr += $(this).val()+"|";
+			}
+		})
+		
+		if(orderIdStr == ""){
+			return;
+		}
+		
+		var index = layer.open({
+		  type: 2,
+		  title: '选择数量',
+		  shadeClose: true,
+		  shade: 0.8,
+		  area: ['960px', '600px'],
+		  content: '{:U("Purchase/itemNumIframe")}?plan_id='+planId+'&orderstr='+orderIdStr //iframe的url
+		});
+		layer.full(index);
+	});
+}) 
+	
+</script>
+</body>
+</html>

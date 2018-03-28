@@ -1,0 +1,28 @@
+<div class="header">
+	<ul>
+	  <li>欢迎您，
+	      <if condition="empty($userName)">
+	        <span><a href="__APP__/Haihetao/Login/index" class="nva-u" style="color:#F00;">登录</a></span>
+	        <span><a href="{:C('LISHE_URL')}/shop.php/Sign"  class="nva-u" style="color:#F00;">注册</a></span>
+	      <else/>
+	        <span><a href="{:C('LISHE_URL')}/user.php/Info/index.html" class="nva-u" style="color:#F00;">{$userName}</a></span>
+	        <span><a href="__APP__/Haihetao/logout"  class="nva-u" style="color:#F00;">退出</a></span>
+	      </if>
+	  	&nbsp;|&nbsp;</li>
+	  <li><a href="__ITEM_URL____USER__/Order/orderList">我的订单</a>&nbsp;|&nbsp;</li>
+	  <li><a href="__ITEM_URL____USER__/Order/activityOrderList">活动订单</a>&nbsp;|&nbsp;</li>
+	  <li><img src="__PUBLIC__/cnpec/images/shop.png">
+	      <a href="{:C('LISHE_URL')}/shop.php/Order/Cart">
+	      	购物车(<empty name="userInfo['cartCount']">0<else/>{$userInfo['cartCount']}</empty>)
+	      </a>&nbsp;|&nbsp;
+	  </li>
+	  <!-- <li><a href="http://www.lishe.cn/shop.html" target="_blank">心意商城</a>&nbsp;|&nbsp;</li> -->
+	  <!-- <li style="float: right">客服热线:400-1188-261&nbsp;&nbsp;客服热线2:0755-66632121-811</li> -->
+	  <li style="float: right">客服热线:021-61542562</li>
+	</ul>
+</div>
+      
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/haihetao/css/hhtList.css">
+<include file="Public/nvafloat"/>
+

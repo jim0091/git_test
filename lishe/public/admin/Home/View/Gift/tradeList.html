@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>商品列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 微送礼管理 <span class="c-gray en">&gt;</span> 交易列表 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+	<form action="__SELF__" method="get">
+    <div class="text-l">
+        &nbsp;&nbsp;赠礼人手机号：
+        <input type="text" value="{$geiverMobile}" class="input-text" style="width:150px" placeholder="赠礼人手机号" name="geiverMobile">
+  		&nbsp;&nbsp;收礼人手机号：
+        <input type="text" value="{$receiverMobile}" class="input-text" style="width:150px" placeholder="收礼人手机号" name="receiverMobile">
+        &nbsp;&nbsp; 订购时间：
+        <input type="text" value="{$startdate}" class="input-text" style="width:151px" placeholder="起始日期" name="startdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly">
+        --
+        <input type="text" value="{$enddate}" class="input-text" style="width:151px" placeholder="结束日期" name="enddate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly">
+        <button type="submit" id="searchGoods" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+    </div>
+    </form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+    <table class="table table-border table-bordered table-bg table-hover" style="margin-top: 25px;">
+        <thead>
+        <tr>
+            <th scope="col" colspan="10">交易列表</th>
+        </tr>
+        <tr class="text-c">
+            <th width="10%">交易ID</th>
+            <th width="20%">商品名称/价格/数量</th>
+            <th width="10%">所属企业</th>
+            <th width="9%">赠送信息</th>
+            <th width="12%">收货信息</th>
+            <th width="7%">订单总额(元)</th>
+            <th width="7%">实付金额(元)</th>
+            <th width="10%">下单/支付时间</th>
+            <th width="6%">领取状态</th>
+            <th width="5%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            <volist name="tradList" id="trade">
+                <tr class="text-c">
+                    <td>{$trade['tid']}</td>
+                    <td class="text-l" >
+                    	<div class="col-12">
+	                    	<div class="col-3">
+	                    		<img width="60" height="60" src="{$trade['pic_path']}"/>
+	                    	</div>
+	                    	<div class="col-9">
+	                    		<if condition="$trade['send_type'] eq 2">
+									<img src="__ADMIN__images/img/daifa.png"  width="20px" title="该商品为代发商品"/>
+								<elseif condition="$trade['send_type'] eq 1"/>
+									<img src="__ADMIN__images/img/zifa.png"  width="20px" title="该商品为自发商品"/>
+								</if>
+	                    		<span>{$trade['title']}</span><br/>
+	                    		<strong style="color: #5a98de;">{$trade['spec_nature_info']}</strong>
+								<span class="label label-success radius">￥{$trade['price']}</span>
+								<span class="label radius">{$trade['num']}件</span>
+	                    	</div>
+                    	</div>
+                    </td>
+                    <td class="text-l"><empty name="comArr[$trade['com_id']]">--<else/>{$comArr[$trade['com_id']]}</empty></td>
+                    <td class="text-l">
+                    	<i class="Hui-iconfont">&#xe62c;</i>&nbsp;{$userArr[$trade['user_id']]}<br/>
+                    	<i class="Hui-iconfont">&#xe648;</i>&nbsp;
+                    	<empty name="postArr[$trade['tid']]['bless_title']">--<else/>{$postArr[$trade['tid']]['bless_title']}</empty></td>
+                    </td>
+                    <td class="text-l">
+                    	<empty name="receiverArr[$trade['tid']]">
+                    		<i class="Hui-iconfont">&#xe62c;</i>&nbsp;--<br/>
+                    		<i class="Hui-iconfont">&#xe6a3;</i>&nbsp;--<br/>
+                    		<i class="Hui-iconfont">&#xe625;</i>&nbsp;--<br/>
+                    	<else/>
+                    		<i class="Hui-iconfont">&#xe62c;</i>&nbsp;{$receiverArr[$trade['tid']]['receiver_name']}<br/>
+                    		<i class="Hui-iconfont">&#xe6a3;</i>&nbsp;{$receiverArr[$trade['tid']]['receiver_phone']}<br/>
+                    		<i class="Hui-iconfont">&#xe625;</i>&nbsp;{$receiverArr[$trade['tid']]['receiver_state']}{$receiverArr[$trade['tid']]['receiver_city']}{$receiverArr[$trade['tid']]['receiver_district']}{$receiverArr[$trade['tid']]['receiver_addr']}<br/>
+                    	</empty>
+                    </td>
+                    <td>￥{$trade['total_fee']|floatval}</td>
+                    <td>￥{$trade['payed_fee']|floatval}</td>
+                    <td>
+                    	<empty name="trade['create_time']">--<else/>{$trade['create_time']|date='Y-m-d H:i:s',###}</empty>
+                    	<br/>
+                    	<empty name="trade['pay_time']">--<else/>{$trade['pay_time']|date='Y-m-d H:i:s',###}</empty>
+                    </td>
+                    <td>
+                    	<if condition="$trade['post_status'] eq 2">
+                    		<p class="c-success">已领取</p>
+						<else />
+							<p class="c-orange">待领取</p>
+						</if>
+                    </td>
+                    <td class="td-manage" style="font-size: 18px;">
+                    	<a style="text-decoration:none" onClick="javascript:void(0)" href="javascript:;" title="查看"><i class="Hui-iconfont">&#xe695;</i></a> <!--a title="编辑" href="javascript:;" onclick="admin_edit('管理员编辑','{:U('Supplier/modifySupplierView/',array('supplier_id'=>$val['supplier_id']))}','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a-->
+                    </td>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+    {$page}
+</div>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function (){
+	
+})
+</script>
+</body>
+</html>

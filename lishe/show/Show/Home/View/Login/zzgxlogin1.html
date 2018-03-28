@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>正章干洗</title>
+<link rel="stylesheet" href="__PUBLIC__/zzgx/css/reset.css">
+<link rel="stylesheet" href="__PUBLIC__/zzgx/css/zhengzhang_login.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+</head>
+<body class="login_bg">
+	<div class="logon_main">
+		<div class="left_main">
+			<div class="login_text">
+				<img src="__PUBLIC__/zzgx/images/login_text.png" alt="">
+			</div>
+			<div class="login_text2">
+				即日起，正章干洗与礼舍合作，用户的洗衣券以及洗衣卡 可以在 <a href="{:C('LISHE')}/shop.php">礼舍商城<em>(对接京东商城以及各大品牌，提供20万+的商品供您选择)</em></a>按照一定的比例兑换福利积分，所兑换的
+				福利积分可以在礼舍商城进行消费购物。
+			</div>
+		</div>
+		<div class="right_login">
+			<h2 class="logo">
+				<img src="__PUBLIC__/zzgx/images/login_logo.png" alt="">
+			</h2>
+			<div class="user_name clearfix">
+				<input type="text" id="username" placeholder="请输入手机号码" />
+				<!-- <i><img src="__PUBLIC__/zzgx/images/login_close.png" alt=""></i> -->
+			</div>
+			<div class="user_password clearfix">
+				<input type="password" id="password" placeholder="请输入密码" />
+				<!-- <i><img src="__PUBLIC__/zzgx/images/login_close.png" alt=""></i> -->
+			</div>
+			<div class="remember">
+				<label for="rem_inp"> <input type="radio" id="rem_inp">
+					自动登录
+				</label> <a href="{:C(LISHE)}/shop.php/sign/index/refer/findPasswd"
+					class="no_reme">忘记密码?</a>
+			</div>
+			<div class="error_text">
+				<span id="loginMsg" style="display: none;"></span>
+			</div>
+			<div class="submit" id="loginBut">登录</div>
+			<div class="register_link">
+				<a href="{:C(LISHE)}/shop.php/sign" class="fl">注册账号</a> 
+				<!--<i><img src="__PUBLIC__/zzgx/images/one_03.png" alt=""></i>--> 
+				<!--<a href="{:U('Home/Cactive/zzgxCoupon')}" class="fr">干洗券充值</a>-->
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#loginBut").click(function(){
+	  	var username = $("#username").val();
+	  	username = $.trim(username);
+	  	var password = $("#password").val();
+	  	password = $.trim(password);
+	  	
+	    if(username == ""){
+	      alert('请输入您的用户名！');
+	      $("#username").focus();
+	      return false;
+	    }
+	    if(password == ""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    }
+	    $(this).attr("disabled",true);
+		$.post("__APP__?c=Login&a=login",{userName:username,password:password,mark:'zzgx',check:'n'},function(result){
+			var data = eval(result);
+			if(data[0] > 0){
+				if(data[2]!=''){
+					window.location.href=data[2];
+				}else{
+					window.location.href="__APP__/Index/index";
+				}					
+			}else{
+				$("#loginBut").attr("disabled",false);;
+				$("#loginMsg").show().text(data[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</html>

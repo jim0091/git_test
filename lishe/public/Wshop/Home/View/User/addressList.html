@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/Addressmanagement.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>地址列表-心意商城</title>
+</head>
+
+<body>
+   	<div class="Waddress">
+      	<span><a href="{:U('User/userCenter')}" onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+      	<span>收货地址管理</span>
+   	</div>
+   
+   	<div class="Weditorsaddress">
+   		<notempty name="addrList">
+   		<volist name="addrList" id="addrRow">
+	      	<ul>
+		        <li>{$addrRow.name}<span>{$addrRow.mobile}</span></li>
+		        <li>{$addrRow.area}&nbsp;&nbsp;&nbsp;&nbsp;{$addrRow.addr}</li>
+		        <li>
+		        	<span class="spanLeft addAddrContentInfo" data-content="{$addrRow['addr_id']}">
+		        		<input type="radio" id="radio-1-1" disabled="disabled" name="radio-1-set"  class="regular-radio " <if condition="$addrRow['def_addr'] eq 1"> checked </if>/>
+		        		<label for="radio-1-1"></label>&nbsp;&nbsp;设为默认
+		        	</span>
+	            	<span class="spanRight">
+	            		<a href="{:U('User/editAddress',array('addrId'=>$addrRow['addr_id']))}">
+	            			<img src="__VIEW__Public/images/editorsIcon.png">编辑
+	            		</a>
+	            		<a href="javascript:if(confirm('确认要删除该收货地址吗？')){location.href='/wshop.php/User/deleteAddr/addr_id/{$addrRow['addr_id']}';}">
+	            			<img src="__VIEW__Public/images/deleteIcon.png">删除
+	            		</a>
+	            	</span>
+	        	</li>
+	      	</ul>
+      	</volist>
+      	</notempty>
+   	</div>
+    <input type="hidden" id="refer" value="{$refer}">
+    <include file="Public/popuLayer"/>  
+   	<div class="addressbtn">
+     	<a href="{:U('User/addAddress')}">
+     		<span style="font-weight:600;padding-right:0.2rem;">+</span>新增收货地址
+     	</a>
+   	</div>
+   	<script type="text/javascript">
+	$(function(){
+       $(".addAddrContentInfo").click(function(){
+           	var curr_addr_id=$(this).attr('data-content');
+           	curr_addr_id=$.trim(curr_addr_id);
+          	if(curr_addr_id !== '' || curr_addr_id !== '0'){
+              	$.post("__APP__/User/modifyDefAddr","addressId="+curr_addr_id,function(data){
+                    var res = eval(data);
+	              	if(res[0] == 1){
+                        if ($("#refer").val() != '') {
+                            window.location.href="{$refer}";
+                        }else{
+                            window.location.href="__APP__/User/addrList";
+                        }                   		
+	              	}else{
+       					opLayer('open',res[1]);
+	              	}    
+	          	});
+          	}
+       	});
+	});
+</script>
+</body>
+</html>

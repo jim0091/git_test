@@ -1,0 +1,272 @@
+<style>
+input:focus {
+ outline:none;
+}
+
+.seaview-integral-average {
+	position: absolute;
+	width: 100%;
+	height: 300px;
+	left: 0px;
+	background: #c7241d;
+}
+.seaview-integral-average .seaview-integral-average-nav {
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 15px 0px;
+}
+.seaview-integral-average .seaview-integral-average-nav ul {
+	display: inline-block;
+}
+.seaview-integral-average .seaview-integral-average-nav ul li {
+	float: left;
+	width: 226px;
+	height: 100px;
+	margin: 5px;
+	background: #c7241d;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	text-align: center;
+	color: #fff;
+	cursor: pointer;
+}
+.seaview-integral-average .seaview-integral-average-nav ul li:hover, .seaview-integral-average .seaview-integral-average-nav ul li.on {
+	background: #fff;
+	color: #c7241d;
+}
+.seaview-integral-average .seaview-integral-average-nav ul li span {
+	color: #fff;
+	position: relative;
+	font-size: 48px;
+	line-height: 100px;
+	left:18px;
+}
+.seaview-integral-average .seaview-integral-average-nav ul li:hover span, .seaview-integral-average .seaview-integral-average-nav ul li.on span {
+	color: #c7241d;
+}
+.seaview-integral-average .seaview-integral-average-nav ul li img {
+	position: relative;
+	left:-18px;
+	top: 10px;
+}
+
+.seaview-integral-average .seaview-integral-average-nav .seaview-integral-average-btn {
+	position: relative;
+	text-align: right;
+	color: #fff;
+	padding: 3px 0px;
+}
+.seaview-integral-average .seaview-integral-average-nav .seaview-integral-average-btn input {
+	width: 80px;
+	height: 24px;
+	margin: 0 auto;
+	padding: 3px;
+	border: 1px solid #fff;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: left;
+	background-color: transparent;
+}
+.seaview-integral-average .seaview-integral-average-nav .seaview-integral-average-btn span {
+	font-size: 16px;
+	border: 1px solid #fff;
+	border-radius: 8px;
+	margin-left: 8px;
+	padding: 4px 12px;
+	position: relative;
+	top: 4px;
+	cursor: pointer;
+}
+</style>
+		<div class="seaview seaview-integral-average">
+			<div class="seaview-integral-average-nav">
+				<ul>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=500 }>">
+								<span>500</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=1000 }>">
+								<span>1000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=3000 }>">
+								<span>3000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=5000 }>">
+								<span>5000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=8000 }>">
+								<span>8000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=10000 }>">
+								<span>10000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=20000 }>">
+								<span>20000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=30000 }>">
+								<span>30000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=50000 }>">
+								<span>50000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="<{url action=topc_ctl_list@integral_average integration=80000 }>">
+								<span>80000</span>
+								<img src="./images/average_integral1.png" />
+							</a>
+						</div>
+					</li>
+				</ul>
+				<div class="seaview-integral-average-btn">
+					<form action="<{url action=topc_ctl_list@integral_average}>" method="get" id="query" >
+						<input name="integration_min" value="" />&nbsp;—&nbsp;<input name="integration_max" value="" />
+						<span>确认</span>
+						<input type="submit" name="sbmit" style="display: none;"/>
+					</form>
+				</div>
+			</div>
+		</div>
+
+<script type="text/javascript" src="http://www.lishe.cn/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	var integration = jQuery.url.param("integration") == null ? '' : jQuery.url.param("integration"); 
+	var integration_min = jQuery.url.param("integration_min") == null ? '' : jQuery.url.param("integration_min");
+	var integration_max = jQuery.url.param("integration_max") == null ? '' : jQuery.url.param("integration_max");
+		
+	var _tmp_li = $('.seaview-integral-average ul li');
+
+	if ('' != integration) {
+
+		_tmp_li.siblings().removeClass('on').find('img').attr('src', './themes/luckymall1/images/average_integral1.png');
+
+		for (var i = 0; i < _tmp_li.length; i++) {
+
+			var _tmp_span_text = _tmp_li.eq(i).find('span').text();
+
+			if (integration == _tmp_span_text) {
+				_tmp_li.eq(i).addClass('on').find('img').attr('src', './themes/luckymall1/images/average_integral.png');
+			}
+		}
+	}
+
+	if ('' != integration_min) {
+
+		_tmp_li.siblings().removeClass('on').find('img').attr('src', './themes/luckymall1/images/average_integral1.png');
+
+		$('.seaview-integral-average .seaview-integral-average-btn input[name=\'integration_min\']').val(integration_min);
+	}
+
+	if ('' != integration_max) {
+
+		_tmp_li.siblings().removeClass('on').find('img').attr('src', './themes/luckymall1/images/average_integral1.png');
+
+		$('.seaview-integral-average .seaview-integral-average-btn input[name=\'integration_max\']').val(integration_max);
+	}
+
+	$('.seaview-integral-average .seaview-integral-average-nav ul li').not('.on').hover(function() {
+		$(this).find('img').attr('src', './themes/luckymall1/images/average_integral.png');
+	},
+	function() {
+		$(this).find('img').attr('src', './themes/luckymall1/images/average_integral1.png');
+	});
+
+	$('.seaview-integral-average .seaview-integral-average-nav .seaview-integral-average-btn span').bind({
+
+		click: function() {
+
+			/*
+			var _this = $(this);
+
+			var _integration_min = _this.parent().find('input[name=\'integration_min\']').val();
+			var _integration_max = _this.parent().find('input[name=\'integration_max\']').val();
+
+			console.log(_integration_min);
+			console.log(_integration_max);
+
+			window.location.href = 'http://www.lishe.cn/integral_average.html?integration_min=' + _integration_min +' integration_max=' + _integration_max;
+			*/
+			$('#query').submit();
+		}
+	});
+});
+</script>
+
+
+<div class="row mod-bottom" style="padding-top: 310px;">
+  <div class="col-lg-16 box">
+
+    <{if $screen.shopInfo}>
+      <!--根据搜索条件推荐的店铺信息-->
+      <{include file="topc/list/shop.html"}>
+    <{/if}>
+
+    <!--筛选条件-->
+    <div class="mod-bottom">
+      <{include file="topc/list/integral_average_filter.html"}>
+    </div>
+
+    <!--排序-->
+    <div class="mod-bottom">
+      <{include file="topc/list/integral_average_sortbar.html"}>
+    </div>
+
+    <!--显示搜索商品-->
+    <div class="mod-bottom">
+      <{include file="topc/list/item.html"}>
+    </div>
+
+    <{pagers data=$pagers}>
+
+  </div>
+</div>
+

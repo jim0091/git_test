@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/wshop/css/swiper.min.css">
+<link rel="stylesheet" href="__PUBLIC__/wshop/css/phone.css">
+<script src="__PUBLIC__/wshop/js/jquery-1.8.2.min.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/wshop/css/index.css">  
+<title>{$cat_name}</title>
+</head>
+
+<body style="margin-bottom:100px;
+        <if condition="$Think.get.aid eq '16'">
+        <if condition="$i eq 0">
+            background-color:#7fe4f8;
+        </if>
+        <elseif condition="$Think.get.aid eq '15'" />
+        <if condition="$i eq 0">
+            background-color:#e3e3e3;
+        </if>
+        <elseif condition="$Think.get.aid eq '14'" />
+        <if condition="$i eq 0">
+            background-color:#d9eafc;
+        </if>
+        </if>
+">
+
+
+
+ <foreach name="actCateInfo" item="row1" key='i'>
+
+  <div class="ListPhone">
+  	
+      <!-- <p class="lip"><span style="color:white;">{$cat_name}</span></p> -->
+      <div>
+        <if condition="$Think.get.aid eq '14'">
+         <if condition="$i eq 0">
+        <img src="__PUBLIC__/wshop/images/bags.jpg" style="width:100%;" />
+        </if>
+        <elseif condition="$Think.get.aid eq '15'" />
+        <if condition="$i eq 0">
+        <img src="__PUBLIC__/wshop/images/kitchen.jpg" style="width:100%;" />
+        </if>
+        <elseif condition="$Think.get.aid eq '16'" />
+        <if condition="$i eq 0">
+        <img src="__PUBLIC__/wshop/images/snack.jpg" style="width:100%;" />
+        </if>
+		<elseif condition="$Think.get.aid eq '17'" />
+        <if condition="$i eq 0">
+        <img src="__PUBLIC__/wshop/images/snack.jpg" style="width:100%;" />
+        </if>
+		<elseif condition="$Think.get.aid eq '18'" />
+        <if condition="$i eq 0">
+        <img src="__PUBLIC__/wshop/images/snack.jpg" style="width:100%;" />
+        </if>
+       </if>
+      <!--   1.活动时间：9月26日——10月7日;<br/>
+        2.活动页面商品购满199元返10元;<br/>
+        3.活动页面商品购满299元返15元;<br/>
+        4.活动页面商品购满399元返25元;<br/>
+        5.活动商品数量有限,售后即止;<br/>
+        6.活动结束后,确认收货七天内返回,礼舍网将返现金额发送至您的账户;<br/>
+        7.活动商品非质量问题不接受无理退货。<br/>
+        8.本活动最终解释权归礼舍网所有。 -->
+      </if>
+      </div>
+      <div class="listul">
+		
+      	<foreach name="info" item="row">
+		
+			
+          <ul>
+            <li style="height: 177px;overflow: hidden;">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$row['item_id']))}?from={:md5($row.item_id)}">
+            		<img src="{$row['image_default_id']}">
+            	</a>
+            </li>
+            <li class="puser" style="height: 34px;overflow: hidden;text-align: center;">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$row['item_id']))}?from={:md5($row.item_id)}">{$row['title']}</a>
+            </li>
+            <li class="pric">￥{$row['price']|number_format=###, 2, '.', ''}
+            	<a class="js-goods-buy" style="font-size=0.75rem;padding: 0.15rem 0.15rem;margin-right:0.3rem;" data-id="{$row['item_id']}" href="javascript:void(0)">加入购物车</a>
+            </li>
+		                
+          </ul>
+ 		</foreach>
+       </div>   
+      <div style="clear:both;"></div>
+  </div>
+</foreach>
+
+
+<!--遮罩层start-->
+<div id="maskLayer" style="display:none; height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 1000; transition: none 0.2s ease; opacity: 1; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!--遮罩层end-->
+
+<!--提示框-->
+<div class="motify" style="display: none;">
+    <div class="motify-inner"></div>
+</div>
+<!--提示框-->
+
+<!--下拉start-->
+<div id="selectItem" class="sku-layout sku-box-shadow popup" style="display:none;overflow: hidden; position: fixed; z-index: 1000; bottom: 0px; left: 0px; right: 0px; visibility: visible; transform: translate3d(0px, 0px, 0px); transition: all 300ms ease; opacity: 1; background: white;">
+    <div class="sku-layout-title name-card sku-name-card">
+
+
+</div>
+
+</div>
+<include file="Public/shoppingCat"/>
+<include file="Public/bottom"/>
+
+  <script type="text/javascript">
+  $(function(){
+     $('.swiper-wrapper div').click(function(){
+				if(!$(this).hasClass('active')){ 
+					$(this).addClass('active').siblings().removeClass('active');
+				
+				}
+			})
+	 		
+		
+		var navH = $(".swiper-wrapper").offset().top;
+				//滚动条事件
+		$(window).scroll(function(){
+			//获取滚动条的滑动距离
+			var scroH = $(this).scrollTop();
+		})
+	
+		  var mySwiper1 = new Swiper('#header',{
+			  freeMode : true,
+			  slidesPerView : 'auto'
+		  });
+	
+  });
+
+	
+</script>
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js"></script>
+<script type="text/javascript">
+        $(function(){
+            $(".js-goods-buy").click(function(){
+                 $("#selectItem").html("");
+                var urls="{:U('Home/Itemlist/jionShow')}";
+                var itemid=$(this).attr("data-id");
+                $.ajax({
+                    type:"get",
+                    url:urls,
+                    dataType:'text',
+                    data:'itemId='+itemid,
+                    success:function(data){
+                         $("#selectItem").html(data);
+                    }
+                });
+                $("#selectItem").show();
+                $("#maskLayer").show();
+                $("body").css({overflow:"hidden"}); 
+            });
+            $("#cancel-img").click(function(){       
+                $("#selectItem").hide();
+                $("#maskLayer").hide();
+                $("body").css({overflow:"visible"}); 
+            });
+    });
+
+</script>
+</body>
+</html>

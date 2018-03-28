@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style>
+	.company{
+		font-size:12px;
+		width:30%;
+		line-height: 30px;
+		 white-space:nowrap;
+		 text-overflow:ellipsis;
+		 -o-text-overflow:ellipsis;
+		 overflow: hidden; 		
+	}
+</style>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb"><a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
+	<form action="{:U('Home/Mallconfigure/fulldiscountSave')}" method="post" class="form form-horizontal" id="form-article-add">
+		<input type="hidden" value="{$info.fulldiscount_id}" name="fulldiscountId" />
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>促销名称：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$info.fulldiscount_name}" placeholder="促销名称" name="data[fulldiscount_name]">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>促销描述：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$info.fulldiscount_desc}" placeholder="促销描述"  name="data[fulldiscount_desc]">
+			</div>
+		</div>	
+		<div class="row cl">
+			<label class="form-label col-2"><span class="c-red">*</span>促销周期：</label>
+			<div class="formControls col-10">
+			<label>
+				<input type="text" onfocus="WdatePicker()" value="{$info.start_time}" name="data[startTime]" id="datemin" class="input-text Wdate" style="width:120px;">
+				-
+				<input type="text" onfocus="WdatePicker()" value="{$info.end_time}" name="data[endTime]" id="datemax" class="input-text Wdate" style="width:120px;">				
+			</label>
+			</div>
+		</div>		
+	    <div class="row cl">
+	      <label class="form-label col-2"><span class="c-red">*</span>参加公司：</label>
+			<label class="col-12 company" >
+				<input type="checkbox"  id="allCheck">
+				全选
+			</label>							
+	      <div class="formControls col-12" style="border: 1px solid #C6C6C6;min-height: 30px;padding: 5px 20px;" > 
+				<dl class="permission-list">
+					<dd id="company">
+						<volist name="company" id="v">
+							<label class="col-4 company" title="{$v.com_name}">
+								<input type="checkbox"  class="comId" value="{$v.com_id}"  name="comIds[]" 
+									<in name="v['com_id']" value="$info['com']">
+										checked="checked"
+									</in>
+									>
+								{$v.com_name}
+							</label>
+						</volist>
+					</dd>
+				</dl>	      	
+	      </div>
+	    </div>    
+	    <div class="row cl">
+	      <label class="form-label col-2"><span class="c-red">*</span>类型：</label>
+	      <div class="formControls col-5"> 
+			<label class="" onclick="type()">
+				<input value="1" name="data[fulldiscount_type]" id="user-Character-0-0-0"  type="radio" 
+					<if condition="$info.fulldiscount_type eq 1">
+						checked="checked"						
+					</if>
+					>满返
+			</label>
+			&nbsp;&nbsp;
+			<label class="" onclick="type()">
+				<input value="2" name="data[fulldiscount_type]" id="user-Character-0-0-0"  type="radio"  
+					<if condition="$info.fulldiscount_type eq 2">
+						checked="checked"						
+					</if>					
+					>满减
+			</label>     
+			&nbsp;&nbsp;
+			<label class="" onclick="type()">
+				<input value="3" name="data[fulldiscount_type]" id="user-Character-0-0-0"  type="radio" 
+					<if condition="$info.fulldiscount_type eq 3">
+						checked="checked"						
+					</if>					
+					>满折
+			</label>  			
+		 </div>
+		<div class="row cl">
+			<label class="form-label col-2">规则：</label>
+			<div class="formControls col-10" id="itemlist">
+				<volist name="info.rule" id="vo">
+					<div class="form-label col-11 itemlisthas">
+						<div class="form-label col-4">
+							<label class="form-label col-2"></label>
+							<div class="formControls col-7" >
+								<input type="text" class="input-text" value="{$vo.fulled_fee}" placeholder="满足金额" name="fulledFee[]">
+							</div>	
+							<label class="form-label col-3"></label>
+						</div>
+						<div class="form-label col-4">
+							<label class="form-label col-3" ></label>
+							<div class="formControls col-7" >
+								<input type="text" class="input-text" value="{$vo.promotion}" placeholder="规则" name="promotion[]">
+							</div>	
+							<label class="form-label col-2"></label>
+						</div>
+						<div class="form-label col-1">
+							<a href="javascript:void(0)" class="delhas" >
+								<i class="Hui-iconfont" style="font-size: larger;"></i>
+							</a>					
+						</div>						
+					</div>
+				</volist>
+				<div class="formControls col-12">
+					<div class="form-label col-11">
+						<div class="form-label col-4">
+							<label class="form-label col-2">满</label>
+							<div class="formControls col-7" >
+								<input type="text" class="input-text" value="" placeholder="满足金额" name="fulledFee[]">
+							</div>	
+							<label class="form-label col-3">元</label>
+						</div>
+						<div class="form-label col-4">
+							<label class="form-label col-3" id="title2">优惠</label>
+							<div class="formControls col-7" >
+								<input type="text" class="input-text" value="" placeholder="规则" name="promotion[]">
+							</div>	
+							<label class="form-label col-2" id="title1">元</label>
+						</div>
+						<div class="form-label col-1">
+							<a href="javascript:void(0)" class="delhas" >
+								<i class="Hui-iconfont" style="font-size: larger;"></i>
+							</a>					
+						</div>						
+					</div>
+				</div>
+			</div>
+			<div class="form-label col-12" style="text-align: center;padding-top: 20px;" >
+				<a href="javascript:void(0)" id="additem">
+					<small style="padding: 5px 10px;margin: 10px;border: 1px solid #5a98de;border-radius: 5px;">
+						添加规则
+					</small>
+				</a>
+			</div>
+		</div>		 
+		<div class="row cl">
+			<label class="form-label col-2">促销商品：</label>
+			<div class="formControls col-10">
+				<textarea name="itemIds" cols="" rows="" class="textarea"  placeholder="多个商品Id以,隔开，不填默认商城所有商品" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！">{$info.items}</textarea>
+				<p class="textarea-numberbar"></p>
+			</div>
+		</div>		 
+	      <div class="col-5"> </div>
+	    </div>	
+		<div class="row cl" style="margin-top: 50px;">
+			<div class="col-8 col-offset-4">
+				<button type="submit" class="btn btn-success radius" type="button">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script>
+	$(function(){
+		$("#allCheck").on('click',function(){
+			if($('#allCheck').is(':checked')){
+				$('.comId').prop('checked', true);
+			}else{
+				$('.comId').prop('checked', false);
+			}
+		});
+        type();
+	});
+	$("#additem").on('click',function(){
+		var list='<div class="formControls col-12 itemlistson">';
+			list+='<div class="form-label col-11">';
+			list+='		<div class="form-label col-4">';
+			list+='			<label class="form-label col-2"></label>';
+			list+='			<div class="formControls col-7" >';
+			list+='				<input type="text" class="input-text" value="" placeholder="满足金额" name="fulledFee[]">';
+			list+='			</div>			';				
+			list+='		</div>';
+			list+='		<div class="form-label col-4">';
+			list+='			<label class="form-label col-3"></label>';
+			list+='			<div class="formControls col-7" >';
+			list+='				<input type="text" class="input-text" value="" placeholder="规则" name="promotion[]">';
+			list+='			</div>			';				
+			list+='		</div>';
+			list+='		<div class="form-label col-1">';
+			list+=	 	'<a href="javascript:void(0)" class="delitem" >';
+			list+='			<i class="Hui-iconfont" style="font-size: larger;"></i>';
+			list+=	 	'</a>';
+			list+='		</div>	';			
+			list+='	</div>';
+			list+='</div>	';	
+		$("#itemlist").append(list);
+		$(".delitem").on('click',function(){
+			$(this).parents(".itemlistson").remove();
+		});		
+	});
+		$(".delhas").on('click',function(){
+			$(this).parents(".itemlisthas").remove();
+		});		
+	function type(){
+        //选择规则
+        var type=$('input:radio:checked').val();
+       	if(type == 1){
+       		$("#title2").text("返");
+       		$("#title1").text("元");
+       	}else if(type == 2){
+       		$("#title2").text("减");
+       		$("#title1").text("元");
+	       	}else if(type == 3){
+       		$("#title2").text("打");
+       		$("#title1").text("折");
+       	}
+	}
+</script>
+</body>
+</html>

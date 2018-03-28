@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/haihetao/css/Mobilemalls.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<title>海核淘员工意见反馈</title>
+</head>
+
+<body>
+    <!--头部-->
+  <include file="Public/haihetao/header" />   
+    <script type="text/javascript">
+    $('.lopic li').click(function(){
+		if(!$(this).hasClass('active')){
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+	})
+    </script>
+    <!--列表-->
+    <div class="feedDiv" >
+        <h1>员工意见反馈</h1>
+        <div>
+            <ul class="box-feed">
+                <li>问题类型：</li>
+                <li>
+                    <select class="feed-type-page" name="promType">
+                        <option value='1'>意见反馈</option>
+                        <option value='2'>商品登记</option>
+                    </select>
+                </li>
+            </ul>
+            <ul class="box-feed feed-item">
+                <li>商品分类：</li>
+                <li>
+                    <select class="level1" style="width:200px;">
+                        <option value="0" selected>--请选择--</option>
+                        <volist name="levelList" id="vo">
+                        <option value="{$vo['cat_id']}" >{$vo['cat_name']}</option>
+                        </volist>                        
+                    </select>
+                    <select class="level2" style="width:200px;">
+                        <option value="0" selected>--请选择--</option>
+                    </select>
+                    <input type="hidden" class="checkLevel3" value="1">
+                    <select class="level3" style="width:200px;">
+                        <option value="0" selected>--请选择--</option>
+                    </select>
+                </li>
+            </ul>
+            <!-- <ul class="box-feed feed-item">
+                <li>商品名称：</li>
+                <li>
+                    <input type="text" name="itemName" class="item-name-page" maxlength="80" placeholder="请输入完整的商品名称。">
+                </li>
+            </ul>
+            <ul class="box-feed feed-item">
+                <li>外站链接：</li>
+                <li>
+                    <input type="text" name="itemLink" maxlength="100" class="item-link-page">
+                </li>
+            </ul> -->
+            <ul class="feed-txt box-feed">                
+                <li>意见建议：</li>
+                <li>
+                    <textarea class="feed-back-text-page" placeholder="欢迎您对平台提出宝贵意见（限250字）" maxlength="250"></textarea>
+                </li>
+            </ul>
+            <ul class="feed-btn box-feed">
+                <li></li>
+                <li>
+                    <a href="javascript:void(0)" class="abuttonBit">提交</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <include file="Public/nvafloat" />    
+    <!--返回-->
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/haihetao/images/Mtop.png"></a></div>
+    </div>
+</body>
+<script type="text/javascript"> 
+    //意见反馈
+    $(".feed-type-page").change(function(){
+        var changeval = $(this).children('option:selected').val();
+        if (changeval == 2) {
+            $(".feed-item").show();
+        }else{
+            $(".feed-item").hide();
+        }
+        
+    });
+
+    $(".abuttonBit").click(function(){
+        var promType = $(".feed-type-page option:selected").val();
+        var itemName = '暂无';//$(".item-name-page").val();
+        var itemLink = '暂无';//$('.item-link-page').val();
+        var feedBack = $('.feed-back-text-page').val();
+        var level1 = $('.level1').val();
+        var level2 = $('.level2').val();
+        var level3 = $('.level3').val();
+        var checkLevel3 = $('.checkLevel3').val();
+        if (promType == 2) {
+            if (itemName == '') {
+                alert("请填写商品名称！");
+                return;
+            };
+            if (itemLink == '') {
+                alert("请填写外站链接！");
+                return;            
+            };
+            if (level1 == 0) {
+                alert("请选择一级分类！");
+                return;                  
+            };
+            if (level2 == 0) {
+                alert("请选择二级分类！");
+                return;                  
+            };
+            if (checkLevel3 == 1) {                
+                if (level3 == 0) {
+                    alert("请选择三级分类！");
+                    return;                  
+                };
+            };
+        };
+        if (feedBack == '') {
+            alert("请填写反馈内容！");
+            return;
+        };
+        $.ajax({ 
+            type:"post",
+            url:"__APP__/{$control}/feedBack",
+            data: {promType:promType,itemName:itemName,itemLink:itemLink,feedBack:feedBack,level1:level1,level2:level2,level3:level3},
+            success: function(data){
+                var res = eval(data);
+                if (res[0] == 1) {
+                    alert(res[1]);
+                    $('.item-link-page').val('');
+                    $(".item-name-page").val('');
+                    $('.feed-back-text-page').val('');
+                }else{
+                    alert(res[1]);
+                }
+            }
+        });
+    });
+    $(".level1").bind('change','option',function(){
+        $(".level2").empty();
+        $(".level3").empty();
+        $(this).attr("selected",true);
+        var pid = $(this).val();
+        if(pid > 0){
+            $.post("__APP__/{$control}/getLevel","pid="+pid,function(msg){
+                if(msg == 0){
+                   alert("分类不存在！");
+                   return;
+                } 
+                $(".level2").append(msg);
+            });
+        }           
+    });
+    $(".level2").bind('change','option',function(){
+        $(".level3").empty();
+        $(this).attr("selected",true);
+        var pid = $(this).val();
+        if(pid > 0){
+            $.post("__APP__/{$control}/getLevel","pid="+pid,function(msg){
+                if(msg == 0){
+                   alert("分类不存在！");
+                   return;                    
+                }
+                if (msg == -1) {
+                    $('.checkLevel3').val('0');
+                    $('.level3').hide();
+                }else{
+                    $(".level3").append(msg);
+                }                
+            });
+        }           
+    });
+</script> 
+</html>

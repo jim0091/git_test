@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+<meta charset="UTF-8">
+<title>企业福利-{$catname}</title>
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/IndustryGather.css">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/welfare.css">
+<link href="http://www.lishe.cn/app/topc/statics/stylesheets/layout.css" rel="stylesheet"/>
+<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+</head>
+<body>
+<style>
+	.fontname{
+		font-size: 12px;
+		color: #000000;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+	}
+	.pageos:hover{
+		background-color:#C7241D ;
+		color: white;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}
+	.exchange{
+		border: 1px solid #C7241D;
+		border-radius: 5px;
+		padding-left: 7px;
+		padding-right: 7px;
+		background-color: #C7241D;
+		color: white;
+	}
+	#cheight{
+		border: 1px solid #CCC;
+		border-radius:3px ;
+    height: 280px;
+    margin: 5px 18px;
+    width: 200px;		
+    margin-top: 10px;
+	}
+</style>
+<include file="Public/header"/>
+<div id="main" class="main" style="margin-top: 30px;min-height: 495px;">
+<div class="wrap-lg">
+
+<!--店铺商品信息-->
+<div class="shoptitle mod-bottom" style="text-align: center;">
+	<span style="font-size:x-large;">{$catName.thisName}</span>
+  
+  		<span style="display: block;float:right; font-size: 15px;">
+		  	<notempty name="catNames">
+	  			<volist name="catNames" id="cat">
+						  <span style="padding: 2px;">|</span>
+						 <a href="{:U('Home/Item/itemList',array('catId'=>$cat['cat_config_id'],'configId'=>$catName['item_config_id']))}">
+						  	<span style="color: #C7241D;">{$cat.cat_name}</span>
+						  </a>
+	  			</volist>
+	  			<span>|</span>
+		 </notempty>
+	  </span>
+</div>
+
+
+<ul class="itemslist itemslist-lg mod-bottom">
+ 		<volist name="list" id="item">
+		    <li id="cheight">
+		    <div class="item">
+		      <div class="pic">
+		        <a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank">
+		                    <img width="250" height="290" src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}">
+		                  </a>
+		      </div>
+		        <a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank">
+		        <div style="height: 35px;overflow: hidden;text-align: center;" class="fontname">{$item.title} </div>     
+		      </a>
+		      <!--<div class="price">￥{$item.price}</div>-->
+		      <div class="price" style="padding-top: 10px;padding-left: 8px;">
+		      	<span><?php echo $item['price']*100; ?>&nbsp;积分</span>
+		        <a href="http://www.lishe.cn/item.html?item_id={$item.item_id}" target="_blank">
+			      	<span class="exchange" style="float: right; margin-right: 8px;">兑换</span>
+			      </a>
+		      	
+		      </div>
+		        <if condition="$item.flag eq 1">
+		     		<div style="background-color:rgba(0,0,0,0.5);min-height:20px;color: white;text-align: center;position:relative; top:-50px;">
+		     			广东无货
+		     		</div>
+		        </if>
+		    
+		    </div>
+		  </li>
+	</volist>
+ </ul>
+<div class="shoptitle mod-bottom" style="text-align: center;">
+{$pagestr}
+</div>
+
+  </div>
+</div>
+<include file="Public/footer"/>
+ </body>
+</html>

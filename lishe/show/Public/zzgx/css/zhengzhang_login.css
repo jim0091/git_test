@@ -1,0 +1,33 @@
+a{text-decoration: none;}
+.login_bg{background: url(../images/login_bgi.png) no-repeat;background-size: cover;}
+.logon_main{width: 943px;height: 443px;margin:152px auto 0;}
+.left_main{width: 439px;float: left;height: 443px;}
+.left_main .login_text{margin-top: 92px;}
+.left_main .login_text img{width: 439px;height: 62px;}
+.left_main .login_text2{font-family: "黑体"; width: 352px;padding-top: 67px;padding-left: 23.5px;padding-right: 32px; line-height: 23px; height: 110px;color: #fff;font-size: 14px; background: url(../images/login_img2.png) no-repeat;background-size: 397px 177px;}
+.left_main .login_text2 em{color: #ff4138;font-style: normal;}
+.left_main .login_text2 a{color: #fff;}
+.right_login{float: right; width: 442px;height: 442px;background-color: #fff;border-radius: 10px;}
+.right_login .logo{width: 100%;height: 65px;text-align: center;padding-top: 37px;}
+.right_login .logo img{width: 155px;height: auto;}
+.right_login .user_name, .right_login .user_password{position: relative; width: 350px;margin: 15px auto 0; height: 44px;border:1px solid #00477b;border-radius: 5px;}
+.right_login .user_name input,.right_login .user_password input{width: 305px;line-height: 38px; border:none;height: 38px;margin-left: 15px;outline: none;vertical-align: middle;}
+.right_login .user_name i,.right_login .user_password i{position: absolute;top: 12px;right: 12px;cursor: pointer;}
+.remember{height: 15px; margin:15px auto 0; width: 352px;}
+.remember input{vertical-align: middle;margin: 0;width: 14px;height: 14px;}
+.remember label,.remember .no_reme,.error_text,.register_link{font-size: 14px;color:#666666;font-family: "方正兰亭细黑_GBK";}
+.remember .no_reme{float: right;text-decoration: none;}
+
+.error_text{color: #00477b;height: 14px;width: 352px;margin:28px auto 0;}
+.right_login .submit{margin:9px auto 0;width: 352px;height: 46px;color: #fff;text-align: center;line-height: 46px;font-size: 14px;font-family: "方正兰亭细黑_GBK";background-color: #0766ad;border-radius: 5px;cursor: pointer; }
+.register_link{width: 167px;margin:40px auto 0;text-align: center;}
+.register_link a{color: #666666;text-decoration: none;}
+.register_link i img{height: 14px;vertical-align: middle;}
+html{height:100%;}
+
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/Public/admin/lib/html5.js"></script>
+<script type="text/javascript" src="/Public/admin/lib/respond.min.js"></script>
+<script type="text/javascript" src="/Public/admin/lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="/Public/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="/Public/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="/Public/admin/lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="/Public/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="/Public/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>基本设置</title>
+</head>
+<body>
+<style>
+	.tabBar span.current{
+		background-color: #5EB95E;	
+	}
+	.tabBar {
+    	border-bottom: 2px solid #5EB95E;
+	}
+	.table-bg thead th {
+		background-color: #5EB95E;	
+		color: white;
+	}
+</style>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 商品管理 <span class="c-gray en">&gt;</span> 商品详情  <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+		<div id="tab-system" class="HuiTab">
+			<div class="tabBar cl"><span>基本信息</span></div>
+			<div class="tabCon">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="6" scope="col">商品基本信息</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+					  <tr>
+						<td >商品号</td>
+						<td>商品名称</td>
+						<td >主编码</td>
+						<td width="100px">规格</td>
+						<td width="30px">单价</td>
+						<td width="70px">数量</td>
+					  </tr>
+				  <?php if(is_array($skus)): $i = 0; $__LIST__ = $skus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><tr>
+					    <td><?php echo ($val['sitem_id']); ?></td>
+						<td><?php echo ($val['title']); ?></td>
+						  <td><?php echo ($val['bn']); ?></td>
+						  <td><?php echo ($val['spec_info']); ?></td>
+						  <td><?php echo ($val['cost_price']); ?></td>
+
+						  <td><input onchange="editInput(this,'<?php echo ($val['number']); ?>')" gid="<?php echo ($val['id']); ?>" id="number_<?php echo ($val['id']); ?>" class="col-8 editss" type="number"value="<?php echo ($val['number']); ?>"/></td>
+					  </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+					<tr><td colspan="6"><span class="col-5"></span><input class="btn btn-primary" id="edit_btn" type="button"value="提交修改"/></td></tr>
+				</tbody>
+
+		      </table>
+</div>
+</div>
+<script type="text/javascript" src="/Public/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/Public/admin/lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="/Public/admin/lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="/Public/admin/lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="/Public/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="/Public/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+	layer.config({
+		extend: 'extend/layer.ext.js'
+	});
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+function editNumber(id,oper,max){
+	var input_number=$("#number_"+id);
+	switch (oper){
+		case "+":
+				var num=parseInt(input_number.val());
+				if(input_number.val()<max){
+					input_number.val(num +1);
+				}
+			break;
+		case "-":
+			var num=parseInt(input_number.val());
+			if(input_number.val()>=1){
+				input_number.val(num -1);
+			}
+			break;
+	}
+}
+	//修改编辑框
+function editInput(obj,max){
+	var num=$(obj);
+	var i_num=parseInt(num.val());
+	if( i_num > max){
+		num.val(max);
+	}
+	if(i_num <0){
+		num.val(0);
+	}
+}
+
+$('#edit_btn').click(function(){
+	var edits=$('.editss');
+	var data={};
+	edits.each(function(){
+		keyy=$(this).attr("gid");
+		data[keyy]=$(this).val();
+	});
+	$.post("<?php echo U('Home/editOrderGoods');?>",data,function(text){
+		window.location.reload();
+	});
+});
+
+</script>
+</body>
+</html>

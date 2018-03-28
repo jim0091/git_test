@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE9"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>礼舍-我的帐户</title>
+<meta name="keywords" content="{$webSite['keywords']}" />
+<meta name="description" content="{$webSite['description']}" />
+<meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<link href="__PUBLIC__/wshop/css/info.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/wshop/css/base.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/wshop/js/common_jquery_75554d22a0.js" type="text/javascript"></script>
+<style>
+   .order-related ul li{
+    border:0px solid red;
+    width:25%;
+    float:left;
+  }
+</style>
+</head>   
+<body>
+
+
+
+<div class="content" style="margin-top:15px;">
+  <div class="infoTitle">
+    <div style=" height:10px;"></div>
+    <div class="userICO borderRadius50A" style="background:gray;">
+      <img src="__PUBLIC__/wshop/images/header.jpg" >
+    </div>
+    <ul>
+      <!-- <li>{$userName|default="佚名"}</li> -->
+      <li>{$userName}</li>
+      <li style="font-size:12px;"><span>福利积分:</span>{$depositInfo}</li>
+      <li style="font-size:12px;"><span>礼舍币:</span>0</li>
+      <li style="font-size:12px;"><span>优惠券:</span>0</li>
+
+    </ul>
+    <div class="c"></div>
+  </div>
+  <hr />
+<!-- 图标 start -->
+<div class="container " style="border:0px solid red;">
+        <div class="content ">
+            <div class="content-body">
+
+                <div class="order-related userInfo"  style="border:0px solid red;">
+                        <ul class="uc-order list-horizon clearfix">
+                            <li>
+                                <a style="border:0px;" class="link clearfix relative link-topay" href="{:U('Order/orderList',array('status'=>1))}">
+                                   <img src="__PUBLIC__/wshop/images/icon_topay.png" style="border:0px solid red;display:block;margin:0px auto;width:28px" alt="">
+                                    <p class="title-info c-black font-size-12" style="border:0px solid red;text-align:center;margin-top:0px;padding-bottom:5px;line-height:12px;">待付款</p>
+                                </a>
+                            </li>
+                           <!--  <li>
+                                <a class="link clearfix relative link-totuan" href="https://wap.koudaitong.com/v2/orders/totuan" target="_blank">
+                                                    <p class="title-info c-black font-size-12">待接单</p>
+                                </a>
+                            </li> -->
+                            <li>
+                                <a style="border:0px;" class="link clearfix relative link-tosend" href="{:U('Order/orderList',array('status'=>2))}">
+                                   <img src="__PUBLIC__/wshop/images/icon_tosend.png" style="border:0px solid red;display:block;margin:0px auto;width:28px" alt="">
+                                  <p class="title-info c-black font-size-12" style="border:0px solid red;text-align:center;
+                                                    margin-top:0px;padding-bottom:5px;line-height:12px;">待发货</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a style="border:0px;" class="link clearfix relative link-send" href="{:U('Order/orderList',array('status'=>3))}">
+                                   <img src="__PUBLIC__/wshop/images/icon_send.png" style="border:0px solid red;display:block;margin:0px auto;width:28px" alt="">
+                                  <p class="title-info c-black font-size-12" style="border:0px solid red;text-align:center;
+                                                    margin-top:0px;padding-bottom:5px;line-height:12px;">待收货</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a style="border:0px;" class="link clearfix relative link-sign" href="{:U('Order/orderList',array('status'=>4))}">
+                                   <img src="__PUBLIC__/wshop/images/icon_sign.png" style="border:0px solid red;display:block;margin:0px auto;width:28px" alt="">
+                                    <p class="title-info c-black font-size-12" style="border:0px solid red;text-align:center;margin-top:0px;padding-bottom:5px;line-height:12px;">待评价</p>
+                                </a>
+                            </li>
+                        </ul>
+ 
+                   </div>
+                                                
+            </div>       
+        </div>    
+    </div> 
+
+<!-- 图标 end -->
+  <div class="userInfo" style="">
+    <a href="{:U('Order/orderList')}" style="margin-bottom:10px;margin-top:10px;"><span></span>订单中心</a>
+    <a href="{:U('User/userProfile')}" style="margin-bottom:10px;"><span></span>修改基本资料</a>
+    <a href="{:U('User/changePwd')}" style="margin-bottom:10px;"><span></span>修改帐户密码</a>
+    <a href="{:U('Order/addAddr')}" style="margin-bottom:10px;"><span></span>收货地址管理</a>
+    <a href="{:U('Pay/inteRech')}" style="margin-bottom:10px;"><span></span>积分充值中心</a>
+    <a href="{:U('Login/logout')}" class="button borderRadius" style="margin-bottom:50px;">退出登录</a>
+  </div>
+</div>
+<include file="Public/bottom"/>  

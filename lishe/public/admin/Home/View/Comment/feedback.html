@@ -1,0 +1,349 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+	.overbtn:hover{
+		background-color: #5a98de;
+	}
+	.sigleOrder{
+		background-color: white;
+		position: relative;
+		left: 135px;
+		top: -40px;
+		z-index:1;
+	}
+</style>
+<title>意见反馈</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 评论管理 <span class="c-gray en">&gt;</span> 意见反馈 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+	<form action="{:U('Home/Comment/feedback')}" method="get">
+	<div class="text-c"> 
+		反馈日期：
+		<input type="text" onfocus="WdatePicker()" value="{$searchData.startTime}" name="startTime" id="datemin" class="input-text Wdate" style="width:100px;">
+		-
+		<input type="text" onfocus="WdatePicker()" value="{$searchData.endTime}" name="endTime" id="datemax" class="input-text Wdate" style="width:100px;">	
+		<label>所属企业：</label>
+		<label>
+		<select id="company" name="comId" class="select-box" style="width:215px;">
+		<notempty name="searchData.company">
+			<option value="{$searchData.company.com_id}">{$searchData.company.com_name}</option>
+		</notempty>
+		</select>
+		</label>	
+		<label>反馈类型：</label>
+		<label>
+		<select  name="feedbackType" class="select-box" style="width:105px;">
+			<notempty name="searchData.feedbackType">
+				<option value="{$searchData.feedbackType.status}">{$searchData.feedbackType.name}</option>
+			</notempty>
+			<option value="0">全部</option>
+			<option value="1">意见反馈</option>
+			<option value="2">商品登记</option>
+		</select>
+		</label>
+	</div>
+	<div class="text-c" style="margin-top: 20px;"> 
+		<label>标记：</label>
+		<label>
+		<select  name="sign" class="select-box" style="width:105px;">
+			<notempty name="searchData.sign">
+				<option value="{$searchData.sign.status}">{$searchData.sign.name}</option>
+			</notempty>			
+			<option value="0">全部</option>
+			<option value="1">标记</option>
+			<option value="2">未标记</option>
+		</select>
+		</label>
+		<label>回复：</label>
+		<label>
+		<select  name="status" class="select-box" style="width:105px;">
+			<notempty name="searchData.status">
+				<option value="{$searchData.status.status}">{$searchData.status.name}</option>
+			</notempty>			
+			<option value="0">全部</option>
+			<option value="1">已回复</option>
+			<option value="2">未回复</option>
+		</select>
+		</label>		
+		<label>用户手机：</label>
+		<label>
+		<input type="text" name="mobile"  placeholder="用户手机号" style="width:208px" class="input-text" value="{$searchData.mobile}" >
+		</label>				
+		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜意见</button>
+			
+	</div>
+	</form>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="r">共有数据：<strong>{$number}</strong> 条</span> </div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-hover table-bg ">
+			<thead>
+				<tr class="text-c">
+					<!--<th width="25"><input type="checkbox" name="" value=""></th>-->
+					<th width="4%">序号</th>
+					<th width="8%">用户名</th>
+					<th width="10%">所属公司</th>
+					<th>反馈内容</th>
+					<th width="8%">反馈类型</th>
+					<th width="5%">标记</th>
+					<th width="5%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+					<tr class="text-c">
+						<!--<td><input type="checkbox" value="1" name=""></td>-->
+						<td>{$i}</td>
+						<td title="user_id:{$vo.user_id}">{$vo.userName}</td>
+						<td>{$vo.company}</td>
+						<td class="text-l"><div class="c-999 f-12">
+							<notempty name="vo.item_name">
+								<div class="f-12" style="color: #6d9eeb;font-weight: bold;">
+										商品名称  :{$vo.item_name}
+								</div>
+							</notempty>
+							<notempty name="vo.catArr">
+								<div class="f-12" style="font-weight: bold;">
+									所属分类  :
+									<a href="javascript:void(0)" onclick="article_edit('商品管理','{:U('Home/Product/productList',array('catone'=>$vo['catArr'][0],'cattwo'=>$vo['catArr'][1],'catthree'=>$vo['catArr'][2]))}','10001')" >
+										<volist name="vo.catArr" id="cat" key="z">
+											<neq name="z" value="1">
+												/
+											</neq>
+											{$catInfo[$cat]}
+										</volist>
+									</a>
+								</div>
+							</notempty>								
+							<notempty name="vo.item_link">
+								<div class="f-12" style="font-weight: bold;">
+									外站链接  :<a href="{$vo.item_link}" target="_blank" style="color: #3d85c6;">{$vo.item_link}</a>
+								</div>
+							</notempty>	
+							<notempty name="vo.content">
+							<div class="f-12" style="color: #333;">
+								内容   :{$vo.content}
+								<div class="col-12">
+									{:date('Y-m-d H:i:s',$vo['add_time'])}
+								</div>
+							</div>
+							</notempty>								
+							<notempty name="vo.reply_content">
+								<div style="border-bottom: 1px #ddd solid;">&nbsp;</div>
+								
+								{$vo.reply_admin_name}回复  :{$vo.reply_content}
+								<div class="col-12">
+									{:date('Y-m-d H:i:s',$vo['reply_time'])}
+								</div>								
+							</notempty>
+						</td>
+						<td>
+							{$vo['prom_type'] == 1 ? "意见反馈":"商品登记"}
+						</td>
+						<td>
+						<?php 	
+						 	$applFundId=array_search('changefeedback', $nodeAction);
+							 if($applFundId){
+						 ?>	
+						<a href="javascript:void(0)" onclick="changeStatus({$vo.feedback_id},'status',{$vo.is_sign})">
+						<?php 
+						}else{ ?>
+						<a href="javascript:void(0)">
+						<?php } ?>							
+							<if condition="$vo['is_sign'] eq 1">
+								<span class="label label-success radius" title="单击禁用">标记</span>
+							<elseif condition="$vo['is_sign'] eq 0"/>	
+								<span class="label radius" title="单击启用">无</span>
+							</if>	
+						</a>	
+						</td>						
+						<td class="td-manage">
+						<?php 	
+						 	$applFundId=array_search('reply', $nodeAction);
+							 if($applFundId){
+						 ?>								
+							<a title="查看回复{$vo.userName}" href="javascript:;" onclick="member_edit('查看回复{$vo.userName}','{:U('Home/Comment/reply',array('feedbackId'=>$vo['feedback_id']))}','4','','510')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+						<?php 
+									}
+									   ?>							
+							<?php 	
+							 	$applFundId=array_search('changefeedback', $nodeAction);
+								 if($applFundId){
+							 ?>								
+							<a title="删除" href="javascript:;" onclick="changeStatus({$vo.feedback_id},'del')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+							<?php 
+									}
+									   ?>						
+						</td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div style="text-align: center; padding: 30px 30px;">
+			{$pagestr}
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/laypage/1.2/laypage.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,2,4]}// 制定列不参与排序
+		]
+	});
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+//企业名			
+    var companyUrls = "{:U('Home/Order/getCompany')}" ;
+    $( '#company' ).append( '<option value="0"> 全部 </option>' ) ;
+	$.ajax({
+		type:"get",
+		url:companyUrls,
+		dataType:'json',
+		success:function(data){
+			$.each(data, function(k,v) {
+          	  	var options = '<option value="' +v.com_id+ '">' +v.com_name+ '</option>' ;
+           	 	$( '#company' ).append(options);
+			});
+		},
+		error:function(data){
+			
+		}			
+        }) ;	
+});
+/*用户-添加*/
+function member_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*资讯-编辑*/
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+/*用户-停用*/
+function member_stop(obj,id){
+	layer.confirm('确认要停用吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+		$(obj).remove();
+		layer.msg('已停用!',{icon: 5,time:1000});
+	});
+}
+
+/*用户-启用*/
+function member_start(obj,id){
+	layer.confirm('确认要启用吗？',function(index){
+		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+		$(obj).remove();
+		layer.msg('已启用!',{icon: 6,time:1000});
+	});
+}
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*密码-修改*/
+function change_password(title,url,id,w,h){
+	layer_show(title,url,w,h);	
+}
+/*用户-删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$(obj).parents("tr").remove();
+		layer.msg('已删除!',{icon:1,time:1000});
+	});
+}
+function changeStatus(id,type,val){
+	if(type=="status"){
+		if(val==1){
+			var say="取消标记";
+		}else if(val==0){
+			var say="标记";
+		}
+	}else{
+		var say="删除";
+	}		
+	layer.confirm('确认要'+say+'该意见吗？',function(index){
+		$.get("__APP__/Comment/changeFeedback/feedbackId/"+id+"/type/"+type+"/val/"+val,function(data){     
+			if(data){
+				layer.msg(say+'成功!',{icon:1,time:1000});
+				location.reload();
+			}else{
+				layer.msg(say+'失败!',{icon:1,time:1000});
+				
+			}
+		});
+	});	
+}
+</script>
+</body>
+</html>

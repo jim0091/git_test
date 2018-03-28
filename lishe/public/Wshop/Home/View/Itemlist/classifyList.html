@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<link href="__VIEW__Public/css/classify.css" rel="stylesheet">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>商品分类-心意商城</title>
+</head>
+
+<body>
+    <div class="clasearch">
+        <span class="return">
+            <a href="javascript:" onclick="history.back();">
+                <img src="__VIEW__Public/images/return.png">
+            </a>
+        </span>
+        <span class="findtxt">
+            <form action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+                <input type="text" name="keyword" placeholder="搜索你想要的商品">
+            </form>
+        </span>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="classify"> 
+        <div class="classifyLeft">
+        <ul id="typeFree">
+            <volist name="list" id="vo">
+                <li class="" value="{$vo['cat_nav_id']}">{$vo['nav_name']}</li>
+            </volist>
+        </ul>
+        </div>
+        <div class="classifyRight">
+            <include file="classifyListAjax"/>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <include file="Public/popuLayer"/>  
+    <include file="Public/bottom"/>
+    <input id="nvaNum" type="hidden" value="1">  
+    <script type="text/javascript">
+        $(function(){
+            $(".classifyLeft li").eq(0).addClass("active");
+        });
+        $('#typeFree li').click(function(){
+            if(!$(this).hasClass('active')){
+                $(this).addClass('active').siblings().removeClass('active');
+            }
+            var objId = $(".classifyLeft ul li.active").attr('value');
+            $.post("__APP__/Itemlist/classifyList",{catId:objId},
+                function(data){
+                    $('.classifyRight div').remove();
+                    $('.classifyRight').html(data);
+                },
+            "text");
+        });
+    </script>
+</body>
+</html>

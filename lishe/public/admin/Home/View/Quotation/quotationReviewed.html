@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>报价单审核</title>
+</head>
+<body>
+<div class="pd-20">
+    <form action="{:U('Quotation/quotationReviewedOp')}" method="post"  class="form form-horizontal" id="form-member-add">
+    <input type="hidden" name="status" value="{$status}" />    
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>报价单ID：</label>    
+        <div class="formControls col-xs-8 col-sm-9">
+            <input type="hidden" name="quotationId" value="{$quotationId}">
+            <label>{$quotationId}</label>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row cl">
+        <label class="form-label col-3"><span class="c-red">*</span>审核状态：</label>    
+        <div class="formControls col-2">
+            <span class="select-box">
+                <select name="nowStatus" id="nowStatus" class="select">
+                    <option value="0" >不通过</option>
+                    <option value="1" >通过</option>
+                </select>
+            </span>
+        </div>
+        <div class="col-4"> </div>
+    </div>
+    <div class="row cl notemptyText">
+        <label class="form-label col-3"><span class="c-red">*</span>备注：</label>
+        <div class="formControls col-6">
+            <textarea name="remark" cols="" rows="" class="textarea" placeholder="请填写审核说明" dragonfly="true" ></textarea>
+        </div>
+        <div class="col-3"> </div>
+    </div>
+    <div class="row cl">
+        <div class="col-9 col-offset-3">
+            <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+        </div>
+    </div>
+    </form>
+    <table class="table table-border table-bordered table-bg table-hover" style="margin-top: 25px;">
+        <thead>
+        <tr>
+            <th scope="col" colspan="10">审核记录</th>
+        </tr>
+        <tr class="text-c">
+            <th width="">报价单ID</th>
+            <th width="">审核人</th>
+            <th >说明</th>
+            <th width="">审核类型</th>
+            <th width="">状态</th>
+            <th width="">审核时间</th>
+        </tr>
+        </thead>
+        <tbody>
+            <volist name="ssitemQuotationList" id="val">
+                <tr class="text-c">
+                    <td>{$val['quotation_id']}</td>
+                    <td>{$val['audit_name']}</td>
+                    <td>{$val['remark']}</td>
+                    <td>
+                        <if condition="$val['type'] eq -1">
+                            审核不通过
+                        <elseif condition="$val['type'] eq 1" />
+                            供应商未提交
+                        <elseif condition="$val['type'] eq 2" />
+                            采销专员审核
+                        <elseif condition="$val['type'] eq 3" />
+                            采销经理审核
+                        <elseif condition="$val['type'] eq 4" />
+                            采销总监审核
+                        <elseif condition="$val['type'] eq 5" />
+                            财务审核
+                        <elseif condition="$val['type'] eq 9" />
+                            完成审核
+                        <else />
+                            无法识别
+                        </if>
+                    </td>
+                    <td><if condition ="$val['status'] eq 1">通过<else/>不通过</if></td>
+                    <td>{$val['create_time']|date="Y-m-d H:i:s",###}</td>               
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+
+    
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-add").Validform({
+		tiptype:2,
+		callback:function(form){
+			form[0].submit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+		}
+	});
+});
+</script>
+</body>
+</html>

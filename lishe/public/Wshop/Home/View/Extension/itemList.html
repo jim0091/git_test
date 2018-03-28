@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="email=no" name="format-detection" /> 
+    <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    <meta name="apple-mobile-web-app-title" content="">
+    <title>选择商品</title>
+    <link rel="stylesheet" type="text/css" href="__VIEW__Extension/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="__VIEW__Extension/css/selectProduct.css">
+    <script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+    <script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+</head>
+<body>
+    <div><img src="/Wshop/Home/View/Extension/images/qhxxg.png" alt="" style="width:100%;"></div>
+    <section class="main">
+        <div class="main_content">
+            <ul class="list_wrap">
+                <volist name="itemSkuList" id="vo" key="k" empty="暂时没有商品">
+                <li>
+                    <div class="product_img"><img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}" /></div>
+                    <div class="product_name">{$vo.title}</div>
+                    <div class="product_price">
+                        <if condition="$vo['cash'] gt 0 && $vo['point'] gt 0">
+                            <span class="fl price1">¥<em class="space"></em>{:sprintf("%.2f", $vo['cash'])} + {$vo['point']}积分</span>
+                        <elseif condition="$vo['cash'] gt 0"/>
+                            <span class="fl price1">¥<em class="space"></em>{:sprintf("%.2f", $vo['cash'])}</span>
+                        <elseif condition="$vo['point'] gt 0"/>                            
+                            <span class="fl price1"><em class="space"></em>{$vo['point']}积分</span>
+                        <else/>
+                            <span class="fl price1">¥<em class="space"></em>{:sprintf("%.2f", $vo['price'])};</span>
+                        </if>
+                        <span class="fr price2">
+                            <if condition="($vo['jd_price'] eq '0') OR ($vo['jd_price'] eq '')">
+                                市场价：¥{:sprintf("%.2f",$vo['mkt_price'])}
+                            <else/>
+                                京东价：¥{:sprintf("%.2f",$vo['jd_price'])}
+                            </if>
+                            
+                        </span>
+                    </div>
+                    <div class="product_btn">
+                        <if condition="$vo['jdId'] neq 0">
+                            <a href="https://item.jd.com/{$vo['jdId']}.html" target="_blank"><span class="goJd fl">去京东比价</span></a>
+                        </if>
+                        <span class="buying fr butbuy" data-skuId="{$vo['sku_id']}" <if condition="$vo['jdId'] eq 0">style="width:100%;"</if>>立即购买</span>
+                    </div>
+                </li>
+                </volist>
+            </ul>
+        </div>
+    </section>
+    <include file="Public/popuLoading"/>
+    <include file="Public/popuLayer"/>  
+</body>
+<style type="text/css">
+.Wtankdiv {height: 5rem;}
+.Tankclose {margin-top: 0;}
+.Tankpt {margin-top: -2%;}
+.Tanksentences {font-size: 0.3rem;}
+.Tanksurebtn a {width: 2rem; height: 0.75rem; line-height: 0.8rem; margin-top: 4%; font-size: 0.35rem; }
+.Tankclose img{margin-bottom: 5%;}
+@media screen and (min-width: 410px){
+    .Tanksurebtn a{margin-top: 5% !important; }
+}
+</style>
+<script type="text/javascript">
+    var html = document.documentElement;
+    var whtml  =html.getBoundingClientRect().width;
+    html.style.fontSize = whtml / 7.5 + "px";
+
+    //限制商品名称长度
+    repleceText('.product_name',13);
+    function repleceText(obj,max){
+        $(obj).each(function(){
+            if($(this).text().length>max){
+                $(this).text($(this).text().substring(0,max));
+                $(this).html($(this).html()+'...');
+            }
+        });
+    }
+
+    $(".butbuy").click(function(){
+        $(".topLoading").show();       
+        var skuId=$(this).attr('data-skuId');
+        if (skuId == '') {
+            opLayer('open',"系统繁忙，请刷新重试！");
+            $(".topLoading").hide();
+            return false;
+        };
+        $.ajax({
+            type:"POST",
+            url:"__APP__/Extension/extensionOrder",
+            data:{skuId:skuId},
+            dataType:'text',
+            success:function(result){
+                var data=eval(result);
+                if(data[0] == 1){
+                    if (data[2] != '') {
+                        $(".topLoading").hide();
+                        window.location.href="__APP__/Extension/pay/paymentId/"+data[1];
+                    };
+                }else{
+                    opLayer('open',data[1]);
+                    $(".topLoading").hide();
+                    return false;                    
+                }
+            }
+        });
+    });
+</script>
+</html>

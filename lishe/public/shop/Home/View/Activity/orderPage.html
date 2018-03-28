@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+<link rel="stylesheet" href="__VIEW__Public/css/IndustryGather.css">
+<link rel="stylesheet" href="__VIEW__Public/css/orders.css">
+<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+<title>提交订单-礼品商城</title>
+</head>
+
+<body>
+  	<include file="Public/header"/>
+   	<div style="clear:both;"></div>
+   	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+
+   	<div class="layout" style="border:0px solid red;margin-top:50px;">
+		<form id="orderconfirm" method="post" action="__APP__/Activity/creatOrder">
+	  		<!--收货信息-->
+	   		<div class="receiving">
+		  		<p class="rec">收货信息</p>
+		  		<ul id="typeFree-two">
+					<foreach name="addrList" item="getAddrInfo">
+				  	<li data="{$getAddrInfo['addr_id']}" class="<if condition='$getAddrInfo.def_addr eq 1'>active</if>">
+					  	<p class="user" style="line-height:20px;">{$getAddrInfo['area']}<span>{$getAddrInfo['name']}</span></p>
+					  	<p class="dres">{$getAddrInfo['addr']}</p>
+					  	<p class="phone">{$getAddrInfo['mobile']}</p>
+					  	<p class="alter" style="border:0px solid red;">
+							<a href="javascript:void(0);" style="border:0px solid red;" data-id="{$getAddrInfo['addr_id']}" class="chgAddrInfo">修改</a>
+					  	</p>
+			  		</li>
+					</foreach>
+		  		</ul>
+		  		<p style="clear:both;">
+		  			<span class="rec-l">
+		  				<a href="__USER__/Address/addAddress">添加新地址</a>
+		  			</span>
+		  			<!-- <span class="rec-r">
+		  				<a href="__LISHE_URL__/member-address.html">管理全部地址</a>
+		  			</span> -->
+		  		</p>
+	   		</div>
+	   		<!--支付以配送方式-->
+	   		<!--<div class="pay">
+		  		<p class="rec">支付及配送方式</p>
+		  		<ul id="typeFree">
+			 		<li class="active">在线支付</li>
+			 		<li>货到付款</li>
+		  		</ul>
+	   		</div>-->
+	   		<!--确认商品清单-->
+	  		<!-- 遍历开始 -->
+			   	<div class="inventory" style="border:1px solid #DDDDDD;">
+				  	<p class="rec2">确认商品清单</p>
+				  	<div class="inv-left">
+					 	<p class="inv-p">配送类型： </p>
+					 	<!--tab切换-->
+						<ul class="inv-tab">
+							<li class="current">快递配送</li>
+							<!-- <li>上门自取</li> -->
+						</ul>
+						<div class="inv-cont">
+							<ul style="display:block;">
+							   	<li>
+							   		<span class="inv-pay">配送方式:</span>
+								   	<select class="inv-sel">
+									  	<!-- <option value="volvo">--请选择配送方式--</option> -->
+									  	<option value="{$shopID.delivery}" selected>快递(￥{$itemInfo.post_fee})</option>		 
+								   	</select>
+								</li>
+							</ul>						   
+						</div>					 
+					 	<!--切换END-->
+				  	</div>
+				  	<div class="inv-right" style="border:0px solid red;">
+					  	<input type="hidden" name="aitemId" value="{$itemInfo['aitem_id']}" >
+					 	<table class="inv-tb" style="border:0px solid red;"> 
+							<tr>
+							  	<td class="inv-pt">
+						  			<img src="{$itemInfo.item_img}" style="width:70px;height:70px;">
+							  	</td>
+							  	<td class="inv-td"><!-- <a href="#">团购</a> --></td>
+							  	<td class="inv-td2">
+						  			<p>{$itemInfo.item_name}</p>
+						  			<?php $itemSkuInfo = getItemSku($cart['sku_id']); ?>
+						  			<p>{$itemSkuInfo['spec_info']}</p>
+							  	</td>
+							  	<td class="inv-td3">￥{$itemInfo.price}</td>
+							  	<td class="inv-td4">x1</td>
+							  	<td class="inv-td4">
+							  		<span class="currStoreStatus" data="{$itemInfo.store}"><if condition="$itemInfo.store eq 1"><span style="color:green;">有货</span><else/><span style="color:red;">无货</span></if></span>
+							  	</td>
+							</tr> 
+					 	</table>
+						<!-- <p class="inv-pt2"><a href="#"><img src="images/quan.png"></a></p> -->
+						<!--<P class="inv-note">
+							<span>订单备注</span><span> 选填：</span>
+							<input type="text" name="remark" maxlength="85" placeholder=" 本次交易的补充说明（所填内容建议已经和商家达成一致意见，85字以内）" class="txt">
+							<span>0/85</span>
+						</P>-->
+					 	<P class="inv-note2">
+					 		<if condition="$itemInfo.weight gt 0">
+						 		总重量：<span>{$itemInfo.weight}kg</span>;  
+					 		</if>
+					 		
+					 		总计：<span>￥{$itemInfo.price}</span>(含运费：￥<span>{$itemInfo.post_fee}</span>）</P>
+					 		<p style="color: #c7241d;padding: 15px 15px;">备注：产品非质量问题，不接受礼包单品退换货。</p>
+				  	</div>
+			  	</div>
+	 
+	   		<!--商品信息-->
+	   		<div class="shop-list" style="border:0px solid red;">
+			  	<!--<p class="sp-ch"><input type="checkbox" checked style="vertical-align:middle;"><span>使用会员积分</span></p>-->
+			  	<div class="list-s">
+				 	<!-- <p>商品总件数：<span>{$totalCartQuantity}</span></p>
+				 	<p>总重量：<span>{$totalCartWeight}kg</span></p> -->
+				 	<p>商品总金额：<span>￥{$itemInfo.price}</span></p>
+				 	<p>总运费：<span>￥{$itemInfo.post_fee}</span></p>
+				 	<p>减免：<span>-￥0.00</span></p>
+				 	<p>应付总额：<span>￥{$itemInfo.total_fee}</span></p>
+				 	<p class="list-btn">
+				 		<a class="submit-a-click" style="cursor: pointer;" >提交订单</a>
+				 		<a class="submit-a" style="display:none">订单提交中。。</a>
+				 	</p>
+			  	</div>
+	   		</div>
+		</form>
+   	</div>
+   	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+</body>
+</html>
+<script>
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    }
+	//提交订单
+	$(".submit-a-click").click(function(){
+		$(".topLoading").show();
+		$(this).hide();
+		$(".submit-a").show();
+		$("#orderconfirm").submit();
+	});
+	// 修改收货地址
+  	$(".chgAddrInfo").click(function(){
+	  	var addrId=$(this).attr("data-id");
+	  	window.location.href="__USER__/Address/chgAddressInfo/addrId/"+addrId;
+	  	return false;
+  	});
+   	<!--收货信息-->
+	$('#typeFree-two li').not(".chgAddrInfo").click(function(){
+		if(!$(this).hasClass('active')){
+			$(this).addClass('active').siblings().removeClass('active');
+			var addrId=$(this).attr("data");
+			$.post("__USER__/Address/modifyDefAddr",{addr_id:addrId},function(msg){
+				if(msg=='defAddrSuccess'){
+					window.location.reload();
+				}
+				if(msg==''){
+					divPrompt('默认地址修改失败');
+					return false;
+				}
+			});
+		}
+	});
+
+  	// 判断是否有货，无货 
+  	$('.currStoreStatus').each(function(mm,nn){
+		var currStoreStatus=$(this).attr('data');
+		currStoreStatus=parseInt(currStoreStatus);
+		if(currStoreStatus==0){
+	  		$('.list-btn').empty();
+	  		$('.list-btn').html("<b style='font-size:14px;color:#ff0000'><a href='javascript:window.history.back();'>无货，返回</a></b>");
+	  		return false;
+		}
+  	});
+	<!--支付配送-->
+	$('#typeFree li').click(function(){
+		if(!$(this).hasClass('active')){
+			$(this).addClass('active').siblings().removeClass('active');
+		}
+	});
+	<!--清单-->
+	$(function(){
+		window.onload = function()
+		{
+			var $li = $('.inv-tab li');
+			var $ul = $('.inv-cont ul');						
+			$li.click(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			})
+		}
+	}); 
+	<!--单选控制DIV层-->
+	$(":radio[name='is-s']").click(function(){
+		var index = $(":radio[name='is-s']").index($(this));
+		if(index == 0) {
+			$("#ra-div").show();
+		}else{
+		 	$("#ra-div").hide();
+		}
+  	});
+</script>

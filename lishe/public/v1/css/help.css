@@ -1,0 +1,47 @@
+/* 通用 */
+html, body, div, span, a, ul, li, img, table, tr, td, input{padding:0;  margin:0;}
+ul, li{list-style:none;}
+a{text-decoration:none; color: #666;}
+img{border:none;}
+body{font-size:12px; font-family:"Microsoft Yahei";}
+table, tr, td{margin: 0; padding: 0; border: 0; border-collapse:collapse; border-spacing: 0;}
+input{outline: none; font-family: "Microsoft Yahei"; background-color: #FFF;}
+
+/* 正文 */
+/* 左侧导航条 */
+.help_center{width: 208px; padding-bottom: 30px; border: 1px solid #DADADA; background-color: #FFF; float: left;}
+.help_center_head{height: 49px; padding-right: 60px; background-color: #FF4138; color: #FFF; font-size: 18px; text-align: right; line-height: 49px; background-image: url("../images/help.png"); background-repeat: no-repeat; background-position: 45px 12px;}
+.left_nav ul{margin-top: 30px; margin-left: 70px;}
+.left_nav li{margin-top: 20px; line-height: 16px; font-size: 16px;}
+.left_nav li a:hover{color: #FF4138;}
+.left_nav .current{color: #FF4138;}
+/* 右侧正文 */
+.content{width: 978px; height: auto; border: 1px solid #DADADA; background-color: #FFF; float: right; margin-left: 10px; padding-bottom: 40px;}
+.content_inner{width: 920px; margin: 0 auto;}
+.pages{padding-bottom: 50px; display: none;}
+.pages.current{display: block;}
+.page_title{height: 50px; color: #000; line-height: 50px; font-size: 16px; font-weight: bold; border-bottom: 1px solid #DADADA;}
+.page_title p{float: left;}
+.category{font-size: 14px; font-weight: bold;}
+.arrow{width: 35px; height: 50px; background: url("../images/right_arrow.png") no-repeat; background-position: 15px 20.5px;}
+.help_details, .Q_A, .hire, .partner{font-size: 14px; line-height: 24px; padding-top: 5px; color: #666;}
+.second_title{margin: 15px 0; color: #000; font-size: 14px; font-weight: bold;}
+.guide{margin-top: 25px; width: 830px; height: auto; margin-left: 60px; border-left: 1px solid #666; padding-top: 30px; padding-bottom: 5px;}
+.guide img{margin-left: 30px; margin-top: 20px; margin-bottom: 20px; display: block;}
+.guide p{font-size: 14px; line-height: 24px; color: #000; font-weight: bold; padding-left: 25px; background: url("../images/circle.png") no-repeat; background-position: 0 4px; margin-left: -8px;}
+.guide p:first-child{margin-top: -35px;}
+.last_step{margin-bottom: -10px;}
+.intro p{margin-top: 20px; font-size: 14px; color: #666; line-height: 24px;}
+.hire .second_title{font-size: 18px;}
+.partner div{width: 918px; height: 835px; background: url("../images/partners.jpg") no-repeat;}
+.partner p{margin: 20px 0;}
+.map{width: 918px; height: 350px; background: url("../images/map.jpg") no-repeat; margin-top: 25px;}
+.contact_details{width: 570px; height: 190px; margin: 40px auto 0 auto;}
+.contact_details > div{float: left; color: #666; font-size: 16px; line-height: 22px;}
+.contact_details p{color: #000; font-size: 24px; font-weight: bold; margin-bottom: 10px;}
+.QR_code{width: 181px; height: 181px; background: url("../images/lishe.jpg") no-repeat;}
+.card{height: 155px; padding: 8px 20px 8px 30px; margin-top: 5px; border-left: 1px solid #DADADA; margin-left: 30px;}
+
+.dryhelpwrap{color: #666; font-size: 14px; line-height: 24px; margin-top: 20px;}
+.helptitile{color: #000; font-weight: bold; margin: 15px 0;}
+.helprule{width: 93%;}

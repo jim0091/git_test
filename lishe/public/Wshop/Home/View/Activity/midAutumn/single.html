@@ -1,0 +1,218 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="email=no" name="format-detection" /> 
+	<meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+	<meta name="apple-mobile-web-app-title" content="">
+	<title>选择商品</title>
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="{$STATIC}/css/welfare_two_page.css">
+</head>
+<body>
+	<include file="Activity/midAutumn/header" />
+	<div style="height: 0.9rem;"></div>
+	<section>
+		<img src="{$STATIC}/images/w_page3_banner.png" class="page_banner">
+		<eq name="acid" value="100"><div class="price"><span class="sp1"><em>¥</em>0</span>-<span class="sp2"><em>¥</em>50</span></div></eq>
+		<eq name="acid" value="101"><div class="price"><span class="sp1"><em>¥</em>50</span>-<span class="sp2"><em>¥</em>100</span></div></eq>
+		<eq name="acid" value="102"><div class="price"><span class="sp1"><em>¥</em>100</span>-<span class="sp2"><em>¥</em>200</span></div></eq>
+		<eq name="acid" value="103"><div class="price"><span class="sp1"><em>¥</em>200</span>-<span class="sp2"><em>¥</em>300</span></div></eq>
+	</section>
+	<!--排序-->
+	<section class="search_nav sortby">
+		<span class="search_btn active" sv="1">综合排序</span>
+		<span class="search_btn" sv="2">销量优先</span>
+		<span class="search_btn arrow_icon" sv="3">积分排序<b class="search_arrow"></b></span>
+	</section>
+	<!--商品列表-->
+	<section class="product_list" id="itemListBox">
+		<ul id="itemList"></ul>
+	</section>
+	<div style="height: 1rem;clear: both;"></div>
+	<div class="loading">
+	    <img  src="{$STATIC}/img/loading.gif" alt=""/>
+	</div>
+	
+	
+	<input id="acid" type="hidden" value="{$acid}"/>
+	<input id="page" type="hidden" value="1"/>
+	<input id="sortby" type="hidden" value="1"/>
+</body>
+<script type="text/javascript" src="{$STATIC}/js/jQuery.v1.8.3.min.js"></script>
+<script type="text/javascript">
+	var html = document.documentElement;
+	var whtml  =html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /7.5 + "px";
+
+	//限制字符个数
+	function cutItemName() {
+		$('.product_name').each(function(){
+			var maxwidth=13;
+			if($(this).text().length>maxwidth){
+				$(this).text($(this).text().substring(0,maxwidth));
+				$(this).html($(this).html()+'..');
+			}
+		});
+	}
+    $('.shoping_cart_ls').on('touchend',function(){
+        var all=parseInt($('.shop_cart p').html());
+        $('.shop_cart p').html(all + 1);
+        count();
+    })
+    $('.product_list').on('touchend','.shoping_cart_ls',function(){
+        clearTimeout(time);
+        $('.shop_cart p').addClass('click');
+        var time = setTimeout(function(){
+            $('.shop_cart p').removeClass('click');
+       },500)
+    })
+	
+    //加入购物车
+    $(document).on("click", ".p2Cart", function(){
+    	//商品id
+	    var itemId = $(this).attr('itemId');//商品id
+	    //购买数量
+	    var shopId = $(this).attr('shopId');//商品id
+	    //库存id
+		//检测是否登录
+	    $.post('__APP__/Activity/isLogin','',function(data){
+			if(!data){
+	        	alert('请先登录!');
+				window.location.href = '/wshop.php/Login/login.html?entry=no&refer=http://www.lishe.cn/wshop.php/activity/newCourtesy';
+				return false;
+			}
+	    });        
+	    $.post('__APP__/Activity/getItemSku',{itemId:itemId},function(data){
+			if(data['code'] == 0){
+	            window.location.href="http://www.lishe.cn/wshop.php/Info/index/itemId/"+itemId;
+				return false;
+			}else if(data['code'] == 1){
+				addCart(itemId,data['skuId'],shopId);
+			}
+	    	
+	    });
+    });
+	function addCart(itemId,skuId,shopId){
+		var quantity = 1;
+		var jd_ids = '19_1607_3155_0';
+	    $.ajax({
+	        type:"POST",
+	        url:"__APP__/Info/addItemCart",
+	        data:{itemId:itemId,skuId:skuId,quantity:quantity,shopId:shopId,jd_ids:jd_ids},
+	        dataType:'text',
+	        success:function(data){
+	            var res = eval(data);
+	            if (res[0] == 1) {
+	            	alert("成功加入购物车!!");
+	               updateCartNum();
+	            }else{
+	            	alert(res[1]);
+	            }
+	        }
+	    });  	
+	}  
+    
+    //排序
+    var arrowOff = true;
+    $('.search_btn').bind('touchend',function(){
+    	
+    	var sv = $(this).attr("sv");
+    	var sortby = $("#sortby").val();
+    	if (sv == sortby) {
+    		return false;
+    	}
+    	$("#sortby").val(sv);
+    	if(!$(this).hasClass('active')){
+    		$(this).addClass('active').siblings('span').removeClass('active');
+    	}
+    	if (sv == 3 || sv == 4) {
+    		if(!arrowOff){
+        		$(this).addClass('rotate_arrow');
+        		$(this).attr('sv', 3);
+        	}else{
+        		$(this).removeClass('rotate_arrow');
+        		$(this).attr('sv', 4);
+        	}
+        	arrowOff = !arrowOff;
+    	} else {
+    		arrowOff = true;
+    	}
+    	
+    	reloadItems();
+    });
+    
+    var loadFlag = false;
+    var nodate = false;
+    $(window).scroll( function() {
+    	if (loadFlag || nodate) return; 
+    	if ($(document).scrollTop() + window.screen.height >= $(document).height() - 50) {
+    		var page = $("#page").val();
+        	$("#page").val(++page);
+    		getItems();
+        }
+    }); 
+    function getItems() {
+    	loadFlag = true;
+    	var acid = $("#acid").val();
+    	var sortby = $("#sortby").val();
+    	var page = $("#page").val();
+    	$.get("{:U('activity/singleArea')}", {acid:acid,sortby:sortby,page:page}, function(result){
+    		if(result == -1) {
+    			nodate = true;
+    			return false;
+    		}
+    		$("#itemList").append(result);
+    		cutItemName();
+    		loadFlag = false;
+    	});
+    
+    }
+    
+    function reloadItems () {
+    	$("#itemList").empty();
+    	$("#page").val(1);
+    	getItems();
+    }
+    
+    getItems();
+    
+	//懒加载
+	//触发滚动 防止第一屏不加载
+	/* $("body,html").scrollTop(1);
+	lazyLoad();
+	function lazyLoad(){
+		var bodyH = $(window).height();
+		var docH = $(document).height();
+		if(docH < bodyH){
+			$('img').each(function(){
+					var $this = $(this);
+
+					if($this.attr('data-src') != $this.attr('src')){
+						$this.attr('src',$this.attr('data-src'));
+					}
+				});
+			}else{
+				$('img').each(function(){
+					var $this = $(this);
+					var winH = $(window).height() + $(window).scrollTop();
+					var thisT = $this.offset().top;
+					var thisH = $this.height();
+					var scrlTop = $(window).scrollTop();
+
+					if(winH > thisT-100 && $this.attr('src') != $this.attr('data-src')){
+						var dataSrc = $this.attr('data-src');
+						$this.attr('src',dataSrc);
+					}
+				});
+			}
+		
+	}
+	$(document).on('scroll',function(){
+		lazyLoad();
+	}); */
+
+</script>
+</html>

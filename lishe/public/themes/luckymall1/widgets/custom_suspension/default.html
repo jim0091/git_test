@@ -1,0 +1,347 @@
+<style>
+.tip-absolute {
+	position: absolute;
+	width: 88px;
+	top: 784px;
+    right: 6%;
+    background: #a12124;
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    z-index: 9999;
+	/*
+	filter:alpha(opacity=60);  
+	-moz-opacity: 0.6;  
+	-khtml-opacity: 0.6;  
+	opacity: 0.6;
+	*/
+}
+.tip-fixed {
+    position: fixed;
+    /* width: 92px; */
+    top: 10%;
+    right: 6%;
+    /*
+    background: #a12124;
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    z-index: 9999;
+    */
+	/*
+	filter:alpha(opacity=60);  
+	-moz-opacity: 0.6;  
+	-khtml-opacity: 0.6;  
+	opacity: 0.6;
+	*/
+}
+/*
+.tip-fixed:hover {
+	filter:alpha(opacity=100);  
+	-moz-opacity: 1;  
+	-khtml-opacity: 1;  
+	opacity: 1;
+}
+*/
+.tip-on-bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+.tip-absolute .tip-fixed-nav {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.tip-absolute p {
+    margin: 0px;
+}
+.tip-absolute a {
+    color: #fff;
+}
+
+.tip-absolute .tip-fixed-username {
+    background: #A12124;
+    padding: 6px 0px;
+    border-radius: 6px;
+}
+.tip-absolute .tip-fixed-username p {
+	font-size: 16px;
+}
+.tip-absolute .tip-fixed-username span {
+	font-size: 14px;
+}
+
+.tip-absolute .tip-fixed-bottom {
+	padding: 8px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance {
+	border-bottom: 1px solid #D78C97;
+	padding-bottom: 6px;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance p {
+	font-size: 14px;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-balance span {
+	font-size: 30px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-shopping-cart {
+    padding: 6px 0px;
+	border-bottom: 1px solid #D78C97;
+	font-size: 14px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-shopping-cart tt {
+	font-size: 24px;
+	font-weight: bold;
+	padding-right: 3px;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up, .tip-absolute .tip-fixed-bottom .tip-fixed-help {
+	position: relative;
+    padding: 6px 0px;
+    border-bottom: 1px solid #D78C97;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up, .tip-absolute .tip-fixed-bottom .tip-fixed-help:hover {
+    padding: 6px 0px;
+    border-bottom: 1px solid #D78C97;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up p, .tip-absolute .tip-fixed-bottom .tip-fixed-help p {
+    margin: 5px 0px;
+    padding: 3px 8px;
+    background: #c7241d;
+    border-radius: 5px;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: width,height .5s linear;
+	-moz-transition: width,height .5s linear;
+	-o-transition: width,height .5s linear;
+	-ms-transition: width,height .5s linear;
+	transition: width,height .5s linear;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-top-up p:hover, .tip-absolute .tip-fixed-bottom .tip-fixed-help p:hover {
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-o-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transform: scale(1.05);
+	-webkit-transition: width,height .5s linear;
+	-moz-transition: width,height .5s linear;
+	-o-transition: width,height .5s linear;
+	-ms-transition: width,height .5s linear;
+	transition: width,height .5s linear
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-help img {
+    position: absolute;
+    bottom: 28px;
+	left: 55px;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: all .5s eas;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+.tip-absolute .tip-fixed-bottom .tip-fixed-help img:hover {
+    bottom: 31px;
+	left: 58px;
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.tip-absolute .tip-fixed-bottom .tip-fixed-top {
+	cursor: pointer;
+	padding: 10px 0px 5px 0px;
+}
+
+@media screen and (max-width: 1530px) {
+    .tip-absolute {
+        display: none;
+    }
+}
+@media screen and (max-width: 1600px) {
+    .tip-absolute {
+        right: 3%;
+    }
+}
+@media screen and (max-width: 1800px) {
+    .tip-absolute {
+        right: 4%;
+    }
+}
+</style>
+		<!-- 悬浮框 BEGIN -->
+		<div class="tip-absolute tip-fixed" id="moveId" style="display:none;">
+			<div class="tip-on-bg"></div>
+			<div class="tip-fixed-nav">
+				<div class="tip-fixed-username">
+					<p>Welcome</p>
+					<!-- <a href="<{url action=topc_ctl_member@index}>" target="_blank"><span id="sp_uname_<{$widgets_id}>"></span></a>
+					<span id="sp_login_<{$widgets_id}>" style="display:none;"><a href="<{url action=topc_ctl_passport@signin}>"><{t app='topc'}>登录<{/t}></a></span> -->
+				</div>
+				<div class="tip-fixed-bottom">
+					<!-- <a href="#">
+						<div class="tip-fixed-balance">
+							<p>账户余额</p>
+							<span>
+								0
+							</span>
+						</div>
+					</a>
+					<a href="<{url action=topc_ctl_cart@index}>" target="_blank" >
+						<div class="tip-fixed-shopping-cart" id="minicart_<{$widget_id}>">
+							<p>我的购物车</p>
+							<span><tt data-type="<{$setting.cart_show_type}>" class="up-cat-number">0</tt>件</span>
+						</div>
+					</a> -->
+					<a href="/recharge.html" target="_blank" >
+						<div class="tip-fixed-top-up">
+							<p>立即充值</p>
+						</div>
+					</a>
+					<a href="/help_index.html" target="_blank" >
+						<div class="tip-fixed-help">
+							<p>礼舍帮帮</p>
+							<img src="./images/index_help.png" />
+						</div>
+					</a>
+					<a href="#top">
+					<div class="tip-fixed-top">
+						<p>TOP</p>
+						<img src="./images/index_sidebar.png">
+					</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- 悬浮框 END -->
+<script>
+var name = decodeURIComponent($.cookie('UNAME') || '');
+if(name){
+    $("#sp_uname_<{$widgets_id}>").html(name).fadeIn();
+    $("#sp_login_<{$widgets_id}>").fadeOut();
+}
+else{
+    $("#sp_login_<{$widgets_id}>").fadeIn();
+    $("#sp_uname_<{$widgets_id}>").fadeOut();
+}
+
+//获取cookie，读取购物车现有商品数量
+updateCartNumber('#minicart_<{$widget_id}> .up-cat-number');
+
+$(document).ready(function() {
+
+    $('.tip-fixed-top').bind({
+		'click': function() {
+			$('html, body').animate({scrollTop:0}, 'slow');
+		}
+	});
+	
+	if ($('body').hasClass('is-index')) { 
+
+		var h_num=$(window).scrollTop();   
+
+		if (h_num > 784){   
+
+			var _window_height = $(window).height();
+			var _tip_absolute = $('.tip-absolute').height();
+
+			var _tmp_top = (_window_height - _tip_absolute) / 2;
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').addClass('tip-fixed');       
+		} 
+		else {   
+			
+    		var _tmp_top = $('.module .row .box .slider').height() + 321;
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').removeClass('tip-fixed');           
+		}    
+	}
+});
+
+$(window).scroll( function (){  
+	
+	if ($('body').hasClass('is-index')) { 
+
+		var h_num=$(window).scrollTop();   
+
+		if (h_num > 784){   
+
+			var _window_height = $(window).height();
+			var _tip_absolute = $('.tip-absolute').height();
+
+			var _tmp_top = (_window_height - _tip_absolute) / 2;
+			console.log('window_height -- : ' + _window_height);
+			console.log('tip_absolute -- : ' + _tip_absolute);
+			console.log('tmp_top -- : ' + _tmp_top);
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').addClass('tip-fixed');       
+		} 
+		else {
+
+    		var _tmp_top = $('.module .row .box .slider').height() + 321;
+
+			$('.tip-absolute').css('top', _tmp_top + 'px').removeClass('tip-fixed');       
+		}    
+	}    
+});
+
+/*
+(function($){
+    //拖拽插件,参数:id或object
+    $.Move = function(_this){
+        if(typeof(_this)=='object'){
+            _this=_this;
+        }else{
+            _this=$("#"+_this);
+        }
+        if(!_this){return false;}
+ 
+        _this.css({'position':'fixed'}).hover(function(){$(this).css("cursor","move");},function(){$(this).css("cursor","default");})
+        _this.mousedown(function(e){//e鼠标事件
+            var offset = $(this).offset();
+            var x = e.pageX - offset.left;
+            var y = e.pageY - offset.top;
+            _this.css({'opacity':'0.3'});
+            $(document).bind("mousemove",function(ev){//绑定鼠标的移动事件，因为光标在DIV元素外面也要有效果，所以要用doucment的事件，而不用DIV元素的事件
+                _this.bind('selectstart',function(){return false;});
+                var _x = ev.pageX - x;//获得X轴方向移动的值
+                var _y = ev.pageY - y;//获得Y轴方向移动的值
+                _this.css({'left':_x+"px",'top':_y+"px"});
+            });
+        });
+ 
+        $(document).mouseup(function(){
+            $(this).unbind("mousemove");
+            _this.css({'opacity':''});
+        })
+    };
+})(jQuery)
+ 
+$.Move($('#moveId'));
+*/
+</script>
+

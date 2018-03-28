@@ -1,0 +1,17 @@
+.content { margin-bottom:40px; width:100%; background:#eaeaea; padding:10px 0px;}
+.loginBox{ display:block; width:90%; margin:0px auto;}
+.loginBox ul{ display:block; background-color:#FFF; border:1px #999 solid;}
+.loginBox li { clear:both; padding:5px 0px;}
+.loginBox li label{ display:block; float:left; width:25%; font:normal 14px/40px  Tahoma,Verdana, Geneva, "宋体"; text-align:right;}
+.loginBox li input{ height:40px; line-height:40px; font:normal 14px  Tahoma,Verdana, Geneva, "宋体"; width:67%; margin-left:2%; color:#111; border:none; outline:none; float:left;}
+.loginBox a.button { width:100%; margin:10px auto; display:block;background-color:#026349; color:#FFF;font:normal bold 14px/30px Tahoma,Verdana, Geneva, "宋体";height:45px; line-height:45px; text-align:center;}
+.loginBox a.button:hover{ text-decoration:none;}
+/*API login*/
+.apiLogin{width:90%; margin:0px auto;}
+.apiLoginTitle {  margin:0px auto; font:normal bold 12px/30px Tahoma,Verdana, Geneva, "宋体"; text-indent:0.5em; padding:5px 0px;color:#026349;}
+.apiLoginTitle a{ display:block; float:right; color:#026349; font:normal 12px/30px Tahoma,Verdana, Geneva, "宋体"; margin-right:0.5em;}
+.apiLoginMain{ margin:10px auto; background-color:#FFF; padding:25px 0px;}
+.apiLoginMain a{ display:block; float:left;}
+.apiLoginMain img { width:80px; height: width:80px}/*初始化API图标大小*/
+
+

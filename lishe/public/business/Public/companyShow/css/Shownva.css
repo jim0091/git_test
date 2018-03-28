@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:none;}
+body{background:#FFF; font-family:"微软雅黑"; font-size:12px;}
+
+/*头部*/
+.hea-top{width:1000px; margin:0 auto;}
+.hed-left{float:left; font-size:14px; padding:7px 0;}
+.hed-left li{float:left;}
+.hed-left li a{color:#333; padding-left:5px;}
+.hed-left li span{padding:0 8px; color:#CCC;}
+.hed-right{float:right;font-size:14px; padding:7px 0;}
+.hed-right li{float:left;}
+.hed-right li a{color:#333; padding-left:5px;}
+.hed-right li span{padding:0 8px; color:#CCC;}
+.hea-bom{background:#a12124; height:100px; clear:both; width:100%;}
+.hbom-cnt{width:1000px; margin:0 auto;}
+.hb-left{float:left;}
+.hb-left li{float:left;}
+.hbom-li{line-height:100px;}
+.hbom-li img{vertical-align:middle;}
+.hbom{color:#FFF; font-size:20px;padding-left:15px; padding-top:25px;}
+.hbom-a{color:#b9344f; background:#FFF; text-align:center; width:60px; border-radius:5px; margin-top:10px; margin-left:15px;}
+.hb-right{float:right; text-align:right;}
+.hr{color:#FFF; font-size:14px; padding-top:25px;}
+.hr2{color:#FFF; font-size:24px; font-weight:bold;}
+/*图标导航*/
+.hed-nva{background:#f2f2f2; width:100%; clear:both; height:205px; padding-top:30px;}
+.nva-ul{width:1000px; margin:0 auto;}
+.nva-ul ul{float:left; border:#CCC solid 1px; background:#FFF; width:246px; height:170px; text-align:center;}
+.nva-ul ul img{padding-top:30px; padding-bottom:5px;}
+.nu{font-size:17px; color:#000;}
+.nu2{font-size:17px; color:#FFF;}
+.pt{background:#e71d4b; width:100%; height:292px; margin-bottom:120px;}
+.pt-banner{text-align:center;}
+/*主内容*/
+.main-ct{width:1000px; margin:0 auto; clear:both;}
+.main-ct ul{float:left;width:198px; border:#CCC solid 1px; height:185px; text-align:center; margin:5px 0;}
+.pic{font-size:22px; color:#000; padding-top:60px;}
+.pic2{font-size:22px; color:#000;}
+.pic-pt{padding-top:35px;}
+.pic3{font-size:17px; color:#000; padding-top:5px;}
+.pic4{font-size:22px; color:#000; line-height:185px;}

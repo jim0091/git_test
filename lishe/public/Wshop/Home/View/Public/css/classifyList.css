@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input{outline: none;}
+img{border:0;}
+body{font-family:"微软雅黑";overflow-x:hidden;background:#f1f5f6; padding-bottom:5%;box-sizing:border-box;}
+
+.clafiyHeader{width:100%; height:3rem; line-height:3rem; border-bottom:#cfcfcf solid 1px; background:#FFF; clear:both;}
+.clafiyHeaderdiv{margin:0 auto;}
+.clafiyHeaderdiv div{float:left;}
+.clafiyHeaderdiv div:nth-child(1){width:10%;}
+.clafiyHeaderdiv div:nth-child(1) img{width:40%; vertical-align:middle; padding-left:0.5rem;}
+.clafiyHeaderdiv div:nth-child(2){width:80%; position:relative; text-align:center;}
+.Wglasput{height:1.8rem; width:16rem; border:#cccccc solid 1px; border-radius:50px; vertical-align:middle; color:#b7b7b7; font-size:0.8rem; text-align:center;
+background:url(../images/WglaList.png) no-repeat 0.5rem center;}
+.clafiyHeaderdiv div:nth-child(3){width:10%;}
+.clafiyHeaderdiv div:nth-child(3) img{width:55%; vertical-align:middle; padding-left:0.5rem;}
+
+/*商品列表*/
+.clafiyListul{width:96%; margin:0 auto; margin-top:1%; padding-left:0.4rem; padding-bottom:2rem;overflow:hidden;}
+.clafiyListul ul{float:left; width:45%; margin:0.3rem 0.4rem; border:#d0d0d0 solid 1px; background:#ffffff; padding-bottom:.5rem; border-radius:5px;}
+
+.clafiyListul ul img{width:100%; height:100%; border-radius: 5px;}
+.classli{line-height:1.5rem;}
+.goods-pic-preview{display:block;height:12rem;}
+.classli a{font-size:0.76rem; color:#000000;padding-left:0.5rem;}
+.classname{height:1.2rem; line-height:1.2rem;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;color:#acacac;}
+.classname a{font-size:0.8rem; color:#000;padding-left:0.5rem;}
+.classpric{padding-top:0.4rem;}
+.classpric a{font-size:1rem; color:#ff4138; padding-left:0.5rem; font-weight:700;}
+
+/*下拉层*/
+.dropdown{width:100%; position:absolute; z-index:1; top:0; right:0; clear:both; height:100%; overflow:hidden; left:90%; display:none;}
+.clasFyprice{padding-left:2%; border-bottom:#e2e2e2 solid 1px; padding-bottom: .5rem;}
+.clasFyprice p:nth-child(1){font-size:1rem; color:#757575; padding-top:0.8rem;}
+.clasFyprice p:nth-child(2){font-size:1rem; color:#757575; height:2.5rem; line-height:2.5rem;}
+.downput{width:17vw; background:#f5f5f5; border:none; height:1.8rem; vertical-align:middle; 
+font-size:.8rem; text-align:center; line-height:1.8rem; color:#c0c0c0; border-radius:.3rem;}
+
+.downbrands{width:96%; margin:0 auto; padding-bottom:4rem;}
+.downbrandsp{font-size:1rem;color:#757575; height:2rem; line-height:2rem;}
+.downbrandsp span:nth-child(1){float:left;}
+.downbrandsp span:nth-child(2){float:right;}
+.downbrandsp span:nth-child(2) img{width:80%; vertical-align:middle;}
+.downbrandsul li{display:inline-block; line-height: 8vw; margin:0.2rem 0.4rem;font-size:0.75rem; padding:.2rem .5rem; border: 1px solid #DADADA; border-radius: 3px; text-overflow:ellipsis; overflow:hidden;}
+.downbrandsul li.downactive{border:#ff4138 solid 1px; border-radius:3px;font-size:0.75rem;}
+
+.downbrandsbtn{overflow:hidden; width:100%; position: absolute; bottom: 0; z-index:300; height: 2.8rem;}
+.downbrandsbtn a{width:100%; height:100%; line-height:2.8rem; font-size:1rem; color:#FFF; text-align:center;
+ margin:0 auto; background:#ff4138; display:block;}
+
+
+
+#findItem{
+    position:absolute;
+    z-index: 200;
+    top: 0;
+	right:0;
+	width:89%;
+	height: 100%;
+    overflow: hidden;
+}
+.dropdown .dialog{
+    background: #FFF;
+    height: 100%;
+    overflow-y: auto;
+}
+.dropdown .mark{
+    background:rgba(120,122,123,0.5);
+    height: 100%;
+    left: 0;
+}
+
+
+  /*针对iPhone 4, 5c,5s, 所有iPhone6的放大模式，个别iPhone6的标准模式*/
+/* @media only screen and (max-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+        .Wglasput{height:1.8rem; width:15rem; border:#cccccc solid 1px; border-radius:50px; vertical-align:middle; color:#b7b7b7; font-size:0.9rem; text-align:center;
+background:url(../images/WglaList.png) no-repeat 0.5rem center;}
+        .clafiyListul ul{float:left; width:45%; margin:0.3rem 0.4rem; border:#d0d0d0 solid 1px; background:#ffffff; height:12rem; border-radius:5px;}
+        .clafiyHeaderdiv div:nth-child(3) img{width:60%; vertical-align:middle; padding-left:0.5rem;}
+} */
+
+/* 筛选条 */
+.select-options{height:100%; overflow:hidden; position:relative; left:-90%;}

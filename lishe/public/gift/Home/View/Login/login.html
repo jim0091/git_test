@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>礼舍-用户登录</title>
+<meta charset="UTF-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<meta content="IE=11.0000" http-equiv="X-UA-Compatible" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-transform"/>
+<meta name="MobileOptimized" content="320">
+<link href="__CSS__/base.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/login.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+</head>
+<body>	
+<div class="content c" >
+  <div class="loginBox">
+    <ul class="borderRadius">
+		<li style="border-bottom: 1px #CCC solid;">
+			<label>手机号码：</label>
+			<input type="text" placeholder="请输入手机号码" id="userName" name="username" autocomplete="off" maxlength="11">
+			<span></span>
+			<div class="c"></div>
+		</li>
+		<li>
+			<label>登录密码：</label>
+			<input type="password" placeholder="请输入密码" id="password" name="password" autocomplete="off"  maxlength="18">
+			<span></span>
+			<div class="c"></div>
+		</li>
+	</ul>
+	<input type="hidden" id="refer" value="{$Think.get.refer}">
+    <a href="javascript:;" class="button borderRadius" id="loginSubmit" style="border:0px solid red;background:#c7241d;">登　录</a>
+    <a class="button borderRadius" id="loginMsg" style="display: none"></a>
+  </div>
+  <div class="apiLogin">
+    <div class="apiLoginTitle" style="border:0px solid red;">
+    	<a style="float:left;color:#cc0000;" href="javascript:alert('找回密码请联系客服！');">忘记密码？</a>
+    	<a style="color:#cc0000;" href="{:U('User/register')}">立即注册</a>
+    	<a style="color:#cc0000;" >|</a>
+    	<a style="float:right;color:#cc0000;" href="{:U('User/activate')}">快速激活</a>
+    </div>
+  </div>
+  <div class="c"></div>
+</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#loginSubmit").click(function(){
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	  	var refer = $("#refer").val();
+	    if(userName==""){
+	      alert('请输入您的手机号码！');
+	      $("#userName").focus();
+	      return false;
+	    }
+	    if(password==""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    } 
+
+		urls="__APP__/Login/login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password,
+				mark:'{$control}',
+				refer:refer
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(parseInt(msg[0])>0){
+					var refer=$("#refer").val();					
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						if (msg[2] != '') {
+							window.location.href=msg[2];
+						}else{
+							window.location.href="__APP__/User/userCenter";
+						}
+							
+					}				
+				}else{
+					alert(msg[1]);
+				}
+			},
+			error: function () {
+				alert('error：'+msg[1]);
+			}
+		});
+	});
+})
+</script>
+</html>

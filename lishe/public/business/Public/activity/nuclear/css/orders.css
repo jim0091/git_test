@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px;padding:0px;font-size:12px;color:#333; font-family:微软雅黑;}
+ul li{list-style:none}
+a{ text-decoration:none;}
+body{margin:auto;overflow-x:hidden;}
+img{border:none;}
+/*内容*/
+.receiving{width:1000px; margin:0px auto; margin-top:10px;}
+.rec{font-size:15px; font-weight:bold; color:#333; text-align:left; padding-left:10px;}
+#typeFree-two{margin-top:15px;}
+#typeFree-two li{width:220px;height:120px; text-align:left;float:left;cursor:pointer;color:#666666; border:#CCC solid 1px; margin:5px 5px; padding-left:15px; line-height:30px;}
+#typeFree-two li.active{width:220px; height:120px; border:#c7241d 1px solid; background:url(http://test.lishe.cn/themes/luckymall1/images/brboder_03.png) no-repeat;}
+.user{color:#333333; font-size:12px; font-weight:bold;}
+.user span{padding-left:25px;}
+.dres{color:#666666; font-size:12px; line-height:14px; }
+.phone{color:#666666; font-size:12px;}
+.alter{margin-top:-2%;}
+.alter a{color:#c7241d; font-size:12px;}
+.rec-l a{font-size:12px; color:#666666; text-align:left;padding-left:15px;}
+.rec-r a{font-size:12px; color:#666666; float:right; padding-right:25px;}
+.pay{width:1000px; margin:0px auto; margin-top:20px;}
+#typeFree{margin-top:15px;}
+#typeFree li{width:120px; height:30px; line-height:30px;text-align:center;float:left;cursor:pointer;color:#666666; border:#CCC solid 1px; margin:0 10px;}
+#typeFree li.active{background:url(http://test.lishe.cn/themes/luckymall1/images/redborder.png) no-repeat; width:120px; height:30px; border:#c7241d 1px solid;}
+.inventory{width:1000px; margin:0px auto; clear:both; margin-top:70px;}
+.rec2{font-size:15px; font-weight:bold; color:#333; text-align:left; padding-left:10px;}
+/*清单左边*/
+.inv-left{ float:left;width:29%;height:330px;}
+.inv-p{font-size:12px; color:#666666;font-weight:bold; padding-left:15px; padding-top:45px;}
+/*清单左边tab切换*/
+.inv-tab{padding-top:20px;}
+.inv-tab li {float:left;color:#666666;cursor:pointer;width:120px; height:30px; line-height:30px;text-align:center;border:#CCC solid 1px; margin:0 10px;}
+.inv-tab li.current {background:url(http://test.lishe.cn/themes/luckymall1/images/redborder.png) no-repeat; width:120px; height:30px; border:#c7241d 1px solid;}
+.inv-cont{margin-top:35%; }
+.inv-cont ul {display:none; padding-left:15px;}
+.inv-pay{font-size:12px; color:#666666;font-weight:bold;}
+.inv-sel{ width:180px; text-align:center; border:#CCC solid 1px;}
+/*清单右边*/
+.inv-right{float:right;width:70%; background:#e8ffe8; height:330px;}
+.inv-sp{font-size:13px; color:#333333; padding-left:15px; padding-top:20px;}
+.inv-tb{padding-top:15px;padding-left:15px;}
+.inv-pt{width:150px;}
+.inv-pt img{width:120px; height:120px;}
+.inv-td{width:70px;}
+.inv-td a{font-size:12px; color:#FFF; font-weight:bold; background:#ff2f32; padding:5px 10px; border-radius:8px;}
+.inv-td2{width:230px;}
+.inv-td2 a{font-size:12px; color:#666666;}
+.inv-td3{font-size:12px; color:#c7241d; width:80px;}
+.inv-td4{font-size:12px; width:60px;}
+.inv-pt2{padding-left:15px; padding-top:15px;}
+.inv-note{padding-left:5px; padding-top:20px;}
+.inv-note span{padding-left:10px; font-size:13px;}
+.txt{border:solid 1px #CCCCCC; width:435px; height:30px;}
+.inv-note2{padding-left:15px; padding-top:20px;font-size:13px;}
+/*发票消息*/
+.invoice{width:1000px; margin:0 auto; border:#CCC solid 1px; clear:both; margin-top:350px; padding-bottom:25px;}
+.editors-p{padding-left:15px; padding-top:20px;font-size:13px;color:#666666;}
+.editors-p span{padding-left:10px;}
+.editors{width:15px; height:15px; margin-left:10px; vertical-align:middle;}
+#ra-div{ padding-left:41px; padding-top:10px;}
+.rd-p{text-align:left; font-size:13px;color:#666666; line-height:30px;}
+.inc{border:#CCC solid 1px; width:70px; margin-left:13px;}
+.rd-sp{font-size:13px; color:#666666; padding-left:12px;}
+.rd-p2{font-size:13px;color:#666666; padding-top:10px; margin-left:-25px;}
+.rd-btn{padding-top:30px;}
+.rd-btn a{font-size:13px; color:#FFF; background:#c7241d; padding:10px 20px;}
+/*商品结算*/
+.shop-list{width:1000px; margin:0 auto; margin-top:20px;}
+.sp-ch{padding-left:15px;}
+.sp-ch input{width:15px; height:15px; border:#CCC solid 1px;}
+.sp-ch span{font-size:13px; color:#666666; padding-left:20px;}
+.list-s{float:right;}
+.list-s p{text-align:right; font-size:14px;color:#333; line-height:25px;}
+.list-s p span{font-size:14px;color:#c7241d;}
+.list-btn{padding-top:30px;}
+.list-btn a{ font-size:14px; color:#FFF;padding:8px 18px;background:#c7241d;}

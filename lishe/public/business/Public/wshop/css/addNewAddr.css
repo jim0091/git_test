@@ -1,0 +1,33 @@
+@charset "utf-8";
+.content { margin-bottom:40px; margin-top:40px;width:100%; background:#FFF}
+.backlast{z-index:999; position:fixed; top:50px; left:10px; width:35px; height:35px; background-color:#F00; background:url("../images/listICO.png") 0px -142px;}
+.addNewAddr{ display:block; width:80%; margin:10px auto; padding:0% 5%; border:1px #ccc solid; text-align:center; font:normal 12px/50px Tahoma,Verdana, Geneva, "微软雅","黑体"; color:#9b3;}
+.addNewAddr:hover{ text-decoration:none;}
+
+.addAddrBox{ width:90%; margin:10px auto;border:1px #ccc solid;}
+.ckdBox{width:90%; margin:10px auto; border:2px #9b3 solid;}
+ul.addAddrContent{ width:90%; padding:0% 5%; border-bottom:1px #ccc solid; }
+ul.addAddrContent li{font:normal 12px/50px Tahoma,Verdana, Geneva, "微软雅","黑体";height:35px;line-height:35px;}
+ul.addAddrContent li span{font:normal bold 12px/50px Tahoma,Verdana, Geneva, "微软雅","黑体"; color:#000;margin-right:10px;}
+
+.opAddrBox{width:90%; margin:10px auto;}
+.opAddrBox a,.opAddrBox span{ display:inline-block; color:#000;}
+.opAddrBox a:hover{ text-decoration:none; color:#999;}
+.opAddrBox a span{ display:block; float:left; width:19px; height:19px; background:url("../images/listICO.png") no-repeat; margin:3px 3px 0px 0px; filter:alpha(opacity=100); -moz-opacity:1.0; -khtml-opacity: 1.0; opacity: 1.0; }
+.opAddrBox a:hover span{ filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5;}
+
+
+
+.opAddrBox .defAddr,.opAddrBox .ckdAddr{ width:48%;display:inline-block;}
+.opAddrBox .defAddr span{ display:block; float:left; width:19px; height:19px; background:url("../images/listICO.png") -71px -179px no-repeat; margin:3px 3px 0px 0px; }
+.opAddrBox .ckdAddr span{ display:block; float:left; width:19px; height:19px; background:url("../images/listICO.png") -71px -198px no-repeat; margin:3px 3px 0px 0px; }
+
+.editAddr{ width:24%;}
+.opAddrBox a.editAddr span{ background-position: 0px -255px;}
+.delAddr{ width:24%;}
+.opAddrBox a.delAddr span{ background-position: -25px -255px;}
+
+.btnGp { margin-top:10px;}
+.btnGp input{ cursor:pointer; width:54px; height:25px; margin:0px 10px; background:url(../images/buttonGp.png) no-repeat; border:none; color:#FFF;}
+.btnGp input.saveBtn{ background-position: -59px -30px;}
+.btnGp input.saveBtn:hover{ background-position: -59px 0px;}

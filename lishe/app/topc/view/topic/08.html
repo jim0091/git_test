@@ -1,0 +1,355 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/banner8.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">68</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >76</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>398</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">花色缤纷，春意觉醒，5月的度假时节，心情也随之悦动起来，去巴黎屋顶花园喝杯咖啡，在异域街头做一回探险家，在假日派对上成为社交女王，戴上精致的饰品，颈间、手腕、耳垂，透过阳光折射出迷人色泽，在这个曼妙假日，成为光彩耀人的派对焦点，缪斯女神
+
+
+</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CARFENIE贝母水晶石英腕表
+</span></strong></p>
+                <p>来自瑞士的一款美腻腕表，色泽纯净的天然彩色母贝使点点水晶更加熠熠生辉，做工精细，日本机芯，表带表盘还有多种颜色，喜欢的妹纸不要犹豫啦。 
+
+
+                <a href="http://www.lishe.cn/item.html?item_id=489" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img44.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">81,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=489
+" target="_blank" title="石英真皮贝壳面女腕表 "><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CARFENIE水晶超薄轻奢腕表
+
+
+</span></strong></p>
+                <p>60颗施华洛世奇水晶镶满整个表盘外沿，还有6颗1mm的点缀在表盘中心，随腕表转动而旋转，璀璨夺目，日本机芯，真皮表带，超薄表盘，30米生活防水。强大的功能就不说了，关键伦家颜值高，此系列还有多个配色，可以组成情侣款哦！
+
+
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=506" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img45.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">103,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=506
+" target="_blank" title="防水超薄学生潮流女腕表
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CARFENIE高纯陶瓷优雅腕表
+
+
+</span></strong></p>
+                <p>简洁雅致的象牙白与时尚优雅的玫瑰金，相得映彰优质珍珠陶瓷表带，绽放出蝴蝶般的清纯，服帖手腕，温润肌肤。听得见的柔情，闻得见的优雅，摸的着的甜蜜，精琢时光，遇见美好。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=507" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img46.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">88,600</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=507
+" target="_blank" title="316L精钢圈口+进口高纯度陶瓷女腕表34mm
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">意大利小牛皮情侣表
+
+</span></strong></p>
+                <p>象征永恒的CARFENIE情侣表，是天长地久的标志；在我们生命中的某些时刻。爱请，应该是看得见的。没有任何的矫揉造作，意大利小牛皮表带很有品质感。既文艺又清新，这个假期送Ta一只大表盘手表吧。
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=490" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img47.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">85,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=490
+" target="_blank" title="情侣手表超薄德国316L精钢意大利头层牛皮男士腕表41mm
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">岁月静好的贝母陶瓷腕表
+
+</span></strong></p>
+                <p>镶嵌其中的10颗施华洛世奇水晶搭配南海纯天然贝母表盘，有一种岁月静好的真实感觉。它所带来的是小优雅，大时尚，你要相信你就是这样的美。浪漫的纯色系列就是这个季节的专属，儒雅宜人又活力不减
+~
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=491" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img48.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">90,600</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=491
+" target="_blank" title="316L精钢+进口高纯度陶瓷女腕表33mm "><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">东方喜木·小叶紫檀回纹香炉
+</span></strong></p>
+                <p>炉身圆柱状，刻有象征着富贵不断的回纹饰，造型新颖别致，古朴素雅。香炉采用上乘小叶紫檀老料，多道工序精细打磨，香炉表面极富油感，如犀牛角般润泽。细密闪亮的牛毛纹，精光深邃，灵气四溢。最适合焚一炉清香，悠然品茗，寻一种世外淡然的心境，让灵魂如缕缕幽香，随烟轻扬。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=492" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img49.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">99,000</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=492
+" target="_blank" title="东方喜木小叶紫檀回纹香炉
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">东方喜木·黄杨木五福
+</span></strong></p>
+                <p>黄杨木雕刻的五个模样可爱、俏皮活泼的小和尚，或正襟危坐或戏闹玩耍，姿态各异，惟妙惟肖，蒲团坐垫分别刻着象征吉祥美好的祝语，寓意深远。黄杨木木质细腻，香气轻淡，雅致而不俗艳，融艺术性和观赏性于一体，是极具收藏价值与馈赠亲友的中式手工艺品。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=493" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img50.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">136,800</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=493
+" target="_blank" title="东方喜木黄杨木五福
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">东方喜木·酸枝 小象棋
+</span></strong></p>
+                <p>以大红酸枝为原料制作的小象棋，木材散发一种辛香，闻之有酸辛味，木纹美观，优雅清新，复古阳雕字体，立体大气美观，纯手工打磨，精雕中国风，古色清幽的同质盒子，精致的暗纹印花，给人一种淳厚含蓄的东方古典美。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=494" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img51.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">113,500</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=494
+" target="_blank" title="东方喜木酸枝小象棋
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _main_content_detail_lst = $('.main-content-div ul li');
+
+    var _count = _main_content_detail_lst.length;
+    console.log('_count -- : ' + _count);
+
+    for (var i =0; i < _count; i++) {
+
+      var _num = i + 1;
+
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

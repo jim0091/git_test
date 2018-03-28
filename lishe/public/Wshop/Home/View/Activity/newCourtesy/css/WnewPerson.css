@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+body{background: #daf8f3;}
+.w100{width: 100%;}
+.text_con{width: 7.1rem;}
+.main_content1{margin-top: 0.25rem; width: 100%;height: auto;}
+.main_content_ul>li{width: 7.1rem;height: 5rem;margin:0 auto 0.2rem;background: #fff;}
+.main_content_ul>li .left_proGroup{width: 4.16rem;height: 100%;}
+.main_content_ul>li .left_proGroup .proImg{width: 100%; height: 4.35rem;overflow: hidden;}
+.main_content_ul>li .left_proGroup .proImg img{width: 100%; height: 4.35rem;}
+.main_content_ul>li .left_proGroup .BottomText{height: 0.65rem;line-height: 0.65rem;padding-left: 0.2rem;}
+.main_content_ul>li .left_proGroup .BottomText .groupPrice{font-size: 0.18rem;color: #ee557d;line-height: 0.67rem;}
+.main_content_ul>li .left_proGroup .BottomText .groupPrice em{font-size: 0.38rem;}
+.main_content_ul>li .left_proGroup .BottomText .proName{padding-left: 0.2rem; font-size: 0.18rem;color: #666666;}
+.right_list{width: 2.89rem;height: 5rem;}
+.right_list .proList>li{position: relative; float: left;margin:0 0 0.1rem 0.1rem; padding:1px; width: 1.32rem;height: 1.32rem;box-sizing: border-box;border:1px solid #dadada;text-align: center;overflow: hidden;}
+.right_list .proList>li .listImg img{width: 100%;}
+.right_list .proList>li:first-child{width: 2.74rem;height: 1.32rem;margin-top: 0.05rem;}
+.right_list .proList>li:first-child .listImg img{width: 100%;width: 1.32rem;}
+.right_list .proList>li .listImgMark{position: absolute;top: 0.05rem;left: 0.05rem; z-index: 66;padding:0 0.08rem;height: 0.19rem;line-height:0.19rem;text-align: center;color: #ee557d;font-size: 0.16rem;border:1px solid #ee557d;border-radius: 0.04rem;}
+.right_list .btnGroup{margin-top: 0.1rem; width: 2.48rem;height: 0.42rem;line-height: 0.42rem;border:1px solid #ee557d;text-align: center;border-radius: 0.05rem;overflow: hidden;}
+.right_list .btnGroup>span{float: left;width: 50%;height: 100%;line-height: 0.4rem;font-size: 0.2rem;}
+.right_list .btnGroup .addCart{color: #ee557d;}
+.right_list .btnGroup .buyBtn{background: #ee557d;color: #fff;}
+.right_list .proList>li.active{padding: 0;border:2px solid #33b3ee;}
+.right_list .proList>li.active:after{position: absolute;bottom: 0;right: 0; content: "";width: 0.26rem;height: 0.26rem;background: url(../images/active.png) no-repeat center center;}
+/*第二部分*/
+.main_content2{padding-left: 0.19rem;}
+.proList2>li{float: left;margin-top: 0.2rem; width: 3.44rem;height: 4.75rem;background: #fff;}
+.proList2>li:nth-of-type(odd){margin-right: 0.23rem;}
+.proList2>li .pro2Img{position: relative; width: 100%;overflow: hidden;height: 3.45rem;text-align: center;}
+.proList2>li .pro2Img img{max-width: 1.92rem;}
+.proList2>li .pro2Img .pro2Name{position: absolute;bottom: 0;width: 100%;height: 0.38rem;line-height: 0.38rem;color: #fff;text-align: center;font-size: 0.18rem;background: rgba(0,0,0,.6);}
+.proList2>li .pro2Price{margin-top: 0.19rem;padding:0 0.2rem; height: 0.3rem;line-height: 0.3rem;color: #ee557d;overflow: hidden;}
+.proList2>li .pro2Price .price1Sp{font-size:0.16rem;line-height: 0.3rem;}
+.proList2>li .pro2Price .price1Sp em{font-size: 0.38rem;margin-left: 0.02em;}
+.proList2>li .pro2Price .price2Sp{font-size: 0.24rem;color: #666666;line-height: 0.335rem;}
+.proList2>li .pro2Btn{margin-top: 0.09rem; width: 3.04rem;height: 0.52rem;border:1px solid #ee557d;border-radius: 0.04rem;box-sizing: border-box;}
+.proList2>li .pro2Btn span{float: left; width: 50%;height: 100%;line-height: 0.5rem;text-align: center;font-size: 0.24rem;}
+.proList2>li .pro2Btn .p2Cart{color: #ee557d;}
+.proList2>li .pro2Btn .p2Buy{background: #ee557d;color: #fff;}
+.linkFix,.buyCart{position: fixed;left: 5%;width: 0.9rem;height: 0.9rem;}
+.linkFix{background: url(../images/shoping.png) no-repeat;bottom: 11.5%;background-size: cover;}
+.buyCart{background: url(../images/buyCart.png) no-repeat;bottom: 3.5%;background-size: cover;}
+.buyCart .proN{position: absolute;right: -23%;top: -23%; width: 0.66rem;height: 0.66rem;line-height: 0.66rem; background: url(../images/Number-red@2x.png) no-repeat; font-size: 0.3rem;color: #fff;text-align: center;background-size: cover;}
+.proImg{position: relative;}
+.main_content_ul>li .left_proGroup{overflow: hidden;}
+.proGroupText{position: absolute;color: #fff; bottom: 0;left: 0; width: 100%;height: 0.38rem;line-height: 0.4rem; background: rgba(0,0,0,.5);font-size: 0.18rem;text-align: center;}
+
+
+
+
+
+
+
+

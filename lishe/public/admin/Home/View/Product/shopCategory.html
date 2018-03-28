@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__css/SimpleTree.css"/>
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>产品分类</title>
+</head>
+<style>
+	.lan{
+		color: #5eb95e;
+	}
+	.deal{
+		color: #5a98de;
+		float: right;
+	}
+</style>
+<body style="overflow: hidden;">
+<nav class="breadcrumb"> <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<table class="table">
+	<tr>
+		<td width="200" class="va-t">
+			<div class="st_tree" style="width:400px;margin:0 auto;height: 550px;overflow-y: auto;">
+				<volist name="shopList" id="shop">
+					<ul>
+						<li>
+							<span style="color: #5a98de;"><small>店铺：</small><strong>{$shop.shop_name}</strong></span>
+						</li>
+						<ul>
+							<volist name="category[$shop['shop_id']]" id="cOne">
+								<li>
+									<if condition="$categoryInfos[$cOne]['disabled'] eq 0">
+										<i class="Hui-iconfont lan" title="正常"></i>
+									<elseif condition="$categoryInfos[$cOne]['disabled'] eq 1"/>
+										<i class="Hui-iconfont lan" title="禁用中"></i>
+									</if>			
+									<a href="javascript:void(0)" onclick="editCategory({$categoryInfos[$cOne]['cat_id']})">{$categoryInfos[$cOne]['cat_name']}</a>
+									<span style="color: #5eb95e;">({$categoryInfos[$cOne]['cat_id']})</span>
+									
+										<a href="javascript:void(0)"  title="单击该分类" class="deal" data-type="{$categoryInfos[$cOne]['disabled']}" data-id="{$categoryInfos[$cOne]['cat_id']}" data-name="{$categoryInfos[$cOne]['cat_name']}">
+											<if condition="$categoryInfos[$cOne]['disabled'] eq 1">
+													<i class="Hui-iconfont" ></i>
+											<elseif condition="$categoryInfos[$cOne]['disabled'] eq 0" />
+													<i class="Hui-iconfont"></i>
+											</if>										
+										</a>
+										
+								</li>
+								<ul>
+									<volist name="nextCategory[$cOne]" id="cTwo"> 
+										<li>
+											<if condition="$categoryInfos[$cTwo]['disabled'] eq 0">
+												<i class="Hui-iconfont lan" title="正常"></i>
+											<elseif condition="$categoryInfos[$cTwo]['disabled'] eq 1" />
+												<i class="Hui-iconfont lan" title="禁用中"></i>
+											</if>												
+											<a href="javascript:void(0)" onclick="editCategory({$categoryInfos[$cTwo]['cat_id']})">{$categoryInfos[$cTwo]['cat_name']}</a>
+											<span style="color: #5eb95e;">({$categoryInfos[$cTwo]['cat_id']})</span>
+											<a href="javascript:void(0)"  title="单击该分类" class="deal" data-type="{$categoryInfos[$cTwo]['disabled']}" data-id="{$categoryInfos[$cTwo]['cat_id']}" data-name="{$categoryInfos[$cTwo]['cat_name']}">
+												<if condition="$categoryInfos[$cTwo]['disabled'] eq 1">
+														<i class="Hui-iconfont" ></i>
+												<elseif condition="$categoryInfos[$cTwo]['disabled'] eq 0" />
+														<i class="Hui-iconfont"></i>
+												</if>										
+											</a>											
+										</li>
+									</volist>
+									<li>
+										<a href="javascript:void(0)" onclick="addCategory({$shop.shop_id},{$categoryInfos[$cOne]['cat_id']})">
+											<i class="Hui-iconfont lan"></i>							
+											添加分类(“{$categoryInfos[$cOne]['cat_name']}”下)
+										</a>
+									</li>										
+								</ul>
+							</volist>
+								<li class="folder" style="list-style-image:none;">
+									<a href="javascript:void(0)" onclick="addCategory({$shop.shop_id},0)">
+										<i class="Hui-iconfont lan"></i>							
+										添加店铺“{$shop.shop_name}”的一级分类
+									</a>
+								</li>		
+						</ul>
+					</ul>		
+				</volist>
+			</div>			
+			
+			<ul id="treeDemo" class="ztree"></ul>
+		</td>
+		<td class="va-t">
+			<IFRAME ID="testIframe" Name="testIframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%  height=390px ></IFRAME>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/SimpleTree.js"></script>
+<script type="text/javascript">
+function article_edit(title,url,id,w,h){
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}	
+$(function(){
+
+	$(".st_tree").SimpleTree({
+	
+
+		
+	});
+	$('.deal').on('click',function(){
+		var catId=$(this).attr('data-id');
+		var catName=$(this).attr('data-name');
+		var type=$(this).attr('data-type');
+		if(type == 0){
+			var typeName="禁用";
+		}else if(type == 1){
+			var typeName="启用";
+		}		
+		layer.confirm('确认'+typeName+'“'+catName+'”吗？',function(index){
+			$.get("__APP__/Product/dealShopCategory/catId/"+catId+"/type/"+type,function(data){     
+				if(data){
+					layer.msg(typeName+'“'+catName+'”成功!',{icon:1,time:1000});
+					location.reload();
+				}else{
+					layer.msg(typeName+'“'+catName+'”失败!',{icon:1,time:1000});
+					
+				}
+			});
+			
+		});		
+	});
+
+});
+	function editCategory(catId){
+		var frame = document.getElementById("testIframe");
+		frame.src="__APP__/Product/shopCategoryEdit/catId/"+catId;
+	}
+	function addCategory(shopId,parentId){
+		var frame = document.getElementById("testIframe");
+		frame.src="__APP__/Product/shopCategoryEdit/parentId/"+parentId+"/shopId/"+shopId;
+	}	
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<script type="text/javascript">
+    $('#nav .row').hide();
+</script>
+
+<style type="text/css">
+#main{
+  background: #f6f4f4;
+}
+
+.main-top {
+  
+}
+.main-top .main-top-nav {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.main-top .main-top-nav .main-top-cover img {
+  width: 100%;
+}
+.main-top .main-top-nav .main-top-btn {
+  width: 100%;
+  padding: 16px 20px;
+}
+.main-top .main-top-nav .main-top-btn img {
+  position: relative;
+  top: 4px;
+}
+.main-top .main-top-nav .main-top-btn span {
+  margin-right: 11px;
+}
+.main-center{
+  width:1190px; 
+  position:relative;
+  margin:20px auto;
+  background-color: #fff;
+}
+.main-center .main-center-p{
+  position:relative;
+  margin:0 auto;
+  background-color: #fff;
+  padding: 20px 60px;
+}
+li{
+  list-style:none;  
+}
+.main-content-div {
+  position:relative;
+  padding: 20px 0px;
+}
+.main-content-div .main-content-detail-div {
+  position: relative;
+  width: 700px;
+  margin: 20px auto;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn {
+  height: 103px;
+  border-bottom: 1px solid #bcbcbc;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn div{
+  float: left;
+  margin: 15px 0px;
+}
+.main-content-div .main-content-detail-div .main-content-detail-div-btn span {
+  float: right;
+  font-size: 24px;
+  color: #fff;
+  line-height: 24px;
+  background: #c7241d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 30px 0px 0px 0px;
+}
+.main-content-div .main-content-detail-div p .title-number {
+  color: #c7241d;
+  font-size: 22px;
+  margin: 0px 8px 0px 0px;
+  padding: 2px 10px;
+  border: 2px solid #c7241d;
+  border-radius: 100%;
+}
+
+.pendant{
+  width: 92px;
+  height: 435px;
+  float: right;
+  position: fixed;
+  top: 20%;
+  right: 10%;
+}
+.pendant-inner{
+  width: 92px;
+  height: 435px;
+  position:absolute;
+  left:0;;
+}
+</style>
+
+<div class="main-top">
+    <div class="main-top-nav">
+        <div class="main-top-cover" style="width: 100%; height: 356px; background:url(./images/topic/banner9.jpg) no-repeat center; background-size:cover;">
+            <!-- <img  src="images/ring_content_img.jpg"/> -->
+        </div>
+        <div class="main-top-btn">
+            <img class="collect-icon" src="./images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+            <span class="collect-num">202</span>
+            <img src="images/index_comment_icon.png"/>
+            <span >195</span>
+            <!-- <img src="images/index_share_icon.png"/> -->
+            <style type="text/css">
+            div.jiathis_style a.jtico {
+                background: url(./images/index_share_icon.png) no-repeat left;
+            }
+            </style>
+            <!-- JiaThis Button BEGIN -->
+            <div class="jiathis_style pro-share">
+              <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+            </div>
+            <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+            <!-- JiaThis Button END -->
+            <span>2901</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/app/topc/statics/js/jquery.url.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    var _share = jQuery.url.param("share") == null ? "" : jQuery.url.param("share");
+
+    if ('true' == _share) {
+        // $('.jiathis').trigger('click');
+    }
+
+    $('.collect-icon').bind({
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+
+<div class="main-center">
+  <p class="main-center-p">爱美是女生的天性，不管你是大油田，燥物女还是敏感肌，我们总是想找到好用的护肤品，来为自己的美肤事业助一臂之力。但是护肤品那么多，我们总不能当小白鼠去挨个试验吧。所以贴心的小编为大家总结了一些超好用的口碑护肤单品，快快将它加入你的护肤Wishing List清单吧！
+
+
+</p>
+</div>
+
+<div class="main-content-div">
+    <ul>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CUSCOS蜗牛保湿精华液
+</span></strong></p>
+                <p>天然的蜗牛粘液蛋白对肌肤损伤有神器的修复功效，整瓶精华含有2克拉的钻石粉，钻石与生俱来的负电荷微粒，有效帮助肌肤保持水油平衡，点滴细节亮润光芒，修护保湿只要一瓶，一次解决两大烦恼，不要让美丽输在起跑线上
+
+
+
+                <a href="http://www.lishe.cn/item.html?item_id=498" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img52.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">49,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=498
+" target="_blank" title="CUSCOS蜗牛保湿精华液50ml"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CUSCOS蜗牛保湿精华液50ml
+
+
+</span></strong></p>
+                <p>蜗牛粘液，马齿苋提取物与植物益生元，有效保湿镇定肌肤，可以感受到护肤的温柔力量！紫水晶具有抗氧化，美白功效，防止皮脂分泌及皮肤过敏有助于改善养护。质地醇厚，持久提升肌肤水含量，使用感快速渗透，水嫩看得见，娇点女人，不仅白，更要嫩！
+
+
+
+</p>
+                <a href="#" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img53.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">10,000</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="#
+" target="_blank" title="CUSCOS蜗牛液爽肤乳液120ml
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CUSCOS黄玉防晒DD霜
+
+</span></strong></p>
+                <p>纯植物成分组成的功能性防晒霜，在皮肤表面形成轻薄的紫外线防护层，极其贴合，抵御外界有害环境加强保护皮肤，抗氧化并改善粗糙皮肤，独特清爽水润配方，水润0油感，防晒更润白，持久无暇妆容，让肌肤自由呼吸，缔造明亮自然的感觉。
+
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=460" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img54.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">29,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=460
+" target="_blank" title="CUSCOS防晒DD霜50ml 34mm
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">CUSCOS美白身体乳
+
+</span></strong></p>
+                <p>有效成分为蛋白石，解读肌肤的秘密，一瓶读懂肌肤的身体乳，美白滋润，长效保湿，味道清爽，紧致抗氧化，温和不刺激，看得见的嫩白，闻得见的愉悦，触得带的丝滑，尽在这一瓶。为肌肤注入养分，身体至爱的年轻秘密，肌肤天然的保护衣，爱自己，从懂身体开始。
+
+</p>
+                <a href="http://www.lishe.cn/item.html?item_id=499" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img55.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">39,900</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="http://www.lishe.cn/item.html?item_id=499
+" target="_blank" title="CUSCOS美白身体乳100ml
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">佳洁士3D炫白双效牙膏
+
+</span></strong></p>
+                <p>密集MICA美白能量，浅蓝色晶莹膏体，深沉清洁牙齿的泡沫慕斯，软软绵绵的，在牙齿表面形成光泽保护层，防蛀护龈持久清新，有效祛除口腔异味，在日常刷牙中即可专业的美白护理，令口腔更健康，牙齿更牢固~闪亮笑容立现
+
+</p>
+                <a href="#" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img56.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">10,000</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="#
+" target="_blank" title="佳洁士3D炫白双效牙膏180克 "><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main-content-detail-div">
+                <p><strong><span class="title-number"></span><span style="font-size: 20px;">佳洁士优能健齿牙刷
+</span></strong></p>
+                <p>交叉型刷毛，有效清除90%难刷部位牙菌斑，舌苔清洁器，减少细菌有效清洁口腔，牙龈按摩软胶，改善牙龈健康，浅蓝色显示刷毛，提醒及时更换牙刷。这样一款贴心的牙刷，满足牙齿敏感无缘美食的你，希望面面俱到的你，爱吃甜食又怕蛀牙的你，总之，选他就对了。
+
+</p>
+                <a href="#" target="_blank">
+                  <img style="width:100%; " src="./images/topic/content_img57.jpg" />
+                </a>
+                <div class="main-content-detail-div-btn">
+                    <div>
+                        <strong><font style="font-size: 18px; color:#C7241D;"></font><font style="color: #c7241d; font-size: 30px;">10，000</font></strong><font style="font-size: 13px; color: #c7241d;">积分</font><br />
+                        <font style="text-decoration: line-through;">20000&nbsp;</font><font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销量（15）</font>
+                    </div>
+                    <a href="#
+" target="_blank" title="佳洁士优能健齿牙刷
+"><span>查看详情</span></a>
+                </div>
+            </div>
+        </li>
+        
+    </ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _main_content_detail_lst = $('.main-content-div ul li');
+
+    var _count = _main_content_detail_lst.length;
+    console.log('_count -- : ' + _count);
+
+    for (var i =0; i < _count; i++) {
+
+      var _num = i + 1;
+
+      _main_content_detail_lst.eq(i).find('.title-number').text(_num);
+    }
+});
+</script>

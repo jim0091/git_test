@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb"> 
+	<a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+</nav>
+	 <table class="table table-border table-bordered table-bg mt-20">
+	    <thead>
+	      <tr>
+	        <th colspan="2" scope="col" style="background-color: #5EB95E;color: white;">订单:&nbsp;&nbsp;{$info.tid}<br />
+        		订单支付时间：
+        		{$info['pay_time']|date="Y-m-d H:i:s",###}
+	        </th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td width="200">收货人信息</td>
+	        <td><span>{$info.receiver_name}[{$info.receiver_mobile}]</span></td>
+	      </tr>
+	      <tr>
+	        <td>收货地址</td>
+	        <td><span>{$info.receiver_state}-{$info.receiver_city}-{$info.receiver_district}-{$info.receiver_address}</span></td>
+	      </tr>		
+	    </tbody>				    
+	  </table>	
+	  <div id="sendGoods"> 
+	    <form action="__URL__/sendGoodsDeal" method="post">
+		  <div style="padding-top: 10px;margin-left: 2%;">
+			  <volist name="item" id="vo">
+			  	<notempty name="vo.supperName">
+	      			<p><small style="color:#ea8010;">供应商：{$vo.supperName}</small></p>
+			  	</notempty>
+			      <label class="form-label col-12" style="margin-bottom: 10px;display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;">
+			      	<input type="checkbox" 	name="oid[]" value="{$vo.order_id}"	
+			      		<if condition="$vo['status'] neq 'IN_STOCK'">
+				      		disabled="disabled"
+				      	<else/>
+	        				<notin name="vo.aftersales_status" value="NO_APPLY,CANCEL_APPLY">
+	        						disabled="disabled"
+	        				</notin>				      	
+					      	<notempty name="vo.sendnum">
+					      		disabled="disabled"
+					      	</notempty>
+			      		</if>
+			      	 /> 
+					<if condition="$vo.send_type eq 2">
+						<img src="__ADMIN__images/img/daifa.png"  width="20px" title="该商品为代发商品"/>
+					<elseif condition="$vo.send_type eq 1"/>
+						<img src="__ADMIN__images/img/zifa.png"  width="20px" title="该商品为自发商品"/>
+					</if>	
+    				<if condition="$vo.aftersales_status neq 'NO_APPLY'">
+						<img src="__ADMIN__images/img/shouhou.png"  width="20px" title="有售后"/>
+    				</if>					
+		      		<if condition="$vo.disabled eq 1">
+			      		<span class="label radius">已取消</span>
+			      	<elseif condition="$vo['status'] neq 'IN_STOCK'"/>
+		      			<span class="label label-danger radius">未备货</span>
+			      	<else/>
+				      	<notempty name="vo.sendnum">
+				      		<span class="label label-primary radius">已发货</span>
+				      	</notempty>
+		      		</if>	
+			      	{$vo.item_name}<br />
+      				<notempty name="vo.spec_nature_info">
+						<small>规格：{$vo.spec_nature_info}</saml>
+					</notempty>	
+					<small>数量：{$vo.num}件</saml>
+			      	
+			      </label>
+		        	<p>
+		        		<notempty name="vo.to_stork_mark">
+			        		<small style="color:#666;">备货时备注：{$vo.to_stork_mark}</small>
+		        		</notempty>
+		        	</p>	
+        		<div style="border-bottom: 1px #ea8010 solid;">&nbsp;</div>
+			  </volist>
+		  </div>
+		  <div style="padding-top: 20px;margin-left: 2%;">
+		    <div class="row cl">
+		      <label class="form-label col-2">配送模板：</label>
+		      <div class="formControls col-8">
+					<select class="select-box" style="width:180px;" disabled="disabled">
+		          	  	<option value="0">快递</option>' ;
+					</select>	      	
+		      </div>
+		    </div>	 
+			<input type="hidden" value="{$info.atid}" name="tid"/>
+		    <div class="row cl" style="padding-top: 10px;">
+		      <label class="form-label col-2">物流公司：</label>
+		      <div class="formControls col-8">
+					<select id="catone" name="logId" class="select-box" style="width:180px;">
+					</select>	      	
+		      </div>
+		    </div>	
+		    <div class="row cl" style="padding-top: 10px;">
+		      <label class="form-label col-2">配送单号：</label>
+		      <div class="formControls col-5">
+		        <textarea name="logiNo" cols="" rows="" class="textarea" placeholder="请输入配送运单号" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！">{$info.shop_memo}</textarea>
+		      </div>
+		    </div>	
+		    <div class="row cl" style="margin-top: 20px;margin-bottom: 20px;">
+		      <div class="col-9 col-offset-2">
+		        <input class="btn btn-primary radius" value="&nbsp;&nbsp;确认&nbsp;&nbsp;" type="submit">
+		      </div>
+		    </div>
+		</form>   
+		</div>	
+	 </div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+	$(function(){
+	    var url = "{:U('Home/Order/getAllexpree')}" ;
+		$.ajax({
+			type:"get",
+			url:url,
+			dataType:'json',
+			success:function(data){
+				$.each(data, function(k,v) {
+	          	  	var options = '<option value="' +v.corp_id+ '">' +v.corp_name+ '</option>' ;
+	           	 	$( '#catone' ).append(options);
+				});
+			},
+			error:function(data){
+				
+			}
+		});		
+		if("{$info.shop_id}" == 10){
+			$("#sendGoods").hide();
+		}
+	});
+</script>
+</body>
+</html>

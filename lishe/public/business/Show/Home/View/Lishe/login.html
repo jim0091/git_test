@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link href="__PUBLIC__/lishe/css/global.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/lishe/css/style.css" rel="stylesheet" type="text/css" />
+<title>用户登录-礼舍</title>
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#userName").focus();
+	$("#loginBtn").click(function(){
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	    if(userName==""){
+	      alert('请输入您的用户名！');
+	      $("#userName").focus();
+	      return false;
+	    }
+	    if(password==""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    } 
+
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(msg[0]>0){
+					var refer=$("#refer").val();
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="http://www.lishe.cn";	
+					}				
+				}else{
+					alert(msg[1]);
+					$("#userName").focus();
+				}
+			},
+			error: function () {
+				alert('error：'+msg[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</head>
+
+<body>
+	 <div class="header">
+		   <div class="nav">
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt="" class="fl"/>
+				<a href="/" title="" class="fl">礼舍首页</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt="" class="fl" />
+				<a href="/shop.html" title="" class="fl">心意商城</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt="" class="fl" />
+				<a href="/help_problem.html" title="" class="fl">礼舍帮帮</a>
+				<a title="会员登录" class="fr">会员登录</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt=""  class="fr"/>
+                <a href="/shop/passport/signin.html" title="" class="fr">商家中心</a>
+                <img src="__PUBLIC__/lishe/images/navbg.png" alt=""  class="fr"/>
+                <a href="http://v.lishe.cn/company/login.html" title="" class="fr">企业登录</a>
+                <div class="cb"></div>
+			</div>
+            <div class="headerSlide">
+                <div class="tbox1mbox">
+                      <ul id="slides" class="tbox1mboxul">
+                          <li><img src="__PUBLIC__/lishe/images/logoFs_03.png"></li>
+                      </ul>
+               </div>              
+                <div class="login">
+                         <ul>
+                           <li class="fl" id="company">会员登录</li>
+                         </ul>
+                    <div class="personLogin">
+                      
+                        <input type="text" placeholder="请输入用户名" class="user  text" id="userName"/><br/>
+                        <span class="error-user"></span>
+                        <input type="password" placeholder="请输入密码" class="pwd text" id="password"/><br/>
+                        <span class="error-pwd"></span>
+                        <input type="checkbox" />
+                        <span class="next ntLogin">下次自动登录</span><a href="http://www.lishe.cn/passport-findpwd.html" title="找回密码" class="next" >忘记密码？</a><br/>
+                        <a href="javascript:;" title="登录" class="btnLogin" id="loginBtn">登&nbsp;&nbsp;&nbsp;录</a><br/>
+                        <p class="loginFooter"><a href="/business/index.php/Activate" title="企业员工激活">企业员工激活 >></a></p>
+                        <input type="hidden" id="refer" value="{$refer}">
+                    </div>
+               </div>
+               
+               
+            </div>
+	</div>
+       <div class="main4">
+            <div>
+                <img src="__PUBLIC__/lishe/images/lishe.png" alt="" />
+            </div>
+        </div>
+	 <!--尾部-->
+	<include file="Public/business_footer" />
+
+</body>
+</html>

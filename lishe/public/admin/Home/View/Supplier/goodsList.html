@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__ADMIN__css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__ADMIN__css/page.css" rel="stylesheet" type="text/css" />
+    <title>商品列表</title>
+</head>
+<style type="text/css">
+        .keywords_div{position: absolute; width:300px; border: 1px solid #DADADA;z-index:66; display: none; margin-left: 352px; background-color: white; margin-top: 0px;}
+    .keywords_li{height: 25px;line-height: 25px; padding-left:5px;cursor:pointer;}
+    .keywords_li span.keywords{float: left;}
+    .keywords_li span.num{float: right;margin-right: 5px;}
+</style>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 供应商管理 <span class="c-gray en">&gt;</span> 商品列表 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+<form action="{:U('Supplier/goodsListView')}" method="get">
+    <div class="text-l">搜索关键字：
+        <input type="text" class="input-text" style="width:200px" placeholder="输入商品名称" id="" name="like">
+       	 供应商：
+        <input type="text" name="" autocomplete="off" id="keywordSearch" placeholder="供应商搜索" style="width:250px" class="input-text" value="" >
+        <div id="keywordList" class="keywords_div"></div>
+        <span class="select-box" style="width: 220px;">        
+			<select class="select" name="supplierId" id="supplierId">
+				<option value="-1" <eq name="supplierId" value="-1">selected="selected"</eq>>全部</option>
+				<foreach name="supplierList" item="supplier" >
+				    <option value="{$supplier['supplier_id']}" <eq name="supplier['supplier_id']" value="$supplierId">selected="selected"</eq>>{$supplier['company_name']}</option>
+				</foreach>
+			</select>
+		</span>
+		发货类型：
+        <span class="select-box" style="width: 80px;">
+			<select class="select" name="sendType">
+				<option value="-1" <eq name="sendType" value="-1">selected="selected"</eq>>全部</option>
+		   		<option value="1" <eq name="sendType" value="1">selected="selected"</eq>>自发</option>
+		   		<option value="2" <eq name="sendType" value="2">selected="selected"</eq>>代发</option>
+			</select>
+		</span>
+        审核状态：
+        <span class="select-box" style="width: 80px;">
+            <select class="select" name="isReviewed">
+                <option value="-1" <eq name="isReviewed" value="-1">selected="selected"</eq>>全部</option>
+                <option value="0" <eq name="isReviewed" value="0">selected="selected"</eq>>待审核</option>
+                <option value="1" <eq name="isReviewed" value="1">selected="selected"</eq>>正常</option>
+            </select>
+        </span>
+        <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜商品</button>
+    </div>
+</form>
+    <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><!--  a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a--> <!-- <a href="{:U('Supplier/addGoodsView/')}"  class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加商品</a> --></span> <span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+    <table class="table table-border table-bordered table-bg table-hover" style="margin-top: 25px;">
+        <thead>
+        <tr>
+            <th scope="col" colspan="10">商品列表</th>
+        </tr>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox" name="" value="" ></th>
+
+            <th width="55">ID</th>
+            <th width="110">品类</th>
+            <th wid th="110">品牌</th>
+            <th width="180">供应商</th>
+            <th>商品名称</th>
+            <th width="70">代发/自发</th>
+            <th width="75">SKU数量</th>
+            <th width="75">商品状态</th>
+            <th width="130">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            <volist name="list" id="val">
+                <tr class="text-c">
+                    <td><input type="checkbox" value="1" name=""></td>
+                    <td>{$val['sitem_id']}<br/><notempty name="val['item_id']"><span class="label label-success radius">{$val['item_id']}</span></notempty></td>
+                    <td>{$cat_list[$val["cat_id"]]['cat_name']}</td>
+                    <td>{$brand_list[$val["brand_id"]]['brand_name']}</td>
+                    <td class="text-l">{$supplier_user[$val["supplier_id"]]['company_name']}</td>
+                    <td class="text-l">{$val['title']}</td>
+                    <if condition="$val['send_type'] eq 2 ">
+
+                        <td>代发</td>
+                        <else />
+                        <td>自发</td>
+                    </if>
+                    <empty name="skuNum[$val['sitem_id']]">
+                        <td style="color:red;">SKU为空!</td>
+                        <else />
+                        <td>{$skuNum[$val['sitem_id']]}</td>
+                    </empty>
+                    <td>
+                        <if condition="$val['is_reviewed'] eq 1 ">
+                        <span class="label label-success radius">正常</span>
+                        <else />
+                        <span class="label label-danger radius">待审核</span>
+                        </if>
+                    </td>
+                    <td class="td-manage" style="font-size: 18px;">
+                    	<a style="text-decoration:none" onClick="admin_edit('管理员编辑','{:U('Supplier/goodsDetail/',array('sitem_id'=>$val['sitem_id']))}','1','800','500')" href="javascript:;" title="查看"><i class="Hui-iconfont">&#xe695;</i></a>
+                        <a style="text-decoration:none" onClick="admin_reviewed('商品审核','{:U('Supplier/goodsReviewed/',array('sitem_id'=>$val['sitem_id']))}','1','800','500')" href="javascript:;" title="审核"><i class="Hui-iconfont">&#xe6e0;</i></a>
+                    	<!-- <a title="添加sku" href="{:U('Supplier/addSkuView/',array('sitem_id'=>$val['sitem_id'],'cat_id'=>$val['cat_id']))}"  class="ml-5" style="text-decoration:none"><i  class="Hui-iconfont">&#xe600;</i></a> -->
+                        <if condition="$val['is_reviewed'] eq 1 ">
+                            <a title="推送到商城和顺丰仓" href="javascript:;" onclick="admin_edit('请设置商品信息','{:U('Supplier/pushGoodsSet/',array('sitem_id'=>$val['sitem_id'],'item_id'=>$val['item_id'],'send_type'=>$val['send_type']))}','1','660','460')" class="ml-5" style="text-decoration:none"><i  class="Hui-iconfont">
+                                <if condition="$val['is_push'] eq 0"><font style="color:red">&#xe642;</font><else/>&#xe642;</if>
+                            </i></a>
+                        </if>
+                        <a title="删除" href="javascript:;" onclick="delGoods({$val['sitem_id']})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                    </td>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+    {$page}
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+    layer.config({
+        extend: 'extend/layer.ext.js'
+    });
+    /*
+     参数解释：
+     title	标题
+     url		请求的url
+     id		需要操作的数据id
+     w		弹出层宽度（缺省调默认值）
+     h		弹出层高度（缺省调默认值）
+     */
+    /*管理员-增加*/
+    function admin_add(title,url,w,h){
+        layer_show(title,url,w,h);
+    }
+    
+    function delGoods(id){
+    	layer.confirm('确认要删除商品数据吗？',function(index){
+        	$.post("{:U('Supplier/setGoodsStatus')}",{sitem_id:id,status:-1},function(result){
+        		if(result.code == 1){
+           		 	layer.msg("删除成功",{icon:1});
+           		 	setTimeout(function(){window.location.reload();},800);
+	           	 }else{
+	           		 layer.msg("删除失败",{icon:2});
+	           	 }
+        	});
+        });
+    }
+    function pushGoods(id){
+    	layer.confirm('确认要把商品推送到商城和顺丰仓库吗？',function(index){
+            layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text){
+                layer.msg('演示完毕！您的口令：'+ pass +' 您最后写下了：'+ text);
+
+                $.post("{:U('Supplier/pushGoods')}",{sitem_id:id},function(result){
+                    if(result.code == 1){
+                        layer.msg("推送成功",{icon:1});
+                        setTimeout(function(){window.location.reload();},800);
+                    }else{
+                        layer.msg("推送失败",{icon:2});
+                    }
+                });
+            });
+
+
+
+
+
+        });
+    }
+    /*管理员-删除
+    function admin_del(id,status){
+        layer.confirm('确认要修改状态吗？',function(index){
+        	var data={"sitem_id":id,"status":status};
+        	$.post("{:U('Supplier/delItem')}",data,function(text){
+        		window.location.reload();
+        	});
+
+            //此处请求后台程序，下方是成功后的前台处理……
+
+            $(obj).parents("tr").remove();
+            layer.msg('已修改!',{icon:1,time:1000});
+
+        });
+    }
+    */
+    /*管理员-编辑*/
+    function admin_edit(title,url,id,w,h){
+        layer_show(title,url,w,h);
+    }
+
+    /*管理员-审核*/
+    function admin_reviewed(title,url,id,w,h){
+        layer_show(title,url,w,h);
+    }
+    /*管理员-停用*/
+    function admin_stop(obj,id){
+        layer.confirm('确认要停用吗？',function(index){
+            //此处请求后台程序，下方是成功后的前台处理……
+
+            $(obj).parents("tr").find(".td-manage").prepend('<a onClick="admin_start(this,id)" href="javascript:;" title="启用" style="text-decoration:none"><i class="Hui-iconfont">&#xe615;</i></a>');
+            $(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">已禁用</span>');
+            $(obj).remove();
+            layer.msg('已停用!',{icon: 5,time:1000});
+        });
+    }
+
+    /*管理员-启用*/
+    function admin_start(obj,id){
+        layer.confirm('确认要启用吗？',function(index){
+            //此处请求后台程序，下方是成功后的前台处理……
+
+
+            $(obj).parents("tr").find(".td-manage").prepend('<a onClick="admin_stop(this,id)" href="javascript:;" title="停用" style="text-decoration:none"><i class="Hui-iconfont">&#xe631;</i></a>');
+            $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+            $(obj).remove();
+            layer.msg('已启用!', {icon: 6,time:1000});
+        });
+    }
+
+
+    $(".search_button").click(function(){
+        $("#goods_search").submit();
+    });
+    $('#keywordSearch').blur(function(){    
+        setTimeout(function(){
+            $('#keywordList').hide();   
+        },200);     
+    });
+    $('#keywordSearch').focus(function(){   
+        if($('#keywordList').is(":empty")){
+            $('#keywordList').hide();
+        }else{
+            $('#keywordList').show();
+        }
+        
+    });
+    $('#keywordSearch').bind('input propertychange', function() {
+        var keywords = $.trim($(this).val());
+        console.log(keywords);
+        if (keywords != '') {
+            $.ajax({
+                type:"POST",
+                url:"{:U('Home/Product/selectKeyword')}",
+                data:{keywords:keywords},
+                dataType:'text',
+                success:function(data){
+                    if (data == "") {
+                        $('#keywordList').hide();
+                        $("#keywordList").empty();
+                    }else{
+                        $('#keywordList').show();
+                        $("#keywordList").empty();
+                        $("#keywordList").append(data);
+                    }
+                },
+                error:function(){
+                    $('#keywordList').hide();
+                    $("#keywordList").empty();
+                }
+            });
+        }else{
+            $('#keywordList').hide();
+            $("#keywordList").empty();
+        }
+    }); 
+    $("#keywordList").on("mouseover","ul li",function(){
+        $(this).css('background-color','#FF3737');
+        $(this).css('color','white');
+    });
+    $("#keywordList").on("mouseout","ul li",function(){
+        $(this).css('background-color','white');
+        $(this).css('color','black');
+    });
+    $("#keywordList").on("click","ul li",function(){
+        var checkKeywords = $(this).children(".keywords").text();
+        var supplierId = $(this).children(".keywords").attr('data-supplierId');
+        $("#keywordSearch").val(checkKeywords);
+        $('#keywordList').hide();
+        $("#keywordList").empty();
+        $("#goods_search").submit();
+        $("#supplierId option[value='"+supplierId+"']").attr("selected","selected");
+    }); 
+</script>
+</body>
+</html>

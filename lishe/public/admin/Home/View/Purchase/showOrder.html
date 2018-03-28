@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>修改采购商品</title>
+</head>
+<body>
+<div id="tab_demo" class="HuiTab">
+  <div class="tabBar cl"><span>基本信息</span><span>采购商品</span></div>
+  <div class="tabCon">
+  	<form class="form form-horizontal">
+  		<input type="hidden" name="plan_id" id="plan_id" value="{$planId}">
+  		<div class="row cl">
+			<label class="form-label col-5">建立人：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['build_people']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">建立时间：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['build_time']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">仓库：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$warehouse['name']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">仓库地址：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$warehouse['address']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">联系人：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$warehouse['contacts']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">联系电话：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$warehouse['tel']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">状态：</label>
+			<div class="formControls col-5">
+                <if condition="$supplierOrder['status'] eq 0">
+                 	<span class="label label-warning radius">待采购员审核 </span>
+                <elseif condition="$supplierOrder['status'] eq 1"/>
+                 	<span class="label label-warning radius">待供应商审核 </span>
+                <elseif condition="$supplierOrder['status'] eq 2"/>
+                	<span class="label label-warning radius">待采购员确认 </span>
+                <elseif condition="$supplierOrder['status'] eq 3"/>
+                	<span class="label label-warning radius">待主管审核 </span>
+                <elseif condition="$supplierOrder['status'] eq 4"/>
+                	<span class="label label-secondary radius">待发货 </span>
+                <elseif condition="$supplierOrder['status'] eq 5"/>
+                	<span class="label label-primary radius">已发货 </span>
+                <elseif condition="$supplierOrder['status'] eq 6"/>
+                	<span class="label label-success radius">已入库 </span>
+                <elseif condition="$supplierOrder['status'] eq -1"/>
+                	<span class="label label-danger radius">审核未通过</span>
+                <elseif condition="$supplierOrder['status'] eq -2"/>
+                	<span class="label label-danger radius">已取消 </span>
+                 </if>
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<egt name="supplierOrder['first_auditor_uid']" value="1">
+		<div class="row cl">
+			<label class="form-label col-5">初审人（采购员）：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['first_auditor']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">初审时间：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['first_auditor_time']}" style="border: none;">
+			<div class="col-5"></div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">初审意见：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['first_auditor_remarks']}" style="border: none;">
+			<div class="col-5"></div>
+			</div>
+		</div>
+		</egt>
+		<egt name="supplierOrder['auditor_uid']" value="1">
+		<div class="row cl">
+			<label class="form-label col-5">复审人（主管）：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['auditor']}" style="border: none;">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">复审时间：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['audit_time']}" style="border: none;">
+			<div class="col-5"></div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">复审意见：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" value="{$supplierOrder['audit_remarks']}" style="border: none;">
+			<div class="col-5"></div>
+			</div>
+		</div>
+		</egt>
+		<notempty name="supplierOrder['delivery_time']">
+			<div class="row cl">
+				<label class="form-label col-5">送货时间：</label>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" value="{$supplierOrder['delivery_time']}" style="border: none;">
+				</div>
+				<div class="col-5"></div>
+			</div>
+		</notempty> 
+		<notempty name="supplierOrder['delivery_address']">
+			<div class="row cl">
+				<label class="form-label col-5">送货地址：</label>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" value="{$supplierOrder['delivery_address']}" style="border: none;">
+				</div>
+				<div class="col-5"></div>
+			</div>
+		</notempty> 
+		<notempty name="supplierOrder['settlement_method']">
+			<div class="row cl">
+				<label class="form-label col-5">结算方式：</label>
+				<div class="formControls col-5">
+					<input type="text" class="input-text" value="{$supplierOrder['settlement_method']}" style="border: none;">
+				</div>
+				<div class="col-5"></div>
+			</div>
+		</notempty> 
+		
+		<div class="row cl" style="margin-bottom: 100px;">
+	      <label class="form-label col-5">备注：</label>
+	      <div class="formControls col-5">
+	      	<empty name="supplierOrder['remarks']">
+      		 --
+      		<else />
+      		 <textarea name="remarks" cols="" rows="" class="textarea" readonly="readonly"  dragonfly="true" style="border: none;">{$supplierOrder['remarks']}</textarea>
+      		</empty>
+	      </div>
+	      <div class="col-5"></div>
+	    </div>
+    </form>
+  </div>
+  <div class="tabCon">
+  	<form class="form form-horizontal">
+     <div class="row cl" style="padding: 0 12px;">
+		 <form action="__SELF__">
+		 	<input type="hidden" name="order_id" value="{$orderId}"/>
+			 <div class="row cl">
+				 <label class="form-label col-5">搜索：</label>
+				 <div class="formControls col-5">
+					 <input type="text" name="like" class="input-text" style="border:1px solid #ccc;" value="{$like|default=''}" placeholder="请输入 商品名称、条形码" style="border: none;">
+				 </div>
+				 <input type="submit"  id="searchGoods" class="btn btn-success" value="搜索">
+				 <div class="col-5"></div>
+			 </div>
+		</form>
+		<br/> <br/> <br/>
+	    <table class="table table-border table-bordered table-bg table-hover">
+	        <thead>
+	        <tr>
+	        	<th scope="col" colspan="7">
+	        		<span class="r" >共有数据：{$count|default="0"} 条(规格)</span>
+	        	</th>
+	        </tr>
+	        <tr class="text-c">
+	        	<th width="5%"><span>商品ID</span></th>
+	        	<th width="18%">商品名称</th>
+	        	<th width="13%">供应商</th>
+	        	<th width="63%" style="padding: 0;">
+	        		<table rules="none" cellspacing="0" align="center">
+	        		<thead>
+	        			<tr>
+						<th width="15%" class="text-l">条形码</th>
+	        			<th width="15%" class="text-l">商品规格</th>
+	        			<th width="23%">商城价/结算价/采购价(元)</th>
+	        			<th width="9%">利润率</th>
+	        			<th width="8%">库存</th>
+	        			<th width="8%">销量</th>
+	        			<th width="21%">计划数/订货数/入库数</th>
+			            </tr>
+	        		</thead>
+	        		</table>
+	        	</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <volist name="orderGoodsArr" id="item">
+	        	<tr class="text-c">
+	        		<td>{$key}</td>
+	        		<td  class="text-l">{$item['title']}</td>
+	        		<td  class="text-l">{$supplier['company_name']}</td>
+	        		<td style="padding: 0;">
+	        			<table rules="none" cellspacing="0" align="center">
+					    <tbody>
+					    	<volist name="item['data']" id="val" key="j">
+					    		<tr class="text-c">
+									<td width="15%" class="text-l">{$val['barcode']}</td>
+					    			<td width="15%" class="text-l">{$val['spec_info']}</td>
+					    			<td width="23%">{$val['price']|floatval} / {$val['cost_price']|floatval} / {$val['order_price'] | floatval}</td>
+					    			<td width="9%">
+					    				<?php 
+					        				$skucount = (($val['price'] - $val['cost_price']) / $val['price'])*100;
+											echo number_format($skucount,1).'%'; 
+										?>
+					    			</td>
+					    			<td width="8%">{$storeList[$val['item_id']][$val['sku_id']] | default='--'}</td>
+					    			<td width="8%">{$soldList[$val['sku_id']] | default='--'}</td>
+					    			<th width="21%">{$val['plan_number']}/{$val['number']}/{$val['storage_number']}</th>
+					    		</tr>
+					    	</volist>
+					    </tbody>
+					    </table>
+	        		</td>
+                </tr>
+			</volist>
+	        </tbody>
+	    </table>
+    </div>
+    </form>
+    {$page}
+  </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+<!--
+<script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+ -->
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+		var $tab_menu=$(tabBar);
+		  // 初始化操作
+		  $tab_menu.removeClass(class_name);
+		  $(tabBar).eq(i).addClass(class_name);
+		  $(tabCon).hide();
+		  $(tabCon).eq(i).show();
+		  
+		  $tab_menu.bind(tabEvent,function(){
+		  	$tab_menu.removeClass(class_name);
+		      $(this).addClass(class_name);
+		      var index=$tab_menu.index(this);
+		      $(tabCon).hide();
+		      $(tabCon).eq(index).show();
+		  });
+		}
+	$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","1");
+	
+}) 
+
+</script>
+</body>
+</html>

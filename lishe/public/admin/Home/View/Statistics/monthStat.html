@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+table th,td
+{
+    text-align:center !important;
+}
+
+</style>
+<title>统计</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统统计 <span class="c-gray en">&gt;</span> 月销售额统计 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+<table id="stat" class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer">
+    <tr>
+        <th></th><th>总订单数</th><th>支付订单数</th><th>退款订单数</th><th>订单总额</th><th>支付总额</th><th>退款总额</th><th>商品成本</th><th>商品利润</th>
+    </tr>
+    <tr><td>合计</td>
+    <foreach name="sum" item="v" >
+        <td>{$v.count}</td>
+        <td>{$v.paycount}</td>
+        <td>{$v.aftersale}</td>
+        <td>{$v.totalFee}</td>
+        <td>{$v.payedFee}</td>
+        <td>{$v.refundFee}</td>
+        <td><?php echo isset($v['cost'])? $v['cost'] : '0.000'; ?></td>
+        <td><?php echo isset($v['profit'])? $v['profit'] : '0.000'; ?></td>
+    </foreach>
+    </tr>
+    </table>
+
+<div class="pd-20">
+    <div id="container" style="min-width:700px;height:400px"></div>
+</div>
+<table id="stat" class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer">
+    <tr>
+        <th>月度</th><th>总订单数</th><th>支付订单数</th><th>退款订单数</th><th>订单总额</th><th>支付总额</th><th>退款总额</th><th>商品成本</th><th>商品利润</th>
+    </tr>
+    <foreach name="data" item="v" >
+    <tr>
+        <td>{$v.months}</td>
+        <td>{$v.count}</td>
+        <td>{$v.paycount}</td>
+        <td>{$v.aftersale}</td>
+        <td>{$v.totalFee}</td>
+        <td>{$v.payedFee}</td>
+        <td>{$v.refundFee}</td>
+        <td><?php echo isset($v['cost'])? $v['cost'] : '0.000'; ?></td>
+        <td><?php echo isset($v['profit'])? $v['profit'] : '0.000'; ?></td>
+    </tr>
+    </foreach>
+</table>
+</div>
+
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Highcharts/4.1.7/js/highcharts.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Highcharts/4.1.7/js/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    $(function () {
+    $('#container').highcharts({
+        credits: {
+                text: '礼舍科技',
+                href: 'http://www.lishe.cn'
+            },
+        title: {
+            text: '月度销售额统计(折线图)',
+            style:{
+                color:"#000",
+                fontWeight:"bold",
+                fontSize:'22px'
+            }
+        },
+        xAxis: {
+            categories: [
+            <?php
+            foreach($data as $v){
+                echo "'".$v['months']."',";
+            }
+            echo implode(",",$months);
+            ?>
+            //'5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月'
+            ],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },  
+        yAxis: {
+            //控制最小刻度
+            min: 0,
+            
+            title: {
+                text: '月度销售额（万元）',
+                style:{
+                    color:"#000",
+                    fontWeight:"bold",
+                    fontSize:'14px'
+                }
+            },
+            labels: {
+                //修改左侧刻度（万元）
+                formatter: function () {
+                    return this.value / 10000;
+                    
+                },
+                style:{
+                    color:"#000",
+                    fontWeight:"bold",
+                    fontSize:'12px'
+                }
+            }
+        },
+        tooltip: {
+            shared: true,
+            
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [
+        <?php         
+            foreach($data as $v){
+                $total[] += $v['count'];
+                $payCount[] += $v['paycount'];
+                $afterSale[] += $v['aftersale'];
+                $totalFee[] += $v['totalFee'];
+                $payedFee[] += $v['payedFee'];
+                $refundFee[] += $v['refundFee'];
+                $cost[] += $v['cost'];
+                $profit[] += $v['profit'];
+            }
+            echo "{name: '总订单数',\n";
+            echo "data:[".implode(",",$total)."]},";
+            echo "{name: '支付订单数',\n";
+            echo "data:[".implode(",",$payCount)."]},";
+            echo "{name: '退款订单数',\n";
+            echo "data:[".implode(",",$afterSale)."]},";
+            echo "{name: '订单总金额(元)',\n";
+            echo "data:[".implode(",",$totalFee)."]},";
+            echo "{name: '总付款金额(元)',\n";
+            echo "data:[".implode(",",$payedFee)."]},";
+            echo "{name: '总退款金额(元)',\n";
+            echo "data:[".implode(",",$refundFee)."]},";
+            echo "{name: '成本(元)',\n";
+            echo "data:[".implode(",",$cost)."]},";
+            echo "{name: '利润(元)',\n";
+            echo "data:[".implode(",",$profit)."]}";
+        ?>
+        ]
+    });
+
+});
+
+});
+</script>
+</body>
+</html>

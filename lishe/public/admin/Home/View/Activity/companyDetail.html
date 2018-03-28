@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>基本设置</title>
+</head>
+<body>
+<style>
+	.tabBar span.current{
+		background-color: #5EB95E;	
+	}
+	.tabBar {
+    	border-bottom: 2px solid #5EB95E;
+	}
+	.table-bg thead th {
+		background-color: #5EB95E;	
+		color: white;
+	}
+</style>
+<nav class="breadcrumb"><a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+			 <table class="table table-border table-bordered table-bg mt-20">
+			    <thead>
+			      <tr>
+			        <th colspan="2" scope="col">{$info.com_name}</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr>
+			        <td width="150">comId</td>
+			        <td><span>{$info.com_id}</span></td>
+			      </tr>
+			      <tr>
+			        <td>标识</td>
+			        <td>{$info.mark}</td>
+			      </tr>
+			      <tr>
+			        <td>访问域名</td>
+			        <td>{$info.com_domain}.lishe.cn</td>
+			      </tr>				      
+			      <tr>
+			        <td>折扣</td>
+			        <td>{$info.discount}</td>
+			      </tr>			      
+			      <tr>
+			        <td>logo</td>
+			        <td>
+			        	<notempty name="info.com_logo">
+			        		<img src="{$info.com_logo}"  width="50px" style="max-height: 100px;overflow: hidden;"/>
+			        	</notempty>
+			        </td>
+			      </tr>	
+			      <tr>
+			      	<td>产品利润率</td>
+			      	<td>{$info.profit_rate}</td>
+			      </tr>
+			      <tr>
+			        <td>模板</td>
+			        <td>{$info.templete}</td>
+			      </tr>
+			      <tr>
+			        <td>登录成功跳转链接</td>
+			        <td>{$info.refer}</td>
+			      </tr>				     
+			      <tr>
+			        <td>添加时间</td>
+			        <td>
+			        	<notempty name="info.creat_time">
+			        	{$info['creat_time']|date="Y-m-d H:i:s",###}
+			        	</notempty>			        	
+			        	
+			        </td>
+			      </tr>				      
+			      <tr>
+			        <td>审核状态</td>
+			        <td>{$info['is_check'] == 1 ? "通过":"正在审核"}</td>
+			      </tr>				    
+			      
+			    </tbody>
+		    </table>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	$.Huitab("#tab-system .tabBar span","#tab-system .tabCon","current","click","0");
+});
+</script>
+</body>
+</html>

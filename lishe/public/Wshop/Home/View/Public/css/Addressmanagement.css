@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document input{-webkit-appearance: none;}*/
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+input{-webkit-appearance: none;outline: none;}
+img{border:0;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+
+body{font-family:"微软雅黑";overflow-x:hidden;background:#f1f5f6;}
+
+.Waddress{width:100%; height:3rem; line-height:3rem; background:#FFF;}
+.Waddress span{display:block; float:left;}
+.Waddress span:nth-child(1){width:10%; padding-left:2%;}
+.Waddress span:nth-child(1) img{width:30%; vertical-align:middle;}
+.Waddress span:nth-child(2){font-size:1rem; color:#333333; width:75%; text-align:center;}
+
+.Weditorsaddress{width:100%;}
+.Weditorsaddress ul{border-top:#e0e0e0 solid 1px; background:#FFF; border-bottom:#e0e0e0 solid 1px; margin-bottom:0.6rem; padding-left:2%; padding-bottom: 0.2rem;}
+.Weditorsaddress ul li:nth-child(1){font-size:1rem; color:#191414; padding:1.3vh 0;}
+.Weditorsaddress ul li:nth-child(1) span{padding-left:3rem;}
+.Weditorsaddress ul li:nth-child(2){font-size:0.85rem; color:#757575; width:98%; line-height:1.5rem; padding-bottom:1.3vh; border-bottom:#e0e0e0 solid 1px;}
+.Weditorsaddress ul li:nth-child(3){line-height:2rem; font-size:0.85rem; color:#565555; margin-top: 0.2rem;}
+.spanleft{float:left;}
+
+.spanRight{float:right;}
+.spanRight a{font-size:0.85rem; color:#565555;}
+.spanRight img{width:12%; vertical-align:middle; padding-left:0.8rem; margin-right:0.5rem; margin-top:-0.3rem;}
+
+.addressbtn a{display:block; height:2.8rem; line-height:2.8rem; margin:0 auto; 
+font-size:1rem; color:#FFF; background:#ff4138; text-align:center; border-radius:5px;}
+
+
+/*单选按钮样式美化*/
+.regular-radio {
+	display: none;
+}
+.regular-radio + label {
+	-webkit-appearance: none;
+	background-color: #FFF;
+	border: 1px solid #a5a5a5;
+	padding: 0.6rem;
+	border-radius: 100px;
+	display: inline-block;
+	position: relative;
+	top:0.3rem;
+}
+.regular-radio:checked + label:after {
+	content:url(../images/xz.png);
+	position: absolute;
+	top: -0.1rem;
+	left:-0.1rem;
+	color: #f32b5a;
+	/*width: 100%;
+	text-align: center;
+	font-size: 1.5rem;*/
+	vertical-align: text-top;
+	font-weight:bold;
+	z-index:10;
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<input type="hidden" name="comId" id="comId" value="{$comId}">
+	<div>
+		<div class="wrap content" >
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="myOrder">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">订单编号：<span class="order_details">{$orderInfo['tid']}</span>&nbsp;&nbsp;&nbsp;&nbsp;状态：<span class="order_details">{$orderInfo['status']|orderStatusLastReturn}</span></p>
+					</div>
+					<div class="textcenter">
+						<div class="status_icon">
+							<p class="progress_bar"></p>
+							<div class="status_progress status_one">
+								<div class="steps">1
+									<div class="stripeL"></div>
+									<div class="stripeR"></div>
+								</div>
+								<div class="status_text">待付款</div>
+							</div>
+							<div class="status_progress status_two">
+								<div class="steps">2
+									<div class="stripeL"></div>
+									<div class="stripeR"></div>
+								</div>
+								<div class="status_text">已付款</div>
+							</div>
+							<div class="status_progress status_three">
+								<div class="steps">3
+									<div class="stripeL"></div>
+									<div class="stripeR"></div>
+								</div>
+								<div class="status_text">已发货</div>
+							</div>
+							<div class="status_progress status_four">
+								<div class="steps">4
+									<div class="stripeL"></div>
+									<div class="stripeR"></div>
+								</div>
+								<div class="status_text">已完成</div>
+							</div>
+						</div>
+						<div class="status_note">
+							<if condition="$orderInfo['status'] eq 'TRADE_CLOSED_BY_SYSTEM'">
+								<span>订单取消原因：</span>订单未在下单1440分钟内完成支付,被系统自动关闭。
+							</if>
+						</div>
+					</div>
+					<div class="order_box">
+						<p class="box_title">收货人信息</p>
+						<div class="box_details">
+							收货人：<span>{$orderInfo['receiver_name']}</span><br>
+							联系方式：<span>{$orderInfo['receiver_mobile']}</span><br>
+							收货地址： <span>{$orderInfo['areaNames']}{$orderInfo['receiver_address']}</span>
+						</div>
+					</div>
+					<div class="order_box">
+						<p class="box_title">支付及配送方式</p>
+						<div class="box_details">
+							支付类型：<span>在线支付</span><br>
+							已支付：<span>￥{$orderInfo['payed_fee']}</span>
+						</div>
+					</div>
+					<div class="order_box">
+						<p class="box_title">物流信息</p>
+						<volist name="logisticsList" id="vo">
+							<div class="box_details">
+								物流公司：<span>{$vo['corp_name']}</span><br>
+								运单号码：<span>{$vo['logi_no']}</span><br>
+								物流信息：<span>
+									<if condition="$vo['corp_id'] eq 3 ">
+										<div class="logistics">
+										<volist name="orderInfo['jdlogisList']" id="jdvo">
+											{$jdvo.content}&nbsp;&nbsp;{$jdvo.msgTime}<br>
+										</volist>
+										</div>
+									<elseif condition="$vo['corp_id'] eq 2 "/>										
+										<div class="logistics">
+										<volist name="orderInfo['sflogisList']" id="sfvo">
+											{$sfvo.note}&nbsp;&nbsp;{$sfvo.eventTime}<br>
+										</volist>
+										</div>
+									<else/>
+										{$vo['website']}
+									</if>
+									</span>
+							</div>
+						</volist>
+					</div>
+					<!-- <div class="order_box">
+						<p class="box_title">发票信息</p>
+						<div class="box_details">
+							<span>深圳市南山区礼舍科技有限公司</span>
+						</div>
+					</div> -->
+					<div class="order_box">
+						<p class="box_title">商品信息</p>
+						<div class="box_details">
+							订单编号 <span>{$orderInfo['tid']}</span>&nbsp;&nbsp;&nbsp;&nbsp;下单时间 <span>{$orderInfo['created_time']|date="Y-m-d H:i:s",###}</span>
+							<table>
+								<tr>
+									<th>商品</th>
+									<th>单价(元)</th>
+									<th>数量</th>
+									<th>总金额</th>
+									<th>状态</th>
+									<th>售后</th>
+								</tr>
+								<volist name="orderItemList" id="vo">
+								<tr>
+									<td class="ordered_goods">
+										<img src="{$vo['pic_path']}_m.{:end(explode('.',$vo['pic_path']))}">
+										<a href="/shop.php/Info/index/itemId/{$vo['item_id']}" target="_bank" class="ordered_link">{$vo['title']}</a>
+									</td>
+									<td>￥{$vo['price']}</td>
+									<td>{$vo['num']}</td>
+									<td>￥{$vo['price'] * $vo['num']}</td>
+									<td>
+										<if condition="$vo.sendnum gt 0 ">
+										<img width="25px" height="25px" style="vertical-align: middle;" src="__VIEW__Public/images/sendgoods.png">
+										</if>&nbsp;
+										{$vo['status']|orderStatusLastReturn}
+									</td>
+									<td>{$vo['aftersales_status']|orderStatusLastReturn}</td>
+								</tr>
+								</volist>	
+							</table>
+						</div>
+					</div>
+					<div class="order_box">
+						<p class="box_title">订单备注信息</p>
+						<div class="box_details">
+							备注信息：<span>{$orderInfo['buyer_message']}</span>
+						</div>
+					</div>
+					<div class="order_bill">
+						<div class="tbrow">
+							<p class="tbcell">商品总金额</p>
+							<p class="tbcell"><span>{$orderInfo['total_fee'] * 100}</span> 积分（￥<span class="rmb">{$orderInfo['total_fee']}</span>）</p>
+						</div>
+						<div class="tbrow">
+							<p class="tbcell">运费</p>
+							<p class="tbcell"><span>{$orderInfo['post_fee'] * 100}</span> 积分（￥<span class="rmb">{$orderInfo['post_fee']}</span>）</p>
+						</div>
+						<div class="tbrow">
+							<p class="tbcell">实付金额</p>
+							<p class="tbcell"><span>{$orderInfo['payment'] * 100}</span> 积分（￥<span class="rmb">{$orderInfo['payment']}</span>）</p>
+						</div>
+					</div>
+					<if condition="$orderInfo['status'] eq 'WAIT_BUYER_CONFIRM_GOODS'">
+						<div class="order_confirm">
+							<a href="javascript:void(0);" class="confirm" data-tid="{$orderInfo['tid']}" data-status="TRADE_FINISHED">确认收货</a>
+						</div>
+					</if>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div style="border:0px solid red;">   
+		<include file="Public/footer"/>
+	</div>
+<script type="text/javascript">	
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    };
+	$(function(){
+		var status = "{$orderInfo['status']}";
+		if (status == 'WAIT_BUYER_PAY') {
+			$(".status_one").addClass('on');
+		};
+		if (status == 'WAIT_SELLER_SEND_GOODS' || status =='IN_STOCK') {
+			$(".status_one").addClass('on');
+			$(".status_two").addClass('on');
+		};
+		if (status == 'WAIT_BUYER_CONFIRM_GOODS') {
+			$(".status_one").addClass('on');
+			$(".status_two").addClass('on');
+			$(".status_three").addClass('on');			
+		};
+		if (status == 'WAIT_COMMENT' || status == 'TRADE_FINISHED') {
+			$(".status_one").addClass('on');
+			$(".status_two").addClass('on');
+			$(".status_three").addClass('on');		
+			$(".status_four").addClass('on');				
+		};
+	});
+	$(".confirm").click(function(){	
+        $(".topLoading").show();  
+		var tid = $(this).attr('data-tid');
+		var status = $(this).attr('data-status');
+		$.ajax({
+            type:"GET",
+            url:"__APP__/Order/orderChgStatus",
+            data:{paymentId:tid,status:status},
+            dataType:'text',
+            success:function(data){
+                var res = eval(data);
+                if (res[0] == 1 ) {
+                    $(".topLoading").hide();
+                    divPrompt(res[1]);
+                    window.location.reload();
+                    return;
+                }else{
+                    $(".topLoading").hide();
+                    divPrompt(res[1]);
+                    return;
+                }
+            },
+            error:function(){
+                $(".topLoading").hide();
+                divPrompt("系统繁忙，请刷新重试！");
+                return;
+            }
+    	});
+	});
+</script>
+</body>
+</html>

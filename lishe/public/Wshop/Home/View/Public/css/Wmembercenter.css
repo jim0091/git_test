@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document*/
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+img{border:0;}
+input{-webkit-appearance: none;outline: none;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+body{font-family:"微软雅黑";overflow-x:hidden;background:#f0f4f5; padding-bottom:3.5rem;}
+
+.userinformation{width:100%; background:#3cabdc;}
+.Usertop{width:90%; margin:0 auto; padding-top:3%;}
+.Usertop a:nth-child(1){width:50%;}
+.Usertop a:nth-child(1) img{float:left; width:4%;}
+.Usertop a:nth-child(2){width:50%;}
+.Usertop a:nth-child(2) img{float:right; width:6%;}
+.Userhead{width:90%; text-align:center; margin:0 auto; margin-top:5%;}
+.Userhead ul li{float:left;}
+.Userhead ul li:nth-child(1){width:21%;}
+.Userhead ul li img{border-radius:100px; width:90%;}
+.Userhead ul li:nth-child(2){width:50%; text-align:left; padding-top:1rem; padding-left:0.8rem;}
+.Userheadname{font-size:1rem; color:#060805; font-weight:bold;}
+.Userheadcomp{font-size:0.8rem; color:#060805;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; margin-top: .2rem;}
+.Userhead ul li:nth-child(3){width:15%; line-height:1.3rem;}
+.Userhead ul li:nth-child(3) a{display:block; padding:.1rem .3rem; color:#FFF; font-size:0.8rem;
+background:#71b6da; border-radius:50px; margin-top:1rem;}
+.UserheadUl{width: 96vw; margin: 1rem auto;}
+.UserheadUl ul{float:left;text-align:center; line-height:1.6rem;}
+.UserheadUl ul li:nth-child(1){font-size:1rem; color:#FFF;}
+.UserheadUl ul li:nth-child(2){font-size:0.8rem; color:#dff4fe;}
+.smallUl{width:30vw;}
+.UserheadUl img{height: 30px; margin-top: .6rem;}
+
+/*订单状态*/
+.orderStatus{width:100%; background:#FFF; margin-top:0.8rem; clear:both;}
+.orderCt{width:90%; margin:0 auto; border-bottom:#e0e0e0 solid 1px; height:3.5rem; line-height:3.5rem}
+.orderCt p:nth-child(1){float:left; font-size:.8rem; color:#757575;}
+.orderCt p:nth-child(1) img{width:19%; vertical-align:text-bottom; margin-right:0.8rem;}
+.orderCt p:nth-child(2){float:right; font-size:.8rem; color:#999999; margin-right:-0.2rem;}
+.orderCt p:nth-child(2) img{width:12%; vertical-align:text-bottom; margin-left:0.35rem; margin-bottom:.15rem;}
+.orderStatusList{width:96%; clear:both; margin:0 auto; height:6rem;}
+
+.orderStatusList ul{float:left; width:20%; text-align:center; margin-top:1rem; position:relative;}
+.orderStatusList ul li:nth-child(2){padding-top:1rem;font-size:0.8rem; color:#757575;}
+.orderStatusList ul img{width:30%;}
+.num{position:absolute; top:-0.5rem; right:0.6rem; z-index:10; font-size:0.6rem; color:#ff4d44; width:1.1rem; height:1.1rem; line-height:1.1rem;
+border:#ff4d44 solid 1px; text-align:center; border-radius:50px;}
+
+/*列表*/
+.UsermemList{width:100%; background:#FFF; margin-top:.8rem;}
+.UsermemList p{width:90%; margin:0 auto; border-bottom:#e0e0e0 solid 1px; height:3.5rem; line-height:3.5rem;
+font-size:.8rem; color:#757575;}
+.UsermemList p img{width:6%; vertical-align:text-bottom; margin-right:0.8rem;}
+.UsermemList p span img{width:3%; float:right; padding-top:1.3rem;}
+
+/* 退出登录 */
+.downbrandsbtn{overflow:hidden; height: 2.8rem;}
+.downbrandsbtn a{width:100%; height:100%; line-height:2.8rem; font-size:1rem; color:#FFF; text-align:center;
+ margin:0 auto; background:#ff4138; display:block;}

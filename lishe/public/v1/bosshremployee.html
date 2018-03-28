@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<title>福利解决方案-礼舍,情感的交流</title>
+	<meta name="keywords" content="礼舍,礼舍网,福利,企业福利,礼品">
+	<meta name="description" content="礼舍网，一站式高端礼品采购、定制电子商务平台，致力于为客户提供创新的顾问式、定制化融合礼品解决方案的服务。">
+	<link rel="stylesheet" href="/v1/css/reset_css.css">
+	<link rel="stylesheet" href="/v1/css/head_bottom.css">
+	<link rel="stylesheet" href="/v1/css/bosshremployee.css">
+	<script src="/v1/js/bosshremployee.js"></script>
+	<script src="/v1/js/jQuery.v1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){	
+		$.get("/api.php/Api/getLoginInfo", function(result){
+			var account=eval(result);
+			if(account[0]>0){
+				$('#loginBox').hide();
+				$('#memberBox').show();
+				$('#userName').text(account[3]);
+			}
+		});	
+	}); 
+	</script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<div class="top_nav">
+		<div class="wrap">
+			<a href="http://www.lishe.cn" class="logo1"></a>
+			<ul>
+				<li class="nav_link current"><a href="/">礼舍首页</a></li>
+				<li class="nav_link"><a href="/shop.html" target="_blank">心意商城</a></li>
+				<li class="nav_link"><a href="/v2/shop.html">礼舍帮帮</a></li>
+			</ul>
+			<ul class="login">
+				<li id="loginBox"><a href="/shop.php/Sign">会员登录</a></li>
+           		<li id="memberBox" style="display: none"><a href="/member-index.html" id="userName"></a></li>
+				<li><a href="http://zs.lishe.cn" target="_blank">商家中心</a></li>
+				<li><a href="http://v.lishe.cn/company/login.html"  target="_blank">企业登录</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 背景图 -->
+	<div class="banner"></div>
+
+	<!-- 文字和切换卡 -->
+	<div class="position">
+		<div class="title">礼舍，是一种情感交流</div>
+		<p>为企业与个人量身定制情商管理平台</p>
+		<ul class="user_type">
+			<li id="0"><a href="javascript:;">老板</a></li>
+			<li id="1" class="hrtags"><a href="javascript:;">HR</a></li>
+			<li id="2"><a href="javascript:;">员工</a></li>
+		</ul>
+	</div>
+
+	<!-- 信息框 -->
+	<div class="introduction">
+		<!-- 老板 -->
+		<div class="pages" id="boss">
+			<div class="content_title">报告老板！公司使用礼舍，员工满意，效率提升！</div>
+
+			<div class="question">比起市面上同行，礼舍好在哪？</div>
+			<div class="answer">1. 礼舍致力于帮助各大企业系统化地解决员工弹性福利问题和客情管理问题，给予企业形象，效率，福利3大升级，赋予员工尊重感，获得<br>&nbsp;&nbsp;&nbsp;&nbsp;感，幸福感与归属感，员工满意，客户开心，企业舒心，三方共赢；<br>2. 礼舍逐步实现多端（电脑端，手机端，云端）信息同步，无论是在办公室还是在外出差都可以无缝沟通。</div>
+
+			<div class="question">该吩咐谁让我的企业加入礼舍？</div>
+			<div class="answer">您可以让公司人力资源HR同事注册成为企业管理员，管理员在一企一舍后台进行员工与客户信息管理，具体操作流程可到礼舍帮帮下载查<br>看礼舍手册。</div>
+
+			<div class="question">身为老板如何用好礼舍？</div>
+			<div class="answer">1. 您可以身先力行，先安装注册礼舍，将您的福利管理转移到礼舍中；<br>2. 命令公司员工都安装注册礼舍，让人力资源HR管理员统一培训；<br>3. 全员福利发放与客情管理等统一都在礼舍上进行。</div>
+
+			<div class="question">怎么知道使用后，HR和员工个人的效率有所提升？</div>
+			<div class="answer">效果反馈，礼舍数据监察，礼舍企业钱包账单，<br>礼舍福利管理栏目有数据监察和企业钱包功能，可随时查询员工福利清单，<br>积分发放情况，员工满意度，积分消费趋势，年度积分消费账单，<br>以上数据可自动生成报表，可以叫HR管理员导出以供查阅。</div>
+
+			<div class="pics"></div>
+		</div>
+
+		<!-- HR -->
+		<div class="pages" id="hr">
+			<div class="content_title">快速接入礼舍，让福利倍儿爽！</div>
+
+			<div class="question">如何向老板推荐礼舍？</div>
+			<div class="answer">您可以向老板介绍使用礼舍将给公司带来的好处，能够给公司省钱，能够帮助公司系统化地解决员工弹性福利问题和客情管理问题，给予<br>企业形象，效率，福利3大升级，赋予员工尊重感，获得感，幸福感与归属感，员工满意，客户开心，企业舒心，三方共赢。</div>
+
+			<div class="question">如何让全公司员工都用起来？</div>
+			<div class="answer">1.  您需要熟练使用礼舍，在前期将准备工作做好，例如注册认证企业，导入企业员工与客户；<br>2.  发动公司管理层小范围展开培训试用，老板从上至下号召员工安装激活；<br>3.  全员培训，介绍礼舍产品并传达使用礼舍的好处。</div>
+
+			<div class="question">如何运用礼舍提供的各种发福利攻略，定制祝福与礼物攻略，提升员工士气，让客户满意开心？</div>
+			<div class="answer">1.  您可以在礼舍的一企一舍的智慧社区查阅我们给出的员工情商，福利，客情维护管理的各种攻略；<br>2.  我们有福利管理，定制大师栏目，可随时翻阅礼舍为你准备的福利管理/定制福利攻略，在员工入职，&nbsp;&nbsp;&nbsp;&nbsp;国家法定节假日，员工生日，特定企业纪念日等重大日子给予员工特别（定制）的温暖问候与具体福利；<br>3.  HR也可选择开通，给予部门领导福利权限，及时激励奖惩部门员工</div>
+
+			<div class="question">如何向老板汇报礼舍使用效果?</div>
+			<div class="answer">礼舍福利管理栏目有数据监察和企业钱包功能，可随时查询员工福利清单，积分发放情况，员工满意度，积分消费趋势，年度积分消费账<br>单，以上数据可自动生成报表，方便您给老板汇报工作。</div>
+
+			<div class="question">学会以下几步，快速接入礼舍</div>
+			<div class="answer">
+				<p>STEP 1 ［注册企业，申请认证］</p>
+				在电脑端打开网页www.lishe ,cn,点击右上角‘企业登录’进行注册；注册成功之后登录企业管理后台<br>‘一企一舍’，点击左上角未认证，按照要求提交证件申请认证；
+				<p>STEP 2 ［添加员工和客户，导入名单］</p>
+				登录‘一企一舍’管理后台，点击‘人员管理‘导入员工信息和客户信息，可单个，批量导入。
+				<p>STEP 3 ［自上至下，安装激活］</p>
+				在一企一舍管理后台查看员工数据－未激活人员，发送信息邀请员工激活，手机也可操作。
+			</div>
+
+			<div class="pics"></div>
+			
+		</div>
+
+		<div class="pages" id="employee">
+			<div class="content_title">用礼舍，效率UP，再也不用吐槽福利问题啦！</div>
+
+			<div class="question">想用礼舍，可我公司还没加入怎么办？</div>
+			<div class="answer">您可以向公司的人力资源部门HR推荐礼舍并让其注册加入礼舍，成为企业在礼舍的管理员，告知导入员工与客户信息，<br>具体操作流程可下载查看礼舍手册。</div>
+
+			<div class="question">已经用礼舍，但积分不够怎么办？</div>
+			<div class="answer">如果贵公司还未进行企业认证，可联系HR进行认证，企业认证用户权益更多，还可连续登录礼舍签到领积分。</div>
+
+			<div class="question">怎样让我们的供应商，客户都用礼舍？</div>
+			<div class="answer">您可以向供应商，客户介绍礼舍在贵公司的使用情况，推荐并协助供应商，客户完成礼舍注册。</div>
+
+			<div class="pics"></div>
+
+		</div>
+	</div>
+
+	<!--底部-->
+	<div id="footer">
+	   <div class="footerdimension">
+	       <div class="footertop">
+	           <div class="footertopLeft">
+	               <ul>
+	                  <li class="footerUser">导航</li>
+	                  <li class="footerMenu"><a href="/v1/help.html#2" target="_blank">礼舍简介</a></li>
+	                  <li class="footerMenu"><a href="/v2/companysingle.html#companys0" target="_blank">礼舍做什么</a></li>
+	                  <li class="footerMenu"><a href="http://www.lishe.cn/theme/evaluate/index.html" target="_blank">伙伴说什么</a></li>
+	                  <li class="footerMenu"><a href="/shop.html" target="_blank">心意商城</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">咨询</li>
+	                  <li class="footerMenu"><a href="/v1/help.html#0" target="_blank">服务条款</a></li>
+	                  <li class="footerMenu"><a href="http://vip.lishe.cn" target="_blank">礼舍动态</a></li>
+	                  <li class="footerMenu"><a href="/v1/help.html#4" target="_blank">人员招聘</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">礼舍帮帮</li>
+	                  <li class="footerMenu"><a href="/v1/help.html#1" target="_blank">礼舍教学操作指南</a></li>
+	                  <li class="footerMenu"><a href="/v1/help.html" target="_blank">礼舍使用全攻略</a></li>
+	                  <li class="footerMenu"><a href="/v1/help.html#3" target="_blank">常见问题</a></li>
+	                  <li class="footerMenu"><a href="/v1/help.html#6" target="_blank">联系我们</a></li>
+	               </ul>
+	               <ul>
+	                  <li class="footerUser">加入我们</li>
+	                  <li class="footerMenu"><a href="http://zs.lishe.cn/" target="_blank">供应商入驻</a></li>
+	                  <li class="footerMenu"><a href="http://v.lishe.cn/company/login.html" target="_blank">企业入驻</a></li>
+	                  <li class="footerMenu"><a href="/v1/help.html#5" target="_blank">合作伙伴</a></li>
+	               </ul>
+	           </div>
+	           <div class="footertopRight">
+	               <ul>
+	                 <li class="footerPhone"><img src="/v1/images/indexPhone.png">400-1188-234</li>
+	                 <li class="footerConnection">联系我们</li>
+	               </ul>
+	               <ul>
+	                 <li><img src="/v1/images/IndexWx.png"></li>
+	               </ul> 
+	           </div>   
+	       </div>
+	       <div style="clear:both;"></div>
+	       <div class="footerbottom">
+	          <ul class="footerbottomLeft">
+	            <li>© 2005-2016 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备15033641号-1</li>
+	            <li>All rights Reserved.</li>
+	          </ul>
+	          <ul class="footerbottomRight">
+	            <li class="footerbottomRightPhone">全国客服热线：400-1188-234 </li>
+	            <li class="footerbottomRightTime">周一至周五 9:00-18:00</li>
+	          </ul>
+	       </div>
+	       <div style="clear:both;"></div>
+	   </div>    
+	</div>
+</body>
+</html>

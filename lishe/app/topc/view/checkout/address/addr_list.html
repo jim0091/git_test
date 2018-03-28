@@ -1,0 +1,18 @@
+<ul class="order-confirm-address addr-list step1">
+  <{foreach from=$userAddrList item=addrList}>
+  <li class="form-row">
+    <input type="radio" name="addr" value="<{$addrList.addr_id}>" data-validate="onerequired" <{if $def_addr==$addrList.addr_id}>checked<{/if}>>
+    <label data-region-id="<{$addrList.region_id}>" data-addr-id="<{$addrList.addr_id}>" data-addr="<{$addrList.addr}>" data-name="<{$addrList.name}>" data-mobile="<{$addrList.mobile}>" data-zip="<{$addrList.zip}>" title="<{$addrList.area|region}>&nbsp;<{$addrList.addr}> （<{$addrList.name}> 收） <{$addrList.mobile}>">
+      <{$addrList.area|region}>&nbsp;<{$addrList.addr|cut:75}> （<{$addrList.name}> 收） <{$addrList.mobile}>
+    </label>
+    <!--<a href="<{url action=topc_ctl_member@ajaxDelAddr}>" class="action-edit-address btn_dialog" style="float: right;">删除</a>
+    <a href="javascript:void(0);" class="action-edit-address btn_dialog"  style="float: right;     margin-right: 154px;">编辑</a>-->
+<{if $addrList.def_addr}>
+    <span class="address-default">默认地址</span>
+    <{/if}>
+
+  </li>
+  <{/foreach}>
+  
+</ul>
+

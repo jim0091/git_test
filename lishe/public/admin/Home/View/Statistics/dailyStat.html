@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+table th,td
+{
+    text-align:center !important;
+}
+/*thinkphp åˆ†é¡µæ ·å¼*/
+div.page1 {
+
+    margin-right: 10px;
+    float: right;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+div.page1 span.current , div.page1 a{
+    border: 1px solid #dcdcdc;
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin-right: 5px;
+    padding: 3px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+div.page1 span.current{
+    background: #ff5c5c none repeat scroll 0 0 !important;
+    border-color: #ff5c5c;
+    color: #ffffff !important;
+    display: block;
+    float: left;
+    font-size: 12px;
+    cursor: pointer;
+}
+div.page1 a.prev,div.page1 a.next{
+    padding: 3px 4px;
+}
+.text-c{
+    padding-top: 10px;
+}
+</style>
+<title>统计</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统统计 <span class="c-gray en">&gt;</span> 日销售额统计 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="text-c"> 
+<form action="" method="get">
+        日期范围：<input type="text" value="" class="input-text" style="width:151px" placeholder="起始日期" name="startdate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly="readonly">-
+        <input type="text" value="" class="input-text" style="width:151px" placeholder="结算日期" name="enddate" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly="readonly">
+        <input type="hidden" name="p" value="1">
+        <button type="submit" id="searchGoods" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+</form>
+        <br>
+        <br>
+        <a href="<?php echo "dailyStat/startdate/".date("Y-m-d",strtotime("-3 day"))."/enddate/".date("Y-m-d")."/p/1"; ?>" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i>最近三天</a>
+        <a href="<?php echo "dailyStat/startdate/".date("Y-m-d",strtotime("-1 week"))."/enddate/".date("Y-m-d")."/p/1";; ?>" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i>最近一周</a>
+        <a href="<?php echo "dailyStat/startdate/".date("Y-m-d",strtotime("-1 month"))."/enddate/".date("Y-m-d")."/p/1"; ?>" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i>最近一个月</a>
+</form>
+    </div>
+<div class="cl pd-5 bg-1 bk-gray mt-20"><span class="r">共有数据：<strong>{$count}</strong> 条</span> </div>
+<div class="pd-20">
+    <div id="container" style="min-width:700px;height:400px"></div>
+</div>
+<div class="page1">
+　　{$page}
+</div>
+<div>
+<table id="stat" class="table table-border table-bordered table-bg table-hover table-sort dataTable no-footer">
+    <tr>
+        <th>日期</th><th>总订单数</th><th>支付订单数</th><th>退款订单数</th><th>订单总额</th><th>支付总额</th><th>退款总额</th><th>商品成本</th><th>商品利润</th>
+    </tr>
+    <foreach name="data" item="v" >
+    <tr>
+        <td><?php echo date("Y/m/d",$v['stat_time']);?></td>
+        <td>{$v.stat_count}</td>
+        <td>{$v.stat_paycount}</td>
+        <td>{$v.stat_aftersale}</td>
+        <td>{$v.stat_total_fee}</td>
+        <td>{$v.stat_payed_fee}</td>
+        <td>{$v.stat_refund_fee}</td>
+        <td><?php echo isset($v['stat_cost'])? $v['stat_cost'] : '0.000'; ?></td>
+        <td><?php echo isset($v['stat_profit'])? $v['stat_profit'] : '0.000'; ?></td>
+    </tr>
+    </foreach>
+</table>
+
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Highcharts/4.1.7/js/highcharts.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Highcharts/4.1.7/js/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    $(function () {
+    $('#container').highcharts({
+        credits: {
+                text: '礼舍科技',
+                href: 'http://www.lishe.cn'
+            },
+        title: {
+            text: '每日销售额统计(折线图)',
+            style:{
+                color:"#000",
+                fontWeight:"bold",
+                fontSize:'22px'
+            }
+        },
+        xAxis: {
+            categories: [
+            <?php
+            foreach($data as $v){
+                
+                echo "'".date("Y/m/d",$v['stat_time'])."',";
+            }
+            
+            ?>
+            //'5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月'
+            ],
+             labels: {    
+                rotation: -45
+            },
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            //控制最小刻度
+            min: 0,
+            title: {
+                text: '每日销售额（万元）',
+                style:{
+                    color:"#000",
+                    fontWeight:"bold",
+                    fontSize:'14px'
+                }
+            },
+            labels: {
+
+                formatter: function () {
+                    return this.value /10000;
+                },
+                style:{
+                    color:"#000",
+                    fontWeight:"bold",
+                    fontSize:'12px'
+                }
+            }
+        },
+        tooltip: {
+            shared: true,
+            
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [
+        <?php 
+            foreach($data as $v){
+                $total[] += $v['stat_count'];
+                $payCount[] += $v['stat_paycount'];
+                $afterSale[] += $v['stat_refundcount'];
+                $totalFee[] += $v['stat_total_fee'];
+                $payedFee[] += $v['stat_payed_fee'];
+                $refundFee[] += $v['stat_refund_fee'];
+                $cost[] += $v['stat_cost'];
+                $profit[] += $v['stat_profit'];
+            }
+            echo "{name: '总订单数',\n";
+            echo "data:[".implode(",",$total)."]},";
+            echo "{name: '支付订单数',\n";
+            echo "data:[".implode(",",$payCount)."]},";
+            echo "{name: '退款订单数',\n";
+            echo "data:[".implode(",",$afterSale)."]},";
+            echo "{name: '订单总金额(元)',\n";
+            echo "data:[".implode(",",$totalFee)."]},";
+            echo "{name: '总付款金额(元)',\n";
+            echo "data:[".implode(",",$payedFee)."]},";
+            echo "{name: '总退款金额(元)',\n";
+            echo "data:[".implode(",",$refundFee)."]},";
+            echo "{name: '成本(元)',\n";
+            echo "data:[".implode(",",$cost)."]},";
+            echo "{name: '利润(元)',\n";
+            echo "data:[".implode(",",$profit)."]}";
+        ?>
+        ]
+    });
+});
+
+});
+</script>
+</body>
+</html>

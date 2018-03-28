@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__CSS__/recharge.css">
+<script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+<title>订单支付</title>
+</head>
+<body>
+<div class="payment">
+    <ul>
+      <li>订单编号：<span style="color:#000;">{$tid}</span></li>
+      <li>需支付：<span style="color:#f34167; padding-right:2%;">{$totalPayBalance}</span><span style="color:#000;">积分</span></li>
+      <li>支付方式：<span><input type="checkbox" id="checkbox_a1" class="chk_1" checked /><label for="checkbox_a1"></label><img src="__IMG__/lishe.png"></span></li>
+    </ul>
+ </div>
+ <if condition="$userBalance egt $totalPayBalance">
+ 	<div class="paypwd">支付密码：<input type="password" id="password" value=""></div>
+ 	<div class="payBtn"><a href="javascript:void(0);" id="payBut">支付</a></div>
+ <else/>
+ 	<div class="Znumerical">
+    	<p><span style="color:#757575;">当前可用：</span><span style="color:#f34167; padding-right:2%;">{$userBalance}</span>积分</p>
+	</div>
+  	<div class="forthwith">
+		<a href="{:U('pay/recharge')}">立即充值</a>
+  	</div>
+ </if>
+ <form action="{:U('pay/purch')}" method="post" style="display: none;" id="tradeForm">
+ 	<input type="hidden" name="tid" value="{$tid}"/>
+ 	<input type="hidden" name="sku_id" value="{$skuId}"/>
+ 	<input type="hidden" id="passwd" name="passwd" value=""/>
+ 	<input type="hidden" name="quantity" value="{$quantity}"/>
+ </form>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#password").focus();
+	//支付
+	$("#payBut").click(function(){
+		var passwd = '';
+		var flag = true;
+		var password = $("#password").val();
+		password = $.trim(password);
+		if(password == ''){
+			alert('请填写支付密码');
+			return false;
+		}
+		$("#passwd").val(password);
+		$("#tradeForm").submit();
+	});
+})
+</script>
+</html>

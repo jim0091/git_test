@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__THINKSGIVIG__css/Thanksgivig.css">
+<link rel="stylesheet" href="__PUBLIC__layui/css/layui.css">
+<script type="text/javascript" src="__THINKSGIVIG__js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__layui/layui.js"></script>
+<title>感恩节</title>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script> 
+
+</head>
+
+<body>
+    <div class="bannerHeader"></div>
+    <div class="Tnkslayout">
+         <a name="Hotrice"></a> 
+    	 <div class="qgrice"><a href="javascript:void(0)" onclick="checkQualifications()"><img src="__THINKSGIVIG__images/qgrice.png"></a></div>
+         <a name="lives"></a>
+         <div class="hotCakes"><img src="__THINKSGIVIG__images/hotCakes.png"></div>
+         <!--热销生活区单品-->
+         <div id="outer">
+            <ul id="tab">
+            	<volist name="list[0]['cats']" id="catOne">
+	                <li <if condition="$i eq 1">class="current"</if> >{$catOne.name}</li>
+            	</volist>
+            </ul>
+            <p class="tsmore"><a href="/business/index.php/Gd10086/category/cfgId/2" target="_blank">更多>></a></p>
+            <div id="content">
+                <!--模块一-->
+        	<volist name="list[0]['list']" id="itemsOne">
+                <div class="thksOnetba"  <if condition="$i eq 1">style="display:block"</if>>
+                	<volist name="itemsOne" id="itemOne">
+                	  <a href="/item.html?item_id={$itemOne.item_id}&from={:md5($itemOne['item_id'])}" target="_blank">
+                         <ul>
+                           <li class="thoneli"><img src="{$itemOne.image_default_id}_m.{:end(explode('.',$itemOne['image_default_id']))}"></li>
+                           <li class="thspic">￥<span>{:round($itemOne['price'],2)}</span></li>
+                           <li class="thksname" title="{$itemOne.title}">{$itemOne.title}</li>
+                           <li class="Tsbtn"><img src="__THINKSGIVIG__images/Tsbtn.png"></li>
+                         </ul>
+                      </a>
+                    </volist>
+                </div>
+        	</volist>
+                
+ 
+            
+        </div>
+       
+        <!--End-->
+         
+         <a name="Fuanna"></a>
+         <div class="hotCakes"><img src="__THINKSGIVIG__images/Fuanna.png"></div>
+         <!--富安娜冬季家纺-->  
+         <div id="outerout">
+            <ul id="outerouttab">
+            	<volist name="list[1]['cats']" id="catTwo">
+	                <li <if condition="$i eq 1">class="currentout"</if> >{$catTwo.name}</li>
+            	</volist>            	
+            </ul>
+            <p class="tsmore"><a href="/business/index.php/Gd10086/itemList/cfgId/33" target="_blank">更多>></a></p>
+            <div id="contentout">
+          	<volist name="list[1]['list']" id="itemsTwo">
+                <div class="thksOnetba"  <if condition="$i eq 1">style="display:block"</if>>
+                	<volist name="itemsTwo" id="itemTwo">
+                	  <a href="/item.html?item_id={$itemTwo.item_id}&from={:md5($itemTwo['item_id'])}" target="_blank">
+                         <ul>
+                           <li class="thoneli"><img src="{$itemTwo.image_default_id}_m.{:end(explode('.',$itemTwo['image_default_id']))}"></li>
+                           <li class="thspic">￥<span>{:round($itemTwo['price'],2)}</span></li>
+                           <li class="thksname" title="{$itemTwo.title}">{$itemTwo.title}</li>
+                           <li class="Tsbtn"><img src="__THINKSGIVIG__images/Tsbtn.png"></li>
+                         </ul>
+                      </a>
+                    </volist>
+                </div>
+        	</volist>
+            	
+            </div>
+            
+        </div>
+             
+     <!--End--> 
+     <a name="thanksgiving"></a>
+     <div class="hotCakes"><img src="__THINKSGIVIG__images/cakes.png"></div>    
+     <!--感恩11月独家蛋糕福利-->
+     <div class="cakeout">
+          <ul>
+          	 <li><a href="/item.html?item_id=40832&from=5138b4394084bfe582a7366ceb0b6770" target="_blank"><img src="__THINKSGIVIG__images/dessert.png"></a></li>
+             <li><a href="/item.html?item_id=8644&from=6ff05e7bfb82a4d50e29b052214a0c53" target="_blank"><img src="__THINKSGIVIG__images/dessert2.png"></a></li>
+             <li><a href="/item.html?item_id=8645&from=66de6afdfb5fb3c21d0e3b5c3226bf00" target="_blank"><img src="__THINKSGIVIG__images/dessert3.png"></a></li>
+             <li><a href="/item.html?item_id=8646&from=0a9fdbb17feb6ccb7ec405cfb85222c4" target="_blank"><img src="__THINKSGIVIG__images/dessert4.png"></a></li>
+          </ul>
+     </div>
+     <div style="clear:both;"></div>
+     <a name="kitchen"></a>
+     <div class="hotCakes"><img src="__THINKSGIVIG__images/grain.png"></div> 
+     <!--厨房家电粮油区料理-->
+     <div id="outergrain">
+            <ul id="tabrgrain">
+            	<volist name="list[2]['cats']" id="catThree">
+	                <li <if condition="$i eq 1">class="currentgrain"</if> >{$catThree.name}</li>
+            	</volist>             	
+            </ul>
+            <p class="tsmore"><a href="/business/index.php/Gd10086/category/cfgId/3" target="_blank">更多>></a></p>
+            <div id="contentgrain">
+                <!--模块一-->
+          	<volist name="list[2]['list']" id="itemsThree">
+                <div class="thksOnetba"  <if condition="$i eq 1">style="display:block"</if>>
+                	<volist name="itemsThree" id="itemThree">
+                	  <a href="/item.html?item_id={$itemThree.item_id}&from={:md5($itemThree['item_id'])}" target="_blank" target="_blank">
+                         <ul>
+                           <li class="thoneli"><img src="{$itemThree.image_default_id}_m.{:end(explode('.',$itemThree['image_default_id']))}"></li>
+                           <li class="thspic">￥<span>{:round($itemThree['price'],2)}</span></li>
+                           <li class="thksname" title="{$itemThree.title}">{$itemThree.title}</li>
+                           <li class="Tsbtn"><img src="__THINKSGIVIG__images/Tsbtn.png"></li>
+                         </ul>
+                      </a>
+                    </volist>
+                </div>
+        	</volist>
+                	
+            </div>
+        </div>
+ 
+        <!--end-->	
+        <a name="marketgift"></a>
+        <div class="hotCakes"><img src="__THINKSGIVIG__images/upmarket.png"></div>
+        <!--年终高端礼品赠送大品牌高档次 -->	
+         <div id="outerupmarket">
+            <ul id="tabupmarket">
+            	<volist name="list[3]['cats']" id="catFour">
+	                <li <if condition="$i eq 1">class="currentupmarket"</if> >{$catFour.name}</li>
+            	</volist>                  
+            </ul>
+            <p class="tsmore"><a href="/business/index.php/Gd10086/itemList/cfgId/4" target="_blank">更多>></a></p>
+            <div id="contentupmarket">
+                <!--模块一-->
+          	<volist name="list[3]['list']" id="itemsFour">
+                <div class="thksOnetba"  <if condition="$i eq 1">style="display:block"</if>>
+                	<volist name="itemsFour" id="itemFour">
+                	  <a href="/item.html?item_id={$itemFour.item_id}&from={:md5($itemFour['item_id'])}" target="_blank" >
+                         <ul>
+                           <li class="thoneli"><img src="{$itemFour.image_default_id}_m.{:end(explode('.',$itemFour['image_default_id']))}"></li>
+                           <li class="thspic">￥<span>{:round($itemFour['price'],2)}</span></li>
+                           <li class="thksname" title="{$itemFour.title}">{$itemFour.title}</li>
+                           <li class="Tsbtn"><img src="__THINKSGIVIG__images/Tsbtn.png"></li>
+                         </ul>
+                      </a>
+                    </volist>
+                </div>
+        	</volist>
+                
+            	
+            </div>
+            
+        </div>
+          
+        <script>
+			$(function(){
+				window.onload = function()
+				{
+					/*tab*/
+					var $li = $('#tab li');
+					var $ul = $('#content div');
+								
+					$li.click(function(){
+						var $this = $(this);
+						var $t = $this.index();
+						$li.removeClass();
+						$this.addClass('current');
+						$ul.css('display','none');
+						$ul.eq($t).css('display','block');
+					})
+					/*tab2*/
+					var $li2 = $('#outerouttab li');
+					var $ul2 = $('#contentout div');
+								
+					$li2.click(function(){
+						var $this = $(this);
+						var $t = $this.index();
+						$li2.removeClass();
+						$this.addClass('currentout');
+						$ul2.css('display','none');
+						$ul2.eq($t).css('display','block');
+					})
+					/*tab3*/
+					var $li3 = $('#tabrgrain li');
+					var $ul3 = $('#contentgrain div');
+								
+					$li3.click(function(){
+						var $this = $(this);
+						var $t = $this.index();
+						$li3.removeClass();
+						$this.addClass('currentgrain');
+						$ul3.css('display','none');
+						$ul3.eq($t).css('display','block');
+					})
+					/*tab4*/
+					var $li4 = $('#tabupmarket li');
+					var $ul4 = $('#contentupmarket div');
+								
+					$li4.click(function(){
+						var $this = $(this);
+						var $t = $this.index();
+						$li4.removeClass();
+						$this.addClass('currentupmarket');
+						$ul4.css('display','none');
+						$ul4.eq($t).css('display','block');
+					})
+				}
+			});
+	    </script>
+        <!--end-->
+        <div class="Actionrules"><img src="__THINKSGIVIG__images/Actionrules.png"></div>	
+  </div>
+   	  <!--悬浮导航-->
+      <div class="postnva">
+      	   <p class="thksnvap" style="padding-top:15px;">共度感恩节</p>
+           <p class="thksnvap">年终大聚惠</p>
+           <div class="thksct">
+                <ul class="thksctul">
+                   <li class="activepos"><a href="#Hotrice">特级大米</a></li>
+                   <li><a href="#lives">热销生活区</a></li>
+                   <li><a href="#Fuanna">富安娜家纺</a></li>
+                   <li><a href="#thanksgiving">感恩11月</a></li>
+                   <li><a href="#kitchen">厨房家电</a></li>
+                   <li><a href="#marketgift">礼品赠送</a></li>
+                </ul>
+                <p class="postop"><a href="javascript:scroll(0,0)"><img src="__THINKSGIVIG__images/postop.png"></a></p>
+           </div>
+      </div>
+      <script type="text/javascript">
+      layui.use(['layer', 'form'], function(){
+		  var layer = layui.layer,form = layui.form();
+		});
+		$('.thksctul li').click(function(){
+			if(!$(this).hasClass('activepos')){
+				$(this).addClass('activepos').siblings().removeClass('activepos');
+			}
+		})
+		function checkQualifications(){
+			$.get("__APP__/Promotion/checkQualification",function(data){
+				if(data){
+					msg=eval(data);
+					if(msg[0]==1){
+						window.location.href=msg[2];
+					}else{
+ 					 	layer.msg(msg[1]);
+					}				
+				}
+			});				
+		}
+	</script>
+</body>
+</html>

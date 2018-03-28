@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="__PUBLIC__/cnpec/css/CnpecHht.css">
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<title>海核淘员工关爱专区</title>
+</head>
+    
+<body>
+<!--头部-->
+	<include file="Cgn/header"/>
+	
+	
+    <div class="banner"></div>
+    <!--目录-->
+    <div class="directories">
+      <ul>
+      	<li><a href="__APP__/Cgn" target="_blank">首页</a></li>
+       <volist  name="menus" id="item">         
+		<li><a href="__APP__/Cgn/category/cfgId/{$item['cfid']}">{$item['name']}</a></li>
+      </volist>
+      </ul>
+      <div style="clear:both;"></div>
+    </div>
+    <!--主内容-->
+    <!--搜索-->
+	  <include file="Public/cgn/header" />
+    <!--搜索-->    
+ <volist name="list" id="com">
+    <div class="satnav">
+       <p class="stp"><span>{$com.cat_name}</span>
+            <a href="__APP__/Cgn/itemList/cfgId/{$com.item_config_id}/catId/{$com.cat_config_id}" target="_blank" style="color:#c7241d">点击更多>></a>
+       </p>
+       <p><img src="__PUBLIC__/cnpec/images/cnnctibg.png"></p>
+       <div class="eat-ul">
+        <volist name="com['list']" id="vo" key="l">
+       	
+            <ul>
+              <li class="pt-mid"><a href="/shop.php/Info/index/itemId/{$vo.item_id}" target="_blank">
+              	<img src="{$vo.image_default_id}_m.{:end(explode('.',$vo['image_default_id']))}"></a></li>
+              <li class="eat-li" style="width:155px;height:42px;line-height:18px;padding:0 5px;white-space:normal;text-overflow:ellipsis;overflow:hidden;">
+              	<a href="/shop.php/Info/index/itemId/{$vo.item_id}" target="_blank" title="{$vo.title}">{$vo.title}</a>
+              </li>
+              <li><a href="/shop.php/Info/index/itemId/{$vo.item_id}" target="_blank" class="eat-sp">￥<span>{:round($vo['price'],2)}</span></a><span class="eat-sp2">
+              	<a href="/shop.php/Info/index/itemId/{$vo.item_id}" target="_blank">兑换</a></span></li>
+		        <if condition="$vo.flag eq 1">
+		     		<li style="background-color:rgba(231,100,64,0.6);min-height:20px;color: white;text-align: center;position:relative;top: -50px;">
+		     			<small>广东无货</small>
+		     		</li>
+		  		</if>             
+            </ul>
+ 		</volist>
+         </div>
+       <div style="clear:both;"></div>
+    </div>
+ </volist>
+    <div class="returned">
+       <div class="returned-img"><a href="javascript:scroll(0,0)"><img src="__PUBLIC__/cnpec/images/cnncTop.png"></a></div>
+    </div>
+    <script type="text/javascript"> 
+		$('.satnavUl li').click(function(){
+			if(!$(this).hasClass('cnactive')){
+				$(this).addClass('cnactive').siblings().removeClass('cnactive');
+			}
+		})
+    </script>  
+</body>
+</html>

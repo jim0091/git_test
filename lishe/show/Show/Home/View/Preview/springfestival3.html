@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<title>登录-{$cname}</title>
+	<link rel="stylesheet" href="__PUBLIC__/newYear/css/Normalize.css">
+	<link rel="stylesheet" href="__PUBLIC__/newYear/css/springfestival3.css">
+	<script src="__PUBLIC__/companyShow/js/jquery.js"></script>
+	<script src="__PUBLIC__/js/enter.js"></script>
+	<script src="__PUBLIC__/js/newyear.js"></script>
+</head>
+<body>
+	<div class="ny-login">
+		<div class="login f14">
+			<div class="logo" style="background: url('<notempty name='logo'>{$logo}<else/>__PUBLIC__/newYear/images/ny_logo.png</notempty>')no-repeat center center;"></div>
+				<input type="text" id="userName" placeholder="请输入手机号码">
+				<input type="password" id="password" placeholder="请输入密码">
+           		<input type="hidden" id="refer" value="{$refer}">
+				<div class="pas-opt">
+					<label for="autologin">
+						<div id="radio-round"><div id="auto-active"></div></div>
+						<input type="checkbox" id="autologin">自动登录
+					</label>
+					<a href="http://www.lishe.cn/passport-findpwd.html" class="forgetpass">忘记密码?</a>
+				</div>
+				<div class="wronghint">*账号或密码错误，请重新输入</div>
+				<input type="submit" class="f18 fwb" value="登录" href="javascript:void(0);" id="loginBtn">
+			</form>
+
+			<div class="act-opt">
+				<a href="http://www.lishe.cn/business/index.php/Activate" target="_blank"   class="active">快速激活</a>
+				<div class="line"></div>
+				<a href="{:U('Home/Cactive/index')}" target="_blank" class="active">礼品卡激活</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

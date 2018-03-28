@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>国庆食用油活动专场</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="/shop/Home/View/Activity/oil/css/oil.css">
+</head>
+<body>
+	<div class="wrap">
+		<!-- 标语 -->
+		<div class="slogan">
+			每一滴油，都肩负着健康的使命，给你大自然的馈赠；<br>
+			每一滴油，都来自新鲜压榨，为品质奠定基础；
+		</div>
+
+		<!-- 商品列表 -->
+		<div class="content">
+			 
+
+		<foreach name="list" item="row">		
+			<ul>
+				<foreach name="row" item="row1">
+					<li><a class="pics joinCart"  href="/shop.php/Info/index/itemId/{$row1['item_id']}/from/{:md5($row1['item_id'])}" target="_blank"><img src="{$row1['image_default_id']}" style="border:0px solid red;width:230px;height:228px;" alt=""></a>
+						<div class="info">
+							<p>{$row1['title']}</p>
+							<div class="price">￥{$row1['price']|number_format=###, 2, '.', ''}</div>
+							<a class="buybtn joinCart" target="_blank" href="/shop.php/Info/index/itemId/{$row1['item_id']}/from/{:md5($row1['item_id'])}">立即购买</a>
+						</div>
+					</li>
+				</foreach>
+			</ul>
+		</foreach>
+			 
+			 
+		</div>
+		
+		<!-- 回到顶部 -->
+		<a class="backtop" href="javascript:scroll(0,0)"></a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html class="" lang="zh-cmn-Hans" >
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="description" content="" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="format-detection" content="telephone=no">    <meta http-equiv="cleartype" content="on">
+    <meta name="referrer" content="always">
+	<title>商品类别</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="__PUBLIC__/wshop/css/cat.css">  
+	<link rel="stylesheet" href="__PUBLIC__/wshop/css/shopnav_custom_0ff1f6a625.css">
+	<script src="__PUBLIC__/wshop/jscommon_jquery_75554d22a0.js"></script>
+	</head>
+ <body class=" "> 
+  <div class="container "> 
+   <div class="header"> 
+   </div> 
+   <div class="content "> 
+    <div class="content-body js-page-content"> 
+     <ul class="custom-nav clearfix"> 
+      <li> <a class="clearfix relative" href="javascript: void 0;"> <span class="clearfix custom-nav-title">商品分类</span> </a> </li> 
+     </ul> 
+
+          <!-- 商品搜索 --> 
+     <div class="custom-search"> 
+      <form action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+       <input type="searchs" class="custom-search-input" placeholder="商品搜索：请输入商品关键字" name="keyword" value="" /> 
+       <input type="hidden" name="kdt_id" value="67162" /> 
+       <button type="submit" class="custom-search-button">搜索</button> 
+      </form> 
+     </div> 
+     
+     <volist name="list" id="vo">
+	     <ul class="custom-nav clearfix"> 
+	      <li> <a class="clearfix relative" href="javascript: void 0;"> <span class="custom-nav-title">{$vo.cat_name}</span> </a> </li> 
+	     </ul> 
+	     <div class="custom-richtext js-lazy-container js-view-image-list"> 
+	      <p>
+	      	<volist name="vo.threeCat" id="vos">
+	      		<a href="{:U('Home/Itemlist/itemList',array('catId' => $vos['cat_id']))}" textvalue="{:U('Home/Itemlist/itemList',array('catId' => $vos['cat_id']))}" style="font-size: 14px; color: rgb(147, 137, 83); text-decoration: none;">
+	      		<span style="font-size: 14px; color: rgb(147, 137, 83);">{$vos.cat_name}&nbsp;</span></a> 
+		      	<span style="font-size: 14px; color: rgb(147, 137, 83); text-decoration: none;"></span> 
+	      	</volist>
+	      </p>
+	     </div> 
+	</volist>
+    </div>
+   </div>
+  </div>
+  <div class="footer"> 
+   <div class="copyright"> 
+    <div class="ft-copyright"> 
+    </div> 
+   </div> 
+  </div>
+
+
+
+    
+ <include file="Public/bottom"/>
+	</body>
+</html>

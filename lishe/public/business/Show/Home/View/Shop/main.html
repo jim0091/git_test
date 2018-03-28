@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="shopex UED Team">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<link rel="icon" href="http://www.lishe.cn/public/statics/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://www.lishe.cn/public/statics/favicon.ico" type="image/x-icon" />
+
+<!-- common styles -->
+<link href="http://www.lishe.cn/app/topshop/statics/stylesheets/theme.css?1464749457" rel="stylesheet" media="screen, projection" /><link href="http://www.lishe.cn/app/topshop/statics/stylesheets/font-awesome.css?1464749457" rel="stylesheet" media="screen, projection" /><link href="http://www.lishe.cn/app/topshop/statics/stylesheets/ionicons.css?1464749457" rel="stylesheet" media="screen, projection" /><!-- plugins -->
+<link href="http://www.lishe.cn/app/topshop/statics/stylesheets/bootstrap-validator.css?1464749457" rel="stylesheet" media="screen, projection" /><link href="http://www.lishe.cn/app/topshop/statics/stylesheets/bootstrap-daterangepicker.css?1464749457" rel="stylesheet" media="screen, projection" /><link href="http://www.lishe.cn/app/topshop/statics/stylesheets/bootstrap-datepicker.css?1464749457" rel="stylesheet" media="screen, projection" /><link href="http://www.lishe.cn/app/topshop/statics/stylesheets/editor/summernote.css?1464749457" rel="stylesheet" media="screen, projection" /><!-- common scripts -->
+<script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/jquery.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/bootstrap.js?1464749457"></script><!-- plugins -->
+<script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/bootstrap-modal.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/bootstrap-validator.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/moment.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/daterangepicker.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/datepicker.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/jquery.flot.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/jquery.flot.time.js?1464749457"></script><!-- editor -->
+<script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/editor/summernote.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/lib/editor/summernote-zh-CN.js?1464749457"></script><!-- main scripts -->
+<script src="http://www.lishe.cn/app/topshop/statics/scripts/tools.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/imageupload.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/goodschoose.js?1464749457"></script><script src="http://www.lishe.cn/app/topshop/statics/scripts/app.js?1464749457"></script><script>
+var imageuploadUrl = "http://www.lishe.cn/shop/image/loadimagemodal.html";
+
+(function() {
+  var explorer = window.navigator.userAgent ;
+  //ie
+  if (explorer.indexOf("MSIE") >= 0) {
+    // window.location.href= "http://www.lishe.cn/shop/browserTip.html"
+  }
+  //firefox
+  else if (explorer.indexOf("Firefox") >= 0) {
+
+  }
+  //Chrome
+  else if(explorer.indexOf("Chrome") >= 0){
+
+  }
+  //Opera
+  else if(explorer.indexOf("Opera") >= 0){
+    window.location.href= "http://www.lishe.cn/shop/browserTip.html"
+  }
+  //Safari
+  else if(explorer.indexOf("Safari") >= 0){
+
+  }
+})()
+</script>
+  </head>
+  <body class="skin-blue">
+    <div class="alert alert-error message in" role="alert" id="messagebox" style="display:none;"></div>
+<header class="header">
+  <a href="#" class="logo">
+    
+    <img src="http://120.76.102.64/images/37/29/e4/0c77d6903cb5f9a8b6eadd903bc8d40c49703057.jpg" alt="">
+  </a>
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+
+    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button" title="显示/隐藏导航">
+      <span class="sr-only">显示/隐藏导航</span>
+      <span class="fa fa-bars"></span>
+    </a>
+
+    <div class="navbar-left container-fluid">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">显示/隐藏导航栏</span>
+        <span class="fa fa-bars"></span>
+      </button>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+                    <li >
+            <a href="http://www.lishe.cn/shop">
+              <i class="glyphicon glyphicon-home"></i>
+              首页            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/list.html">
+              <i class="glyphicon glyphicon-stats"></i>
+              交易            </a>
+          </li>
+                    <li class="active">
+            <a href="http://www.lishe.cn/shop/item/itemList.html">
+              <i class="glyphicon glyphicon-edit"></i>
+              商品            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/list_fullminus.html">
+              <i class="glyphicon glyphicon-bookmark"></i>
+              营销            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/setting.html">
+              <i class="glyphicon glyphicon-cog"></i>
+              店铺            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/aftersales-list.html">
+              <i class="icon-chatbubbles"></i>
+              客服            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/shop/settlement.html">
+              <i class="glyphicon glyphicon-cloud"></i>
+              结算            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/sysstat/sysstat.html">
+              <i class="glyphicon glyphicon-list-alt"></i>
+              报表            </a>
+          </li>
+                    <li >
+            <a href="http://www.lishe.cn/shop/account/list.html">
+              <i class="glyphicon glyphicon-lock"></i>
+              账号            </a>
+          </li>
+                  </ul>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+          <!--a href="http://www.lishe.cn" class="dropdown-toggle" target="_blank">
+            <span>商城首页</span>
+          </a-->
+          <a href="http://www.lishe.cn/shopcenter.html?shop_id=10" class="dropdown-toggle" target="_blank">
+            <span>浏览店铺</span>
+          </a>
+        </li>
+                <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-user"></i>
+            <span>{$type_admin_name}              <i class="caret"></i>
+            </span>
+          </a>
+
+          <ul class="dropdown-menu text-right" role="menu">
+            <li><a href="http://www.lishe.cn/shop/passport/update.html" data-toggle="modal" data-target="#pwdupdateIndexDialog">修改密码</a></li>
+            <li class="divider"></li>
+            <li><a href="http://www.lishe.cn/shop/passport/logout.html">退出</a></li>
+          </ul>
+        </li>
+              </ul>
+    </div>
+  </nav>
+</header>
+<div class="modal fade" id="pwdupdateIndexDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+
+      <aside class="left-side sidebar-offcanvas">
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+            <li class="treeview active ">
+        <a href="#">
+          <i class="glyphicon glyphicon-heart glyphicon"></i>
+          <span>常用菜单</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+                    <li><a href="#" data-toggle="modal" data-target="#editShortcutMenu" ><i class="fa fa-angle-double-right"></i> 编辑常用菜单</a></li>
+                  </ul>
+      </li>
+            <li class="treeview active ">
+        <a href="#">
+          <i class="glyphicon glyphicon-edit glyphicon"></i>
+          <span>商品</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+                    <li class="active" ><a href="http://www.lishe.cn/shop/item/itemList.html"><i class="fa fa-angle-double-right"></i> 商品列表</a></li>
+                    <li  ><a href="http://www.lishe.cn/shop/item/add.html"><i class="fa fa-angle-double-right"></i> 发布商品</a></li>
+                    <li  ><a href="http://www.lishe.cn/shop/item/storepolice.html"><i class="fa fa-angle-double-right"></i> 商品库存报警</a></li>
+                    <li  ><a href="http://www.lishe.cn/shop/categories.html"><i class="fa fa-angle-double-right"></i> 店铺分类</a></li>
+                    <li  ><a href="http://www.lishe.cn/shop/image.html"><i class="fa fa-angle-double-right"></i> 图片管理</a></li>
+                  </ul>
+      </li>
+          </ul>
+  </section>
+  <!-- Button trigger modal -->
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <li class="treeview active ">
+        <a href="#" data-toggle="modal" data-target="#feedback">
+          <i class="glyphicon glyphicon-list-alt"></i>
+          <span>意见反馈</span>
+        </a>
+
+      </li>
+    </ul>
+  </section>
+</aside>
+<div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">意见反馈</h4>
+      </div>
+      <form action="http://www.lishe.cn/shop/feedback.html" method="post" class="form-horizontal bg-white clearfix" role="form" data-validate-onsuccess="ajaxSubmit" id="saveFeedback">
+        <div class="modal-body">
+          <div class="alert alert-info alert-dismissable">
+            欢迎提出宝贵的意见和建议！我们会用心倾听并持续改进产品，把更好得体验带给您！
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >姓名：</label>
+            <div class="col-sm-8">
+              <input type="text" name="name"  class="form-control" required placeholder="必填姓名" maxlength="20">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >邮箱：</label>
+            <div class="col-sm-8">
+              <input type="email" name="email"  class="form-control" placeholder="必填邮箱" required maxlength="50">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >电话：</label>
+            <div class="col-sm-8">
+              <input type="text" name="tel"  class="form-control" placeholder="必填联系电话" required maxlength="20">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >问题：</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" name="question" required placeholder="必填问题详情描述" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-default btn-flat" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary btn-flat" id="action-feedback-btn">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  $("#saveFeedback").Validator();
+  function ajaxSubmit (e) {
+    var form = e.target;
+    $('#action-feedback-btn').attr('disabled','disabled');
+    e.preventDefault();
+    $.post(form.action, $(form).serialize(), function(rs) {
+      if(rs.error) {
+        $('#messagebox').message(rs.message);
+        $('#action-feedback-btn').attr('disabled',false);
+        return;
+      }
+      if(rs.success) {
+        $('#messagebox').message(rs.message, 'success');
+        $('#feedback').on('hide', function(e){
+           $(this).find('input, select, textarea').val('');
+           $("#saveFeedback").Validator('resetForm');
+        }).modal('hide');
+        $('#action-feedback-btn').attr('disabled',false);
+        $(form)[0].reset();
+      }
+    });
+  }
+</script>
+
+      <aside class="right-side">
+                <section class="content-header">
+          <h1>
+            商品分类            <small></small>
+          </h1>
+          <ol class="breadcrumb breadcrumb-primary">
+                      </ol>
+        </section>
+                <section class="content">
+          <div class="panel-heading">
+  <h4>商品分类</h4>
+
+  <form class="form-horizontal" onsubmit="return formCheck();" action="http://www.lishe.cn/business/index.php/Shop/insertItem" method="post" >
+     <input type="hidden" name="type_shop_id" value="{$type_shop_id}" />
+    <input type="hidden" name="type_item_id" value="{$type_item_id}" />
+
+
+    <div class="form-group">
+
+     <!-- parent start -->
+      <div class="col-xs-4 parent" style="border:0px solid red;">
+
+          <span class="order-form-w1">请选择：</span>
+
+          <select name="use_platform" class="x-input large">
+            <option class="parentLiShe" value="-1">-----无-----</option>
+
+           <foreach name="parentId" item="row" >
+
+            <option class="parentLiShe" value="{$row.cat_id}" data-shop-id="{$row.shop_id}" >{$row.cat_name}</option>
+           
+
+           </foreach> 
+
+          </select>           
+
+        </div>
+      <!-- parent end -->
+
+       <!-- son start -->
+      <div class="col-xs-4 son" style="border:0px solid red;">
+      </div>
+      <!-- son end -->
+    </div>
+    <div class="text-center" style="margin-top:80px;">
+      <button type="submit" class="btn btn-primary">提交</button>
+      <button type="reset" class="btn btn-default">重置</button>
+    </div>
+  </form>
+       
+       <div class="col-xs-8" style="border:0px solid red;margin-top:100px;">
+
+          <button type="button" class="btn  btn-success shop_admin_back">返回上一步</button>
+       </div>
+
+</div>
+
+<script type="text/javascript">
+
+     function formCheck(){
+        var parent_id = $('.parent .large option:selected').val();
+        if(parent_id == -1){
+          alert("商品分类设置不能为无！");
+          return false;
+        }else{
+          return true;
+        }
+        // alert(parent_id);       
+
+        // return false;
+      }
+
+
+    $(function(){
+    
+      $('.shop_admin_back').on('click',function(){
+         // window.location = "http://www.lishe.cn/shop/item/itemList.html";
+         window.history.back();
+      });
+
+      $('.parentLiShe').on('click',function(){
+        var cat_id = $(this).val();
+        var shop_id = $(this).attr("data-shop-id");
+        // alert(cat_id + "   " + shop_id);
+        $.ajax({
+          type:'post',
+          url:'http://www.lishe.cn/business/index.php/Shop/sonLiShe/',
+          data:'cat_id='+cat_id+'&shop_id='+shop_id,
+          success:function(msg){
+            // alert(msg);
+            if(msg != 1){
+
+                $('.son').empty();
+                 
+                $('.son').append(msg);
+            }else{
+                $('.son').empty();
+            }
+          }
+
+        });
+
+      });
+
+    });
+</script>
+
+
+ 
+
+<script type="text/javascript">
+     // 20160616 新增 开始
+     // 触发点击事件，弹出弹出层信息，选择分类信息
+   // $(".goodsType").click(function(){
+       
+          // alert($(this).attr('data-type'));
+
+
+    //});
+
+    // 20160616 新增 结束
+
+
+    $('#selectAll').change(function(){
+        $('#data_node input[type=checkbox]').prop('checked', this.checked);
+    });
+
+    $('#action-onsale').on('click',function(){
+        var itemIds = new Array();
+        $($("#data_node input[name='item_ids']:checked")).each(function(){
+            $.post('http://www.lishe.cn/shop/item/setItemStatus.html', 'type=tosale&item_id='+$(this).val(), function(rs){
+              if(rs.error) {
+                $('#messagebox').message(rs.message);
+                return;
+              }
+              if(rs.success) {
+                $('#messagebox').message(rs.message, 'success');
+                setTimeout(function(){location.reload();}, 800);
+              }
+            });
+            // itemIds.push($(this).val());//向数组中添加商品id
+        });
+        // if(itemIds.length>0){
+        //     var itemIdsStr=itemIds.join(',');//将商品id数组元素连接起来以构建一个字符串
+        // }else{
+        //     return false;
+        // }
+    });
+    $('#action-instock').on('click',function(){
+        var itemIds = new Array();
+        $($("#data_node input[name='item_ids']:checked")).each(function(){
+            $.post('http://www.lishe.cn/shop/item/setItemStatus.html', 'type=tostock&item_id='+$(this).val(), function(rs){
+              if(rs.error) {
+                $('#messagebox').message(rs.message);
+                return;
+              }
+              if(rs.success) {
+                $('#messagebox').message(rs.message, 'success');
+                setTimeout(function(){location.reload();}, 800);
+              }
+            });
+        });
+    });
+
+    $('#action-remove').on('click',function(){
+      var _this = $(this);
+      var itemIds = new Array();
+      if($("#data_node input[name='item_ids']:checked").length <= 0) {
+        $('#messagebox').message("请选择要删除的商品！");
+        return;
+      }
+      Modal.confirm({msg: '确定删除该商品？'}).on(function(e) {
+          if(e==true) {
+            $($("#data_node input[name='item_ids']:checked")).each(function(){
+                delItemById(_this.val());
+            });
+          }
+      });
+    });
+
+    $('.text-remove').on('click', function(){
+      var _this = $(this);
+      Modal.confirm({msg: "确定删除该商品？"}).on(function(e) {
+        if(e==true) {
+          delItemById(_this.attr('data-id'));
+        }
+      });
+    });
+
+    //删除商品
+    function delItemById(gid) {
+      $.post('http://www.lishe.cn/shop/item/deleteItem.html', 'item_id='+gid, function(rs){
+        if(rs.error) {
+          $('#messagebox').message(rs.message);
+          return;
+        }
+        if(rs.success) {
+          $('#messagebox').message(rs.message, 'success');
+          setTimeout(function(){location.reload();}, 800);
+        }
+      });
+    }
+</script>
+
+<script>
+  $(document).ready(
+    function() {
+      $(".sidebar .sidebar-menu li a i.glyphicon").eq(1).removeClass("glyphicon-list-alt").addClass("glyphicon-edit");
+    }
+  );
+</script>
+        </section>
+      </aside>
+    </div>
+    <!--上传图片组件，弹出图片列表dialog-->
+<div class="modal fade" id="gallery_modal" tabindex="-1" role="dialog">
+	<div class="panel panel-default modal-dialog modal-lg">
+		<div class="modal-content"></div>
+	</div>
+</div>
+
+<!--导出文件，弹出页面预留dialog-->
+<div class="modal fade" id="exportDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+<!-- 查看缩略图大图 -->
+<div class="modal fade show_img_madal" id="show_img_madal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog dialog-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">查看大图</h4>
+      </div>
+      <div class="modal-body">
+        <div class="show-pic-dialog"><div class="show-img"><img id="big_img" src="" alt=""></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- system modal start -->
+  <div id="modal-alert" class="modal fade"  tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <h5 class="modal-title"><i class="fa fa-exclamation-circle"></i> [Title]</h5>
+        </div>
+        <div class="modal-body">
+          <p>[Message]</p>
+        </div>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>
+          <button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- system modal end -->
+
+<!--商品选择器，弹出页面预留dialog-->
+<div class="modal fade" id="goods_modal" tabindex="-1" role="dialog">
+  <div class="panel panel-default modal-dialog modal-lg">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+<div id="editShortcutMenu" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title" id="gridModalLabel">编辑常用菜单 </h4>
+        <span class="text-red">最多选择五个快捷菜单</span>
+      </div>
+      <form action="http://www.lishe.cn/shop/common/user/menu.html" method="post" id="editShortcutMenuForm" class="bg-white validate-form" role="form" data-validate-onsuccess="editShortcutMenuAjaxSubmit" novalidate="novalidate" >
+        <div class="modal-body">
+          <div>
+            <ul class="list-unstyled">
+                            <li>
+                <label class="checkbox-inline"><b>交易</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_trade_list@index" >
+                  订单管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_trade_cancel@index" >
+                  订单取消管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_shop_dlytmpl@index" >
+                  快递模板配置                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>商品</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_item@itemList" >
+                  商品列表                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_item@add" >
+                  发布商品                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_item@storePolice" >
+                  商品库存报警                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_item_cat@index" >
+                  店铺分类                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_shop_image@index" >
+                  图片管理                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>营销</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_fullminus@list_fullminus" >
+                  满减管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_fulldiscount@list_fulldiscount" >
+                  满折管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_coupon@list_coupon" >
+                  优惠券管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_freepostage@list_freepostage" >
+                  免邮管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_xydiscount@list_xydiscount" >
+                  X件Y折管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_activity@registered_activity" >
+                  活动报名                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_promotion_package@list_package" >
+                  组合促销管理                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>店铺</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_shop_setting@index" >
+                  店铺配置                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_shop_notice@index" >
+                  商家通知                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_shop_decorate@index" >
+                  店铺装修                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_wap_decorate@index" >
+                  wap端店铺装修                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_shop_shopinfo@index" >
+                  商家入驻信息                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_open@index" >
+                  开发者中心                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_auth_index@index" >
+                  安全中心                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>客服</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_aftersales@index" >
+                  退换货管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_rate@index" >
+                  评价列表                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_rate_appeal@appealList" >
+                  申诉列表                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_rate_count@index" >
+                  评价概况                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_consultation@index" >
+                  咨询列表                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>结算</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_clearing_settlement@index" >
+                  商家结算汇总                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_clearing_settlement@detail" >
+                  商家结算明细                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>报表</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_sysstat_sysstat@index" >
+                  商家运营概况                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_sysstat_stattrade@index" >
+                  交易数据分析                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_sysstat_sysbusiness@index" >
+                  业务数据分析                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_sysstat_itemtrade@index" >
+                  商品销售分析                </label>
+                              </li>
+                            <li>
+                <label class="checkbox-inline"><b>账号</b></label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_account_list@index" >
+                  账号管理                </label>
+                                <label class="checkbox-inline">
+                  <input type="checkbox" name='shortcutMenu[]' class="check-item" value="topshop_ctl_account_roles@index" >
+                  角色管理                </label>
+                              </li>
+                          </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+<script>
+  $("#editShortcutMenuForm").Validator();
+  function editShortcutMenuAjaxSubmit (e) {
+    var form = e.target;
+    e.preventDefault();
+    $.post(form.action, $(form).serialize(), function(rs) {
+      if(rs.error) {
+        $('#messagebox').message(rs.message);
+        return;
+      }
+      if(rs.success) {
+        $('#messagebox').message(rs.message, 'success');
+        $('#editShortcutMenu').modal('hide');
+        setTimeout(function(){location.reload();}, 1000);
+      }
+
+    });
+  }
+</script>
+  </body>
+</html>

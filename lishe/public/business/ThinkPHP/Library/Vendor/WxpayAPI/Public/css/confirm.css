@@ -1,0 +1,11 @@
+body{ background-color:#f1f1f1; color: #555;}
+dl{ width: 95%; margin:0px auto;}
+dl dt{ font:normal 16px/46px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; padding:0px 15px; }
+dl dt.order{height:35px;line-height:35px;background:url(../images/done.png) no-repeat;margin:20px 0 0 15px;text-indent:2em;}
+dl dd{ text-align: center; font:normal 16px/46px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; }
+dl dd span{ display: block; border:1px solid #d5d5d5; height:42px;line-height: 42px; color:#323232;  background-color: #fcfcfc; font-size: 20px;font-weight: bold;
+-o-border-radius:10px; -ms-border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;
+}
+dl dd a{ background-color: #df6d5a; color:#FFF; display: block; -o-border-radius:10px; -ms-border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; margin-top: 15px;}
+dl dd a:hover{ text-decoration: none;}
+dl dd div:after{content:'';display:block;clear:both;height:0;overflow:hidden;visibility:hidden; }

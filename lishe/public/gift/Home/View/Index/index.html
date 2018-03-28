@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>送礼场景</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="__CSS__/giftIndex.css"/>
+    <link rel="stylesheet" href="__CSS__/swiper.min.css">
+    <script type="text/javascript" src="__JS__/jquery-1.11.2.min.js"></script>
+    <style>
+    	.active{color: #f32b5a !important;}
+    </style>
+</head>
+<body>
+<!--图片切换-->
+     <!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+    	<volist name="catList" id="cat">	
+        <div catid="{$cat['index_id']}" class="swiper-slide"><img src="{$cat['gift_pic']}"></div>
+    	</volist>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+   <!--end--> 
+   <div class="shuttle">
+      <ul>
+        <li>价格区间:</li>
+        <li>
+        	<input type="text" id="sprice" val="0" value="全部" class="hdshuttle" readonly="readonly">
+        	<span style="color:#999999; font-size:1.5rem; padding:0 0; display: none;" class="pricerange">-</span>
+        	<input type="text" id="eprice" val="0" value="0" style="display: none;" class="hdshuttle pricerange" readonly="readonly">
+        </li>
+      </ul>
+   </div>
+   <div style="clear:both;"></div>
+   <div class="shuttlexz">
+       <ul class="shuUl">
+       	 <li sprice="0" eprice="0" class="active">全部</li>
+         <li sprice="0" eprice="100">￥0-100</li>
+         <li sprice="100" eprice="300">￥100-300</li>
+         <li sprice="300" eprice="500">￥300-500</li>
+         <li sprice="500" eprice="800">￥500-800</li>
+         <li sprice="800" eprice="1000">￥800-1000</li>
+       </ul>
+   </div>
+   <div class="Sgift">
+     <a href="javascript:void(0)" id="searchBut">搜礼</a>
+   </div>
+</body>
+<script src="__JS__/swiper.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".hdshuttle").click(function(){
+	  	$(".shuttlexz").slideToggle(500);
+	});
+	$(".shuUl li").click(function(){
+		$(this).addClass("active");
+		$(this).siblings().removeClass("active");
+		var sprice = $(this).attr('sprice');
+		var eprice = $(this).attr('eprice');
+		if(sprice == 0 && eprice == 0){
+			$(".pricerange").hide();
+			$("#sprice").val("全部");
+			$("#eprice").val("￥0");
+		}else{
+			$(".pricerange").show();
+			$("#sprice").val("￥"+sprice);
+			$("#eprice").val("￥"+eprice);
+		}
+		$("#sprice").attr("val",sprice);
+		$("#eprice").attr("val",eprice);
+		$(".shuttlexz").slideToggle(500);
+    }); 
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		effect: 'flip',
+		grabCursor: true,
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev'
+	});
+	
+	//点击搜索
+	$("#searchBut").click(function(){
+		var catId = $(".swiper-slide-active").eq(0).attr("catid");
+		var sprice = $("#sprice").attr('val');
+		var eprice = $("#eprice").attr('val');
+		var url = "{:U('Gift/enter')}?wcat_id="+catId+"&sprice="+sprice+"&eprice="+eprice;
+		window.location.href = url;
+	});
+ });
+</script>
+
+</html>

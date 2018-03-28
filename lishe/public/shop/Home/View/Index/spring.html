@@ -1,0 +1,22 @@
+	<style>
+		.sf_popup{position: fixed; width: 841px; height: 664px; background: url("__VIEW__Public/images/xy_popup.png") no-repeat; top: 50%; left: 50%; margin-top: -332px; margin-left: -420px;z-index: 999}
+		.close_popup{display: block; position: absolute; width: 40px; height: 40px; top: 0; right: 180px;}
+		.shadow{position: fixed; width: 100%; height: 100%; background-color: #000; opacity: .4; filter:alpha(opacity=40); z-index: 998}
+	</style>
+	<div class="shadow"></div>
+	<div class="sf_popup">
+		<a class="close_popup" href="javascript:;"></a>
+	</div>
+	<script>
+		$(".close_popup").click(function(){
+			$(this).parent().hide();
+			$(".shadow").hide();
+		});
+		$(document).mouseup(function(e){
+			var _con = $(".sf_popup");
+			if(!_con.is(e.target) && _con.has(e.target).length === 0){
+				$(".sf_popup").hide();
+				$(".shadow").hide();
+			}
+		});
+	</script>

@@ -1,0 +1,282 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style type="text/css">
+	a{
+		text-decoration:none;
+	}
+	.pageos{
+		border: 1px solid;
+		border-radius: 20px;
+		padding-left: 6px;
+		padding-right: 6px;
+		margin: 5px;
+		
+	}
+	.pageos:hover{
+		background-color: white;
+		color: #C8332F;
+		
+	}
+	.pageon{
+		border: 1px solid #C7241D;
+		background-color: white;
+		color: #C8332F;
+		border-radius: 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin: 5px;	
+	}	
+	.overbtn:hover{
+		background-color: #5a98de;
+	}
+	.sigleOrder{
+		background-color: white;
+		position: relative;
+		left: 135px;
+		top: -40px;
+		z-index:1;
+	}
+</style>
+<title>意见反馈</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 充值管理 <span class="c-gray en">&gt;</span> 正章充值 <a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="pd-20">
+	<form action="__SELF__" method="get">
+	<div class="text-c"> 
+		申请时间：
+		<input type="text" onfocus="WdatePicker()" value="{$searchData.startTime}" name="startTime" id="datemin" class="input-text Wdate" style="width:100px;">
+		-
+		<input type="text" onfocus="WdatePicker()" value="{$searchData.endTime}" name="endTime" id="datemax" class="input-text Wdate" style="width:100px;">	
+		<label>充值类型：</label>
+		<label>
+		<select  name="type" class="select-box" style="width:105px;">
+			<option value="-99"<eq name="searchData.type" value="-99">selected="selected"</eq> >全部</option>
+			<option value="1" <eq name="searchData.type" value="1">selected="selected"</eq> >洗衣券充值</option>
+			<option value="2" <eq name="searchData.type" value="2">selected="selected"</eq>  >洗衣卡充值</option>
+		</select>
+		</label>
+		<label>充值状态：</label>
+		<label>
+		<select  name="status" class="select-box" style="width:105px;">
+			<option value="-99" <eq name="searchData.status" value="-99">selected="selected"</eq>  >全部</option>
+			<option value="-1" <eq name="searchData.status" value="-1">selected="selected"</eq> >待充值</option>
+			<option value="1" <eq name="searchData.status" value="1">selected="selected"</eq>  >已充值</option>
+			<option value="2" <eq name="searchData.status" value="2">selected="selected"</eq> >拒绝充值</option>
+		</select>
+		</label>
+	</div>
+	<div class="text-c" style="margin-top: 20px;"> 
+		<label>申请账号：</label>
+		<label>
+		<input type="text" name="applyMobile"  placeholder="用户手机号" style="width:208px" class="input-text" value="{$searchData.applyMobile}" >
+		</label>			
+		<label>充值账号：</label>
+		<label>
+		<input type="text" name="mobile"  placeholder="用户手机号" style="width:208px" class="input-text" value="{$searchData.mobile}" >
+		</label>				
+		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+			
+	</div>
+	</form>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="r">共有数据：<strong>{$number}</strong> 条</span> </div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-hover table-bg ">
+			<thead>
+				<tr class="text-c">
+					<!--<th width="25"><input type="checkbox" name="" value=""></th>-->
+					<th width="4%">ID</th>
+					<th width="8%">申请账号</th>
+					<th width="8%">充值账号</th>
+					<th width="6%">充值类型</th>
+					<th>洗衣券数量/洗衣卡卡号</th>
+					<th width="6%">总面值/￥</th>
+					<th width="12%">预充值金额/￥(积分)</th>
+					<th width="12%">实际充值金额/￥(积分)</th>
+					<th width="6%">是否收到卡券</th>
+					<th width="12%">用户申请/处理时间</th>
+					<th width="5%">状态</th>
+					<th width="7%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+					<tr class="text-c">
+						<!--<td><input type="checkbox" value="1" name=""></td>-->
+						<td>{$vo.apply_id}</td>
+						<td>{$vo.apply_username}</td>
+						<td>{$vo.mobile}</td>
+						<td>{$vo['coupon_type']==1?"干洗券":"干洗卡"}</td>
+						<td>
+							<eq name="vo.coupon_type" value="2">
+								{$coupon[$vo['apply_id']][0]['coupon_code']}
+							<else/>
+								{$vo.coupon_num}&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:void(0)" class="xyqxq">
+									<strong style="color: #f37b1d;">洗衣券详情 </strong>
+								</a>
+								<div class="xyqinfo" style="display: none;">
+									<table class="table table-border table-bordered table-hover table-bg ">
+										<thead>
+											<tr class="text-c">
+												<th width="30%">序号</th>
+												<th>面值/￥</th>
+												<th width="30%">数量</th>
+											</tr>
+										</thead>
+										<tbody>
+											<foreach name="coupon[$vo['apply_id']]" item="info" key="num">
+												<tr class="text-c">
+													<td>{$num+1}</td>
+													<td>{$info.coupon_price}</td>
+													<td>{$info.coupon_number}</td>
+												</tr>
+											</foreach>
+										</tbody>
+									</table>										
+								</div>
+							</eq>
+						</td>
+						<td>{$vo.coupon_amount}</td>
+						<td>{$vo.applay_amount}({$vo['applay_amount']*100})</td>
+						<td>
+							<gt name="vo.avail_amount" value="0">
+								{$vo['avail_amount']}({$vo['avail_amount']*100})
+							<else/>	
+								---
+							</gt>
+						</td>
+						<td>{$vo['is_match']==1?"是":"否"}</td>
+						<td>
+							{$vo.create_time}<br />
+							<neq name="vo.apply_status" value="0">
+								{$vo.finish_time}
+							<else/>	
+								---
+							</neq>								
+						</td>
+						<td>
+							<if condition="$vo['apply_status'] eq 0">
+								<p style="color: #5eb95e;">未充值</p>
+							<elseif condition="$vo['apply_status'] eq 1"/>	
+								<p style="color: #3bb4f2;">已充值</p>
+							<elseif condition="$vo['apply_status'] eq 2"/>	
+								<p style="color: #dd514c;">不充值</p>
+							</if>
+						</td>
+						<td>
+							<if condition="$vo['apply_status'] eq 0">
+							<?php 	
+								 	$applFundId=array_search('zzgxrecharge', $nodeAction);
+									 if($applFundId){
+								 ?>										
+								<input class="btn btn-secondary size-MINI radius"  value="审核充值" onclick="submitrecharge({$vo.apply_id});" type="button">
+							<?php 
+									}
+									   ?>								
+							<elseif condition="$vo['apply_status'] eq 1"/>
+								<a href="javascript:void(0)" onclick="rechargeDeatil({$vo.apply_id})">
+									<span class="label label-default radius">充值详情</span>
+								</a>
+							<elseif condition="$vo['apply_status'] eq 2"/>
+								<a href="javascript:void(0)" onclick="rechargeDeatil({$vo.apply_id})">
+									<span class="label label-default radius">详情</span>
+								</a>								
+							</if>							
+						</td>
+					</tr>
+				</volist>
+			</tbody>
+		</table>
+		<div style="text-align: center; padding: 30px 30px;">
+			{$pagestr}
+		</div>
+		<div style="display: none;" class="rechargePage">
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/laypage/1.2/laypage.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[0,2,4]}// 制定列不参与排序
+		]
+	});
+	$('.table-sort tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		}
+		else {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+
+});
+$(".xyqxq").on('click',function(){
+	//自定页
+	layer.open({
+	  type: 1,
+	  skin: 'layui-layer-demo', //样式类名
+	  closeBtn: 0, //不显示关闭按钮
+	  area: ['420px', '240px'], //宽高
+	  title:'洗衣券详情',
+	  anim: 2,
+	  shadeClose: true, //开启遮罩关闭
+	  content: $(this).next(".xyqinfo")
+	});
+});
+function submitrecharge(applyId){
+	layer.open({
+	  type: 2,
+	  title: '审核充值',
+	  shadeClose: false,
+	  shade: 0.8,
+	  area: ['420px', '85%'],
+	  content: '__APP__/Recharge/zzgxRecharge/applyId/'+applyId //iframe的url
+	}); 
+
+}
+//充值详情
+function rechargeDeatil(applyId){
+	layer.open({
+	  type: 2,
+	  title: '处理详情',
+	  shadeClose: true,
+	  shade: 0.8,
+	  area: ['360px', '50%'],
+	  content: '__APP__/Recharge/zzgxRechargeDeatils/applyId/'+applyId //iframe的url
+	}); 	
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+	<volist name="traderateList" id="tdvo">
+		<li>
+			<div class="content_left">
+				<div class="stars stars-3"></div>
+				<p class="time">{$tdvo['created_time']|date='Y-m-d H:i:s',###}</p>
+				<p class="goods_size">{$tdvo['item_title']}</p>
+			</div>
+			<div class="content_right">
+				<p>{$tdvo['content']}</p>
+				<?php $imgArry=array(); if(!empty($tdvo['rate_pic'])){ $imgArry = explode(",",$tdvo['rate_pic']);} ?>
+				<div class="user_show">
+					<notempty name="imgArry">
+						<volist name="imgArry" id="iavo">
+							<img src="{$iavo}" class="pics">
+						</volist>
+					</notempty>
+				</div>
+
+			</div>
+			<div class="content_userinfo">
+				<p class="content_username"><?php $userInfo=getTableRow('sysuser_account','user_id',$tdvo['user_id']); ?>{$userInfo['mobile']}</p>
+				<p class="content_comefrom">来自礼舍心意商城</p>
+			</div>
+		</li>
+	</volist>
+	<div class="pages">
+		{$pagestr}
+	</div>
+<style type="text/css">
+	.pages a.prev{width: 68px;}
+	.pages div a{margin-left: 5px;}
+	.pages a.next{width:68px;}
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		$(".pages").children("div").children("a").removeAttr('href');
+	});
+	
+</script>	
+				

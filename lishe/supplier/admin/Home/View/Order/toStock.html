@@ -1,0 +1,116 @@
+
+<body>
+<style>
+	.radius{
+		border-radius: 5px;
+		padding: 5px 10px;
+	}
+	.zihui{
+		color:#666;
+		font-size: 14px;
+	}
+	body{
+		font-size: 14px;
+	}	
+</style>	
+    <!--/sidebar-->
+<form action="{:U('Home/Order/toStockDeal')}" method="post">	
+  <div class="form form-horizontal" style="padding: 20px 100px;">
+  <div class="row cl">
+      <div class="formControls col-5">
+	      <label class="form-label col-2"><span class="c-red">*</span>订单号：</label>
+	        <strong style="color: #5a98de;">{$tid}</strong>
+	        <input type="hidden" value="{$tid}" name="tid">
+      </div>      
+    </div>
+	<div style="border-bottom: 1px #ea8010 solid;">&nbsp;</div>
+    <div class="row cl">
+      <div class="formControls col-10">
+	      <label class="form-label col-2"><span class="c-red">*</span>商品：</label>
+      	<volist name="items" id="item">
+        	<p style="display: block; width:100%;overflow: hidden; float: left;text-overflow: ellipsis;white-space: nowrap;" data="{$item['oid']}" class="itemList">			      	
+        		<label>
+		        		<input name="oids[]" value="{$item['oid']}" type="checkbox" 
+		        				<if condition="($item['status'] eq 'IN_STOCK')">
+		        					disabled="disabled"
+		        				<else/>	
+			        				<notin name="item.aftersales_status" value="NO_APPLY,CANCEL_APPLY">
+			        						disabled="disabled"
+			        				</notin>
+		        				</if>
+		        			> 
+									<if condition="$item.send_type eq 2">
+										<img src="__PUBLIC__/images/daifa.png"  width="20px" title="该商品为代发商品"/>
+									<elseif condition="$item.send_type eq 1"/>
+										<img src="__PUBLIC__/images/zifa.png"  width="20px" title="该商品为自发商品"/>
+									</if>
+	        				<if condition="$item['status'] eq 'IN_STOCK'">
+	        					<small style="color:#666;">已备货</small>
+	        				</if>		
+	        				<if condition="$item.aftersales_status neq 'NO_APPLY'">
+										<img src="__PUBLIC__/images/shouhou.png"  width="20px" title="有售后"/>
+	        				</if>
+										        		
+		        		{$item['title']}	
+        		</label>
+        	</p>
+        	<p>
+			<p class="zihui"><saml>数量：</saml><strong style="color: #5a98de;">{$item.num}件</strong></p>
+		      <notempty name="vo.spec_nature_info">
+					<p class="zihui">规格：<strong style="color: #5a98de;">{$item.spec_nature_info}</strong></p>
+		      </notempty>        		
+        		<notempty name="item.to_stork_mark">
+	        		<small style="color:#666;">上次操作备注：{$item.to_stork_mark}</small>
+        		</notempty>
+        	</p>
+        	<div style="border-bottom: 1px #ea8010 solid;">&nbsp;</div>
+        </volist>
+      </div>
+    </div>
+    <div class="row cl">
+      <div class="formControls col-5">
+      <label class="form-label col-2">备注：</label>
+      	<textarea name="mark" class="common-textarea" id="mark" cols="30" style="width: 98%;" rows="5">{$mark}</textarea>
+      </div>
+    </div>
+    <div class="row cl" style="padding: 10px 40%;">
+        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" id="saveRefund">
+    </div>
+</div>
+</form>
+</body>
+<script>
+
+    layui.use('layer', function(){
+    });
+    function layer_show(title,url,w,h){
+        if (title == null || title == '') {
+            title=false;
+        };
+        if (url == null || url == '') {
+            url="404.html";
+        };
+        if (w == null || w == '') {
+            w=800;
+        };
+        if (h == null || h == '') {
+            h=($(window).height() - 50);
+        };
+        layer.open({
+            type: 2,
+            area: ['800px', '500px'],
+            fix: false, //不固定
+            maxmin: true,
+            shade:0.4,
+            title: title,
+            content: url
+        });
+    }
+    function goodsDetail(goodsId){
+        layer.open({
+            title: "aaa", content: "bbb"
+        });
+    }
+
+</script>
+</html>

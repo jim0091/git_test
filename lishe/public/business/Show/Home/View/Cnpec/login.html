@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中广核工程有限公司</title>
+<script src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/cnpec/css/hhtLogin.css">
+<script type="text/javascript">
+$(document).ready(function (){
+	$("#userName").focus();
+	$("#loginBtn").click(function(){
+	  	var userName=$("#userName").val();
+	  	var password=$("#password").val();
+	  	var refer=$("#refer").val();
+	    if(userName==""){
+	      alert('请输入您的用户名！');
+	      $("#userName").focus();
+	      return false;
+	    }
+	    if(password==""){
+	      alert('请输入您的登录密码！'); 
+	      $("#password").focus();
+	      return false;
+	    } 
+
+		urls="__APP__?c=Login&a=login";
+		$.ajax({
+			type: "POST",
+			url:urls,
+			dataType:"text",
+			cache:false,
+			data: {
+				userName:userName,
+				password:password,
+				mark:'{$control}'
+			},
+			success: function(data){
+				var msg=eval(data);
+				if(msg[0]>0){
+//					var refer=msg[2];
+					if(refer!=''){
+						window.location.href=refer;
+					}else{
+						window.location.href="__APP__/Cnpec/index";	
+					}				
+				}else{
+					alert(msg[1]);
+					$("#userName").focus();
+				}
+			},
+			error: function () {
+				alert('error：'+msg[1]);
+				$("#userName").focus();
+			}
+		});
+	});
+});
+</script>
+</head>
+<body>
+<div class="layout">
+<div class="header">
+	<ul>
+	  <li>欢迎您，
+	      <if condition="empty($userName)">
+	        <span><a href="__APP__/Cnpec/login" class="nva-u" style="color:#F00;">登录</a></span>
+	        <span><a href="__APP__/User/signup"  class="nva-u" style="color:#F00;">注册</a></span>
+	      <else/>
+	        <span><a href="/member-index.html" class="nva-u" style="color:#F00;">{$userName}</a></span>
+	        <span><a href="__APP__/Cnpec/logout"  class="nva-u" style="color:#F00;">退出</a></span>
+	      </if>
+	  	&nbsp;|&nbsp;</li>
+	  <li><a href="/business/index.php/Cnpec/login/go/order">我的订单</a>&nbsp;|&nbsp;</li>
+	  <li><a href="http://www.haihetao.com/customer">我的核淘</a>&nbsp;|&nbsp;</li>
+	  <li><img src="__PUBLIC__/cnpec/images/shop.png">
+	      <a href="/cart.html">
+	      	购物车(<empty name="userInfo['cartCount']">0<else/>{$userInfo['cartCount']}</empty>)
+	      </a>&nbsp;|&nbsp;
+	  </li>
+	  <li><a href="http://www.lishe.cn/help_index.html" target="_blank">帮助中心</a>&nbsp;|&nbsp;</li>
+	  <li style="float: right">客服热线:4008-533-666&nbsp;0755-33088009</li>
+	</ul>
+</div>
+      
+      <div class="cnncLogin">
+         <div class="login-main">
+             <ul>
+               <li class="title2"><img src="__PUBLIC__/cnpec/images/logo.png"></li>
+               <li><input type="text" class="txt userbg" placeholder="请输入用户名" id="userName" /></li>
+               <li><input type="password" id="password" class="txt pwdbg" placeholder="请输入密码"/></li>
+               <input type="hidden" id="refer" value="{$refer}">
+               <li class="find"><a href="/business/index.php/Activate" class="fLeft" target="_blank">企业员工激活</a><a href="/passport-findpwd.html" class="fRight" target="_blank">忘记密码</a></li>
+               <li class="cnncBtn"><a href="javascript:;" id="loginBtn">登录</a></li>
+             </ul>
+          </div> 
+      </div>
+      
+  </div>
+  
+</body>
+</html>

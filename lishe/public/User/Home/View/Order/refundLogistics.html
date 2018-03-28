@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>礼品商城订单中心</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<link rel="stylesheet" href="__VIEW__Public/css/details.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/reset_css.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/order.css">
+	<link rel="stylesheet" href="__VIEW__Public/css/refund.css">
+	<script src="__VIEW__Public/js/order.js"></script>
+	<script src="__VIEW__Public/js/jQuery.v1.8.3.min.js"></script>
+</head>
+<body>
+	<!-- 顶部导航 -->
+	<include file="Public/header"/>	
+	<include file="Public/headerFind"/>	
+	<!--提示框、加载遮罩层-->
+    <div class="topLoading">
+        <img src="__VIEW__Public/images/loading.gif">
+    </div>
+    <div class="divPrompt"></div>
+    <div class="divPromptContent"></div>
+	
+	<!-- 中部正文 -->
+	<input type="hidden" name="comId" id="comId" value="{$comId}">
+	<div>
+		<div class="wrap content" >
+			<!-- 中间左侧导航 -->			
+			<include file="Public/navLeft"/>
+			<input type="hidden" name="" id="current" value="myOrder">	
+			
+			<!-- 右侧订单 -->
+			<div class="order_info">
+				<div class="right_wrap">
+					<div class="right-top">
+						<p class="right-title">退换货物流信息</p>
+					</div>
+					<if condition="($orderInfo['status'] eq 'WAIT_EARLY_PROCESS') OR ($orderInfo['status'] eq 'WAIT_PROCESS')">
+					<div class="seller_add">
+						<p class="ft14 ftb">订单号：{$orderInfo['tid']}</p>						
+						<p class="ft14 ftb">商家处理中</p>
+					</div>
+					</if>
+					<if condition="$orderInfo['status'] eq 'SELLER_REFUSE'">
+						<div class="seller_add">
+						<p class="ft14 ftb">订单号：{$orderInfo['tid']}</p>						
+						<p class="ft14 ftb">商家拒绝</p>
+					</div>
+					</if>
+
+					<if condition="$orderInfo['status'] eq 'WAIT_BUYER_SEND_GOODS'">
+					<div class="seller_add">
+						<p class="ft14 ftb">订单号：{$orderInfo['tid']}</p>						
+						<p class="ft14 ftb">卖家收货地址</p>
+						<div>
+							{$aftersales['addr']}&nbsp;&nbsp;&nbsp;&nbsp;
+							{$aftersales['name']}收&nbsp;&nbsp;&nbsp;&nbsp;
+							{$aftersales['phone']}&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+					</div>
+					<div class="choose_exp">
+						<table>
+							<tr>
+								<td><i class="redstar">*&nbsp;</i>物流公司</td>
+								<td>
+									<select class="syslogName">
+										<option value="0">--请选择--</option>
+										<volist name="syslogDlyList" id="vo">
+											<option value="{$vo['corp_name']}">{$vo['corp_name']}</option>
+										</volist> 
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td><i class="redstar">*&nbsp;</i>运单号码</td>
+								<td><input type="text" class="order_number"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><a href="javascript:;" class="submit_change">提交</a></td>
+							</tr>
+						</table>
+					</div>
+					</if>
+
+					<if condition="$orderInfo['status'] eq 'WAIT_SELLER_CONFIRM_GOODS'">
+						<div class="seller_add">
+						<p class="ft14 ftb">订单号：{$orderInfo['tid']}</p>						
+						<p class="ft14 ftb">待商家收货</p>
+						</div>
+					</if>
+					<if condition="$orderInfo['status'] eq 'REFUND_PROCESS'">
+						<div class="seller_add">
+						<p class="ft14 ftb">订单号：{$orderInfo['tid']}</p>						
+						<p class="ft14 ftb">待退款</p>
+						</div>
+					</if>
+					<if condition="$orderInfo['status'] eq 'SUCCESS'">
+						<div class="seller_add">
+						<p class="ft14 ftb">订单号：{$orderInfo['tid']}</p>						
+						<p class="ft14 ftb">退款成功！</p>
+						</div>
+					</if>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+<include file="Public/footer"/>	
+<script type="text/javascript">	
+	function divPrompt(content){  
+        $(".divPrompt").show();
+        $(".divPromptContent").show();
+        $(".divPromptContent").text(content);
+        $('.divPrompt').delay(2000).hide(0); 
+        $('.divPromptContent').delay(2000).hide(0);   
+    };	
+	//提交申请
+	$(".submit_change").click(function(){	
+        $(".topLoading").show();    
+		var tid = "{$orderInfo['tid']}";
+		var corpName = $(".syslogName option:selected").text();
+		var corpNum = $(".order_number").val();
+		if (tid == '') {
+			$(".topLoading").hide();
+            divPrompt('系统繁忙，请刷新重试！');
+            return;
+		};
+		if (corpName == '') {
+			$(".topLoading").hide();
+            divPrompt('请选择快递！!!');
+            return;			
+		};
+		if (corpNum == '') {
+			$(".topLoading").hide();
+            divPrompt('请填写快递单号！');
+            return;			
+		};
+		$.ajax({
+	            type:"POST",
+	            url:"__APP__/Order/refundLogisDo",
+	            data:{tid:tid,corpName:corpName,corpNum:corpNum},
+	            dataType:'text',
+	            success:function(data){
+	                var res = eval(data);
+	                if (res[0] == 1 ) {
+	                    $(".topLoading").hide();
+	                    divPrompt(res[1]);
+	                    window.location.reload();
+	                    return;
+	                }else{
+	                    $(".topLoading").hide();
+	                    divPrompt(res[1]);
+	                    return;
+	                }
+	            },
+	            error:function(){
+	                $(".topLoading").hide();
+	                divPrompt("系统繁忙，请刷新重试！");
+	                return;
+	            }
+        	});
+	});
+</script>
+</body>
+</html>

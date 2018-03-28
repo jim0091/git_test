@@ -1,0 +1,43 @@
+
+
+    <div>
+       	<volist name="first.list" id="item">
+          <ul>
+            <li style="height: 177px;overflow: hidden;">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">
+            		<img src="{$item.image_default_id}_m.{:end(explode('.',$item['image_default_id']))}">
+            	</a>
+            </li>
+            <li class="puser">
+            	<a href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">{$item.title}</a>
+            </li>
+            <li class="pric">￥<?php echo sprintf("%.2f", $item['price']); ?>
+            	<a class="js-goods-buy" data-id="{$item['item_id']}" href="{:U('Home/Info/index',array('itemId'=>$item['item_id']))}">立即兑换</a>
+            </li>
+		        <if condition="$item.flag eq 1">
+			     		<li style="background:url(__PUBLIC__/wshop/images/wuhuo.png)no-repeat  center  center;background-color:rgba(115,115,131,0.7);min-height:54px;color: white;text-align: center;position:relative; top:-232px;padding-top: 113px;">
+			     			<small>广东无货</small>
+			     		</li>
+		        </if>             
+          </ul>
+ 				</volist>  
+      <div style="clear:both;"></div>
+
+  <style>
+  .custom-paginations-prev{
+    padding: 60px;
+    color: #09F;
+  }
+  .wborder{
+    border:1px solid #DDD;
+    padding: 5px;
+  }
+ </style> 
+  <div class="custom-paginations-container" style="margin-bottom: 5px;">  
+   <div class="wborder"  style="text-align: center;"> 
+    {$pagestr}
+   </div> 
+  </div> 
+</div>
+  
+

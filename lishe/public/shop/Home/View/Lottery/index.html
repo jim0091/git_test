@@ -1,0 +1,395 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<link rel="shortcut icon" href="__PUBLIC__lottery/images/icon/bitbug_favicon.ico">
+	<title>惊喜狂欢惠</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__lottery/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__lottery/css/luck_draw.css" />
+</head>
+<body>
+	<div class="header_banner">
+		<img src="__PUBLIC__lottery/images/banner1.png" alt="">
+	</div>
+	<div class="step_wrap mauto">
+		<ul>
+			<li class="h_step1"></li>
+			<li class="h_step2"></li>
+			<li class="h_step3"></li>
+			<li class="h_step4"></li>
+		</ul>
+	</div>
+	<div class="luck1">
+		<img src="__PUBLIC__lottery/images/luck1.png" />
+	</div>
+	<!--转盘-->
+	<div class="draw_wrap">
+		<div class="draw_content mauto">
+			<div class="fl draw_bg2">
+				<img src="__PUBLIC__lottery/images/draw_bg2.png" id="yellow_bg">
+				<img src="__PUBLIC__lottery/images/jp1.png" id="jp_bg">
+				<img src="__PUBLIC__lottery/images/start.png" id="start">
+			</div>
+
+			<!--获奖名单-->
+			<div class="fr user_list_wrap">
+				<h2 class="list_name"><span class="sp1">获奖者名单</span><span>奖品信息</span></h2>
+				<div class="list_con">
+					<ul>
+						<volist name="userList" id="val">
+						<php>$username = str_replace(mb_substr($val['username'],1,1,'utf-8'), '*', $val['username']);</php>
+						<li><span class="sp2">{$username}</span><span>{$val['prize_name']}</span></li>
+						</volist>
+						<li><span class="sp2">章*</span><span>100积分</span></li>
+						<li><span class="sp2">谢*群</span><span>300积分</span></li>
+						<li><span class="sp2">张*旭</span><span>100积分</span></li>
+						<li><span class="sp2">Mr*</span><span>100积分</span></li>
+						<li><span class="sp2">高*</span><span>伊莱克斯蒸蛋器</span></li>
+						<li><span class="sp2">李*</span><span>100积分</span></li>
+						<li><span class="sp2">邓*</span><span>100积分</span></li>
+						<li><span class="sp2">谢*群</span><span>100积分</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--返回结果-->
+		<div class="result mauto">
+			<img src="" id="resultImg" />
+			<span id="close"></span>
+		</div>
+		<!--遮罩-->
+		<div class="side"></div>
+	</div>
+	<!--抽奖规则-->
+	<div class="draw_text mauto">
+		<img src="__PUBLIC__lottery/images/draw_text.png" />
+		<span class="show_dtp"></span>
+		<div class="draw_p_wrap"><img src="__PUBLIC__lottery/images/draw_text_popup.png" class="draw_text_popup" /><img src="__PUBLIC__lottery/images/xx.png" class="dclose"></div>
+	</div>
+	<div class="floor_tit"><img src="__PUBLIC__lottery/images/luck2.png" /></div>
+	<div class="product">
+		<img src="__PUBLIC__lottery/images/product1.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/35822" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/54974" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/30092" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product">
+		<img src="__PUBLIC__lottery/images/product2.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/11477" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/60597" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/51028" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product pmb0">
+		<img src="__PUBLIC__lottery/images/product3.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/45351" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/8078" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/60774" target="_blank" class="product_item3"></a>
+	</div>
+	<!--03-->
+	<div class="floor_tit2"><img src="__PUBLIC__lottery/images/luck3.png" /></div>
+	<div class="product">
+		<img src="__PUBLIC__lottery/images/product4.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/54164" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/35792" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/39162" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product">
+		<img src="__PUBLIC__lottery/images/product5.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/60598" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/60650" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/13194" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product pmb0">
+		<img src="__PUBLIC__lottery/images/product6.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/53902" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/34577" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/60269" target="_blank" class="product_item3"></a>
+	</div>
+	<!--04-->
+	<div class="floor_tit3"><img src="__PUBLIC__lottery/images/luck4.png" /></div>
+	<div class="product">
+		<img src="__PUBLIC__lottery/images/product7.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/53441" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/53958" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/45352" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product">
+		<img src="__PUBLIC__lottery/images/product8.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/41837" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/35757" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/32959" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product pmb0">
+		<img src="__PUBLIC__lottery/images/product9.png" />
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/53818" target="_blank" class="product_item1"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/8427" target="_blank" class="product_item2"></a>
+		<a href="http://www.lishe.cn/shop.php/Info/index/itemId/39092" target="_blank" class="product_item3"></a>
+	</div>
+	<div class="product_select">
+		<a href="http://www.lishe.cn/shop.php" target="_blank" class="many"><img src="__PUBLIC__lottery/images/many.png" /></a>
+	</div>
+	<div class="go_top">
+		<img src="__PUBLIC__lottery/images/TOP.png" id="TOP" />
+	</div>
+	<!--悬浮楼层-->
+	<div class="floor_fixed">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<a href="http://www.lishe.cn/shop.php" target="_blank" class="f_link"></a>
+	</div>
+	<script type="text/javascript" src="__PUBLIC__js/jQuery.v1.8.3.min.js"></script>
+	<script type="text/javascript">
+	var isLogin = {$isLogin};
+	var isAccess = {$isAccess};
+	$(function(){
+		$.extend(jQuery.easing , {
+			easeOutStrong: function(x,t, b, c, d){ 
+				return -c * ((t=t/d-1)*t*t*t - 1) + b;
+			}
+		});
+
+		var Draw = new draw('#start');
+		Draw.init();
+
+	});
+
+	function draw(id){
+		this.start = $(id);
+		this.off = true;
+		this.result = $('.result');//弹窗
+		this.resultImg = $('#resultImg');//弹窗图片
+		//奖品弹窗
+		this.prizeArr = ['__PUBLIC__lottery/images/draw_text1.png','__PUBLIC__lottery/images/prize1.png','__PUBLIC__lottery/images/prize2.png','__PUBLIC__lottery/images/prize3.png','__PUBLIC__lottery/images/prize4.png','__PUBLIC__lottery/images/prize5.png','__PUBLIC__lottery/images/prize6.png','__PUBLIC__lottery/images/prize7.png','__PUBLIC__lottery/images/prize8.png'];
+		this.close = $('#close');
+		this.prizeBg = $('#jp_bg');
+		this.side = $('.side');
+	}
+	draw.prototype.init = function(){
+		this.letGo();
+	};
+	//点击开始
+	draw.prototype.letGo = function(){
+		var This = this;
+		this.start.click(function(){
+			
+			if(This.off == true){
+				var requestVlue = This.request();
+				This.off = false;
+
+				if(requestVlue == 0){
+					//弹窗
+					This.result.fadeIn(200);
+					This.resultImg.attr('src',This.prizeArr[0]);
+					This.side.fadeIn(200);
+					//关闭弹窗
+					This.closePopup();
+				}else if(requestVlue == -1){
+					alert('服务器繁忙，请稍后重试');
+				}else if(requestVlue == -2){
+					if(confirm("你还未登陆，请登录后再抽奖")){
+						window.location.href="http://www.lishe.cn/shop.php/Sign/index";
+					}
+				}else if(requestVlue == -3){
+					alert("尊敬的用户您好！购买自营商品才可参与抽奖喔！赶紧去下单吧");
+					window.location.reload();
+				}else{
+					This.rotate(requestVlue);
+				}
+			}
+		});
+	};
+	//请求后台
+	draw.prototype.request = function(){
+		if(isLogin != 1)
+			return -2;
+		if(isAccess != 1){
+			return -3;
+		}
+		var prize = -1;
+		$.ajax({
+			url:"{:U('lottery/start')}",
+			async:false,
+			success:function(result){
+				if(result.code == 1){
+					prize = result.data.prizeNo;
+				}else{
+					prize = -1;
+				}
+			}
+		});
+		return prize;
+	};
+	//转盘旋转
+	draw.prototype.rotate = function(prizeNumber){
+		var This = this;
+		var prize = 0;
+	
+		switch(prizeNumber){
+			case 1:
+				prize = 3600;
+				break;
+			case 2:
+				prize = 3916;
+				break;
+			case 3:
+				prize = 3870;
+				break;
+			case 4:
+				prize = 3825;
+				break;
+			case 5:
+				prize = 3779;
+				break;
+			case 6:
+				prize = 3733;
+				break;
+			case 7:
+				prize = 3689;
+				break;
+			case 8:
+				prize = 3646;
+				break;
+		}
+		$('#yellow_bg').attr('src','__PUBLIC__lottery/images/draw_bg2-1.gif');
+		this.prizeBg.animate({
+				roNmber:prize
+			},{
+				step:function(now,fx){
+					This.prizeBg.css({"transform":"rotate("+now+"deg)"});
+					This.prizeBg.css({"WebKitTransform":"rotate("+now+"deg)"});
+					This.prizeBg.css({"MsTransform":"rotate("+now+"deg)"});
+					//转盘停止
+					
+					if(now == prize){
+						$('#yellow_bg').attr('src','__PUBLIC__lottery/images/draw_bg2.png');
+						//弹窗
+						This.side.fadeIn(200);
+						This.result.fadeIn(200);
+						This.resultImg.attr('src',This.prizeArr[prizeNumber]);
+
+						//关闭弹窗
+						This.closePopup();
+						This.off = true;
+					}
+					
+				},
+				duration:8000,
+				easing:'easeOutStrong'
+		});
+
+	};
+	//弹窗关闭、转盘初始
+	draw.prototype.closePopup = function(){
+		var This = this;
+		This.close.click(function(){
+			This.result.fadeOut();
+			This.side.fadeOut();
+			This.prizeBg.css({"transform":"rotate(0deg)"});
+			window.location.reload(); 
+		});
+	};
+
+	//获奖名单
+	autoTop();
+	function autoTop(){
+		var Leg = $('.list_con ul li').length;
+		var tNmber = 0;
+
+		if(Leg > 8){
+			setInterval(function(){
+				tNmber++;
+				if(tNmber > Leg-8){
+					 $('.list_con ul').css('margin-top',0);
+					 tNmber = 0;
+				}else{
+					 $('.list_con ul').animate({
+			    		'marginTop' : -tNmber * 39 + 'px'
+			   		 });
+				}
+			  
+			},3000);
+		}
+	}
+
+	
+	//楼层响应
+	var orderFn = {};
+	orderFn.floor = function(){
+		if($(window).width() > 1550){
+			var proMl = $('.product').offset().left;
+			var floorLeft = proMl - 194;
+			if(floorLeft < 0){
+				floorLeft = 0;
+			}
+			$('.floor_fixed').css('left',floorLeft);
+
+			$(document).scroll(function(){
+				if($(document).scrollTop() > 550){
+
+					$('.floor_fixed').fadeIn();
+				}else{
+					$('.floor_fixed').fadeOut();
+				}
+			});
+
+		}else{
+			$('.floor_fixed').hide();
+		}
+		
+	}
+	//豪华电梯直达^_^
+	orderFn.controllerFl = function(){
+		var arrTop = [909,2557,4649,6798];
+		var indexV;
+		$('.floor_fixed').find('span').click(function(){
+			console.log(arrTop);
+			 indexV = $(this).index();
+			$('html,body').animate({
+				scrollTop : arrTop[indexV]
+			});
+		});
+		$('.step_wrap ul li').click(function(){
+			indexV = $(this).index();
+			$('html,body').animate({
+				scrollTop : arrTop[indexV]
+			});
+		});
+
+	}
+	//回到顶部
+	orderFn.goTop = function(){
+		$('#TOP').click(function(){
+			$('html,body').animate({
+				scrollTop : 0
+			});
+		});
+	}
+	//如何分辨旗舰店
+	orderFn.showText = function(){
+		$('.show_dtp').mouseover(function(){
+			$('.draw_p_wrap').fadeIn();
+		});
+		$('.dclose').click(function(){
+			$('.draw_p_wrap').fadeOut();
+		});
+	}
+	orderFn.floor();
+	orderFn.controllerFl();
+	orderFn.goTop();
+	orderFn.showText();
+
+	</script>
+</body>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

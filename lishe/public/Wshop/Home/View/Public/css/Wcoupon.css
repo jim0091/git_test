@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document*/
+*{margin:0; padding:0;}
+a{text-decoration:none;}
+ul li{list-style:none;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input{outline: none;}
+img{border:0;}
+body{font-family:"微软雅黑";overflow-x:hidden;background:#f1f5f6; padding-bottom:15%;}
+
+.Waddress{width:100%; height:3.5rem; line-height:3.5rem; background:#FFF; border-bottom:#cfcfcf solid 1px;}
+.Waddress span{display:block; float:left;}
+.Waddress span:nth-child(1){width:10%; padding-left:2%;}
+.Waddress span:nth-child(1) img{width:30%; vertical-align:middle;}
+.Waddress span:nth-child(2){font-size:1.1rem; color:#333333; width:75%; text-align:center;}
+
+/*tab切换*/
+#outer {width:100%; margin:0 auto;height:auto; padding-bottom:2vh;clear:both; }
+#tabDiv{width:100%; background:#FFF;  border-bottom:#d0d0d0 solid 1px;height:3.5rem; line-height:3.5rem; text-align:center;}
+#tab{width:70%; margin:0 auto;}
+#tab li {float:left;color:#666666;cursor:pointer;font-size:1rem;width:35%;text-align:center;}
+#tab li:nth-child(1){float:left;}
+#tab li:nth-child(2){float:right;}
+#tab li.current{border-bottom:#f32b5a solid 2px;width:35%; color:#f32b5a;}
+#content{clear:both;}
+#content>div{display:none; margin-top:0.5rem;}
+/*tab一*/
+.Wcoupon{width:93vw; background:url(../images/coupon.png) no-repeat; height:12rem; margin:0.2rem auto;}
+.WcouponTop, .expiredcouponTop{width:93vw; clear:both; margin:0 auto;height:8rem; padding:2.3vh 2vw 0 2vw;}
+.WcoutopLeft, .expiredcoutopLeft{float:left; width:38vw;}
+.WcoutopLeft p:nth-child(1), .expiredcoutopLeft p:nth-child(1){font-size:1rem; color:#46b0d8; padding-top:0.5rem;}
+.WcoutopLeft p:nth-child(2), .expiredcoutopLeft p:nth-child(2){font-size:6vw; color:#46b0d8; line-height:4vh; padding-top:2.5vh; text-align:right;}
+.WcoutopLeft p:nth-child(2) span, .expiredcoutopLeft p:nth-child(2) span{font-size:8vh;}
+
+.WcoutopRight, .expiredcoutopRight{float:left; width:53vw;}
+.WcoutopRight p:nth-child(1){width:80%; font-size:1rem; color:#333333; font-weight:600; margin:0 auto;padding-top:0.8rem;}
+.WcoutopRight p:nth-child(2){text-align:center;}
+.WcoutopRight p:nth-child(2) img{width:55%;}
+.WcoutopRight p:nth-child(3){font-size:1rem; color:#333333; font-weight:600; text-align:center;padding-top:0.6rem;}
+
+.Wcouponbotm, .expiredcouponbotm{width:93vw; clear:both; margin:0 auto; font-size:0.9rem; height:2.3rem; line-height:2.3rem;}
+.Wcouponbotm p:nth-child(1){float:left; color:#7e7e7e; width:30vw; text-align:center;}
+.Wcouponbotm p:nth-child(2), .expiredcouponbotm p:nth-child(2){float:right; color:#4d4d4d; margin-right:4vw;}
+
+/*tab二*/
+.expiredcoupon{width:93vw; background:url(../images/expiredcoupon.png) no-repeat; height:12rem; margin:0.2rem auto;}
+.expiredcoutopRight p:nth-child(3){font-size:1rem; color:#7e7e7e; font-weight:600; text-align:center;padding-top:0.6rem;}
+.expiredcoutopLeft p:nth-child(1), .expiredcoutopLeft p:nth-child(2){color: #BFBFBF;}
+.expiredcoutopRight p:nth-child(1){color:#7E7E7E;}
+.expiredcouponbotm p:nth-child(1){display: none;}
+.expiredcoupon .WcoutopRight p:nth-child(1){color:#7E7E7E;}
+.expiredcoupon .WcoutopRight p:nth-child(3){color:#7E7E7E;}

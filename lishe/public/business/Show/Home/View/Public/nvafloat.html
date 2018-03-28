@@ -1,0 +1,253 @@
+<script src="__PUBLIC__/js/jquery.cookie.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/haihetao/css/hhtList.css">
+   <div id="nvafloat">
+        <div class="nvaLeft">
+            <ul class="Leftul">
+                <li class="closeThis" title="收回侧边栏"><img src="__PUBLIC__/gd10086/images/closethis.png" style="width:23px;height:23px;" /></li>
+                <a href="__APP__/{$control}/index" title="回到首页"><li class="closeThis"><img style="width:23px;height:23px;" src="__PUBLIC__/haihetao/images/home.png" /></li></a>
+                <li data-id="1"><img src="__PUBLIC__/haihetao/images/Ruesr.png" /></li>
+	            <li data-id="2" class="leftShop" >
+	              	<img src="__PUBLIC__/haihetao/images/shop2.png" /><br />购物车<br />
+                  <span  class="shopNum"><empty name="userInfo['cartCount']">0<else/>{$userInfo['cartCount']}</empty></span>
+	            </li>
+	            <li data-id="3"><img src="__PUBLIC__/haihetao/images/Rtime.png" /></li>
+	            <li data-id="4"><img src="__PUBLIC__/haihetao/images/Rtxt.png" /></li>
+            </ul>
+         </div>  
+     
+         <div class="nvaRight"> 
+           <div class="box1">
+              <p class="boxp">会员中心</p>  
+              <p class="user">账号:<span>{$account}</span></p>
+              <p class="user">姓名:<span>{$userName}</span></p>
+              <p class="user"><a href="http://www.lishe.cn/member-index.html" style="color:#ff0000">进入我的会员中心>></a></p>
+              <p class="boxp2">我的资产</p>
+                  <ul style="margin-left:15px;">
+                    <li class="pt"><img src="__PUBLIC__/haihetao/images/jf.png"></li>
+                    <li class="user2">福利积分</li>
+                    <li class="num">{$userInfo['point']}</li>
+                  </ul>
+                  <ul>
+                    <li class="pt"><img src="__PUBLIC__/haihetao/images/quan.png"></li>
+                    <li class="user2">优惠券 </li>
+                    <li class="num"><span>{$userInfo['coupon']}</span>张</li>
+                  </ul>
+                  <ul>
+                    <li class="pt"><img src="__PUBLIC__/haihetao/images/money.png"></li>
+                    <li class="user2">礼舍币</li>
+                    <li class="num"><empty name="userInfo['points']['point_count']">0<else/>{$userInfo['points']['point_count']}</empty></li>
+                  </ul>
+              <div style="clear:both;"></div>
+            </div>
+            <div class="box2">
+                <p class="boxp">购物车</p>
+                <volist name="userInfo['cart']" id="vo" >
+                <ul id="{$vo['cart_id']}">
+                    <li><img src="{$vo['image_default_id']}"></li>
+                    <li class="boxuser">{$vo['title']}</li>
+                    <li class="num2" >￥{$vo['price']}</li>
+                    <li class="del">
+                        <a href="javascript:void(0)" class="cart-del">
+                            <input type="hidden" value="{$vo['cart_id']}">删除
+                        </a>
+                    </li>
+                </ul>
+                </volist>
+                <empty name="userInfo['cart']">
+                    <p class="boxbtn" style="color:#f1f1f1; font-size:12px">购物车空空的！</p>
+                <else/>
+                    <p class="boxbtn"><a href="/cart.html">结算</a></p>
+                </empty>
+                
+            </div>
+            <div class="box3">
+                <p class="boxp">我看过</p>
+                <volist name="userInfo['browList']" id="bl" >
+                    <ul class="itemHistory">
+                        <li><img src="{$bl.img}"></li>
+                        <li class="boxuser2">{$bl.title}</li>
+                        <li class="num2" >￥{$bl.price}</li>
+                    </ul>   
+                </volist>
+                <p class="boxbtn" style="color:#f1f1f1; font-size:12px">
+                    <empty name="userInfo['browList']">
+                        没有浏览记录
+                    <else/>
+                        <a class="delhistory" href="javascript:void(0)">清空历史</a>
+                    </empty>
+                    
+                </p>
+            </div>
+
+            <div class="box4">
+                <!-- <p class="boxp">意见反馈</p> -->
+                <p class="box-p">
+                    问题类型：
+                    <select class="prom-type" name="promType">
+                        <option value='1'>意见反馈</option>
+                        <option value='2'>商品登记</option>
+                    </select>
+                </p>
+
+                <p class="box-p box-item">
+                    商品名称：<input type="text" name="itemName" class="item-name">
+                </p>
+                <p class="box-p box-item">
+                    外站链接：<input type="text" name="itemLink" class="item-link">
+                </p>
+
+                <p class="Rtxt">
+                    <textarea class="feed-back" placeholder="欢迎您对平台提出宝贵意见（限300字）" ></textarea>
+                </p>
+                <p class="boxbtn"><a href="javascript:void(0)" class="abutton">提交</a></p>
+            </div>
+         </div>     
+  </div>
+
+   <!--悬浮栏JS-->
+ <script type="text/javascript">
+    
+
+
+    $(function(){
+        //加载的时候计算出屏幕的高度
+        var mainHeight=document.body.clientHeight;        
+        var box3Height = $('.box3').height();
+        if (box3Height > mainHeight) {
+            $('.box3').css({'overflow-y':'auto','max-height':mainHeight+'px'});
+        };
+        
+
+        $(".Leftul li").click(function(e){
+            e.stopPropagation();
+            var num=$(this).attr("data-id");
+            $(".nvaRight div").hide();
+            $(".box"+num).show();
+        });
+// 关闭侧边栏
+    $('.Leftul .closeThis').click(function(e){
+        e.stopPropagation();
+       $('.nvaRight').hide();
+    });
+ 
+ 
+    $('.Leftul li').click(function(e){
+        e.stopPropagation();
+        if(!$(this).hasClass('active2')){
+            $(this).addClass('active2').siblings().removeClass('active2');
+            var num=$(this).attr("data-id");
+            if(num){
+	            $('.nvaRight').show();
+            }
+        }else{
+            $(this).removeClass('active2');
+            var num=$(this).attr("data-id");
+            if(num){
+	            $('.nvaRight').hide();
+            }            
+        }
+    });
+
+
+    $(".nvaRight").click(function(e){
+        e.stopPropagation();
+    });
+
+    $(document).bind("click",function(e){
+        if(e.target.className != 'nvaRight' && e.target.className != 'nvaLeft') {            
+            $('.nvaRight').hide(); 
+        } 
+    });
+
+
+    //购物车
+    $(".cart-del").bind('click',function(){
+        var athis = $(this);
+        var cartId = athis.children("input").val();
+        if (cartId) {
+            $.ajax({ 
+            type:"post",
+            url:"__APP__/Index/delCart",
+            data: {cartId:cartId},
+            success: function(data){
+                var res = eval(data);
+                if (res[0] = 1) {
+                    athis.parent('li').parent('#'+cartId).remove();                  
+                }else{
+                    alert(res[1]);
+                }
+            }
+        });
+        };
+    });
+
+
+    //清除历史记录
+    $(".delhistory").bind('click',function(){
+        $.ajax({ 
+            type:"post",
+            url:"__APP__/Index/delHistory",
+            success: function(data){
+                var res = eval(data);
+                if (res[0] = 1) {
+                    $(".itemHistory").remove();                  
+                }else{
+                    alert(res[1]);
+                }
+            }
+        });
+    });
+
+    //意见反馈
+    $(".prom-type").change(function(){
+        var changeval = $(this).children('option:selected').val();
+        if (changeval == 2) {
+            $(".box-item").show();
+        }else{
+            $(".box-item").hide();
+        }
+        
+    });
+
+    $(".abutton").click(function(){
+        var promType = $(".prom-type option:selected").val();
+        var itemName = $(".item-name").val();
+        var itemLink = $('.item-link').val();
+        var feedBack = $('.feed-back').val();
+        if (promType == 2) {
+            if (itemName == '') {
+                alert("请填写商品名称！");
+                exit();
+            };
+            if (itemLink == '') {
+                alert("请填写外站链接！");
+                exit();                
+            };
+        };
+        if (feedBack == '') {
+            alert("请填写外反馈内容！");
+            exit();
+        };
+        $.ajax({ 
+            type:"post",
+            url:"__APP__/{$control}/feedBack",
+            data: {promType:promType,itemName:itemName,itemLink:itemLink,feedBack:feedBack},
+            success: function(data){
+                var res = eval(data);
+                if (res[0] = 1) {
+                    alert(res[1]);
+                    $('.item-link').val('');
+                    $(".item-name").val('');
+                    $('.feed-back').val('');
+                }else{
+                    alert(res[1]);
+                }
+            }
+        }); 
+
+    });
+
+
+
+  });
+</script>

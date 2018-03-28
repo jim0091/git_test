@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>用户登录-{$cname}</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/moon2017/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/moon2017/css/ls-member.css" />
+	<style type="text/css">
+	.ls_login_wrap .ls_login_con .login_btn{margin-top: 10px; height: 46px;line-height: 46px;opacity: .85;filter: alpha(opacity=85);transition: .5s; background-color: rgb(18,113,153);border-radius: 4px; font-size: 18px;color: #fff; text-align: center;cursor: pointer;}
+	.ls_login_wrap .ls_login_con .login_btn:hover{background-color: rgb(18,113,153);opacity: 1;filter: alpha(opacity=100);}
+	</style>
+</head>
+<body>
+	<div class="login_header_wrap">
+		<div class="login_header mauto">
+			<div class="ls_vip_logo fl"><img src="<notempty name='logo'>{$logo}<else/>__PUBLIC__/moon2017/images/mm_logo.png</notempty>" style="max-width:200px;max-height: 92px;vertical-align: middle;"/></div>
+			<div class="mem_link fr"><a href="http://www.lishe.cn/shop.php"><img src="__PUBLIC__/moon2017/images/fuli.png" />员工福利加油站</a></div>
+		</div>
+	</div>
+	<!--登录内容-->
+	<div class="main_wrap">
+		<div class="ls_login_wrap mauto">
+			<div class="ls_login_con fr">
+				<h2 class="login_title"><img src="<notempty name='logo'>{$logo}<else/>__PUBLIC__/moon2017/images/mm_logo.png</notempty>" style="max-height:92px;max-width:200px;margin: 10px auto;"/></h2>
+				<div class="ls_input"><div class="ls_icon fl"></div><input type="text" placeholder="请输入账号" maxlength="11" id="userName"></div>
+				<div class="ls_input ls_input2"><div class="ls_icon fl"></div><input type="password" placeholder="请输入密码" id="password"></div>
+				<div class="auto_login"><div class="al_text fl"><input type="checkbox" id="remember"></div><label for="remember">自动登录</label><a href="{:C('LISHE')}/shop.php/sign/index/refer/findPasswd" class="no_remeber fr">忘记密码?</a></div>
+				<p class="waring" style="color: rgb(18,113,153);"><span></span></p>
+				<input type="hidden" id="refer" value="{$refer}">
+				<div class="login_btn" id="loginBtn">登录</div>
+				<div class="register">
+					<a href="{:C('LISHE')}/shop.php/sign/index/refer/activation" class="speed_jh">快速激活</a>
+					<a href="{:U('Home/Cactive/index')}">礼品卡激活</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--banner背景-->
+	<div class="login_banner">
+		<ul class="lb_img">
+			<li><img src="__PUBLIC__/moon2017/images/login2_banner.png" alt=""></li>
+		</ul>
+	</div>
+	<div style="height: 102px;"></div>
+	<div class="footer_text">
+		<p>© 2005-2016 礼舍网 版权所有，并保留所有权利。All rights Reserved</p>
+		<p>ICP备案证书号:粤ICP备15033641号-1</p>
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/moon2017/js/jQuery.v1.8.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function (){
+			$("#userName").focus();
+			$("#loginBtn").click(function(){
+				$(".waring span").text('').hide();		
+			  	var userName=$("#userName").val();
+			  	var password=$("#password").val();
+			    if(userName==""){
+			      $(".waring span").text('*请输入您的用户名！').show();
+			      $("#userName").focus();	      
+			      return false;
+			    }
+			    if(password==""){
+			      $(".waring span").text('*请输入您的登录密码！').show();
+			      $("#password").focus();		      
+			      return false;
+			    } 
+
+				urls="__APP__?c=Login&a=login";
+				$.ajax({
+					type: "POST",
+					url:urls,
+					dataType:"text",
+					cache:false,
+					data: {
+						userName:userName,
+						password:password,
+						mark:'{$control}',
+						check:'n'
+					},
+					success: function(data){
+						var msg=eval(data);
+						if(msg[0]>0){
+							var refer=msg[2];
+							if(refer==''){
+								var refer=$("#refer").val();
+							}
+							var refer=$("#refer").val();
+							if(refer!=''){
+								window.location.href=refer;
+							}else{
+								window.location.href="__APP__/Index/index";	
+							}				
+						}else{
+						    $(".waring span").text('*'+msg[1]).show();
+						    $("#userName").focus();	     			
+						}
+					},
+					error: function () {
+					    $(".waring span").text('*error：'+msg[1]).show();
+					    $("#userName").focus();	     			
+					}
+				});
+			});
+		});
+	//banner轮播图
+		
+		var member = {};
+		var timer = null;
+		
+		member.banner_play = function(){
+			var banner_left =  $(window).width()-1920;
+			var banner_ml = banner_left / 2;
+
+			if(banner_ml < -369){
+				banner_ml = -369;
+			}
+			$('.lb_img li img').css('left',banner_ml);
+			
+			$(".lb_img li").eq(0).show();
+			/*var siLi = 0;
+			    timer = setInterval(play,5000);
+			function play(){
+				siLi++;
+				siLi = siLi > $('.lb_img li').length-1 ? 0 : siLi; 
+
+				$('.lb_img li').eq(siLi).fadeIn(600).siblings().fadeOut(600);
+			}*/
+		}
+		member.banner_play();
+
+		
+		$(window).resize(function(){
+			clearInterval(timer);
+			member.banner_play();
+		});
+
+
+	</script>
+</body>
+</html>

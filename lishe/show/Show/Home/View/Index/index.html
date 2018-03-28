@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="__PUBLIC__/companyShow/css/showIndex.css">
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/companyShow/js/jquery.jslides_sy.js"></script>
+<title>首页-{$cname}</title>
+<style>
+	/*banner轮播图*/
+.banner{background:url({$img}{$pics[0]}) center center no-repeat;}
+.banner2{background:url({$img}{$pics[1]}) center center no-repeat;}
+.banner3{background:url({$img}{$pics[2]}) center center no-repeat;}
+.tbox1mbox{width:100%; height:450px; position:relative;}
+.tbox1mboxul {display:block; width:100%; height:450px; list-style:none; padding:0; margin:0; position:relative}
+.tbox1mboxul li {display:block; width:100%; height:450px; list-style:none; padding:0; margin:0; position:absolute}
+.tbox1mboxul li a {display:block; width:100%; height:450px; text-indent:-9999px}
+.tbox1mboxul li a img{width:100%; height:450px;}
+#pagination1 {position:absolute; left:48%; top:90%;  z-index:9900; width:200px; padding:5px 0;text-align:left;}
+#pagination1 li { display:inline-block;width:15px; height:15px;  text-align:center;  margin:0 10px;background:#fff; border-radius:50% }
+#pagination1 li a { display:block; width:100%;height:100%;text-align:center; color:#fff; font-size:0}
+#pagination1 li.current {background:#907178;}
+/*轮播end*/
+.Thismonth ul:hover{box-shadow:0px 0px 12px 0px #666;animation:5s 10s both linear;transform:translate(0,-5px);}	
+</style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body>
+<!--头部-->
+  <div class="header">
+     <div class="hea-top">
+         <ul class="hed-left">
+            <li><a href="http://www.lishe.cn/" target="_blank" style="padding:7px 5px; margin-right:8px;">礼舍首页</a><span>|</span></li>
+            <li><a href="http://www.lishe.cn/shop.html" target="_blank">心意商城</a><span>|</span></li>
+            <li><a href="http://www.lishe.cn/help_index.html" target="_blank">礼舍帮帮</a></li>
+         </ul>
+         <ul class="hed-right">
+			<empty name="userId">
+	            <li><a href="{:U('Home/Login/index')}">个人登录</a><span>|</span></li>
+				<else/>
+	            <li>{$userName}，<a href="{:U('Home/Login/logout')}" style="color:#c7241d">退出</a><span>|</span></li>
+				
+			</empty>
+            
+            <li><a href="http://v.lishe.cn/company/login.html">企业登录</a></li>
+         </ul>
+      </div>
+  </div>    
+  <div class="hea-bom">
+      <div class="hbom-cnt">
+          <ul class="hb-left">
+            <li class="hbom-li">
+            <a href="/"><img src="{$logo}" width="170"></a>
+            </li>
+            <li><p class="hbom">{$cname}</p><p class="hbom-a">已认证</p></li>
+          </ul>
+          <ul class="hb-right">
+            <li class="hr">咨询热线</li>
+            <li class="hr2">{$info.comphone}</li>
+          </ul>
+            <ul class="navLeft" style="padding-top: 50px;">
+               <li class="mainlevel"><a href="/">首页</a></li> 
+               <li class="mainlevel">
+               <a href="{:U('Home/Index/about')}">关于我们</a>
+               </li>
+               <li class="mainlevel">
+               <a href="{:U('Home/Index/partner')}">伙伴动态</a>
+               </li> 
+               <li class="mainlevel">
+               <a href="{:U('Home/Index/industry')}">新闻中心</a>
+               </li>    
+               <li class="mainlevel">
+               <a href="{:U('Home/Item/index')}">企业福利</a>
+               </li>   
+            </ul>         
+      </div>
+  </div> 
+  <!--头部end-->
+  <!--banner轮播-->
+   <div class="tbox1mbox">
+       <ul id="slides" class="tbox1mboxul">
+       <a href="#"><li class="banner"></li></a> 
+       <a href="#"><li style="display:none" class="banner2"></li></a> 
+       <a href="#"><li style="display:none" class="banner3"></li></a>  
+       </ul> 
+   </div>
+ <!--轮播end-->
+ <!--头条新闻-->
+ <div class="hdlineNews">
+    <p class="hn-p">头条新闻</p>
+    <div class="hn-left">
+		<a href="{:U('Home/Index/coverageDetail',array('newsId'=>$news['toTop']['news_id'],'type'=>$news['toTop']['category']))}"> 
+	       <p class="pt-n"><img src="{$img}{$news.toTop.pic}"></p>
+	   </a>
+       <p class="words">{$news.toTop.title}</p>
+    </div>
+    <div class="hn-right">
+       
+       <ul>
+       	<volist name="news.top" id="vo">
+			<a href="{:U('Home/Index/coverageDetail',array('newsId'=>$vo['news_id'],'type'=>$vo['category']))}"> 
+		          <li><img src="{$img}{$vo.pic}">
+		              <p class="titi">{$vo.title}</p>
+		              <p class="titi" style="font-size: 12px;">{$vo.vice_title}</p>
+		              <p class="des">{$vo.abstract} </p>
+		              <p class="time">发布时间：{$vo.creat_time}</p>
+		          </li>
+         	</a>
+			</volist>
+       </ul>
+    </div>
+    <div style="clear:both;"></div>
+ </div>
+ <!--本月新人王-->
+ <div class="Thismonth">
+    <p class="tmo">本月新人王<span><a href="{:U('Home/Index/super')}">更多</a></span></p>
+   	<volist name="newP" id="vo">
+   	<a href="{:U('Home/Index/super',array('personId'=>$vo['id']))}">
+	   <ul>
+	      <li class="imgHeight"><img src="{$img}{$vo.pic}"></li>
+	      <li class="tm-user">{$vo.name}</li>  
+	      <li class="zw">{$vo.position}</li>
+	      <li class="zw">{$vo.content}</li>
+	    </ul>
+  	</a>
+		</volist>
+    <div style="clear:both;"></div>
+ </div>
+ <!--月度寿星-->
+ <div class="Thismonth">
+    <p class="tmo">本月寿星<span><a href="{:U('Home/Index/birthday')}">更多</a></span></p>
+    <volist name="monthB" id="vo">
+      <a href="{:U('Home/Index/birthdayDetail',array('personId'=>$vo['id']))}">
+	    <ul>
+	      <li class="imgHeight"><img src="{$img}{$vo.pic}"></li>
+	      <li class="tm-user">{$vo.name}</li>
+	      <li class="zw">{$vo.position}</li>
+	      <li class="zw">***年{$vo.birthday}</li>
+	    </ul>
+    </a>
+	</volist>
+    <div style="clear:both;"></div>
+ </div>
+
+
+
+<div style="clear: both;"></div>   
+ <include  file="Public/footer"/>
+</body>
+
+
+</html>

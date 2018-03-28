@@ -1,0 +1,69 @@
+/* 通用 */
+*{padding:0;  margin:0;}
+ul, li{list-style:none;}
+a{text-decoration:none;}
+img{border:none;}
+body{font-family:"宋体";}
+html, body{height: 100%; width: 100%;}
+
+.wrap{height: 9397px;}
+.banner{background-color: #131836; overflow: hidden;}
+.banner li{display: none;}
+.banner img{position: 50% 50%; width: 100%;}
+.banner .current{display: block;}
+.content{width: 100%; height: 8779px; background: url("../images/content.jpg") no-repeat center center;}
+.limitedsend{width: 100%; height: 501px;}
+
+.goods{width: 1132px; margin: 0 auto; position: relative;}
+#goods1{height: 1186px; margin-top: 150px;}
+#goods1 .topleft{top: 517px; left: 294px;}
+#goods1 .topright1{top: 517px; right: 290px;}
+#goods1 .topright2{top: 517px; right: 15px;}
+#goods1 .bottom{bottom: 34px; left: 585px;}
+
+#goods2{height: 1166px; margin-top: 158px;}
+#goods2 .topleft1{top: 516px; left: 156px;}
+#goods2 .topleft2{top: 516px; left: 433px;}
+#goods2 .topright1{top: 516px; right: 294px;}
+#goods2 .topright2{top: 516px; right: 17px;}
+#goods2 .bottomleft1{bottom: 35px; left: 156px;}
+#goods2 .bottomleft2{bottom: 35px; left: 432px;}
+#goods2 .bottomright1{bottom: 35px; right: 294px;}
+#goods2 .bottomright2{bottom: 35px; right: 17px;}
+
+#goods3{height: 1166px; margin-top: 158px;}
+#goods3 .topleft{top: 514px; left: 304px;}
+#goods3 .topright1{top: 514px; right: 290px;}
+#goods3 .topright2{top: 514px; right: 15px;}
+#goods3 .bottomleft1{bottom: 37px; left: 157px;}
+#goods3 .bottomleft2{bottom: 37px; left: 434px;}
+#goods3 .bottomright1{bottom: 37px; right: 291px;}
+#goods3 .bottomright2{bottom: 37px; right: 15px;}
+
+#goods4{height: 592px; margin-top: 168px;}
+#goods4 .topleft1{top: 517px; left: 157px;}
+#goods4 .topleft2{top: 517px; left: 433px;}
+#goods4 .topright1{top: 517px; right: 288px;}
+#goods4 .topright2{top: 517px; right: 13px;}
+
+#goods5{height: 652px; margin-top: 158px;}
+#goods5 .topleft1{top: 517px; left: 157px;}
+#goods5 .topleft2{top: 517px; left: 433px;}
+#goods5 .topleft3{top: 577px; left: 296px;}
+#goods5 .topright1{top: 517px; right: 178px;}
+
+#goods6{height: 1226px; margin-top: 158px;}
+#goods6 .topleft{top: 516px; left: 310px;}
+#goods6 .topright1{top: 516px; right: 290px;}
+#goods6 .topright2{top: 516px; right: 14px;}
+#goods6 .topright3{top: 575px; right: 150px;}
+#goods6 .bottomleft1{bottom: 36px; left: 268px;}
+#goods6 .bottomright1{bottom: 36px; right: 181px;}
+
+#goods7{height: 1166px; margin-top: 156px;}
+#goods7 .topleft{top: 517px; left: 284px;}
+#goods7 .topright{top: 517px; right: 160px;}
+#goods7 .bottomleft{bottom: 35px; left: 286px;}
+#goods7 .bottomright{bottom: 35px; right: 153px;}
+
+.content a{display: block; width: 102px; height: 42px; position: absolute;}

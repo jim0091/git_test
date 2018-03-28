@@ -1,0 +1,61 @@
+@charset "utf-8";
+body{background:url(../images/luck_bg.jpg) no-repeat;}
+img{vertical-align: top;}
+.header_banner{height: 500px;}
+.header_banner img{width: 100%;min-width: 1260px;}
+.step_wrap{width: 1120px;height: 313px;}
+.step_wrap ul li{float: left; width: 280px;height: 313px;cursor: pointer;transition: .2s;}
+.step_wrap ul .h_step1{background:url(../images/step_bg11.png) center center no-repeat;}
+.step_wrap ul .h_step2{background:url(../images/step_bg22.png) center center no-repeat;}
+.step_wrap ul .h_step3{background:url(../images/step_bg33.png) center center no-repeat;}
+.step_wrap ul .h_step4{background:url(../images/step_bg44.png) center center no-repeat;}
+.step_wrap ul .h_step1:hover{background:url(../images/step_bg1.png) center center no-repeat;}
+.step_wrap ul .h_step2:hover{background:url(../images/step_bg2.png) center center no-repeat;}
+.step_wrap ul .h_step3:hover{background:url(../images/step_bg3.png) center center no-repeat;}
+.step_wrap ul .h_step4:hover{background:url(../images/step_bg4.png) center center no-repeat;}
+.luck1{margin-top: 96px; text-align: center;}
+/*³é½±ÇøÓò*/
+.draw_wrap{height: 597px;padding-left: 46px;margin-top: 48px;}
+.draw_wrap .draw_content{padding-right: 99px; width: 951px;height: 597px;background: url(../images/draw_bg.png) right center no-repeat;box-sizing: border-box;-ms-box-sizing: border-box;}
+.draw_wrap .draw_content .draw_bg2{position: relative; width: 597px;height: 597px;}
+.draw_wrap .draw_content .draw_bg2 img{position: absolute;}
+.draw_wrap .draw_content .draw_bg2 #jp_bg{top: 41px;left: 41px;}
+.draw_wrap .draw_content .draw_bg2 #start{top: 171px;left: 214px;cursor: pointer;}
+.draw_wrap .draw_content .user_list_wrap{padding-top: 154px;width: 223px;height: 340px;}
+.draw_wrap .draw_content .user_list_wrap h2{font-size: 18px;color: #fff;font-weight: normal;line-height: 18px;}
+.draw_wrap .draw_content .user_list_wrap h2 span{line-height: 18px;}
+.draw_wrap .draw_content .user_list_wrap h2 .sp1,.user_list_wrap ul li .sp2{display: inline-block;width: 108px;}
+.draw_wrap .draw_content .user_list_wrap{height: 341px; font-size: 14px;color: #fff;overflow: hidden;}
+.draw_wrap .draw_content .user_list_wrap .list_con{margin-top: 10px; height: 312px;overflow: hidden;}
+.draw_wrap .draw_content .user_list_wrap ul li{height: 38px;line-height: 38px;border-bottom: 1px dashed #fff;}
+.result{position: fixed;z-index: 300; top: 0;left: 45%;top: 30%; margin-left: -245px; display: none;}
+.result #close{position: absolute;right: 25px;top: 0;width: 64px;height: 68px;cursor: pointer;background: #fff;opacity: 0;filter: alpha(opacity=0);display: block;}
+.side{display: none; position: fixed;z-index: 200; top: 0;left: 0;width: 100%;height: 100%;background:#000; opacity: .5;filter: alpha(opacity=50);}
+.draw_text{margin-top: 72px; text-align: center;}
+.floor_tit{margin-top: 104px;margin-bottom: 66px; text-align: center;}
+.product{position: relative;margin-left: auto;margin-right: auto; width: 1200px; margin-bottom: 63px; text-align: center;}
+.product a{position: absolute;top: 0; display: block;width: 386px;height: 100%; background-color: #fff;opacity: 0;filter: alpha(opacity=0);}
+.product .product_item2{left:405px;}
+.product .product_item3{left:809px;}
+.pmb0{margin-bottom: 0px;}
+.floor_tit2{margin-top: 143px;margin-bottom: 104px;text-align: center;}
+.floor_tit3{margin-top: 162px;margin-bottom: 117px;text-align: center;}
+.product_select{margin-top: 125px; text-align: center;}
+.go_top{padding-top: 100px; height: 327px;text-align: center;}
+.go_top img{cursor: pointer;}
+.floor_fixed{display: none; position: fixed;z-index: 9999; top: 43%;padding-top: 66px; width: 191px;height: 358px; left: 0;background: url(../images/floor_bg.png) no-repeat;}
+.floor_fixed span,.floor_fixed a{display: block;height: 70px;cursor: pointer;}
+.floor_fixed a{opacity: 0;filter: alpha(opacity=0);background-color: #fff;}
+
+.draw_text{position: relative; width: 1226px;}
+.draw_text .show_dtp{position: absolute;top: 198px;left: 200px;width: 314px;height: 26px;border:1px solid red; cursor: pointer;background: #fff;opacity: 0;filter: alpha(opacity=0);display: block;}
+.draw_text .draw_p_wrap{display: none; position: fixed;left: 50%;top: 30%;margin-left: -290px;z-index: 666;}
+.draw_text .draw_p_wrap .dclose{position: absolute;right: 0;top: 0;width: 66px;height: 66px;cursor: pointer;}
+
+
+
+
+
+
+
+

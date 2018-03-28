@@ -1,0 +1,722 @@
+<head>
+    <link rel="stylesheet" href="index/css/slide.css">
+</head>
+<script type="text/javascript">
+$('#header').hide();
+$('#nav').hide();
+</script>
+<style type="text/css">
+body,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+dl, dd,
+fieldset, form,
+input, select, textarea,
+button,
+figure {
+  margin: 0;
+}
+
+ul, ol, menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 75%;
+  line-height: 1.5;
+}
+
+img {
+	border: 0px;
+}
+
+
+     a {text-decoration: none;}
+	 ul {list-style:none;}
+	 .footer div.footer-main-left {color: #7e7a89;}
+	.head { width:100%; background-color: #a12124;}
+	.head .nav {width: 1190px;height: 100px;margin: 0 auto;}
+	.head .img {padding-top: 23px;padding-left: 24px; float: left;}
+	.head .p1 {float: left;font-size: 23px;font-weight: 900;color: white;margin: 38px 10px 0px 20px;}	
+	.head .right {float: right;}
+	.head .right .p {color: white;font-family: 微软雅黑;text-align: right;}
+	.head .right .img {margin-top: -22px;}
+	.content-1 {width: 1190px; margin: 0 auto;height: 159px;}
+	.content-1 .nav {padding-top: 10px;}
+	.content-1 .nav .top {}	
+	.content-1 .nav .top div {width: 231.5px;height:140px;text-align: center;float:left;background-color: rgb(219, 219, 219);padding-top: 9px;margin-right: 8px;}
+	.content-1 .nav .top  .p1 {font-family: 微软雅黑;font-weight: 600;color: rgb(84, 82, 82);font-size: 18px;margin-top: 7px;}
+	.content-1 .nav .top  .p2 {font-size: 12px;color: rgb(95, 92, 92);}
+	.content-2 {background-color: rgb(245, 245, 245);height: 700px; display: none;}
+	.content-2 .nav {width: 1190px;margin: 0 auto;}
+	.content-2 .nav .top {text-align: center;font-family: 微软雅黑;}
+	.content-2 .nav .top  .p1 {font-size: 39px;font-weight: 900;padding-top: 70px;margin: 0px;}
+	.content-2 .nav .top  .p2 {font-size: 24px;color: rgb(124, 117, 117);margin-top: 2px; margin-bottom: 52px;}
+	.content-2 .nav .bottom {font-size: 30px;color: white;}	
+	.content-2 .nav .bottom .div1 {height:201px;}	
+	.content-2 .nav .bottom .div1 div {width: 370px;}	
+	.content-2 .nav .bottom .div1 img {width: 370px;}	
+	.content-2 .nav .bottom .d1 {float: left;}	
+	.content-2 .nav .bottom .d1 .img {}	
+	.content-2 .nav .bottom .d1 .div {background-color: black;opacity: 0.5;margin-top: -58px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;height: 58px;line-height: 58px;text-align: center;}	
+	.content-2 .nav .bottom .d2 {float: left;margin: 0px 40px;}	
+	.content-2 .nav .bottom .d2 .img {}	
+	.content-2 .nav .bottom .d2 .div {background-color: black;opacity: 0.5;margin-top: -58px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;height: 58px;line-height: 58px;text-align: center;}	
+	.content-2 .nav .bottom .d3 {float: left;}	
+	.content-2 .nav .bottom .d3 .img {}	
+	.content-2 .nav .bottom .d3 .div {background-color: black;opacity: 0.5;margin-top: -58px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;height: 58px;line-height: 58px;text-align: center;}	
+	
+	.content-2 .nav .bottom .div2 {height:201px;margin-top: 24px;}	
+	.content-2 .nav .bottom .div2 div {width: 370px;}	
+	.content-2 .nav .bottom .div2 img {width: 370px;}	
+	.content-3 {margin: 0 auto;position: relative;width: 88%; /* min-width: 1500px; */}
+	.content-3 .div {margin-top: -75px;background-color: rgb(236, 15, 83);color: white;font-family: "微软雅黑";font-size: 23px;width: 380px;height: 50px;border-radius: 2;line-height: 50px;text-align: center;margin: 0 auto;position: relative;}
+	.content-3 .nav .img {width: 100%;}
+	.content-4 {position: relative; height: 834px;display: none;}
+	.content-4 .img1 {width: 100%;height: 834px;}	
+	.content-4 .div {position: absolute; width: 100%;height: 834px;background-color: black;opacity: 0.4;position: absolute;top: 0px; z-index: 1; text-align: center;}
+	.content-4 .div .font-div {width: 1176px;margin: 0 auto;position: relative;top: 200px;}
+	.content-4 .div .img2 {float: right;position: relative;right: 41px;top: 41px;}
+	.content-4 .div .img3 {position: relative;top: 575px;}
+	.content-4 .div .font-div .span1 {font-family: "微软雅黑";color: white;font-size: 115px;}
+	.content-4 .div .font-div .span2 {font-family: "微软雅黑";color: white;font-size: 86px;margin-left: 100px;}
+	.content-6 {width: 100%;background-color: rgb(250, 249, 249);}
+	.content-6 .nav {max-width: 1190px;margin: 0 auto;}
+	.content-6 .nav .img {width: 100%;}
+	.content-7 {width: 100%;}
+	.content-7 .nav {max-width: 1190px;margin: 0 auto;}
+	.content-7 .nav .img {width: 100%;}
+	.content-5 {height: 492px; margin-top: -60px; padding-top: 100px; overflow: hidden;}
+	.content-5 .nav {width: 1190px;	margin: 0 auto;}
+	.content-5 .nav .left{width: 663px;float: left;}
+	.content-5 .nav .left .img {}
+	.content-5 .nav .right{width: 517px;float: right;height: 445px;border-left: 2px solid rgb(218, 218, 218);}
+	.content-5 .nav .right .top {margin-top: 53px;margin-left: 14px;}
+	.content-5 .nav .right .top .img {}
+	.content-5 .nav .right .bottom {height: 291px;overflow: scroll;overflow-x: hidden;margin-top: 50px;}
+	.content-5 .nav .right .bottom .div{width: 210px;height: 127px;border: 1px solid rgb(218, 218, 218);margin:0px 10px 10px 0px;}
+	.content-5 .nav .right .bottom .div-top {height: 100px; margin-top: 9px;}
+	.content-5 .nav .right .bottom .div-top .img {width: 50%;height: 80px;float: left;padding: 0px 9px;}
+	.content-5 .nav .right .bottom .div-top .p1 {font-family: "微软雅黑";font-size: 12px;color: gray; padding: 6px;}
+	.content-5 .nav .right .bottom .div-bottom {margin: 6px;margin-top: -11px;}
+	.content-5 .nav .right .bottom .div-bottom img {position: relative; top: 2px;}
+	.content-5 .nav .right .bottom .div-bottom span {padding: 0px 6px 0px 2px;}
+	.content-5 .nav .right .bottom .div-bottom .likes {}
+	.content-5 .nav .right .bottom .div-bottom .replies {top: 4px;}
+	.content-5 .nav .right .bottom .div-bottom .views {}
+	.content-5 .nav .right .bottom .ul {list-style:none;padding-left: 17px;margin-top: 4px;}
+	.content-5 .nav .right .bottom .ul li {width: 238px;height: 156px;float: left;}
+
+	.topbar {height: 36px;line-height: 36px;	color: #999;border-bottom: 1px solid #dcdcdc;}
+	.topbar .line{float: left;width: 1px;height: 32px;margin: 2px 0px;background: #dcdcdc;}
+	.topbar a {float: left;	color: #333;padding: 0px 15px;font-size: 16px;}
+	.topbar a:hover { color: #a12124;  }
+	.topbar .subnav a { margin: 0 10px;}
+	.topbar .topbar-left { float: left; width: 300px; line-height: 37px}
+	.topbar .topbar-right { float: right; line-height: 37px}
+}
+</style>
+<div class="head">
+  <div class="nav">
+      <img class="img" src="images/index_logo.png">
+      <p class="p1">礼舍，是一种情感的交流</p>
+    <div class="right">
+        <p class="p">招商咨询热线</p>
+        <img class="img" src="images/index_phone.png">
+      </div>
+    </div>
+</div>
+
+<div class="main">
+	<div class="mianc">
+		
+
+		<!-- Demo start -->
+		<!-- css -->
+		<link rel="stylesheet" href="index/css/slide.css">
+		<style>
+		.ck-slide { width: 100%; height: 400px; margin: 0 auto; padding:0px;}
+		.ck-slide ul.ck-slide-wrapper { height: 320px;}
+		.ck-slide ul.ck-slide-wrapper li div.div{    width: 1300px;   margin: auto;   z-index: 9999;   margin-top: -574px;   height: 574px;}
+		</style>
+		
+		<!-- html -->
+		<div class="ck-slide">
+			<ul class="ck-slide-wrapper">
+				<a href="http://v.lishe.cn/company/register.html" target="_blank">
+					<li>
+						<img src="index/images/1_02.png" alt="">
+					</li>
+				</a>
+				<a href="http://v.lishe.cn/company/login.html" target="_blank">
+					<li style="display:none">
+						<img src="index/images/2_02.png" alt="">
+					</li>
+				</a>
+				<a href="/shop.html" target="_blank">
+					<li style="display:none">
+						<img src="index/images/3_02.png" alt="">
+					</li>
+				</a>
+				
+			</ul>
+			<a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
+			<div class="ck-slidebox">
+				<div class="slideWrap">
+					<ul class="dot-wrap">
+						<li class="current"><em>1</em></li>
+						<li><em>2</em></li>
+						<li><em>3</em></li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content-1">
+	<div class="nav">
+		<div class="top">
+        	<div class="div1">
+				<a href="/theme/boss.html" target="_blank">
+					<img class="img1" src="index/images/index_img1.png" />
+					<p class="p1">我是老板</p>
+					<p class="p2">为什么选择礼舍</p>
+				</a>
+            </div>
+            <div class="div2">
+				<a href="/theme/hr.html" target="_blank">
+					<img class="img2" src="index/images/index_img2.png" />
+					<p class="p1">我是HR</p>
+					<p class="p2">如何轻松管理</p>
+				</a>
+            </div>
+            <div class="div3">
+				<a href="/theme/member.html" target="_blank">
+					<img class="img3" src="index/images/index_img3.png" />
+					<p class="p1">我是员工</p>
+					<p class="p2">礼舍福利有何不同</p>
+				</a>
+            </div>
+            <div class="div4">
+				<a href="/theme/user.html" target="_blank">
+					<img class="img4" src="index/images/index_img4.png" />
+					<p class="p1">礼舍用户</p>
+					<p class="p2">使用心得</p>
+				</a>
+            </div>
+            <div class="div5" style="margin-right: 0px;">
+				<a href="/theme/new-hand.html" target="_blank">
+					<img class="img5" src="index/images/index_img5.png" />  
+					<p class="p1">新手入门</p>
+					<p class="p2">玩赚礼舍</p>
+				</a>
+            </div>                             
+        </div>
+    </div>
+</div>
+<style>
+.content-hover {
+	background: #fff;
+}
+.content-hover .content-hover-nav {
+	position: relative;
+	width: 1190px;
+	height: 628px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.content-hover .title {
+	height: 160px;
+}
+.content-hover .title .title-top {
+	font-size: 39px;
+	line-height: 64px;
+	font-weight: bold;
+	color: #000;
+	padding-top: 40px;
+}
+.content-hover .title .title-sub {
+	font-size: 24px;
+	line-height: 24px;
+	color: rgb(124, 117, 117);
+}
+
+.content-hover .content-hover-main {
+	position: relative;
+	color: #B2ADAD;
+}
+
+.content-hover .content-hover-main ul li img {
+	width: 83px;
+	height: 83px;
+}
+
+.content-hover .content-hover-main a {
+	color: #C2C1C1;
+}
+.content-hover .content-hover-main ul li img.default {
+	display: block;
+}
+.content-hover .content-hover-main ul li.hover img.hide {
+	display: none;
+}
+.content-hover .content-hover-main ul li img.select {
+	display: none;
+}
+.content-hover .content-hover-main ul li.hover img.on {
+	display: block;
+}
+.content-hover .content-hover-main ul li {
+	cursor: pointer;
+}
+.content-hover .content-hover-main ul li:hover, .content-hover .content-hover-main ul li.hover {
+	color: #a12124;
+}
+
+.content-hover .content-hover-main .content-hover-left {
+	float: left;
+	width: 310px;
+	height: 428px;
+	padding: 50px 0px 0px 0px;
+}
+.content-hover .content-hover-main .content-hover-left p.content-hover-title {
+	font-size: 28px;
+	line-height: 36px;
+	text-align: left;
+	padding-left: 71px;
+}
+.content-hover .content-hover-main .content-hover-left ul {
+	
+}
+.content-hover .content-hover-main .content-hover-left ul li {
+	float: left;
+	padding: 30px 0px 0px 71px;
+}
+.content-hover .content-hover-main .content-hover-left ul li p {
+	font-size: 16px;
+	line-height: 36px;
+}
+
+
+.content-hover .content-hover-main .content-hover-right {
+	float: left;
+	width: 310px;
+	height: 428px;
+	padding: 50px 0px 0px 0px;
+}
+.content-hover .content-hover-main .content-hover-right p.content-hover-title {
+	font-size: 28px;
+	line-height: 36px;
+	text-align: left;
+	padding-right: 71px;
+}
+.content-hover .content-hover-main .content-hover-right ul {
+	
+}
+.content-hover .content-hover-main .content-hover-right ul li {
+	float: left;
+	padding: 30px 71px 0px 0px;
+}
+.content-hover .content-hover-main .content-hover-right ul li p {
+	font-size: 16px;
+	line-height: 36px;
+}
+
+.content-hover .content-hover-main .content-hover-middle {
+	position: relative;
+	width: 569px;
+	height: 428px;
+	background: url(./images/hover/iPhone_bg.png); 
+	background-size: cover; 
+	text-align: center;
+	float: left;
+	cursor: pointer;
+}
+.content-hover .content-hover-main .content-hover-middle img {
+	position: absolute;
+	top: 24%;
+	left: 38%;
+	filter:alpha(opacity=0);  
+	-moz-opacity: 0;  
+	-khtml-opacity: 0;  
+	opacity: 0;
+	-webkit-transform: scale(.95);
+	-moz-transform: scale(.95);
+	-o-transform: scale(.95);
+	-ms-transform: scale(.95);
+	transform: scale(.95);
+	-webkit-transition: all .8s eas;
+	-moz-transition: all .8s ease;
+	-o-transition: all .8s ease;
+	-ms-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.content-hover .content-hover-main .content-hover-middle .show {
+	z-index: 1;
+	filter:alpha(opacity=100);  
+	-moz-opacity: 1;  
+	-khtml-opacity: 1;  
+	opacity: 1;
+	-webkit-transform: scale(1.0);
+	-moz-transform: scale(1.0);
+	-o-transform: scale(1.0);
+	-ms-transform: scale(1.0);
+	transform: scale(1.0);
+	-webkit-transition: all .8s eas;
+	-moz-transition: all .8s ease;
+	-o-transition: all .8s ease;
+	-ms-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.content-hover .content-hover-main .content-hover-middle img:hover {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: all .8s eas;
+	-moz-transition: all .8s ease;
+	-o-transition: all .8s ease;
+	-ms-transition: all .8s ease;
+	transition: all .8s ease;
+}
+.content-hover .content-hover-main .content-hover-middle div {
+	position: absolute;
+	filter:alpha(opacity=0);  
+	-moz-opacity: 0;  
+	-khtml-opacity: 0;  
+	opacity: 0;
+	top: 59%;
+	width: 100%;
+}
+.content-hover .content-hover-main .content-hover-middle p {
+	font-size: 12px; 
+	line-height: 16px;
+	color: #919090;
+}
+.content-hover .content-hover-main .content-hover-middle p.content-hover-middle-title {
+	font-size: 28px; 
+	line-height: 42px;
+	color: #a12124;
+}
+</style>
+<div class="content-hover">
+	<div class="content-hover-nav">
+		<div class="title">
+			<p class="title-top">礼舍为企业与个人量身定制情商管理平台</p>
+			<p class="title-sub">在移动互联网时代，礼舍成为一种情感交流</p>
+		</div>
+		<div class="content-hover-main">
+			<div class="content-hover-left">
+				<p class="content-hover-title">FOR 企业</p>
+				<ul>
+					<a href="/theme/help.html?item=0">
+					<li class="hover">
+						<img src="index/images/hover/employee_default_icon.png" class="default hide" />
+						<img src="index/images/hover/employee_select_icon.png" class="select on" />
+						<p>就让员工爽</p>
+					</li>
+					</a>
+					<a href="/theme/help.html?item=1">
+					<li>
+						<img src="index/images/hover/raiders_default_icon.png" class="default hide" />
+						<img src="index/images/hover/raiders_select_icon.png" class="select on" />
+						<p>攻略秘籍库</p>
+					</li>
+					</a>
+					<a href="/theme/help.html?item=2">
+					<li>
+						<img src="index/images/hover/variety_default_icon.png" class="default hide" />
+						<img src="index/images/hover/variety_select_icon.png" class="select on" />
+						<p>百变心意礼</p>
+					</li>
+					</a>
+					<a href="/theme/help.html?item=3">
+					<li>
+						<img src="index/images/hover/boss_default_icon.png" class="default hide" />
+						<img src="index/images/hover/boss_select_icon.png" class="select on" />
+						<p>给老板汇报</p>
+					</li>
+					</a>
+				</ul>
+			</div>
+			<a href="/theme/help.html" class="middle-url">
+				<div class="content-hover-middle">
+					<img src="index/images/hover/boss_content_icon.png" class="show" />
+					<img src="index/images/hover/raiders_content_icon.png"/>
+					<img src="index/images/hover/variety_content_icon.png"/>
+					<img src="index/images/hover/boss_content_icon.png"/>
+					<img src="index/images/hover/welfare_content_icon.png"/>
+					<img src="index/images/hover/gifts_content_icon.png"/>
+					<img src="index/images/hover/socially_content_icon.png"/>
+					<img src="index/images/hover/buy_conent_icon.png"/>
+					<div class="show">
+						<p class="content-hover-middle-title">就让员工爽</p>
+						<p>一键发放福利</p>
+						<p>定制专属祝福</p>
+						<p>定制走心礼品</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">攻略秘籍库</p>
+						<p>员工情商管理秘籍</p>
+						<p>员工福利激励攻略</p>
+						<p>重大节日送礼指南</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">百变心意礼</p>
+						<p>积分兌换商品</p>
+						<p>做任务赢积分</p>
+						<p>别人福利发啥</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">给老板汇报</p>
+						<p>员工满意反馈</p>
+						<p>周期积分发放</p>
+						<p>年度福利账单</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">福利自个挑</p>
+						<p>积分兌换商品</p>
+						<p>乐享玩赚积分</p>
+						<p>向领导讨福利</p>
+						<p>福利积分任换</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">送礼困难症</p>
+						<p>个人情商管理秘籍</p>
+						<p>领导上司攻心攻略</p>
+						<p>亲友节日送礼指南</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">社交赚人品</p>
+						<p>给亲友发红包</p>
+						<p>给领导送祝福</p>
+						<p>送个暖心好礼</p>
+						<p>小傲娇晒福利</p>
+					</div>
+					<div>
+						<p class="content-hover-middle-title">我都买了啥</p>
+						<p>My福利收藏夹</p>
+						<p>月度积分账单</p>
+						<p>年度福利收支</p>
+					</div>
+				</div>
+			</a>
+			<div class="content-hover-right">
+				<p class="content-hover-title">FOR 个人</p>
+				<ul>
+					<a href="/theme/help.html?item=4">
+					<li>
+						<img src="index/images/hover/welfare_default_icon.png" class="default hide" />
+						<img src="index/images/hover/welfare_select_icon.png" class="select on" />
+						<p>福利自个挑</p>
+					</li>
+					</a>
+					<a href="/theme/help.html?item=5">
+					<li>
+						<img src="index/images/hover/gifts_default_icon.png" class="default hide" />
+						<img src="index/images/hover/gifts_select_icon.png" class="select on" />
+						<p>送礼困难症</p>
+					</li>
+					</a>
+					<a href="/theme/help.html?item=6">
+					<li>
+						<img src="index/images/hover/socially_default_icon.png" class="default hide" />
+						<img src="index/images/hover/socially_select_icon.png" class="select on" />
+						<p>社交赚人品</p>
+					</li>
+					</a>
+					<a href="/theme/help.html?item=7">
+					<li>
+						<img src="index/images/hover/buy_default_icon.png" class="default hide" />
+						<img src="index/images/hover/buy_select_icon.png" class="select on" />
+						<p>我都买了啥</p>
+					</li>
+					</a>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/app/site/statics/scripts/lib/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+    var _content_hover_main = $('.content-hover .content-hover-main');
+    _content_hover_main.find('li').hover(function() {
+		var _index = _content_hover_main.find('li').index($(this));
+		_content_hover_main.find('li').removeClass('hover').eq(_index).addClass('hover');
+		_content_hover_main.find('div.content-hover-middle img').removeClass('show').eq(_index).addClass('show');
+		_content_hover_main.find('div.content-hover-middle div').removeClass('show').eq(_index).addClass('show');
+		// _content_hover_main.find('div.content-hover-middle p.content-hover-middle-title').text(_content_hover_main.find('li').eq(_index).find('p').text());
+		// $(this).find('img.default').addClass('hide').parent().find('img.select').addClass('on');
+		console.log('href -- : ' + $(this).parent().attr('href'));
+		$('.middle-url').attr('href', $(this).parent().attr('href'));
+		console.log('href 2 -- : ' + $('.middle-url').attr('href'));
+	},
+	function() {
+		// $(this).find('img.default').removeClass('hide').parent().find('img.select').removeClass('on');
+	});
+});
+</script>
+
+<div class="content-2">
+	<div class="nav">
+    	<div class="top">
+        	<p class="p1">
+            	礼舍正在帮助的企业护板们
+            </p>
+            <p class="p2">
+            	升级情商管理，让情谊传递更简单, 高校, 暖心
+            </p>
+        </div>
+        
+        <div class="bottom">
+        	<div class="div1">
+            	<div class="d1">
+                	<img class="img" src="index/images/index_content_img1.png" />
+                    <div class="div">
+                    	教育培训
+                    </div>                    
+                </div>
+                <div class="d2">
+                	<img class="img" src="index/images/index_content_img1.png" />
+                    <div class="div">
+                    	饮食行业
+                    </div>
+                </div>
+                <div class="d3">
+                	<img class="img" src="index/images/index_content_img1.png" />
+                    <div class="div">
+                    	互联网
+                    </div>
+                </div>
+            </div>
+           	
+            <div class="div2">
+            	<div class="d1">
+                	<img class="img" src="index/images/index_content_img1.png" />
+                    <div class="div">
+                    	金融投
+                    </div>                    
+                </div>
+                <div class="d2">
+                	<img class="img" src="index/images/index_content_img1.png" />
+                    <div class="div">
+                    	能源开发
+                    </div>
+                </div>
+                <div class="d3">
+                	<img class="img" src="index/images/index_content_img1.png" />
+                    <div class="div">
+                    	文化传媒
+                    </div>
+                </div>
+            </div>           
+    	</div>
+	</div>
+</div>
+
+<div class="content-3">	
+    <img class="img" src="index/images/index_content1.jpg" style="width: 100%;" />  
+    <a href="http://v.lishe.cn/company/login.html" target="_blank" style="text-decoration: none;">
+		<div class="div">
+			加入礼舍, 开启福利管理新模式
+		</div>
+	</a>
+</div>
+
+<div class="content-4">
+	<img class="img1" src="index/images/index_content2.jpg" />     
+    <div class="div">
+		<img class="img2" src="index/images/index_cancel_icon.png" />
+	    <img class="img3" src="index/images/index_broadcast_icon.png" />
+    	<div class="font-div">
+        	<span class="span1">情商管理</span>
+	        <span class="span2">一个礼舍就够了</span>
+        </div>
+    </div>
+</div>
+
+<div class="content-5">
+	<div class="nav">
+    	<div class="left">
+        	<img class="img" src="index/images/index_content3_left.jpg" />
+        </div>	
+        <div class="right">
+        	<div class="top">
+            	<img class="img" src="index/images/index_content3_title.png" />
+            </div>
+            <div class="bottom">
+            	<ul class="ul">
+            		<a href="/topic-01.html" target="_blank" style="color: #333;">
+	                	<li>
+	                    	<div class="div">
+	                			<div class="div-top">
+	                    			<img class="img"  src="/themes/luckymall1/images/img1.jpg"/>
+	                       			<p class="p1">贴心小家电让生活更有爱</p>
+	                   			</div>
+	                    		<div class="div-bottom">
+	                    			<img class="likes" src="index/images/index_collect_icon_02.png" /><span>168</span>
+	                        		<img class="replies" src="index/images/index_comment_icon_02.png"/><span>596</span>
+	                         		<img class="views"  src="index/images/index_share_icon_02.png"/><span>2590</span>
+	                    		</div>
+	                		</div>
+	                    </li>
+                    </a>
+            		<a href="/topic-03.html" target="_blank" style="color: #333;">
+	                    <li>
+	                    	<div class="div">
+	                			<div class="div-top">
+	                    			<img class="img"  src="/themes/luckymall1/images/img3.jpg"/>
+	                       			<p class="p1">质感好床品，送你一个春日好梦</p>
+	                   			</div>
+	                    		<div class="div-bottom">
+	                    			<img class="likes" src="index/images/index_collect_icon_02.png" /><span>102</span>
+	                        		<img class="replies" src="index/images/index_comment_icon_02.png"/><span>203</span>
+	                         		<img class="views"  src="index/images/index_share_icon_02.png"/><span>1522</span>
+	                    		</div>
+	                		</div>
+	                    </li>   
+                    </a>
+            		<a href="/topic-07.html" target="_blank" style="color: #333;">                 
+	                    <li>
+	                    	<div class="div">
+	                			<div class="div-top">
+	                    			<img class="img"  src="/themes/luckymall1/images/img7.jpg"/>
+	                       			<p class="p1">五一出行必备美包，造型随意凹</p>
+	                   			</div>
+	                    		<div class="div-bottom">
+	                    			<img class="likes" src="index/images/index_collect_icon_02.png" /><span>108</span>
+	                        		<img class="replies" src="index/images/index_comment_icon_02.png"/><span>189</span>
+	                         		<img class="views"  src="index/images/index_share_icon_02.png"/><span>1002</span>
+	                    		</div>
+	                		</div>
+	                    </li>  
+                    </a>
+            		<a href="/topic-09.html" target="_blank" style="color: #333;">                  
+	                    <li>
+	                    	<div class="div">
+	                			<div class="div-top">
+	                    			<img class="img"  src="/themes/luckymall1/images/img9.jpg"/>
+	                       			<p class="p1">拼颜值的时代，如何做女神</p>
+	                   			</div>
+	                    		<div class="div-bottom">
+	                    			<img class="likes" src="index/images/index_collect_icon_02.png" /><span>202</span>
+	                        		<img class="replies" src="index/images/index_comment_icon_02.png"/><span>195</span>
+	                         		<img class="views"  src="index/images/index_share_icon_02.png"/><span>2901</span>
+	                    		</div>
+	                		</div>
+	                    </li>  
+                    </a>                                                    
+                </ul>          
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-6">
+	<div class="nav">
+    	<img class="img" src="index/images/index_content4.jpg" />
+    </div>
+</div>

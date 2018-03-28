@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <LINK rel="Bookmark" href="/favicon.ico" >
+    <LINK rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/page.css" rel="stylesheet" type="text/css" />
+    <title>修改采购单</title>
+    <style type="text/css">
+    	.inputerr{
+    		background-color: #fbe2e2;
+    		border-color: #c66161;
+    	}
+    </style>
+</head>
+<body>
+<div id="tab_demo" class="HuiTab">
+  <div class="tabBar cl"><span>基本信息</span><span>采购单商品</span></div>
+  <div class="tabCon">
+  	<form id="planForm" action="{:U('Purchase/saveOrder')}" class="form form-horizontal">
+  		<input type="hidden" name="order_id" id="order_id" value="{$orderId}">
+    	<div class="row cl">
+			<label class="form-label col-5"><span class="c-red">*</span>仓库：</label>
+			<div class="formControls col-5">
+	        <span class="select-box" style="width: 200px;">
+				<select class="select" name="warehouse_id" id="warehouse_id">
+					<volist name="houseList" id="house">
+						<option value="{$house['warehouse_id']}"<eq name="house.warehouse_id" value="$order['warehouse_id']">selected="selected"</eq>>{$house['name']}</option>
+					</volist>
+				</select>
+			</span>
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5"><span class="c-red">*</span>建立人：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" style="width:200px" placeholder="输入建立人名称"  id="build_people" name="build_people" value="{$order['build_people']}">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">结算方式：</label>
+			<div class="formControls col-5">
+	        <span class="select-box" style="width: 200px;">
+				<select class="select" name="settlement_method" id="settlement_method">
+					<option value=""<eq name="order['settlement_method']" value="">selected="selected"</eq>>请选择</option>
+					<option value="月结"<eq name="order['settlement_method']" value="月结">selected="selected"</eq>>月结</option>
+					<option value="货到付款"<eq name="order['settlement_method']" value="货到付款">selected="selected"</eq>>货到付款</option>
+					<option value="预付款"<eq name="order['settlement_method']" value="预付款">selected="selected"</eq>>预付款</option>
+					<option value="其他"<eq name="order['settlement_method']" value="其他">selected="selected"</eq>>其他</option>
+				</select>
+			</span>
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">送货时间：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" style="width:200px" placeholder="输入送货时间"  id="build_people" name="build_time" value="{$order['build_time']}" readonly="readonly" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-5">送货地点：</label>
+			<div class="formControls col-5">
+				<input type="text" class="input-text" placeholder="输入送货地点"  id="delivery_address" name="delivery_address" value="{$order['delivery_address']}">
+			</div>
+			<div class="col-5"></div>
+		</div>
+		<div class="row cl">
+	      <label class="form-label col-5">备注：</label>
+	      <div class="formControls col-5">
+	        <textarea name="remarks" cols="5"  rows="" class="textarea"  placeholder="说点什么..."  dragonfly="true"  onKeyUp="textarealength(this,100)" >{$order['remarks']}</textarea>
+	        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+	      </div>
+	      <div class="col-5"></div>
+	    </div>
+		<div class="row cl">
+			<label class="form-label col-5"></label>
+			<div class="formControls col-5">
+				<button id="savePlanForm" class="btn btn-primary radius" onclick="return false;" style="margin-top: 20px;margin-bottom: 25px;">
+					<i class="Hui-iconfont">&#xe632;</i>&nbsp;确认保存
+				</button>
+			</div>
+			<div class="col-5"></div>
+		</div>
+    </form>
+  </div>
+  <div class="tabCon">
+  	<form class="form form-horizontal">
+     <div class="row cl" style="padding: 0 12px;">
+	    <table class="table table-border table-bordered table-bg table-hover">
+	        <thead>
+	        <tr>
+	        	<th scope="col" colspan="6">
+	        		<span class="l">
+	        			<!-- 
+	        			<a id="delSelected" class="btn btn-danger radius size-S" href="javascript:void(0);" ><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+	        			 -->
+	        		</span>
+	        		<span class="r" sty>共有数据：{$count|default="0"} 条(规格)</span> 
+	        	</th>
+	        </tr>
+	        <tr class="text-c">
+	        	<th width="5%"><span>商品编号</span></th>
+	        	<th width="18%">商品名称</th>
+	        	<th width="10%">供应商</th>
+	        	<th width="62%" style="padding: 0;">
+	        		<table rules="none" cellspacing="0" align="center">
+	        		<thead>
+	        			<tr>
+	        			<th width="30%">商品规格</th>
+			            <th width="10%">订货数量</th>
+			            <th width="18%">商城价/结算价/采购价</th>
+			            <th width="9%">利润率</th>
+	        			<th width="10%">库存</th>
+	        			<th width="9%">销量</th>
+			            <th width="9%">操作</th>
+			            </tr>
+	        		</thead>
+	        		</table>
+	        	</th>
+	        </tr>
+	        </thead>
+	        <tbody>
+	        <volist name="orderGoodsArr" id="item">
+	        	<tr class="text-c">
+	        		<td>{$key}</td>
+	        		<td  class="text-l">{$item['title']}</td>
+	        		<td  class="text-l">{$supplierList[$item['supplier_id']]['company_name']}</td>
+	        		<td style="padding: 0;">
+	        			<table rules="none" cellspacing="0" align="center">
+					    <tbody>
+					    	<volist name="item['data']" id="val" key="j">
+					    		<tr class="text-c">
+					    			<td width="30%" class="text-l">{$val['spec_info']}</td>
+					    			<td width="10%">{$val['number']}</td>
+				                    <td width="18%">
+				                    	<span >{$val['price'] | floatval}</span> / 
+				                    	<span >{$val['cost_price'] | floatval}</span> / 
+					             		<input priceid="{$val['id']}" maxprice="{$val['cost_price'] | floatval}"  value="{$val['order_price'] | floatval}" name="orderPrice" class="input-text" class="text-l" style="width: 60px;"/>
+				                    </td>
+				                    <td  width="9%">
+					    				<?php 
+					        				$skucount = (($val['price'] - $val['cost_price']) / $val['price'])*100;
+											echo number_format($skucount,1).'%'; 
+										?>
+					    			</td>
+					    			<td  width="10%">{$storeList[$val['item_id']][$val['sku_id']] | default='--'}</td>
+					    			<td  width="9%">{$soldList[$val['sku_id']] | default='--'}</td>
+				                    <td  width="9%">
+										<button name="saveItem" itemid="{$val['id']}" class="btn btn-primary radius size-MINI" onclick="return false;"><i class="Hui-iconfont">&#xe632;</i>&nbsp;提交</button>
+									</td>
+					    		</tr>
+					    	</volist>
+					    </tbody>
+					    </table>
+	        		</td>
+                </tr>
+			</volist>
+	        </tbody>
+	    </table>
+    </div>
+    </form>
+    {$page}
+  </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+<!--
+<script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+ -->
+<script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+		var $tab_menu=$(tabBar);
+		  // 初始化操作
+		  $tab_menu.removeClass(class_name);
+		  $(tabBar).eq(i).addClass(class_name);
+		  $(tabCon).hide();
+		  $(tabCon).eq(i).show();
+		  
+		  $tab_menu.bind(tabEvent,function(){
+		  	$tab_menu.removeClass(class_name);
+		      $(this).addClass(class_name);
+		      var index=$tab_menu.index(this);
+		      $(tabCon).hide();
+		      $(tabCon).eq(index).show();
+		  });
+		}
+	$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","1");
+	
+	//修改订购计划基本信息
+	$("#savePlanForm").click(function(){
+		var status = checkForm();
+		if(!status){
+			return false;
+		}
+		$.post( $("#planForm").attr('action'), $("#planForm").serialize(), function(result){
+			if(result.code == 1){
+				layer.msg('修改成功',{icon: 1,time:1000});
+			}else{
+				layer.msg('修改失败',{icon: 2,time:1000});
+			}
+		})
+	});
+	//检查表单
+	function checkForm(){
+		//仓库
+		var warehouse_id =  $("#warehouse_id").val();
+		if(warehouse_id== null || warehouse_id == ''){
+			layer.msg('请选择仓库',{icon: 7,time:1000});
+			return false;
+		}
+		//建立人
+		var build_people = $("#build_people").val();
+		if(build_people== null || build_people == ''){
+			layer.msg('请填写建立人',{icon: 7,time:1000});
+			return false;
+		}
+		return true;
+	}
+	//输入校验
+	$("input[name='orderPrice']").keyup(function(){
+		return checkPrice($(this));
+	});
+	//校验价格
+	function checkPrice(obj){
+		var val = $(obj).val();
+		var maxPrice = $(obj).attr('maxprice');
+		
+		var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+		
+		if(!reg.test(val)){
+			 $(obj).addClass("inputerr");
+			 return false;
+		}
+		maxPrice = parseFloat(maxPrice);
+		if(val > maxPrice){
+			$(obj).addClass("inputerr");
+			 return false;
+		}
+		if($(obj).hasClass("inputerr")){
+			$(obj).removeClass("inputerr");
+		}
+		return true;
+	}
+	//单个保存
+	$("button[name='saveItem']").click(function(){
+		var itemid = $(this).attr("itemid");
+		var priceObj = $("input[priceid='"+itemid+"']");
+		var orderPrice = priceObj.val();
+		if(!checkPrice(priceObj)){
+			layer.alert("订购价格有误，请核对", {icon: 2}, function(index){
+				  layer.close(index);
+			});
+			return false;
+		}
+		$.post("{:U('Purchase/saveOrderGoods')}",{itemid:itemid,order_price:orderPrice}, function(result){
+			if(result.code == 1){
+				layer.msg('修改成功!',{icon: 1,time:1000});
+			}else{
+				layer.msg(result.msg,{icon: 2,time:1000});
+			}
+		});
+	});
+}) 
+
+</script>
+</body>
+</html>

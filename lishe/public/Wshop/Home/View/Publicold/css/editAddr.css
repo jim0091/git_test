@@ -1,0 +1,22 @@
+@charset "utf-8";
+.content { margin-bottom:40px; margin-top:40px;width:100%; background:#FFF}
+.backlast{ position:fixed; top:50px; left:10px; width:35px; height:35px; background-color:#F00; background:url(../images/listICO.png) 0px -142px;}
+.editAddr{ width:90%; margin:0px auto; border:1px #ccc solid;}
+.editAddrTit{font:normal bold 12px/50px  Tahoma,Verdana, Geneva, "微软雅黑","黑体"; text-align:center;}
+.editAddr ul{ padding:10px 10px;}
+.editAddr ul li{ clear:both; padding:5px 0px;}
+.editAddr ul li label{ display:block; width:75px; text-align:right; float:left;}
+.editAddr ul li input{font:normal 12px Tahoma,Verdana, Geneva, "微软雅黑","黑体"; height:25px; border:none; outline:none; width:180px; border:1px #eee solid;  -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius:5px; padding:0px 5px; }
+.btnGp { margin-top:10px; position:relative;}
+.btnGp a#setDefAddr{display:block; position:absolute; left:5%; color:#111;}
+.btnGp a#setDefAddr:hover{ text-decoration:none;}
+.btnGp a.defAddr span{ display:block; float:left; width:11px; height:19px; background:url("../images/listICO.png") -71px -179px no-repeat; margin:4px 3px 0px 0px; }
+.btnGp a.ckdAddr span{ display:block; float:left; width:11px; height:19px; background:url("../images/listICO.png") -71px -198px no-repeat; margin:4px 3px 0px 0px; }
+
+.btnGp input{ cursor:pointer; width:54px; height:25px; margin:0px 10px; background:url(../images/buttonGp.png) no-repeat; border:none; color:#FFF;}
+.btnGp input.saveBtn{ background-position: -59px -30px;}
+.btnGp input.saveBtn:hover{ background-position: -59px 0px;}
+.btnGp input.backBtn{ background-position: 0px -30px;}
+.btnGp input.backBtn:hover{ background-position: 0px 0px;}
+.btnGp input.resetBtn{ background-position: 0px -30px;}
+.btnGp input.resetBtn:hover{ background-position: 0px 0px;}

@@ -1,0 +1,26 @@
+
+
+          <div class="subnav">
+            <a href="/shop.php/Sign" id="login_<{$widgets_id}>" style="display: none;"><{t app='topc'}>会员登录<{/t}></a>
+            <div id="member_<{$widgets_id}>" class="small-member" style="display:none; float: left; color: #c7241d;">
+              <a href="/member-index.html" style="margin: 0px; padding: 0px; color: #a12124;" ><span id="uname_<{$widgets_id}>"></span></a>
+              <a href="/passport-logout.html" style="margin: 0px; color: #a12124;"><{t app='topc'}>退出<{/t}></a>
+            </div>
+            <div class="line"></div>
+            <a href="/shop/" target="_blank">商家中心</a>
+            <div class="line"></div>
+            <a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a>
+          </div>
+
+<script>
+var name = decodeURIComponent($.cookie('UNAME') || '');
+if(name){
+    $("#uname_<{$widgets_id}>").html(name);
+    $("#member_<{$widgets_id}>").css('display','');
+    $("#login_<{$widgets_id}>").css('display','none');
+}
+else{
+    $("#login_<{$widgets_id}>").css('display','');
+    $("#member_<{$widgets_id}>").css('display','none');
+}
+</script>

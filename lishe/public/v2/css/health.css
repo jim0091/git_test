@@ -1,0 +1,36 @@
+.banner{
+    width: 100%;
+    position: relative;
+}
+.banner-img{width: 100%;min-width: 1092px;}
+body{background: #fffbf1;}
+.plan{width: 1200px;position: relative;left:50%;margin-left: -600px;text-align: center;}
+.pfive{padding-bottom: 50px;}
+.plan-color{font-size: 40px;color:#ff4138;font-weight: bold;}
+.plan-title{font-size: 40px; color:#333;font-weight: bold;height:50px;line-height: 37px;}
+.plan-title img{margin: 0 25px;position: relative;top: 11px;}
+.plan-title{margin-top: 40px;}
+.plan-title-one{font-size: 30px;color:#e22328;margin-top: 35px;height: 30px;line-height: 30px;}
+.plan-title-two{font-size: 16px;color: #727171;height: 16px;line-height: 16px;margin-top: 30px;padding-bottom: 30px;}
+.plan-title-t{font-size: 16px;color: #727171;height: 16px;line-height: 16px;margin-top: 30px;padding-bottom: 20px;}
+.plan-title-case{font-size: 40px; color:#333;font-weight: bold;height:50px;line-height: 37px;margin-top: 50px;margin-bottom: 75px;}
+.plan-title-case img{margin: 0 25px;position: relative;top: 11px;}
+.solve-one{box-shadow: -10px 0px 20px -1px #e3ddd1;}
+.solve-two{margin-left: 80px;box-shadow: -10px 0px 20px -1px #e3ddd1;}
+.advantage{width: 100%;background: #fff;text-align: center;padding: 70px 0 80px 0;overflow: hidden;}
+.advantage-content{width: 1200px;position: relative;left:50%;margin-left: -600px;}
+.advantage-content li{text-align: center;width: 300px;float: left;height: 530px;}
+.advantage-content li img{transition: 0.3s;-webkit-transition: 0.5s;}
+.advantage-content li img:hover{transform: translate(0,-30px);-webkit-transform: translate(0,-30px);}
+.advantage-content li p{padding-left: 45px;width: 100%;text-align: left;color:#8d6238;font-size: 18px;padding-top: 18px;height: 18px;line-height: 18px;}
+.comment{width: 100%;text-align: center;position: relative;top:-10px;}
+.comment-title{font-size: 40px; color:#333;font-weight: bold;height:50px;line-height: 37px;padding-top: 65px;}
+.comment-title img{margin: 0 55px;position: relative;top: 11px;}
+.comment-bg{position: absolute;top:0;left: 0;width: 100%;z-index: -1;min-height: 914px;}
+.comment-content{width: 1200px;position: relative;left:50%;margin-left: -600px;text-align: center;padding-top: 55px;}
+.comment-content li{width: 100%;height:214px;border-radius: 200px;background: #fff;margin-bottom: 20px;box-shadow: -10px 10px 20px -1px #d1c3ba;}
+.comment-content li>img{border-radius: 50%;}
+.comment-jobs{margin-left: 25px;padding-top: 30px;width: 964px;padding-right: 55px;box-sizing: border-box;}
+.comment-jobs-title{font-size: 28px;color: #8d6238;font-weight: bold;text-align: left;height: 28px;line-height: 28px;}
+.comment-jobs-text{margin-top: 16px;font-size: 20px;color:#3e3a39;line-height: 29px;text-align: left;}
+

@@ -1,0 +1,1469 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+<!--↑↑模板中请务必使用HTML5的标准head结构↑↑-->
+<meta name="generator" content="b2b2c" />
+<meta name="author" content="shopex UED Team" />
+<!-- <title>礼舍心意-B2B2C商城</title> -->
+<title>礼舍心意商城</title>
+<link rel="icon" href="http://www.lishe.cn/public/statics/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://www.lishe.cn/public/statics/favicon.ico" type="image/x-icon" />
+<script src="http://www.lishe.cn/app/site/lang/zh_CN/js/lang.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/lib/lab.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/lib/jquery.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/lib/jquery.cookie.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/tools.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/switchable.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/dialog.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/uploader.js?1464770770"></script><script src="http://www.lishe.cn/app/site/statics/scripts/jquery.lazyload.js?1464770770"></script>
+
+<link href="http://www.lishe.cn/app/topc/statics/stylesheets/layout.css?1464770770" rel="stylesheet" media="screen, projection" /><link href="http://www.lishe.cn/app/topc/statics/stylesheets/theme.css?1464770770" rel="stylesheet" media="screen, projection" /><script src="http://www.lishe.cn/app/topc/statics/scripts/tips.js?1464770770"></script><script src="http://www.lishe.cn/app/topc/statics/scripts/formplus.js?1464770770"></script><script src="http://www.lishe.cn/app/topc/statics/scripts/validate.js?1464770770"></script><script src="http://www.lishe.cn/app/topc/statics/scripts/area_select.js?1464770770"></script><script src="http://www.lishe.cn/app/topc/statics/scripts/localstorage.js?1464770770"></script><script src="http://www.lishe.cn/app/topc/statics/scripts/main.js?1464770770"></script><script src="http://www.lishe.cn/app/topc/statics/scripts/datepicker.js?1464770770"></script>    <link rel="stylesheet" href="http://www.lishe.cn/themes/luckymall1/images/index.css">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?652b6deeab07c587b05b7530d41f710b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script> 
+ </head>
+
+  <body class="is-index">
+    <!-- 顶部导航 -->
+<style>
+.advertisement {display: none;}
+.menu{margin:40px auto 0 -400px;text-align:center;height:36px;line-height:36px;width:1000px;position:relative; padding-left:330px;}
+.menu-ul li span{padding-left:5px;}
+.menu-ul>li a{width: 110px;height: 100%; display: block; float: left; background:#FFF; color: #88888b;cursor: pointer;font-size:14px;}
+.menu-ul>li a:hover{ color:#c7241d;}
+.hidden-box{width:80px;position: absolute;display:none;background:#FFF;top:30px;}
+/*.hidden-box>ul li{border-top:dashed #CCCCCC 1px;}*/
+.hidden-box>ul li a{list-style-type: none;color: #88888b;cursor: pointer;font-size:14px;padding-left:-10px;border:0px solid red;}
+.hidden-box li a:hover{color:#c7241d;}
+.hidden-loc-index{left:500px;}
+.hidden-loc-us{left:600px;}
+.nav .menu a{width:100px;}
+</style>
+<include file="spring" /> 
+<div id="topbar" class="topbar">
+  <div class="wrap-lg">
+    <div class="topbar-left">
+      <div class="small-signin">
+        <div class="line"></div>
+        <a href="/" target="_blank">礼舍首页</a>
+        <div class="line"></div>
+        <a href="/shop.php" target="_blank">心意商城</a>
+        <div class="line"></div>
+        <a href="/site/help.html" target="_blank" id="compnayIndex">礼舍帮帮</a>
+      </div>
+    </div>
+    <div class="topbar-right">
+		<div class="subnav">
+			<a href="/shop.php/Sign" id="loginBox">会员登录</a>
+			<div id="memberBox" class="small-member" style="display:none; float: left; color: #c7241d;">
+			<a href="__USER__/Info/index" style="margin: 0px; padding: 0px; color: #a12124;" ><span id="userName"></span></a>
+			<a href="/shop.php/Sign/logout.html" style="margin: 0px; color: #a12124;">退出</a>
+			</div>
+			<div class="line"></div>
+			<a href="/shop/" target="_blank">商家中心</a>
+			<div class="line"></div>
+			<a href="http://v.lishe.cn/company/login.html" target="_blank">企业登录</a>
+            <div class="line"></div>
+            <a href="http://vip.lishe.cn/index.php/Cactive/customerIndex.html" target="_blank">积分卡激活</a>
+		</div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 头部信息栏 -->
+<div id="header" class="header">
+  <div class="wrap-lg">
+    <div class="row">
+      <div class="col-4">
+        <div class="logo"><a href="http://www.lishe.cn"><img src="http://120.76.102.64/images/37/29/e4/0c77d6903cb5f9a8b6eadd903bc8d40c49703057.jpg" alt="LOGO" style="width: 208px;"></a></div>
+      </div>
+      <div class="col-lg-10">
+        <div class="searchbar">
+  <form action="/shop.php/Items/itemList" method="get" id="goods_search">
+    <input type="text" name="keyword" id="" class="x-input" placeholder="综合搜索">
+    <a href="javascript:void(0);" class="btn btn-search">搜索</a>
+  </form>
+  <div class="hots">
+    <span>热门搜索：</span>
+        <a href="/shop.php/Items/itemList?keyword=平板电视">平板电视</a>
+        <a href="/shop.php/Items/itemList?keyword=童装">童装</a>
+        <a href="/shop.php/Items/itemList?keyword=手机">手机</a>
+      </div>
+</div>
+
+<script>
+  $('.btn-search').click(function(){
+    $('#goods_search').submit();
+  })
+</script>
+      </div>
+      <div class="col-3">
+        <div class="minicart" id="minicart_">
+  <a href="/shop.php/Order/Cart" class="btn btn-simple btn-lg">
+    <span>
+    	<img src="http://www.lishe.cn/themes/luckymall1/images/shopping_icon.png" alt="" style="margin: 0px 8px; position: relative; top: 3px;">我的购物车<i style="display: inline-block; position: relative; margin-right: 10px; padding-left: 20px; font-size: 20px; line-height: 1; vertical-align: text-top;"><b data-type="1" class="up-cat-number">0</b>></i>
+    	<!--
+      <i class="icon-cart-a"><b data-type="1" class="up-cat-number">0</b></i>去购物车结算<i class="icon-arrow-right-b"></i>
+      	-->
+    </span>
+  </a>
+</div>
+
+<script>
+//获取cookie，读取购物车现有商品数量
+updateCartNumber('#minicart_ .up-cat-number');
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 页面导航栏 -->
+<div id="nav" class="nav" style="border-bottom: 2px solid #a12124;">
+  <div class="wrap-lg">
+    <div class="row">
+      <div class="col-lg-3 nav-left"><meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+            
+<style>
+.category .category-sub{
+  width: 966px !important;
+}
+</style>
+<div id="category_handle">
+  <div class="big-cate">
+    <a href="#">全部商品分类</a>
+  </div>
+  <div class="category" id="category_box">
+    <ul class="category-primary">
+        <include file="Public/oldCat" />  
+    </ul>
+  </div>
+</div>
+<script>
+var category = $('#category_box');
+if ($('body').hasClass('is-index')) {
+  category.addClass('is-display');
+}
+else {
+  var category_handle = $('#category_handle');
+  category_handle.hover(function() {
+      category.fadeIn();
+  },
+  function() {
+      category.fadeOut();
+  });
+
+  var category_handle_mobile = $('#category_handle');
+  category_handle.click(function() {
+      category.fadeIn();
+  },
+  function() {
+      category.fadeOut();
+  });
+}
+</script>
+</div>
+      <div class="offset-lg-3 nav-main" >
+        <div class="menu">
+              <ul class="menu-ul" style="border:0px solid red;">
+                 <li><a class="on" href="/shop.php">首页</a></li>
+                 <li id="li-1">
+                  <a href="http://www.lishe.cn/shop.php/Gaway/index/flag/0">赠送对象<span><img src="http://www.lishe.cn/business/Public/gaway/images/jt.png"></span></a>
+                  </li>
+
+                 <li id="li-2">
+                  <a href="http://www.lishe.cn/shop.php/Gaway/index/flag/1">赠送情景<span><img src="http://www.lishe.cn/business/Public/gaway/images/jt.png"></span></a>
+                </li>
+
+                 <li><a href="/shop.php/Best/index">礼舍推荐</a></li>
+                  <!--li><a href="http://www.lishe.cn/shop.php/promotion/holidayItems.html" style="color:red"><b>抢年货</b>&nbsp;<b style="font-size:8px;">Hot!</b></a></li-->
+                  
+                  <if condition="$comId eq 1469700057522">
+                  	<li><a href="http://cimcaf.lishe.cn/shop.php/Cimcaf" style="color:red" target="_blank">购物卡&nbsp;<b style="font-size:12px;">Hot!</b></a></li>
+                  </if>
+
+             </ul>
+
+              <div id="box-1" class="hidden-box hidden-loc-index" style="border:0px solid red;z-index:10000;">
+                  <ul>
+
+                      <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/1/flag/0.html">女朋友</a></li>
+                      <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/2/flag/0.html">男朋友</a></li>
+                      <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/3/flag/0.html">单身狗</a></li>
+                      <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/4/flag/0.html">闺蜜</a></li>
+
+                  </ul>
+            </div>
+
+            <div id="box-2" class="hidden-box hidden-loc-us"  style="border:0px solid red;z-index:10000;">
+                <ul>
+
+                   
+                    <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/5/flag/1">中秋节</a></li>
+                    <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/6/flag/1">国庆节</a></li>
+                    <!-- <li><a style="width:80px;" href="/business/index.php/Gaway/search/id/7/flag/1">春节</a></li> -->
+                    <li><a style="width:80px;" href="http://www.lishe.cn/shop.php/Gaway/search/id/8/flag/1">七夕节</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- 20160615 修改结束 -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	var num;
+	$('.menu-ul>li[id]').hover(function(){
+		/*下拉框出现*/
+		var Obj = $(this).attr('id');
+		num = Obj.substring(3, Obj.length);
+		$('#box-'+num).slideDown(300);
+	},function(){
+
+		/*下拉框消失*/
+		$('#box-'+num).hide();
+	});
+
+	$('.hidden-box').hover(function(){
+		/*保持图标向上*/
+		$(this).show();
+	},function(){
+		$(this).slideUp(200);
+	});
+	
+	$.get("/api.php/Api/getLoginInfo", function(result){
+		var account=eval(result);
+		if(account[0]>0){
+			$('#loginBox').hide();
+			$('#memberBox').show();
+			$('#userName').text(account[3]);
+			if(account[4]!=''){
+				$('li a.on').attr('href',account[4]);
+				$('#shopIndex').attr('href',account[4]);
+				$('#compnayIndex').attr('href',account[4]);
+				$('#compnayIndex').text('我的企业');
+			}
+			if(account[5]!=''){
+				$('#compnayIndex').attr('href',account[5]);
+				$('#compnayIndex').text('我的企业');
+			}
+		}
+	});	
+}); 
+</script>
+
+<style>
+.advertisement {
+  display: block;
+}
+</style>
+    <!-- 主内容区 -->
+    <div class="seaview" style="background: #fff;height: 532px !important;">
+      <div>
+        <div class="module">
+          <div class="row">
+            <div class="box" style="height: 532px;">
+              <div id="slideFocus" class="slider" data-toggle="switchable">
+  <div class="slider-pic wrap-lg">
+    <div class="col-lg-3 sidebar"></div>
+    <div class="col-lg-10 box">
+      <ul class="switchable-content">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="slider-bg" style="width: 100%; height: 100%;">
+    <ul class="desc-list" style="height: 100%;">
+
+    <!--li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#f3e4c7">
+		<div style="position: relative; width: 1190px; margin: 0 auto;">
+		<!--a href="http://www.lishe.cn/shop.php/Activity/oil/aid/8" target="_blank">
+	<a href="http://www.lishe.cn/business/index.php/Activity/jdOilActivity/aid/8" target="_blank">
+	<img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/oil-slider.jpg" alt="">
+		</a>
+		</div>
+   	</li>
+	<li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#f1f6fc">
+		<div style="position: relative; width: 1190px; margin: 0 auto;">
+		<a href="http://www.lishe.cn/shop.php/Activity/listDetailActivity/aid/14" target="_blank">
+		<img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/bags.jpg" alt="">
+		</a>
+		</div>
+	</li>
+	<li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#41d1e6">
+		<div style="position: relative; width: 1190px; margin: 0 auto;">
+		<a href="http://www.lishe.cn/shop.php/Activity/listDetailActivity/aid/16" target="_blank">
+		<img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/snacks.jpg" alt="">
+		</a>
+		</div>
+	</li>
+		<li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#e0e0e0">
+		<div style="position: relative; width: 1190px; margin: 0 auto;">
+		<a href="http://www.lishe.cn/shop.php/Activity/listDetailActivity/aid/15" target="_blank">
+		<img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/Kitchen.jpg" alt="">
+		</a>
+		</div>
+	</li-->
+	<!--li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); display:list-item; -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#fff3ec">
+      <div style="position: relative; width: 1190px; margin: 0 auto;">
+        <a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%85%B5%E6%9E%9C%E6%9E%9C" target="_blank">
+          <img style="position: relative; left: 215px;" width="975" height="532" 
+          src="http://www.lishe.cn/images/slider/lingshi_xinyi_banner.jpg" alt="">
+        </a>
+      </div>
+  </li-->
+            <li style="position: absolute; width: 100%; height: 100%; background:#ff7513;display:list-item; ">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%85%B5%E6%9E%9C%E6%9E%9C" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/lingshi_xinyi_banner.jpg" alt="">
+    </a>
+    </div>
+  </li>	
+          <li style="position: absolute; width: 100%; height: 100%; background:#a3f3fc;display:none;">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/activity/dyh_activity/index.html" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/daiyihai.png" alt="">
+    </a>
+    </div>
+  </li>	
+  <li style="position: absolute; width: 100%; height: 100%; background:#fe273f; display:none;">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/shop.php/promotion/joyoung.html" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/jiuyang990456.png" alt="">
+    </a>
+    </div>
+  </li>
+  	        <li style="position: absolute; width: 100%; height: 100%; background:#eeeeee; display:none;">
+            <div style="position: relative; width: 1190px; margin: 0 auto;">
+                <a href="http://www.lishe.cn/activity/boxes/index.html" target="_blank">
+                    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/xingli_small.png" alt="">
+                </a>
+            </div>
+        </li>  
+	        <li style="position: absolute; width: 100%; height: 100%; background:#eeeeee; display:none;">
+            <div style="position: relative; width: 1190px; margin: 0 auto;">
+                <a href="http://www.lishe.cn/activity/beautiful/index.html" target="_blank">
+                    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/beautiful.png" alt="">
+                </a>
+            </div>
+        </li>  
+        <li style="position: absolute; width: 100%; height: 100%; background:#700910; display:none;">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/shop.php/Promotion/Christmas.html" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/xinyi_shuangdan.jpg" alt="">
+    </a>
+    </div>
+  </li>
+      <!--li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#fff">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%88%AA%E5%AE%A2" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/shuangdan_small.png" alt="">
+    </a>
+    </div>
+  </li-->
+    <!--li style="position: absolute; width: 100%; height: 100%; background:#fff; display:none;">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/activity/fuannawinter/index.html" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/fuanna_winter_xinyi.png" alt="">
+    </a>
+    </div>
+  </li-->
+
+
+
+    <li style="position: absolute; width: 100%; height: 100%; background:#e1d0a8; display:none;">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E5%9D%9A%E6%9E%9C" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/jg_banner_990456.jpg" alt="">
+    </a>
+    </div>
+  </li>
+      <!--li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#020001">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="http://www.lishe.cn/shop.php/Items/itemList?keyword=%E7%9F%B3%E5%A2%A8%E7%83%AF" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/banner-graphene.jpg" alt="">
+    </a>
+    </div></li-->
+	
+	<li style="position: absolute; width: 100%; height: 100%; background:#ce101a; display:none;">
+		<div style="position: relative; width: 1190px; margin: 0 auto;">
+		<a href="http://www.lishe.cn/shop.php/Activity/promote.html" target="_blank">
+		<img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/newyear_banner.jpg" alt="">
+		</a>
+		</div>
+	</li>
+
+	
+	        <!--li style="position: absolute; width: 100%; height: 100%; filter:alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; background:#ef2541">
+    <div style="position: relative; width: 1190px; margin: 0 auto;">
+    <a href="javascript:;" target="_blank">
+    <img style="position: relative; left: 215px;" width="975" height="460" src="http://www.lishe.cn/images/slider/yuandan_xinyi.png" alt="">
+    </a>
+    </div>
+  </li-->
+    </ul>
+  </div>
+  <div class="slider-switch switchable-nav">
+	<a href="#" class="active"></a>
+	<a href="#"></a> 
+	<a href="#"></a>
+	<a href="#"></a>
+	<a href="#"></a>
+		<a href="#"></a>	<a href="#"></a>	<a href="#"></a>	
+  </div>
+</div>
+<script>
+$('#slideFocus').data('switchableConfig', {
+    autoplay: 5000,
+    effect: 'fade',
+    speed: 500,
+    events: 'click',
+    onBeforeSwitch: function(e, toIndex) {
+        $('.desc-list li').each(function(index, value) {
+          if(index==toIndex){
+            // $(value).show().stop().animate({opacity: 1});
+            $(value).fadeIn();
+            // $(value).stop().animate({opacity: 1});
+          }else{
+            // $(value).stop().animate({opacity: 0}, function() {$(value).hide()});
+            $(value).fadeOut();
+            // $(value).stop().animate({opacity: 0});
+          }
+            
+        });
+    }
+});
+</script>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main" class="main index">
+      <div class="wrap-lg">
+        <div class="module">
+<style>
+.row .dailySalePicOne .all {
+  position: relative;
+  padding: 3px 8px;
+}
+.row .dailySalePicOne .dspo-top {
+  text-align: left;
+  padding: 4px 0px 6px 0px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.row .dailySalePicOne .dspo-top img {
+  padding-right: 7px;
+}
+.row .dailySalePicOne .dspo-top span .dspo-top-time {
+  font-size: 12px;
+}
+.row .dailySalePicOne .dspo-top span .dspo-top-time i {
+  margin: 0px 2px;
+}
+.row .dailySalePicOne .dspo-img {
+  height: 78px;
+  width: 100%;
+  position: relative;
+  padding: 6px 0px;
+}
+.row .dailySalePicOne .dspo-title {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  line-height: 15px;
+  margin: 3px 0px;
+  text-align:center;
+}
+.row .dailySalePicOne .dspo-bottom
+ {
+  height: 30px;
+  line-height: 30px;
+  padding-top:12px;
+}
+ .dspo-price {
+  float: left;
+  font-size: 16px;
+  color: #c7241d;
+}
+ .dspo-price i {
+  font-size: 14px;
+}
+ .dspo-original-price {
+  float: left;
+  margin-left: 8px;
+  text-decoration: line-through;
+}
+ .dspo-btn {
+  padding: 0px 10px;
+  font-size: 14px;
+  background: #c7241d;
+  color: #fff;
+  border-radius: 6px;
+  position: absolute;
+  right: 8px;
+}
+
+.topic {
+  height: 261px;
+  margin-top: 27px;
+  margin-bottom: 30px;
+}
+.topic .topicLeft {
+  float: left;
+}
+.topic .topicRight {
+  float: right;
+}
+</style>
+        
+         <div class="row">
+        	<volist name="list.items" id="vo">
+          <div class="col-lg-4 dailySalePicOne item-lst">
+              <a href="/shop.php/Info/index/itemId/{$vo.item_id}">
+                <div class="all">
+                    <div class="dspo-top" style="border:0px solid red;">
+                      <img src="http://www.lishe.cn/themes/luckymall1/images/index_time_icon.png" alt="">
+                      <span>
+                        <input type="hidden" name="times" class="times" value="{$list.times}" />
+                    		    	{$list.schedule}：
+                        <span class="dspo-top-time"><i>0</i>天<i>0</i>时<i>0</i>分<i>0</i>秒</span>
+                      </span>
+                    </div>
+                    <div class="dspo-img">
+                      <img src="{$vo.item_default_image}" alt="" style="height: 100%;">
+                    </div>
+                    <div class="dspo-title">
+                      <span>{$vo.title}</span>
+                    </div>
+                    <div class="dspo-bottom">
+                      <span class="dspo-price"><i></i>{$vo['activity_price']*100}&nbsp;积分</span>
+                      <span class="dspo-btn">
+                        {$list.status}
+                    	</span>
+                    </div>
+                </div>
+              </a>
+            </div>
+					</volist>
+			<div class="col-lg-4 dailySalePicOne item-lst">
+              <a href="/shop.php/Info/index/itemId/51720">
+                <div class="all">
+                    <div class="dspo-top" style="border:0px solid red;">
+                      <img src="http://www.lishe.cn/images/index/51720.png" alt="" style="margin-left:-8px;margin-top:-7px;">
+                      <span>
+
+                    		    	
+                      </span>
+                    </div>
+                    <div class="dspo-img">
+                      <img src="{$vo.item_default_image}" alt="" style="height: 100%;">
+                    </div>
+                    <div class="dspo-title">
+  
+                    </div>
+                    <div class="dspo-bottom">
+
+                    </div>
+                </div>
+              </a>
+            </div>
+          <!--div class="col-lg-4 dailySalePicOne" style="margin-right: 0px;">
+            <a href="/activity/index.html">
+              <img width="228" height="195" src="http://www.lishe.cn/themes/luckymall1/images/index_time_more.png" alt="">
+            </a>
+          </div-->
+        </div>
+
+
+<script>
+$(document).ready(function() {
+
+    init();
+});
+
+var init = function() {
+
+    var _item_lst = $('.item-lst');
+
+    // console.log('_item_lst -- : ' + _item_lst.length);
+
+    for (var i = 0; i < _item_lst.length; i++) {
+
+        var _this = _item_lst.eq(i);
+
+        var _index = _item_lst.index(_this);
+        var _times = _this.find('.times').val();
+        // console.log('times -- : ' + _times);
+        // if (_times == null || _times.trim() == '' || _times.trim().length == 0) {
+        if (_times == null || _times == '' || _times.length == 0) {
+            continue;
+        }
+
+        timer(_index, _times);
+    }
+}
+
+var timer = function(_index, _intDiff) {
+
+    window.setInterval(function() {
+
+        var day=0,
+            hour=0,
+            minute=0,
+            second=0;//时间默认值
+
+        if(_intDiff > 0){
+
+            day = Math.floor(_intDiff / (60 * 60 * 24));
+            hour = Math.floor(_intDiff / (60 * 60)) - (day * 24);
+            minute = Math.floor(_intDiff / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(_intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+        }
+
+        if (minute <= 9) minute = '0' + minute;
+        if (second <= 9) second = '0' + second;
+
+        // console.log('day --: ' + day + '; hour --: ' + hour + '; minute -- : ' + minute + '; second -- : ' + second);
+        var _dspo_top_time_i = $('.item-lst').eq(_index).find('.dspo-top-time i');
+        _dspo_top_time_i.eq(0).text(day);
+        _dspo_top_time_i.eq(1).text(hour);
+        _dspo_top_time_i.eq(2).text(minute);
+        _dspo_top_time_i.eq(3).text(second);
+
+        _intDiff--;
+    }, 1000);
+} 
+</script>        </div>
+      </div>
+    </div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    
+    var _category_primary_lst = $('#category_handle .category ul.category-primary .category-primary-li');
+
+    var _height = _category_primary_lst.height();
+    var _count = _category_primary_lst.length;
+    console.log('_height -- : ' + _height);
+    console.log('_count -- : ' + _count);
+
+    $('.module .row .box .slider').height(_height * _count);
+    $('.seaview').height(_height * _count);
+
+    var _tmp_top = _height * _count + 214;
+
+    $('.tip-absolute').css('top', _tmp_top + 'px');
+
+    $('#nav').find('.menu a').eq(0).addClass('on').siblings().removeClass('on');
+});
+</script>
+     
+    <div id="main" class="main" style="background: #fff;">
+      <div class="wrap-lg">
+        <div class="topic">
+          <div class="topicLeft">
+            <a href="/activity/index.html" target="_blank">
+              <img width="588" height="261" src="http://www.lishe.cn/themes/luckymall1/images/index_two_img.jpg" alt="">
+            </a>
+          </div>
+          <div class="topicRight">
+            <a href="./integral_average.html" target="_blank">
+              <img width="588" height="261" src="http://www.lishe.cn/themes/luckymall1/images/index_two_img1.jpg" alt="">
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      
+<style>
+.mind-strategy {   
+  background: #f6f4f4;
+}
+.mind-strategy .mind-strategy-title {
+  font-size: 18px;
+  color: #c7241d;
+  padding: 18px 0px 5px 0px;
+}
+.mind-strategy .mind-strategy-nav {
+  display: inline-table;
+  width: 1190px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main {
+  position: relative;
+  float: left;
+  width: 910px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li {
+  position: relative;
+  float: left;
+  width: 287px;
+  margin: 0px 12px 22px 0px;
+  top: 0px;
+  background: #fff;
+  border: 1px solid #bcbcbc;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-transition:all .5s ease 0s;
+  -moz-transition:all .5s ease 0s;
+  -o-transition:all .5s ease 0s
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li:hover {
+  -webkit-transition:all .5s ease 0s;
+  -moz-transition:all .5s ease 0s;
+  -o-transition:all .5s ease 0s;
+  -moz-transform:translate(0px,-5px);
+  -webkit-transform:translate(0px,-5px);
+  -o-transform:translate(0px,-5px);
+  -ms-transform:translate(0px,-5px);
+  transform:translate(0px,-5px);
+  -webkit-box-shadow:0 5px 10px rgba(67,72,84,.3);
+  -moz-box-shadow:0 5px 10px rgba(67,72,84,.3);
+  -o-box-shadow:0 5px 10px rgba(67,72,84,.3);
+  box-shadow:0 5px 10px rgba(67,72,84,.3)
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom {
+  padding: 10px 12px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-title {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom p {
+  font-size: 12px;
+  color: #aaa;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn img {
+  position: relative;
+  top: 5px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-main ul li .cell-bottom .cell-bottom-btn span {
+  margin: 0px 15px 0px 2px;
+  font-size: 14px;
+  color: #333;
+}
+</style>
+      <!-- 心意攻略 BEGIN -->
+      <div class="mind-strategy">
+        <div class="wrap-lg">
+          <p class="mind-strategy-title">心意攻略</p>
+          <div class="mind-strategy-nav">
+            <div class="mind-strategy-main">
+
+              <ul>
+                
+                <li>
+                    <a href="/shop.php/Gaway/strategy/id/8" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/chuyou/index.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/8" target="_blank">
+                      <div class="cell-bottom-title">请不要假装爱我</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/8" target="_blank">
+                      <p>因为我比你还能装</p>
+                      </a>
+                    <!--   <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=8?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+
+
+                <li>
+                    <a href="/shop.php/Gaway/strategy/id/1" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/bushui/index.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                     <!--  <a href="http://www.lishe.cn/raiders.html?raidersId=1%7D" target="_blank"> -->
+                      <a href="/shop.php/Gaway/strategy/id/1" target="_blank">
+                      <div class="cell-bottom-title">男朋友口中万能的热水 </div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/1" target="_blank">
+                      <p>不怕心凉，因为我有保暖神器</p>
+                      </a>
+                    <!--   <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=1?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+
+                  <li>
+                    <a href="/shop.php/Gaway/strategy/id/2" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/hongjiu/index.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/2" target="_blank">
+                      <div class="cell-bottom-title">轰轰烈烈圣诞趴</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/2" target="_blank">
+                      <p>又给我一个可以一干到底的借口</p>
+                      </a>
+                    <!--   <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=2?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+                
+                  <li>
+                    <a href="/shop.php/Gaway/strategy/id/3" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/shipin/index.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/3" target="_blank">
+                      <div class="cell-bottom-title">这货不简单</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/3" target="_blank">
+                      <p>比过年抢红包更值得令人期待</p>
+                      </a>
+                    <!--   <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=3?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+                
+                  <li>
+                    <a href="/shop.php/Gaway/strategy/id/4" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/xiaojiadian/index.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/4" target="_blank">
+                      <div class="cell-bottom-title">“大厨”驾到团年饭     </div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/4" target="_blank">
+                      <p>团团圆圆除夕夜</p>
+                      </a>
+                     <!--  <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=4?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+                  
+                    <li>
+                    <a href="/shop.php/Gaway/strategy/id/5" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/jiafang/banner.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/5" target="_blank">
+                      <div class="cell-bottom-title">被你宠爱的感觉真好</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/5" target="_blank">
+                      <p>年度温暖最佳伴手礼</p>
+                      </a>
+                    <!--   <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=5?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+                
+                  <li>
+                    <a href="/shop.php/Gaway/strategy/id/6" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/fushi/banner.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/6" target="_blank">
+                      <div class="cell-bottom-title">让我包了你的美</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/6" target="_blank">
+                      <p>只要肯花钱，美美过大年</p>
+                      </a>
+                     <!--  <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=6?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+
+                 <li>
+                    <a href="/shop.php/Gaway/strategy/id/7" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/dongji/banner.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/7" target="_blank">
+                      <div class="cell-bottom-title">营养都到我碗里来</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/7" target="_blank">
+                      <p>冬季养生进行时</p>
+                      </a>
+                     <!--  <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=7?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+                              
+                 <li>
+                    <a href="/shop.php/Gaway/strategy/id/9" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/shop/Home/View/Public/gaway/nianqian/banner.png" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="/shop.php/Gaway/strategy/id/9" target="_blank">
+                      <div class="cell-bottom-title">新春入新房的既视感</div>
+                      </a>
+                      <a href="/shop.php/Gaway/strategy/id/9" target="_blank">
+                      <p>新一代家政助理组合</p> 
+                      </a>
+                     <!--  <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">168</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>596</span>
+                        <a href="http://www.lishe.cn/raiders.html?raidersId=9?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2590</span>
+                      </div> -->
+                    </div>    
+                </li>
+               
+              <!--   <li>
+                 
+                    <a href="http://www.lishe.cn/topic-09.html" target="_blank">
+                        <img width="287" height="132" src="http://www.lishe.cn/themes/luckymall1/images/img9.jpg" alt="">
+                    </a>
+                    <div class="cell-bottom">
+                      <a href="http://www.lishe.cn/topic-09.html" target="_blank">
+                        <div class="cell-bottom-title">拼颜值的时代，如何做女神</div>
+                      </a>
+                      <a href="http://www.lishe.cn/topic-09.html" target="_blank">
+                        <p>10款韩国女神的必备女妆</p>
+                      </a>
+                      <div class="cell-bottom-btn">
+                        <img class="collect-icon" src="http://www.lishe.cn/themes/luckymall1/images/index_collect_cancel_icon.png" alt="" width="18px" height="18px">
+                        <span class="collect-num">202</span>
+                        <img src="http://www.lishe.cn/themes/luckymall1/images/index_comment_icon.png" alt="">
+                        <span>195</span>
+                        <a href="http://www.lishe.cn/topic-01.html?share=true" target="_blank">
+                          <img src="http://www.lishe.cn/themes/luckymall1/images/index_share_icon.png" alt="">
+                        </a>
+                        <span>2901</span>
+                      </div>
+                    </div>
+                 
+                </li> -->
+              </ul>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $('.collect-icon').bind({
+
+        click: function() {
+
+            var _this = $(this);
+
+            if (_this.hasClass('n')) {
+                return;
+            }
+
+            _this.addClass('n').attr('src', 'http://www.lishe.cn/themes/luckymall1/images/index_collect_icon.png');
+
+            var _num = _this.parent().find('.collect-num').text();
+            _num++;
+
+            _this.parent().find('.collect-num').text(_num);
+        }
+    });
+});
+</script>
+            </div>
+            
+<style>
+.mind-strategy .mind-strategy-nav .mind-strategy-right {
+  position: relative;
+  float: right;
+  width: 244px;
+  padding: 12px 17px;
+  border: 1px solid #bcbcbc;
+  background: #F2F2F1;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-title {
+  font-size: 16px;
+  color: #c7241d;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  overflow: hidden;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom {
+  padding: 10px 12px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .title {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst .price {
+  float: left;
+  font-size: 18px;
+  color: #c7241d;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst .price i {
+  font-size: 14px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-top .cell-bottom .price-lst .original-price {
+  margin-left: 14px;
+  text-decoration: line-through;
+  position: relative;
+  top: 4px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list {
+  background: #fff;
+  border-left: 1px solid #dcdcdc;
+  border-right: 1px solid #dcdcdc;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list .mind-strategy-right-list-nav {
+  padding: 10px;
+  height: 90px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li {
+  border-bottom: 1px solid #dcdcdc;
+  overflow: hidden;
+  width:100%;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li.mind-strategy-right-list-more {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  padding: 15px 0px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li.mind-strategy-right-list-more img {
+  position: relative;
+  top: 3px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-img {
+  float: left;
+  width: 90px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right {
+  float: right;
+  width:120px;
+  overflow: hidden;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right p {
+  width: 100%;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .title {
+  font-size: 14px;
+  color: #333;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .price {
+  float: left;
+  font-size: 18px;
+  color: #c7241d;
+  margin: 0px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .price i {
+  font-size: 14px;
+}
+.mind-strategy .mind-strategy-nav .mind-strategy-right .mind-strategy-right-list ul li .mind-strategy-right-list-right .original-price {
+  text-decoration: line-through;
+  margin: 0px;
+}
+</style>
+            <!-- 礼舍橱窗 BEGIN -->
+            <div class="mind-strategy-right">
+              <span class="mind-strategy-right-title">礼舍橱窗</span>
+              <div class="mind-strategy-right-top">
+                <a href="/shop.php/Info/index/itemId/860" target="_blank">
+                  <img width="243" height="215" src="http://www.lishe.cn/images/index/860.gif" alt="">
+                  <div class="cell-bottom">
+                    <span class="title"><center>有烤肉的冬天更完美！</center></span>
+                    <p class="price-lst">
+                     <!--  <span class="price"><i>￥</i>386.00</span> -->
+                         <span class="price" style="margin-left:60px;font-size:14px;">19900积分</span><br/>
+                     <!--  <span class="original-price">￥469.00</span> -->
+                    </p>
+                    <!-- <span class="sales">销量（<i>1952</i>）</span> -->
+                  </div>
+                </a>
+              </div>
+              <div class="mind-strategy-right-list">
+                <ul>
+                  <li>
+                    <a href="/shop.php/Info/index/itemId/50665" target="_blank">
+                      <div class="mind-strategy-right-list-nav">
+                        <div class="mind-strategy-right-list-img">
+                          <img width="90" height="90" src="http://www.lishe.cn/images/index/pin.png" alt="">
+                        </div>
+                        <div class="mind-strategy-right-list-right">
+                          <p class="title">黑茶世家  特级菌香</p>
+                           <p class="price" style="font-size:14px;">46000积分</p>
+                       <!--    <p class="price"><i>￥</i>210.00</p>
+
+                          <p class="original-price">￥278.00</p>
+                          <span class="sales">销量（<i>1026</i>）</span> -->
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/shop.php/Info/index/itemId/50674" target="_blank">
+                      <div class="mind-strategy-right-list-nav">
+                        <div class="mind-strategy-right-list-img">
+                          <img width="90" height="90" src="http://www.lishe.cn/images/index/ren.png" alt="">
+                        </div>
+                        <div class="mind-strategy-right-list-right">
+                          <p class="title">黑茶世家  手工茯砖</p>
+                          <p class="price" style="font-size:14px;">55000积分</p>
+                        <!--   <p class="price"><i>￥</i>238.00</p>
+                          <p class="original-price">￥398.00</p>
+                          <span class="sales">销量（<i>969</i>）</span> -->
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/shop.php/Info/index/itemId/50677" target="_blank">
+                      <div class="mind-strategy-right-list-nav">
+                        <div class="mind-strategy-right-list-img">
+                          <img width="90" height="90" src="http://www.lishe.cn/images/index/sheng.png" alt="">
+                        </div>
+                        <div class="mind-strategy-right-list-right">
+                          <p class="title">黑茶世家  千两花卷</p>
+                           <p class="price" style="font-size:14px;">35000积分</p>
+                       <!--    <p class="price"><i>￥</i>209.00</p>
+                          <p class="original-price">￥278.00</p>
+                          <span class="sales">销量（<i>1285</i>）</span> -->
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <!--   <li class="mind-strategy-right-list-more" style="border:0px solid red;">
+                    <img src="http://www.lishe.cn/themes/luckymall1/images/refresh_icon.png" alt="">
+                    <span>换一组看看</span>
+                  </li> -->
+                </ul>
+              </div>
+            </div>
+            <!-- 礼舍橱窗 END -->
+          </div>
+        </div>
+      </div>
+      <!-- 心意攻略 END -->
+    </div>
+    <!-- 主内容区 END -->
+	<!-- 帮助中心 -->
+<!--
+<div class="helpinfo">
+    <div class="wrap-lg">
+      <div class="feature-items clearfix">
+        <div class="feature-item"></div>
+        <div class="feature-item"></div>
+        <div class="feature-item"></div>
+        <div class="feature-item"></div>
+        <div class="feature-item"></div>
+        <div class="feature-item"></div>
+      </div>
+      <div class="clearfix">
+        <div class="helpinfo-item"></div>
+        <div class="helpinfo-item"></div>
+        <div class="helpinfo-item"></div>
+        <div class="helpinfo-item"></div>
+        <div class="helpinfo-item"></div>
+        <div class="helpinfo-qrcode">
+          
+        </div>
+      </div>
+    </div>
+</div>
+-->
+
+<!-- 底部导航与版权 -->
+<!--
+<div id="footer" class="footer">
+  <div class="wrap-lg">
+    
+    <div class="theme-footer">© 2005-2016 礼舍网 版权所有，并保留所有权利。 ICP备案证书号:粤ICP备12076725号-2</div><div style="color:#ccc;font-family:Verdana;font-size:11px;line-height:20px!important;overflow:visible!important;display:block!important;visibility:visible!important;position:relative;z-Index:65535!important;text-align:center;">Powered By <a style="text-decoration:none" href="http://www.shopex.cn" target="_blank"><b style="color: rgb(92, 113, 158);">Shop</b><b style="color: rgb(243, 144, 0);">Ex</b></a> </div><div style="text-align: center;">粤ICP备12076725号-2</div>  </div>
+</div>
+-->
+
+
+  <style>
+  .footer-logo {
+    background: #3d3d3d;
+  }
+  .footer-logo div {
+    padding: 15px 0px;
+  }
+
+.footer-bottom {
+	background: #3d3d3d;
+	text-align: center;
+	height: 80px;
+}
+.footer-bottom div.footer-bottom-info {
+	position: relative;
+	top: 5px;
+	z-index: 65537;
+	padding: 5px 0px 0px 0px;
+}
+.footer-bottom div p {
+  margin: 0px;
+}
+.footer-bottom div p.cate {
+  color: #B3ADAD;
+  margin-bottom: 8px;
+}
+.footer-bottom div p.cate a {
+  color: #B3ADAD;
+}
+.footer-bottom div p.cate a:hover {
+  text-decoration: underline;
+}
+.footer-bottom div p.cpoyright {
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  background: #262626;
+  height: 229px;
+}
+.footer div.wrap-lg {
+  padding: 25px 0px;
+}
+.footer div.footer-main-left {
+  float: left;
+  width: 600px;
+  text-align: left;
+}
+.footer div.footer-main-left .footer-main-left-top {
+  display: inline-block;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left {
+  width: 150px;
+  float: left;
+  margin-right: 35px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left div {
+  border-bottom: 1px solid #c7241d;
+  font-size: 18px;
+  width: 150px;
+  height: 32px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left span {
+  float: left;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left span.icon-right {
+  float: right;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left ul {
+  display: inline-table;
+  position: relative;
+  left: -35px;
+  padding-top: 5px;
+  font-size: 14px;
+}
+.footer div.footer-main-left .footer-main-left-top .footer-main-left-top-left ul li {
+  line-height: 22px;
+}
+
+.footer div.footer-main-left .footer-main-left-bottom {
+  width: 520px;
+  margin-top: 25px;
+  border-top: 1px solid #c7241d;
+}
+.footer div.footer-main-left .footer-main-left-bottom span {
+	width: 150px;
+  	font-size: 16px;
+  	float: left;
+  	display: block;
+  	
+}
+.footer div.footer-main-left .footer-main-left-bottom span.line {
+  width: 35px;
+  color: #c7241d;
+  text-align: center;
+}
+
+.footer div.footer-main-middle {
+  float: left;
+}
+.footer div.footer-main-middle p {
+  font-size: 18px;
+  background: #3d3d3d;
+  line-height: 24px;
+}
+.footer div.footer-main-right {
+  float: right;
+  margin: 45px 45px 0px 0px;
+}
+</style>
+    <!-- Footer BEGIN -->
+    <div class="footer-logo">
+      <div class="wrap-lg">
+        <img src="http://www.lishe.cn/themes/luckymall1/images/index_foot_logo.png" alt="">
+      </div>
+    </div>
+    <div class="footer">
+      <div class="wrap-lg">
+        <div class="footer-main-left">
+          <div class="footer-main-left-top">
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>导航</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul>
+                <li>
+                  <a href="http://www.lishe.cn/theme/help.html">礼舍能做啥</a>
+                </li>
+                <li>
+                  <a href="http://www.lishe.cn/theme/evaluate/index.html">伙伴说什么</a>
+                </li>
+                <li>
+                  <a href="http://www.lishe.cn/">心意商城</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>咨询</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul>
+                <li>
+                  <a href="http://www.lishe.cn/help_index.html">服务条款</a>
+                </li>
+                <!--<li>
+                  <a href="http://www.lishe.cn/theme/礼舍动态.html">礼舍动态</a>
+                </li>-->
+                <li>
+                  <a href="http://www.lishe.cn/help_recruitment.html">人员招聘</a>
+                </li>
+                <li>
+                  <a href="http://www.lishe.cn/help_resume.html">礼舍简介</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-main-left-top-left">
+              <div>
+                <span>礼舍帮帮</span>     
+                <span class="icon-right">></span>
+              </div>
+              <ul style="left: 0px;">
+                <li>
+                  <a href="http://www.lishe.cn/help_problem.html">常见问题</a>
+                </li>
+                <li>
+                  <a href="http://www.lishe.cn/help_summary.html">礼舍教学操作指南</a>
+                </li>
+                <li>
+                  <a href="http://www.lishe.cn/help_summary.html">礼舍使用全攻略</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-main-left-bottom">
+            <a href="http://www.lishe.cn/help_we.html"><span >联系客服</span></a>
+            <span class="line">|</span>
+            <a href="http://v.lishe.cn/company/login.html"><span>企业入驻</span></a>
+            <span class="line">|</span>
+            <a href="http://www.lishe.cn/shop/"><span>供应商入驻</span></a>
+          </div>
+        </div>
+        <div class="footer-main-middle">
+         <a href="http://www.lishe.cn/help_we.html"> <p>联系我们&nbsp;&nbsp;&nbsp;&nbsp;></p></a>
+          <img src="http://www.lishe.cn/themes/luckymall1/images/index_foot_erweima.png" alt="">
+        </div>
+        <div class="footer-main-right">
+          <img src="http://www.lishe.cn/themes/luckymall1/images/index_foot_contact.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+		<div class="wrap-lg footer-bottom-info">
+			<p class="cate"><a href="http://www.lishe.cn/help_resume.html">公司简介</a> | <a href="http://www.lishe.cn/help_partner.html">合作伙伴</a> | <a href="http://www.lishe.cn/help_recruitment.html">人才招聘</a> | <a href="http://www.lishe.cn/help_we.html">联系我们</a></p>
+			<p class="cpoyright">© 2012-2016 深圳礼舍科技有限公司 版权所有，并保留所有权利。 ICP备案证书号:<a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备12076725号-2</a></p>
+		</div>
+    </div>
+    <!-- Footer END -->
+  </body>
+</html>
+
+<script type="text/javascript">
+  $(function(){
+     $('.mind-strategy-right-list-more').click(function(){
+        // alert("换一组");
+     });
+  });
+</script>

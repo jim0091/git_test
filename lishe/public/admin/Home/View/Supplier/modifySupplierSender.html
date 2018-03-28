@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,member-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>修改供应商信息</title>
+</head>
+<body>
+<form action="{:U('Supplier/modifySenderEdit')}" method="post"  class="form form-horizontal" id="form-member-edit">
+<div id="tab_demo" >
+  <!--设置发货人-->
+  <div class="tabCon" style="margin-top: 20px;">
+    <div class="row cl">
+       <div class="col-1"></div>
+       <label class="form-label col-2">供应商账号：</label>
+       <div class="formControls col-3">
+       	{$sender['supplier_username']}
+       <div class="col-6"></div>
+    </div>
+    <div class="row cl" style="padding-top: 10px;">
+       <div class="col-1"></div>
+       <label class="form-label col-2">供应商名称：</label>
+       <div class="formControls col-3">
+       	{$sender['company_name']}
+       </div>
+       <div class="col-6"></div>
+    </div>    
+    <div class="row cl">
+    	<div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>跟单员账户：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" id="lisheAccount" value="{$sender['lishe_account']}"  placeholder="请输入跟单员账户(手机号)"  name="sender[lishe_account]" datatype="*2-16"   nullmsg="手机不能为空">
+				<input type="hidden" name="sendSupplierId" value="{$sender['supplier_id']}">
+      </div>
+      <div class="col-6"><small>输入跟单员账户后离开输入框自动检测跟单员信息</small></div>
+    </div>
+    <div class="row cl">
+       <div class="col-1"></div>
+       <label class="form-label col-2"><span class="c-red">*</span>礼舍跟单员：</label>
+       <div class="formControls col-3">
+        <input type="hidden" class="input-text" id="merchandiser" value="{$sender['lishe_merchandiser']}"  id="contact_name" name="sender[lishe_merchandiser]" datatype="*2-255">
+       	<span  id="merchandisert">{$sender['lishe_merchandiser']}</span>
+       </div>
+       <div class="col-6"></div>
+    </div>  	
+  	
+
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>状态：</label>
+      <div class="formControls col-4 skin-minimal">
+        <div class="radio-box">
+          <input type="radio" id="status-1"  value="1" name="status" datatype="*" nullmsg="请选择状态！" <eq name="sender['sender_status']" value="1">checked</eq>>
+          <label for="status-1">启用</label>
+        </div>
+        <div class="radio-box">
+          <input type="radio" id="status-2" value="0" name="status" <eq name="sender['sender_status']" value="0">checked</eq>>
+          <label for="status-2">禁用</label>
+        </div>
+      </div>
+      <div class="col-5"> </div>
+    </div>
+  	<div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>发货联系人：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="{$sender['sender']}" placeholder="请输入发货联系人" id="username" name="sender[sender]" datatype="*2-16"  nullmsg="用户名不能为空">
+      </div>
+      <div class="col-6"> </div>
+    </div>
+    <div class="row cl">
+      <div class="col-1"></div>
+      <label class="form-label col-2"><span class="c-red">*</span>手机号码：</label>
+      <div class="formControls col-3">
+        <input type="text" class="input-text" value="{$sender['sender_phone']}" placeholder="请输入发货联系人的手机号" id="password" name="sender[sender_phone]" datatype="*2-16"   nullmsg="手机不能为空">
+      </div>
+      <div class="col-6"></div>
+    </div>    
+
+  </div>  
+</div>
+<!-- 提交表单按钮-->
+<div class="row cl">
+	<div class="col-1"></div>	
+	<div class="col-4 col-offset-3">
+		<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+	</div>
+	<div class="col-7"></div>	
+</div>
+</form>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	function initBankName(){
+		var bankName = $("#bankcard_select").val();
+		if(bankName == -99){
+			bankName = $("#bankcard_name").val();
+			bankName = $.trim(bankName);
+			if(bankName != ''){
+				$("#bankcard_select").find("option:last").attr("selected",true);
+				$("#bankcard_name").show();
+				
+			}
+		}
+	}
+	initBankName();
+	jQuery.Huitab =function(tabBar,tabCon,class_name,tabEvent,i){
+		var $tab_menu=$(tabBar);
+		  // 初始化操作
+		  $tab_menu.removeClass(class_name);
+		  $(tabBar).eq(i).addClass(class_name);
+		  $(tabCon).hide();
+		  $(tabCon).eq(i).show();
+		  
+		  $tab_menu.bind(tabEvent,function(){
+		  	$tab_menu.removeClass(class_name);
+		      $(this).addClass(class_name);
+		      var index=$tab_menu.index(this);
+		      $(tabCon).hide();
+		      $(tabCon).eq(index).show();
+		      $("#tabidx").val(index);
+		  });
+		}
+	$.Huitab("#tab_demo .tabBar span","#tab_demo .tabCon","current","click","{$tabidx}");
+	
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-member-edit").Validform({
+		tiptype:2
+	});
+	
+	$("#bankcard_select").change(function(){
+		var bankName = $(this).val();
+		bankName = $.trim(bankName);
+		if(bankName == -1){
+			$("#bankcard_name").val('');
+			$("#bankcard_name").show();
+		}else{
+			$("#bankcard_name").hide();
+			$("#bankcard_name").val(bankName);
+		}
+	});
+});
+	$("#lisheAccount").blur(function(){
+		var account = $("#lisheAccount").val().trim();
+		if(account == ''){
+				layer.msg("请输入跟单员账户！");
+				return false;
+		}
+		$.post('__APP__/Supplier/checkAdminAcount',{account:account},
+			function(data){
+				if(data['code'] == 1){
+					$("#merchandisert").text(data['msg']);
+					$("#merchandiser").val(data['msg']);
+				}else{
+					layer.msg(data['msg']);
+				}
+			}
+		);
+	});
+</script>
+</body>
+</html>

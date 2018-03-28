@@ -1,0 +1,159 @@
+
+<include file="head" />
+    <!--/sidebar-->
+<div class="main-wrap">
+
+    <div class="crumb-wrap">
+        <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品列表</span></div>
+    </div>
+    <div class="search-wrap">
+        <div class="search-content">
+            <form action="{:U('Home/goodsList')}" method="get">
+                <table class="search-tab">
+                    <tr style="font-size:12px;">
+                        <td width="120" >一级分类:</td>
+                        <td style="width: 20%;">
+                            <select name="cat_id_1" id="cat_1" style="font-size:12px;">
+                                <option value="">全部分类</option>
+                                <volist name="catList" id="cat">
+                                <option value="{$cat['cat_id']}"
+                                        <eq name="cat['cat_id']" value="$cat_id_1">
+                                            selected='selected'
+                                        </eq>
+                                        >{$cat['cat_name']}</option>
+                                </volist>
+                            </select>
+                        </td>
+                        <td width="120" >二级分类:</td>
+                        <td style="width: 20%;">
+                            <select name="cat_id_2" id="cat_2" style="font-size:12px;width: 80%;">
+                                <option  value="">全部分类</option>
+                                    <option value="{$cat['cat_id']}"></option>
+                            </select>
+                        </td>
+                        <td width="120" >三级分类:</td>
+                        <td style="width: 20%;">
+                            <select name="cat_id" id="cat_3" style="font-size:12px;width: 80%;">
+                                <option value="">全部分类</option>
+                                    <option value="{$cat['cat_id']}</option>
+
+                            </select>
+                        </td>
+                        <th width="70" style="font-size:14px;">关键字:</th>
+                        <td><input class="common-text" style="height:20px;font-size:12px;" placeholder="关键字" value="{$like}" name="like" type="text"></td>
+                        <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="result-wrap">
+        <form name="myform" id="myform" method="post">
+
+            <div class="result-content">
+                <table class="result-tab" min-width="100%">
+                    <tr style="font-weight:bold;text-align:center;">
+                        <td class="tc" width="5%"></td>
+                        <td style="width:6%;">商品ID</td>
+                        <td style="width:6%;">所属分类</td>
+                        <td style="">商品名称</td>
+                        <td style="width:10%;">品牌</td>
+                        <td style="width:6%;">结算价</td>
+                        <td style="width:10%;">建议销售价</td>
+                        <td style="width:6%;">状态</td>
+                        <td style="width:8%;">操作</td>
+                    </tr>
+                    <volist name="list" id="val">
+                    <tr>
+                        <td class="tc"><input name="id[]" value="" type="checkbox"></td>
+                        <td style="font-size:12px;">{$val['sitem_id']}</td>
+                        <td>{$cats[$val['cat_id']]['cat_name']}</td>
+                        <td>{$val['title']}</td>
+                        <td align="center">{$brandList[$val['brand_id']]['brand_name']}</td>
+                        <td align="center">{$val['cost_price']}</td>
+                        <td align="center">
+
+                                {$val['mkt_price']}
+
+                            </td>
+                        <if condition="($val['status'] eq 1)">
+                            <td  align="center" style='color:#679e33;'>正常</td>
+                            <else />
+                            <td  align="center" style='color:#f13f40;'>删除</td>
+                        </if>
+                        <td  align="center"><a href="javascript::" onclick="layer_show('查看','{:U('Home/goodsDetail/',array('sitem_id'=>$val['sitem_id']))}','1','800','500')">详情 </a><!--a href="javascript::"> 删除 </a--></td>
+                    </tr>
+                    </volist>
+
+                </table>
+                <div class="list-page">
+                    {$page}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--/main-->
+</div>
+</body>
+<script>
+
+    layui.use('layer', function(){
+    });
+    function layer_show(title,url,w,h){
+        if (title == null || title == '') {
+            title=false;
+        };
+        if (url == null || url == '') {
+            url="404.html";
+        };
+        if (w == null || w == '') {
+            w=800;
+        };
+        if (h == null || h == '') {
+            h=($(window).height() - 50);
+        };
+        layer.open({
+            type: 2,
+            area: ['800px', '500px'],
+            fix: false, //不固定
+            maxmin: true,
+            shade:0.4,
+            title: title,
+            content: url
+        });
+    }
+    function goodsDetail(goodsId){
+        layer.open({
+            title: "aaa", content: "bbb"
+        });
+    }
+    $('#cat_1').change(function(){
+
+        var cat_1=$('#cat_1').val();
+        url="{:U('Home/getCat','','')}/cat_id/"+cat_1;
+        $.get(url,"", function (text) {
+            var cat=$('#cat_2');
+            var cat3=$('#cat_3');
+            set_cat_2(cat,text);
+            set_cat_2(cat3);
+        });
+    });
+    $('#cat_2').change(function(){
+        var cat_1=$('#cat_2').val();
+        url="{:U('Home/getCat','','')}/cat_id/"+cat_1;
+        $.get(url,"", function (text) {
+            var cat=$('#cat_3');
+            set_cat_2(cat,text);
+        });
+    });
+
+    function set_cat_2(cat,obj){
+        // var cat = $('#cat_2');
+        cat.empty();
+        for( val in obj){
+            cat.append("<option value='"+obj[val].cat_id+"'>"+obj[val].cat_name+"</option>");
+        }
+    }
+</script>
+</html>

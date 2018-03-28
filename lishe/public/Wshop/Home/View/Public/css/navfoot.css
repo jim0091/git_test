@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+input{outline: none;}
+/*悬浮导航*/
+.Wmallsfixedfoot{position:fixed;z-index:10; width:100%; background:#FFF; clear:both; height:3rem;border-top:#cbcbcb solid 1px; bottom:0;}
+.Wmallsfixedfootul li{float:left; width:20%; text-align:center; margin:0 0.5rem; padding-top:0.3rem;}
+
+.glyphicon-bell{background:url(../images/indexnotchek.png) no-repeat center center; width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+.glyphicon-ok{background:url(../images/classifynotchek.png) no-repeat center center; width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+.glyphicon-adjust{background:url(../images/recommendnotchek.png) no-repeat center center; width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+.glyphicon-barcode{background:url(../images/usernotchek.png) no-repeat center center; width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+		
+.Wmallsfixedfootul li.activefoot .glyphicon-bell{background:url(../images/indexchek.png) no-repeat center center; width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+.Wmallsfixedfootul li.activefoot .glyphicon-ok{background:url(../images/classifychek.png) no-repeat center center;width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+.Wmallsfixedfootul li.activefoot .glyphicon-adjust{background:url(../images/recommendchek.png) no-repeat center center; width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+.Wmallsfixedfootul li.activefoot .glyphicon-barcode{background:url(../images/usercheck.png) no-repeat center center;width:1.5rem; height:1.5rem; margin:0 auto; background-size:cover;margin-bottom:.2rem;}
+
+.Wmallsfixedfootul li a{font-size:0.7rem; color:#999999;}
+.Wmallsfixedfootul li a p{font-size:0.7rem; color:#999999; line-height: .7rem;}
+.Wmallsfixedfootul li.activefoot a{color:#ff4138;}

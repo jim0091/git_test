@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="__PUBLIC__/lib/html5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/respond.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/PIE_IE678.js"></script>
+    <![endif]-->
+    <link href="__PUBLIC__/admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/admin/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>修改采购商品</title>
+</head>
+<body>
+<div id="selectNumBox">
+	<table class="table table-border table-bordered table-hover">
+        <thead>
+        <tr class="text-c">
+            <th width="18%">商品名称</th>
+            <th width="15%">供应商</th>
+            <th width="67%" style="padding: 0;">
+            	<table rules="none" cellspacing="0" align="center">
+            	<thead>
+            		<tr>
+            		<th width="30%">商品规格</th>
+            		<th width="17%">商城价/结算价</th>
+            		<th width="10%">利润率</th>
+	        		<th width="10%">库存</th>
+	        		<th width="10%">销量</th>
+            		<th width="21%">数量</th>
+            		</tr>
+            	</thead>
+            	</table>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        	<volist name="itemArr" id="item">
+        		<tr>
+        		<td class="text-l">{$itemNameArr[$key]}</td>
+        		<td class="text-l">{$supplierList[$supplierIdArr[$key]]['company_name']}</td>
+        		<td style="padding: 0;">
+       				<table rules="none" cellspacing="0" align="center">
+					    <tbody>
+				    		<volist name="item['sku']" id="sku">
+					    	<tr class="text-c">
+					    		<present name="planSskuIdArr[$sku['ssku_id']]">
+					    			<td width="30%" class="text-l">
+					    				<del>{$sku['spec_info']}</del>
+					    				<span class="label label-warning radius">已添加</span>
+					    			</td>
+					        		<td width="17%">
+					        			<del>{$sku['price'] | floatval}/</del>
+					        			<del>{$sku['cost_price'] | floatval}/</del>
+					        		</td>
+					        		<td width="10%">
+					    				<?php 
+					        				$skucount = (($sku['price'] - $sku['cost_price']) / $sku['price'])*100;
+											echo number_format($skucount,1).'%'; 
+										?>
+					    			</td>
+					    			<td width="10%">{$storeList[$sku['item_id']][$sku['sku_id']] | default='--'}</td>
+					    			<td width="10%">{$soldList[$sku['sku_id']] | default='--'}</td>
+						        	<td width="21%">{$planSskuIdArr[$sku['ssku_id']]['number']}</td>
+								<else />
+									<td width="30%" class="text-l">{$sku['spec_info']}</td>
+					             	<td width="17%">
+					             		{$sku['price'] | default="0" | floatval} / {$sku['cost_price'] | floatval}
+					             	</td>
+					             	 <td width="10%">
+					    				<?php 
+					        				$skucount = (($sku['price'] - $sku['cost_price']) / $sku['price'])*100;
+											echo number_format($skucount,1).'%'; 
+										?>
+					    			</td>
+					    			<td width="10%">{$storeList[$sku['item_id']][$sku['sku_id']] | default='--'}</td>
+					    			<td width="10%">{$soldList[$sku['sku_id']] | default='--'}</td>
+					             	<td width="21%">
+					                 	<button class="btn btn-default" name="addNum">增</button>
+					                 	<input type="text" itemid="{$sku['ssku_id']}" value="1" name="orderNum" class="input-text" style="width: 45px; text-align: center;"/>
+					                 	<button class="btn btn-default" name="reduceNum">减</button>
+					                 </td>
+								</present>
+					    	</tr>
+					    	</volist>
+						</tbody>
+					</table>
+        		</td>
+        		</tr>
+			</volist>
+        </tbody>
+    </table>
+    <div class="text-c" style="padding-top: 25px; padding-bottom: 30px;">
+    	<input type="hidden" id="plan_id" value="{$plan_id}"/>
+		<button id="submitOrder" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i>添加商品</button>
+		<button onclick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/admin/lib/layer/1.9.3/layer.js"></script>
+<!--
+<script type="text/javascript" src="__PUBLIC__/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/lib/My97DatePicker/WdatePicker.js"></script>
+ -->
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.js"></script>
+<script type="text/javascript" src="__PUBLIC__/admin/js/H-ui.admin.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//增加数量
+	$("button[name='addNum']").click(function(){
+		var numObj = $(this).next();
+		var numVal = numObj.val();
+		var reg = /^[0-9]*[1-9][0-9]*$/;  
+		if(reg.test(numVal)){
+			numObj.val(++numVal);
+		}else{
+			numObj.val(1);
+		}
+	});
+	
+	//减少数量
+	$("button[name='reduceNum']").click(function(){
+		var numObj = $(this).prev();
+		var numVal = numObj.val();
+		--numVal;
+		var reg = /^[0-9]*[1-9][0-9]*$/;
+		if(reg.test(numVal) && numVal>=0){
+			numObj.val(numVal);
+		}else{
+			numObj.val(1);
+		}
+	});
+	//输入校验
+	$("input[name='orderNum']").change(function(){
+		var val = $(this).val();
+		var reg = /^[0-9]*$/;
+		if(!reg.test(val) || val == ''){
+			 $(this).val(1);
+		}
+	});
+	
+	//提交表单
+	$("#submitOrder").click(function(){
+		var planId = $("#plan_id").val();
+		var orderStr = "";
+		var num = 0;
+		var itemid = 0;
+		if(planId==null) 
+			return;
+		
+		$("input[name='orderNum']").each(function(){
+			num = $(this).val();
+			itemid = $(this).attr("itemid");
+			orderStr += itemid+"_"+num+"|";
+		})
+		
+		if(orderStr == ""){
+			return;
+		}
+		var addBut = $(this);
+		addBut.attr("disabled", true); 
+		$.post('{:U("Purchase/submitOrder")}',{plan_id:planId, orderstr:orderStr},function(result, status){
+			addBut.attr("disabled", false);
+			if(result.code == 1){
+				layer.alert('成功', {icon: 1},function(index){
+					layer_close();
+				  });
+			}else{
+				layer.alert(result.msg, {title:'添加失败',icon: 2});
+			}
+		});
+	});
+}) 
+</script>
+</body>
+</html>

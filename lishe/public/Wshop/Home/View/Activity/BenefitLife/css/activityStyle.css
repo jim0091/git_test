@@ -1,0 +1,42 @@
+﻿@charset "utf-8";
+body{background: url(../images/bg.png);background-size: cover;  font-family: Arial, "Microsoft Yahei","微软雅黑";-webkit-font-smoothing: antialiased;}
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+.w100 img{border:0;vertical-align: top;width: 100%;position: relative;}
+div{position: relative;}
+a,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+.content{display: none; width: 90%;margin-left: auto;margin-right: auto;overflow: hidden;}
+.content ul li{float: left;width: 47%;background:#fff;margin-bottom: 0.45rem;border-radius: 2%;overflow: hidden;background: #f7f7f7;}
+.content ul li:nth-child(odd){margin-right: 6%;}
+.content img{width: 100%;vertical-align: top;}
+.content ul li .proName{padding:0 4%; font-size: 0.3rem;line-height: 1.4;color:#000;text-align: center;}
+.content ul li a{display: block;text-decoration: none;}
+.content ul li .price{padding:0.15rem 4%;overflow: hidden;}
+.tabBtn{width: 100%;height: 1.1rem; font-size: 0.4rem;overflow: hidden;background: url(../images/btnBg.png) no-repeat;background-size: cover;color: #fff;margin-bottom: 0.3rem;}
+.tabBtn ul li{float: left; height: 1.08rem; box-sizing: border-box; padding: 0.26rem 0.2rem; font-size: 0.4rem; font: 0.4rem/1.5 "黑体";}
+.tabBtn ul{overflow: hidden;}
+.tabBtn ul li.active{border-bottom: 2px solid #fff;margin-bottom: 2px;}
+.content ul li .price .priceSum{float: left; font-size: 0.62rem;color: #313131;}
+.content ul li .price .priceSum i{font-style: normal;padding-right: 0.06rem;}
+.content ul li .price .fr{position: relative;top: 0.21rem; float: right; font-size: 0.32rem;color: #313131;}
+.content ul .proImg{min-height: 4.33rem;background: #fff;}
+.content ul li .btnGroup{margin:0 auto;margin-bottom: 0.2666666666666667rem; width: 92%;height: 0.7333333333333333rem;line-height: 0.7333333333333333rem;font-size: 0.3733333333333333rem;text-align: center; box-sizing: border-box;border:0.0266666666666667rem solid #ff0000;overflow: hidden;}
+.content ul li .btnGroup .buyLeft{float: left; width: 38.70967741935484%;height: 100%;color: #fff;background: #ff0000;}
+.content ul li .btnGroup .addCart{float: right; width: 61.29032258064516%;height: 100%;color: #ff0000;background: #fff;}
+.linkFix,.buyCart{position: fixed;left: 5%;width: 1.2rem;height: 1.2rem;}
+.linkFix{background: url(../images/shoping.png) no-repeat;bottom: 11.5%;background-size: cover;}
+.buyCart{background: url(../images/buyCart.png) no-repeat;bottom: 3.5%;background-size: cover;}
+.buyCart .proN{position: absolute;right: -23%;top: -23%; width: 0.88rem;height: 0.88rem;line-height: 0.88rem; background: url(../images/Number-red@2x.png) no-repeat; font-size: 0.3rem;color: #fff;text-align: center;background-size: cover;}
+.backTop{left: 98%;transform: translateX(-100%);-webkit-transform: translateX(-100%);width: 1rem;height: 1rem;opacity: .6;background: url(../images/back-@2x.png) center center no-repeat;background-size: inherit;}
+
+
+
+
+
+
+
+
+
+
+
+

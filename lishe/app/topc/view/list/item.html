@@ -1,0 +1,54 @@
+<ul class="itemslist">
+  <{foreach from=$items item=item}>
+  <li style="position: relative;">
+    <div class="item">
+      <div class="pic">
+        <a href="<{url action=topc_ctl_item@index item_id=$item.item_id}>" target="_blank">
+          <{if !$item.image_default_id}>
+          <img width="210" height="230" src="<{$image_default_id.M.default_image}>" data-haszoom="700">
+          <{else}>
+          <img width="210" height="230" src="<{$item.image_default_id|storager:'m'}>" data-haszoom="700">
+          <{/if}>
+        </a>
+      </div>
+      <a class="name" href="<{url action=topc_ctl_item@index item_id=$item.item_id}>" target="_blank"> <{if $item.activity.activity_tag}><span class="item-describe-tag"><{$item.activity.activity_tag}></span><{/if}><{$item.title}></a>
+      <div class="price">
+        <{if $item.activity.activity_tag}>
+        <del class="text-muted"><{$item.price|cur}></del>
+        <{$item.activity_price|cur}>
+        <{else}>
+        <{$item.price|cur}>
+        <{/if}>
+        <{if $item.promotion}><span class="discount-tag">惠</span><{/if}>
+      </div>
+      <div class="price">
+        <{if $item.activity.activity_tag}>
+        <del class="text-muted"><{$item.price_deposit}>&nbsp;积分</del>
+        <{$item.activity_price_deposit}>
+        <{else}>
+        <{$item.price_deposit}>
+        <{/if}>&nbsp;积分
+        <{if $item.promotion}><span class="discount-tag">惠</span><{/if}>
+      </div>
+    </div>
+
+    <{if $item.shop_type}>
+        <style type="text/css">
+.shop-type-self {
+  position: absolute;
+  width: 33px;
+  height: 18px;
+  text-align: center;
+  border-radius: 3px;
+  font: 12px/18px SimSun;
+  color: #fff;
+  background: #e4393c;
+  right: 0px;
+  bottom: 10px;
+}
+        </style>
+        <div class="shop-type-self">自营</div>
+    <{/if}>
+  </li>
+  <{/foreach}>
+</ul>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="__VIEW__Public/css/ordersConfirmed.css">
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script type="text/javascript" src="__VIEW__Public/js/popuLayer.js"></script>
+<title>购物车-心意商城</title>
+</head>
+
+<body>
+    <div class="Worders">
+        <span><a onclick="history.back();"><img src="__VIEW__Public/images/Wmallsretrun.png"></a></span>
+        <span>订单确认</span>
+    </div>
+	<!--地址信息-->
+	<form id="orderconfirm" method="post" action="__APP__/Pay/addUserOrder">
+	<div class="Wordersinfor">
+		<a href="__APP__/User/addrList">
+			<ul>
+				<li>{$defAddrInfo['name']}<span>{$defAddrInfo['mobile']}</span></li>
+				<li>
+					<span class="addersIcon"><img src="__VIEW__Public/images/addersIcon.png"></span>
+					<span class="adres">{$defAddrInfo['area']}&nbsp;{$defAddrInfo['addr']}</span>
+					<span class="orderjt"><img src="__VIEW__Public/images/aJt.png"></span>
+				</li>
+			</ul>
+		</a>
+	</div>
+	<!--商品信息-->
+	<notempty name="shopList">
+	<volist name="shopList" id="shopVo">
+	<div class="shoppinfor">
+		<input type="hidden"  name="shopIds[]" value="{$shopVo.shop_id}">
+		<input type="hidden" name="tradeType[]" value="{$type[$shopVo['shop_id']]}">
+		<input type="hidden" name="activityId[]" value="{$aitemId[$shopVo['shop_id']]}">
+		<p class="shoppinforp"><img src="{$shopVo['shop_logo']}">{$shopVo['shop_name']}</p>
+			<notempty name="cartList">
+			<volist name="cartList" id="cartVo">
+			<if condition="$cartVo['shop_id'] eq $shopVo['shop_id']">
+		  	<input type="hidden" name="itemIds[]" value="{$cartVo['item_id']}" >
+		  	<input type="hidden" name="skuIds[]" value="{$cartVo['sku_id']}" >
+			<div class="shoppinfordiv">
+				<div class="shoppinforLeft">
+					<a href="{:U('/Info/index/itemId/'.$cartVo['item_id'])}">
+						<img src="{$cartVo.image_default_id}_m.{:end(explode('.',$cartVo['image_default_id']))}">
+					</a>
+				</div>
+				<div class="shoppinforRight">
+					<p>
+						<span class="shopspan">
+							<a href="{:U('/Info/index/itemId/'.$cartVo['item_id'])}">{$cartVo['title']}</a>
+						</span>
+					</p>
+					<p>
+						<span><a href="#">{$cartVo['spec_info']}</a></span>
+						<span>
+							<if condition="$cartVo['itemStatus'] eq 'onsale'">
+								<if condition="$cartVo['store'] eq 33">
+								<else/>
+									<input type="hidden" class="isFreez" data-story-writer='0'>无货
+								</if>
+							<else/>
+								<input type="hidden" class="itemStatus" data-novelist="instock">
+								已下架
+							</if>	
+						</span>
+					</p>
+					<p>
+						<a href="#">
+						<!--{$cartVo['price']*100}积分&nbsp;x&nbsp;{$cartVo.quantity}-->
+							<if condition="$cartVo['cash'] gt 0 && $cartVo['point'] gt 0">
+								(¥{:round($cartVo['cash'], 2)} + {$cartVo['point']}积分)&nbsp;x&nbsp;{$cartVo.quantity}
+								<elseif condition="$cartVo['cash'] eq 0 && $cartVo['point'] eq 0"/>
+								¥{:round($cartVo['price'], 2)}&nbsp;x&nbsp;{$cartVo.quantity}
+								<elseif condition="$cartVo['cash'] gt 0"/>
+								¥{:round($cartVo['cash'], 2)}&nbsp;x&nbsp;{$cartVo.quantity}
+								<else/>
+								{$cartVo['point']}积分&nbsp;x&nbsp;{$cartVo.quantity}
+							</if>
+						</a>
+					</p>
+				</div>
+			</div>
+			</if>
+			</volist>
+			</notempty>
+		<div style="clear:both;"></div>
+	</div>
+	<!--配送信息-->
+	<div class="distribution">
+		<input type="hidden" name="dlyTmplIds[]" value="{$shopVo.template_id}">
+		<input type="hidden" name="postFees[]" value="<if condition="$shopVo['totalPrice'] egt $shopVo['postFree']">0.00<else/>{$shopVo.delivery}</if>">
+		<p>配送方式：<span>(全场满{$shopVo['postFree']*100}积分包邮)</span></p>
+		<p>配送运费：<span>{$shopVo['delivery']*100}积分</span></p>
+		<p>商品金额：
+			<span>
+				<!--{$shopVo['totalEndPrice']*100}积分-->
+				<if condition="$shopVo['totalCash'] gt 0 && $shopVo['totalPoints'] gt 0">
+					¥{:round($shopVo['totalCash'], 2)} + {$shopVo['totalPoints']}积分
+					<elseif condition="$shopVo['totalCash'] gt 0"/>
+					¥{:round($shopVo['totalCash'], 2)}
+					<else/>
+					{$shopVo['totalPoints']}积分
+				</if>
+			</span></p>
+	</div>
+	</volist>
+	</notempty>
+
+	<!--结算-->
+	<div class="ordersPay">
+		<ul>
+			<li class="Paybtn">
+				<a href="javascript:void(0);" class="toPay">去支付</a> 
+				<a href="" class="toPayDisplay">支付中...</a>
+			</li>
+			<li class="totalled">合计:
+				<span>
+					<!--{$shopTotalPrice*100}积分-->
+					<if condition="$totalCartCash gt 0 && $totalCartPoints gt 0">
+						¥{:round($totalCartCash, 2)}+{$totalCartPoints + $totalCartDelivery * 100}积分
+						<elseif condition="$totalCartCash gt 0"/>
+						¥{:round($totalCartCash, 2)}
+						<else/>
+						{$totalCartPoints + $totalCartDelivery * 100}积分
+					</if>
+				</span>
+			</li>
+		</ul>
+	</div>
+	</form>
+
+	<include file="Public/popuLoading"/>
+	<include file="Public/popuLayer"/>  
+	<script type="text/javascript">		
+		//提交订单
+		$(".toPay").click(function(){
+			$(".topLoading").show();
+			$(this).hide();
+			$(".toPayDisplay").show();
+
+			var itemStatus = 1;
+			$(".itemStatus").each(function(){
+				if ($(this).attr('data-novelist') == "instock") {
+					itemStatus = 0;
+				};				
+			});
+			if (itemStatus == 0) {
+				$(this).show();
+				$(".toPayDisplay").hide();
+				$(".topLoading").hide();
+				opLayer('open',"商品已下架，请重新下单");
+				return false;
+			};
+			var isFreez = 1;
+			$(".isFreez").each(function(){
+				if ($(this).attr('data-story-writer') == 0) {
+					isFreez = 0;
+				};				
+			});
+			if (isFreez == 0) {
+				$(this).show();
+				$(".toPayDisplay").hide();
+				$(".topLoading").hide();
+				opLayer('open',"商品库存不足，请重新下单");
+				return false;
+			};
+			$("#orderconfirm").submit();
+		});
+	</script>	
+</body>
+</html>

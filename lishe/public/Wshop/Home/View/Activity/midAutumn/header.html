@@ -1,0 +1,30 @@
+<div class="header">
+    <img class="logo" src="/Wshop/Home/View/Activity/midAutumn/img/logo.png" alt=""/>
+    <form action="{:U('Home/Itemlist/searchList')}" method="GET"> 
+    	<input class="header_inp" type="search" placeholder="搜索福利商品" name="keyword"/>
+    </form>
+    <img class="seek" src="/Wshop/Home/View/Activity/midAutumn/img/seek.png" alt=""/>
+    <div class="shop_cart fr">
+        <img src="/Wshop/Home/View/Activity/midAutumn/img/cart.png" alt=""/>
+        <p>0</p>
+    </div>
+</div>
+<script type="text/javascript">
+function updateCartNum(){
+	$.ajax({
+        type:"POST",
+        url:"__APP__/Activity/updateCartNum",
+        dataType:'text',
+        success:function(data){
+            $(".shop_cart p").text(data);
+            var all=parseInt($('.shop_cart p').html());
+    	    if(all==0){
+    	        $('.shop_cart p').css({'display':'none'});
+    	    }else if(all!=0){
+    	        $('.shop_cart p').css({'display':'block'});
+    	    }
+        }
+    });
+}
+updateCartNum();
+</script>

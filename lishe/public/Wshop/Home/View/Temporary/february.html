@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<title>二月</title>
+	<link rel="stylesheet" type="text/css" href="__VIEW__Public/Temporary/css/february.css"/>
+</head>
+<body>
+	<section class="section1">
+		<div class="left_cloud"><img src="__VIEW__Public/Temporary/img/left_cloud.png"/></div>
+		<div class="right_cloud"><img src="__VIEW__Public/Temporary/img/right_cloud.png"/></div>
+		<div class="little"><img src="__VIEW__Public/Temporary/img/little_person.png"/></div>
+		<div class="think"><img src="__VIEW__Public/Temporary/img/think_you.png"/></div>
+		<footer class="kitchen">
+			<img src="__VIEW__Public/Temporary/img/kitchen.png" />
+		</footer>
+		<div class="hello"><img src="__VIEW__Public/Temporary/img/hello.png"/></div>
+		<div class="arrow"><img src="__VIEW__Public/Temporary/img/arrow.png"/></div>
+	</section>
+	<!--日历-->
+	<section class="section2">
+		<div class="calendar" id="calendar">
+			<img src="__VIEW__Public/Temporary/img/february.png"/>
+			<span><img src="__VIEW__Public/Temporary/img/click.png" id="click_img" style="display: block;"/></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<div class="time_item">
+				<img src="__VIEW__Public/Temporary/img/time_21.png" id="time"/>
+				<img src="__VIEW__Public/Temporary/img/delete.png" id="delete"/>
+			</div>
+		</div>
+	</section>			
+</body>
+<script type="text/javascript" src="__VIEW__Public/js/jquery-1.7.js"></script>
+<script>
+	var html = document.documentElement;
+	var whtml  =html.getBoundingClientRect().width;
+	html.style.fontSize = whtml /10 + "px";
+	/*日历详情图片*/
+	var time_url =new Array('__VIEW__Public/Temporary/img/time_21.png','__VIEW__Public/Temporary/img/time_22.png','__VIEW__Public/Temporary/img/time_23.png','__VIEW__Public/Temporary/img/time_24.png');
+	
+	$('#calendar span').bind('touchend',function(e){
+		
+		$('#time').attr('src',time_url[$(this).index() - 1]);
+		$('#click_img').hide();
+		$('.time_item').show();
+		$('#calendar span').hide();
+	});
+	
+	$('#delete').bind('touchend',function(e){
+		$('.time_item').hide();
+		$('#calendar span').show();
+	});
+	
+	$('.arrow').bind('touchend',function(e){
+		$('#calendar').addClass('calendar2');
+		$('section').css('transform','translateY(-100%)');
+	});
+	
+</script>
+</html>

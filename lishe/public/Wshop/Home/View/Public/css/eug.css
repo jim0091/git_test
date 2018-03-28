@@ -1,0 +1,92 @@
+body,
+p,
+div,
+span,
+a,
+ul,
+li,
+b,
+em,
+h1,
+h2,
+h3,
+h4,
+section,
+footer,
+header,
+img,
+dt,
+dl,
+dd {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.clearfix {
+    clear: both;
+}
+.margin0 {
+    margin: 0;
+}
+.mauto {
+    margin-left: auto;
+    margin-right: auto;
+}
+img {
+    border: none;
+}
+.fr{
+    float: right;
+}
+.fl{float: left;}
+html,body{width: 100%;height: 100%;position: relative;/*background: url("../images/bg.png") 53% 50%*/background:#C0BFC4;}
+.modal{background:rgba(0,0,0,.5);opacity: 0.4;width: 100%;height: 100%;position: absolute;left:0;top:0;}
+.content{width: auto;height:100%;padding: 0 0.3rem;position: relative;z-index: 100;}
+.content_top{font-size: 0.28rem;height: 1.05rem;line-height: 1.3rem;}
+.content_top_img{width: 1.5rem;}
+.content_children{width: 100%;height:50px;}
+.content_children li{background: #fff;border-radius: 6px;height:1.46rem;padding: 0.2rem;box-sizing: border-box;margin-bottom: 0.2rem;}
+.children_price{color:#ff4138;font-size: 0.72rem;float: left;height:1.06rem;line-height: 1.06rem;margin-left: -0.1rem;}
+.price_one{font-size: 0.4rem;position: relative;top:-0.25rem;right:-0.15rem;}
+.children_text{float: left;}
+.children_text_one{font-size: 0.3rem;margin-left: 0.15rem;height: 0.3rem;line-height: 0.3rem;margin-top: 0.2rem;}
+.children_text_catalog{color:#666666;}
+.children_text_title{color:#333333;}
+.children_text_two{font-size: 0.24rem;color:#666666;margin-left: 0.15rem;height: 0.24rem;line-height: 0.24rem;margin-top: 0.2rem;}
+.text_two_color{color:#33b3ee;}
+.children_delete{width: 0.37rem;height:1.06rem;line-height: 1.06rem;background: url("../images/delete.png") no-repeat center center;background-size:0.4rem;float: right; }
+
+.children_default{width: 0.4rem;height:1.06rem;background: url("../images/default.png") no-repeat center center;line-height: 1.06rem;background-size:0.4rem;float: left; }
+.children_corr{width: 0.4rem;height:1.06rem;background: url("../images/correct.png") no-repeat center center;line-height: 1.06rem;background-size:0.4rem;float: left; }
+.children_overdue{margin-left: -0.1rem;width: 0.6rem;height:1.06rem;background: url("../images/overdue.png") no-repeat center center;line-height: 1.06rem;background-size:0.6rem;float: left; }
+
+
+.footer{height:0.9rem;border-top: 1px solid #cccccc;position: fixed;bottom: 0;left: 0;background: #fff;width: 100%;padding-left: 0.3rem;z-index: 100;line-height: 0.9rem;color:#333333;}
+.footer_default{width: 0.4rem;height:0.9rem;background: url("../images/default.png") no-repeat center center;line-height: 0.9rem;background-size:0.4rem;float: left;margin-right: 0.1rem; }
+.footer_corr{width: 0.4rem;height:0.9rem;background: url("../images/correct.png") no-repeat center center;line-height: 0.9rem;background-size:0.4rem;float: left; }
+.footer_all{float: left;font-size: 0.3rem;color: #333;text-align: center;}
+.footer_price{margin-left: 0.3rem;float: left;height:0.9rem;padding: 0.15rem 0.2rem 0.15rem 0;}
+.footer_price_all{margin-left: 1.75rem;font-size: 0.3rem;height:0.3rem;line-height: 0.3rem;}
+.footer_price_all_two{font-size: 0.2rem;height: 0.2rem;line-height: 0.2rem;margin-top: 0.1rem}
+.price_all_two_right{margin-left: 0.2rem;}
+.price_color{color:#ff4138;}
+.footer_btn{width: 1.6rem;background: #ff4138;height: 100%;float: right;line-height: 0.9rem;text-align: left;box-sizing: border-box;padding-left: 0.15rem;font-size: 0.3rem;color:#fff;}
+.modal_confirm{display: none;position: absolute;left:0;top:0;width: 100%;height: 100%;background: transparent;z-index: 101}
+.modal-content{display: none;border-radius: 4px;text-align: center;font-size: 0.3rem;color:#fff;width: 4rem;height:2rem;position: absolute;top:30%;left: 50%;margin-left: -2rem;z-index: 101;background: rgba(0,0,0,.5)}
+.modal-content_btn{text-align: right;position: relative;bottom:-0.5rem;}
+.modal-content_btn span{margin: 0.2rem;}
+.modal-content_title{margin-top: 0.4rem;}
+
+

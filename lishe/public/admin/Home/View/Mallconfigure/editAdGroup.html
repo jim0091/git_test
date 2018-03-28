@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__ADMIN__lib/html5.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/respond.min.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/PIE_IE678.js"></script>
+<![endif]-->
+<link href="__ADMIN__css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN__lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="__ADMIN__lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<style>
+	.cl{
+		padding: 10px;
+	}
+</style>
+<title>新增图片</title>
+</head>
+<body>
+<div class="pd-20">
+<nav class="breadcrumb"><a class="btn btn-success radius r mr-20" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<form class="layui-form" action="{:U('Mallconfigure/editAdGroupDeal')}" id="submitFrom" method="post"  style="padding-bottom: 20px;">
+		<present name="info.group_id">
+			<input name="groupId" value="{$info.group_id}" type="hidden" />
+		</present>
+		<div class="row cl">
+			<label class="form-label col-3">广告组名称：</label>
+			<div class="formControls col-9">
+     	 <input name="data[group_name]" value="{$info.group_name}" id="groupName" class="input-text" placeholder="请输入广告组名称"  type="text" onfocus="giveTips('(必填项)：广告组名称区分不同广告组的标志!',this)" maxlength="15">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">广告规格：</label>
+			<div class="formControls col-9">
+     		<input name="data[ad_spec]" value="{$info.ad_spec}"  placeholder="广告规格(图片大小)" class="input-text" type="text" onfocus="giveTips('(选填项)：当广告位图片统一大小时通过该规格标识上传图片的大小!',this)" maxlength="12">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">组标题：</label>
+			<div class="formControls col-9">
+    	  <input name="data[group_title]" value="{$info.group_title}"  placeholder="请输入广告组标题" class="input-text" type="text" onfocus="giveTips('(选填项)：广告组需要标题等文字时填写!',this)" maxlength="28">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">组副标题：</label>
+			<div class="formControls col-9">
+     		 <input name="data[group_vice_title]" value="{$info.group_vice_title}"  placeholder="请输入广告组副标题" class="input-text" type="text" onfocus="giveTips('(选填项)：广告组需要副标题等文字时填写!',this)" maxlength="48">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">组跳转链接：</label>
+			<div class="formControls col-9">
+      	<input name="data[refer_link]" value="{$info.refer_link}"  placeholder="请输入组跳转链接" class="input-text" type="text" onfocus="giveTips('(选填项)：广告组区域需要跳转时填写跳转链接!',this)" maxlength="80">
+			</div>
+		</div>	
+  <div class="row cl">
+    <label class="form-label col-3">广告区/模块</label>
+    <div class="formControls col-9">
+		  <div class="col-7">
+		    <label class="form-label col-4">广告区</label>
+		    <div class="formControls col-8" >
+	      <select name="data[area_id]"  id="areaVal"  lay-filter="areaVal" onchange="javascript:getNextSel(this.options[this.selectedIndex].value);">
+	        <option value="0">请选择</option>
+	    		<volist name="allArea" id="area">
+	       		 <option value="{$area.area_id}" <eq name="area.area_id" value="$info.area_id">selected="selected"</eq>  >{$area.area_name}</option>
+	   		 	</volist>
+	      </select>
+			  </div>    
+		  </div>    
+		  <div class="col-5">
+		    <label class="form-label col-3">模块</label>
+		    <div class="formControls col-9" >
+		      <select name="data[module_id]" lay-filter="aihao" id="module" >
+		        <option value="0">请选择</option>
+		      </select>
+		    </div>
+		  </div>    
+    </div>
+  </div>		
+
+	  <div class="row cl">
+	    <label class="form-label col-3">选择模板</label>
+	    </div>
+		 <div class="row cl" id="chTemp">
+	 	</div> 
+	<!--<div class="row cl">
+	    <label class="form-label col-3">选择广告位</label>
+	    <div class="formControls col-9">
+	    	<volist name="allPostion" id="postion">
+	    		<span onmouseover="giveTips('{$postion.position_desc}',this)">
+	    			<label>
+		      	<input  name="checkedPostion" title="{$postion.position_name}" value="{$postion.position_id}" type="checkbox"  >
+		      	{$postion.position_name}
+	    			</label>
+	    		</span>
+	    	</volist>
+	    </div>
+	  </div>  -->
+  <div class="row cl">
+    <label class="form-label col-3">所属企业</label>
+    <div class="formControls col-9">
+      <select name="data[com_group]">
+        <option value="0">普通</option>
+    		<volist name="allcom" id="com">
+       		 <option value="{$com.com_group}"  <eq name="com.com_group" value="$info.com_group">selected="selected"</eq>  >{$com.com_name}</option>
+   		 	</volist>
+      </select>
+    </div>
+  </div>	  
+	  <div class="row cl">
+	    <label class="form-label col-3">使用平台</label>
+	    <div class="formControls col-9">
+	    	<label>
+		      <input name="data[use_platform]" value="1" title="pc 端" 
+		      <present name="info">
+			      <eq name="info.use_platform" value="1">checked="checked"</eq>
+		      	<else/>
+		      	checked="checked"
+		      </present>
+		       type="radio">pc 端
+	    	</label>
+	    	<label>
+		      <input name="data[use_platform]" value="2" title="wap 端" <eq name="info.use_platform" value="2">checked="checked"</eq>  type="radio">wap 端
+	    	</label>
+	    	<label>
+		      <input name="data[use_platform]" value="3" title="app 端" <eq name="info.use_platform" value="3">checked="checked"</eq>  type="radio">app 端
+	    	</label>
+	    </div>
+	  </div>		
+		<div class="row cl">
+			<label class="form-label col-3">描述：</label>
+			<div class="formControls col-9">
+				<textarea name="data[group_desc]" cols="" rows="" class="textarea"  placeholder="广告组的描述" datatype="*0-200" dragonfly="true" nullmsg="备注不能为空！">{$info.group_desc}</textarea>
+				<p class="textarea-numberbar"></p>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-8 col-offset-4">
+				<button onclick="saveForm()" class="btn btn-success radius" type="button">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script type="text/javascript" src="__ADMIN__lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="__ADMIN__lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="__ADMIN__js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN__js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function($) {
+	var areaId="{$info.area_id}";
+	if(areaId){
+		getNextSel(areaId);
+	}
+});
+function giveTips(title,obj){
+	layer.tips(title, obj, {
+	  tips: [3, '#5FB878']
+	});	
+	
+}
+//选择广告区
+function getNextSel(areaId){
+	//改变模块/模板
+var areas="{$info.area_id}";
+var moduleId=0;
+var templateId=0;
+if(areaId==areas){
+	moduleId="{$info.module_id}";
+	templateId="{$info.template_id}";	
+}
+$("#module").find('option[value="0"]').attr("selected","selected");
+$( '#module' ).empty() ;
+$( '#chTemp' ).empty() ;
+$( '#module' ).append( '<option value="0"> 请选择 </option>' ) ;
+	$.post('__APP__/Mallconfigure/getAdModule',{areaId:areaId,moduleId:moduleId},function(data){
+		if(data){
+			$( '#module' ).append(data);
+//				$.each(data, function(k,v) {
+//	  				var options = '<option value="' +v.module_id+ '"  >' +v.module_name+ '</option>' ;
+// 	 				$( '#module' ).append(options);
+//				});			
+		}
+	});
+	$.post('__APP__/Mallconfigure/getAdTemp',{areaId:areaId,templateId:templateId},function(datas){
+		if(datas){
+			$( '#chTemp' ).append(datas);
+//			var list='';
+//				$.each(data, function(k,v) {
+//						list='';
+//		 	 		  	list= '<div style="padding-top:20px"><div class="formControls col-6" title="' +v.template_desc+ '"><label class=""><input name="data[template_id]" value="' +v.template_id+ '"   type="radio">';
+//		 	  			list+='<img src="' +v.template_pic+ '" style="max-height: 80px;max-width: 280px;" /></label></div></div>';
+//     	 				$( '#chTemp' ).append(list);
+//				});			
+		}
+	});	
+}
+
+function saveForm(){
+	var groupName=$("#groupName").val();
+	var groupDesc=$("#groupDesc").val();
+	var areaVal=$("#areaVal").val();
+	var module=$("#module").val();
+	var usePlatform=$("input[name='data[use_platform]']:checked").val();
+	if(!usePlatform){
+		layer.msg("请选择使用平台!");
+		return false;		
+	}
+	if(groupName==""){
+		layer.msg("请输入广告组名称!");
+		return false;
+	}
+	if(groupName.length>15){
+		layer.msg("广告组名称字数至多为15字!");
+		return false;		
+	}
+	if(areaVal==0){
+		layer.msg("请选择广告区!");
+		return false;		
+	}else{
+		if(module==0){
+			layer.msg("请选择模块!");
+			return false;			
+		}
+	}	
+	if(groupDesc==""){
+		layer.msg("请输入广告组描述!");
+		return false;
+	}	
+	$("#submitFrom").submit();
+}
+</script>
+</body>
+</html>
