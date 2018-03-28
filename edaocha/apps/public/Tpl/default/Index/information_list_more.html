@@ -1,0 +1,14 @@
+<volist name="informationData['data']" id ="v">
+    <div class="information-box" data-id="{$v['id']}">
+        <a href="{:U('public/Index/information_info',array('id'=>$v['id']))}">
+            <div class="img">
+                <img src="{$v['logo']}" width="200" height="150">
+            </div>
+            <div class="info">
+                <p class="title">{$v['subject']}</p>
+                <p class="desc">{$v['abstract']}</p>
+                <p class="tab">发布于{$v['ctime']|date="Y-m-d",###}<span>作者：{$v['created_name']}</span></p>
+            </div>
+        </a>
+    </div>
+</volist>

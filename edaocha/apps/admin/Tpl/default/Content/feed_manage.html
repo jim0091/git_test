@@ -1,0 +1,278 @@
+<include file="__THEME__/admin_header" />
+<script type="text/javascript" src="__THEME__/js/jquery.jedate.js"></script>
+<link type="text/css" rel="stylesheet" href="__THEME__/css/jedate.css?v=1.0">
+<div class="so_main">
+<script>
+function sureSearchDenounce(){
+	var uid = $('#uid').val();
+	var uname = $('#uname').val();
+    $.post("{:U('admin/Content/feed_manage_add')}",{uid:uid, uname:uname},function(res){
+        if(res>0) {
+            ui.success('账户添加成功');
+            location.href = location.href;
+        }else {
+            ui.error('用户不存在');
+        }
+    });
+}
+
+
+function sureSearchDenounce1(){
+    var uid = $('#uid1').val();
+    var uname = $('#uname1').val();
+    var date = $('#date04').val();
+    var str_get = '&uid='+uid+'&uname='+uname+'&date='+date;
+    var url = "{:U('admin/Content/feed_manage')}";
+    location.href = url + str_get;
+}
+
+    function export_feed(){
+        var uid = $('#uid1').val();
+        var uname = $('#uname1').val();
+        var date = $('#date04').val();
+        var str_get = '&uid='+uid+'&uname='+uname+'&date='+date;
+        var url = "{:U('admin/Content/feed_manage_export')}";
+        location.href = url + str_get;
+    }
+</script>
+  <div class="page_tit">分享统计管理</div>
+  <div id="search_div" <neq name="isSearch" value="1">style="display:none;"</neq>>
+    <div class="page_tit">搜索账号 [ <a href="javascript:void(0);" onclick="searchDenounce();">{:L('PUBLIC_HIDDEN')}</a> ]</div>
+    <div class="form2">
+    <input type="hidden" name="isSearch" value="1" class="s-txt" style="width:300px"/>
+    <dl class="lineD">
+      <dt>用户ID：</dt>
+      <dd>
+        <input id="uid" type="text" value="" class="s-txt" style="width:300px">
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>用户名称：</dt>
+      <dd>
+      	<input type="text" id="uname" value=""  class="s-txt" style="width:300px"/>
+      </dd>
+    </dl>
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="{:L('PUBLIC_CONFIRM')}" onclick="sureSearchDenounce();"/>
+    </div>
+  </div>
+  </div>
+
+<div id="search_div1" <neq name="isSearch1" value="1">style="display:none;"</neq>>
+<div class="page_tit">搜索账号 [ <a href="javascript:void(0);" onclick="searchDenounce1();">{:L('PUBLIC_HIDDEN')}</a> ]</div>
+<div class="form2">
+    <input type="hidden" name="isSearch1" value="1" class="s-txt" style="width:300px"/>
+    <dl class="lineD">
+        <dt>用户ID：</dt>
+        <dd>
+            <input id="uid1" type="text" value="{$get_uid}" class="s-txt" style="width:300px">
+        </dd>
+    </dl>
+    <dl class="lineD">
+        <dt>用户名称：</dt>
+        <dd>
+            <input type="text" id="uname1" value="{$uname}"  class="s-txt" style="width:300px"/>
+        </dd>
+    </dl>
+    <dl class="lineD">
+        <dt>日期选择：</dt>
+        <dd>
+            <input class="s-txt" id="date04" type="text" value="{$date}" placeholder="YYYY-MM" style="width:300px"  readonly>
+        </dd>
+    </dl>
+    <div class="page_btm">
+        <input type="submit" class="btn_b" value="{:L('PUBLIC_CONFIRM')}" onclick="sureSearchDenounce1();"/>
+    </div>
+</div>
+</div>
+
+  <div class="Toolbar_inbox">
+    <div class="page right">{$users['html']}</div>
+    <a href="javascript:void(0);" class="btn_a" onclick="searchDenounce();">
+        <span class="search_action">添加账号</span>
+    </a>
+    <a href="javascript:void(0);" class="btn_a" onclick="searchDenounce1();"><span class="search_action1">搜索账号</span></a>
+    <a href="javascript:void(0);" class="btn_a" onclick="deleteRecord();"><span>删除账号</span></a>
+    <a href="javascript:void(0);" class="btn_a" onclick="export_feed();"><span>导出Excel</span></a>
+
+  </div>
+  <div class="list">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="checkbox">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+    </th>
+      <foreach name="title_merge" item="vo" >
+          <th class="line_l">{$vo}</th>
+      </foreach>
+  </tr>
+  <volist id="vo" name="users['data']">
+      <tr overstyle='on' id="Denounce_{$vo.uid}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.uid}"></td>
+        <td>{$vo.uid}</td>
+        <td>{$vo.uname}</td>
+          <foreach name="vo['detail']" item="v">
+              <td>
+                  <label class="day_count" title="今日发布总数量">{$v['day_count']}</label>
+                  <br/>
+                  <label class="hot_count" title="今日热门总数量">{$v['hot_count']}</label>
+                  <br/>
+                  <label class="month_count" title="本月累计总数量">{$v['month_count']}</label>
+              </td>
+          </foreach>
+      </tr>
+  </volist>
+  </table>
+  </div>
+    <div class="Toolbar_inbox">
+        <div class="page right">{$users['html']}</div>
+        <a href="javascript:void(0);" class="btn_a" onclick="searchDenounce();">
+            <span class="search_action">添加账号</span>
+        </a>
+        <a href="javascript:void(0);" class="btn_a" onclick="searchDenounce1();"><span class="search_action1">搜索账号</span></a>
+        <a href="javascript:void(0);" class="btn_a" onclick="deleteRecord();"><span>删除账号</span></a>
+    </div>
+</div>
+
+<script>
+    //鼠标移动表格效果
+    $(document).ready(function(){
+        $("tr[overstyle='on']").hover(
+          function () {
+            $(this).addClass("bg_hover");
+          },
+          function () {
+            $(this).removeClass("bg_hover");
+          }
+        );
+
+        $("#date04").jeDate({
+            isinitVal:true,
+            //festival:true,
+            ishmsVal:false,
+            minDate: '2016-06-16 23:59:59',
+            maxDate: $.nowDate({DD:0}),
+            format:"YYYY-MM",
+            zIndex:3000
+        });
+
+    });
+    
+    function checkon(o){
+        if( o.checked == true ){
+            $(o).parents('tr').addClass('bg_on') ;
+        }else{
+            $(o).parents('tr').removeClass('bg_on') ;
+        }
+    }
+    
+    function checkAll(o){
+        if( o.checked == true ){
+            $('input[name="checkbox"]').attr('checked','true');
+            $('tr[overstyle="on"]').addClass("bg_on");
+        }else{
+            $('input[name="checkbox"]').removeAttr('checked');
+            $('tr[overstyle="on"]').removeClass("bg_on");
+        }
+    }
+
+    //获取已选择用户的ID数组
+    function getChecked() {
+        var ids = new Array();
+        $.each($('table input:checked'), function(i, n){
+            var id = $(n).val();
+            if(id>0){
+                ids.push(id);
+            }
+        });
+        return ids;
+    }
+    
+    function deleteRecord(ids) {
+        var length = 0;
+    	if(ids) {
+    		length = 1;    		
+    	}else {
+    		ids    = getChecked();
+    		length = ids.length;
+            ids    = ids.toString();
+    	}
+    	if(ids=='') {
+    		ui.error('请选择要删除的用户');
+    		return ;
+    	}
+    	if(confirm(L('PUBLIC_DELETE_NUMBER_TIPES',{'num':length}))) {
+    		$.post("{:U('admin/Content/doDeleteFeedManage')}",{ids:ids},function(res){
+    			if(res=='1') {
+    				ui.success('{:L('PUBLIC_DELETE_SUCCESS')}');
+    				removeItem(ids);
+    			}else {
+    				ui.error('{:L('PUBLIC_DELETE_FAIL')}');
+    			}
+    		});
+    	}
+    }
+    
+    function passReview(ids){
+    	var length = 0;
+    	if(ids) {
+    		length = 1;    		
+    	}else {
+    		ids    = getChecked();
+    		length = ids.length;
+            ids    = ids.toString();
+    	}
+    	
+    	if(ids=='') {
+    		ui.error('{:L('PUBLIC_STREAM_REPORT_PLEASE_SELECT')}');
+    		return ;
+    	}
+    	if(confirm(L('PUBLIC_UNSET_TIPES',{'num':length}))) {
+    		$.post("{:U('admin/Content/doReviewDenounce')}",{ids:ids},function(res){
+    			if(res=='1') {
+    				ui.success('{:L('PUBLIC_ADMIN_OPRETING_SUCCESS')}');
+    				removeItem(ids);
+    			}else {
+    				ui.error('{:L('PUBLIC_ADMIN_OPRETING_ERROR')}');
+    			}
+    		});
+    	}
+    }
+    
+    function removeItem(ids) {
+    	ids = ids.split(',');
+        for(i = 0; i < ids.length; i++) {
+            $('#Denounce_'+ids[i]).remove();
+        }
+    }
+    
+    //搜索用户
+    var isSearchHidden = <neq name="isSearch" value="1">1<else/>0</neq>;
+    function searchDenounce() {
+        if(isSearchHidden == 1) {
+            $("#search_div").slideDown("fast");
+            $(".search_action").html("添加完毕");
+            isSearchHidden = 0;
+        }else {
+            $("#search_div").slideUp("fast");
+            $(".search_action").html("添加账号");
+            isSearchHidden = 1;
+        }
+    }
+
+    //搜索用户
+    var isSearchHidden = <neq name="isSearch1" value="1">1<else/>0</neq>;
+    function searchDenounce1() {
+        if(isSearchHidden == 1) {
+            $("#search_div1").slideDown("fast");
+            $(".search_action1").html("搜索完毕");
+            isSearchHidden = 0;
+        }else {
+            $("#search_div1").slideUp("fast");
+            $(".search_action1").html("搜索账号");
+            isSearchHidden = 1;
+        }
+    }
+</script>
+
+<include file="__THEME__/admin_footer" />

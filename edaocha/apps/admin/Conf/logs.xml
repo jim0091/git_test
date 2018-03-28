@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<group name="config" info="系统配置">
+<action type="editDetail" info="修改配置数据"><![CDATA[ 
+修改了[{$name}]的配置数据。
+]]></action>
+<action type="editPagekey" info="修改页面配置项"><![CDATA[ 
+修改了[{$name}]的页面配置项。
+]]></action>
+<action type="editSearchPagekey" info="修改搜索配置项"><![CDATA[ 
+修改了[{$name}]的搜索配置项。
+]]></action>
+<action type="delFooter" info="删除页脚"><![CDATA[ 
+删除了ID为{$ids}的页脚文章。
+]]></action>
+<action type="permissiongroup" info="修改权限组配置"><![CDATA[ 
+修改了权限组配置。
+]]></action>
+<action type="addCreditType" info="添加积分类型"><![CDATA[ 
+添加了新的积分类型:{$CreditName} ({$CreditType});
+]]></action>
+<action type="delCreditType" info="删除积分类型"><![CDATA[ 
+删除了积分类型:{$CreditType};
+]]></action>
+<action type="setUserCredit" info="设定用户积分"><![CDATA[ 
+设定用户积分。操作:{$todo},积分类型:{$creditType},用户ID:{$uids},用户组:{$userGroup},用户状态:{$userStatus},数值:{$nums};
+]]></action>
+<action type="savePer" info="修改权限配置"><![CDATA[ 
+修改了[{$app} - {$module}]的权限配置。
+]]></action>
+
+</group>
+
+<group name='content' info='内容管理'>
+<action type="addArticle" info="添加公告"><![CDATA[ 
+添加了公告[{$title}]。
+]]></action>
+<action type="delArticle" info="删除公告"><![CDATA[ 
+删除了ID为{$ids}的公告。
+]]></action>
+
+</group>
+
+<group name="system" info="系统管理">
+<action type="cleanlog" info="清理知识"><![CDATA[ 
+清理{$date}月前的知识。
+]]></action>
+<action type="dellog" info="删除知识"><![CDATA[ 
+删除{$nums}知识记录，知识ID：{$ids}。
+]]></action>
+<action type="logsArchive" info="知识归档"><![CDATA[
+归档知识,操作结果： {$msg};
+]]></action>
+    <action type="addNav" info="[导航配置]新增导航"><![CDATA[
+新增了名为[{$name}]的导航。
+]]></action>
+    <action type="saveNav" info="[导航配置]修改导航"><![CDATA[
+修改了ID为[{$name}]的导航。
+]]></action>
+    <action type="delNav" info="[导航配置]删除导航"><![CDATA[
+删除了ID为[{$name}]的导航。
+]]></action>
+    <action type="addSensitive" info="[过滤配置]新增敏感词"><![CDATA[
+新增了名为[{$name}]的敏感词。
+]]></action>
+    <action type="saveSensitive" info="[过滤配置]修改敏感词"><![CDATA[
+修改了ID为[{$name}]的敏感词。
+]]></action>
+    <action type="delSensitive" info="[过滤配置]删除敏感词"><![CDATA[
+删除了名为[{$name}]的敏感词。
+]]></action>
+    <action type="addTreeCategory" info="新增分类"><![CDATA[
+[{$name}]的分类。
+]]></action>
+    <action type="saveTreeCategory" info="修改分类"><![CDATA[
+[{$name}]的分类。
+]]></action>
+    <action type="delTreeCategory" info="删除分类"><![CDATA[
+[{$name}]的分类。
+]]></action>
+    <action type="addCredit" info="[积分配置]新增积分规则"><![CDATA[
+新增了名为[{$name}]的积分规则。
+]]></action>
+    <action type="editCredit" info="[积分配置]修改积分规则"><![CDATA[
+修改了ID为[{$name}]的积分规则。
+]]></action>
+    <action type="delCredit" info="[积分配置]删除积分规则"><![CDATA[
+删除了名为[{$name}]的积分规则。
+]]></action>
+    <action type="doAddCreditType" info="[积分配置]新增积分类型"><![CDATA[
+新增了名为[{$name}]的积分类型。
+]]></action>
+    <action type="doEditCreditType" info="[积分配置]修改积分类型"><![CDATA[
+修改了ID名为[{$name}]的积分类型。
+]]></action>
+    <action type="doDeleteCreditType" info="[积分配置]删除积分类型"><![CDATA[
+删除了名为[{$name}]的积分类型。
+]]></action>
+    <action type="doCreditUser" info="[积分配置]设置用户积分"><![CDATA[
+修改了ID为[{$name}]的积分。
+]]></action>
+    <action type="setCreditLevel" info="[积分配置]设置积分等级"><![CDATA[
+修改了等级为[{$name}]的积分信息。
+]]></action>
+    <action type="doUpdateUser" info="[用户管理]编辑用户"><![CDATA[
+修改了ID为[{$name}]的用户信息。
+]]></action>
+    <action type="setDisableUser" info="[用户管理]禁用用户"><![CDATA[
+禁用了ID为[{$name}]的用户。
+]]></action>
+    <action type="doTrueDeleteUser" info="[用户管理]彻底删除用户"><![CDATA[
+彻底删除了用户名为[{$name}]的用户。
+]]></action>
+    <action type="addUsergroup" info="[用户组管理]新增用户组"><![CDATA[
+新增了名为[{$name}]的用户组。
+]]></action>
+    <action type="saveUsergroup" info="[用户组管理]修改用户组"><![CDATA[
+修改了ID为[{$name}]的用户组。
+]]></action>
+    <action type="delgroup" info="[用户组管理]删除用户组"><![CDATA[
+删除了名为[{$name}]的用户组。
+]]></action>
+    <action type="doAddVerifyCategory" info="[用户认证]新增认证分类"><![CDATA[
+新增了名为[{$name}]的分类。
+]]></action>
+    <action type="doEditVerifyCategory" info="[用户认证]修改认证分类"><![CDATA[
+修改了ID为[{$name}]的分类。
+]]></action>
+    <action type="delVerifyCategory" info="[用户认证]删除认证分类"><![CDATA[
+删除了名为[{$name}]的分类。
+]]></action>
+    <action type="doOfficialAddUser" info="[找人推荐]新增推荐用户"><![CDATA[
+新增了ID为[{$name}]的用户为推荐用户。
+]]></action>
+    <action type="doRemoveOfficialUser" info="[找人推荐]移除推荐用户"><![CDATA[
+移除了ID为[{$name}]的用户为推荐用户。
+]]></action>
+    <action type="delFeed" info="[分享管理]删除分享到回收站"><![CDATA[
+删除了ID为[{$name}]的分享到回收站。
+]]></action>
+    <action type="deleteFeed" info="[分享管理]彻底删除分享"><![CDATA[
+删除了ID为[{$name}]的分享。
+]]></action>
+    <action type="doDeleteFeedManage" info="[分享统计管理]删除账号"><![CDATA[
+删除了ID为[{$name}]的用户为特定用户。
+]]></action>
+    <action type="doDeleteCommentManage" info="[评论点赞统计管理]删除账号"><![CDATA[
+删除了ID为[{$name}]的用户为评论点赞特定用户。
+]]></action>
+    <action type="delComment" info="[评论管理]删除评论"><![CDATA[
+删除了ID为[{$name}]的评论到回收站。
+]]></action>
+    <action type="deleteComment" info="[评论管理]彻底删除评论"><![CDATA[
+删除了ID为[{$name}]的评论。
+]]></action>
+    <action type="delMessage" info="[私信管理]删除私信"><![CDATA[
+删除了ID为[{$name}]的私信到回收站。
+]]></action>
+    <action type="deleteMessage" info="[私信管理]彻底删除私信"><![CDATA[
+删除了ID为[{$name}]的私信。
+]]></action>
+    <action type="delAttach" info="[附件管理]删除附件"><![CDATA[
+删除了ID为[{$name}]的附件到回收站。
+]]></action>
+    <action type="deleteAttach" info="[附件管理]彻底删除附件"><![CDATA[
+删除了ID为[{$name}]的附件。
+]]></action>
+    <action type="delvideo" info="[视频管理]删除视频"><![CDATA[
+删除了ID为[{$name}]的视频到回收站。
+]]></action>
+    <action type="deletevideo" info="[视频管理]彻底删除视频"><![CDATA[
+删除了ID为[{$name}]的视频。
+]]></action>
+    <action type="do_video_config" info="[视频管理]视频配置"><![CDATA[
+修改了视频配置。
+]]></action>
+    <action type="doReviewDenounce" info="[举报管理]撤销举报"><![CDATA[
+撤销了ID为[{$name}]的举报。
+]]></action>
+    <action type="doDelDenounce" info="[举报管理]删除举报内容"><![CDATA[
+删除了ID为[{$name}]的举报内容到回收站。
+]]></action>
+    <action type="doDeleteDenounce" info="[举报管理]彻底删除举报内容"><![CDATA[
+删除了ID为[{$name}]的举报内容。
+]]></action>
+    <action type="deltag" info="[标签管理]删除标签"><![CDATA[
+删除了ID为[{$name}]的标签。
+]]></action>
+    <action type="doEditTask" info="[任务列表]修改任务"><![CDATA[
+修改了ID为[{$name}]的任务。
+]]></action>
+    <action type="doEditReward" info="[任务奖励]修改任务奖励"><![CDATA[
+修改了等级ID为[{$name}]的任务。
+]]></action>
+    <action type="doAddMedal" info="[勋章列表]新增勋章"><![CDATA[
+新增了名为[{$name}]的勋章。
+]]></action>
+    <action type="doEditMedal" info="[勋章列表]修改勋章"><![CDATA[
+修改了ID为[{$name}]的勋章。
+]]></action>
+    <action type="doDeleteMedal" info="[勋章列表]删除勋章"><![CDATA[
+删除了ID为[{$name}]的勋章。
+]]></action>
+    <action type="doAddUserMedal" info="[用户勋章]新增用户勋章"><![CDATA[
+新增了用户勋章。
+]]></action>
+    <action type="doEditUserMedal" info="[用户勋章]修改用户勋章"><![CDATA[
+修改了ID为[{$name}]的用户勋章。
+]]></action>
+    <action type="taskConfig" info="[任务配置]修改任务配置"><![CDATA[
+修改了任务配置。
+]]></action>
+    <action type="squareAdminIndex" info="[广场]全局配置"><![CDATA[
+修改了广场全局配置。
+]]></action>
+    <action type="doAddW3gSlideShow" info="[广场轮播]新增轮播"><![CDATA[
+新增了广场轮播图。
+]]></action>
+    <action type="doSaveW3gSlideShow" info="[广场轮播]修改轮播"><![CDATA[
+修改了ID为[{$name}]的轮播图。
+]]></action>
+    <action type="delW3gSlideShwo" info="[广场轮播]删除轮播"><![CDATA[
+删除了ID为[{$name}]的轮播图。
+]]></action>
+    <action type="doAddSlide" info="[发现轮播]新增轮播"><![CDATA[
+新增了发现轮播图。
+]]></action>
+    <action type="doSaveSlide" info="[发现轮播]修改轮播"><![CDATA[
+修改了ID为[{$name}]的轮播图。
+]]></action>
+    <action type="delSlide" info="[发现轮播]删除轮播"><![CDATA[
+删除了ID为[{$name}]的轮播图。
+]]></action>
+    <action type="DoAddCate" info="[活动]新增活动分类"><![CDATA[
+新增了名为[{$name}]的分类。
+]]></action>
+    <action type="DoSaveCate" info="[活动]修改活动分类"><![CDATA[
+修改了ID为[{$name}]的分类。
+]]></action>
+    <action type="delCate" info="[活动]删除活动分类"><![CDATA[
+删除了ID为[{$name}]的分类。
+]]></action>
+    <action type="ReleaseSubmit" info="[PC端前台]发布活动"><![CDATA[
+发布了名为[{$name}]的活动。
+]]></action>
+    <action type="delEvent" info="[PC端前台]删除活动"><![CDATA[
+删除了名为[{$name}]的活动。
+]]></action>
+    <action type="adminDelEvent" info="[活动]删除活动"><![CDATA[
+删除了名为[{$name}]的活动。
+]]></action>
+    <action type="addCate" info="[资讯分类]新增分类"><![CDATA[
+新增了名为[{$name}]的分类。
+]]></action>
+    <action type="saveCate" info="[资讯分类]修改分类"><![CDATA[
+修改了ID为[{$name}]的分类。
+]]></action>
+    <action type="deleteCate" info="[资讯分类]删除分类"><![CDATA[
+删除了ID为[{$name}]的分类。
+]]></action>
+    <action type="addSubject" info="[资讯]新增资讯"><![CDATA[
+新增了名为[{$name}]的资讯。
+]]></action>
+    <action type="saveSubject" info="[资讯]修改资讯"><![CDATA[
+修改了ID为[{$name}]的分类。
+]]></action>
+    <action type="subjectDel" info="[资讯]删除资讯"><![CDATA[
+删除了ID为[{$name}]的资讯。
+]]></action>
+    <action type="subjectStatus" info="[资讯]删除资讯到回收站"><![CDATA[
+删除了ID为[{$name}]到回收站。
+]]></action>
+    <action type="adminRecoverEvent" info="[活动]恢复活动"><![CDATA[
+恢复了名为[{$name}]的活动。
+]]></action>
+    <action type="adminAuditEvent" info="[活动]通过活动"><![CDATA[
+审核通过了名为[{$name}]的活动。
+]]></action>
+    <action type="adminDelete" info="[活动]删除活动彻底删除"><![CDATA[
+彻底删除了名为[{$name}]的活动。
+]]></action>
+
+</group>
+
+<group name="extends" info="扩展管理">
+<action type="appManage" info="应用管理"><![CDATA[ 
+<php> echo !empty($app_id) ? '编辑':'安装';</php> 应用[{$app_name} - {$app_alias}];
+]]></action>
+<action type="appUninstall" info="卸载应用"><![CDATA[ 
+卸载应用,ID:{$app_id}.
+]]></action>
+<action type="appStatus" info="卸载应用"><![CDATA[ 
+修改应用状态,应用ID:{$app_id},状态:{$status}。
+]]></action>
+<action type="editCreditNode" info="修改积分节点">
+<![CDATA[ 
+修改积分节点属性,应用:{$appname},动作:{$action},动作别名{$info}
+]]>
+</action>
+<action type="delCreditNode" info="删除积分节点">
+<![CDATA[ 
+删除积分节点,知识信息:{$log}
+]]>
+</action>
+<action type="addCreditNode" info="添加积分节点">
+<![CDATA[ 
+添加积分节点,应用:{$appname},动作:{$action},动作别名{$info}
+]]>
+</action>
+<action type="editPermNode" info="修改权限节点">
+<![CDATA[ 
+修改权限节点属性,应用:{$appname},动作:{$action},动作别名{$info}
+]]>
+</action>
+<action type="delPermNode" info="删除权限节点">
+<![CDATA[ 
+删除权限节点,知识信息:{$log}
+]]>
+</action>
+<action type="addPermNode" info="添加权限节点">
+<![CDATA[ 
+添加权限节点,应用:{$appname},模块:{$module} ,规则{$rule}({$ruleinfo})
+]]>
+</action>
+
+<action type="editFeedNode" info="修改分享节点">
+<![CDATA[ 
+修改分享模板属性,应用:{$appname},分享类型:{$nodetype}（{$nodeinfo}）
+]]>
+</action>
+<action type="delFeedNode" info="删除分享节点">
+<![CDATA[ 
+删除分享模板。
+]]>
+</action>
+<action type="addFeedNode" info="添加分享节点">
+<![CDATA[ 
+添加分享模板,应用:{$appname},分享类型:{$nodetype}（{$nodeinfo}）
+]]>
+</action>
+
+</group>
+
+</root>	

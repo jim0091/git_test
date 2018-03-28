@@ -1,0 +1,123 @@
+<include file="__THEME__/public_new_header" />
+<div class="main">
+    <div class="information-left">
+        <div class="information-list">
+            <div class="information-nav">
+                <a href="{:U('public/Index/information_list')}" id="0">全部</a>
+                <volist name="cate_data" id="v">
+                    <a href="{:U('public/Index/information_list',array('cate'=>$v['id']))}" id="{$v['id']}">{$v['name']}</a>
+                </volist>
+            </div>
+            <volist name="informationData['data']" id ="v">
+                <div class="information-box" data-id="{$v['id']}">
+                    <a href="{:U('public/Index/information_info',array('id'=>$v['id']))}" target="_blank">
+                        <div class="img">
+                            <img src="{$v['logo']}" width="200" height="150" alt="{$v['subject']}">
+                        </div>
+                        <div class="info">
+                            <p class="title">{$v['subject']}</p>
+                            <p class="desc">{$v['abstract']}</p>
+                            <p class="tab">发布于{$v['ctime']|date="Y-m-d",###}<span>作者：{$v['created_name']}</span></p>
+                        </div>
+                    </a>
+                </div>
+            </volist>
+        </div>
+        <php>if(!empty($informationData['html'])){</php>
+            <div class="c-page">
+                {$informationData['html']}
+            </div>
+        <php>}</php>
+    </div>
+    <div class="st-index-right">
+        <div class="m-information">
+            <div class="hd">精彩热文</div>
+            <div class="bd">
+                <ul>
+                    <volist name="hot_information" id ="v">
+                        <li>
+                            <a href="{:U('public/Index/information_info',array('id'=>$v['id']))}" target="_blank">
+                                <div class="img"><img src="{$v['logo']}" width="80" height="80"/></div>
+                                <div class="info">
+                                    <p class="title">{$v['subject']}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <div class="m-qrcode" id="scroll">
+            <div class="hd">奥豆APP客户端</div>
+            <div class="bd">
+                <div class="img"> <img src="__THEME__/image/qrcode.jpg?v=1" width="144" height="144" /><p>扫码下载奥豆APP</p></div>
+                <div class="link">
+                    <a href="{$downapp['iosLink']}" target="_blank" rel="nofollow"><i class="iphone"></i>iPhone</a>
+                    <a href="{$downapp['andLink']}" target="_blank" rel="nofollow"><i class="android"></i>Android</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload=
+        function(){
+            var oDiv = document.getElementById("scroll");
+            H = 0;
+            Y = oDiv;
+            while (Y) {H += Y.offsetTop; Y = Y.offsetParent}
+            window.onscroll = function()
+            {
+                // alert(H);
+                var s = document.body.scrollTop || document.documentElement.scrollTop;
+                if(s>(H-10)) {
+                    oDiv.style.position = "fixed";
+                    oDiv.style.top = "20px";
+                    oDiv.style.right = "382px";
+                } else {
+                    oDiv.style = "";
+                }
+            }
+        }
+
+    $(function(){
+        var cate = "{$cate}";
+        $(".information-nav a").each(function(){
+            var id = $(this).attr('id');
+            if(id==cate){
+                $(this).css({"color":"#ff5d30","font-weight":"600"});
+            }
+        });
+        $(".m-qrcode").navFixed();
+
+        var ajax = false;
+        var cate = "{$_GET['cate']}"
+        $('.information-more').click(function(){
+            if(ajax){
+                return false;
+            }
+            ajax = true
+            var max_id = $('.information-box:last').data('id');
+
+            $.get(U('public/Index/information_list_more'),{cate:cate,max_id:max_id},function(msg){
+                ajax = false;
+                if(msg != ''){
+                    $('.information-list').append(msg);
+                }else{
+                    $('.information-more').html('没有更多了');
+                }
+            });
+        });
+
+        // 限制字符个数
+       // $(".desc").each(function(){
+       //     var maxwidth=50;
+       //     if($(this).text().length>maxwidth){
+       //         $(this).text($(this).text().substring(0,maxwidth));
+       //         $(this).html($(this).html()+'...');
+       //     }
+       // });
+   });
+</script>
+
+<include file="__THEME__/public_new_footer" />

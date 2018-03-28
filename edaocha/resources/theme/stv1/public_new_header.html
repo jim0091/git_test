@@ -1,0 +1,26 @@
+<include file="__THEME__/_nheader" />
+<div id="wechat">
+ <a class="wechat" href="javascript:;"></a>
+    <div class="wechatcode">
+        <img src="__THEME__/image/wechatcode.jpg" width="160" height="160" >
+         <p>关注奥豆娱乐微信公众号</p>
+    </div>
+</div>
+<div class="header">
+    <div class="inner">
+        <div class="logo1"><a href="{:U('public/index/index')}"><img src="__THEME__/image/logo001.png" width="110" height="45" style="margin-top: -2px" alt="奥豆"/></a></div>
+        <div class="logo2"><img src="__THEME__/image/logo002.png" width="150" height="40" style="margin-top: -6px" alt="奥豆,一个娱乐社交APP"/></div>
+        <div class="nav">
+            <ul>
+                <li <eq name="nav" value='0'>class="current" </eq> ><a href="{:U('public/Index/home')}">首页</a></li>
+                <li <eq name="nav" value='1'>class="current" </eq> ><a href="{:U('public/Index/index')}">奥豆PRO</a></li>
+                <li <eq name="nav" value='2'>class="current" </eq> ><a href="{:U('public/Index/event_list')}">活动</a></li>
+                <li <eq name="nav" value='3'>class="current" </eq> ><a href="{:U('public/Index/information_list')}">文章</a></li>
+            </ul>
+        </div>
+        <div class="search" model-node="serachbox">
+            <input type="text" class="searchbox"  id="serachkey"  placeholder="请输入搜索的内容" name="searchinput" AUTOCOMPLETE="off"/>
+            <input type="button" event-node="feedsearch" class="btn" value=""/>
+        </div>
+    </div>
+</div>

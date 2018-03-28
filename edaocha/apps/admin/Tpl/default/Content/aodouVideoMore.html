@@ -1,0 +1,23 @@
+<include file="admin_header" />
+<div id="container" class="so_main" style="width:600px">
+   <div class="form2">
+      <dl class="lineD">
+        <dt>播放平台:</dt>
+        <dd>{$aodou_video['play_type']}</dd>
+      </dl>
+      <dl class="lineD">
+        <dt>更新方式:</dt>
+        <dd>{$aodou_video['update_type']}</dd>
+      </dl>
+      <dl class="lineD">
+        <dt>视频简介:</dt>
+          <dd>{$aodou_video['abstract']}</dd>
+      </dl>
+       <dl class="pop-area">
+        <dd>
+            <input type="button" class="btn_w ml10" value="关闭" onclick="ui.box.close()" />
+          </dd>
+       </dl>
+   </div>
+</div>
+<include file="admin_footer" />

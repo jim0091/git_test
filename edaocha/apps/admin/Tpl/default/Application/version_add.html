@@ -1,0 +1,94 @@
+<include file="__THEME__/admin_header" />
+<div class="so_main">
+    <!-- START TAB框 -->
+    <div class="tit_tab">
+        <php>if(!empty($pageTab)):</php>
+        <ul>
+            <php> !$_REQUEST['tabHash'] && $_REQUEST['tabHash'] =  $pageTab[0]['tabHash'];</php>
+            <volist name='pageTab' id='t'>
+                <li><a href="{$t.url}&tabHash={$t.tabHash}" <php> if($t['tabHash'] == $_REQUEST['tabHash']){ echo 'class="on"';}</php>>{$t.title}</a></li>
+            </volist>
+        </ul>
+        <php>endif;</php>
+
+        <div class="page_tit">
+            <php>if(C('DEVELOP_MODE')==true){</php>
+            <span onclick="admin.fold('page_config')">{:L('PUBLIC_PAGE_CONFIGURATION')}</span>
+            <php>}</php>
+        </div>
+    </div>
+    <!-- END TAB框 -->
+    <div class="page_tit">{$title}</div>
+    <div class="form2">
+        <form action="{:U('admin/Application/doAdd')}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{$info['id']}" />
+            <input type="hidden" name="old_version" value="{$info['version']}" />
+            <input type="hidden" name="type" value="{$info['type']}" />
+            <dl class="lineD">
+                <dt><font color="red"> * </font>类型：</dt>
+                <dd>
+                    <if condition="$info['id']">
+                        {$info['type_name']}
+                        <else/>
+                        <label for="ad"><input type="radio" name="type" value="0" id="ad" checked/> 安卓</label>
+                        <label for="ios"><input type="radio" name="type" value="1" id="ios"/> IOS</label>
+                    </if>
+                </dd>
+            </dl>
+            <dl class="lineD">
+                <dt><font color="red"> * </font>当前版本号：</dt>
+                <dd>
+                    <input id="code" name="version" type="text" value="{$info['version']}" class="s-txt" style="width:300px">
+                </dd>
+            </dl>
+            <dl class="lineD">
+                <dt><font color="red"> * </font>版本更新提示文字：</dt>
+                <dd>
+                    <input id="version_title" name="version_title" type="text" value="{$info['version_title']}" class="s-txt" style="width:300px">
+                </dd>
+            </dl>
+            <dl class="lineD" >
+                <dt><font color="red"> * </font>版本更新提示图片：</dt>
+                <dd>
+                    <input type="file" name="version_img" id="version_img"/>
+                    <br/>
+                    <p>支持后缀名：.jpg  .jpeg  .png</p>
+                    <img src="{$info['version_img']}" />
+                    <input type="hidden" name="old_version_img" value="{$info['old_version_img']}" />
+                </dd>
+            </dl>
+            <if condition="$info['type'] neq 1">
+                <dl class="lineD" >
+                    <dt><font color="red"> * </font>APK文件上传：</dt>
+                    <dd>
+                        <input type="file" name="file" id="file"/>
+                        <br/>
+                        <p>APK名称固定为：aodou.apk</p>
+                    </dd>
+                </dl>
+            </if>
+
+            <div class="page_btm">
+            <input type="submit" class="btn_b" value="{:L('PUBLIC_CONFIRM')}" />
+        </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    //鼠标移动表格效果
+    $(document).ready(function(){
+        $("#getRandCode").click(function(){
+            $.ajax({
+                url: "{:U('admin/RegisterCode/getRandCode')}",
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    $("#code").val(res.data);
+                }
+            });
+        });
+    });
+</script>
+
+<include file="__THEME__/admin_footer" />

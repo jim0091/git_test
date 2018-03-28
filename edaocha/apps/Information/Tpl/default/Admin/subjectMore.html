@@ -1,0 +1,32 @@
+<include file="admin_header" />
+<div id="container" class="so_main" style="width:600px">
+   <div class="form2">
+      <php>$url = U('Information/index/Read',array('id'=>$subject['id']));</php></php>
+      <dl class="lineD" id="dl_ctime">
+        <dt>前台页面预览:</dt>
+        <dd><a href="{$url}" target="_blank">{$subject['subject']}</a></dd>
+      </dl>
+      <dl class="lineD" id="dl_ctime">
+        <dt>发布人/id:</dt>
+        <dd>{$subject[author]|getUserName}/{$subject[author]}</dd>
+      </dl>
+      <dl class="lineD" id="dl_ctime">
+        <dt>添加时间:</dt>
+        <dd>{$subject[ctime]|date='Y-m-d H:i:s',###}</dd>
+      </dl>
+      <dl class="lineD" id="dl_ctime">
+        <dt>更新时间:</dt>
+        <dd>{$subject[rtime]|date='Y-m-d H:i:s',###}</dd>
+      </dl>
+      <dl class="lineD" id="dl_ctime">
+        <dt>操作人/id:</dt>
+        <dd>{$subject[modified_userid]|getUserName}/{$subject[modified_userid]}</dd>
+      </dl>
+       <dl class="pop-area">
+        <dd>
+            <input type="button" class="btn_w ml10" value="关闭" onclick="ui.box.close()" />
+          </dd>
+       </dl>
+   </div>
+</div>
+<include file="admin_footer" />

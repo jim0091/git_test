@@ -1,0 +1,46 @@
+<include file="__THEME__/public_new_header" />
+<div class="event-show-main">
+    <div class="event-info">
+        <div class="event-type">{$data['cate']}</div>
+        <div class="img"> <img src="{$data['image']}" width="650" height="386"/></div>
+        <div class="event-content">
+            <h3>活动详情</h3>
+            {$data['content']}
+        </div>
+    </div>
+    <div class="event-tab">
+        <div class="tab-info">
+            <p class="title">{$data['name']}</p>
+            <p class="time"><i></i>{$data['stime']|date="Y-m-d",###}至{$data['etime']|date="Y-m-d",###}</p>
+            <p class="dizhi"><i></i>{$data['area']}-{$data['city']}{$data['location']}</p>
+
+            <if condition="$ended eq 1">
+                <a href="javascript:void(0);" style="background: #dfdfdf;color: #ffffff">已经结束</a>{$data['ended']}
+                <else/>
+                <div  model-node="down_app" >
+                    <a href="javascript:void(0);">我要报名</a>{$data['ended']}
+                </div>
+            </if>
+
+        </div>
+        <div class="tab-eventnum">已有<span>{$data['u_number']}</span>人参加此活动</div>
+        <div class="share bdsharebuttonbox"><span>分享到</span><a href="javascript:;" class="wechat bds_weixin" data-cmd="weixin"></a><a href="javascript:;" class="sina bds_tsina" data-cmd="tsina"></a><a href="javascript:;" class="qq bds_tqq" data-cmd="sqq"></a><a href="javascript:;" class="qzone bds_qzone" data-cmd="qzone"></a></div>
+        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://www.aodou.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        <div class="event-qrcode">
+            <div class="hd">奥豆APP客户端</div>
+            <div class="bd">
+                <div class="img"> <img src="__THEME__/image/qrcode.jpg?v=1" width="139" height="139"><p>扫码下载奥豆APP</p></div>
+                <div class="link">
+                    <a href="{$downapp['iosLink']}"><i class="iphone" target="_blank" rel="nofollow"></i>iPhone</a>
+                    <a href="{$downapp['andLink']}" target="_blank" rel="nofollow"><i class="android"></i>Android</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".event-qrcode").navFixed();
+    });
+</script>
+<include file="__THEME__/public_new_footer" />

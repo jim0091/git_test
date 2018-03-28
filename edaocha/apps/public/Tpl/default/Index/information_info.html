@@ -1,0 +1,67 @@
+<include file="__THEME__/public_new_header" />
+<div class="main">
+    <div class="information-left">
+        <div class="information-list">
+            <div class="information-adver" style="display: none;"><a href="#"><img src="__APP__/aodou/image/information_adver.gif"></a><div class="close"></div></div>
+            <div class="information-show">
+                <div class="bread-nav">您所在的位置：<a href="{:U('public/Index/home')}">首页</a> <i></i> <a href="{:U('public/Index/information_list',array('cate'=>$information_info['cid']))}">{$catetitle}</a> <i></i> <a href="{:U('public/Index/information_info',array('id'=>$information_info['id']))}">{$information_info['subject']}</a></div>
+                <h1>{$information_info['subject']}</h1>
+                <div class="information-show-info">作者：{$information_info['created_name']}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;责任编辑：{$information_info['zreditor']}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来源：{$information_info['copyfrom']}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布于{$information_info['ctime']|date="Y-m-d",###}</div>
+                <div class="information-content">
+                    {$information_info['content']}
+                    <div class="end"><span>END</span></div>
+                    <div class="share bdsharebuttonbox">
+                        <span>分享到</span>
+                        <a href="javascript:;" class="wechat bds_weixin" data-cmd="weixin"></a>
+                        <a href="javascript:;" class="sina bds_tsina" data-cmd="tsina" ></a>
+                        <a href="javascript:;" class="qq bds_tqq" data-cmd="sqq" ></a>
+                        <a href="javascript:;" class="qzone bds_qzone" data-cmd="qzone" ></a>
+                    </div>
+                    <!--<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://www.aodou.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>-->
+                    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+                    <div class="bc" style="display: none">
+                        <p>版权申明：本文章部分来自网络，如有侵权，请联系我们（service#aodou.com，发送时把#改成@），我们收到后立即删除，谢谢！<br/>特别注意：本站转载文章言论不代表本站观点，本站所提供的摄影照片，插画，设计作品，如需使用，请与原作者联系，版权归原作者所有。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="st-index-right">
+        <div class="m-information">
+            <div class="hd">相关文章</div>
+            <div class="bd">
+                <ul>
+                    <volist name="InformationList['data']" id ="v">
+                        <li>
+                            <a href="{:U('public/Index/information_info',array('id'=>$v['id']))}" target="_blank">
+                                <div class="img"><img src="{$v['logo']}" width="80" height="80"/></div>
+                                <div class="info">
+                                    <p class="title">{$v['subject']}</p>
+                                </div>
+                            </a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <div class="fixed-div">
+            <div class="m-qrcode">
+                <div class="hd">奥豆APP客户端</div>
+                <div class="bd">
+                    <div class="img"> <img src="__THEME__/image/qrcode.jpg?v=1" width="144" height="144" /> <p>扫码下载奥豆APP</p></div>
+                    <div class="link">
+                        <a href="{$downapp['iosLink']}"><i class="iphone" target="_blank" rel="nofollow"></i>iPhone</a>
+                        <a href="{$downapp['andLink']}" target="_blank" rel="nofollow"><i class="android"></i>Android</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".fixed-div").navFixed();
+    });
+</script>
+<include file="__THEME__/public_new_footer" />

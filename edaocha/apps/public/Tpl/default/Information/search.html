@@ -1,0 +1,105 @@
+<include file="__THEME__/public_new_header" />
+<div class="search-main">
+    <h1>奥豆搜索</h1>
+    <div class="feed-box">
+        <php>
+            $array = model('Feed')->searchFeed($_GET['key'], 'all', $var['loadId'], $this->limitnums);
+        </php>
+        <div class="navbox">
+            <ul class="nav">
+                <li><a href="{:U('public/feed/search',array('key'=>$_GET['key']))}">动态</a></li>
+                <li class="current"><a href="{:U('public/information/search',array('key'=>$_GET['key']))}">文章</a></li>
+            </ul>
+        </div>
+        <div class="search-box" model-node="serachbox">
+            <input type="text" class="search-input" id="serachkey" placeholder="请输入搜索的内容" value="{$_GET['key']}">
+            <input type="button" class="btn" value="搜索" event-node="ifsearch"/>
+            <p>共搜索到<span>{$informationData['count']}</span>条关于<span>“{$_GET['key']}”</span>的文章</p>
+        </div>
+        <div class="information-box">
+            <div class="if-list" style="display: none;">
+                <a href="#">
+                    <div class="img"><img src="" width="200" height="150"/></div>
+                    <div class="info">
+                        <p class="title">益网“公益红包”登陆慈展会感动慈善</p>
+                        <p class="desc">哇塞，又有逆天神车要上市了！全球最大国际车展之一，巴黎车展将于9月29日-10月1日凡行...</p>
+                        <p class="tab">发布于2016-11-15<span>作者：微微黄瓜兮</span></p>
+                    </div>
+                </a>
+            </div>
+            <volist name="informationData['data']" id ="v">
+                <div class="if-list">
+                    <a href="{:U('public/Index/information_info',array('id'=>$v['id']))}">
+                        <div class="img"><img src="{$v['logo']}" width="200" height="150"/></div>
+                        <div class="info">
+                            <p class="title">{$v['subject']}</p>
+                            <p class="desc">{$v['abstract']}</p>
+                            <p class="tab">发布于{$v['ctime']|date="Y-m-d",###}<span>作者：{$v['created_name']}</span></p>
+                        </div>
+                    </a>
+                </div>
+            </volist>
+        </div>
+        <div class="downapp" model-node="down_app">
+            查看更多内容，请下载奥豆app客户端
+        </div>
+    </div>
+    <div class="st-index-right">
+        <div class="m-qrcode">
+            <div class="hd">奥豆app客户端</div>
+            <div class="bd">
+                <div class="img"> <img src="__THEME__/image/qrcode.jpg" width="144" height="144" /> </div>
+                <div class="link">
+                    <a href="javascript:;"><i class="iphone"></i>iPhone</a>
+                    <a href="javascript:;"><i class="android"></i>Android</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function doHighlight(a,b){
+        highlightStartTag="<span style='color:red'>";
+        highlightEndTag="</span>";
+        var c="";
+        var i=-1;
+        var d=b.toLowerCase();
+        var e=a.toLowerCase();
+        while(a.length>0){
+            i=e.indexOf(d,i+1);
+            if(i<0){
+                c+=a;
+                a="";
+            }else{
+                if(a.lastIndexOf(">",i)>=a.lastIndexOf("<",i)){
+                    if(e.lastIndexOf("/script>",i)>=e.lastIndexOf("<script",i)){
+                        c+=a.substring(0,i)+highlightStartTag+a.substr(i,b.length)+highlightEndTag;
+                        a=a.substr(i+b.length);e=a.toLowerCase();
+                        i=-1;
+                    }
+                }
+            }
+        }
+        return c;
+    };
+
+    $.fn.highlight=function(z){
+        $(this).each(
+                function(){
+                    if (z !== null) {
+                        $(this).html(doHighlight($(this).html(),z));
+                    }
+                });
+        return this;
+    }
+
+    $(document).ready(function(){
+        if('{$search_key}'){
+            var search_key = '{$search_key}';
+            $('.title').highlight(search_key);
+            M($('#if-list')[0]);
+        }
+    });
+
+</script>
+<include file="__THEME__/public_new_footer" />

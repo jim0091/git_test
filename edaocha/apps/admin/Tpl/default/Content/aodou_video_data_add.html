@@ -1,0 +1,74 @@
+<include file="__THEME__/admin_header" />
+<div class="so_main">
+    <!-- START TAB框 -->
+    <div class="tit_tab">
+        <php>if(!empty($pageTab)):</php>
+        <ul>
+            <php> !$_REQUEST['tabHash'] && $_REQUEST['tabHash'] =  $pageTab[0]['tabHash'];</php>
+            <volist name='pageTab' id='t'>
+                <li><a href="{$t.url}&tabHash={$t.tabHash}" <php> if($t['tabHash'] == $_REQUEST['tabHash']){ echo 'class="on"';}</php>>{$t.title}</a></li>
+            </volist>
+        </ul>
+        <php>endif;</php>
+
+        <div class="page_tit">
+            <php>if(C('DEVELOP_MODE')==true){</php>
+            <span onclick="admin.fold('page_config')">{:L('PUBLIC_PAGE_CONFIGURATION')}</span>
+            <php>}</php>
+        </div>
+    </div>
+    <!-- END TAB框 -->
+    <div class="form2">
+        <form action="{:U('admin/Content/do_aodou_video_data_add')}" method="post" enctype="multipart/form-data">
+            <dl class="lineD">
+                <dt><font color="red"> * </font>所属视频：</dt>
+                <dd>
+                    <select name="video_id">
+                        <option value="0">请选择视频</option>
+                        <foreach name="video_list" item="v">
+                            <option value="{$v['id']}">{$v['title']}</option>
+                        </foreach>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="lineD" >
+                <dt><font color="red"> * </font>第几集：</dt>
+                <dd>
+                    <input id="code" name="parts" type="number" min="1" max="100" value="1" class="s-txt" style="width:300px">
+                    <br/>
+                    <p>填写数字，例如第一集填写：1</p>
+                </dd>
+            </dl>
+            <dl class="lineD" >
+                <dt><font color="red"> * </font>视频文件上传：</dt>
+                <dd>
+                    <input type="file" name="file" id="file"/>
+                    <br/>
+                    <p>目前支持：mp4文件</p>
+                </dd>
+            </dl>
+
+            <div class="page_btm">
+                <input type="submit" class="btn_b" value="{:L('PUBLIC_CONFIRM')}" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    //鼠标移动表格效果
+    $(document).ready(function(){
+        $("#getRandCode").click(function(){
+            $.ajax({
+                url: "{:U('admin/RegisterCode/getRandCode')}",
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    $("#code").val(res.data);
+                }
+            });
+        });
+    });
+</script>
+
+<include file="__THEME__/admin_footer" />

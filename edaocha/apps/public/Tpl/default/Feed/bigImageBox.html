@@ -1,0 +1,116 @@
+
+<div id="show_big_image" style="display:none;">
+  <div id="boxy_blackout" class="boxy-modal-blackout-big-image" style="height:100%;width:100%;opacity:0.8;z-index:999;position:fixed;_position:absolute;"></div>
+  <div id="photo_layer" class="photo-layer" style="z-index:1000;height:100%;width:100%;top:0;left:0;position:fixed;overflow:auto;_position:absolute;_top:expression(documentElement.scrollTop);_background:#fff;_opacity:1;">
+    <div id="photo_content" class="photo-content" style="width: 700px">
+      <a href="javascript:;" onclick="core.weibo.bigImageClose()" class="close"><img src="__THEME__/image/ico-close.png"></a>
+      <div class="photo-preview">
+        <div id="info_box" class="info-box"></div>
+        <div id="big_image" class="show"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var feedId = "{$feedId}";
+var i = "{$i}";
+/**
+ * 初始化Ajax
+ * @return void
+ */
+$(function () {
+  $('#show_big_image').show();
+  // 分享信息
+  $.post(U('public/Feed/ajaxWeiboInfo'), {feedId:feedId}, function (res) {
+    if (res.status == 1) {
+      $('#info_box').html(res.data);
+    } else {
+      $('#info_box').html(res.data);
+    }
+  }, 'json');
+  // 获取大图
+  $.post(U('public/Feed/ajaxImageInfo'), {feedId:feedId, i:i}, function (res) {
+    if (res.status == 1) {
+      $('#big_image').html(res.data);
+    } else {
+      $('#big_image').html(res.data);
+    }
+  }, 'json');
+});
+// $(document).ready(function () {
+//         var a = document.getElementById('photo_contents');//获取div块对象
+//         var Height=720;//取得浏览器页面可视区域的宽度
+//         console.log(Height);
+//         var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
+//     console.log(Width);
+//         var gao1 = a.offsetHeight;//获取div块的高度值
+//     console.log(gao1);
+//         var gao2 = a.offsetWidth;//获取div块的宽度值
+//         var yScroll = document.documentElement.scrollTop;//当前滚动的距离
+//     console.log(yScroll);
+//         var Sgao1= (Height - gao1)/2+"px";
+//         var Sgao2= (Width - gao2)/2+"px";
+//
+// // console.log(Sgao1);
+//         a.style.top=Sgao1;
+//         a.style.left=Sgao2;
+//
+// })
+
+</script>
+<script type="text/javascript">
+
+    // /**滚动条高**/
+    function getWindowScrollTop(win){
+        var scrollTop=0;
+        if(win.document.documentElement&&win.document.documentElement.scrollTop){
+            scrollTop=win.document.documentElement.scrollTop;
+        }else if(win.document.body){
+            scrollTop=win.document.body.scrollTop;}
+        return scrollTop;
+    }
+
+    // /**获取**/
+    function getWindowHeight(win){
+        var clientHeight=0;
+        if(win.document.body.clientHeight&&win.document.documentElement.clientHeight){
+            clientHeight = (win.document.body.clientHeight<win.document.documentElement.clientHeight)?win.document.body.clientHeight:win.document.documentElement.clientHeight;
+        }else{
+            clientHeight = (win.document.body.clientHeight>win.document.documentElement.clientHeight)?win.document.body.clientHeight:win.document.documentElement.clientHeight;
+        }
+        return clientHeight;
+    }
+    $(function(){
+        var a = document.getElementById('photo_content');//获取div块对象
+        var Width=document.documentElement.clientWidth;//取得浏览器页面可视区域的宽度
+
+        if(Width<1700){
+            a.classList.remove('photo-content');
+            a.setAttribute("id","photo_contents");
+            // console.log(a);
+            var gao2 = a.offsetWidth;//获取div块的宽度值
+            var Sgao2= (Width - gao2)/2+"px";
+            a.style.left=Sgao2;
+            var T = parseInt(getWindowHeight(top))+parseInt(getWindowScrollTop(top)) - 1025;//此处的40是class为bottom的div元素高
+            if(T<0){
+                T = 12;
+            }
+            a.style.zIndex='1005';
+            a.style.position='fixed';
+            a.style.top=T+"px";
+        }
+        // else {
+        //     var gao2 = a.offsetWidth;//获取div块的宽度值
+        //     var Sgao2= (Width - gao2)/2+"px";
+        //     a.style.left=Sgao2;
+        //
+        //     var T = 12;//处的40是class为bottom的div元素高
+        //
+        //     a.style.top=T+"px";
+        // }
+
+    });
+</script>
+
+

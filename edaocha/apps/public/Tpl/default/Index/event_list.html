@@ -1,0 +1,26 @@
+<include file="__THEME__/public_new_header" />
+<div class="event-main">
+	<ul>
+        <volist name="list['data']" id ="v">
+            <li>
+                <a href="{:U('public/Index/event_info',array('eid'=>$v['eid']))}">
+                    <div class="img"><img src="{$v['image']}" width="590" height="350" alt="{$v['name']}"/> </div>
+                    <div class="info">
+                        <p>{$v['name']}</p>
+                        <p class="desc">{$v['stime']|date="Y-m-d",###}至{$v['etime']|date="Y-m-d",###}</p>
+                    </div>
+                    <if condition="$v['e_status'] eq 1">
+                        <div class="status loading">进行中</div>
+                        <elseif condition="$v['e_status'] eq 2"/>
+                        <div class="status end">已结束</div>
+                        <else/>
+                        <div class="status start">未开始</div>
+                    </if>
+
+                    <div class="event-type">{$v['cate']}</div>
+                </a>
+            </li>
+        </volist>
+	</ul>
+</div>
+<include file="__THEME__/public_new_footer" />

@@ -1,0 +1,68 @@
+<include file="__THEME__/public_new_header" />
+<script type="text/javascript" src="__THEME__/js/swiper.min.js"></script>
+<script type="text/javascript" src="__THEME__/js/parallax.js"></script>
+<div class="home-main">
+    <div class="home-con1">
+        <div class="home-fly"></div>
+        <div class="con1-inner">
+            <div class="phone">
+                <div class="swiper-container">  
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="__THEME__/image/home/im06.jpg" width="287" height="506" alt="信息流新体验"></div>
+                        <div class="swiper-slide"><img src="__THEME__/image/home/im07.jpg" width="287" height="506" alt="奥豆PRO"></div>
+                        <div class="swiper-slide"><img src="__THEME__/image/home/im08.jpg" width="287" height="506" alt="匿名区"></div>
+                        <div class="swiper-slide"><img src="__THEME__/image/home/im09.jpg" width="287" height="506" alt="即时聊天"></div>
+                        <div class="swiper-slide"><img src="__THEME__/image/home/im05.jpg" width="287" height="506" alt="任性做自己"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="logo"><img src="__THEME__/image/home/logo_big.png" alt="奥豆app" width="250" height="113"/></div>
+                <div class="tops myhl">把不温不火的生活过的精彩</div>
+                <div class="down_app">
+                    <a href="{$downapp['iosLink']}" target="_blank" rel="nofollow" class="ios">下载最新iPhone版</a>
+                    <a href="{$downapp['andLink']}" target="_blank" rel="nofollow" class="and">下载最新Android版</a>
+                    <p>扫码下载奥豆APP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-con2">
+        <div class="con2-inner">
+            <div class="title">进入奥豆的世界</div>
+            <div class="desc">还原你百分之二百的快乐</div>
+            <div class="img1"><img src="__THEME__/image/home/img01.png" width="280" height="280" alt="把你的生活晒给懂你的人"/><p>把你的生活晒给懂你的人</p></div>
+            <div class="img2"><img src="__THEME__/image/home/img02.png" width="300" height="300" alt="新奇玩乐，第一时间与朋友分享"/><p>新奇玩乐，第一时间与朋友分享</p></div>
+            <div class="img3"><img src="__THEME__/image/home/img03.png" width="280" height="280" alt="海量活动，尽情释放自己"/><p>海量活动，尽情释放自己</p></div>
+            <div class="icon1"><img src="__THEME__/image/home/aodou03.png" width="73" height="73" /></div>
+            <div class="icon2"><img src="__THEME__/image/home/aodou02.png" width="134" height="134" /></div>
+            <div class="icon3"><img src="__THEME__/image/home/aodou01.png" width="107" height="107" /></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript"> 
+$(function(){
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 3000,//可选选项，自动滑动
+        loop : true,
+    })
+    $(window).scroll(function () {
+        if(parseInt($(window).scrollTop())>10){
+            $('.home-con2').addClass('join');
+        }
+    });
+})
+</script>
+<div class="footer" style="margin-top:0;">
+    <p>
+        <a href="{:U('public/Index/about')}">关于我们</a><span class="fg">|</span>
+        <a href="{:U('public/Index/join')}">加入我们</a><span class="fg">|</span>
+        <a href="{:U('public/Index/service')}">服务协议</a><span class="fg">|</span>
+        <a href="{:U('public/Index/contact')}">联系我们</a><span class="fg">|</span>
+        <!--<a href="#">隐私政策</a><span class="fg">|</span>-->
+        <a event-node="feedback" class="repost" title="意见反馈" href="javascript:void(0);">意见反馈</a>
+    </p>
+    <p>Copyright ©2017 奥豆 All Rights Reserved.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<include file="__THEME__/admin_header" />
+<div class="so_main">
+    <!-- START TAB框 -->
+    <div class="tit_tab">
+        <php>if(!empty($pageTab)):</php>
+        <ul>
+            <php> !$_REQUEST['tabHash'] && $_REQUEST['tabHash'] =  $pageTab[0]['tabHash'];</php>
+            <volist name='pageTab' id='t'>
+                <li><a href="{$t.url}&tabHash={$t.tabHash}" <php> if($t['tabHash'] == $_REQUEST['tabHash']){ echo 'class="on"';}</php>>{$t.title}</a></li>
+            </volist>
+        </ul>
+        <php>endif;</php>
+
+        <div class="page_tit">
+            <php>if(C('DEVELOP_MODE')==true){</php>
+            <span onclick="admin.fold('page_config')">{:L('PUBLIC_PAGE_CONFIGURATION')}</span>
+            <php>}</php>
+        </div>
+    </div>
+    <!-- END TAB框 -->
+    <div class="page_tit"></div>
+    <div class="form2">
+        <form action="{:U('admin/RegisterCode/doAddCode')}" method="post">
+        <input type="hidden" name="isSearch1" value="1" class="s-txt" style="width:300px"/>
+        <dl class="lineD">
+            <dt><font color="red"> * </font>邀请码：</dt>
+            <dd>
+                <input id="code" name="code" type="text" value="{$code}" class="s-txt" style="width:300px">
+                <input type="button" class="btn_b" id="getRandCode" value="换一个"/>
+                <br/>
+                <p>大写字母+数字组合，例如：AB1234</p>
+            </dd>
+        </dl>
+        <dl class="lineD">
+            <dt><font color="red"> * </font>分配给：</dt>
+            <dd>
+                <select name="uid">
+                    <option value="0">请选择用户</option>
+                    <foreach name="group" item="v">
+                        <option value="{$v['uid']}">{$v['uname']}</option>
+                    </foreach>
+                </select>
+                <br/>
+                <p>目前支持市场部人员，已经有邀请码的用户不显示</p>
+            </dd>
+        </dl>
+        <div class="page_btm">
+            <input type="submit" class="btn_b" value="{:L('PUBLIC_CONFIRM')}" />
+        </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    //鼠标移动表格效果
+    $(document).ready(function(){
+        $("#getRandCode").click(function(){
+            $.ajax({
+                url: "{:U('admin/RegisterCode/getRandCode')}",
+                dataType: "Json",
+                type: "POST",
+                success: function (res) {
+                    $("#code").val(res.data);
+                }
+            });
+        });
+    });
+</script>
+
+<include file="__THEME__/admin_footer" />

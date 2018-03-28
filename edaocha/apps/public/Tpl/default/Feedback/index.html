@@ -1,0 +1,40 @@
+	<!-- 反馈弹出框 -->
+<div model-node='feedback' style="width:450px;" class="pop-feedback">
+    <div model-node='post_feedback'><textarea id="feedback_inputor" placeholder="请输入您的宝贵意见，我们会认真思考不断改进，感谢支持！"></textarea></div>
+    <div class="submit">可以输入<span id="numsLeft">1000</span>个字<a id="post_feedback" event-node="post_feedback" href="javascript:void(0);" >提交</a> </div>
+</div>
+
+ <script>
+ core.loadFile(THEME_URL+'/js/plugins/core.at.js');
+ 
+ core.loadFile(THEME_URL+'/js/module.common.js',function(){
+ 	 M(document.getElementById('tsbox'));
+ });	
+atWho($('#feedback_inputor'));
+$(function () {
+  // 浏览器的输入的兼容性
+  if($.browser.msie && parseInt($.browser.version) < 9) {
+    $('#feedback_inputor').bind("propertychange", function() {
+      valChange();
+    });
+  } else {
+    $('#feedback_inputor').bind("input", function() {
+      valChange();
+    });
+  }
+});
+var valChange = function () {
+  var initNums = 1000;
+  var obj = $('#feedback_inputor').val();
+  var strlen = core.getLength(obj , true);
+  // 匹配尾部空白符
+  if ($.trim(obj.value) !== '') {
+    var blank = obj.value.match(/\s+$/g);
+    if (blank !== null) {
+      strlen += Math.ceil(blank[0].length / 2);
+    }
+  }
+  var leftNums = initNums - strlen;
+  $('#numsLeft')[0].innerHTML = leftNums;
+}
+ </script>

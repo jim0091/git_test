@@ -1,0 +1,172 @@
+<php>
+    $cancomment = intval(CheckPermission('core_normal','feed_comment'));
+    $canfeedshare = CheckPermission('core_normal','feed_share');
+    $canfeeddel = CheckPermission('core_normal','feed_del');
+    $adminfeeddel = CheckPermission('core_admin','feed_del');
+    $canfeedreport = CheckPermission('core_normal','feed_report');
+    $adminchannelrecom = CheckPermission('channel_admin','channel_recommend');
+    $admintaskrecom = CheckPermission('vtask_admin','vtask_recommend');
+</php>
+<php>if($data){</php>
+<volist name="data" id ="vl">
+    <div class="feed-list">
+        <div class="feed-info">
+            <div class="feed-ava"><img src="{$vl['user_info']['avatar_middle']}" width="50" height="50"  uid="{$vl['user_info']['uid']}" ></div>
+            <div class="feed-tab">
+                <p>{$vl['user_info']['uname']}<?php if(in_array($vl['user_info']['uid'], $followUids)): ?>      {:W('Remark',array('uid'=>$vl['user_info']['uid'],'remark'=>$remarkHash[$vl['user_info']['uid']],'showonly'=>1))}
+                    <?php endif; ?></p>
+                <p class="desc">{$vl.publish_time|friendlyDate} &nbsp;&nbsp;来自奥豆APP</p>
+            </div>
+        </div>
+        <div class="feed-main contents clearfix">
+            {$vl.body|format=true}
+        </div>
+        <div class="feed-action">
+            <ul>
+                <li model-node="down_app"><i class="collect"></i>收藏</li>
+                <li model-node="down_app"><i class="report"></i><if condition="$vl['repost_count'] gt 0">{$vl.repost_count}<else />转发</if></li>
+                <li id="comment"><i class="comment"></i><if condition="$vl['comment_count'] gt 0">{$vl.comment_count}<else />评论</if></li>
+                <li model-node="down_app"><i class="count"></i>{$vl.digg_count}</li>
+            </ul>
+        </div>
+        <php>if($vl['comment_count'] > 0){</php>
+        <div class="feed-comment" style="display: none;">
+            {:W('Comment',array('feed_id' => $vl['feed_id'],'num' => 3,'tpl'=>'NewCommentList','mustlist' => 1))}
+        </div>
+        <php> }</php>
+    </div>
+</volist>
+<php>}else{</php>
+
+<if condition="$load_count neq ''">
+    <dl class="feed_list" style="text-align:center"><p class="p20">暂时没有更多可显示的内容哟~</p></dl>
+    <else/>
+    <dl class="feed_list" style="min-height:500px">
+        <div style="padding-top:80px;text-align:center">
+            <p class="mb10"><i class="icon-bed"></i></p>
+            <p style="color:#333">暂时没有更多可显示的内容哟~</p>
+        </div>
+    </dl>
+</if>
+<php>}</php>
+<script>   
+    $(document).ready(function(){
+        $("li#comment").click(function(){
+           $(this).parent().parent().parent().find('.feed-comment').toggle(300);
+        });
+    });
+
+//    $(document).ready(function(){
+//        var bottom = 20;
+//        var top1 = $('#show_one').offset().top;
+//        var num1 = $('#show_one').outerHeight(true);
+//        var num2 = $('#show_two').outerHeight(true);
+//        var num3 = $('#show_three').outerHeight(true);
+//        var num4 = $('#show_four').outerHeight(true);
+//        $(window).scroll(function(){
+//            var srollPos = $(document).scrollTop();
+//            console.log(srollPos);
+//            if(srollPos >(num1+bottom+top1-800)){
+//                $('#show_two').css('display','block');
+//            }
+//            if(srollPos >(num1+num2+bottom+top1-800)){
+//                $('#show_three').css('display','block');
+//            }
+//             if(srollPos >(num1+num2+num3+bottom+top1-800)){
+//                $('#show_four').css('display','block');
+//            }
+//             if(srollPos >(num1+num2+num3+num4+bottom+top1-800)){
+//                $('#show_five').css('display','block');
+//                $('#show_last').css('display','block');
+//            }
+//        });
+//    })
+    function doHighlight(a,b){
+        highlightStartTag="<span style='color:red'>";
+        highlightEndTag="</span>";
+        var c="";
+        var i=-1;
+        var d=b.toLowerCase();
+        var e=a.toLowerCase();
+        while(a.length>0){
+            i=e.indexOf(d,i+1);
+            if(i<0){
+                c+=a;
+                a="";
+            }else{
+                if(a.lastIndexOf(">",i)>=a.lastIndexOf("<",i)){
+                    if(e.lastIndexOf("/script>",i)>=e.lastIndexOf("<script",i)){
+                        c+=a.substring(0,i)+highlightStartTag+a.substr(i,b.length)+highlightEndTag;
+                        a=a.substr(i+b.length);e=a.toLowerCase();
+                        i=-1;
+                    }
+                }
+            }
+        }
+        return c;
+    };
+
+    $.fn.highlight=function(z){
+        $(this).each(
+                function(){
+                    if (z !== null) {
+                        $(this).html(doHighlight($(this).html(),z));
+                    }
+                });
+        return this;
+    }
+
+    $(document).ready(function(){
+        if(!'{$topic_id}' && '{$feed_key}'){
+            var key3 = '{$feed_key}';
+            $('.contents').highlight(key3);
+            M($('#feed-lists')[0]);
+        }
+    });
+    /**
+     * 时间更新效果
+     * return void
+     */
+    $(document).ready(function() {
+        var formatTime = '';
+        $('.date').live({
+            mouseover: function() {
+                var width = $(this).find('em').first().width();
+                $(this).find('em').first().hide();
+                $(this).find('em').last().css({display:'inline-block', width: width});
+                $(this).find('em').last().css({minWidth:'50px'});
+            },
+            mouseout: function() {
+                $(this).find('em').first().show();
+                $(this).find('em').last().hide();
+            }
+        });
+
+        var wTime = parseInt("{:time()}");
+        var updateTime = function()
+        {
+            $('.date').each(function(i, n) {
+                var date = $(this).attr('date');
+                if(typeof date !== 'undefined') {
+                    $(this).find('em').first().html(core.weibo.friendlyDate(date, wTime));
+                }
+            });
+        };
+        //updateTime();
+        setInterval(function() {
+            wTime += 10;
+            updateTime();
+        }, 10000);
+        //
+        $('.title-from').each(function(index, element) {
+            var html = $(element).parents('dd').find('.title-from-source').html();
+            if(html) {
+                $(element).html(html).show();
+            }else{
+                $(element).hide();
+            }
+        });
+    });
+    //解决异步加载分享无效的问题
+    if(core.bdshare) core.bdshare.init();
+</script>

@@ -1,0 +1,37 @@
+<include file="__THEME__/public_new_header" />
+<div class="search-main">
+    <h1>奥豆搜索</h1>
+    <div class="feed-box">
+        <php>
+            $array = model('Feed')->searchFeed($k, 'all', $var['loadId'], $this->limitnums);
+        </php>
+        <div class="navbox">
+            <ul class="nav">
+                <li class="current"><a href="{:U('public/Search/new_search',array('t'=>1,'k'=>$k))}">动态</a></li>
+                <li><a href="{:U('public/Search/new_search',array('t'=>2,'k'=>$k))}">文章</a></li>
+            </ul>
+        </div>
+        <div class="search-box" model-node="serachbox">
+            <input type="text" class="search-input" id="serachkey" placeholder="请输入搜索的内容" value="{$k}">
+            <input type="button" class="btn" value="搜索" event-node="feedsearch"/>
+            <p>共搜索到<span>{$array['count']}</span>条关于<span>“{$k}”</span>的动态</p>
+        </div>
+        {:W('FeedList',array('type'=>'all','feed_type'=>$feed_type,'feed_key'=>$k,'channel_category_id'=>t($categoryid)))}
+        <div class="downapp" model-node="down_app">
+            查看更多内容，请下载奥豆app客户端
+        </div>
+    </div>
+    <div class="st-index-right">
+        <div class="m-qrcode">
+            <div class="hd">奥豆app客户端</div>
+            <div class="bd">
+                <div class="img"> <img src="__THEME__/image/qrcode.jpg" width="144" height="144" /><p>扫码下载奥豆APP</p></div>
+                <div class="link">
+                    <a href="javascript:;"><i class="iphone"></i>iPhone</a>
+                    <a href="javascript:;"><i class="android"></i>Android</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="__THEME__/public_new_footer" />

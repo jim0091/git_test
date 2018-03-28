@@ -1,0 +1,230 @@
+2017-06-24
+1.添加“文章收藏”表
+    CREATE TABLE `cy_information_favorite` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `uid` int(11)   COMMENT '收藏者',
+         `information_id` int(11)   COMMENT '文章ID',
+         `favorite_time` int(11)   COMMENT '收藏日期',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+2.添加“文章点赞”表
+    CREATE TABLE `cy_information_digg` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `uid` int(11)   COMMENT '点赞者',
+         `information_id` int(11)   COMMENT '点赞文章ID',
+         `cTime` int(11)   COMMENT '点赞日期',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+2017-07-20
+1.微博表添加“是否置顶”字段
+    alter table cy_feed add (is_top int(2) default 0  COMMENT '是否置顶 0-否  1-是');
+
+
+2017-08-28
+1.活动表添加“是否审核”字段
+    alter table cy_event_list add (is_audit int(2) default 1  COMMENT '是否已审核 0-未审核 1-已审核');
+
+
+2017-09-19
+1.添加“邀请码”表
+    CREATE TABLE `cy_register_code` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `code` varchar(10) NOT NULL  COMMENT '邀请码',
+         `create_time` int(11)   COMMENT '创建时间',
+         `create_uid` int(11)   COMMENT '创建用户',
+         `uid` int(11)   COMMENT '属于用户，市场部门用户',
+         `is_audit` int(2) default 1  COMMENT '是否生效 0-未生效 1-已生效',
+         `is_del` int(2) default 0  COMMENT '是否删除 0-未删除 1-已删除',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+2.添加“邀请码绑定”表
+    CREATE TABLE `cy_register_bind` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `code_id` int(11) NOT NULL COMMENT '邀请码ID',
+         `uid` int(11)   COMMENT '绑定人ID',
+         `bind_time` int(11)   COMMENT '绑定时间',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+3.用户表添加“访问量”字段  pv
+    alter table cy_user add (pv int(11) default 0  COMMENT '个人主页访问量');
+
+
+2017-09-21
+1.添加“抽奖”表
+    CREATE TABLE `cy_luck_draw` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `title` varchar(100)   COMMENT '标题',
+         `start_time` int(11)   COMMENT '开始时间',
+         `end_time` int(11)   COMMENT '结束时间',
+         `planNum` int(11) default 0  COMMENT '预计参与人数',
+         `hasNum` int(11) default 0  COMMENT '已参与人数',
+         `planMoney` decimal(20,2) default 0  COMMENT '奖金预算',
+         `useMoney` decimal(20,2) default 0  COMMENT '已使用金额',
+         `status` int(2) default 0  COMMENT '0-未开始，1-进行中，2-已结束',
+         `create_time` int(11)   COMMENT '创建时间',
+         `create_uid` int(11)   COMMENT '创建人ID',
+         `is_del` int(2) default 0  COMMENT '0-未删除，1-已删除',
+         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+2.添加“流水记录”表
+    CREATE TABLE `cy_income_mny` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `luck_draw_id` int(11)   COMMENT '活动ID',
+         `out_trade_no` varchar(50)   COMMENT '平台生成单号',
+         `money` decimal(20,2) default 0  COMMENT '金额',
+         `type` int(2) default 0  COMMENT '0-收入，1-支出（即提现）',
+         `take_state` int(2) default 0  COMMENT '0-未提现，1-提现中，2-已提现',
+         `uid` int(11)  COMMENT '所属用户',
+         `create_time` int(11)   COMMENT '创建时间',
+         `edit_time` int(11)   COMMENT '提现完成时间',
+         `edit_uid` int(11)  COMMENT '提现完成确认人',
+         `table` char(15) COMMENT '所属表，默认为luck_draw',
+         `is_del` int(2) default 0  COMMENT '0-未删除，1-已删除',
+         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+3.用户表新增“总收入”，“余额”，“支付宝账号”字段
+    alter table cy_user add (all_income decimal(20,2) default 0  COMMENT '总收入', accountmny decimal(20,2) default 0  COMMENT '余额', ali_account varchar(50)   COMMENT '支付宝账号');
+
+
+
+2017-09-26
+1.添加“IOS&安卓版本管理”表
+    CREATE TABLE `cy_version` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `type` int(2) default 0  COMMENT '0-安卓，1-IOS',
+         `version` varchar(20)   COMMENT '当前版本号1.0.2',
+         `update_type` int(2) default 0  COMMENT '0-非强制更新，1-强制更新',
+         `edit_time` int(11)   COMMENT '更新时间',
+         `edit_uid` int(11)  COMMENT '更新人',
+         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+2017-09-30
+1.IOS&安卓版本管理表新增字段
+    alter table cy_version add (version_img varchar(50)   COMMENT '版本更新提示图片', version_title varchar(100) COMMENT '版本更新提示文字', is_old int(2) default 0  COMMENT '是否老版本 0-否，1-是',);
+
+
+2017-10-20
+1.后台权限节点表新增字段
+    alter table cy_permission_node add (sort int(11) default 0  COMMENT '排序值');
+
+
+
+2017-10-21
+1.添加“匿名库”表
+    CREATE TABLE `cy_anonymous` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `nickname` varchar(50)   COMMENT '匿名名称',
+         `icon` varchar(255)   COMMENT '匿名分类图标（每个分类对应一种图标）',
+         `pid` int(2) default 0  COMMENT '父级ID',
+         `use_count` int(11) default 0  COMMENT '当前使用人数',
+         `all_count` int(11) default 0  COMMENT '使用总次数',
+         `is_del` int(2) default 0  COMMENT '0-未删除，1-已删除',
+         `weight` int(10) default 0  COMMENT '分类的权重，0-100之间',
+         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+2.添加“匿名用户绑定”表
+    CREATE TABLE `cy_user_anonymous` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `uid` int(11)  COMMENT '所属用户',
+         `anonymous_id` int(11)  COMMENT '匿名表ID',
+         `bd_time` int(11)   COMMENT '绑定时间，用于计算下次可以更换的日期',
+         PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+3.分享表(cy_feed)和评论表(cy_comment)新增字段
+    alter table cy_feed add (is_anonymous int(2) default 0  COMMENT '是否匿名分享 0-否，1-是');
+    alter table cy_comment add (is_anonymous int(2) default 0  COMMENT '是否匿名评论 0-否，1-是');
+    alter table cy_feed_digg add (is_anonymous int(2) default 0  COMMENT '是否匿名点赞 0-否，1-是');
+
+
+2017-10-24
+1.添加“奥豆视频表”表
+    CREATE TABLE `cy_aodou_video` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `title` varchar(200)   COMMENT '视频标题',
+         `image_path` varchar(255)   COMMENT '封面图，关联附件表',
+         `play_type` varchar(100)  COMMENT '播放平台，默认-独播',
+         `update_type` varchar(100) COMMENT '更新时间，默认-每周五',
+         `abstract` varchar(500)  COMMENT '视频简介',
+         `comment_count` int(11) default 0  COMMENT '评论总数',
+         `digg_count` int(11) default 0  COMMENT '点赞总数',
+         `part_count` int(11) default 0  COMMENT '总集数',
+         `is_del` int(2) default 0  COMMENT '是否删除 默认为0',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+2.添加“奥豆视频详情表”表
+    CREATE TABLE `cy_aodou_video_data` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `video_id` int(11) default 0  COMMENT '关联奥豆视频表id',
+         `video_name` varchar(255) COMMENT '附件名称',
+         `video_size` varchar(20)  COMMENT '附件大小',
+         `extension` varchar(20)  COMMENT '扩展名',
+         `timeline` int(11) default 0  COMMENT '时长',
+         `video_path` varchar(255) COMMENT '保存路径',
+         `image_path` varchar(255)   COMMENT '每一集的封面',
+         `image_width` int(11) default 0  COMMENT '封面图宽度',
+         `image_height` int(11) default 0  COMMENT '封面图高度',
+         `parts` int(11) default 0  COMMENT '第几集',
+         `pv` int(11) default 0  COMMENT '播放次数',
+         `is_audit` int(2) default 0  COMMENT '是否已审核 0-未审核 1-已审核',
+         `comment_count` int(11) default 0  COMMENT '评论总数',
+         `digg_count` int(11) default 0  COMMENT '点赞总数',
+         `is_del` int(2) default 0  COMMENT '是否删除 默认为0',
+         `ctime` int(11)  COMMENT '上传时间',
+         `uid` int(11)  COMMENT '上传人',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+3.添加“奥豆视频详情点赞”表
+    CREATE TABLE `cy_aodou_video_data_digg` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `uid` int(11)  COMMENT '点赞用户',
+         `video_data_id` int(11) default 0  COMMENT '关联奥豆视频详情表id',
+         `ctime` int(11)  COMMENT '点赞时间',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+2017-11-01
+1.周星用户表新增字段
+    alter table cy_user_star add (popularity varchar(100)  COMMENT '人气值，单位万');
+
+
+
+2017-11-02
+1.微博表添加“热门是否置顶”字段，原is_top用于广场动态，recommend_top用于热门动态
+    alter table cy_feed add (recommend_top int(2) default 0  COMMENT '是否置顶 0-否  1-是');
+
+
+
+2017-11-04
+1.添加“关键词统计”表
+    CREATE TABLE `cy_keyword_statistic` (
+         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+         `keyword` varchar(100)   COMMENT '关键词',
+         `type` int(2) default 0  COMMENT '搜索类型，0-实名动态 1-匿名动态 2-用户 3-活动 4-文章',
+         `result` int(11) default 0  COMMENT '搜索结果',
+         `all_search` int(11) default 0  COMMENT '总搜索次数',
+         `month_search` int(11) default 0  COMMENT '当月搜索次数',
+         `week_search` int(11) default 0  COMMENT '本周搜索次数',
+         `day_search` int(11) default 0  COMMENT '今日搜索次数',
+         PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+

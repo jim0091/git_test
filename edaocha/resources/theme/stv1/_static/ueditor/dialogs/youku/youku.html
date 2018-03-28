@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="../../third-party/jquery-1.10.2.min.js"></script>
+    <style type="text/css">
+	body{ padding:10px; margin:0;}
+    #youkuplayer { width:300px; height:240px; background-color:#dddddd; }
+	table,td,tr{ border-collapse: collapse; border-spacing: 0; border:none;}
+	ul,li{margin: 0; padding: 0; list-style:none;}
+	ul{ margin:10px 0 10px 10px;}
+	li{ padding:5px 0;}
+    </style>
+</head>
+<body>
+
+<table border="1">
+  <tr>
+    <td width="300"><div id="youkuplayer"></div></td>
+    <td width="220" valign="top">
+    	<ul>
+        	<li>视频ID号:
+              <input name="youkuid" type="text" id="youkuid" size="15" value="">
+        	</li>
+        	<li><img src="demo.jpg" width="232" height="36" alt="" /></li>
+        </ul>
+    </td>
+  </tr>
+</table>
+<script type="text/javascript" src="http://player.youku.com/jsapi"></script>
+<script type="text/javascript">
+    function createYoukuPlayer(vid){
+        if ( !vid )return;
+		vid = utils.trim(vid);
+		player = new YKU.Player('youkuplayer',{
+			styleid: '0',
+			client_id: 'de9208be08f98c27',
+			vid: vid,
+			autoplay: false,
+			show_related: false,
+			flashext: '<param name="wmode" value="transparent">'
+		});
+    }
+    function addVidChangeListener(youkuid){
+        if (browser.ie) {
+            youkuid.onpropertychange = function () {
+                createYoukuPlayer( this.value );
+            }
+        } else {
+            youkuid.addEventListener( "input", function () {
+                createYoukuPlayer( this.value );
+            }, false );
+        }
+    }
+    window.onload = function(){
+        $focus($G("youkuid"));
+        addVidChangeListener($G("youkuid"));
+		dialog.onok = function() {
+			var vid = utils.trim( $G("youkuid").value );
+			if(!vid) return false;
+			editor.execCommand('insertyouku', {
+				vid: vid,
+				align: 'center'
+			});
+		};
+        dialog.oncancel = function(){
+            $G("youkuplayer").innerHTML = "";
+        };
+        //编辑视频时初始化相关信息
+        (function(){
+            var img = editor.selection.getRange().getClosedNode(),vid;
+            if(img && img.className){
+                var hasFakedClass = (img.className == "edui-faked-youku");
+                if(hasFakedClass) {
+                    $G("youkuid").value = vid = img.getAttribute("_vid");
+                }
+            }
+            createYoukuPlayer(vid);
+        })();
+    };
+</script>
+</body>
+</html>

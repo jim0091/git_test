@@ -1,0 +1,20 @@
+<!-- <div class="comment_lists"> -->
+<neq name='list.data' value=''>
+    <php>$iscommentdel = CheckPermission('core_normal','comment_del');
+        $iscommentadmindel = CheckPermission('core_admin','comment_del');
+    </php>
+    <volist name='list.data' id='vo'>
+        <div class="comment-list">
+            <div class="img"><img src="{$vo.user_info.avatar_tiny}" width="40" height="40" style="transition: none"></div>
+            <div class="comment-content">
+                <p class="title">{$vo.user_info.uname}</p>
+                <p class="content">{$vo.content}</p>
+                <p class="desc">{$vo.ctime|friendlyDate}</p>
+            </div>
+        </div>
+    </volist>
+    <php> if($list['count']>=3){</php>
+    <div class="comment-more" model-node="down_app">查看更多评论 &gt;</div>
+    <php>}</php>
+</neq>
+<!-- </div> -->
