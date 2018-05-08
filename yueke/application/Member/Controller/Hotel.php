@@ -372,9 +372,6 @@ class Hotel extends Common{
             $this->error('修改成员信息失败');
         }
     }
-
-
-    
     /**
      * @name 酒店删除成员
      * @throws \think\Exception
@@ -393,4 +390,5 @@ class Hotel extends Common{
         }
     }
 
+    // 测试的
 }
