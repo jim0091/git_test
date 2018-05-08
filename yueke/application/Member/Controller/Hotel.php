@@ -373,6 +373,8 @@ class Hotel extends Common{
         }
     }
 
+
+    
     /**
      * @name 酒店删除成员
      * @throws \think\Exception
