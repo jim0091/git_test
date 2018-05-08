@@ -389,6 +389,4 @@ class Hotel extends Common{
             $this->error('删除成员失败');
         }
     }
-
-    // 测试的1111
 }
