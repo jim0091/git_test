@@ -390,5 +390,5 @@ class Hotel extends Common{
         }
     }
 
-    // 测试的22222
+    // 测试的1111
 }
