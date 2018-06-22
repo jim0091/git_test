@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/src/vendor/composer" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Chart" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Cell" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Calculation" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Style" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/RichText" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/events" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/CachedObjectStorage" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Shared" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/locale" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Reader" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Worksheet" />
+      <path value="$PROJECT_DIR$/src/vendor/zhiyicx/thinksns-old-code" />
+      <path value="$PROJECT_DIR$/src/vendor/jpush/jpush" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/src/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Writer" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/CalcEngine" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/composer-vendor-install-folders" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/emoji-format" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/vendor-pack-pinyin" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="5.3.0" />
+</project>

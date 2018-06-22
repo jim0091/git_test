@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4f39af24-8403-4048-b44e-ef6d7f7d7aee" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="UserAction.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="2259" column="44" lean-forward="false" selection-start-line="2259" selection-start-column="41" selection-end-line="2259" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterCodeAction.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/RegisterCodeAction.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="348" column="19" lean-forward="true" selection-start-line="348" selection-start-column="19" selection-end-line="348" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PHPExcel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/vendor/PHPExcel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9207">
+              <caret line="356" column="20" lean-forward="false" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContentAction.class.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3888">
+              <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+              <folding>
+                <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+                <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+                <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+                <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+                <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+                <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>like</find>
+      <find>exq</find>
+      <find>exp</find>
+    </findStrings>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/apps/h5/node_modules" />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$PROJECT_DIR$/src/vendor/composer" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Chart" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Cell" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Calculation" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Style" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/RichText" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/events" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/CachedObjectStorage" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/src/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Shared" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/locale" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Reader" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Worksheet" />
+      <path value="$PROJECT_DIR$/src/vendor/zhiyicx/thinksns-old-code" />
+      <path value="$PROJECT_DIR$/src/vendor/jpush/jpush" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/src/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/src/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/Writer" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/filesystem" />
+      <path value="$PROJECT_DIR$/src/vendor/PHPExcel/CalcEngine" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/composer-vendor-install-folders" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/emoji-format" />
+      <path value="$PROJECT_DIR$/src/vendor/medz/vendor-pack-pinyin" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-244" />
+    <option name="y" value="44" />
+    <option name="width" value="1292" />
+    <option name="height" value="1036" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Lib" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="apps" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Lib" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Action" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="edaocha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edaocha" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f39af24-8403-4048-b44e-ef6d7f7d7aee" name="Default" comment="" />
+      <created>1526433679707</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1526433679707</updated>
+      <workItem from="1526433696133" duration="130000" />
+      <workItem from="1527238994953" duration="625000" />
+      <workItem from="1527576116978" duration="184000" />
+      <workItem from="1527579575701" duration="34000" />
+      <workItem from="1527664339766" duration="599000" />
+      <workItem from="1528337670669" duration="27000" />
+      <workItem from="1528340330450" duration="393000" />
+      <workItem from="1528341148814" duration="3501000" />
+      <workItem from="1528365746375" duration="950000" />
+      <workItem from="1528367469721" duration="723000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7166000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60831">
+          <caret line="2259" column="44" lean-forward="false" selection-start-line="2259" selection-start-column="41" selection-end-line="2259" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/RegisterCodeAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8883">
+          <caret line="335" column="23" lean-forward="false" selection-start-line="335" selection-start-column="23" selection-end-line="335" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vendor/PHPExcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8964">
+          <caret line="356" column="20" lean-forward="false" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60831">
+          <caret line="2259" column="44" lean-forward="false" selection-start-line="2259" selection-start-column="41" selection-end-line="2259" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/RegisterCodeAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9153">
+          <caret line="345" column="35" lean-forward="false" selection-start-line="345" selection-start-column="35" selection-end-line="345" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59454">
+          <caret line="2208" column="21" lean-forward="false" selection-start-line="2208" selection-start-column="17" selection-end-line="2208" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4131">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59616">
+          <caret line="2208" column="21" lean-forward="false" selection-start-line="2208" selection-start-column="17" selection-end-line="2208" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/ContentAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3888">
+          <caret line="153" column="128" lean-forward="false" selection-start-line="153" selection-start-column="128" selection-end-line="153" selection-end-column="128" />
+          <folding>
+            <marker date="1516675136980" expanded="true" signature="8033:8061" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8179:8207" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="8403:8410" ph="»" />
+            <marker date="1516675136980" expanded="true" signature="23828:23839" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="30367:30378" ph="..." />
+            <marker date="1516675136980" expanded="true" signature="47454:47497" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/HomeAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5670">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/UserAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="2259" column="44" lean-forward="false" selection-start-line="2259" selection-start-column="41" selection-end-line="2259" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vendor/zhiyicx/thinksns-old-code/src/OpenSociax/functions.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="2597" column="9" lean-forward="false" selection-start-line="2597" selection-start-column="9" selection-end-line="2597" selection-end-column="9" />
+          <folding>
+            <marker date="1507709835744" expanded="true" signature="8547:8562" ph="..." />
+            <marker date="1507709835744" expanded="true" signature="8752:8767" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vendor/PHPExcel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9207">
+          <caret line="356" column="20" lean-forward="false" selection-start-line="356" selection-start-column="20" selection-end-line="356" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vendor/zhiyicx/thinksns-old-code/src/core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="100" column="9" lean-forward="false" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/admin/Lib/Action/RegisterCodeAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="348" column="19" lean-forward="true" selection-start-line="348" selection-start-column="19" selection-end-line="348" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
