@@ -1,0 +1,190 @@
+@import url('../../../static/less/common/global');
+
+.index-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  .index-top {
+    width: 100%;
+    height: 287rpx;
+    background-color: @theme;
+    overflow: hidden;
+    // background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+    .index-top-img {
+      display: block;
+      margin: 0 auto;
+      margin-top:30rpx;
+      width: 350rpx;
+      height: 106rpx;
+      background-size: 100% 100%;
+    }
+    .index-top-search-area {
+      width: 100%;
+      padding: 0 42rpx;
+      box-sizing: border-box;
+      margin-top: 27rpx;
+      .index-top-search {
+        display: flex;
+        align-items: center;
+        // margin: 0 auto;
+        width: 100%;
+        background-color: #ffffff;
+        border: 1rpx solid #797979;
+        border-radius: 25rpx;
+        padding: 10rpx 30rpx;
+        box-sizing: border-box;
+        .index-top-search-img {
+          margin-right: 20rpx;
+          width: 60rpx;
+          height: 60rpx;
+          background-size: 100% 100%;
+        }
+        .index-top-input, .index-top-input-placeholder {
+          flex:0 0 90%;
+          font-size: 35rpx;
+          color: @gray;
+        }
+      }
+    }
+    
+  }
+  .index-search-assistant {
+    width: 100%;
+    padding: 20rpx 25rpx 10rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx dotted #666666;    
+    .index-search-assistant-area {
+      width: 100%;
+      .index-search-assistant-area-title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .title-logo {
+          flex: 0 0 10rpx;
+          margin-right: 10rpx;
+          width: 10rpx;
+          height: 40rpx;
+          background-color: @fontcolor;
+        }
+        p {
+          font-size: 30rpx;
+          color: @fontcolor;
+        }
+      }
+      .index-search-assistant-body {
+        width: 100%;
+        padding: 0 25rpx;
+        box-sizing: border-box;
+        .index-search-assistant-catagory {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 10rpx;
+          width: 100%;
+          .search-company {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .search-company-imgsrc {
+              width: 80rpx;
+              height: 80rpx;
+              background-size: 100% 100%;
+            }
+            p {
+              margin: 10rpx 0;
+              text-align: center;
+              font-size: 30rpx;
+              color: #666666;
+            }
+            .relationShip {
+              color: #d0d0d0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .index-hot-sentiment {
+    margin-top: 15rpx;
+    width: 100%;
+    .index-hot-sentiment-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      .index-hot-sentiment-nav-title {
+        margin-left: 25rpx;
+        display: flex;
+        align-items: center;
+        .title-logo {
+          flex: 0 0 10rpx;
+          margin-right: 10rpx;
+          width: 10rpx;
+          height: 40rpx;
+          background-color: @fontcolor;
+        }
+        p {
+          font-size: 30rpx;
+          color: @fontcolor;
+        }
+      }
+      .index-hot-sentiment-nav-more {
+        margin-right: 25rpx;
+        display: flex;
+        align-items: center;
+        p{
+          font-size: 28rpx;
+          color: #666666;
+        }
+        .more-imgsrc {
+          width: 28rpx;
+          height: 28rpx;
+          background-size: 100% 100%;
+        }
+      }
+    }
+    .scroll-height {
+      width: 100%;
+      height: 515rpx;
+      margin-top: 20rpx;
+    }
+    .index-hot-sentiment-content {
+      display: flex;
+      // align-items: center;
+      margin: 0rpx 0 25rpx 0;
+      width: 100%;
+      padding: 0rpx 25rpx 20rpx 25rpx;
+      box-sizing: border-box;
+      border-bottom: 1rpx dotted #999999;
+      .content-img {
+        flex: 0 0 210rpx;
+        margin-right: 20rpx;
+        width: 210rpx;
+        height: 141rpx;
+        background-size: 100% 100%;
+      }
+      .content-textarea {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        .content-textarea-text {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          font-size: 28rpx;
+          color: #333333;
+        }
+        .content-textarea-text-other {
+          display: flex;
+          justify-content: space-between;
+          text {
+            font-size: 26rpx;
+            color: #666666;
+          }
+        }
+      }
+    }
+  }
+}

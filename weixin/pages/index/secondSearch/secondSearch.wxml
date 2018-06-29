@@ -1,0 +1,126 @@
+<import src="../../../wxParser/index.wxml" />
+<view class="index-container">
+  <view class="index-top">
+    <view class="index-top-search-area">
+      <view class="index-top-search">
+        <input class="index-top-input" confirm-type="search" bindinput="inputIngHandle" bindconfirm="inputHandle" type="text" value="{{inputValue}}" placeholder="请输入企业名、注册号、品牌等关键词"
+          placeholder-class="index-top-input-placeholder"></input>
+        <view bindtap="searchHandle">
+          <image class="index-top-search-img" src="../../../static/img/index-search.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--舆情搜索-->
+  <view wx:if="{{type == 'sentiment'}}" class="second-search-result">
+    <!-- <view class="result-category">
+      <view wx:for="{{categoryList}}" wx:key="index" bindtap="chooseHandler" data-index="{{index}}" class="category-list {{item.selected ? 'selected' : 'normal'}}">{{item.name}}</view>
+    </view>
+    <image bindtap="focusSentimentHandle" class="focus-img" src="../../../static/img/company-add.png"></image> -->
+    <navigator wx:for="{{stopicList}}" url="../sentimentContent/sentimentContent?url={{item.url}}" wx:key="index" class="result-list">
+      <text class="title">{{item.title}}</text>
+      <text class="subtilte">{{item.source_name}}</text>
+      <text class="time">{{item.create_time}}</text>
+    </navigator>
+  </view>
+  <!--公司查询-->
+  <view wx:if="{{type == 'company'}}" class="second-search-company">
+    <view class="search-top">
+      <view class="search-condition">
+        <view bindtap="chooseConditionHandle" data-choosetype="city" class="city">
+          <text>{{province}}</text>
+          <image wx:if="{{!choose}}" class="img-down" src="../../../static/img/search-down.png"></image>
+          <image wx:if="{{choose}}" class="img-down" src="../../../static/img/ticketCheck-arrowup.png"></image>
+        </view>
+        <!-- <view bindtap="chooseConditionHandle" data-choosetype="industry" class="city">
+          <text>全部行业</text>
+          <image wx:if="{{!choose}}" class="img-down" src="../../../static/img/search-down.png"></image>
+          <image wx:if="{{choose}}" class="img-down" src="../../../static/img/ticketCheck-arrowup.png"></image>          
+        </view> -->
+        <view bindtap="chooseConditionHandle" data-choosetype="more" class="city">
+          <text>更多筛选</text>
+          <image wx:if="{{!choose}}" class="img-down" src="../../../static/img/search-down.png"></image>
+          <image wx:if="{{choose}}" class="img-down" src="../../../static/img/ticketCheck-arrowup.png"></image>
+        </view>
+      </view>
+    </view>
+    <!--遮罩-->
+    <view wx:if="{{choose}}" bindtap="closeZhezhaoHandle" class="zhezhao"></view>
+    <!--筛选区域-->
+    <view wx:if="{{choose}}">
+      <!--全国-->
+      <view wx:if="{{choosetype == 'city'}}" class="choose-area">
+        <view class="choose-list">
+          <view class="list-content">
+            <scroll-view scroll-y class="choose-province">
+              <view wx:for="{{targetList}}" wx:key="index" bindtap="chooseProvince" data-province="{{item.name}}" class="province">{{item.name}}</view>
+            </scroll-view>
+            <!-- <scroll-view scroll-y class="choose-city">
+                  <view wx:for="{{targetList}}" class="city">{{item.name}}</view>
+                </scroll-view>
+                <scroll-view scroll-y class="choose-country">
+                  <view wx:for="{{targetList}}" class="country">{{item.name}}</view>
+                </scroll-view> -->
+          </view>
+        </view>
+      </view>
+      <!--更多筛选-->
+      <view wx:if="{{choosetype == 'more'}}" class="choose-more">
+        <view wx:for="{{moreList}}" wx:key="index" class="more-list">
+          <view class="list-title">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="list-content">
+            <view class="content">
+              <view wx:for="{{item.list}}" wx:for-item="list" wx:key="index" bindtap="chooseMore" data-title="{{item.title}}" data-name="{{list.name}}"
+                class="content-value {{list.selected ? 'selected' : 'normal'}}">
+                <text>{{list.name}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="more-button">
+          <button bindtap="submitHandle" class="submit">确定</button>
+          <button bindtap="resetHandle" data-reset="true" class="reset">重置</button>
+        </view>
+      </view>
+    </view>
+
+    <!--筛选结果-->
+    <view class="result-sum">
+      <text>为您找到 {{total}} 家相关企业</text>
+    </view>
+    <view wx:for="{{companyList}}" wx:key="index" class="result-list">
+      <view class="title">
+            <!-- <text class="{{item.focuStatus ? 'focus' : 'normal'}}">{{item.fullname}}{{index}}</text>     -->
+            <view class="{{item.focuStatus ? 'focus' : 'normal'}} wxParser">
+          <template is="wxParser" data="{{wxParserData:richText[index].nodes}}" />
+        </view>    
+        <view bindtap="focusHandle" data-fullname="{{item.fullname}}" data-companyid="{{item.company_id}}">
+          <image wx:if="{{!item.focuStatus}}" class="focu-img" src="../../../static/img/unfocus.png"></image>
+          <image wx:if="{{item.focuStatus}}" class="focu-img" src="../../../static/img/focused.png"></image>
+        </view>
+      </view>
+      <view class="result-content" bindtap="goCompanyIndexHandle" data-companyid="{{item.company_id}}" data-fullname="{{item.fullname}}">
+        <view class="result-content-left">
+          <view class="company-content">法定代表人：{{item.legalperson}}</view>
+          <view class="company-content">行业：{{item.industry}}</view>
+          <view class="company-status">
+            <text class="stauts-title">状态：{{item.jyzt}}</text>
+            <text></text>
+          </view>
+          <view class="company-status">
+            <text class="stauts-title">注册资本：{{item.finance}}</text>
+            <text></text>
+          </view>
+        </view>
+        <view class="result-content-right">
+          <view>
+            <image class="more" src="../../../static/img/index-more-direction.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{gameover}}" class="loadMore">已全部加载完成~~</view>
+</view>

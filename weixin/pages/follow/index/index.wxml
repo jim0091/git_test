@@ -1,0 +1,25 @@
+<view class="index-container">
+  <view class="index-top">
+    <image class="index-top-img" src="../../../static/img/index-logo.png"></image>
+  </view>
+  <view class="index-search-assistant">
+    <view class="index-search-assistant-area">
+      <view class="index-search-assistant-area-title">
+        <view class="title-logo"></view>
+        <p>关注公司:</p>
+      </view>
+      <navigator url="../follow/follow?target=1" class="index-search-assistant-body">
+        <image src="../../../static/img/follow-company.png"></image>
+      </navigator>
+    </view>
+    <view class="index-search-assistant-area">
+      <view class="index-search-assistant-area-title">
+        <view class="title-logo"></view>
+        <p>关注舆情:</p>
+      </view>
+      <navigator url="../follow/follow?target=2" class="index-search-assistant-body">
+        <image src="../../../static/img/follow-sensation.png"></image>
+      </navigator>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,95 @@
+@charset "UTF-8";
+.index-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #f9f9f9; 
+  position: relative; 
+}
+.index-container .index-top {
+  width: 100%;
+  /* height: 187rpx; */
+  /* background-color: #99CC66; */
+  overflow: hidden;
+}
+.index-container .index-top .index-top-img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 100rpx;
+  width:350rpx;
+  height: 106rpx;
+  background-size: 100% 100%;
+}
+.index-container .login{
+   padding-top: 100rpx; 
+   /* background: #99CC66; */
+   /* height: 100vh; */
+}
+.index-container .login .title {
+  text-align: center;
+}
+.index-container .login .title p{
+  font-family: Adobe 黑体 Std;
+  font-size: 50rpx;
+}
+.index-container .login .field{
+  padding-left: 40rpx;
+  box-sizing: border-box;
+  text-align: left;
+  height: 100rpx;
+  font-size: 35rpx;
+  color: #666666;
+   width: 90%;
+   border: 1px solid #666666;
+   border-radius: 20rpx;
+   margin: 50rpx auto;
+   overflow: hidden;
+}
+.index-container .login .field .user-img,.index-container .login .field .psd-img{
+  width: 42rpx;
+  height: 54rpx;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  float: left;
+}
+.index-container .login .field .name,.index-container .login .field .password{
+  text-align: left;
+  height: 90rpx;
+   line-height: 90rpx; 
+  width: 80%;
+  margin-top: 5rpx;
+
+  
+}
+.index-container .login .btn_login{
+  color:#fff;
+  background: #99CC66;
+  width: 90%;
+  height: 100rpx;
+   border-radius: 10px; 
+  line-height: 100rpx;
+  margin-top: 100rpx;
+  outline: none;
+  
+}
+.index-container .test{
+  text-align: center;
+  margin: 30rpx auto;
+  color: #999;
+  background: #99CC66;
+  width: 90%;
+  height: 75rpx;
+  border-radius: 10px;
+  line-height: 75rpx;
+}
+.index-container .kefu{
+  text-align: center;
+  color: #666666;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 10%;
+  left: 30%;
+}
+.index-container .kefu .phone{
+  color:#14a3e2;
+}

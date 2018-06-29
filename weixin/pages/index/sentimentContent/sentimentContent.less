@@ -1,0 +1,175 @@
+@import url('../../../static/less/common/global');
+@import "../../../wxParser/index.wxss";
+.index-container {
+  width: 100%;
+  // height: 100vh;
+  // overflow: hidden;
+  // .index-top {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 200rpx;
+  //   overflow: hidden;
+  //   background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+  //   .follow-back {
+  //     display: flex;
+  //     align-items: center;
+  //     margin-left: 7rpx;
+  //     margin-top: 100rpx;
+  //     image {
+  //       width: 50rpx;
+  //       height: 50rpx;
+  //       background-size: 100% 100%;
+  //     }
+  //     p {
+  //       margin-left: 15rpx;
+  //       font-size: 40rpx;
+  //       color: #ffffff;
+  //     }
+  //   }
+  // }
+  .index-hot-sentiment {
+    margin-top: 15rpx;
+    margin-bottom: 35rpx;    
+    width: 100%;
+    .index-hot-sentiment-content {
+      width: 100%;
+      padding: 20rpx 30rpx;
+      box-sizing: border-box;
+      border-bottom: 1rpx dotted #999999;
+      .content-textarea {
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+        .content-textarea-text-other {
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: space-between;
+          .content-textarea-text {
+            margin-bottom: 20rpx;
+            font-size: 34rpx;
+            color: #333333;
+          }
+        }
+        text {
+          display: block;
+          margin-bottom: 10rpx;
+          font-size: 26rpx;
+          color: #666666;
+        }
+        .hot-sentiment-source {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          .focu-img {
+            margin-right: 40rpx;
+            width: 50rpx;
+            height: 50rpx;
+            background-size: 100% 100%;
+          }
+        }
+      }
+    }
+    .spread {
+      padding: 20rpx 30rpx;
+      box-sizing: border-box;
+      width: 100%;
+      .spread-record {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10rpx 20rpx 10rpx 0rpx;
+        box-sizing: border-box;
+        width: 100%;
+        border: 1rpx solid #666666;
+        border-radius: 10rpx;
+        font-size: 28rpx;
+        color: #666666;
+        .spread-content {
+          display: flex;
+          align-items: center;
+          .content-img {
+            width: 105rpx;
+            height: 60rpx;
+            background-size: 100% 100%;
+          }
+          .spread-title {
+            display: flex;
+            flex-direction: column;
+            .title {
+              margin-bottom: 10rpx;
+              font-size: 32rpx;
+            }
+          }
+          .content {
+            display: flex;
+            flex-direction: column;
+            margin-left: 20rpx;
+            .title {
+              margin-bottom: 10rpx;
+              font-size: 32rpx;
+            }
+          }
+        }
+        .spread-nav {
+          font-size: 30rpx;
+          color: #6699FF;
+        }
+        .spread-index {
+          width: 50rpx;
+          height: 50rpx;
+          border-radius: 50%;
+          background-color: #6699FF;
+          text-align: center;
+          line-height: 50rpx;
+          color: #ffffff;
+          font-size: 32rpx;
+        }
+      }
+    }
+    .index-hot-sentiment-detail {
+      margin-top: 20rpx;      
+      width: 100%;
+      padding: 0 30rpx;
+      box-sizing: border-box;
+      text {
+        width: 100%;
+        font-size: 30rpx;
+        color: #666666;
+      }
+    }
+  }
+  .sentiment-button {
+    margin-bottom: 55rpx;
+    width: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      .button-add {
+        height: 70rpx;
+        border-radius: 15rpx;
+        padding: 0rpx 40rpx;
+        box-sizing: border-box;
+        border: 1rpx solid #ffffff;
+        background-color: #6699FF;
+        color: #ffffff;
+        font-size: 34rpx;
+        text-align: center;
+        line-height: 70rpx;
+      }
+    }
+  }
+  // .index-bottom {
+  //   width: 100%;
+  //   height: 30rpx;
+  //   position: fixed;
+  //   bottom: 0;
+  //   left: 0;
+  //   background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+  // }
+}

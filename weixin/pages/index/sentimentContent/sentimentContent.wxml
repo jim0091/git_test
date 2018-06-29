@@ -1,0 +1,63 @@
+<import src="../../../wxParser/index.wxml" />
+<view class="index-container">
+  <!-- <view class="index-top">
+    <view bindtap="backHandler" class="follow-back">
+      <image src="../../../static/img/follow-back.png"></image>
+      <p>信息详情</p>
+    </view>
+  </view> -->
+  <!--热门舆情-->
+  <view class="index-hot-sentiment">
+    <view class="index-hot-sentiment-content">
+      <view class="content-textarea">
+        <view class="content-textarea-text-other">
+          <text class="content-textarea-text">{{topicView.topic_title}}</text>
+        </view>
+        <view class="hot-sentiment-source">
+          <view>
+            <text>来源：{{topicView.source_name}}</text>
+            <text>时间：{{topicView.create_time}}</text>
+          </view>
+          <view bindtap="focusHandle" data-title="{{topicView.topic_title}}" data-topicid="{{topicId}}" data-url="{{topicView.url}}">
+            <image wx:if="{{!isFocus}}" class="focu-img" src="../../../static/img/unfocus.png"></image>
+            <image wx:if="{{isFocus}}" class="focu-img" src="../../../static/img/focused.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--传播轨迹-->
+    <!-- <view class="spread">
+      <view class="spread-record">
+        <view class="spread-content">
+          <image class="content-img" src="../../../static/img/spread.png"></image>
+          <view class="spread-title">
+            <text class="title">传播轨迹</text>
+            <text class="subTitle">共有3次媒体报道</text>
+          </view>
+        </view>
+        <view bindtap="seeMoreHandler" class="spread-nav">{{showTitle}}</view>
+      </view>
+      <view wx:if="{{showAll}}">
+        <view wx:for="{{spreadList}}" wx:key="index" class="spread-record">
+          <view class="spread-content">
+            <view class="content">
+              <text class="title">{{item.title}}</text>
+              <text class="subTitle">{{item.time}}</text>
+            </view>
+          </view>
+          <view bindtap="seeMoreHandler" class="spread-index">{{index+1}}</view>
+        </view>
+      </view>
+    </view> -->
+    <view class="index-hot-sentiment-detail wxParser">
+      <!-- <text>{{topicView.content}}</text> -->
+      <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+    </view>
+  </view>
+  <view class="sentiment-button">
+    <view class="button">
+      <button class="button-add" open-type="share" plain="true">分享给好友</button>
+      <!-- <button class="button-add" open-type="share" plain="true">分享到朋友圈</button> -->
+    </view>
+  </view>
+</view>

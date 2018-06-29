@@ -1,0 +1,65 @@
+<view class="index-container">
+  <view class="index-top">
+    <image class="index-top-img" src="../../../static/img/index-logo.png"></image>
+    <view class="index-top-search-area">
+      <view class="index-top-search">
+        <input class="index-top-input" type="text" confirm-type="search" bindinput="inputIngHandle" bindconfirm="inputHandle" placeholder="请输入企业名/注册号" placeholder-class="index-top-input-placeholder"></input>
+        <view bindtap="searchHandle">
+          <image class="index-top-search-img" src="../../../static/img/index-search.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="index-search-assistant">
+    <view class="index-search-assistant-area">
+      <view class="index-search-assistant-area-title">
+        <view class="title-logo"></view>
+        <p>搜索助手</p>
+      </view>
+      <view class="index-search-assistant-body">
+        <view class="index-search-assistant-catagory">
+          <navigator url="../search/search?type=company" class="search-company">
+            <image src="../../../static/img/index-company-search.png" class="search-company-imgsrc"></image>
+            <p>公司查询</p>
+          </navigator>
+          <view bindtap="searchRelationHandler" class="search-company">
+            <image src="../../../static/img/index-sensation-search.png" class="search-company-imgsrc"></image>
+            <p class="relationShip">多关系查询</p>
+          </view>
+          <navigator url="../search/search?type=sentiment" class="search-company">
+            <image src="../../../static/img/index-relation-search.png" class="search-company-imgsrc"></image>
+            <p>舆情查询</p>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--热门舆情-->
+  <view class="index-hot-sentiment">
+    <view class="index-hot-sentiment-nav">
+      <view class="index-hot-sentiment-nav-title">
+        <view class="title-logo"></view>
+        <p>热门舆情</p>
+      </view>
+      <navigator url="../sentimentList/sentimentList" class="index-hot-sentiment-nav-more">
+        <p>查看更多</p>
+        <image class="more-imgsrc" src="../../../static/img/index-more-direction.png"></image>
+      </navigator>
+    </view>
+    <scroll-view scroll-y class="scroll-height">
+      <navigator wx:for="{{ stopicList }}" wx:key="{{item.topic_id}}" url="../sentimentContent/sentimentContent?topic_id={{item.topic_id}}"
+        class="index-hot-sentiment-content">
+        <image wx:if="{{index == 0}}" class="content-img" src="../../../static/img/index-example.jpg"></image>
+        <image wx:if="{{index == 1}}" class="content-img" src="../../../static/img/index-example2.jpg"></image>
+        <image wx:if="{{index == 2}}" class="content-img" src="../../../static/img/index-example3.jpg"></image>
+        <view class="content-textarea">
+          <text class="content-textarea-text">{{item.topic_title}}</text>
+          <view class="content-textarea-text-other">
+            <!-- <text>来源：新浪新闻</text> -->
+            <text>时间：{{item.create_time}}</text>
+          </view>
+        </view>
+      </navigator>
+    </scroll-view>
+  </view>
+</view>

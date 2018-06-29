@@ -1,0 +1,194 @@
+@import url('../../../../static/less/common/global');
+
+.index-container {
+  width: 100%;
+  // height: 100vh;
+  // overflow: hidden;
+  // .index-top {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 170rpx;
+  //   overflow: hidden;
+  //   background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+  //   .follow-back {
+  //     position: fixed;
+  //     top: 79rpx;
+  //     left: 7rpx;
+  //     image {
+  //       width: 50rpx;
+  //       height: 50rpx;
+  //       background-size: 100% 100%;
+  //     }
+  //   }
+  //   .index-top-title {
+  //     width: 100%;
+  //     text-align: center;
+  //     line-height: 200rpx;
+  //     font-size: 43rpx;
+  //     // font-weight: bold;
+  //     color: #ffffff;
+  //   }
+  // }
+  .index-company-info {
+    // margin-top: 176rpx;
+    width: 100%;
+    padding: 20rpx 30rpx 40rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx dotted #666666;
+    .index-company-logo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      .logo-info {
+        display: flex;
+        // align-items: center;
+        .logo-img {
+          width: 160rpx;
+          height: 160rpx;
+          background-size: 100% 100%;
+        }
+        .logo-name {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-left: 30rpx;
+          font-size: 34rpx;
+          color: #666666;
+          .logo-catagory {
+            display: flex;
+            // justify-content: space-between;
+            align-items: center;
+            .catagory-name {
+              height: 50rpx;
+              padding: 0rpx 7rpx;
+              box-sizing: border-box;
+              border-radius: 10rpx;
+              background-color: #0099FF;
+              font-size: 28rpx;
+              color: #ffffff;
+              line-height: 50rpx;
+              margin-right: 25rpx;
+            }
+            .share {
+              position: relative;
+              width: 50rpx;
+              height: 50rpx;
+              .logo-share {
+              width: 50rpx;
+              height: 50rpx;
+              background-color: black;
+              opacity: 0;
+              }
+              .logo-share-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: 100% 100%;
+              }
+            }
+          }
+          .selected {
+            color: #0099FF
+          }
+          .normal {
+            color: #666666
+          }
+        }
+      }
+      .logo-company-add {
+        width: 45rpx;
+        height: 45rpx;
+        background-size: 100% 100%;
+      }
+    }
+  }
+  .reg-info {
+    width: 100%;
+    padding: 40rpx 30rpx 30rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx dotted #666666;    
+    .reg-info-detail-list {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 30rpx;
+      color: #868686;
+      .reg-info-detail {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .detail-legal-agent {
+          color: #0099FF;
+        }
+        p {
+          margin-bottom: 10rpx;
+        }
+      }
+      .reg-status {
+        flex: 0 0 190rpx;
+      }
+    }
+  }
+  .basic-info {
+    width: 100%;
+    // margin-bottom: 35rpx;
+    padding: 25rpx 30rpx;
+    box-sizing: border-box;
+    .basic-info-title {
+      font-size: 36rpx;
+      color: #666666;
+    }
+    .basic-info-list {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .catagory {
+        display: flex;
+        align-items: center;
+        margin-top: 20rpx;
+        width: 315rpx;
+        height: 140rpx;
+        border: 1rpx solid #949494;
+        font-size: 30rpx;
+        color: #666666;
+        .catagory-img {
+          margin: 0rpx 30rpx;
+          width: 55rpx;
+          height: 55rpx;
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+  .business-master {
+    width: 100%;
+    padding: 25rpx 30rpx;
+    box-sizing: border-box;
+    .basic-info-title {
+      font-size: 36rpx;
+      color: #d0d0d0;
+    }
+    image {
+      margin-left: 40rpx;
+      width: 80%;
+      height: 300rpx;
+      background-size: 100% 100%;
+    }
+  }
+  .business-information {
+    margin-bottom: 35rpx;
+  }
+  // .index-bottom {
+  //   width: 100%;
+  //   height: 30rpx;
+  //   position: fixed;
+  //   bottom: 0;
+  //   left: 0;
+  //   background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+  // }
+}

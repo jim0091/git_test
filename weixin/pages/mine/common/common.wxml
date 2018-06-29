@@ -1,0 +1,57 @@
+<view class="index-container">
+  <!-- <view class="index-top">
+    <view bindtap="backHandler" class="follow-back">
+      <image src="../../../static/img/follow-back.png"></image>
+      <p>{{ targetTitle }}</p>
+    </view>
+  </view> -->
+  <!--帮助反馈-->
+  <view wx:if="{{ target == 'feekback' }}" class="common-body">
+    <view class="help-back">
+      <text class="back-question">查看常见问题</text>
+      <view class="g-container">
+        <textarea class="textarea-box" placeholder="请输入你的建议或者意见" maxlength="-1" bindinput="textChange" />
+        <button class="u-submit" type="primary" bindtap="saveAdvise"> 提交 </button>
+      </view>
+    </view>
+  </view>
+  <!--联系我们-->
+  <view wx:elif="{{ target == 'contack' }}" class="contack">
+    <view class="contack-body">
+      <text class="contack-title">电话：</text>
+      <text>(0755)-86329312</text>
+    </view>
+    <view class="contack-body">
+      <text class="contack-title">邮箱：</text>
+      <text>contact@raisound.com</text>
+    </view>
+    <view class="contack-body">
+      <text class="contack-title">官网：</text>
+      <text>http://www.raisound.com/</text>
+    </view>
+    <view class="contack-address">
+      <view class="address-body">
+        <view class="contack-title address-title">地址：</view>
+        <view class="address">深圳市南山区科技园区深港产学研基地大楼西座W406</view>
+      </view>
+    </view>
+  </view>
+  <!--使用协议-->
+  <view wx:elif="{{ target == 'agreement' }}" class="common-body">
+    <view class="agreement-body">
+      <text class="agreement-title">1. 使用条款的接受</text>
+      <text class="agreement-content">请您在使用本程序前仔细阅读以下各项使用条款（以下简称"条款"）。通过访问和/或使用本程序，您表示同意接受本条款的所有条件和条款。如果您不愿接受本条款的全部条件和条款，请您不要访问或使用本程序</text>
+    </view>
+    <view class="agreement-body">
+      <text class="agreement-title">2. 变更和修改</text>
+      <text class="agreement-content">深眼系统有权随时对本条款进行修改，并且一旦发生条款的变动，深眼系统将在相关页面上提示修改的内容；用户如果不同意本条款的修改，可以放弃使用或访问本程序或取消已经获得的服务；如果用户选择在本条款变更后继续访问或使用本程序，则视为用户已经接受本条款的修改。</text>
+    </view>
+    <view class="agreement-body">
+      <text class="agreement-title">3. 服务和说明</text>
+      <text class="agreement-content">深眼系统是一个向广大用户提供查询企业信息工具和内容分享工具的服务平台，本身不直接提供内容。深眼系统运用自己的系统通过互联网向用户提供服务，除非深眼系统另有明确规定或同用户书面达成新的协议，增强或强化目前服务的任何新功能，包括新产品以及新增加的服务，均无条件地适用本条款。</text>
+    </view>
+  </view>
+
+  <!--footer-->
+  <!-- <view class="index-bottom"></view> -->
+</view>

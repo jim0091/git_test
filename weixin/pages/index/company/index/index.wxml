@@ -1,0 +1,149 @@
+<view class="index-container">
+  <!-- <view class="index-top">
+    <view bindtap="backHandler" class="follow-back">
+      <image src="../../../../static/img/follow-back.png"></image>
+    </view>
+    <view class="index-top-title">公司详情</view>
+  </view> -->
+  <!--公司基本信息-->
+  <view class="index-company-info">
+    <view class="index-company-logo">
+      <view class="logo-info">
+        <image class="logo-img" src="../../../../static/img/company-logo.png"></image>
+        <view class="logo-name">
+          <p class="{{isFocus ? 'selected' : 'normal'}}">{{companyDetail.fullname}}</p>
+          <p>更新时间：{{companyDetail.check_date}}</p>
+          <view class="logo-catagory">
+            <!-- <view wx:if="{{companyDetail.tag}}" class="catagory-name">{{companyDetail.tag}}</view> -->
+            <view class="share">
+              <image class="logo-share-img" src="../../../../static/img/company-share.png"></image>
+              <button class="logo-share" open-type="share"></button>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view bindtap="focusCompanyHandle" data-fullname="{{companyDetail.fullname}}" data-companyid="{{companyDetail.company_id}}">
+        <image wx:if="{{!isFocus}}" class="logo-company-add" src="../../../../static/img/unfocus.png"></image>
+        <image wx:else class="logo-company-add" src="../../../../static/img/focused.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="reg-info">
+    <view class="reg-info-detail-list">
+      <navigator url="../detailContent/detailContent?target=resume&name={{companyDetail.legalperson}}&id=" class="reg-info-detail">
+        <p>法定代表</p>
+        <p class="detail-legal-agent">{{companyDetail.legalperson}}</p>
+      </navigator>
+      <view class="reg-info-detail reg-status">
+        <p>经营状态</p>
+        <p>{{companyDetail.jyzt}}</p>
+      </view>
+      <view class="reg-info-detail">
+        <p>注册资金</p>
+        <p>{{companyDetail.finance}}</p>
+      </view>
+      <view class="reg-info-detail">
+        <p>注册日期</p>
+        <p>{{companyDetail.hzrq}}</p>
+      </view>
+    </view>
+  </view>
+  <!--基本信息-->
+  <view class="basic-info">
+    <p class="basic-info-title">基本信息</p>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=business" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u671.png"></image>
+        <p>工商信息</p>
+      </navigator>
+      <navigator url="../detail/detail?target=log" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u679.png"></image>
+        <p>变更记录</p>
+      </navigator>
+    </view>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=shareholder" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u667.png"></image>
+        <p>股东</p>
+      </navigator>
+      <navigator url="../detail/detail?target=dongjiangao" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/dingjiangao.png"></image>
+        <p>董监高</p>
+      </navigator>
+    </view>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=investment" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u669.png"></image>
+        <p>对外投资</p>
+      </navigator>
+      <navigator url="../detail/detail?target=branches" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u681.png"></image>
+        <p>分支机构</p>
+      </navigator>
+    </view>
+  </view>
+  <!--知识产权-->
+  <view class="basic-info">
+    <p class="basic-info-title">知识产权</p>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=patent" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u677.png"></image>
+        <p>专利</p>
+      </navigator>
+      <navigator url="../detail/detail?target=software" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u683.png"></image>
+        <p>软著</p>
+      </navigator>
+    </view>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=brand" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u685.png"></image>
+        <p>商标</p>
+      </navigator>
+      <navigator url="../detail/detail?target=network" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u691.png"></image>
+        <p>网络备案</p>
+      </navigator>
+    </view>
+    
+  </view>
+    <view class="basic-info">
+    <p class="basic-info-title">法律诉讼</p>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=judicial" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u687.png"></image>
+        <p>司法信息</p>
+      </navigator>
+    </view>
+  </view>
+   <view class="basic-info">
+    <p class="basic-info-title">信息披露</p>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=notice" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u693.png"></image>
+        <p>公告</p>
+      </navigator>
+    </view>
+  </view>
+  <!--企业族谱-->
+  <view class="business-master">
+    <p class="basic-info-title">企业族谱</p>
+    <image src="../../../../static/img/u653.png"></image>
+  </view>
+  <!--经营信息-->
+  <view class="basic-info business-information">
+    <p class="basic-info-title">经营信息</p>
+    <view class="basic-info-list">
+      <navigator url="../detail/detail?target=recruitment" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u675.png"></image>
+        <p>招聘信息</p>
+      </navigator>
+      <navigator url="../detail/detail?target=tender" class="catagory">
+        <image class="catagory-img" src="../../../../static/img/u689.png"></image>
+        <p>招投标信息</p>
+      </navigator>
+    </view>
+  </view>
+  <!--footer-->
+  <!-- <view class="index-bottom"></view> -->
+</view>

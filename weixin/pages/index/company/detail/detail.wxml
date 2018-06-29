@@ -1,0 +1,380 @@
+<view class="index-container">
+  <!--工商信息-->
+  <view wx:if="{{target == 'business'}}" class="business-information">
+    <view class="g-info">
+      <view class="info-detail-list">
+        <view class="info-detail">
+          <p>统一社会信用代码</p>
+          <p class="info-value">56879864365789987</p>
+        </view>
+        <view class="info-detail">
+          <p>组织机构代码</p>
+          <p class="info-value">{{companyDetail.org_code}}</p>
+        </view>
+      </view>
+      <view class="info-detail-list">
+        <view class="info-detail">
+          <p>注册号</p>
+          <p class="info-value">{{companyDetail.zch}}</p>
+        </view>
+      </view>
+    </view>
+    <view class="g-info">
+      <view class="info-line">
+        <p class="line-title">企业名称</p>
+        <p class="info-value">{{companyDetail.fullname}}</p>
+      </view>
+      <view class="info-line">
+        <p class="line-title">法定代表</p>
+        <p class="info-lega">{{companyDetail.legalperson}}</p>
+      </view>
+      <view class="info-detail-list">
+        <view class="info-detail">
+          <p>注册资金</p>
+          <p class="info-value">{{companyDetail.finance}}</p>
+        </view>
+        <view class="info-detail">
+          <p>注册日期</p>
+          <p class="info-value">{{companyDetail.hzrq}}</p>
+        </view>
+      </view>
+    </view>
+    <view class="g-info">
+      <view class="info-detail bottom">
+        <p>经营状态</p>
+        <p class="info-value">{{companyDetail.jyzt}}</p>
+      </view>
+    </view>
+    <view class="g-info">
+      <view class="info-detail bottom">
+        <p>企业类型</p>
+        <p class="info-value">{{companyDetail.gslx}}</p>
+      </view>
+    </view>
+    <view class="g-info">
+      <view class="info-detail-list">
+        <view class="info-detail">
+          <p>登记机关</p>
+          <p class="info-value">{{companyDetail.djjg}}</p>
+        </view>
+        <view class="info-detail">
+          <p>核准日期</p>
+          <p class="info-value">{{companyDetail.hzrq}}</p>
+        </view>
+      </view>
+    </view>
+    <view class="g-info">
+      <view class="info-line">
+        <p class="line-title">经营范围</p>
+      </view>
+      <view class="content">
+        <text>
+          {{companyDetail.business}}
+        </text>
+      </view>
+    </view>
+  </view>
+  <!--变更记录-->
+  <view wx:elif="{{target == 'log'}}" class="change-log">
+    <view wx:for="{{logRecordList}}" wx:key="index" class="g-info">
+      <view class="info-line">
+        <p class="info-value">{{item.bgsj}}</p>
+      </view>
+      <view class="info-line">
+        <p class="line-title">变更项目：</p>
+        <p class="info-lega">{{item.bgxm}}</p>
+      </view>
+      <view class="info-detail-bottom">
+        <view class="info-detail change">
+          <p>变更前：</p>
+          <p class="change">{{item.bgq}}</p>
+          <!-- <p class="info-value">RIAnkana(监事)</p> -->
+        </view>
+      </view>
+      <view class="info-detail-bottom">
+        <view class="info-detail change">
+          <p>变更后：</p>
+          <p class="change">{{item.bgh}}</p>
+          <!-- <p class="info-value">RIAnkana(监事)</p> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--股东（与董监高、对外投资、分支机构布局一样，后期优化-->
+  <view wx:elif="{{target == 'shareholder'}}" class="shareholder">
+    <view wx:for="{{holderList}}" wx:key="index" class="g-info">
+      <view bindtap="choosePartnerHandle" data-personid="{{item.person_id}}" data-name="{{item.partner}}" data-companyid="{{item.realation_id}}"
+        class="info-line">
+        <p class="info-lega">{{item.partner}}</p>
+      </view>
+      <view class="info-detail-bottom">
+        <p>出资比例：</p>
+        <p class="info-value">{{item.percent}}</p>
+      </view>
+      <view class="info-detail-bottom">
+        <p>认缴出资(万)：</p>
+        <p class="info-value">{{item.crash_num}}</p>
+      </view>
+      <view class="info-detail-list">
+        <view class="info-detail-line">
+          <p>相关公司数量：</p>
+          <p wx:if="{{item.realation_id}}" class="info-value">{{item.invest_num}}</p>
+          <p wx:if="{{item.person_id}}" class="info-value">{{item.company_num}}</p>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--董监高-->
+  <view wx:elif="{{target == 'dongjiangao'}}" class="dongjiangao">
+    <view wx:for="{{managerList}}" wx:key="index" class="g-info">
+      <navigator url="../detailContent/detailContent?target=resume&name={{item.name}}&id={{item.person_id}}" class="info-line">
+        <p class="info-lega">{{item.name}}</p>
+      </navigator>
+      <view class="info-detail-number">
+        <p class="info-title">职位：</p>
+        <p class="info-value">{{item.position}}</p>
+      </view>
+      <view class="info-detail-number">
+        <p class="info-shares">持股数量：</p>
+        <p class="info-value">{{item.numberofshares}}</p>
+      </view>
+      <view class="info-detail-list">
+        <view class="info-detail-line">
+          <p>相关公司数量：</p>
+          <p class="info-value">{{item.company_num}}</p>
+        </view>
+        <view class="info-detail-line">
+          <p>薪酬：</p>
+          <p class="info-value">{{item.salary}}</p>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--对外投资-->
+  <view wx:elif="{{target == 'investment'}}" class="investment">
+    <view wx:for="{{investList}}" wx:key="index" class="g-info">
+      <navigator url="../index/index?companyId={{item.realation_id}}" class="info-line">
+        <p class="info-lega">{{item.touzi_name}}</p>
+      </navigator>
+      <view class="info-detail-list">
+        <view class="info-invest-line">
+          <p class="invest-manager">法定代表人：</p>
+          <p class="info-value">{{item.legalperson}}</p>
+        </view>
+        <view class="info-invest-line">
+          <p>注册资本：</p>
+          <p class="info-value">{{item.finance}}</p>
+        </view>
+      </view>
+      <view class="info-invest-list">
+        <p class="jyzt">经营状态：</p>
+        <p class="info-value">{{item.jyzt}}</p>
+      </view>
+    </view>
+  </view>
+  <!--分支机构-->
+  <view wx:elif="{{target == 'branches'}}" class="branches">
+    <view wx:for="{{branchesList}}" wx::key="index" class="g-info">
+      <navigator url="../index/index?companyId={{item.realation_id}}" class="info-line">
+        <p class="info-lega">{{item.branch_name}}</p>
+      </navigator>
+      <view class="info-detail-list">
+        <view class="info-detail-line">
+          <p>法定代表人：</p>
+          <p class="info-value">{{item.legalperson}}</p>
+        </view>
+        <view class="info-detail-line">
+          <p>注册资本：</p>
+          <p class="info-value">{{item.finance}}</p>
+        </view>
+      </view>
+      <view class="info-invest-list">
+        <p>经营状态：</p>
+        <p class="info-value">{{item.jyzt}}</p>
+      </view>
+    </view>
+  </view>
+  <!--专利\软著布局一样，待优化代码-->
+  <view wx:elif="{{target == 'patent'}}" class="patent">
+    <view wx:for="{{patentList}}" wx:key="index" class="g-info">
+      <view class="patent-list-object">
+        <p class="patent-name">名称：</p>
+        <p>{{item.title}}</p>
+      </view>
+      <view class="patent-list-object">
+        <p class="patent-name">申请号：</p>
+        <p>{{item.createnum}}</p>
+      </view>
+      <view class="patent-list-object">
+        <p class="patent-name">申请时间：</p>
+        <p>{{item.createtime}}</p>
+      </view>
+    </view>
+  </view>
+  <!--软著-->
+  <view wx:elif="{{target == 'software'}}" class="software">
+    <view wx:for="{{softList}}" wx:key="index" class="g-info">
+      <view class="patent-list-object">
+        <p class="patent-name">标题：</p>
+        <p>{{item.title}}</p>
+      </view>
+      <view class="patent-list-object">
+        <p class="patent-name">版本号：</p>
+        <p>{{item.verson}}</p>
+      </view>
+      <view class="patent-list-object">
+        <p class="patent-name">登记号：</p>
+        <p>{{item.softid}}</p>
+      </view>
+      <view class="patent-list-object">
+        <p class="patent-name">申请时间：</p>
+        <p>{{item.createtime}}</p>
+      </view>
+    </view>
+  </view>
+  <!--网络备案-->
+  <view wx:elif="{{target == 'network'}}" class="network-filing">
+    <view wx:for="{{netWorkList}}" wx:key="index" class="g-info">
+      <view class="info-detail-list-second">
+        <p class="info-value">网站名：</p>
+        <text>{{item.name}}</text>
+      </view>
+      <view class="info-detail-list-second">
+        <p class="info-value">网址：</p>
+        <text>{{item.url}}</text>
+      </view>
+      <view class="info-detail-list-second">
+        <p class="info-value">主办单位性质：</p>
+        <p>{{item.web_type}}</p>
+      </view>
+      <view class="info-detail-list-second">
+        <p class="info-value">状态：</p>
+        <p>{{item.status}}</p>
+      </view>
+      <view class="info-detail-list-second">
+        <p class="info-value">备案号：</p>
+        <p>{{item.num}}</p>
+      </view>
+      <view class="info-detail-list-second">
+        <p class="info-value">审核时间：</p>
+        <p>{{item.create_date}}</p>
+      </view>
+    </view>
+  </view>
+  <!--商标-->
+  <view wx:elif="{{target == 'brand'}}" class="brand">
+    <navigator wx:for="{{brandList}}" wx:key="index" url="../detailContent/detailContent?target=brandvalue&regNo={{item.regNo}}"
+      class="index-hot-sentiment-content">
+      <view class="brand-content">
+        <image class="content-img" src="{{item.tmImg}}"></image>
+        <view class="content-textarea">
+          <text>商标名称： {{item.tmName}}</text>
+          <text>类别：{{item.intCls}}</text>
+          <view class="content-textarea-text">状态： {{item.currentStatus}}</view>
+        </view>
+      </view>
+      <view>
+        <image class="direction-img" src="../../../../static/img/index-more-direction.png"></image>
+      </view>
+    </navigator>
+  </view>
+  <!--司法信息-->
+  <view wx:elif="{{target == 'judicial'}}" class="judicial">
+    <navigator wx:for="{{wenshuList}}" wx:key="index" url="../detailContent/detailContent?target=judicialvalue&md5={{item.md5}}"
+      class="g-info">
+      <view class="info-text">{{item.title}}</view>
+      <view class="info-detail-list-judical">
+        <view>
+          <view class="info-detail-judical">
+            <p class="info-value">案号</p>
+            <p class="info-lega">{{item.ajbh}}</p>
+          </view>
+          <view class="info-detail-judical">
+            <p class="info-value">案由</p>
+            <p>{{item.reason}}</p>
+          </view>
+        </view>
+        <view>
+          <image class="direction-img" src="../../../../static/img/index-more-direction.png"></image>
+        </view>
+      </view>
+      <view class="info-detail-list">
+        <view class="info-detail-judical">
+          <p class="info-value">裁判日期</p>
+          <p>{{item.date}}</p>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!--招聘信息-->
+  <view wx:elif="{{target == 'recruitment'}}" class="recruitment">
+    <view wx:for="{{jobList}}" wx:key="index" class="g-info">
+      <!-- <view class="info-text">劳务费结算专员(北京小米科技有限责任公司)</view> -->
+      <view class="info-text">{{item.title}}</view>
+      <view class="info-recruitment">
+        <view class="recuitment-left">
+          <view class="left-content">
+            <p class="info-value">发布时间：</p>
+            <p class="value">{{item.createTime}}</p>
+          </view>
+          <view class="left-content">
+            <p class="info-value">地址：</p>
+            <p class="value">{{item.location}}</p>
+          </view>
+          <view class="left-content">
+            <p class="info-value">学历：</p>
+            <p class="value">{{item.education}}</p>
+          </view>
+          <view class="left-content">
+            <p class="info-value"> 工作经验：</p>
+            <p class="value">{{item.years}}</p>
+          </view>
+        </view>
+        <view class="recuiment-right">
+          <view class="left-content">
+            <p class="info-value"> 薪资：</p>
+            <p class="value">{{item.salary}}k</p>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--招投标信息-->
+  <view wx:elif="{{target == 'tender'}}" class="tender">
+    <view wx:for="{{bidsList}}" wx:key="index" class="g-info">
+      <!-- <navigator url="../detailContent/detailContent?target=tendervalue" class="info-line"> -->
+      <view class="info-line">
+        <p class="info-lega">{{item.title}}</p>
+      </view>
+      <!-- </navigator> -->
+      <view class="info-detail-list">
+        <view class="info-detail-line">
+          <p class="info-value">日期：</p>
+          <p>{{item.ctime}}</p>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--公告信息-->
+  <view wx:elif="{{target == 'notice'}}" class="tender">
+    <view wx:for="{{noticeList}}" wx:key="index" class="g-info">
+      <!-- <navigator url="../detailContent/detailContent?target=tendervalue" class="info-line"> -->
+      <view class="info-line">
+        <p class="info-text">{{item.notice_title}}</p>
+      </view>
+      <!-- </navigator> -->
+      <view class="info-detail-list">
+        <view class="info-detail-line">
+          <p class="info-value">日期：</p>
+          <p>{{item.notice_date}}</p>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{isShow}}" class="isShow">暂无相关信息~~</view>
+  <view wx:if="{{gameover}}" class="loadMore">已全部加载完成~~</view>
+
+  <!--footer-->
+  <!-- <view class="index-bottom"></view> -->
+</view>

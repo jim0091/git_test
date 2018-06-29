@@ -1,0 +1,40 @@
+<view class="follow-container">
+  <!-- <view class="follow-top">
+    <image class="follow-top-img" src="../../../static/img/index-logo.png"></image>
+    <view bindtap="backHandler" class="follow-back">
+      <image src="../../../static/img/follow-back.png"></image>
+      <p>关注</p>
+    </view>
+  </view> -->
+  <view class="follow-body">
+    <view wx:if="{{target == 1}}">
+      <p>关注公司：</p>
+      <view class="follow-company-list">
+        <view wx:for="{{focusCompanyList}}" wx:key="index" class="company">
+          <p bindtap="chooseCompanyHandle" data-companyid="{{item.companyId}}">{{item.fullName}}</p>
+          <view bindtap="deleteTargetHandler" data-target="{{target}}" data-index="{{index}}">
+            <image wx:if="{{showDelete}}" src="../../../static/img/follow-delete.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else="{{target == 2}}">
+      <p>关键词：</p>
+      <view class="follow-company-list">
+        <view wx:for="{{focuSentimentList}}" wx:key="index" class="company">
+          <p bindtap="chooseSentitmentHandle" data-topicid="{{item.topicId}}" data-url="{{item.url}}">{{item.title}}</p>
+          <view bindtap="deleteTargetHandler" data-target="{{target}}" data-index="{{index}}">
+            <image wx:if="{{showDelete}}" src="../../../static/img/follow-delete.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="follow-bottom">
+    <view class="follow-button">
+      <button bindtap="addTargetHandle" class="button-add">添加</button>
+      <button wx:if="{{target == 1}}" open-type="share" plain="true" class="button-add">分享</button>
+      <button class="button-add" bindtap="deleteHandler">删除</button>
+    </view>
+  </view>
+</view>

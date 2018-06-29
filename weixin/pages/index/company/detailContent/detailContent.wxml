@@ -1,0 +1,125 @@
+<import src="../../../../wxParser/index.wxml" />
+<view class="index-container">
+  <!--商标详情-->
+  <view wx:if="{{target == 'brandvalue'}}" class="brandvalue">
+    <view class="brand">
+      <image class="brand-img" src="{{brand.tmImg}}"></image>
+    </view>
+    <view class="brand-content">
+      <view class="content-body">
+        <text class="content-title">商标名称:</text>
+        <text>{{brand.tmName}}</text>
+      </view>
+      <view class="content-body">
+        <text class="content-title">注册号:</text>
+        <text>{{brand.regNo}}</text>
+      </view>
+      <view class="content-body">
+        <text class="content-title">类别:</text>
+        <text>{{brand.intCls}}</text>
+      </view>
+      <view class="content-body">
+        <text class="content-title">申请日期:</text>
+        <text>{{brand.appDate}}</text>
+      </view>
+      <view class="content-body">
+        <text class="content-title">状态:</text>
+        <text>{{brand.currentStatus}}</text>
+      </view>
+    </view>
+  </view>
+  <!--司法信息-->
+  <view wx:elif="{{target == 'judicialvalue' || target == 'tendervalue'}}" class="judicialvalue">
+    <text class="judicialvalue-title">{{wenshuInfo.title}}</text>
+    <view class="judicialvalue-text wxParser">
+      <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+    </view>
+    <!-- <text class="judicialvalue-text">{{wenshuInfo.content}}</text> -->
+  </view>
+  <!--个人简历-->
+  <view wx:elif="{{target == 'resume'}}" class="resume">
+    <view class="g-info">
+      <view class="resume-mainInfo">
+        <view class="info">
+          <image class="info-img" src="../../../../static/img/brandvalue.png"></image>
+          <view class="ingo-name">{{managerInfo.name}}</view>
+        </view>
+        <view bindtap="relationHandler" class="info-relation">人物图谱</view>
+      </view>
+      <text>性别： {{managerInfo.sex}}</text>
+      <text>出生年月： {{managerInfo.birthday}}</text>
+      <text>最高学位： {{managerInfo.education}}</text>
+      <view class="{{hasShow ? 'normal' : 'text-ellipse'}} wxParser">简历：
+        <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
+      </view>
+    </view>
+    <view wx:if="{{hasShow}}">
+      <view wx:for="{{managerInfo.edu}}" wx:key="index" wx:for-item="edu" class="g-info">
+        <view class="border-bottom">
+          <block wx:if="{{edu.college}}">
+            <text>学位： 本科</text>
+            <text>院校：{{edu.college}}</text>
+            <text>专业：{{edu.cmajor}}</text>
+          </block>
+          <block>
+            <text wx:if="{{edu.mastercollege}}">学位： 硕士</text>
+            <text>院校：{{edu.mastercollege}}</text>
+            <text>专业：{{edu.mcmajor}}</text>
+          </block>
+          <block wx:if="{{edu.doctorcollege}}">
+            <text>学位： 博士</text>
+            <text>院校：{{edu.doctorcollege}}</text>
+            <text>专业：{{edu.dcmajor}}</text>
+          </block>
+        </view>
+      </view>
+      <view class="g-info">
+        <view wx:for="{{managerInfo.work}}" wx:key="index" wx:for-item="work" class="resume-undergo">
+          <view class="undergo-content">
+            <text>时间：{{work.jointime}}</text>
+            <view class="undergo-content-company">
+              <text class="company">机构：</text>
+              <p>{{work.company}}</p>
+            </view>
+          </view>
+          <view class="undergo-content">
+            <text>国内/海外：国内</text>
+            <text>职位： {{work.title}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--箭头指向-->
+    <view bindtap="showMoreHandler" class="ticketCheck-list-showMore-direction">
+      <image wx:if="{{hasShow}}" class="showMore-imgsrc" src="../../../../static/img/ticketCheck-arrowup.png"></image>
+      <image wx:else class="showMore-imgsrc" src="../../../../static/img/up.png"></image>
+    </view>
+    <!--新闻-->
+    <view class="info-newList">
+      <view class="info-new">
+        <block wx:for="{{ navList }}" wx:key="id">
+          <view class="nav-name {{ currentChooseNav === item.id ? 'active' : '' }}" bindtap="chooseHandler" data-id="{{item.id}}">
+            {{ item.name }}
+          </view>
+        </block>
+      </view>
+      <view wx:if="{{currentChooseNav===1 }}">
+        <view wx:for="{{companys}}" wx:key="index" wx:for-item="company" class="newcontent">
+          <navigator url="../index/index?companyId={{company.company_id}}" class="title">{{company.fullname}}</navigator>
+          <text class="text-ellipse">注册资本：{{company.finance}}</text>
+          <text class="resource">经营状态：{{company.jyzt}}</text>
+          <text class="new-time">角色: {{company.position}}</text>
+        </view>
+      </view>
+      <view wx:if="{{currentChooseNav===0 }}">
+        <view wx:for="{{managerNewsList}}" wx:key="index" class="newcontent">
+          <navigator url="../../sentimentContent/sentimentContent?url={{item.url}}" class="title">{{item.title}}</navigator>
+          <text class="text-ellipse">{{item.summary}}</text>
+          <text class="resource">来源：{{item.source_name}}</text>
+          <text class="new-time">{{item.create_time}}</text>
+        </view>
+        <view wx:if="{{isNomanagerNewsList}}" class="noSearchData">暂无相关新闻~</view>
+      </view>
+    </view>
+  </view>
+</view>

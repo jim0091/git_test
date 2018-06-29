@@ -1,0 +1,28 @@
+<!--pages/login/login.wxml-->
+<view class="index-container">
+  <view class="index-top">
+    <image class="index-top-img" src="../../static/img/index-logo.png"></image>
+  </view>
+  <view class="login">
+    <!-- <view class="title">
+      <p>用户登录</p>
+    </view> -->
+    <form bindsubmit="formSubmit">
+      <view class="field">
+      <image class="user-img" src="../../static/img/user.png"></image>
+        <input class="name" name="username"  type="text" placeholder="请输入用户名" />
+      </view>
+      <view class="field">
+       <image class="psd-img" src="../../static/img/psd.png"></image>
+       <input class="password" name="password" type="password" placeholder="请输入密码" />
+      </view>
+      <button class="btn_login" formType="submit">登录</button>
+    </form>
+        <view bindtap="change" class='test'>登录1</view>    
+  </view >
+  <view class='kefu'>
+    <span>客服电话:</span><span class="phone">0755-86329312</span>
+  </view>
+</view>
+
+

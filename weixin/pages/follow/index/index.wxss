@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.index-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.index-container .index-top {
+  width: 100%;
+  height: 216rpx;
+  background-color: #99CC66;
+  overflow: hidden;
+}
+.index-container .index-top .index-top-img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  width: 350rpx;
+  height: 106rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-search-assistant {
+  width: 100%;
+  padding: 20rpx 25rpx;
+  box-sizing: border-box;
+}
+.index-container .index-search-assistant .index-search-assistant-area {
+  margin-top: 40rpx;
+  margin-bottom: 135rpx;
+  width: 100%;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-area-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-area-title .title-logo {
+  flex: 0 0 10rpx;
+  margin-right: 10rpx;
+  width: 10rpx;
+  height: 40rpx;
+  background-color: #0099FF;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-area-title p {
+  font-size: 30rpx;
+  color: #333333;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body {
+  width: 250rpx;
+  height: 240rpx;
+  margin: 0 auto;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body image {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+}

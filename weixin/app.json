@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index/index",
+    "pages/index/sentimentContent/sentimentContent",
+    "pages/mine/index/index",
+    "pages/index/company/index/index",
+    "pages/index/secondSearch/secondSearch",
+    "pages/index/search/search",
+    "pages/index/company/detail/detail",
+    "pages/index/company/detailContent/detailContent",
+    "pages/mine/common/common",
+    "pages/index/sentimentList/sentimentList",
+    "pages/follow/index/index",
+    "pages/follow/follow/follow"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#99CC66",
+    "navigationBarTitleText": "深眼系统",
+    "navigationBarTextStyle": "#fff",
+    "backgroundColorBottom": "#F2F2F2" 
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#0099FF",
+    "list": [
+      {
+        "pagePath": "pages/index/index/index",
+        "text": "首页",
+        "iconPath": "static/img/index.png",
+        "selectedIconPath": "static/img/index-active.png"
+      },
+      {
+        "pagePath": "pages/follow/index/index",
+        "text": "关注",
+        "iconPath": "static/img/attention.png",
+        "selectedIconPath": "static/img/attention-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index/index",
+        "text": "我的",
+        "iconPath": "static/img/mine.png",
+        "selectedIconPath": "static/img/mine-active.png"
+      }
+    ]
+  }
+}

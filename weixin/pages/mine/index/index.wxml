@@ -1,0 +1,44 @@
+<view class="index-container">
+  <view class="index-top">
+    <image class="index-top-img" src="../../../static/img/index-logo.png"></image>
+  </view>
+  <view class="index-company">
+    <p>北科瑞声</p>
+  </view>
+  <view bindtap="goToWebHandle" class="index-catagory">
+    <view class="catagory-body">
+      <p>体验专业版</p>
+      <image class="catagory-img" src="../../../static/img/index-more-direction.png"></image>
+    </view>
+  </view>
+  <navigator url="../common/common?target=feekback" class="index-catagory">
+    <view class="catagory-body">
+      <p>帮助反馈</p>
+      <image class="catagory-img" src="../../../static/img/index-more-direction.png"></image>
+    </view>
+  </navigator>
+  <navigator url="../common/common?target=contack" class="index-catagory">
+    <view class="catagory-body">
+      <p>联系我们</p>
+      <image class="catagory-img" src="../../../static/img/index-more-direction.png"></image>
+    </view>
+  </navigator>
+  <navigator url="../common/common?target=agreement" class="index-catagory">
+    <view class="catagory-body">
+      <p>使用协议</p>
+      <image class="catagory-img" src="../../../static/img/index-more-direction.png"></image>
+    </view>
+  </navigator>
+  <!--遮罩-->
+  <view bindtap="cancelHandle" wx:if="{{isShow}}" class="g-zhezhao"></view>
+  <view wx:if="{{isShow}}" class="showWeb">
+    <view class="showWeb-info">
+      <text>体验网页版尽调易系统：</text>
+      <text>http://www.jdeasy.cn/</text>
+    </view>
+    <view class="toWeb">
+      <button bindtap="cancelHandle" class="toWeb-cancel">取消</button>
+      <button bindtap="confirmHandel" class="toWeb-confirm">去看看</button>
+    </view>
+  </view>
+</view>

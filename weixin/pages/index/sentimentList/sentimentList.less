@@ -1,0 +1,90 @@
+@import url('../../../static/less/common/global');
+
+.index-container {
+  width: 100%;
+  // height: 100vh;
+  // overflow: hidden;
+  // .index-top {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 200rpx;
+  //   overflow: hidden;
+  //   background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+  //   .follow-back {
+  //     display: flex;
+  //     align-items: center;
+  //     margin-left: 7rpx;
+  //     margin-top: 117rpx;
+  //     image {
+  //       width: 50rpx;
+  //       height: 50rpx;
+  //       background-size: 100% 100%;
+  //     }
+  //     p {
+  //       margin-left: 15rpx;
+  //       font-size: 40rpx;
+  //       color: #ffffff;
+  //     }
+  //   }
+  // }
+  .index-hot-sentiment {
+    margin-top: 15rpx;
+    margin-bottom: 35rpx;
+    width: 100%;
+    .index-hot-sentiment-content {
+      display: flex;
+      // align-items: center;
+      margin: 0rpx 0 25rpx 0;
+      width: 100%;
+      padding: 0rpx 25rpx 20rpx 25rpx;
+      box-sizing: border-box;
+      border-bottom: 1rpx dotted #999999;
+      .content-img {
+        flex: 0 0 210rpx;
+        margin-right: 20rpx;
+        width: 210rpx;
+        height: 141rpx;
+        background-size: 100% 100%;
+      }
+      .content-textarea {
+        // display: flex;
+        // justify-content: space-between;
+        // flex-direction: column;
+        .content-textarea-text {
+          margin-bottom: 10rpx;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          font-size: 28rpx;
+          color: #333333;
+        }
+        .title {
+          font-weight: bold;
+        }
+        .summary {
+          text-indent: 2em;
+        }
+        .content-textarea-text-other {
+          display: flex;
+          justify-content: space-between;
+          text {
+            font-size: 26rpx;
+            color: #666666;
+          }
+        }
+      }
+    }
+  }
+  // .index-bottom {
+  //   width: 100%;
+  //   height: 30rpx;
+  //   position: fixed;
+  //   bottom: 0;
+  //   left: 0;
+  //   background-image:linear-gradient(135deg, #99CC66 0rpx, #99CCFF 800rpx);        
+  // }
+}

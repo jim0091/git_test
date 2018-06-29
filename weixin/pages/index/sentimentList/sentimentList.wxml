@@ -1,0 +1,24 @@
+<view class="index-container">
+  <!-- <view class="index-top">
+    <view bindtap="backHandler" class="follow-back">
+      <image src="../../../static/img/follow-back.png"></image>
+      <p>热门舆情</p>
+    </view>
+  </view> -->
+  <!--热门舆情-->
+  <view class="index-hot-sentiment">
+    <navigator wx:for="{{ stopicList }}" wx:key="{{item.topic_id}}" url="../sentimentContent/sentimentContent?topic_id={{item.topic_id}}" class="index-hot-sentiment-content">
+      <!-- <image class="content-img" src="../../../static/img/index-example.jpg"></image> -->
+      <view class="content-textarea">
+        <text class="content-textarea-text title">{{item.topic_title}}</text>
+        <text class="content-textarea-text summary">{{item.summary}}</text>
+        <view class="content-textarea-text-other">
+          <!-- <text>来源：新浪新闻</text> -->
+          <text>时间：{{item.create_time}}</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!--footer-->
+  <!-- <view class="index-bottom"></view> -->
+</view>

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+.index-container {
+  width: 100%;
+}
+.index-container .index-hot-sentiment {
+  margin-top: 15rpx;
+  margin-bottom: 35rpx;
+  width: 100%;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content {
+  display: flex;
+  margin: 0rpx 0 25rpx 0;
+  width: 100%;
+  padding: 0rpx 25rpx 20rpx 25rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dotted #999999;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-img {
+  flex: 0 0 210rpx;
+  margin-right: 20rpx;
+  width: 210rpx;
+  height: 141rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .content-textarea-text {
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 28rpx;
+  color: #333333;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .title {
+  font-weight: bold;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .summary {
+  text-indent: 2em;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .content-textarea-text-other {
+  display: flex;
+  justify-content: space-between;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .content-textarea-text-other text {
+  font-size: 26rpx;
+  color: #666666;
+}

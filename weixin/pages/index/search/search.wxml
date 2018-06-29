@@ -1,0 +1,88 @@
+<import src="../../../wxParser/index.wxml" />
+<view class="index-container">
+  <view class="index-top">
+    <view class="index-top-search-area">
+      <view class="index-top-search">
+        <input class="index-top-input" type="text" confirm-type="search" bindinput="inputIngHandle" bindconfirm="inputHandle" placeholder="{{palceholderValue}}" placeholder-class="index-top-input-placeholder"></input>
+        <view bindtap="searchHandle">
+          <image class="index-top-search-img" src="../../../static/img/index-search.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--公司查询-->
+  <!-- <view > -->
+  <view wx:if="{{type == 'company'}}">
+    <view class="index-search-assistant">
+      <view class="search-latest">
+        <view class="search-latest-title">
+          <view class="title-left">
+            <image src="../../../static/img/latest.png"></image>
+            <p>最近搜索</p>
+          </view>
+          <view wx:if="{{!isNoSearchHistory}}" bindtap="deleteRecordHandler" data-target="latest">
+            <image class="delete-img" src="../../../static/img/company-delete.png"></image>
+          </view>
+        </view>
+        <view wx:if="{{!isNoSearchHistory}}" class="search-latest-list">
+          <view wx:for="{{historyCompanyList}}" wx:key="{{index}}" bindtap="chooseSearchHandle" data-target="{{item}}" class="search-title">
+            <p>{{item}}</p>
+          </view>
+        </view>
+        <view wx:if="{{isNoSearchHistory}}" class="noSearchData">您还没有搜索记录喔~</view>
+      </view>
+    </view>
+    <view class="index-browse-assistant">
+      <view class="search-latest">
+        <view class="search-latest-title">
+          <view class="title-left">
+            <image src="../../../static/img/latest.png"></image>
+            <p>最近浏览</p>
+          </view>
+          <view wx:if="{{!isNoBrowseHistory}}" bindtap="deleteRecordHandler" data-target="browse">
+            <image class="delete-img" src="../../../static/img/company-delete.png"></image>
+          </view>
+        </view>
+        <view wx:if="{{!isNoBrowseHistory}}" class="search-browse-list">
+          <view wx:for="{{browseCompanyList}}" wx:key="{{index}}" bindtap="chooseCompanyHandle" data-companyid="{{item.companyId}}" class="browse-title">
+             <view class="wxParser">
+              <template is="wxParser" data="{{wxParserData:richText[index].nodes}}" />
+            </view>  
+          </view>
+        </view>
+        <view wx:if="{{isNoBrowseHistory}}" class="noSearchData">您还没有浏览记录喔~</view>
+      </view>
+    </view>
+  </view>
+  <!--舆情查询-->
+  <!-- <view> -->
+  <view wx:elif="{{type == 'sentiment'}}">
+    <view class="search-sentitment">
+      <view wx:if="{{historyList.length>0}}" class="latest-search">
+        <view class="history-title">最近历史搜索</view>
+        <view wx:if="{{!isNoSentimentHistory}}" class="delete" bindtap="deleteSentimentHandler">
+          <text class="delete-title">清空</text>
+          <image class="delete-icon" src="../../../static/img/delete.png"></image>
+        </view>
+        <view wx:if="{{!isNoSentimentHistory}}" class="latest-search-list"> 
+          <view wx:for="{{historySentimentList}}" wx:key="index" bindtap="chooseSearchHandle" data-target="{{item}}" class="history">
+            {{item}}
+          </view>
+        </view>
+        <view wx:if="{{isNoSentimentHistory}}" class="noSearchSentiment">您还没有搜索记录喔~</view>
+      </view>
+      <view class="sentiment-list">
+        <view class="title">实时热点排行榜</view>
+        <view class="list">
+          <navigator url="../sentimentContent/sentimentContent?topic_id={{item.topic_id}}" wx:for="{{stopicList}}" wx:key="index" class="sentiment">
+            <text class="sentiment-time">{{item.create_time}}</text>
+            <text>{{item.topic_title}}</text>
+            <view class="circle"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--footer-->
+  <!-- <view class="index-bottom"></view> -->
+</view>

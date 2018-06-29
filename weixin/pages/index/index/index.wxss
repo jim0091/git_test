@@ -1,0 +1,186 @@
+@charset "UTF-8";
+.index-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.index-container .index-top {
+  width: 100%;
+  height: 287rpx;
+  background-color: #99CC66;
+  overflow: hidden;
+}
+.index-container .index-top .index-top-img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  width: 350rpx;
+  height: 106rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-top .index-top-search-area {
+  width: 100%;
+  padding: 0 42rpx;
+  box-sizing: border-box;
+  margin-top: 27rpx;
+}
+.index-container .index-top .index-top-search-area .index-top-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1rpx solid #797979;
+  border-radius: 25rpx;
+  padding: 10rpx 30rpx;
+  box-sizing: border-box;
+}
+.index-container .index-top .index-top-search-area .index-top-search .index-top-search-img {
+  margin-right: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-top .index-top-search-area .index-top-search .index-top-input,
+.index-container .index-top .index-top-search-area .index-top-search .index-top-input-placeholder {
+  flex: 0 0 90%;
+  font-size: 35rpx;
+  color: #949494;
+}
+.index-container .index-search-assistant {
+  width: 100%;
+  padding: 20rpx 25rpx 10rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dotted #666666;
+}
+.index-container .index-search-assistant .index-search-assistant-area {
+  width: 100%;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-area-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-area-title .title-logo {
+  flex: 0 0 10rpx;
+  margin-right: 10rpx;
+  width: 10rpx;
+  height: 40rpx;
+  background-color: #0099FF;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-area-title p {
+  font-size: 30rpx;
+  color: #0099FF;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body {
+  width: 100%;
+  padding: 0 25rpx;
+  box-sizing: border-box;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body .index-search-assistant-catagory {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+  width: 100%;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body .index-search-assistant-catagory .search-company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body .index-search-assistant-catagory .search-company .search-company-imgsrc {
+  width: 80rpx;
+  height: 80rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body .index-search-assistant-catagory .search-company p {
+  margin: 10rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+  color: #666666;
+}
+.index-container .index-search-assistant .index-search-assistant-area .index-search-assistant-body .index-search-assistant-catagory .search-company .relationShip {
+  color: #d0d0d0;
+}
+.index-container .index-hot-sentiment {
+  margin-top: 15rpx;
+  width: 100%;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav .index-hot-sentiment-nav-title {
+  margin-left: 25rpx;
+  display: flex;
+  align-items: center;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav .index-hot-sentiment-nav-title .title-logo {
+  flex: 0 0 10rpx;
+  margin-right: 10rpx;
+  width: 10rpx;
+  height: 40rpx;
+  background-color: #0099FF;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav .index-hot-sentiment-nav-title p {
+  font-size: 30rpx;
+  color: #0099FF;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav .index-hot-sentiment-nav-more {
+  margin-right: 25rpx;
+  display: flex;
+  align-items: center;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav .index-hot-sentiment-nav-more p {
+  font-size: 28rpx;
+  color: #666666;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-nav .index-hot-sentiment-nav-more .more-imgsrc {
+  width: 28rpx;
+  height: 28rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-hot-sentiment .scroll-height {
+  width: 100%;
+  height: 515rpx;
+  margin-top: 20rpx;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content {
+  display: flex;
+  margin: 0rpx 0 25rpx 0;
+  width: 100%;
+  padding: 0rpx 25rpx 20rpx 25rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dotted #999999;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-img {
+  flex: 0 0 210rpx;
+  margin-right: 20rpx;
+  width: 210rpx;
+  height: 141rpx;
+  background-size: 100% 100%;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .content-textarea-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 28rpx;
+  color: #333333;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .content-textarea-text-other {
+  display: flex;
+  justify-content: space-between;
+}
+.index-container .index-hot-sentiment .index-hot-sentiment-content .content-textarea .content-textarea-text-other text {
+  font-size: 26rpx;
+  color: #666666;
+}
