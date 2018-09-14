@@ -21,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/yueke/application/Member/View/Comment/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+              <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -196,12 +196,20 @@
       <updated>1522202376056</updated>
       <workItem from="1522202377236" duration="4448000" />
       <workItem from="1522284842874" duration="44000" />
-      <workItem from="1536893882961" duration="341000" />
+      <workItem from="1536893882961" duration="451000" />
     </task>
+    <task id="LOCAL-00001" summary="test1">
+      <created>1536894257362</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1536894257363</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4833000" />
+    <option name="totallyTimeSpent" value="4943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -232,6 +240,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test1" />
+    <option name="LAST_COMMIT_MESSAGE" value="test1" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -243,7 +255,7 @@
         <state relative-caret-position="-3483">
           <caret line="21" column="49" lean-forward="true" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
           <folding>
-            <element signature="e#6#1156#0#PHP" expanded="true" />
+            <element signature="e#6#1156#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -259,7 +271,7 @@
     <entry file="file://$PROJECT_DIR$/yueke/application/Member/View/Comment/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
           <folding />
         </state>
       </provider>
